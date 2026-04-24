@@ -1,3 +1,6 @@
+
+コピー
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -40,7 +43,7 @@
   }
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; display: block; }
-
+ 
   /* ===== HEADER ===== */
   header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -68,7 +71,7 @@
     white-space: nowrap;
   }
   .header-cta:hover { background: var(--gold-light); }
-
+ 
   /* ===== HERO ===== */
   .hero {
     min-height: 100vh;
@@ -168,7 +171,7 @@
     animation: scrollLine 1.8s ease-in-out infinite;
   }
   @keyframes scrollLine { 0%,100%{ opacity:1; transform:scaleY(1);} 50%{ opacity:0.4; transform:scaleY(0.6);} }
-
+ 
   /* ===== POLICE STRENGTH SECTION ===== */
   .police-strength {
     background: var(--cream);
@@ -232,7 +235,7 @@
     margin-top: 16px; position: relative; z-index: 1;
     letter-spacing: 0.06em;
   }
-
+ 
   /* ===== SERVICES ===== */
   .services {
     padding: 80px 24px;
@@ -290,7 +293,7 @@
     text-decoration: none;
   }
   .service-card-link:hover { background: var(--navy); color: white; border-color: var(--navy); }
-
+ 
   /* ===== ABOUT ===== */
   .about {
     background: var(--navy);
@@ -364,7 +367,7 @@
   }
   .about-num-val span { font-size: 16px; }
   .about-num-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; }
-
+ 
   /* ===== REASONS ===== */
   .reasons {
     padding: 80px 24px;
@@ -402,7 +405,7 @@
     width: 4px; height: 60px; border-radius: 0 0 4px 0;
     background: var(--gold);
   }
-
+ 
   /* ===== CALENDAR ===== */
   .calendar-section {
     padding: 80px 24px;
@@ -430,7 +433,7 @@
     color: rgba(255,255,255,0.6);
     display: flex; align-items: center; gap: 8px;
   }
-
+ 
   /* ===== CONTACT ===== */
   .contact {
     padding: 80px 24px;
@@ -472,7 +475,7 @@
   .phone-btn { background: var(--cream); color: var(--navy); font-size: 18px; font-weight: 700; }
   .phone-btn span { font-size: 12px; font-weight: 400; color: var(--text-light); display: block; margin-top: 2px; }
   .form-btn { background: var(--navy); color: white; }
-
+ 
   /* ===== INFO STRIP ===== */
   .info-strip {
     background: var(--navy);
@@ -482,7 +485,7 @@
   .info-item { text-align: center; }
   .info-label { font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
   .info-val { font-size: 14px; color: var(--white); font-weight: 500; }
-
+ 
   /* ===== FOOTER ===== */
   footer {
     background: #081425;
@@ -492,13 +495,13 @@
   }
   footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
   footer strong { color: rgba(255,255,255,0.6); }
-
+ 
   /* ===== ANIMATIONS ===== */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
+ 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 640px) {
     .about-inner { grid-template-columns: 1fr; }
@@ -508,9 +511,90 @@
     .hero-scroll { display: none; }
   }
 </style>
+ 
+<!-- Schema.org 構造化データ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "西岡行政書士事務所",
+  "alternateName": "国の許可屋さん・西岡行政書士事務所",
+  "description": "元広島県警察官13年の行政書士・西岡祐也。風営法・深夜営業届・古物商・建設業許可・会社設立など広島の許認可申請を専門的にサポート。",
+  "url": "https://nishioka-gyosei.github.io",
+  "telephone": "+81-90-8068-8527",
+  "priceRange": "¥¥",
+  "image": "https://nishioka-gyosei.github.io/photo.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "大手町4-6-22",
+    "addressLocality": "広島市中区",
+    "addressRegion": "広島県",
+    "postalCode": "730-0051",
+    "addressCountry": "JP"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 34.3961,
+    "longitude": 132.4564
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    }
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+81-90-8068-8527",
+    "contactType": "customer service",
+    "availableLanguage": "Japanese"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "西岡祐也",
+    "jobTitle": "行政書士",
+    "description": "元広島県警察官13年。行政書士。広島県行政書士会所属。登録番号22341036。"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "広島県"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "許認可申請サービス",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "風俗営業許可申請"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "深夜営業届出", "offers": {"@type": "Offer", "price": "77000", "priceCurrency": "JPY"}}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "古物商許可申請", "offers": {"@type": "Offer", "price": "60000", "priceCurrency": "JPY"}}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "建設業許可申請"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "道路使用許可申請"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "会社設立", "offers": {"@type": "Offer", "price": "150000", "priceCurrency": "JPY"}}}
+    ]
+  }
+}
+</script>
+ 
+<!-- OGP タグ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nishioka-gyosei.github.io">
+<meta property="og:title" content="元警察官行政書士｜広島の許認可・建設業・会社設立｜西岡行政書士事務所">
+<meta property="og:description" content="元広島県警察官13年の行政書士・西岡祐也。風営法・深夜営業届・古物商・建設業許可・会社設立まで。広島市中区。初回相談無料。土日祝対応。">
+<meta property="og:image" content="https://nishioka-gyosei.github.io/photo.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="西岡行政書士事務所">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="元警察官行政書士｜広島の許認可｜西岡行政書士事務所">
+<meta name="twitter:description" content="元広島県警察官13年の行政書士。風営法・深夜営業・古物商・建設業許可・会社設立。広島市中区。初回無料相談。">
+<meta name="twitter:image" content="https://nishioka-gyosei.github.io/photo.jpg">
+<link rel="canonical" href="https://nishioka-gyosei.github.io">
+ 
 </head>
 <body>
-
+ 
 <!-- ===== HEADER ===== -->
 <header>
   <div class="header-logo">
@@ -519,7 +603,7 @@
   </div>
   <a href="#contact" class="header-cta">無料相談する</a>
 </header>
-
+ 
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero-bg-pattern"></div>
@@ -538,7 +622,7 @@
   </div>
   <div class="hero-scroll">SCROLL</div>
 </section>
-
+ 
 <!-- ===== POLICE STRENGTH ===== -->
 <section class="police-strength">
   <div class="police-strength-inner">
@@ -567,13 +651,13 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ===== SERVICES ===== -->
 <section class="services" id="services">
   <div class="services-inner">
     <div class="section-eyebrow">SERVICES</div>
     <h2 class="section-title">取り扱い業務</h2>
-
+ 
     <!-- Police window -->
     <div class="service-group">
       <span class="service-group-label">警察窓口の申請 — 元警察官の強み</span>
@@ -608,7 +692,7 @@
         </div>
       </div>
     </div>
-
+ 
     <!-- Business -->
     <div class="service-group">
       <span class="service-group-label gold">事業・開業サポート</span>
@@ -640,7 +724,7 @@
         </div>
       </div>
     </div>
-
+ 
     <!-- Life -->
     <div class="service-group">
       <span class="service-group-label">暮らしのサポート</span>
@@ -661,14 +745,15 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ===== ABOUT ===== -->
 <section class="about" id="about">
   <div class="about-inner">
     <div class="about-badge-col">
       <div class="about-name-block">
         <div class="about-photo-placeholder">
-<img src="photo.jpg" alt="西岡祐也" style="width:100%;border-radius:6px;">
+          <span>👮</span>
+          <p>お写真をここに</p>
         </div>
         <div class="about-name">西岡 祐也</div>
         <div class="about-name-en">YUYA NISHIOKA</div>
@@ -722,7 +807,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ===== REASONS ===== -->
 <section class="reasons">
   <div class="reasons-inner">
@@ -750,7 +835,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ===== CALENDAR ===== -->
 <section class="calendar-section" id="calendar">
   <div class="calendar-inner">
@@ -768,7 +853,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ===== CONTACT ===== -->
 <section class="contact" id="contact">
   <div class="contact-inner">
@@ -794,7 +879,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ===== INFO STRIP ===== -->
 <div class="info-strip">
   <div class="info-item">
@@ -814,7 +899,7 @@
     <div class="info-val">9:00〜19:00（土日祝可）</div>
   </div>
 </div>
-
+ 
 <!-- ===== FOOTER ===== -->
 <footer>
   <p><strong>© 西岡行政書士事務所</strong> ｜ 広島県行政書士会所属 ｜ 登録番号 22341036</p>
@@ -827,6 +912,12 @@
     <a href="kensetsu_lp.html" style="color:inherit; margin-right:16px;">建設業許可</a>
     <a href="sinnyaeigyou_lp.html" style="color:inherit; margin-right:16px;">深夜営業届</a>
     <a href="douroshiyou_lp.html" style="color:inherit;">道路使用・占用許可</a>
+  </p>
+</footer>
+ 
+</body>
+</html>
+ 
   </p>
 </footer>
 
