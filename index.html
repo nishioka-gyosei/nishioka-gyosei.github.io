@@ -507,6 +507,91 @@
     .about-name-block { flex: 1; }
     .hero-scroll { display: none; }
   }
+
+  /* ===== SIMULATOR CTA ===== */
+  .sim-section { padding: 0 24px 72px; background: var(--cream); }
+  .sim-card {
+    max-width: 840px; margin: 0 auto;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .sim-left {
+    background: var(--navy);
+    padding: 36px 32px;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .sim-left::after {
+    content: "¥";
+    position: absolute; right: -8px; bottom: -24px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 140px; font-weight: 700;
+    color: rgba(201,168,76,0.06); line-height: 1;
+    pointer-events: none;
+  }
+  .sim-eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.22em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 12px;
+  }
+  .sim-heading {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 700; color: var(--white);
+    line-height: 1.45; margin-bottom: 12px;
+  }
+  .sim-heading em { font-style: normal; color: var(--gold-light); }
+  .sim-lead { font-size: 13px; color: rgba(255,255,255,0.58); line-height: 1.75; margin-bottom: 20px; }
+  .sim-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; position: relative; z-index: 1; }
+  .sim-chip {
+    font-size: 11px; padding: 3px 10px; border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.7);
+  }
+  .sim-btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--gold); color: var(--navy);
+    font-weight: 700; font-size: 14px;
+    padding: 14px 20px; border-radius: 8px;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none; position: relative; z-index: 1;
+  }
+  .sim-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .sim-btn-note { font-size: 11px; color: rgba(255,255,255,0.38); text-align: center; margin-top: 9px; position: relative; z-index: 1; }
+  .sim-right { padding: 28px 24px; background: #f8f9fc; display: flex; flex-direction: column; justify-content: center; }
+  .sim-right-label { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; color: var(--text-light); text-transform: uppercase; margin-bottom: 12px; }
+  .sim-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px; border-radius: 7px;
+    background: var(--white); border: 1px solid var(--border);
+    margin-bottom: 7px; text-decoration: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .sim-row:last-of-type { margin-bottom: 0; }
+  .sim-row:hover { border-color: var(--navy-mid); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .sim-row-left { display: flex; align-items: center; gap: 9px; }
+  .sim-row-icon { font-size: 15px; flex-shrink: 0; }
+  .sim-row-name { font-size: 13px; font-weight: 500; color: var(--text); }
+  .sim-row-price { font-family: 'Oswald', sans-serif; font-size: 13px; color: var(--gold); font-weight: 500; white-space: nowrap; }
+  .sim-all-link {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    margin-top: 12px; font-size: 12px; font-weight: 500;
+    color: var(--navy); text-decoration: none;
+    padding: 9px; border-radius: 6px;
+    border: 1px solid var(--border); background: var(--white);
+    transition: background 0.15s, color 0.15s;
+  }
+  .sim-all-link:hover { background: var(--navy); color: white; border-color: var(--navy); }
+  @media (max-width: 640px) {
+    .sim-card { grid-template-columns: 1fr; }
+    .sim-right { border-top: 1px solid var(--border); background: var(--white); }
+  }
 </style>
 
 <!-- Schema.org 構造化データ -->
@@ -748,9 +833,7 @@
   <div class="about-inner">
     <div class="about-badge-col">
       <div class="about-name-block">
-        <div class="about-photo-placeholder">
-<img src="photo.jpg" alt="西岡祐也" style="width:100%;border-radius:6px;">
-        </div>
+        <img src="photo.jpg" alt="西岡祐也" style="width:100%;border-radius:6px;aspect-ratio:3/4;object-fit:cover;display:block;">
         <div class="about-name">西岡 祐也</div>
         <div class="about-name-en">YUYA NISHIOKA</div>
         <div class="about-career">
@@ -838,24 +921,24 @@
   <div class="sim-card">
     <div class="sim-left">
       <div class="sim-eyebrow">ONLINE QUOTE SIMULATOR</div>
-      <h2 class="sim-heading">「<em>いくらかかる？</em>」<br>60秒で費用の目安がわかります。</h2>
-      <p class="sim-lead">業務の内容・状況を選ぶだけで概算費用が表示されます。個人情報の入力は不要。まず費用感を確認してから相談できます。</p>
+      <h2 class="sim-heading">「<em>いくらかかる？</em>」<br>60秒でわかります。</h2>
+      <p class="sim-lead">業務と状況を選ぶだけで概算費用が表示されます。個人情報不要・完全無料。まず費用感を確認してから相談できます。</p>
       <div class="sim-chips">
         <span class="sim-chip">約60秒</span>
         <span class="sim-chip">個人情報不要</span>
         <span class="sim-chip">完全無料</span>
         <span class="sim-chip">全11サービス対応</span>
       </div>
-      <a href="simulator.html" class="sim-btn">費用をシミュレーションする →</a>
-      <p class="sim-btn-sub">納得してからご依頼いただけます</p>
+      <a href="simulator.html" class="sim-btn">💴 費用をシミュレーションする →</a>
+      <p class="sim-btn-note">納得してからご依頼いただけます</p>
     </div>
     <div class="sim-right">
-      <div class="sim-right-label">クリックで即シミュレーション</div>
-      <a href="simulator.html#fuueihou" class="sim-row"><div class="sim-row-left"><span class="sim-row-icon">🎤</span><span class="sim-row-name">風俗営業許可（風営法）</span></div><span class="sim-row-price">12万円〜</span></a>
-      <a href="simulator.html#sinnya" class="sim-row"><div class="sim-row-left"><span class="sim-row-icon">🌙</span><span class="sim-row-name">深夜営業届出</span></div><span class="sim-row-price">6万円〜</span></a>
-      <a href="simulator.html#kobutsu" class="sim-row"><div class="sim-row-left"><span class="sim-row-icon">♻️</span><span class="sim-row-name">古物商許可</span></div><span class="sim-row-price">6万円〜</span></a>
-      <a href="simulator.html#kensetsu" class="sim-row"><div class="sim-row-left"><span class="sim-row-icon">🏗️</span><span class="sim-row-name">建設業許可</span></div><span class="sim-row-price">15万円〜</span></a>
-      <a href="simulator.html#setsuritsu" class="sim-row"><div class="sim-row-left"><span class="sim-row-icon">🏢</span><span class="sim-row-name">会社設立</span></div><span class="sim-row-price">15万円〜</span></a>
+      <div class="sim-right-label">業務を選んで即シミュレーション</div>
+      <a href="simulator.html" class="sim-row"><div class="sim-row-left"><span class="sim-row-icon">🎤</span><span class="sim-row-name">風俗営業許可（風営法）</span></div><span class="sim-row-price">12万円〜</span></a>
+      <a href="simulator.html" class="sim-row"><div class="sim-row-left"><span class="sim-row-icon">🌙</span><span class="sim-row-name">深夜営業届出</span></div><span class="sim-row-price">6万円〜</span></a>
+      <a href="simulator.html" class="sim-row"><div class="sim-row-left"><span class="sim-row-icon">♻️</span><span class="sim-row-name">古物商許可</span></div><span class="sim-row-price">6万円〜</span></a>
+      <a href="simulator.html" class="sim-row"><div class="sim-row-left"><span class="sim-row-icon">🏗️</span><span class="sim-row-name">建設業許可</span></div><span class="sim-row-price">15万円〜</span></a>
+      <a href="simulator.html" class="sim-row"><div class="sim-row-left"><span class="sim-row-icon">🏢</span><span class="sim-row-name">会社設立</span></div><span class="sim-row-price">15万円〜</span></a>
       <a href="simulator.html" class="sim-all-link">全11サービスのシミュレーターを開く →</a>
     </div>
   </div>
