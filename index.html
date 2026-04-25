@@ -953,8 +953,19 @@
       空いている時間をクリックして、そのままご予約いただけます。<br>
       相談は無料です。お気軽にどうぞ。
     </p>
-    <div class="calendar-wrap">
-      <iframe src="https://script.google.com/macros/s/AKfycbyDLR3C_rjnHAbD4aui1iN_lwHJPC8KdsGP6pSimeHq39bkL2W0oV8aAaR_vf01zituCw/exec" scrolling="yes"></iframe>
+    <div class="calendar-wrap" style="position:relative;">
+      <div id="cal-loading" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(13,31,60,0.85);color:rgba(255,255,255,0.7);font-size:14px;gap:12px;z-index:2;border-radius:8px;pointer-events:none;">
+        <svg style="width:32px;height:32px;animation:spin 1s linear infinite;" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.8)" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.3"/><path d="M12 2 a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>
+        <span>カレンダーを読み込んでいます...</span>
+      </div>
+      <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+      <iframe
+        id="cal-frame"
+        src="https://script.google.com/macros/s/AKfycbyDLR3C_rjnHAbD4aui1iN_lwHJPC8KdsGP6pSimeHq39bkL2W0oV8aAaR_vf01zituCw/exec"
+        scrolling="yes"
+        referrerpolicy="no-referrer-when-downgrade"
+        onload="document.getElementById('cal-loading').style.display='none'">
+      </iframe>
       <div class="calendar-note">
         📅 ご予約後、確認のご連絡をさせていただきます。急ぎの場合はLINEまたはお電話でどうぞ。
       </div>
