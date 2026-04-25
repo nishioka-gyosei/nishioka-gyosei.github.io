@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>料金見積りシミュレーター｜西岡行政書士事務所</title>
+<meta name="description" content="風営法・深夜営業届・建設業許可・会社設立など、各種許認可の費用を即座にお見積り。元警察官の行政書士が、明確な料金でサポート。広島市中区。初回相談無料。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nishioka-gyosei.github.io/simulator.html">
+<meta property="og:title" content="料金見積りシミュレーター｜西岡行政書士事務所">
+<meta property="og:description" content="風営法・深夜営業・建設業許可・会社設立など各種許認可の費用を60秒で試算。個人情報不要・完全無料。">
+<meta property="og:image" content="https://nishioka-gyosei.github.io/photo.jpg">
+<meta property="og:locale" content="ja_JP">
+<link rel="canonical" href="https://nishioka-gyosei.github.io/simulator.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6JQDLBVSQ8"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6JQDLBVSQ8');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink: #14171F;
+  --ink-soft: #2A2D38;
+  --paper: #F5F2EB;
+  --paper-2: #FFFDF7;
+  --cream: #EDE8DC;
+  --crimson: #A8252B;
+  --crimson-dark: #7A1A20;
+  --gold: #B8934A;
+  --gold-light: #D4B876;
+  --hairline: #D4CDBB;
+  --hairline-soft: #E5DFCE;
+  --muted: #6B6657;
+  --line-green: #06C755;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans JP', system-ui, sans-serif; background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, textarea, select { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+.font-mincho { font-family: 'Shippori Mincho B1', serif; }
+.font-serif { font-family: 'Bodoni Moda', serif; }
+.font-serif-it { font-family: 'Bodoni Moda', serif; font-style: italic; }
+.tracked { letter-spacing: 0.3em; text-transform: uppercase; }
+.tracked-tight { letter-spacing: 0.18em; text-transform: uppercase; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes priceCount { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: scale(1); } }
+.price-anim { animation: priceCount 0.6s cubic-bezier(0.3, 1.4, 0.4, 1) both; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 0.7s linear infinite; }
+/* Header */
+.header { background: var(--paper-2); border-bottom: 1px solid var(--hairline); }
+.header-inner { max-width: 880px; margin: 0 auto; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 14px; }
+.badge-shield { width: 44px; height: 44px; flex-shrink: 0; }
+.brand-name { font-family: 'Shippori Mincho B1', serif; font-size: 19px; font-weight: 700; line-height: 1.2; letter-spacing: 0.05em; }
+.brand-en { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 11px; color: var(--muted); }
+.brand-tag { display: none; font-family: 'Bodoni Moda', serif; font-size: 10px; color: var(--crimson); letter-spacing: 0.3em; text-transform: uppercase; }
+.line-btn { background: var(--line-green); color: white; padding: 10px 16px; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: background 0.15s; }
+.line-btn:hover { background: #04a649; }
+.banner { background: var(--ink); color: var(--paper); padding: 10px 20px; text-align: center; font-size: 11px; letter-spacing: 0.18em; }
+.banner-sep { color: var(--gold); margin: 0 12px; }
+@media (min-width: 640px) { .brand-name { font-size: 24px; } .brand-tag { display: inline-block; margin-left: 8px; } .badge-shield { width: 48px; height: 48px; } }
+/* Hero */
+.hero { max-width: 880px; margin: 0 auto; padding: 40px 20px 24px; text-align: center; }
+@media (min-width: 768px) { .hero { padding: 56px 32px 32px; } }
+.hero-eyebrow { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 14px; color: var(--crimson); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px; }
+.hero-title { font-family: 'Shippori Mincho B1', serif; font-size: 28px; font-weight: 700; line-height: 1.4; }
+@media (min-width: 768px) { .hero-title { font-size: 36px; } }
+.hero-title em { font-style: normal; color: var(--crimson); border-bottom: 3px solid var(--gold); padding-bottom: 2px; }
+.hero-desc { margin-top: 20px; font-size: 14px; color: var(--muted); line-height: 1.8; max-width: 640px; margin-left: auto; margin-right: auto; }
+.hero-features { margin-top: 24px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+.hero-feature { display: flex; align-items: center; gap: 6px; }
+.hero-feature-dot { color: var(--gold); }
+/* Main */
+.main { max-width: 880px; margin: 0 auto; padding: 24px 20px 80px; }
+@media (min-width: 768px) { .main { padding: 32px 32px 80px; } }
+/* Section header */
+.section-header { display: flex; align-items: baseline; gap: 18px; margin-top: 32px; }
+.section-num { font-family: 'Bodoni Moda', serif; font-size: 38px; line-height: 1; color: var(--crimson); }
+.section-eyebrow { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+.section-title { font-family: 'Shippori Mincho B1', serif; font-size: 21px; font-weight: 700; }
+@media (min-width: 768px) { .section-num { font-size: 48px; } .section-title { font-size: 24px; } }
+/* Categories */
+.cat-block { margin-top: 36px; }
+.cat-block:first-of-type { margin-top: 28px; }
+.cat-eyebrow-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; flex-wrap: wrap; }
+.cat-eyebrow { font-family: 'Bodoni Moda', serif; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; }
+.cat-eyebrow.police { color: var(--crimson); }
+.cat-eyebrow.business, .cat-eyebrow.life { color: var(--muted); }
+.cat-chip { background: var(--ink); color: var(--gold-light); font-size: 9px; font-weight: 700; padding: 2px 8px; letter-spacing: 0.18em; text-transform: uppercase; }
+.cat-title { font-family: 'Shippori Mincho B1', serif; font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+.cat-tagline { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+/* Cards */
+.cards { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 768px) { .cards { grid-template-columns: 1fr 1fr; } }
+.card { background: var(--paper-2); border: 1px solid var(--hairline-soft); padding: 18px; text-align: left; transition: all 0.15s; cursor: pointer; width: 100%; }
+.card:hover { border-color: var(--ink); }
+.card.selected { background: var(--paper-2); border: 1px solid var(--ink); box-shadow: inset 0 0 0 1px var(--ink), -4px 4px 0 -1px var(--crimson); }
+.card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.card-sub { font-family: 'Bodoni Moda', serif; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; }
+.card-sub.police { color: var(--crimson); }
+.card-sub.other { color: var(--muted); }
+.card-name { font-family: 'Shippori Mincho B1', serif; font-size: 17px; font-weight: 700; margin-top: 2px; }
+.card-desc { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.6; }
+.card-check { width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: var(--paper); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+.card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--hairline); font-size: 12px; }
+.card-price-from { font-family: 'Shippori Mincho B1', serif; color: var(--ink); }
+/* Question form */
+.q-card { background: var(--paper-2); border: 1px solid var(--hairline-soft); padding: 24px; margin-top: 20px; }
+@media (min-width: 768px) { .q-card { padding: 32px; } }
+.q-block { padding: 16px 0; border-bottom: 1px dashed var(--hairline-soft); }
+.q-block:last-of-type { border-bottom: none; }
+.q-label { font-family: 'Shippori Mincho B1', serif; font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.q-hint { font-size: 11px; color: var(--muted); margin-bottom: 12px; }
+.q-options { display: flex; flex-wrap: wrap; gap: 8px; }
+.q-chip { padding: 8px 14px; font-size: 13px; background: var(--paper-2); color: var(--ink); border: 1px solid var(--hairline); transition: all 0.12s; }
+.q-chip:hover { border-color: var(--ink); }
+.q-chip.selected { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.q-chip-with-price { display: inline-flex; align-items: center; gap: 8px; }
+.q-chip-price { font-family: 'Bodoni Moda', serif; font-size: 11px; opacity: 0.7; }
+.q-chip.selected .q-chip-price { opacity: 0.9; }
+/* Quote result */
+.result-card { background: linear-gradient(180deg, var(--ink) 0%, #1c1f29 100%); color: var(--paper); padding: 32px 24px; margin-top: 20px; position: relative; overflow: hidden; }
+@media (min-width: 768px) { .result-card { padding: 40px 32px; } }
+.result-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--crimson) 0%, var(--gold) 50%, var(--crimson) 100%); }
+.result-eyebrow { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 12px; color: var(--gold-light); letter-spacing: 0.18em; text-transform: uppercase; }
+.result-title { font-family: 'Shippori Mincho B1', serif; font-size: 16px; margin-top: 4px; color: var(--gold); }
+.result-price-wrap { text-align: center; margin-top: 24px; }
+.result-price-yen { font-family: 'Shippori Mincho B1', serif; font-size: 13px; color: var(--gold-light); }
+.result-price-num { font-family: 'Bodoni Moda', serif; font-size: 56px; font-weight: 700; color: white; line-height: 1; letter-spacing: -0.02em; }
+@media (min-width: 768px) { .result-price-num { font-size: 72px; } }
+.result-price-tilde { font-family: 'Shippori Mincho B1', serif; font-size: 16px; color: var(--gold-light); margin: 0 4px; }
+.result-price-suffix { font-family: 'Shippori Mincho B1', serif; font-size: 13px; color: var(--gold-light); margin-top: 8px; }
+.result-divider { height: 1px; background: rgba(212,184,118,0.3); margin: 28px 0; }
+.result-breakdown-title { font-family: 'Shippori Mincho B1', serif; font-size: 13px; color: var(--gold-light); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px; }
+.result-row { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px dashed rgba(212,184,118,0.15); font-size: 13px; }
+.result-row-label { color: var(--paper); }
+.result-row-value { font-family: 'Bodoni Moda', serif; color: var(--gold-light); }
+.result-row.total { margin-top: 8px; padding-top: 12px; border-top: 1px solid var(--gold); border-bottom: none; font-size: 14px; font-weight: 700; }
+.result-row.total .result-row-label { color: white; font-weight: 700; }
+.result-row.total .result-row-value { color: white; font-size: 16px; }
+.result-note { margin-top: 20px; font-size: 11px; color: var(--gold-light); line-height: 1.7; opacity: 0.85; }
+.result-note-label { font-weight: 700; }
+/* CTA */
+.cta-buttons { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+@media (min-width: 768px) { .cta-buttons { flex-direction: row; } }
+.cta-btn { padding: 16px 24px; text-align: center; font-size: 14px; letter-spacing: 0.1em; transition: all 0.15s; display: inline-flex; align-items: center; justify-content: center; gap: 10px; flex: 1; }
+.cta-btn-primary { background: var(--crimson); color: white; border: 1px solid var(--crimson); }
+.cta-btn-primary:hover { background: var(--crimson-dark); }
+.cta-btn-line { background: var(--line-green); color: white; }
+.cta-btn-line:hover { background: #04a649; }
+.cta-btn-ghost { background: transparent; color: var(--gold-light); border: 1px solid var(--gold); }
+.cta-btn-ghost:hover { background: rgba(184,147,74,0.1); }
+/* Email */
+.email-card { background: var(--paper-2); border: 1px solid var(--gold); padding: 24px; margin-top: 24px; position: relative; }
+.email-card-eyebrow { display: flex; align-items: center; gap: 8px; font-family: 'Bodoni Moda', serif; font-size: 11px; color: var(--gold); letter-spacing: 0.18em; text-transform: uppercase; }
+.email-card-title { font-family: 'Shippori Mincho B1', serif; font-size: 16px; font-weight: 700; margin-top: 6px; }
+.email-card-desc { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.7; }
+.email-form { margin-top: 16px; display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 600px) { .email-form { grid-template-columns: 1fr 1fr; } }
+.email-input { padding: 10px 12px; font-size: 14px; background: white; border: 1px solid var(--hairline); transition: border-color 0.15s; }
+.email-input:focus { outline: none; border-color: var(--ink); }
+.email-submit { grid-column: 1 / -1; padding: 12px 24px; background: var(--ink); color: white; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; transition: all 0.15s; display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+.email-submit:hover:not(:disabled) { background: var(--crimson); }
+.email-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+.email-success { padding: 12px 16px; background: rgba(58,107,62,0.1); border: 1px solid #3A6B3E; color: #3A6B3E; font-size: 13px; margin-top: 16px; }
+.email-error { padding: 12px 16px; background: rgba(168,37,43,0.08); border: 1px solid var(--crimson); color: var(--crimson-dark); font-size: 13px; margin-top: 16px; }
+.email-spinner { width: 12px; height: 12px; border: 2px solid white; border-top-color: transparent; border-radius: 50%; }
+.restart-link { display: inline-block; margin-top: 24px; font-size: 12px; color: var(--muted); text-decoration: underline; }
+.restart-link:hover { color: var(--ink); }
+/* Footer */
+.footer { background: var(--ink); color: var(--paper); padding: 40px 20px; text-align: center; margin-top: 60px; }
+.footer-name { font-family: 'Shippori Mincho B1', serif; font-size: 16px; font-weight: 700; margin-top: 16px; }
+.footer-en { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 12px; color: var(--gold-light); margin-top: 4px; }
+.footer-tag { font-family: 'Bodoni Moda', serif; font-size: 10px; color: var(--crimson); letter-spacing: 0.3em; text-transform: uppercase; margin-top: 8px; }
+.footer-info { font-size: 11px; line-height: 1.8; color: var(--hairline); margin-top: 24px; }
+.footer-buttons { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+.footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<!-- Back Navigation -->
+<div style="background:#0d1f3c;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(201,168,76,0.25);">
+  <a href="index.html" style="color:rgba(255,255,255,0.65);font-size:13px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-family:'Noto Sans JP',sans-serif;">
+    &#8592; 西岡行政書士事務所 トップへ
+  </a>
+  <div style="display:flex;gap:16px;">
+    <a href="ryoukin.html" style="color:rgba(201,168,76,0.85);font-size:12px;text-decoration:none;font-family:'Noto Sans JP',sans-serif;">料金一覧</a>
+    <a href="police_lp.html" style="color:rgba(201,168,76,0.85);font-size:12px;text-decoration:none;font-family:'Noto Sans JP',sans-serif;">警察申請</a>
+  </div>
+</div>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <svg class="badge-shield" viewBox="0 0 48 48" fill="none">
+        <path d="M24 3 L42 9 L42 26 Q42 38 24 45 Q6 38 6 26 L6 9 Z" fill="#14171F" stroke="#B8934A" stroke-width="1"/>
+        <path d="M24 7 L38 11.5 L38 25 Q38 34.5 24 40.5 Q10 34.5 10 25 L10 11.5 Z" fill="none" stroke="#D4B876" stroke-width="0.5"/>
+        <path d="M24 16 L25.5 20 L30 20 L26.5 22.5 L28 26.5 L24 24 L20 26.5 L21.5 22.5 L18 20 L22.5 20 Z" fill="#B8934A"/>
+      </svg>
+      <div>
+        <div class="brand-name">西岡行政書士事務所</div>
+        <div>
+          <span class="brand-en">Nishioka Gyoseishoshi Office</span>
+          <span class="brand-tag">EX-POLICE OFFICER</span>
+        </div>
+      </div>
+    </div>
+    <a href="https://lin.ee/UKhZQbE" target="_blank" rel="noreferrer" class="line-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.78 2 10.4c0 4.14 3.58 7.6 8.41 8.25.33.07.77.22.88.5.1.26.07.67.03.93l-.14.85c-.04.25-.2.98.86.54 1.06-.45 5.73-3.37 7.81-5.77C21.28 14.07 22 12.31 22 10.4 22 5.78 17.52 2 12 2z"/></svg>
+      LINE
+    </a>
+  </div>
+  <div class="banner">
+    <span>初回相談 無料</span><span class="banner-sep">◆</span>
+    <span>見積り完全無料</span><span class="banner-sep">◆</span>
+    <a href="index.html#calendar" style="color:var(--gold-light); text-decoration:underline;">📅 ご予約はこちら</a>
+  </div>
+</header>
+<section class="hero">
+  <div class="hero-eyebrow">Online Quote Simulator</div>
+  <h1 class="hero-title">「<em>いくらかかるんだろう？</em>」<br>を、その場で解決。</h1>
+  <p class="hero-desc">
+    質問にお答えいただくだけで、概算の費用が分かります。<br>
+    料金は事前にお見積もり、納得してから依頼できる安心の明朗会計。
+  </p>
+  <div class="hero-features">
+    <div class="hero-feature"><span class="hero-feature-dot">◆</span>所要時間 約60秒</div>
+    <div class="hero-feature"><span class="hero-feature-dot">◆</span>個人情報入力 不要</div>
+    <div class="hero-feature"><span class="hero-feature-dot">◆</span>完全無料</div>
+  </div>
+</section>
+<main class="main" id="app"></main>
+<footer class="footer">
+  <svg class="badge-shield" viewBox="0 0 48 48" fill="none" style="width:56px;height:56px;">
+    <path d="M24 3 L42 9 L42 26 Q42 38 24 45 Q6 38 6 26 L6 9 Z" fill="#14171F" stroke="#B8934A" stroke-width="1"/>
+    <path d="M24 7 L38 11.5 L38 25 Q38 34.5 24 40.5 Q10 34.5 10 25 L10 11.5 Z" fill="none" stroke="#D4B876" stroke-width="0.5"/>
+    <path d="M24 16 L25.5 20 L30 20 L26.5 22.5 L28 26.5 L24 24 L20 26.5 L21.5 22.5 L18 20 L22.5 20 Z" fill="#B8934A"/>
+  </svg>
+  <div class="footer-name">西岡行政書士事務所</div>
+  <div class="footer-en">Nishioka Gyoseishoshi Office</div>
+  <div class="footer-tag">EX-POLICE OFFICER · 広島</div>
+  <div class="footer-info">
+    広島市中区大手町4-6-22（市役所前電停 徒歩4分）<br>
+    TEL: 090-8068-8527 ／ 受付 9:00 – 19:00（土日祝可）<br>
+    広島県行政書士会 所属 ／ 登録番号 22341036
+  </div>
+  <div class="footer-buttons">
+    <a href="https://lin.ee/UKhZQbE" target="_blank" rel="noreferrer" class="line-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.78 2 10.4c0 4.14 3.58 7.6 8.41 8.25.33.07.77.22.88.5.1.26.07.67.03.93l-.14.85c-.04.25-.2.98.86.54 1.06-.45 5.73-3.37 7.81-5.77C21.28 14.07 22 12.31 22 10.4 22 5.78 17.52 2 12 2z"/></svg>
+      LINEで相談
+    </a>
+    <a href="tel:09080688527" class="footer-tel-btn">📞 090-8068-8527</a>
+    <a href="index.html" style="padding:10px 16px;font-size:12px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);display:inline-flex;align-items:center;gap:6px;">← トップページへ</a>
+  </div>
+</footer>
+<script>
+const CATEGORIES = [
+  { id: 'police', label: '警察への申請', labelEn: 'POLICE APPLICATIONS', tagline: '元警察官の専門領域' },
+  { id: 'business', label: '事業・開業サポート', labelEn: 'BUSINESS SUPPORT', tagline: '事業のスタートを一括サポート' },
+  { id: 'life', label: '暮らしのサポート', labelEn: 'LIFE SUPPORT', tagline: 'ご家族や終活に関わる手続き' },
+];
+const SERVICES = [
+  {id:'fuueihou',category:'police',name:'風俗営業許可（風営法）',subtitle:'ADULT ENTERTAINMENT',desc:'キャバクラ・ガールズバー・ホストクラブ等',base:120000,baseLabel:'基本報酬',from:'12万円〜',note:'風営法の許可は審査基準が複雑なため、概算金額です。実費（証紙代等）約24,000円が別途必要です。',questions:[{id:'店舗形態',label:'店舗形態をお選びください',options:[{value:'キャバクラ・クラブ・ホストクラブ',add:0},{value:'ガールズバー／ボーイズバー',add:0},{value:'ゲームセンター',add:30000},{value:'パチンコ・スロット',add:80000,lock:true}]},{id:'物件状況',label:'物件の状況',hint:'図面作成の難易度に影響します',options:[{value:'申請に使用できる図面あり',add:0},{value:'申請に使用できる図面なし',add:30000},{value:'内見済み・契約前',add:0},{value:'物件探し中',add:0}]},{id:'保護対象施設',label:'近隣に保護対象施設（学校・病院等）はありますか？',hint:'距離測定・対策資料の作成が必要になる場合があります',options:[{value:'ない',add:0},{value:'あるかもしれない／不明',add:50000},{value:'近隣にある',add:80000}]},{id:'急ぎ',label:'お急ぎですか？',options:[{value:'通常スケジュールでOK',add:0},{value:'できるだけ早く',add:30000},{value:'特急対応希望（最優先）',add:80000}]}]},
+  {id:'sinnya',category:'police',name:'深夜営業届出',subtitle:'LATE-NIGHT BUSINESS',desc:'0時以降営業のバー・スナック等',base:60000,baseLabel:'基本報酬',from:'6万円〜',note:'価格は税込です。届出までの期間は通常2週間程度です。',questions:[{id:'店舗形態',label:'店舗形態',options:[{value:'バー',add:0},{value:'スナック',add:0},{value:'居酒屋',add:0},{value:'カラオケバー',add:5000}]},{id:'物件状況',label:'物件の状況',hint:'図面作成の必要性に影響します',options:[{value:'申請に使用できる図面あり',add:0},{value:'申請に使用できる図面なし',add:15000},{value:'契約前',add:0}]},{id:'急ぎ',label:'お急ぎですか？',options:[{value:'通常スケジュールでOK',add:0},{value:'2週間以内に届出完了希望',add:11000},{value:'1週間以内に届出完了希望',add:22000}]}]},
+  {id:'douro',category:'police',name:'道路使用・占用許可',subtitle:'ROAD USE',desc:'工事・足場・看板設置等',base:30000,baseLabel:'基本報酬（1件あたり）',from:'3万円〜',note:'使用予定箇所の数や用途により金額が変わります。建設業許可とのセット依頼で割引あり。',questions:[{id:'使用用途',label:'使用用途',options:[{value:'建築工事（足場）',add:0},{value:'道路工事',add:10000},{value:'看板設置',add:0},{value:'撮影',add:5000},{value:'イベント',add:20000}]},{id:'使用期間',label:'使用予定期間',options:[{value:'1日のみ',add:0},{value:'1週間以内',add:5000},{value:'1ヶ月以内',add:15000},{value:'長期（複数月）',add:30000}]},{id:'図面作成',label:'図面作成の必要性',hint:'ありの場合、必要な図面を下で選んでください',options:[{value:'不要（既に揃っている）',add:0},{value:'必要（下で選択）',add:0}]},{id:'図面種類',label:'必要な図面（複数選択可）',type:'multi',showIf:{'図面作成':'必要（下で選択）'},hint:'必要な図面をすべて選んでください',options:[{value:'平面図',add:20000},{value:'立面図',add:20000},{value:'迂回図',add:25000},{value:'断面図',add:20000},{value:'保安図',add:30000}]},{id:'建設業セット',label:'建設業許可とのセット依頼',options:[{value:'セット希望（10%割引）',add:-5000},{value:'今回は道路使用許可のみ',add:0}]}]},
+  {id:'kobutsu',category:'police',name:'古物商許可',subtitle:'ANTIQUE DEALER',desc:'リサイクル・中古車・フリマ転売等',base:60000,baseLabel:'基本報酬',from:'60,000円〜',note:'価格は税込です。実費（警察署手数料）19,000円が別途必要です。',questions:[{id:'営業形態',label:'営業形態',options:[{value:'店舗あり（1拠点）',add:0},{value:'無店舗（訪問買取）',add:0},{value:'ネット販売のみ',add:0},{value:'複数拠点・複数形態',add:30000}]},{id:'法人個人',label:'法人 or 個人',options:[{value:'個人で取得',add:0},{value:'法人で取得',add:10000}]},{id:'急ぎ',label:'お急ぎですか？',options:[{value:'通常スケジュール',add:0},{value:'1ヶ月以内に取得希望',add:10000}]}]},
+  {id:'kensetsu',category:'business',name:'建設業許可',subtitle:'CONSTRUCTION',desc:'新規・更新・業種追加・決算変更',base:150000,baseLabel:'基本報酬（新規取得・知事許可）',from:'15万円〜',note:'実費（登録免許税等）90,000円〜が別途必要です。証明書類取得代行も含みます。',questions:[{id:'内容',label:'ご相談内容',options:[{value:'新規取得（知事許可）',add:0},{value:'新規取得（大臣許可）',add:70000},{value:'更新',add:-50000},{value:'業種追加',add:-30000},{value:'決算変更届のみ',add:-90000}]},{id:'業種数',label:'取得予定の業種数',options:[{value:'1業種',add:0},{value:'2業種',add:30000},{value:'3業種以上',add:60000}]},{id:'経管専技',label:'経営業務管理責任者・専任技術者',options:[{value:'両方確保済み',add:0},{value:'どちらか確保済み・どちらか未定',add:20000},{value:'どちらも未定（要確認）',add:40000}]},{id:'道路使用セット',label:'道路使用許可とのセット',options:[{value:'セット希望（10%割引）',add:-10000},{value:'建設業許可のみ',add:0}]}]},
+  {id:'setsuritsu',category:'business',name:'会社設立',subtitle:'INCORPORATION',desc:'株式会社・合同会社の設立',base:150000,baseLabel:'基本報酬（電子定款・登記まで）',from:'15万円〜',note:'実費（登録免許税等）：株式会社 約20万円／合同会社 約6万円が別途必要です。',questions:[{id:'会社形態',label:'会社形態',options:[{value:'株式会社',add:0},{value:'合同会社',add:-30000},{value:'迷っている（提案希望）',add:0}]},{id:'発起人',label:'発起人（社員）の人数',options:[{value:'1名',add:0},{value:'2〜3名',add:10000},{value:'4名以上',add:30000}]},{id:'融資セット',label:'創業融資サポートとのセット',options:[{value:'会社設立のみ',add:0},{value:'創業融資もセットで（割引適用）',add:-20000}]}]},
+  {id:'inshoku',category:'business',name:'飲食店開業',subtitle:'RESTAURANT',desc:'保健所への届出・営業許可申請',base:55000,baseLabel:'基本報酬',from:'55,000円〜',note:'価格は税込です。深夜営業や酒類販売を伴う場合は組み合わせ割引あり。',questions:[{id:'店舗形態',label:'店舗形態',options:[{value:'レストラン・カフェ',add:0},{value:'居酒屋（深夜営業なし）',add:0},{value:'居酒屋（深夜営業あり）',add:50000},{value:'バー（深夜営業）',add:50000},{value:'テイクアウト専門',add:0}]},{id:'物件状況',label:'現在の状況',options:[{value:'物件未決定',add:0},{value:'物件決定済み',add:0},{value:'内装工事中',add:0},{value:'開業間近（急ぎ）',add:20000}]}]},
+  {id:'sake',category:'business',name:'酒類販売業免許',subtitle:'LIQUOR LICENSE',desc:'税務署への酒類販売免許申請',base:150000,baseLabel:'基本報酬',from:'15万円〜',note:'価格は税込です。実費（登録免許税）30,000円が別途必要です。',questions:[{id:'酒類',label:'酒類販売の形態',options:[{value:'店内提供のみ',add:0},{value:'店内＋持ち帰り販売',add:30000},{value:'通販も予定',add:80000}]}]},
+  {id:'yuushi',category:'business',name:'創業融資サポート',subtitle:'BUSINESS LOAN',desc:'日本政策金融公庫向け',base:55000,baseLabel:'基本報酬（着手金）',from:'5.5万円〜+成功報酬',note:'別途、融資成功時に成功報酬として【融資額の10%】を報酬としていただきます。',questions:[{id:'希望額',label:'希望融資額',options:[{value:'〜300万円',add:0},{value:'300〜500万円',add:0},{value:'500〜1,000万円',add:20000},{value:'1,000万円以上',add:50000}]},{id:'事業計画',label:'事業計画書の準備状況',options:[{value:'ある程度作成済み',add:0},{value:'少し書いた程度',add:30000},{value:'まだ何もない（一から作成）',add:60000}]},{id:'会社設立セット',label:'会社設立とのセット',options:[{value:'創業融資のみ',add:0},{value:'会社設立もセット（割引適用）',add:-20000}]}]},
+  {id:'yuigon',category:'life',name:'遺言書作成',subtitle:'WILL & TESTAMENT',desc:'自筆証書・公正証書',base:66000,baseLabel:'基本報酬',from:'66,000円〜',note:'価格は税込です。公正証書遺言の場合は別途、公証人手数料がかかります。',questions:[{id:'形式',label:'ご希望の形式',options:[{value:'自筆証書遺言',add:0},{value:'公正証書遺言',add:44000},{value:'迷っている（提案希望）',add:0}]},{id:'相続人',label:'相続人の人数',options:[{value:'1〜2名',add:0},{value:'3〜4名',add:10000},{value:'5名以上',add:20000}]},{id:'財産調査',label:'財産調査の必要性',options:[{value:'不要（自分で把握済み）',add:0},{value:'一部必要',add:30000},{value:'全面的に必要',add:60000}]}]},
+  {id:'hakajimai',category:'life',name:'墓じまい（改葬許可）',subtitle:'GRAVE RELOCATION',desc:'お墓の引っ越し・整理',base:44000,baseLabel:'基本報酬',from:'44,000円〜',note:'価格は税込です。実費（証明書取得費等）約3,000円が別途必要です。',questions:[{id:'改葬先',label:'改葬先の状況',options:[{value:'決定済み',add:0},{value:'検討中',add:10000},{value:'未定（提案希望）',add:20000},{value:'永代供養を希望',add:0}]},{id:'寺院対応',label:'寺院・改葬先との交渉サポート',options:[{value:'不要（自分で対応）',add:0},{value:'寺院とのサポート希望',add:30000},{value:'改葬先とのサポートを希望',add:30000},{value:'寺院と改葬先の両方にサポートが必要',add:60000}]}]},
+];
+
+let state = { step: 1, service: null, answers: {}, emailSubmitting: false, emailSent: false, emailError: null };
+function setState(patch) { Object.assign(state, patch); render(); }
+
+function isQuestionVisible(q, answers) {
+  if (!q.showIf) return true;
+  for (const key in q.showIf) { if (answers[key] !== q.showIf[key]) return false; }
+  return true;
+}
+
+function calculateQuote(service, answers) {
+  if (!service) return null;
+  let total = service.base; let isLocked = false;
+  const breakdown = [{ label: service.baseLabel, value: service.base }];
+  service.questions.forEach(q => {
+    if (!isQuestionVisible(q, answers)) return;
+    const ans = answers[q.id]; if (!ans) return;
+    if (q.type === 'multi') {
+      if (!Array.isArray(ans) || ans.length === 0) return;
+      ans.forEach(val => { const opt = q.options.find(o => o.value === val); if (!opt) return; if (opt.lock) isLocked = true; if (opt.add !== 0) { breakdown.push({ label: q.label.replace(/[？?]$/,'')+'：'+opt.value, value: opt.add }); total += opt.add; } });
+    } else {
+      const opt = q.options.find(o => o.value === ans); if (!opt) return;
+      if (opt.lock) isLocked = true;
+      if (opt.add !== 0) { breakdown.push({ label: q.label.replace(/[？?]$/,'')+'：'+opt.value, value: opt.add }); total += opt.add; }
+    }
+  });
+  return { total: Math.max(total, 0), breakdown, isLocked };
+}
+
+function isAllAnswered(service, answers) {
+  if (!service) return false;
+  return service.questions.every(q => {
+    if (!isQuestionVisible(q, answers)) return true;
+    const ans = answers[q.id];
+    if (q.type === 'multi') return Array.isArray(ans) && ans.length > 0;
+    return !!ans;
+  });
+}
+
+function formatYen(n) { return n.toLocaleString('ja-JP'); }
+
+function render() {
+  const app = document.getElementById('app');
+  let html = '';
+  if (state.step === 1) html = renderStep1();
+  else if (state.step === 2) html = renderStep2();
+  else if (state.step === 3) html = renderStep3();
+  app.innerHTML = html; attachEvents();
+}
+
+function sectionHeader(num, eyebrow, title) {
+  return '<div class="section-header"><div class="section-num">'+num+'</div><div><div class="section-eyebrow">'+eyebrow+'</div><h2 class="section-title">'+title+'</h2></div></div>';
+}
+
+function renderStep1() {
+  let html = '<div class="fade-up">'+sectionHeader('01','Choose service','お見積りしたい業務をお選びください');
+  CATEGORIES.forEach(cat => {
+    const catSvc = SERVICES.filter(s => s.category === cat.id);
+    const isPolice = cat.id === 'police';
+    html += '<div class="cat-block"><div class="cat-eyebrow-row"><span class="cat-eyebrow '+cat.id+'">'+cat.labelEn+'</span>';
+    if (isPolice) html += '<span class="cat-chip">元警察官の専門領域</span>';
+    html += '</div><h3 class="cat-title">'+cat.label+'</h3><p class="cat-tagline">'+cat.tagline+'</p><div class="cards">';
+    catSvc.forEach(s => {
+      html += '<button class="card" data-action="select-service" data-id="'+s.id+'">';
+      html += '<div class="card-top"><div style="flex:1;min-width:0"><div class="card-sub '+(isPolice?'police':'other')+'">'+s.subtitle+'</div>';
+      html += '<div class="card-name">'+s.name+'</div><div class="card-desc">'+s.desc+'</div></div></div>';
+      html += '<div class="card-bottom"><span style="color:var(--muted);font-size:11px">'+s.questions.length+'問の質問でお見積り</span><span class="card-price-from">'+s.from+'</span></div></button>';
+    });
+    html += '</div></div>';
+  });
+  html += '</div>'; return html;
+}
+
+function renderStep2() {
+  const svc = state.service;
+  const answered = isAllAnswered(svc, state.answers);
+  let html = '<div class="fade-up">'+sectionHeader('02',svc.subtitle,svc.name+' のお見積り');
+  html += '<p style="margin-top:16px;font-size:13px;color:var(--muted);">下記の質問にお答えください。すべて回答すると概算金額が表示されます。</p>';
+  html += '<div class="q-card">';
+  svc.questions.forEach(q => {
+    if (!isQuestionVisible(q, state.answers)) return;
+    const value = state.answers[q.id]; const isMulti = q.type === 'multi';
+    html += '<div class="q-block"><div class="q-label">'+q.label+(isMulti?' <span style="font-size:10px;color:var(--gold);font-weight:400;">（複数選択可）</span>':'')+'</div>';
+    if (q.hint) html += '<div class="q-hint">'+q.hint+'</div>';
+    html += '<div class="q-options">';
+    q.options.forEach(opt => {
+      const selected = isMulti?(Array.isArray(value)&&value.indexOf(opt.value)>=0):(value===opt.value);
+      let priceLabel = '';
+      if (opt.lock) priceLabel = '<span class="q-chip-price">要見積</span>';
+      else if (opt.add>0) priceLabel = '<span class="q-chip-price">+¥'+formatYen(opt.add)+'</span>';
+      else if (opt.add<0) priceLabel = '<span class="q-chip-price">−¥'+formatYen(Math.abs(opt.add))+'</span>';
+      const action = isMulti?'answer-multi':'answer';
+      html += '<button class="q-chip '+(selected?'selected':'')+'" data-action="'+action+'" data-qid="'+q.id+'" data-value="'+opt.value.replace(/"/g,'&quot;')+'"><span class="q-chip-with-price">'+opt.value+priceLabel+'</span></button>';
+    });
+    html += '</div></div>';
+  });
+  html += '</div>';
+  html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:24px;flex-wrap:wrap;gap:12px;">';
+  html += '<button class="cta-btn cta-btn-ghost" style="background:transparent;color:var(--ink);border-color:var(--hairline);padding:12px 24px;flex:none;" data-action="back-to-step1">← 業務を選び直す</button>';
+  html += '<button class="cta-btn cta-btn-primary" style="padding:14px 32px;flex:none;" data-action="show-result" '+((!answered)?'disabled style="opacity:0.4;cursor:not-allowed;padding:14px 32px;flex:none;"':'')+'>'+( answered?'見積り結果を見る →':'すべて回答してください')+'</button>';
+  html += '</div></div>'; return html;
+}
+
+function renderStep3() {
+  const svc = state.service; const quote = calculateQuote(svc, state.answers);
+  let html = '<div class="fade-up">'+sectionHeader('03','Your estimate','お見積り結果');
+  html += '<div class="result-card price-anim">';
+  html += '<div class="result-eyebrow">Estimated cost for</div><div class="result-title">'+svc.name+'</div>';
+  html += '<div class="result-price-wrap">';
+  if (quote.isLocked) {
+    html += '<div style="font-family:Shippori Mincho B1,serif;font-size:32px;color:white;margin-top:16px;">要 個 別 見 積</div>';
+    html += '<div class="result-price-suffix" style="margin-top:12px;">専門性が高いため、無料相談にて<br>詳細をお伺いさせていただきます</div>';
+  } else {
+    html += '<span class="result-price-yen">¥</span><span class="result-price-num">'+formatYen(quote.total)+'</span><span class="result-price-tilde">〜</span>';
+    html += '<div class="result-price-suffix">概算（税込・実費別）</div>';
+  }
+  html += '</div>';
+  if (!quote.isLocked) {
+    html += '<div class="result-divider"></div><div class="result-breakdown-title">— 内訳</div>';
+    quote.breakdown.forEach(b => {
+      const valStr = b.value>0?'+¥'+formatYen(b.value):b.value<0?'−¥'+formatYen(Math.abs(b.value)):'¥0';
+      html += '<div class="result-row"><span class="result-row-label">'+b.label+'</span><span class="result-row-value">'+valStr+'</span></div>';
+    });
+    html += '<div class="result-row total"><span class="result-row-label">合計（概算）</span><span class="result-row-value">¥'+formatYen(quote.total)+'〜</span></div>';
+  }
+  html += '<div class="result-note"><span class="result-note-label">※ ご注意：</span>'+svc.note+' 正確な金額は無料相談にて確定します。</div>';
+  html += '<div class="cta-buttons">';
+  html += '<a href="index.html#calendar" class="cta-btn cta-btn-primary">📅 この内容で予約する</a>';
+  html += '<a href="https://lin.ee/UKhZQbE" target="_blank" rel="noreferrer" class="cta-btn cta-btn-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.78 2 10.4c0 4.14 3.58 7.6 8.41 8.25.33.07.77.22.88.5.1.26.07.67.03.93l-.14.85c-.04.25-.2.98.86.54 1.06-.45 5.73-3.37 7.81-5.77C21.28 14.07 22 12.31 22 10.4 22 5.78 17.52 2 12 2z"/></svg>LINEで詳しく聞く</a>';
+  html += '</div></div>';
+  html += '<div class="email-card"><div class="email-card-eyebrow">📧 Email Quote</div><div class="email-card-title">この見積り結果をメールで保存</div>';
+  html += '<div class="email-card-desc">後でご家族・パートナーと共有したい方や、じっくり比較検討したい方に。<br>営業メールは送りません。お名前は任意です。</div>';
+  if (state.emailSent) {
+    html += '<div class="email-success">✓ 見積り結果をメールでお送りしました。ご確認ください。</div>';
+  } else {
+    html += '<div class="email-form"><input type="text" class="email-input" placeholder="お名前（任意）" id="quote-name"><input type="email" class="email-input" placeholder="メールアドレス" id="quote-email" required>';
+    html += '<button class="email-submit" data-action="send-email" '+(state.emailSubmitting?'disabled':'')+'>'+( state.emailSubmitting?'<span class="email-spinner spin"></span>送信中...':'見積り結果をメールで受け取る')+'</button></div>';
+    if (state.emailError) html += '<div class="email-error">'+state.emailError+'</div>';
+  }
+  html += '</div>';
+  html += '<a href="javascript:void(0)" class="restart-link" data-action="restart">← 別の業務でも見積もりたい</a>';
+  html += '</div>'; return html;
+}
+
+function handleSendEmail() {
+  const nameInput = document.getElementById('quote-name');
+  const emailInput = document.getElementById('quote-email');
+  const name = nameInput ? nameInput.value.trim() : '';
+  const email = emailInput ? emailInput.value.trim() : '';
+  if (!email || !email.includes('@')) { setState({ emailError: 'メールアドレスを正しく入力してください' }); return; }
+  setState({ emailSubmitting: true, emailError: null });
+  // メール送信はGoogle Apps Script環境が必要なため、ここではLINE誘導に変更
+  setTimeout(() => {
+    setState({ emailSubmitting: false, emailError: 'メール送信にはGoogle Apps Script環境が必要です。LINEまたはお電話でご連絡ください。' });
+  }, 1000);
+}
+
+function attachEvents() {
+  document.querySelectorAll('[data-action]').forEach(el => {
+    const action = el.dataset.action;
+    if (action === 'select-service') {
+      el.addEventListener('click', () => { const svc = SERVICES.find(s => s.id === el.dataset.id); setState({ service: svc, answers: {}, step: 2 }); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    } else if (action === 'answer') {
+      el.addEventListener('click', () => {
+        const newAnswers = Object.assign({}, state.answers); const qid = el.dataset.qid; newAnswers[qid] = el.dataset.value;
+        state.service.questions.forEach(q => { if (q.showIf && q.showIf[qid] && q.showIf[qid] !== el.dataset.value) delete newAnswers[q.id]; });
+        setState({ answers: newAnswers });
+      });
+    } else if (action === 'answer-multi') {
+      el.addEventListener('click', () => {
+        const newAnswers = Object.assign({}, state.answers); const qid = el.dataset.qid; const val = el.dataset.value;
+        const arr = Array.isArray(newAnswers[qid]) ? newAnswers[qid].slice() : []; const idx = arr.indexOf(val);
+        if (idx >= 0) arr.splice(idx, 1); else arr.push(val); newAnswers[qid] = arr; setState({ answers: newAnswers });
+      });
+    } else if (action === 'show-result') {
+      el.addEventListener('click', () => { if (!isAllAnswered(state.service, state.answers)) return; setState({ step: 3 }); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    } else if (action === 'back-to-step1') {
+      el.addEventListener('click', () => { setState({ step: 1, service: null, answers: {} }); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    } else if (action === 'restart') {
+      el.addEventListener('click', () => { setState({ step: 1, service: null, answers: {}, emailSent: false, emailError: null }); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    } else if (action === 'send-email') {
+      el.addEventListener('click', handleSendEmail);
+    }
+  });
+}
+render();
+</script>
+</body>
+</html>
