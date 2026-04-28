@@ -326,21 +326,93 @@ footer{background:var(--dark);border-top:1px solid rgba(201,147,58,0.12);padding
 
 
 /* ブログセクション */
-.blog-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
-.blog-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;overflow:hidden;transition:border-color 0.2s,transform 0.15s;text-decoration:none;display:block;}
-.blog-card:hover{border-color:rgba(201,147,58,0.35);transform:translateY(-2px);}
-.blog-card-thumb{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,rgba(168,37,43,0.2),rgba(10,12,18,0.8));display:flex;align-items:center;justify-content:center;font-size:32px;}
-.blog-card-body{padding:16px 18px;}
-.blog-card-tag{font-size:10px;font-weight:700;color:var(--crimson-light);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:7px;}
-.blog-card-title{font-size:14px;font-weight:700;color:rgba(255,255,255,0.9);line-height:1.55;margin-bottom:8px;}
-.blog-card-date{font-size:11px;color:rgba(255,255,255,0.35);}
-.blog-more{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:16px 20px;text-decoration:none;transition:background 0.15s;}
-.blog-more:hover{background:rgba(255,255,255,0.06);}
-.blog-more-left{display:flex;flex-direction:column;gap:3px;}
-.blog-more-label{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;}
+.blog-card{
+  position:relative;border-radius:10px;overflow:hidden;
+  text-decoration:none;display:block;
+  transition:transform 0.2s,box-shadow 0.2s;
+  background:var(--dark-3);
+}
+.blog-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.5);}
+.blog-card-thumb{
+  width:100%;aspect-ratio:3/2;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.blog-card-thumb-icon{
+  font-size:44px;position:relative;z-index:1;
+  filter:drop-shadow(0 4px 16px rgba(0,0,0,0.6));
+}
+.blog-card-thumb-overlay{
+  position:absolute;inset:0;
+}
+/* 各カードの背景グラデーション */
+.blog-card:nth-child(1) .blog-card-thumb-overlay{background:linear-gradient(135deg,#1a0a20 0%,#3d1030 60%,#1a0a20 100%);}
+.blog-card:nth-child(2) .blog-card-thumb-overlay{background:linear-gradient(135deg,#0a1525 0%,#0d2a4a 60%,#0a1525 100%);}
+.blog-card:nth-child(3) .blog-card-thumb-overlay{background:linear-gradient(135deg,#1a1a0a 0%,#3a2a0d 60%,#1a1a0a 100%);}
+.blog-card:nth-child(4) .blog-card-thumb-overlay{background:linear-gradient(135deg,#0a1a10 0%,#0d3520 60%,#0a1a10 100%);}
+.blog-card:nth-child(5) .blog-card-thumb-overlay{background:linear-gradient(135deg,#1a0808 0%,#3d1010 60%,#1a0808 100%);}
+.blog-card:nth-child(6) .blog-card-thumb-overlay{background:linear-gradient(135deg,#0a1020 0%,#1a2840 60%,#0a1020 100%);}
+/* キラッと光る線 */
+.blog-card-thumb::after{
+  content:"";position:absolute;
+  top:-50%;left:-60%;width:40%;height:200%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent);
+  transform:skewX(-15deg);
+  transition:left 0.5s;
+}
+.blog-card:hover .blog-card-thumb::after{left:120%;}
+/* 下部の番号 */
+.blog-card-num{
+  position:absolute;top:12px;left:12px;
+  font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;
+  color:rgba(255,255,255,0.25);letter-spacing:0.12em;z-index:2;
+}
+/* テキストエリア */
+.blog-card-body{padding:14px 16px 16px;border-top:1px solid rgba(255,255,255,0.05);}
+.blog-card-tag{
+  font-size:9px;font-weight:700;color:var(--gold);
+  letter-spacing:0.14em;text-transform:uppercase;
+  margin-bottom:7px;display:flex;align-items:center;gap:6px;
+}
+.blog-card-tag::before{content:"";display:block;width:16px;height:1px;background:var(--gold);}
+.blog-card-title{
+  font-family:'Noto Serif JP',serif;
+  font-size:13px;font-weight:700;
+  color:rgba(255,255,255,0.88);
+  line-height:1.6;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+}
+.blog-card:hover .blog-card-title{color:white;}
+/* 「もっと読む」バー */
+.blog-more{
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(201,147,58,0.15);
+  border-radius:8px;padding:16px 22px;
+  text-decoration:none;
+  transition:background 0.15s,border-color 0.15s;
+  position:relative;overflow:hidden;
+}
+.blog-more::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(201,147,58,0.04),transparent);
+}
+.blog-more:hover{background:rgba(201,147,58,0.07);border-color:rgba(201,147,58,0.3);}
+.blog-more-left{display:flex;flex-direction:column;gap:4px;position:relative;}
+.blog-more-label{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.14em;text-transform:uppercase;}
 .blog-more-title{font-size:14px;font-weight:700;color:var(--gold-light);}
-.blog-more-arrow{font-size:20px;color:rgba(255,255,255,0.3);}
-@media(max-width:640px){.blog-grid{grid-template-columns:1fr;}}
+.blog-more-arrow{
+  width:36px;height:36px;border-radius:50%;
+  border:1px solid rgba(201,147,58,0.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:var(--gold-light);
+  transition:background 0.15s,transform 0.2s;flex-shrink:0;
+}
+.blog-more:hover .blog-more-arrow{background:rgba(201,147,58,0.15);transform:translateX(3px);}
+@media(max-width:640px){.blog-grid{grid-template-columns:1fr 1fr;}
+.blog-card-title{-webkit-line-clamp:4;}}
+@media(max-width:400px){.blog-grid{grid-template-columns:1fr;}}
 
 @media(max-width:640px){
   .hero-inner{grid-template-columns:1fr;}.hero-right{display:none;}
@@ -655,31 +727,81 @@ footer{background:var(--dark);border-top:1px solid rgba(201,147,58,0.12);padding
   <div class="sec-inner">
     <div class="eyebrow">BLOG / KNOWLEDGE</div>
     <h2 class="heading">風営法に関する<span class="accent">専門記事</span></h2>
-    <p class="lead">元警察官の視点で書いた風営法・夜間営業に関する記事です。「図面の作り方」「審査の裏側」など、開業前に知っておきたい情報を発信しています。</p>
+    <p class="lead">元警察官の視点で書いた風営法・夜間営業に関する記事です。開業前に知っておきたい審査のポイント・図面の書き方・物件選びの注意点を発信しています。</p>
     <div class="blog-grid">
-      <a href="https://note.com/nishioka2405" target="_blank" rel="noreferrer" class="blog-card">
-        <div class="blog-card-thumb">🎤</div>
+      <a href="https://note.com/nishioka2405/n/neb023f833298" target="_blank" rel="noreferrer" class="blog-card">
+        <div class="blog-card-num">01</div>
+        <div class="blog-card-thumb">
+          <div class="blog-card-thumb-overlay"></div>
+          <div class="blog-card-thumb-icon">🎤</div>
+        </div>
         <div class="blog-card-body">
-          <div class="blog-card-tag">風営法 / 元警察官解説</div>
+          <div class="blog-card-tag">風営法1号 / 元警察官解説</div>
           <div class="blog-card-title">【広島】風営法１号許可を元警察官の行政書士がしっかり解説します。｜スナック・キャバクラ・クラブの開業申請手続きの考え方</div>
-          <div class="blog-card-date">3日前</div>
         </div>
       </a>
-      <a href="https://note.com/nishioka2405" target="_blank" rel="noreferrer" class="blog-card">
-        <div class="blog-card-thumb">🍸</div>
+      <a href="https://note.com/nishioka2405/n/nb2b6d4d51cd4" target="_blank" rel="noreferrer" class="blog-card">
+        <div class="blog-card-num">02</div>
+        <div class="blog-card-thumb">
+          <div class="blog-card-thumb-overlay"></div>
+          <div class="blog-card-thumb-icon">🍸</div>
+        </div>
         <div class="blog-card-body">
           <div class="blog-card-tag">バー開業 / 審査の裏側</div>
           <div class="blog-card-title">【広島でバー開業】元警察官が教える警察署の審査の裏側と公証役場を活用した最強のリスク管理</div>
-          <div class="blog-card-date">3日前</div>
+        </div>
+      </a>
+      <a href="https://note.com/nishioka2405/n/nb14f77bb6e05" target="_blank" rel="noreferrer" class="blog-card">
+        <div class="blog-card-num">03</div>
+        <div class="blog-card-thumb">
+          <div class="blog-card-thumb-overlay"></div>
+          <div class="blog-card-thumb-icon">🏠</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-tag">物件選び / 許可が取れない落とし穴</div>
+          <div class="blog-card-title">【広島・風営法】物件契約してから「許可が取れない」と発覚…契約前に必ず確認すべき3つのこと</div>
+        </div>
+      </a>
+      <a href="https://note.com/nishioka2405/n/n5a967612d807" target="_blank" rel="noreferrer" class="blog-card">
+        <div class="blog-card-num">04</div>
+        <div class="blog-card-thumb">
+          <div class="blog-card-thumb-overlay"></div>
+          <div class="blog-card-thumb-icon">📐</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-tag">図面作成 / 通る図面の書き方</div>
+          <div class="blog-card-title">【風営法許可】図面作成で失敗しないためのポイント｜広島県警10年勤務の元警察官が教える「通る図面」の書き方</div>
+        </div>
+      </a>
+      <a href="https://note.com/nishioka2405/n/n74bf55946fd4" target="_blank" rel="noreferrer" class="blog-card">
+        <div class="blog-card-num">05</div>
+        <div class="blog-card-thumb">
+          <div class="blog-card-thumb-overlay"></div>
+          <div class="blog-card-thumb-icon">🚨</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-tag">センター開設 / お知らせ</div>
+          <div class="blog-card-title">元警察官の行政書士が開設しました。「風営法許可専門相談センター」のお知らせ</div>
+        </div>
+      </a>
+      <a href="https://note.com/nishioka2405/n/n0dc56230cc67" target="_blank" rel="noreferrer" class="blog-card">
+        <div class="blog-card-num">06</div>
+        <div class="blog-card-thumb">
+          <div class="blog-card-thumb-overlay"></div>
+          <div class="blog-card-thumb-icon">🎵</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-tag">スナック・バー / 開業の手続き</div>
+          <div class="blog-card-title">スナック・バーはどうやって開業するのか。広島で社交飲食店を始めるための許可と手続き</div>
         </div>
       </a>
     </div>
     <a href="https://note.com/nishioka2405" target="_blank" rel="noreferrer" class="blog-more">
       <div class="blog-more-left">
         <div class="blog-more-label">NOTE / 全記事一覧</div>
-        <div class="blog-more-title">国の許可屋さん・西岡行政書士事務所 — 312本の専門記事を読む</div>
+        <div class="blog-more-title">国の許可屋さん・西岡行政書士事務所 — 全記事を読む</div>
       </div>
-      <div class="blog-more-arrow">→</div>
+      <div class="blog-more-arrow">›</div>
     </a>
   </div>
 </section>
