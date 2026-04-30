@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>タスク管理アプリ | メモ・タグ対応</title>
+  <meta name="description" content="行政書士業務向けのタスク・期限管理アプリ。カレンダー連動、顧客管理、業種分類に対応。">
+  <title>行政書士向けタスク・顧客管理ダッシュボード</title>
   <style>
     :root {
       /* ライトモードのカラー */
@@ -13,8 +14,8 @@
       --line: #e2e8f0;
       --text: #0f172a;
       --sub: #64748b;
-      --primary: #4f46e5;
-      --primary-dark: #4338ca;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
       --success: #10b981;
       --warning: #f59e0b;
       --danger: #ef4444;
@@ -33,8 +34,8 @@
         --line: #334155;
         --text: #f8fafc;
         --sub: #94a3b8;
-        --primary: #6366f1;
-        --primary-dark: #818cf8;
+        --primary: #3b82f6;
+        --primary-dark: #60a5fa;
         --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
       }
     }
@@ -64,7 +65,7 @@
     }
 
     .hero-top { display: flex; gap: 18px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-    .hero h1 { margin: 0; font-size: 2rem; font-weight: 800; }
+    .hero h1 { margin: 0; font-size: 1.8rem; font-weight: 800; letter-spacing: -0.05em; }
     .hero p { margin: 8px 0 0; color: var(--sub); font-size: 0.95rem; }
 
     .today-chip {
@@ -80,10 +81,28 @@
     .card {
       background: var(--card); border: 1px solid var(--line);
       box-shadow: var(--shadow); border-radius: var(--radius-xl);
+      margin-bottom: 20px;
     }
 
     .section-pad { padding: 24px; }
     .section-title { margin: 0 0 16px; font-size: 1.15rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+
+    /* ダッシュボード（リマインダー） */
+    .dashboard {
+      background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(245,158,11,0.05));
+      border: 1px solid rgba(239,68,68,0.2);
+    }
+    .dash-list { display: flex; flex-direction: column; gap: 10px; }
+    .dash-item {
+      padding: 12px; border-radius: 12px; background: var(--card); border-left: 4px solid var(--danger);
+      display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .dash-item.today { border-left-color: var(--warning); }
+    .dash-item-title { font-weight: 700; font-size: 0.95rem; }
+    .dash-item-client { font-size: 0.8rem; color: var(--sub); }
+    .dash-item-date { font-size: 0.8rem; font-weight: 700; padding: 4px 8px; border-radius: 6px; }
+    .dash-item-date.overdue { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
+    .dash-item-date.today { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
 
     /* カレンダー部分 */
     .calendar-card { position: sticky; top: 20px; }
@@ -104,7 +123,7 @@
       font-weight: 700; font-size: 0.95rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px;
     }
     .btn-primary { background: var(--primary); color: #fff; }
-    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 15px rgba(79, 70, 229, 0.2); }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 15px rgba(37, 99, 235, 0.2); }
     .btn-soft { background: var(--bg2); color: var(--primary); }
     .btn-soft:hover { filter: brightness(0.95); }
     .btn-ghost { background: transparent; color: var(--sub); border: 1px solid var(--line); }
@@ -137,7 +156,7 @@
     .selected-info { margin-top: 16px; padding: 14px; border-radius: 12px; background: var(--bg2); color: var(--sub); font-size: 0.9rem; line-height: 1.5; }
 
     /* フォーム部分 */
-    .content-stack { display: grid; gap: 20px; }
+    .content-stack { display: flex; flex-direction: column; }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .full-width { grid-column: 1 / -1; }
     
@@ -147,7 +166,7 @@
       transition: all 0.2s;
     }
     .textarea { resize: vertical; min-height: 80px; }
-    .input:focus, .select:focus, .textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15); }
+    .input:focus, .select:focus, .textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
     .form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px; }
 
     /* ツールバー＆統計 */
@@ -169,21 +188,16 @@
       padding: 18px; border-radius: 16px; background: var(--bg); border: 1px solid var(--line);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); animation: slideIn 0.4s ease forwards;
     }
+    .task-item.overdue { border-left: 4px solid var(--danger); }
+    .task-item.today { border-left: 4px solid var(--warning); }
     .task-item:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--primary); }
-    .task-item.completed { opacity: 0.6; background: transparent; }
+    .task-item.completed { opacity: 0.6; background: transparent; border-left: 1px solid var(--line); }
     .task-item.completed .task-title { text-decoration: line-through; color: var(--sub); }
-    .task-item.dragging { box-shadow: 0 20px 40px rgba(0,0,0,0.2); transform: rotate(2deg) scale(1.02); z-index: 999; opacity: 0.95; }
-
-    .drag-placeholder { border: 2px dashed var(--primary); border-radius: 16px; background: transparent; }
-    .drag-handle {
-      width: 32px; height: 32px; border-radius: 8px; color: var(--sub);
-      display: grid; place-items: center; cursor: grab; font-size: 1.2rem; margin-top: -2px;
-    }
-    .drag-handle:active { cursor: grabbing; color: var(--primary); }
 
     .task-check { width: 22px; height: 22px; accent-color: var(--success); cursor: pointer; margin-top: 2px; }
     .task-main { min-width: 0; }
     .task-title { margin: 0 0 6px; font-size: 1.1rem; font-weight: 700; word-break: break-word; }
+    .task-client { font-size: 0.85rem; color: var(--primary-dark); font-weight: 700; margin-bottom: 6px; display: inline-flex; align-items: center; gap: 4px; background: rgba(37,99,235,0.1); padding: 2px 8px; border-radius: 6px; }
     .task-memo { font-size: 0.9rem; color: var(--sub); margin-bottom: 10px; white-space: pre-wrap; word-break: break-word; background: var(--bg2); padding: 10px; border-radius: 8px; display: none; }
     .task-memo.has-content { display: block; }
     
@@ -192,12 +206,11 @@
       display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 8px;
       font-size: 0.8rem; font-weight: 700; border: 1px solid var(--line); background: var(--bg2); color: var(--text);
     }
-    .badge-tag { background: #e0e7ff; color: #3730a3; border-color: transparent; }
-    .badge-low { background: rgba(16, 185, 129, 0.1); color: var(--success); border-color: transparent;}
-    .badge-medium { background: rgba(245, 158, 11, 0.1); color: var(--warning); border-color: transparent;}
-    .badge-high { background: rgba(239, 68, 68, 0.1); color: var(--danger); border-color: transparent;}
-
-    @media (prefers-color-scheme: dark) { .badge-tag { background: rgba(99, 102, 241, 0.2); color: #a5b4fc; } }
+    .badge-industry { background: #e0e7ff; color: #3730a3; border-color: transparent; }
+    .badge-date.overdue { background: rgba(239, 68, 68, 0.1); color: var(--danger); border-color: transparent; }
+    .badge-date.today { background: rgba(245, 158, 11, 0.1); color: var(--warning); border-color: transparent; }
+    
+    @media (prefers-color-scheme: dark) { .badge-industry { background: rgba(99, 102, 241, 0.2); color: #a5b4fc; } }
 
     .task-actions { display: flex; gap: 8px; }
     .small-btn { border: none; cursor: pointer; padding: 8px 12px; border-radius: 10px; font-weight: 700; font-size: 0.85rem; transition: 0.2s; }
@@ -213,7 +226,6 @@
       .calendar-card { position: static; }
       .task-item { grid-template-columns: auto 1fr; }
       .task-actions { grid-column: 1 / -1; justify-content: flex-end; margin-top: 8px; }
-      .drag-handle { margin-top: -4px; }
     }
   </style>
 </head>
@@ -222,17 +234,17 @@
     <header class="hero">
       <div class="hero-top">
         <div>
-          <h1>✅ タスク管理アプリ</h1>
-          <p>カレンダー連動 / メモ機能 / タグ分類 / ドラッグ並べ替え</p>
+          <h1>💼 行政書士向け業務・タスク管理</h1>
+          <p>顧客管理 / 業種別タグ / 期限・リマインダー / カレンダー連動</p>
         </div>
         <div class="today-chip" id="todayLabel">今日: --</div>
       </div>
     </header>
 
     <main class="layout">
-      <!-- カレンダー -->
-      <aside class="card calendar-card">
-        <div class="section-pad">
+      <!-- 左サイド：カレンダー -->
+      <aside class="calendar-card">
+        <div class="card section-pad">
           <div class="calendar-head">
             <h2 class="calendar-title" id="calendarMonthLabel">📅 ----</h2>
             <div class="nav-row">
@@ -249,36 +261,52 @@
         </div>
       </aside>
 
+      <!-- 右サイド：コンテンツ -->
       <section class="content-stack">
+        
+        <!-- 現在タスク一覧（ダッシュボード・リマインダー機能） -->
+        <section class="card dashboard" id="dashboardArea" style="display:none;">
+          <div class="section-pad">
+            <h2 class="section-title">🚨 アラート：確認が必要なタスク</h2>
+            <div class="dash-list" id="dashboardList"></div>
+          </div>
+        </section>
+
         <!-- 入力フォーム -->
         <section class="card">
           <div class="section-pad">
-            <h2 class="section-title" id="formTitle">✨ 新しいタスクを追加</h2>
+            <h2 class="section-title" id="formTitle">✨ 新しい案件・タスクを追加</h2>
             <div class="form-grid">
-              <input id="taskTitleInput" class="input full-width" type="text" placeholder="📝 やることを入力 (Enterで追加)" />
+              <input id="taskTitleInput" class="input full-width" type="text" placeholder="📝 やること（例：申請書の作成）" />
               
-              <input id="taskDateInput" class="input" type="date" title="期限日" />
+              <!-- 顧客データ入力欄 -->
+              <input id="taskClientInput" class="input" type="text" placeholder="👤 顧客名・会社名" />
               
+              <input id="taskDateInput" class="input" type="date" title="提出・完了期限" />
+              
+              <!-- 行政書士向けの業種タグ -->
+              <select id="taskIndustryInput" class="select">
+                <option value="風営法許可">🍷 風営法許可</option>
+                <option value="建設業許可">🏗 建設業許可</option>
+                <option value="宅建業免許">🏠 宅建業免許</option>
+                <option value="産廃収集運搬">♻️ 産廃収集運搬</option>
+                <option value="会社設立">🏢 会社設立・法人化</option>
+                <option value="ビザ・在留資格">🛂 ビザ・在留資格</option>
+                <option value="補助金申請">💰 補助金・助成金申請</option>
+                <option value="その他">📌 その他・一般業務</option>
+              </select>
+
               <select id="taskPriorityInput" class="select">
-                <option value="medium">⏸ 優先度: 中</option>
-                <option value="high">⏫ 優先度: 高</option>
-                <option value="low">⏬ 優先度: 低</option>
+                <option value="high">⏫ 優先度: 高 (急ぎ)</option>
+                <option value="medium" selected>⏸ 優先度: 中 (通常)</option>
+                <option value="low">⏬ 優先度: 低 (後回し可)</option>
               </select>
 
-              <!-- 追加されたタグのセレクトボックス -->
-              <select id="taskTagInput" class="select full-width">
-                <option value="💼 業務">💼 業務</option>
-                <option value="💻 開発">💻 開発</option>
-                <option value="🏠 プライベート">🏠 プライベート</option>
-                <option value="📌 その他">📌 その他</option>
-              </select>
-
-              <!-- 追加されたメモ欄 -->
-              <textarea id="taskMemoInput" class="textarea full-width" placeholder="🗒 メモや詳細を記入できます（任意）"></textarea>
+              <textarea id="taskMemoInput" class="textarea full-width" placeholder="🗒 顧客の連絡先、役所の担当窓口、必要な書類メモなどを記入（任意）"></textarea>
               
               <div class="form-actions full-width">
                 <button id="cancelEditBtn" class="btn btn-ghost" type="button" style="display:none;">❌ キャンセル</button>
-                <button id="submitTaskBtn" class="btn btn-primary">➕ 追加</button>
+                <button id="submitTaskBtn" class="btn btn-primary">➕ タスクを追加</button>
               </div>
             </div>
           </div>
@@ -289,7 +317,7 @@
           <div class="section-pad">
             <div class="toolbar">
               <div class="search-wrap">
-                <input id="searchInput" class="input" type="text" placeholder="🔍 タスクを検索..." style="padding: 10px 14px;" />
+                <input id="searchInput" class="input" type="text" placeholder="🔍 タスク・顧客名・メモを検索..." style="padding: 10px 14px;" />
               </div>
               <div class="filter-row">
                 <button class="chip-btn active" data-filter="all">すべて</button>
@@ -300,7 +328,6 @@
             </div>
 
             <h2 class="section-title" style="margin-bottom: 12px;">📋 タスク一覧 <span id="listCount" style="font-size:0.9rem; color:var(--sub); font-weight:normal;"></span></h2>
-            
             <div class="task-list" id="taskList"></div>
           </div>
         </section>
@@ -309,8 +336,8 @@
   </div>
 
   <script>
-    // データ保存用のキーを変更（旧バージョンとのデータ衝突を避けるため）
-    const STORAGE_KEY = "task_calendar_app_v3_tags_memo";
+    // データ衝突を防ぐための新しいキー
+    const STORAGE_KEY = "admin_scrivener_task_app_v1";
 
     const state = {
       tasks: loadTasks(),
@@ -318,8 +345,7 @@
       selectedDate: "",
       statusFilter: "all",
       keyword: "",
-      editingId: null,
-      drag: null
+      editingId: null
     };
 
     const el = {
@@ -332,12 +358,16 @@
       todayBtn: document.getElementById("todayBtn"),
       clearDateFilterBtn: document.getElementById("clearDateFilterBtn"),
       
+      dashboardArea: document.getElementById("dashboardArea"),
+      dashboardList: document.getElementById("dashboardList"),
+
       formTitle: document.getElementById("formTitle"),
       taskTitleInput: document.getElementById("taskTitleInput"),
+      taskClientInput: document.getElementById("taskClientInput"), // 顧客追加
       taskDateInput: document.getElementById("taskDateInput"),
+      taskIndustryInput: document.getElementById("taskIndustryInput"), // 業種追加
       taskPriorityInput: document.getElementById("taskPriorityInput"),
-      taskTagInput: document.getElementById("taskTagInput"), // 追加
-      taskMemoInput: document.getElementById("taskMemoInput"), // 追加
+      taskMemoInput: document.getElementById("taskMemoInput"),
       submitTaskBtn: document.getElementById("submitTaskBtn"),
       cancelEditBtn: document.getElementById("cancelEditBtn"),
       
@@ -359,11 +389,23 @@
     function escapeHtml(str) { return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]); }
     function priorityLabel(p) { return { high: "高", low: "低" }[p] || "中"; }
 
+    // 日付の判定（期限管理・リマインダー用）
+    function getDateStatus(dueDate) {
+      if (!dueDate) return 'none';
+      const todayYMD = toYMD(new Date());
+      if (dueDate < todayYMD) return 'overdue';
+      if (dueDate === todayYMD) return 'today';
+      return 'future';
+    }
+
     function getFilteredTasks() {
       const keyword = state.keyword.trim().toLowerCase();
       return state.tasks.filter(task => {
-        // メモ欄も検索対象に含める
-        const matchKeyword = !keyword || task.title.toLowerCase().includes(keyword) || (task.memo && task.memo.toLowerCase().includes(keyword));
+        // 検索対象に顧客名を含める
+        const matchKeyword = !keyword || 
+          task.title.toLowerCase().includes(keyword) || 
+          (task.memo && task.memo.toLowerCase().includes(keyword)) ||
+          (task.client && task.client.toLowerCase().includes(keyword));
         const matchStatus = state.statusFilter === "all" || (state.statusFilter === "active" && !task.completed) || (state.statusFilter === "completed" && task.completed);
         const matchDate = !state.selectedDate || task.dueDate === state.selectedDate;
         return matchKeyword && matchStatus && matchDate;
@@ -406,22 +448,56 @@
       el.selectedInfo.innerHTML = `📅 <strong>${formatDateJP(state.selectedDate)}</strong> のタスクは <strong>${state.tasks.filter(t => t.dueDate === state.selectedDate).length}件</strong> です。`;
     }
 
+    // 現在タスク一覧（リマインダー）の描画
+    function renderDashboard() {
+      // 未完了で、今日または期限切れのタスクを抽出
+      const urgentTasks = state.tasks.filter(t => !t.completed && (getDateStatus(t.dueDate) === 'overdue' || getDateStatus(t.dueDate) === 'today'));
+      
+      // 日付順に並び替え
+      urgentTasks.sort((a, b) => (a.dueDate || "") > (b.dueDate || "") ? 1 : -1);
+
+      if (urgentTasks.length > 0) {
+        el.dashboardArea.style.display = "block";
+        el.dashboardList.innerHTML = urgentTasks.map(task => {
+          const status = getDateStatus(task.dueDate);
+          const statusText = status === 'overdue' ? '⚠️ 期限切れ' : '🎯 今日が期限';
+          return `
+            <div class="dash-item ${status}">
+              <div>
+                <div class="dash-item-title">${escapeHtml(task.title)}</div>
+                ${task.client ? `<div class="dash-item-client">👤 ${escapeHtml(task.client)}</div>` : ''}
+              </div>
+              <div class="dash-item-date ${status}">${statusText}</div>
+            </div>
+          `;
+        }).join("");
+      } else {
+        el.dashboardArea.style.display = "none";
+      }
+    }
+
     function renderTasks() {
       const filtered = getFilteredTasks();
       el.listCount.textContent = `(${filtered.length}件)`;
       
-      if (!filtered.length) return el.taskList.innerHTML = `<div class="empty">📭 タスクが見つかりません。新しいタスクを追加しましょう！</div>`;
+      if (!filtered.length) {
+        el.taskList.innerHTML = `<div class="empty">📭 タスクが見つかりません。新しいタスクを追加しましょう！</div>`;
+        return;
+      }
 
-      el.taskList.innerHTML = filtered.map(task => `
-        <article class="task-item ${task.completed ? "completed" : ""}" data-id="${task.id}">
-          <div class="drag-handle" title="ドラッグして並べ替え">⋮⋮</div>
+      el.taskList.innerHTML = filtered.map(task => {
+        const dateStatus = task.completed ? 'none' : getDateStatus(task.dueDate);
+        return `
+        <article class="task-item ${task.completed ? "completed" : ""} ${dateStatus}" data-id="${task.id}">
+          <div class="drag-handle" style="visibility:hidden;"></div> <!-- CSS調整用ダミー -->
           <input class="task-check" type="checkbox" ${task.completed ? "checked" : ""} data-action="toggle" data-id="${task.id}" />
           <div class="task-main">
+            ${task.client ? `<div class="task-client">👤 ${escapeHtml(task.client)}</div>` : ''}
             <h3 class="task-title">${escapeHtml(task.title)}</h3>
             <div class="task-memo ${task.memo ? 'has-content' : ''}">${task.memo ? escapeHtml(task.memo) : ''}</div>
             <div class="task-meta">
-              <span class="badge badge-tag">${escapeHtml(task.tag || '📌 その他')}</span>
-              <span class="badge">📅 ${task.dueDate ? formatDateJP(task.dueDate) : "未設定"}</span>
+              <span class="badge badge-industry">${escapeHtml(task.industry || '📌 その他')}</span>
+              <span class="badge badge-date ${dateStatus}">📅 ${task.dueDate ? formatDateJP(task.dueDate) : "未設定"}</span>
               <span class="badge badge-${task.priority}">${priorityLabel(task.priority)}</span>
             </div>
           </div>
@@ -430,7 +506,7 @@
             <button class="small-btn delete" data-action="delete" data-id="${task.id}">🗑</button>
           </div>
         </article>
-      `).join("");
+      `}).join("");
       bindTaskEvents();
     }
 
@@ -438,7 +514,6 @@
       el.taskList.querySelectorAll('[data-action="toggle"]').forEach(n => n.addEventListener("change", () => toggleTask(n.dataset.id)));
       el.taskList.querySelectorAll('[data-action="edit"]').forEach(n => n.addEventListener("click", () => startEdit(n.dataset.id)));
       el.taskList.querySelectorAll('[data-action="delete"]').forEach(n => n.addEventListener("click", () => deleteTask(n.dataset.id)));
-      el.taskList.querySelectorAll(".drag-handle").forEach(h => h.addEventListener("pointerdown", startDrag));
     }
 
     function addOrUpdateTask() {
@@ -447,10 +522,11 @@
       
       const taskData = { 
         title, 
+        client: el.taskClientInput.value.trim(),
         dueDate: el.taskDateInput.value, 
         priority: el.taskPriorityInput.value,
-        tag: el.taskTagInput.value, // タグを取得
-        memo: el.taskMemoInput.value.trim() // メモを取得
+        industry: el.taskIndustryInput.value,
+        memo: el.taskMemoInput.value.trim()
       };
 
       if (state.editingId) {
@@ -458,16 +534,17 @@
       } else {
         state.tasks.unshift({ id: uid(), completed: false, createdAt: new Date().toISOString(), ...taskData });
       }
-      saveTasks(); resetForm(); renderCalendar(); renderTasks();
+      saveTasks(); resetForm(); renderCalendar(); renderTasks(); renderDashboard();
     }
 
     function resetForm() {
-      state.editingId = null; el.formTitle.innerHTML = "✨ 新しいタスクを追加"; el.submitTaskBtn.innerHTML = "➕ 追加";
+      state.editingId = null; el.formTitle.innerHTML = "✨ 新しい案件・タスクを追加"; el.submitTaskBtn.innerHTML = "➕ タスクを追加";
       el.cancelEditBtn.style.display = "none"; 
       el.taskTitleInput.value = ""; 
+      el.taskClientInput.value = "";
       el.taskPriorityInput.value = "medium";
-      el.taskTagInput.value = "💼 業務"; // デフォルトタグ
-      el.taskMemoInput.value = ""; // メモをクリア
+      el.taskIndustryInput.value = "風営法許可"; 
+      el.taskMemoInput.value = ""; 
       el.taskDateInput.value = state.selectedDate || ""; 
       el.taskTitleInput.focus();
     }
@@ -477,74 +554,30 @@
       state.editingId = id; el.formTitle.innerHTML = "✏️ タスクを編集"; el.submitTaskBtn.innerHTML = "💾 更新";
       el.cancelEditBtn.style.display = "inline-flex"; 
       el.taskTitleInput.value = task.title;
+      el.taskClientInput.value = task.client || "";
       el.taskDateInput.value = task.dueDate || ""; 
       el.taskPriorityInput.value = task.priority || "medium";
-      el.taskTagInput.value = task.tag || "💼 業務";
+      el.taskIndustryInput.value = task.industry || "風営法許可";
       el.taskMemoInput.value = task.memo || "";
       window.scrollTo({ top: 0, behavior: "smooth" }); el.taskTitleInput.focus();
     }
 
     function toggleTask(id) {
       state.tasks = state.tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
-      saveTasks(); renderTasks();
+      saveTasks(); renderTasks(); renderDashboard();
     }
 
     function deleteTask(id) {
       if (!confirm("本当に削除しますか？")) return;
       state.tasks = state.tasks.filter(t => t.id !== id);
       if (state.editingId === id) resetForm();
-      saveTasks(); renderCalendar(); renderTasks();
+      saveTasks(); renderCalendar(); renderTasks(); renderDashboard();
     }
 
     function clearCompleted() {
       if (!confirm("完了済みのタスクをすべて削除しますか？")) return;
       state.tasks = state.tasks.filter(t => !t.completed);
-      saveTasks(); renderCalendar(); renderTasks();
-    }
-
-    // ドラッグ＆ドロップ処理
-    function startDrag(e) {
-      const item = e.currentTarget.closest(".task-item"); if (!item) return;
-      const rect = item.getBoundingClientRect();
-      const placeholder = document.createElement("div");
-      placeholder.className = "drag-placeholder"; placeholder.style.height = rect.height + "px";
-      state.drag = { item, placeholder, pointerId: e.pointerId, offsetX: e.clientX - rect.left, offsetY: e.clientY - rect.top, active: false };
-      e.currentTarget.setPointerCapture(e.pointerId);
-      document.addEventListener("pointermove", onDragMove, { passive: false });
-      document.addEventListener("pointerup", endDrag); document.addEventListener("pointercancel", endDrag);
-    }
-    function activateDrag(e) {
-      const drag = state.drag; if (!drag || drag.active) return;
-      drag.active = true; const rect = drag.item.getBoundingClientRect();
-      drag.placeholder.style.height = rect.height + "px"; drag.item.parentNode.insertBefore(drag.placeholder, drag.item.nextSibling);
-      drag.item.classList.add("dragging");
-      Object.assign(drag.item.style, { width: rect.width + "px", height: rect.height + "px", position: "fixed", left: rect.left + "px", top: rect.top + "px", margin: "0", pointerEvents: "none" });
-      document.body.appendChild(drag.item);
-    }
-    function onDragMove(e) {
-      const drag = state.drag; if (!drag || e.pointerId !== drag.pointerId) return;
-      if (!drag.active && (Math.abs(e.movementX || 0) > 0 || Math.abs(e.movementY || 0) > 0)) activateDrag(e);
-      if (!drag.active) return; e.preventDefault();
-      drag.item.style.left = (e.clientX - drag.offsetX) + "px"; drag.item.style.top = (e.clientY - drag.offsetY) + "px";
-      const target = document.elementsFromPoint(e.clientX, e.clientY).find(n => n.classList?.contains("task-item") && n !== drag.item);
-      if (!target || !el.taskList.contains(target)) return;
-      const targetRect = target.getBoundingClientRect();
-      const referenceNode = e.clientY > targetRect.top + targetRect.height / 2 ? target.nextElementSibling : target;
-      if (referenceNode !== drag.placeholder) el.taskList.insertBefore(drag.placeholder, referenceNode);
-    }
-    function endDrag(e) {
-      const drag = state.drag; if (!drag || e.pointerId !== drag.pointerId) return;
-      document.removeEventListener("pointermove", onDragMove); document.removeEventListener("pointerup", endDrag); document.removeEventListener("pointercancel", endDrag);
-      if (drag.active) {
-        drag.item.classList.remove("dragging"); drag.item.removeAttribute("style");
-        el.taskList.insertBefore(drag.item, drag.placeholder); drag.placeholder.remove();
-        const visibleIds = Array.from(el.taskList.querySelectorAll(".task-item")).map(n => n.dataset.id);
-        const byId = new Map(state.tasks.map(t => [t.id, t]));
-        let index = 0;
-        state.tasks = state.tasks.map(t => visibleIds.includes(t.id) ? byId.get(visibleIds[index++]) : t);
-        saveTasks();
-      }
-      state.drag = null;
+      saveTasks(); renderCalendar(); renderTasks(); renderDashboard();
     }
 
     // イベントリスナー
@@ -563,7 +596,7 @@
     }));
 
     // 初期化
-    renderTodayLabel(); resetForm(); renderCalendar(); renderTasks();
+    renderTodayLabel(); resetForm(); renderCalendar(); renderTasks(); renderDashboard();
   </script>
 </body>
 </html>
