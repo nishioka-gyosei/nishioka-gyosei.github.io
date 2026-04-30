@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>タスク管理アプリ | メモ・タグ対応</title>
+  <style>
+    :root {
+      /* ライトモードのカラー */
+      --bg: #f8fafc;
+      --bg2: #f1f5f9;
+      --card: rgba(255, 255, 255, 0.95);
+      --line: #e2e8f0;
+      --text: #0f172a;
+      --sub: #64748b;
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+    }
+
+    /* ダークモードの自動切り替え */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --bg2: #1e293b;
+        --card: rgba(30, 41, 59, 0.9);
+        --line: #334155;
+        --text: #f8fafc;
+        --sub: #94a3b8;
+        --primary: #6366f1;
+        --primary-dark: #818cf8;
+        --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0; padding: 0;
+      font-family: "Segoe UI", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top left, var(--bg) 0%, var(--bg2) 100%);
+      min-height: 100vh;
+      transition: background 0.3s ease;
+    }
+
+    body { padding: 20px; }
+
+    .app { max-width: 1240px; margin: 0 auto; }
+
+    .hero {
+      margin-bottom: 20px; padding: 24px 30px;
+      border-radius: var(--radius-xl);
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .hero-top { display: flex; gap: 18px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .hero h1 { margin: 0; font-size: 2rem; font-weight: 800; }
+    .hero p { margin: 8px 0 0; color: var(--sub); font-size: 0.95rem; }
+
+    .today-chip {
+      background: var(--bg2); color: var(--primary);
+      padding: 10px 18px; border-radius: 999px; font-weight: 700;
+      border: 1px solid var(--line);
+    }
+
+    .layout {
+      display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 20px; align-items: start;
+    }
+
+    .card {
+      background: var(--card); border: 1px solid var(--line);
+      box-shadow: var(--shadow); border-radius: var(--radius-xl);
+    }
+
+    .section-pad { padding: 24px; }
+    .section-title { margin: 0 0 16px; font-size: 1.15rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+
+    /* カレンダー部分 */
+    .calendar-card { position: sticky; top: 20px; }
+    .calendar-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .calendar-title { margin: 0; font-size: 1.25rem; font-weight: 800; }
+    
+    .nav-row { display: flex; gap: 8px; }
+    .icon-btn {
+      width: 40px; height: 40px; border-radius: 12px; border: none; cursor: pointer;
+      background: var(--bg2); color: var(--primary); font-weight: 800; font-size: 1.1rem;
+      display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s;
+    }
+    .icon-btn:hover { transform: translateY(-2px); filter: brightness(0.95); }
+
+    .calendar-tools { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+    .btn {
+      border: none; cursor: pointer; padding: 12px 20px; border-radius: 12px;
+      font-weight: 700; font-size: 0.95rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 15px rgba(79, 70, 229, 0.2); }
+    .btn-soft { background: var(--bg2); color: var(--primary); }
+    .btn-soft:hover { filter: brightness(0.95); }
+    .btn-ghost { background: transparent; color: var(--sub); border: 1px solid var(--line); }
+    .btn-ghost:hover { background: var(--bg2); }
+
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+    .weekday { text-align: center; color: var(--sub); font-size: 0.8rem; font-weight: 700; padding-bottom: 8px; }
+    .day {
+      min-height: 70px; padding: 6px; border-radius: 12px; border: 1px solid var(--line);
+      background: transparent; display: flex; flex-direction: column; gap: 4px; cursor: pointer; transition: all 0.2s;
+    }
+    .day:hover { background: var(--bg2); transform: scale(1.05); }
+    .day.other-month { opacity: 0.3; }
+    .day.today { outline: 2px solid var(--primary); outline-offset: -2px; }
+    .day.selected { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .day.selected .day-count { background: rgba(255,255,255,0.2); color: #fff; }
+
+    .day-top { display: flex; justify-content: space-between; align-items: center; }
+    .day-num { font-size: 0.9rem; font-weight: 800; }
+    .day-count {
+      min-width: 20px; height: 20px; border-radius: 50%; background: var(--bg2); color: var(--primary);
+      font-size: 0.7rem; font-weight: 800; display: inline-flex; align-items: center; justify-content: center;
+    }
+    .day-dots { display: flex; flex-wrap: wrap; gap: 3px; margin-top: auto; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; }
+    .dot.low { background: var(--success); }
+    .dot.medium { background: var(--warning); }
+    .dot.high { background: var(--danger); }
+
+    .selected-info { margin-top: 16px; padding: 14px; border-radius: 12px; background: var(--bg2); color: var(--sub); font-size: 0.9rem; line-height: 1.5; }
+
+    /* フォーム部分 */
+    .content-stack { display: grid; gap: 20px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .full-width { grid-column: 1 / -1; }
+    
+    .input, .select, .textarea {
+      width: 100%; border: 1px solid var(--line); border-radius: 12px;
+      background: transparent; padding: 14px; font-size: 1rem; color: var(--text); font-family: inherit;
+      transition: all 0.2s;
+    }
+    .textarea { resize: vertical; min-height: 80px; }
+    .input:focus, .select:focus, .textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15); }
+    .form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px; }
+
+    /* ツールバー＆統計 */
+    .toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 20px; justify-content: space-between; }
+    .search-wrap { flex: 1; min-width: 200px; }
+    .filter-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip-btn {
+      padding: 8px 14px; border-radius: 999px; background: transparent; border: 1px solid var(--line);
+      color: var(--sub); font-weight: 700; cursor: pointer; transition: all 0.2s;
+    }
+    .chip-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* タスクリストとアニメーション */
+    @keyframes slideIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    
+    .task-list { display: grid; gap: 14px; }
+    .task-item {
+      display: grid; grid-template-columns: auto auto 1fr auto; gap: 16px; align-items: start;
+      padding: 18px; border-radius: 16px; background: var(--bg); border: 1px solid var(--line);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); animation: slideIn 0.4s ease forwards;
+    }
+    .task-item:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--primary); }
+    .task-item.completed { opacity: 0.6; background: transparent; }
+    .task-item.completed .task-title { text-decoration: line-through; color: var(--sub); }
+    .task-item.dragging { box-shadow: 0 20px 40px rgba(0,0,0,0.2); transform: rotate(2deg) scale(1.02); z-index: 999; opacity: 0.95; }
+
+    .drag-placeholder { border: 2px dashed var(--primary); border-radius: 16px; background: transparent; }
+    .drag-handle {
+      width: 32px; height: 32px; border-radius: 8px; color: var(--sub);
+      display: grid; place-items: center; cursor: grab; font-size: 1.2rem; margin-top: -2px;
+    }
+    .drag-handle:active { cursor: grabbing; color: var(--primary); }
+
+    .task-check { width: 22px; height: 22px; accent-color: var(--success); cursor: pointer; margin-top: 2px; }
+    .task-main { min-width: 0; }
+    .task-title { margin: 0 0 6px; font-size: 1.1rem; font-weight: 700; word-break: break-word; }
+    .task-memo { font-size: 0.9rem; color: var(--sub); margin-bottom: 10px; white-space: pre-wrap; word-break: break-word; background: var(--bg2); padding: 10px; border-radius: 8px; display: none; }
+    .task-memo.has-content { display: block; }
+    
+    .task-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .badge {
+      display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 8px;
+      font-size: 0.8rem; font-weight: 700; border: 1px solid var(--line); background: var(--bg2); color: var(--text);
+    }
+    .badge-tag { background: #e0e7ff; color: #3730a3; border-color: transparent; }
+    .badge-low { background: rgba(16, 185, 129, 0.1); color: var(--success); border-color: transparent;}
+    .badge-medium { background: rgba(245, 158, 11, 0.1); color: var(--warning); border-color: transparent;}
+    .badge-high { background: rgba(239, 68, 68, 0.1); color: var(--danger); border-color: transparent;}
+
+    @media (prefers-color-scheme: dark) { .badge-tag { background: rgba(99, 102, 241, 0.2); color: #a5b4fc; } }
+
+    .task-actions { display: flex; gap: 8px; }
+    .small-btn { border: none; cursor: pointer; padding: 8px 12px; border-radius: 10px; font-weight: 700; font-size: 0.85rem; transition: 0.2s; }
+    .small-btn.edit { background: var(--bg2); color: var(--primary); }
+    .small-btn.edit:hover { filter: brightness(0.9); }
+    .small-btn.delete { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
+    .small-btn.delete:hover { background: rgba(239, 68, 68, 0.2); }
+
+    .empty { padding: 40px 20px; text-align: center; border: 2px dashed var(--line); border-radius: 16px; color: var(--sub); }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .calendar-card { position: static; }
+      .task-item { grid-template-columns: auto 1fr; }
+      .task-actions { grid-column: 1 / -1; justify-content: flex-end; margin-top: 8px; }
+      .drag-handle { margin-top: -4px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <div class="hero-top">
+        <div>
+          <h1>✅ タスク管理アプリ</h1>
+          <p>カレンダー連動 / メモ機能 / タグ分類 / ドラッグ並べ替え</p>
+        </div>
+        <div class="today-chip" id="todayLabel">今日: --</div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <!-- カレンダー -->
+      <aside class="card calendar-card">
+        <div class="section-pad">
+          <div class="calendar-head">
+            <h2 class="calendar-title" id="calendarMonthLabel">📅 ----</h2>
+            <div class="nav-row">
+              <button class="icon-btn" id="prevMonthBtn">‹</button>
+              <button class="icon-btn" id="nextMonthBtn">›</button>
+            </div>
+          </div>
+          <div class="calendar-tools">
+            <button class="btn btn-soft" id="todayBtn">🎯 今日へ</button>
+            <button class="btn btn-ghost" id="clearDateFilterBtn">🔄 選択解除</button>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+          <div class="selected-info" id="selectedInfo">日付を選択してタスクを絞り込みます。</div>
+        </div>
+      </aside>
+
+      <section class="content-stack">
+        <!-- 入力フォーム -->
+        <section class="card">
+          <div class="section-pad">
+            <h2 class="section-title" id="formTitle">✨ 新しいタスクを追加</h2>
+            <div class="form-grid">
+              <input id="taskTitleInput" class="input full-width" type="text" placeholder="📝 やることを入力 (Enterで追加)" />
+              
+              <input id="taskDateInput" class="input" type="date" title="期限日" />
+              
+              <select id="taskPriorityInput" class="select">
+                <option value="medium">⏸ 優先度: 中</option>
+                <option value="high">⏫ 優先度: 高</option>
+                <option value="low">⏬ 優先度: 低</option>
+              </select>
+
+              <!-- 追加されたタグのセレクトボックス -->
+              <select id="taskTagInput" class="select full-width">
+                <option value="💼 業務">💼 業務</option>
+                <option value="💻 開発">💻 開発</option>
+                <option value="🏠 プライベート">🏠 プライベート</option>
+                <option value="📌 その他">📌 その他</option>
+              </select>
+
+              <!-- 追加されたメモ欄 -->
+              <textarea id="taskMemoInput" class="textarea full-width" placeholder="🗒 メモや詳細を記入できます（任意）"></textarea>
+              
+              <div class="form-actions full-width">
+                <button id="cancelEditBtn" class="btn btn-ghost" type="button" style="display:none;">❌ キャンセル</button>
+                <button id="submitTaskBtn" class="btn btn-primary">➕ 追加</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- タスク一覧 -->
+        <section class="card">
+          <div class="section-pad">
+            <div class="toolbar">
+              <div class="search-wrap">
+                <input id="searchInput" class="input" type="text" placeholder="🔍 タスクを検索..." style="padding: 10px 14px;" />
+              </div>
+              <div class="filter-row">
+                <button class="chip-btn active" data-filter="all">すべて</button>
+                <button class="chip-btn" data-filter="active">未完了</button>
+                <button class="chip-btn" data-filter="completed">完了</button>
+              </div>
+              <button class="btn btn-ghost" id="clearCompletedBtn" style="padding: 8px 12px; font-size:0.85rem;">🗑 完了済み削除</button>
+            </div>
+
+            <h2 class="section-title" style="margin-bottom: 12px;">📋 タスク一覧 <span id="listCount" style="font-size:0.9rem; color:var(--sub); font-weight:normal;"></span></h2>
+            
+            <div class="task-list" id="taskList"></div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // データ保存用のキーを変更（旧バージョンとのデータ衝突を避けるため）
+    const STORAGE_KEY = "task_calendar_app_v3_tags_memo";
+
+    const state = {
+      tasks: loadTasks(),
+      currentMonth: startOfMonth(new Date()),
+      selectedDate: "",
+      statusFilter: "all",
+      keyword: "",
+      editingId: null,
+      drag: null
+    };
+
+    const el = {
+      todayLabel: document.getElementById("todayLabel"),
+      calendarMonthLabel: document.getElementById("calendarMonthLabel"),
+      calendarGrid: document.getElementById("calendarGrid"),
+      selectedInfo: document.getElementById("selectedInfo"),
+      prevMonthBtn: document.getElementById("prevMonthBtn"),
+      nextMonthBtn: document.getElementById("nextMonthBtn"),
+      todayBtn: document.getElementById("todayBtn"),
+      clearDateFilterBtn: document.getElementById("clearDateFilterBtn"),
+      
+      formTitle: document.getElementById("formTitle"),
+      taskTitleInput: document.getElementById("taskTitleInput"),
+      taskDateInput: document.getElementById("taskDateInput"),
+      taskPriorityInput: document.getElementById("taskPriorityInput"),
+      taskTagInput: document.getElementById("taskTagInput"), // 追加
+      taskMemoInput: document.getElementById("taskMemoInput"), // 追加
+      submitTaskBtn: document.getElementById("submitTaskBtn"),
+      cancelEditBtn: document.getElementById("cancelEditBtn"),
+      
+      searchInput: document.getElementById("searchInput"),
+      clearCompletedBtn: document.getElementById("clearCompletedBtn"),
+      taskList: document.getElementById("taskList"),
+      listCount: document.getElementById("listCount"),
+      filterButtons: Array.from(document.querySelectorAll(".chip-btn[data-filter]"))
+    };
+
+    function loadTasks() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch { return []; } }
+    function saveTasks() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state.tasks)); }
+    function uid() { return "id-" + Date.now() + "-" + Math.random().toString(16).slice(2); }
+    function pad(n) { return String(n).padStart(2, "0"); }
+    function toYMD(date) { return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`; }
+    function parseYMD(ymd) { if (!ymd) return null; const [y, m, d] = ymd.split("-").map(Number); return new Date(y, m - 1, d); }
+    function formatDateJP(ymd) { const dt = parseYMD(ymd); return dt ? `${dt.getFullYear()}/${dt.getMonth() + 1}/${dt.getDate()}` : "期限なし"; }
+    function startOfMonth(date) { return new Date(date.getFullYear(), date.getMonth(), 1); }
+    function escapeHtml(str) { return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]); }
+    function priorityLabel(p) { return { high: "高", low: "低" }[p] || "中"; }
+
+    function getFilteredTasks() {
+      const keyword = state.keyword.trim().toLowerCase();
+      return state.tasks.filter(task => {
+        // メモ欄も検索対象に含める
+        const matchKeyword = !keyword || task.title.toLowerCase().includes(keyword) || (task.memo && task.memo.toLowerCase().includes(keyword));
+        const matchStatus = state.statusFilter === "all" || (state.statusFilter === "active" && !task.completed) || (state.statusFilter === "completed" && task.completed);
+        const matchDate = !state.selectedDate || task.dueDate === state.selectedDate;
+        return matchKeyword && matchStatus && matchDate;
+      });
+    }
+
+    function renderTodayLabel() {
+      const now = new Date();
+      el.todayLabel.textContent = `今日: ${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()}（${["日", "月", "火", "水", "木", "金", "土"][now.getDay()]}）`;
+    }
+
+    function renderCalendar() {
+      const monthDate = state.currentMonth;
+      el.calendarMonthLabel.textContent = `📅 ${monthDate.getFullYear()}年 ${monthDate.getMonth() + 1}月`;
+      const firstDay = new Date(monthDate.getFullYear(), monthDate.getMonth(), 1);
+      const startDate = new Date(firstDay); startDate.setDate(1 - firstDay.getDay());
+
+      let html = ["日", "月", "火", "水", "木", "金", "土"].map(l => `<div class="weekday">${l}</div>`).join("");
+
+      for (let i = 0; i < 42; i++) {
+        const cellDate = new Date(startDate); cellDate.setDate(startDate.getDate() + i);
+        const ymd = toYMD(cellDate); const tasks = state.tasks.filter(t => t.dueDate === ymd);
+        const classes = ["day", cellDate.getMonth() !== monthDate.getMonth() ? "other-month" : "", ymd === toYMD(new Date()) ? "today" : "", state.selectedDate === ymd ? "selected" : ""].filter(Boolean).join(" ");
+        const dots = tasks.slice(0, 4).map(t => `<span class="dot ${t.priority}"></span>`).join("");
+        html += `<div class="${classes}" data-date="${ymd}"><div class="day-top"><span class="day-num">${cellDate.getDate()}</span>${tasks.length ? `<span class="day-count">${tasks.length}</span>` : ""}</div><div class="day-dots">${dots}</div></div>`;
+      }
+      el.calendarGrid.innerHTML = html;
+      el.calendarGrid.querySelectorAll(".day").forEach(dayEl => {
+        dayEl.addEventListener("click", () => {
+          state.selectedDate = dayEl.dataset.date; el.taskDateInput.value = state.selectedDate;
+          state.currentMonth = startOfMonth(parseYMD(state.selectedDate));
+          renderCalendar(); renderTasks(); updateSelectedInfo();
+        });
+      });
+      updateSelectedInfo();
+    }
+
+    function updateSelectedInfo() {
+      if (!state.selectedDate) return el.selectedInfo.textContent = "👆 カレンダーの日付を選ぶと、その日のタスクだけ表示できます。";
+      el.selectedInfo.innerHTML = `📅 <strong>${formatDateJP(state.selectedDate)}</strong> のタスクは <strong>${state.tasks.filter(t => t.dueDate === state.selectedDate).length}件</strong> です。`;
+    }
+
+    function renderTasks() {
+      const filtered = getFilteredTasks();
+      el.listCount.textContent = `(${filtered.length}件)`;
+      
+      if (!filtered.length) return el.taskList.innerHTML = `<div class="empty">📭 タスクが見つかりません。新しいタスクを追加しましょう！</div>`;
+
+      el.taskList.innerHTML = filtered.map(task => `
+        <article class="task-item ${task.completed ? "completed" : ""}" data-id="${task.id}">
+          <div class="drag-handle" title="ドラッグして並べ替え">⋮⋮</div>
+          <input class="task-check" type="checkbox" ${task.completed ? "checked" : ""} data-action="toggle" data-id="${task.id}" />
+          <div class="task-main">
+            <h3 class="task-title">${escapeHtml(task.title)}</h3>
+            <div class="task-memo ${task.memo ? 'has-content' : ''}">${task.memo ? escapeHtml(task.memo) : ''}</div>
+            <div class="task-meta">
+              <span class="badge badge-tag">${escapeHtml(task.tag || '📌 その他')}</span>
+              <span class="badge">📅 ${task.dueDate ? formatDateJP(task.dueDate) : "未設定"}</span>
+              <span class="badge badge-${task.priority}">${priorityLabel(task.priority)}</span>
+            </div>
+          </div>
+          <div class="task-actions">
+            <button class="small-btn edit" data-action="edit" data-id="${task.id}">✏️</button>
+            <button class="small-btn delete" data-action="delete" data-id="${task.id}">🗑</button>
+          </div>
+        </article>
+      `).join("");
+      bindTaskEvents();
+    }
+
+    function bindTaskEvents() {
+      el.taskList.querySelectorAll('[data-action="toggle"]').forEach(n => n.addEventListener("change", () => toggleTask(n.dataset.id)));
+      el.taskList.querySelectorAll('[data-action="edit"]').forEach(n => n.addEventListener("click", () => startEdit(n.dataset.id)));
+      el.taskList.querySelectorAll('[data-action="delete"]').forEach(n => n.addEventListener("click", () => deleteTask(n.dataset.id)));
+      el.taskList.querySelectorAll(".drag-handle").forEach(h => h.addEventListener("pointerdown", startDrag));
+    }
+
+    function addOrUpdateTask() {
+      const title = el.taskTitleInput.value.trim();
+      if (!title) return el.taskTitleInput.focus();
+      
+      const taskData = { 
+        title, 
+        dueDate: el.taskDateInput.value, 
+        priority: el.taskPriorityInput.value,
+        tag: el.taskTagInput.value, // タグを取得
+        memo: el.taskMemoInput.value.trim() // メモを取得
+      };
+
+      if (state.editingId) {
+        state.tasks = state.tasks.map(t => t.id === state.editingId ? { ...t, ...taskData } : t);
+      } else {
+        state.tasks.unshift({ id: uid(), completed: false, createdAt: new Date().toISOString(), ...taskData });
+      }
+      saveTasks(); resetForm(); renderCalendar(); renderTasks();
+    }
+
+    function resetForm() {
+      state.editingId = null; el.formTitle.innerHTML = "✨ 新しいタスクを追加"; el.submitTaskBtn.innerHTML = "➕ 追加";
+      el.cancelEditBtn.style.display = "none"; 
+      el.taskTitleInput.value = ""; 
+      el.taskPriorityInput.value = "medium";
+      el.taskTagInput.value = "💼 業務"; // デフォルトタグ
+      el.taskMemoInput.value = ""; // メモをクリア
+      el.taskDateInput.value = state.selectedDate || ""; 
+      el.taskTitleInput.focus();
+    }
+
+    function startEdit(id) {
+      const task = state.tasks.find(t => t.id === id); if (!task) return;
+      state.editingId = id; el.formTitle.innerHTML = "✏️ タスクを編集"; el.submitTaskBtn.innerHTML = "💾 更新";
+      el.cancelEditBtn.style.display = "inline-flex"; 
+      el.taskTitleInput.value = task.title;
+      el.taskDateInput.value = task.dueDate || ""; 
+      el.taskPriorityInput.value = task.priority || "medium";
+      el.taskTagInput.value = task.tag || "💼 業務";
+      el.taskMemoInput.value = task.memo || "";
+      window.scrollTo({ top: 0, behavior: "smooth" }); el.taskTitleInput.focus();
+    }
+
+    function toggleTask(id) {
+      state.tasks = state.tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
+      saveTasks(); renderTasks();
+    }
+
+    function deleteTask(id) {
+      if (!confirm("本当に削除しますか？")) return;
+      state.tasks = state.tasks.filter(t => t.id !== id);
+      if (state.editingId === id) resetForm();
+      saveTasks(); renderCalendar(); renderTasks();
+    }
+
+    function clearCompleted() {
+      if (!confirm("完了済みのタスクをすべて削除しますか？")) return;
+      state.tasks = state.tasks.filter(t => !t.completed);
+      saveTasks(); renderCalendar(); renderTasks();
+    }
+
+    // ドラッグ＆ドロップ処理
+    function startDrag(e) {
+      const item = e.currentTarget.closest(".task-item"); if (!item) return;
+      const rect = item.getBoundingClientRect();
+      const placeholder = document.createElement("div");
+      placeholder.className = "drag-placeholder"; placeholder.style.height = rect.height + "px";
+      state.drag = { item, placeholder, pointerId: e.pointerId, offsetX: e.clientX - rect.left, offsetY: e.clientY - rect.top, active: false };
+      e.currentTarget.setPointerCapture(e.pointerId);
+      document.addEventListener("pointermove", onDragMove, { passive: false });
+      document.addEventListener("pointerup", endDrag); document.addEventListener("pointercancel", endDrag);
+    }
+    function activateDrag(e) {
+      const drag = state.drag; if (!drag || drag.active) return;
+      drag.active = true; const rect = drag.item.getBoundingClientRect();
+      drag.placeholder.style.height = rect.height + "px"; drag.item.parentNode.insertBefore(drag.placeholder, drag.item.nextSibling);
+      drag.item.classList.add("dragging");
+      Object.assign(drag.item.style, { width: rect.width + "px", height: rect.height + "px", position: "fixed", left: rect.left + "px", top: rect.top + "px", margin: "0", pointerEvents: "none" });
+      document.body.appendChild(drag.item);
+    }
+    function onDragMove(e) {
+      const drag = state.drag; if (!drag || e.pointerId !== drag.pointerId) return;
+      if (!drag.active && (Math.abs(e.movementX || 0) > 0 || Math.abs(e.movementY || 0) > 0)) activateDrag(e);
+      if (!drag.active) return; e.preventDefault();
+      drag.item.style.left = (e.clientX - drag.offsetX) + "px"; drag.item.style.top = (e.clientY - drag.offsetY) + "px";
+      const target = document.elementsFromPoint(e.clientX, e.clientY).find(n => n.classList?.contains("task-item") && n !== drag.item);
+      if (!target || !el.taskList.contains(target)) return;
+      const targetRect = target.getBoundingClientRect();
+      const referenceNode = e.clientY > targetRect.top + targetRect.height / 2 ? target.nextElementSibling : target;
+      if (referenceNode !== drag.placeholder) el.taskList.insertBefore(drag.placeholder, referenceNode);
+    }
+    function endDrag(e) {
+      const drag = state.drag; if (!drag || e.pointerId !== drag.pointerId) return;
+      document.removeEventListener("pointermove", onDragMove); document.removeEventListener("pointerup", endDrag); document.removeEventListener("pointercancel", endDrag);
+      if (drag.active) {
+        drag.item.classList.remove("dragging"); drag.item.removeAttribute("style");
+        el.taskList.insertBefore(drag.item, drag.placeholder); drag.placeholder.remove();
+        const visibleIds = Array.from(el.taskList.querySelectorAll(".task-item")).map(n => n.dataset.id);
+        const byId = new Map(state.tasks.map(t => [t.id, t]));
+        let index = 0;
+        state.tasks = state.tasks.map(t => visibleIds.includes(t.id) ? byId.get(visibleIds[index++]) : t);
+        saveTasks();
+      }
+      state.drag = null;
+    }
+
+    // イベントリスナー
+    el.prevMonthBtn.addEventListener("click", () => { state.currentMonth.setMonth(state.currentMonth.getMonth() - 1); renderCalendar(); });
+    el.nextMonthBtn.addEventListener("click", () => { state.currentMonth.setMonth(state.currentMonth.getMonth() + 1); renderCalendar(); });
+    el.todayBtn.addEventListener("click", () => { state.currentMonth = startOfMonth(new Date()); state.selectedDate = toYMD(new Date()); el.taskDateInput.value = state.selectedDate; renderCalendar(); renderTasks(); });
+    el.clearDateFilterBtn.addEventListener("click", () => { state.selectedDate = ""; el.taskDateInput.value = ""; renderCalendar(); renderTasks(); });
+    el.submitTaskBtn.addEventListener("click", addOrUpdateTask);
+    el.cancelEditBtn.addEventListener("click", resetForm);
+    el.taskTitleInput.addEventListener("keydown", (e) => { if (e.key === "Enter") addOrUpdateTask(); });
+    el.searchInput.addEventListener("input", (e) => { state.keyword = e.target.value; renderTasks(); });
+    el.clearCompletedBtn.addEventListener("click", clearCompleted);
+    el.filterButtons.forEach(btn => btn.addEventListener("click", () => {
+      state.statusFilter = btn.dataset.filter;
+      el.filterButtons.forEach(b => b.classList.toggle("active", b === btn)); renderTasks();
+    }));
+
+    // 初期化
+    renderTodayLabel(); resetForm(); renderCalendar(); renderTasks();
+  </script>
+</body>
+</html>
