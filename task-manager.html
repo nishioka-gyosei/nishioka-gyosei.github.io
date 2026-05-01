@@ -7,7 +7,6 @@
   <title>ニシオカンリシステム | 行政書士タスク管理</title>
   <style>
     :root {
-      /* より洗練されたSaaS風のカラーパレット（ライトモード） */
       --bg: #f4f7fb;
       --bg2: #e9eef5;
       --card: #ffffff;
@@ -28,7 +27,6 @@
       --radius-md: 8px;
     }
 
-    /* ダークモード */
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #0f172a;
@@ -59,7 +57,6 @@
 
     .app { max-width: 1280px; margin: 0 auto; }
 
-    /* ヘッダー */
     .hero {
       margin-bottom: 24px;
       display: flex; justify-content: space-between; align-items: flex-end;
@@ -117,7 +114,6 @@
     .dashboard-card { background: linear-gradient(to right bottom, var(--card), var(--bg2)); }
     
     .dash-list { display: grid; gap: 8px; max-height: 400px; overflow-y: auto; padding-right: 4px; }
-    /* スクロールバーのスタイル */
     .dash-list::-webkit-scrollbar { width: 6px; }
     .dash-list::-webkit-scrollbar-thumb { background-color: var(--line); border-radius: 999px; }
 
@@ -125,9 +121,17 @@
       padding: 12px 16px; border-radius: var(--radius-lg); background: var(--card);
       border-left: 4px solid var(--line); display: flex; justify-content: space-between; align-items: center;
       box-shadow: var(--shadow-sm);
+      cursor: pointer; /* クリック可能なカーソルにする */
+      transition: all 0.2s ease;
     }
     
-    /* 期限ステータス別の左ボーダーカラー */
+    /* マウスホバー時のスタイル（浮き上がるようなエフェクト） */
+    .dash-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      filter: brightness(0.97);
+    }
+
     .dash-item.overdue { border-left-color: var(--danger); }
     .dash-item.today { border-left-color: var(--warning); }
     .dash-item.future { border-left-color: var(--accent); }
@@ -138,7 +142,6 @@
     .dash-item-client { font-size: 0.8rem; color: var(--sub); margin-top: 2px; }
     
     .dash-item-badge { font-size: 0.75rem; font-weight: 700; padding: 4px 8px; border-radius: 6px; white-space: nowrap; margin-left: 12px; }
-    /* バッジのカラースタイル */
     .dash-item-badge.overdue { background: rgba(239,68,68,0.1); color: var(--danger); }
     .dash-item-badge.today { background: rgba(245,158,11,0.1); color: var(--warning); }
     .dash-item-badge.future { background: rgba(59,130,246,0.1); color: var(--accent); }
@@ -160,7 +163,6 @@
     .textarea { resize: vertical; min-height: 80px; }
     .input:focus, .select:focus, .textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); background: var(--card); }
     
-    /* 日付ワンタップボタン */
     .quick-dates { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
     .qd-btn { 
       padding: 4px 10px; font-size: 0.75rem; border-radius: 999px; border: 1px solid var(--line); 
@@ -232,7 +234,6 @@
   <div class="app">
     <header class="hero">
       <div>
-        <!-- アプリ名を変更 -->
         <h1 class="hero-title">ニシオカンリシステム</h1>
         <p class="hero-subtitle">行政書士 業務・期限管理ダッシュボード</p>
       </div>
@@ -261,10 +262,10 @@
       <!-- 右サイド：メインコンテンツ -->
       <section style="display: flex; flex-direction: column; gap: 24px;">
         
-        <!-- 全タスクを表示するダッシュボードに変更 -->
+        <!-- 全タスクを表示するダッシュボード -->
         <div class="card dashboard-card">
           <div class="section-pad">
-            <h2 class="section-title">📋 進行中の全案件</h2>
+            <h2 class="section-title">📋 進行中の全案件 <span style="font-size:0.8rem; font-weight:normal; color:var(--sub); margin-left:8px;">※クリックで編集</span></h2>
             <div class="dash-list" id="dashboardList">
               <!-- JSで生成 -->
             </div>
@@ -299,7 +300,6 @@
                 </select>
               </div>
 
-              <!-- ワンタップ日付入力を実装 -->
               <div class="input-group">
                 <label class="input-label">提出・完了期限</label>
                 <input id="taskDateInput" class="input" type="date" />
@@ -402,7 +402,6 @@
       return 'future';
     }
 
-    // クイック日付入力のイベント
     document.querySelectorAll('.qd-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const days = parseInt(e.target.dataset.days);
@@ -455,18 +454,17 @@
       });
     }
 
-    // 進行中のすべての案件をダッシュボードに表示する
     function renderDashboard() {
       const activeTasks = state.tasks.filter(t => !t.completed);
       
-      // 期限が近い順に並び替え（期限切れ → 今日 → 未来 → 期限なし）
       activeTasks.sort((a, b) => {
-        if (!a.dueDate) return 1; // 期限なしは最後へ
+        if (!a.dueDate) return 1;
         if (!b.dueDate) return -1;
         return a.dueDate > b.dueDate ? 1 : -1;
       });
 
       if (activeTasks.length > 0) {
+        // data-id属性を追加してクリック可能に
         el.dashboardList.innerHTML = activeTasks.map(task => {
           const status = getDateStatus(task.dueDate);
           let badgeText = '期限なし';
@@ -476,7 +474,7 @@
           else if (status === 'future') badgeText = formatDateJP(task.dueDate) + 'まで';
 
           return `
-            <div class="dash-item ${status}">
+            <div class="dash-item ${status}" data-id="${task.id}" title="クリックで確認・編集">
               <div class="dash-item-main">
                 <div class="dash-item-title">${escapeHtml(task.title)}</div>
                 ${task.client ? `<div class="dash-item-client">${escapeHtml(task.client)}</div>` : ''}
@@ -562,7 +560,9 @@
       el.taskTitleInput.value = task.title; el.taskClientInput.value = task.client || "";
       el.taskDateInput.value = task.dueDate || ""; el.taskPriorityInput.value = task.priority || "medium";
       el.taskIndustryInput.value = task.industry || "風営法許可"; el.taskMemoInput.value = task.memo || "";
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      
+      // 編集フォームの位置までスムーズにスクロール
+      document.getElementById('formTitle').scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
     function toggleTask(id) {
@@ -592,6 +592,15 @@
       state.statusFilter = btn.dataset.filter;
       el.filterButtons.forEach(b => b.classList.toggle("active", b === btn)); renderTasks();
     }));
+
+    // ★追加: ダッシュボードのタスククリックイベント
+    el.dashboardList.addEventListener("click", (e) => {
+      // クリックされた要素の親である .dash-item を探す
+      const item = e.target.closest('.dash-item');
+      if (item && item.dataset.id) {
+        startEdit(item.dataset.id);
+      }
+    });
 
     // 初期化
     renderTodayLabel(); renderCalendar(); renderTasks(); renderDashboard();
