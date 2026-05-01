@@ -560,6 +560,32 @@
       white-space: pre-wrap;
     }
 
+    .memo-sections {
+      display: grid;
+      gap: 8px;
+    }
+
+    .memo-block {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--panel);
+      padding: 10px;
+    }
+
+    .memo-label {
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 900;
+      margin-bottom: 3px;
+    }
+
+    .memo-text {
+      color: var(--ink);
+      font-size: 0.86rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
     .checklist {
       display: grid;
       gap: 6px;
@@ -871,10 +897,27 @@
             </div>
 
             <div class="field full">
-              <label for="caseMemoInput">メモ・備考</label>
-              <textarea id="caseMemoInput" class="textarea" placeholder="必要書類、連絡履歴、補正内容など"></textarea>
-              <div class="quick-dates">
-                <button type="button" class="btn-small" id="insertCaseTimestampBtn">日時を挿入</button>
+              <label>メモ</label>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="caseReferralInput">紹介元</label>
+                  <textarea id="caseReferralInput" class="textarea" placeholder="紹介者、紹介元、流入経路など"></textarea>
+                </div>
+                <div class="field">
+                  <label for="caseCautionInput">注意事項</label>
+                  <textarea id="caseCautionInput" class="textarea" placeholder="期限上の注意、顧客対応で気をつける点など"></textarea>
+                </div>
+                <div class="field full">
+                  <label for="caseProcessInput">業務過程</label>
+                  <textarea id="caseProcessInput" class="textarea" placeholder="連絡履歴、作業経過、補正内容など"></textarea>
+                  <div class="quick-dates">
+                    <button type="button" class="btn-small" id="insertCaseTimestampBtn">日時を挿入</button>
+                  </div>
+                </div>
+                <div class="field full">
+                  <label for="caseSpecialInput">特記事項</label>
+                  <textarea id="caseSpecialInput" class="textarea" placeholder="例外対応、重要事項、次回確認事項など"></textarea>
+                </div>
               </div>
             </div>
 
@@ -932,10 +975,27 @@
             </div>
 
             <div class="field full">
-              <label for="clientMemoInput">顧客メモ</label>
-              <textarea id="clientMemoInput" class="textarea" placeholder="紹介元、注意事項、請求条件など"></textarea>
-              <div class="quick-dates">
-                <button type="button" class="btn-small" id="insertClientTimestampBtn">日時を挿入</button>
+              <label>顧客メモ</label>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="clientReferralInput">紹介元</label>
+                  <textarea id="clientReferralInput" class="textarea" placeholder="紹介者、紹介元、流入経路など"></textarea>
+                </div>
+                <div class="field">
+                  <label for="clientCautionInput">注意事項</label>
+                  <textarea id="clientCautionInput" class="textarea" placeholder="連絡時の注意、請求条件、対応上の注意など"></textarea>
+                </div>
+                <div class="field full">
+                  <label for="clientProcessInput">業務過程</label>
+                  <textarea id="clientProcessInput" class="textarea" placeholder="顧客との連絡履歴、継続対応の経過など"></textarea>
+                  <div class="quick-dates">
+                    <button type="button" class="btn-small" id="insertClientTimestampBtn">日時を挿入</button>
+                  </div>
+                </div>
+                <div class="field full">
+                  <label for="clientSpecialInput">特記事項</label>
+                  <textarea id="clientSpecialInput" class="textarea" placeholder="重要事項、個別事情、次回確認事項など"></textarea>
+                </div>
               </div>
             </div>
 
@@ -1009,8 +1069,9 @@
   </div>
 
   <script>
-    const STORAGE_KEY = "nishiokanri_system_v5";
+    const STORAGE_KEY = "nishiokanri_system_v6";
     const LEGACY_KEYS = [
+      "nishiokanri_system_v5",
       "nishiokanri_system_v4",
       "admin_scrivener_task_app_v3",
       "admin_scrivener_task_app_v2"
@@ -1092,7 +1153,10 @@
       caseStatusInput: $("caseStatusInput"),
       casePriorityInput: $("casePriorityInput"),
       caseDateInput: $("caseDateInput"),
-      caseMemoInput: $("caseMemoInput"),
+      caseReferralInput: $("caseReferralInput"),
+      caseCautionInput: $("caseCautionInput"),
+      caseProcessInput: $("caseProcessInput"),
+      caseSpecialInput: $("caseSpecialInput"),
       caseChecklistInput: $("caseChecklistInput"),
 
       clientNameInput: $("clientNameInput"),
@@ -1101,7 +1165,10 @@
       clientPhoneInput: $("clientPhoneInput"),
       clientEmailInput: $("clientEmailInput"),
       clientAddressInput: $("clientAddressInput"),
-      clientMemoInput: $("clientMemoInput"),
+      clientReferralInput: $("clientReferralInput"),
+      clientCautionInput: $("clientCautionInput"),
+      clientProcessInput: $("clientProcessInput"),
+      clientSpecialInput: $("clientSpecialInput"),
 
       caseSearchInput: $("caseSearchInput"),
       clientSearchInput: $("clientSearchInput"),
@@ -1289,7 +1356,96 @@
       return "期限なし";
     }
 
+    function normalizeMemoSections(source) {
+      const sections = source?.memoSections || {};
+
+      return {
+        referral: sections.referral || source?.referral || "",
+        caution: sections.caution || source?.caution || "",
+        process: sections.process || source?.process || source?.memo || "",
+        special: sections.special || source?.special || ""
+      };
+    }
+
+    function composeMemo(sections) {
+      const rows = [
+        ["紹介元", sections.referral],
+        ["注意事項", sections.caution],
+        ["業務過程", sections.process],
+        ["特記事項", sections.special]
+      ].filter(([, value]) => String(value || "").trim());
+
+      return rows
+        .map(([label, value]) => `【${label}】\n${String(value).trim()}`)
+        .join("\n\n");
+    }
+
+    function memoSearchText(sections) {
+      return [
+        sections.referral,
+        sections.caution,
+        sections.process,
+        sections.special
+      ].join(" ");
+    }
+
+    function renderMemoSections(sections) {
+      const items = [
+        ["紹介元", sections.referral],
+        ["注意事項", sections.caution],
+        ["業務過程", sections.process],
+        ["特記事項", sections.special]
+      ].filter(([, value]) => String(value || "").trim());
+
+      if (!items.length) return "";
+
+      return `
+        <div class="memo-sections">
+          ${items.map(([label, value]) => `
+            <div class="memo-block">
+              <div class="memo-label">${label}</div>
+              <div class="memo-text">${escapeHtml(value)}</div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function getCaseMemoSectionsFromForm() {
+      return {
+        referral: el.caseReferralInput.value.trim(),
+        caution: el.caseCautionInput.value.trim(),
+        process: el.caseProcessInput.value.trim(),
+        special: el.caseSpecialInput.value.trim()
+      };
+    }
+
+    function setCaseMemoSectionsForm(sections) {
+      el.caseReferralInput.value = sections.referral || "";
+      el.caseCautionInput.value = sections.caution || "";
+      el.caseProcessInput.value = sections.process || "";
+      el.caseSpecialInput.value = sections.special || "";
+    }
+
+    function getClientMemoSectionsFromForm() {
+      return {
+        referral: el.clientReferralInput.value.trim(),
+        caution: el.clientCautionInput.value.trim(),
+        process: el.clientProcessInput.value.trim(),
+        special: el.clientSpecialInput.value.trim()
+      };
+    }
+
+    function setClientMemoSectionsForm(sections) {
+      el.clientReferralInput.value = sections.referral || "";
+      el.clientCautionInput.value = sections.caution || "";
+      el.clientProcessInput.value = sections.process || "";
+      el.clientSpecialInput.value = sections.special || "";
+    }
+
     function normalizeClient(c) {
+      const memoSections = normalizeMemoSections(c);
+
       return {
         id: c.id || uid(),
         name: c.name || c.client || "",
@@ -1298,7 +1454,8 @@
         phone: c.phone || "",
         email: c.email || "",
         address: c.address || "",
-        memo: c.memo || "",
+        memo: composeMemo(memoSections),
+        memoSections,
         archived: Boolean(c.archived),
         createdAt: c.createdAt || new Date().toISOString(),
         updatedAt: c.updatedAt || new Date().toISOString()
@@ -1340,6 +1497,7 @@
         .filter(Boolean)
         .map(text => {
           const found = oldItems.find(item => item.text === text);
+
           return found || {
             id: uid(),
             text,
@@ -1350,6 +1508,7 @@
 
     function normalizeCase(item) {
       const status = item.status || (item.completed ? "完了" : "作成中");
+      const memoSections = normalizeMemoSections(item);
 
       return {
         id: item.id || uid(),
@@ -1360,7 +1519,8 @@
         status,
         priority: item.priority || "medium",
         dueDate: item.dueDate || "",
-        memo: item.memo || "",
+        memo: composeMemo(memoSections),
+        memoSections,
         checklist: normalizeChecklist(item.checklist),
         completed: statusDone.has(status) || Boolean(item.completed),
         archived: Boolean(item.archived),
@@ -1482,7 +1642,7 @@
       return state.data.cases.filter(item => {
         const text = [
           item.title,
-          item.memo,
+          memoSearchText(item.memoSections),
           item.category,
           item.status,
           clientName(item.clientId, item.clientName)
@@ -1533,7 +1693,7 @@
               </div>
             </div>
 
-            ${item.memo ? `<div class="memo">${escapeHtml(item.memo)}</div>` : ""}
+            ${renderMemoSections(item.memoSections)}
 
             ${checklist.length ? `
               <div class="checklist">
@@ -1622,7 +1782,7 @@
           c.phone,
           c.email,
           c.address,
-          c.memo
+          memoSearchText(c.memoSections)
         ].join(" ").toLowerCase();
 
         let ok = true;
@@ -1667,7 +1827,7 @@
 
             <div class="meta">${escapeHtml([c.phone, c.email, c.address].filter(Boolean).join(" / ") || "連絡先未登録")}</div>
 
-            ${c.memo ? `<div class="memo">${escapeHtml(c.memo)}</div>` : ""}
+            ${renderMemoSections(c.memoSections)}
 
             <div class="badges">
               <span class="badge">案件 ${cases.length}件</span>
@@ -1717,7 +1877,7 @@
           </div>
           <div class="detail-box full">
             <div class="detail-label">顧客メモ</div>
-            <div class="detail-value">${escapeHtml(client.memo || "メモなし")}</div>
+            <div class="detail-value">${renderMemoSections(client.memoSections) || "メモなし"}</div>
           </div>
         </div>
 
@@ -1783,6 +1943,12 @@
       el.casePriorityInput.value = "medium";
       el.caseCategoryInput.value = categories[0];
       el.caseDateInput.value = state.selectedDate || "";
+      setCaseMemoSectionsForm({
+        referral: "",
+        caution: "",
+        process: "",
+        special: ""
+      });
       el.caseChecklistInput.value = "";
     }
 
@@ -1793,6 +1959,12 @@
       el.submitClientBtn.textContent = "保存する";
       el.cancelClientEditBtn.style.display = "none";
       el.clientTypeInput.value = "法人";
+      setClientMemoSectionsForm({
+        referral: "",
+        caution: "",
+        process: "",
+        special: ""
+      });
     }
 
     function saveCase() {
@@ -1807,6 +1979,7 @@
       const selectedClient = clientById(el.caseClientSelect.value);
       const status = el.caseStatusInput.value;
       const existingCase = state.data.cases.find(c => c.id === state.editingCaseId);
+      const memoSections = getCaseMemoSectionsFromForm();
 
       const item = {
         title,
@@ -1816,7 +1989,8 @@
         status,
         priority: el.casePriorityInput.value,
         dueDate: el.caseDateInput.value,
-        memo: el.caseMemoInput.value.trim(),
+        memo: composeMemo(memoSections),
+        memoSections,
         checklist: mergeChecklist(existingCase?.checklist || [], el.caseChecklistInput.value),
         completed: statusDone.has(status),
         updatedAt: new Date().toISOString()
@@ -1850,6 +2024,8 @@
         return;
       }
 
+      const memoSections = getClientMemoSectionsFromForm();
+
       const item = {
         name,
         type: el.clientTypeInput.value,
@@ -1857,7 +2033,8 @@
         phone: el.clientPhoneInput.value.trim(),
         email: el.clientEmailInput.value.trim(),
         address: el.clientAddressInput.value.trim(),
-        memo: el.clientMemoInput.value.trim(),
+        memo: composeMemo(memoSections),
+        memoSections,
         updatedAt: new Date().toISOString()
       };
 
@@ -1897,7 +2074,7 @@
       el.caseStatusInput.value = item.status;
       el.casePriorityInput.value = item.priority;
       el.caseDateInput.value = item.dueDate;
-      el.caseMemoInput.value = item.memo;
+      setCaseMemoSectionsForm(item.memoSections);
       el.caseChecklistInput.value = checklistToText(item.checklist);
 
       el.caseFormTitle.scrollIntoView({
@@ -1923,7 +2100,7 @@
       el.clientPhoneInput.value = c.phone;
       el.clientEmailInput.value = c.email;
       el.clientAddressInput.value = c.address;
-      el.clientMemoInput.value = c.memo;
+      setClientMemoSectionsForm(c.memoSections);
 
       el.clientFormTitle.scrollIntoView({
         behavior: "smooth",
@@ -2034,7 +2211,7 @@
     function exportJson() {
       const payload = {
         app: "ニシオカンリシステム",
-        version: 5,
+        version: 6,
         exportedAt: new Date().toISOString(),
         clients: state.data.clients,
         cases: state.data.cases
@@ -2088,8 +2265,11 @@
         "期限",
         "完了",
         "保管",
-        "チェックリスト",
-        "メモ"
+        "紹介元",
+        "注意事項",
+        "業務過程",
+        "特記事項",
+        "チェックリスト"
       ];
 
       const rows = state.data.cases.map(item => [
@@ -2101,8 +2281,11 @@
         item.dueDate,
         item.completed ? "完了" : "未完了",
         item.archived ? "保管" : "",
-        normalizeChecklist(item.checklist).map(check => `${check.done ? "[x]" : "[ ]"} ${check.text}`).join("\n"),
-        item.memo
+        item.memoSections.referral,
+        item.memoSections.caution,
+        item.memoSections.process,
+        item.memoSections.special,
+        normalizeChecklist(item.checklist).map(check => `${check.done ? "[x]" : "[ ]"} ${check.text}`).join("\n")
       ]);
 
       const csv = [headers, ...rows]
@@ -2123,7 +2306,10 @@
         "案件数",
         "進行中案件数",
         "保管",
-        "メモ"
+        "紹介元",
+        "注意事項",
+        "業務過程",
+        "特記事項"
       ];
 
       const rows = state.data.clients.map(client => {
@@ -2140,7 +2326,10 @@
           cases.length,
           active.length,
           client.archived ? "保管" : "",
-          client.memo
+          client.memoSections.referral,
+          client.memoSections.caution,
+          client.memoSections.process,
+          client.memoSections.special
         ];
       });
 
@@ -2239,11 +2428,11 @@
     el.cancelClientEditBtn.addEventListener("click", resetClientForm);
 
     $("insertCaseTimestampBtn").addEventListener("click", () => {
-      insertTimestamp(el.caseMemoInput);
+      insertTimestamp(el.caseProcessInput);
     });
 
     $("insertClientTimestampBtn").addEventListener("click", () => {
-      insertTimestamp(el.clientMemoInput);
+      insertTimestamp(el.clientProcessInput);
     });
 
     $("newClientFromCaseBtn").addEventListener("click", () => {
