@@ -3,657 +3,1975 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>タスク管理アプリ | 詳細メモ対応</title>
+  <meta name="description" content="行政書士業務向けの案件・顧客・期限管理ダッシュボード。" />
+  <title>ニシオカンリシステム | 行政書士案件管理</title>
   <style>
     :root {
-      /* ライトモードのカラー */
-      --bg: #f8fafc;
-      --bg2: #f1f5f9;
-      --card: rgba(255, 255, 255, 0.95);
-      --line: #e2e8f0;
-      --text: #0f172a;
-      --sub: #64748b;
-      --primary: #4f46e5;
-      --primary-dark: #4338ca;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
-      --radius-xl: 24px;
-      --radius-lg: 18px;
-      --radius-md: 14px;
+      --bg: #eef3f8;
+      --panel: #f8fafc;
+      --card: #ffffff;
+      --ink: #162033;
+      --muted: #66758a;
+      --line: #d9e2ee;
+      --line-strong: #c3cedc;
+      --navy: #111827;
+      --blue: #2563eb;
+      --blue-soft: #e8f0ff;
+      --green: #059669;
+      --green-soft: #dcfce7;
+      --amber: #d97706;
+      --amber-soft: #fef3c7;
+      --red: #dc2626;
+      --red-soft: #fee2e2;
+      --shadow: 0 18px 45px rgba(20, 33, 61, 0.08);
+      --shadow-sm: 0 1px 3px rgba(20, 33, 61, 0.08);
+      --radius: 10px;
+      --radius-sm: 7px;
     }
 
-    /* ダークモードの自動切り替え */
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #0f172a;
-        --bg2: #1e293b;
-        --card: rgba(30, 41, 59, 0.9);
-        --line: #334155;
-        --text: #f8fafc;
-        --sub: #94a3b8;
-        --primary: #6366f1;
-        --primary-dark: #818cf8;
-        --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        --bg: #0b1220;
+        --panel: #111827;
+        --card: #172033;
+        --ink: #f8fafc;
+        --muted: #9aa7b8;
+        --line: #2d3a4f;
+        --line-strong: #43536a;
+        --navy: #f8fafc;
+        --blue-soft: rgba(37, 99, 235, 0.18);
+        --green-soft: rgba(5, 150, 105, 0.18);
+        --amber-soft: rgba(217, 119, 6, 0.18);
+        --red-soft: rgba(220, 38, 38, 0.18);
+        --shadow: 0 18px 45px rgba(0, 0, 0, 0.32);
       }
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html, body {
-      margin: 0; padding: 0;
-      font-family: "Segoe UI", "Hiragino Sans", "Yu Gothic UI", sans-serif;
-      color: var(--text);
-      background: radial-gradient(circle at top left, var(--bg) 0%, var(--bg2) 100%);
+    html,
+    body {
       min-height: 100vh;
-      transition: background 0.3s ease;
     }
 
-    body { padding: 20px; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background:
+        linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent 32%),
+        linear-gradient(315deg, rgba(5, 150, 105, 0.08), transparent 28%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      padding: 22px;
+    }
 
-    .app { max-width: 1240px; margin: 0 auto; }
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+      color: inherit;
+    }
 
-    .hero {
-      margin-bottom: 20px; padding: 24px 30px;
-      border-radius: var(--radius-xl);
-      background: var(--card);
-      backdrop-filter: blur(12px);
+    button {
+      cursor: pointer;
+    }
+
+    .app {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      border: 1px solid rgba(217, 226, 238, 0.8);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.78);
       box-shadow: var(--shadow);
-      border: 1px solid var(--line);
+      backdrop-filter: blur(18px);
     }
 
-    .hero-top { display: flex; gap: 18px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-    .hero h1 { margin: 0; font-size: 2rem; font-weight: 800; }
-    .hero p { margin: 8px 0 0; color: var(--sub); font-size: 0.95rem; }
-
-    .today-chip {
-      background: var(--bg2); color: var(--primary);
-      padding: 10px 18px; border-radius: 999px; font-weight: 700;
-      border: 1px solid var(--line);
+    @media (prefers-color-scheme: dark) {
+      .topbar {
+        background: rgba(17, 24, 39, 0.82);
+        border-color: var(--line);
+      }
     }
 
-    .layout {
-      display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 20px; align-items: start;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--navy);
+      color: var(--card);
+      font-weight: 900;
+      letter-spacing: 0;
+      flex: 0 0 auto;
+    }
+
+    .brand h1 {
+      font-size: 1.35rem;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .brand p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 2px;
+    }
+
+    .today {
+      color: var(--blue);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr) 360px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
     }
 
     .card {
-      background: var(--card); border: 1px solid var(--line);
-      box-shadow: var(--shadow); border-radius: var(--radius-xl);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
     }
 
-    .section-pad { padding: 24px; }
-    .section-title { margin: 0 0 16px; font-size: 1.15rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+    .pad {
+      padding: 18px;
+    }
 
-    /* カレンダー部分 */
-    .calendar-card { position: sticky; top: 20px; }
-    .calendar-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-    .calendar-title { margin: 0; font-size: 1.25rem; font-weight: 800; }
-    
-    .nav-row { display: flex; gap: 8px; }
+    .side-sticky {
+      position: sticky;
+      top: 18px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 900;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 6px;
+      padding: 5px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel);
+    }
+
+    .tab-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 8px 14px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
+
+    .tab-btn.active {
+      background: var(--card);
+      color: var(--ink);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--panel);
+    }
+
+    .metric-label {
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .metric-value {
+      margin-top: 3px;
+      font-size: 1.7rem;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .metric.overdue .metric-value {
+      color: var(--red);
+    }
+
+    .metric.today .metric-value {
+      color: var(--amber);
+    }
+
+    .metric.client .metric-value {
+      color: var(--blue);
+    }
+
+    .calendar-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .month-title {
+      font-size: 1rem;
+      font-weight: 900;
+    }
+
+    .icon-row {
+      display: flex;
+      gap: 6px;
+    }
+
     .icon-btn {
-      width: 40px; height: 40px; border-radius: 12px; border: none; cursor: pointer;
-      background: var(--bg2); color: var(--primary); font-weight: 800; font-size: 1.1rem;
-      display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--panel);
+      font-weight: 900;
     }
-    .icon-btn:hover { transform: translateY(-2px); filter: brightness(0.95); }
 
-    .calendar-tools { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
-    .btn {
-      border: none; cursor: pointer; padding: 12px 20px; border-radius: 12px;
-      font-weight: 700; font-size: 0.95rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px;
+    .icon-btn:hover,
+    .btn-small:hover,
+    .action-btn:hover {
+      border-color: var(--line-strong);
+      background: var(--blue-soft);
     }
-    .btn-primary { background: var(--primary); color: #fff; }
-    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 15px rgba(79, 70, 229, 0.2); }
-    .btn-soft { background: var(--bg2); color: var(--primary); }
-    .btn-soft:hover { filter: brightness(0.95); }
-    .btn-ghost { background: transparent; color: var(--sub); border: 1px solid var(--line); }
-    .btn-ghost:hover { background: var(--bg2); }
 
-    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
-    .weekday { text-align: center; color: var(--sub); font-size: 0.8rem; font-weight: 700; padding-bottom: 8px; }
+    .calendar-tools {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+
+    .weekday {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 850;
+      padding-bottom: 6px;
+    }
+
     .day {
-      min-height: 70px; padding: 6px; border-radius: 12px; border: 1px solid var(--line);
-      background: transparent; display: flex; flex-direction: column; gap: 4px; cursor: pointer; transition: all 0.2s;
+      position: relative;
+      aspect-ratio: 1;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      font-size: 0.84rem;
+      font-weight: 800;
     }
-    .day:hover { background: var(--bg2); transform: scale(1.05); }
-    .day.other-month { opacity: 0.3; }
-    .day.today { outline: 2px solid var(--primary); outline-offset: -2px; }
-    .day.selected { background: var(--primary); color: #fff; border-color: var(--primary); }
-    .day.selected .day-count { background: rgba(255,255,255,0.2); color: #fff; }
 
-    .day-top { display: flex; justify-content: space-between; align-items: center; }
-    .day-num { font-size: 0.9rem; font-weight: 800; }
-    .day-count {
-      min-width: 20px; height: 20px; border-radius: 50%; background: var(--bg2); color: var(--primary);
-      font-size: 0.7rem; font-weight: 800; display: inline-flex; align-items: center; justify-content: center;
+    .day:hover {
+      background: var(--panel);
     }
-    .day-dots { display: flex; flex-wrap: wrap; gap: 3px; margin-top: auto; }
-    .dot { width: 6px; height: 6px; border-radius: 50%; }
-    .dot.low { background: var(--success); }
-    .dot.medium { background: var(--warning); }
-    .dot.high { background: var(--danger); }
 
-    .selected-info { margin-top: 16px; padding: 14px; border-radius: 12px; background: var(--bg2); color: var(--sub); font-size: 0.9rem; line-height: 1.5; }
-
-    /* フォーム部分 */
-    .content-stack { display: grid; gap: 20px; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .full-width { grid-column: 1 / -1; }
-    
-    .field-group { display: flex; flex-direction: column; gap: 6px; }
-    .field-label { font-size: 0.85rem; font-weight: 700; color: var(--sub); margin-left: 4px; }
-    
-    .input, .select, .textarea {
-      width: 100%; border: 1px solid var(--line); border-radius: 12px;
-      background: transparent; padding: 12px 14px; font-size: 0.95rem; color: var(--text); font-family: inherit;
-      transition: all 0.2s;
+    .day.other {
+      opacity: 0.34;
     }
-    .textarea { resize: vertical; min-height: 80px; }
-    .input:focus, .select:focus, .textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15); }
-    .form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px; }
 
-    /* ツールバー＆統計 */
-    .toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 20px; justify-content: space-between; }
-    .search-wrap { flex: 1; min-width: 200px; }
-    .filter-row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .chip-btn {
-      padding: 8px 14px; border-radius: 999px; background: transparent; border: 1px solid var(--line);
-      color: var(--sub); font-weight: 700; cursor: pointer; transition: all 0.2s;
+    .day.today {
+      color: var(--blue);
+      background: var(--blue-soft);
     }
-    .chip-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-    /* タスクリストとアニメーション */
-    @keyframes slideIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-    
-    .task-list { display: grid; gap: 14px; }
-    .task-item {
-      display: grid; grid-template-columns: auto auto 1fr auto; gap: 16px; align-items: start;
-      padding: 18px; border-radius: 16px; background: var(--bg); border: 1px solid var(--line);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); animation: slideIn 0.4s ease forwards;
+    .day.selected {
+      color: #fff;
+      background: var(--navy);
     }
-    .task-item:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--primary); }
-    .task-item.completed { opacity: 0.6; background: transparent; }
-    .task-item.completed .task-title { text-decoration: line-through; color: var(--sub); }
-    .task-item.dragging { box-shadow: 0 20px 40px rgba(0,0,0,0.2); transform: rotate(2deg) scale(1.02); z-index: 999; opacity: 0.95; }
 
-    .drag-placeholder { border: 2px dashed var(--primary); border-radius: 16px; background: transparent; }
-    .drag-handle {
-      width: 32px; height: 32px; border-radius: 8px; color: var(--sub);
-      display: grid; place-items: center; cursor: grab; font-size: 1.2rem; margin-top: -2px;
+    .dots {
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 2px;
     }
-    .drag-handle:active { cursor: grabbing; color: var(--primary); }
 
-    .task-check { width: 22px; height: 22px; accent-color: var(--success); cursor: pointer; margin-top: 2px; }
-    .task-main { min-width: 0; }
-    .task-title { margin: 0 0 12px; font-size: 1.1rem; font-weight: 700; word-break: break-word; }
-    
-    /* 詳細メモの表示エリア */
-    .task-details-box {
-      background: var(--bg2); padding: 12px 14px; border-radius: 10px; margin-bottom: 12px;
-      display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem;
+    .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--blue);
     }
-    .task-detail-row { display: flex; flex-direction: column; gap: 2px; }
-    .detail-label-small { font-weight: 700; color: var(--sub); font-size: 0.75rem; }
-    .detail-content { white-space: pre-wrap; word-break: break-word; color: var(--text); }
-    
-    .task-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+    .dot.high {
+      background: var(--red);
+    }
+
+    .dot.medium {
+      background: var(--amber);
+    }
+
+    .dot.low {
+      background: var(--green);
+    }
+
+    .btn-small,
+    .action-btn {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--panel);
+      color: var(--muted);
+      padding: 8px 11px;
+      font-size: 0.8rem;
+      font-weight: 850;
+      transition: 0.16s;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      border: none;
+      border-radius: var(--radius-sm);
+      background: var(--blue);
+      color: #fff;
+      padding: 11px 16px;
+      font-weight: 900;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.18);
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+
+    .btn-ghost {
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      padding: 10px 14px;
+      font-weight: 850;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    label {
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 850;
+    }
+
+    .input,
+    .select,
+    .textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--panel);
+      padding: 10px 11px;
+      outline: none;
+      transition: 0.16s;
+    }
+
+    .textarea {
+      min-height: 76px;
+      resize: vertical;
+    }
+
+    .input:focus,
+    .select:focus,
+    .textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+      background: var(--card);
+    }
+
+    .inline-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .quick-dates {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(180px, 1fr) auto auto auto;
+      gap: 9px;
+      margin-bottom: 14px;
+      align-items: center;
+    }
+
+    .search {
+      border-radius: 999px;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .case-card,
+    .client-card,
+    .dash-card {
+      display: grid;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--line-strong);
+      border-radius: var(--radius-sm);
+      background: var(--card);
+      padding: 13px;
+      transition: 0.16s;
+    }
+
+    .case-card:hover,
+    .client-card:hover,
+    .dash-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-1px);
+    }
+
+    .case-card.overdue,
+    .dash-card.overdue {
+      border-left-color: var(--red);
+    }
+
+    .case-card.today,
+    .dash-card.today {
+      border-left-color: var(--amber);
+    }
+
+    .case-card.future,
+    .dash-card.future {
+      border-left-color: var(--blue);
+    }
+
+    .case-card.completed {
+      opacity: 0.68;
+      background: var(--panel);
+    }
+
+    .case-card.archived,
+    .client-card.archived {
+      opacity: 0.58;
+      background: var(--panel);
+    }
+
+    .case-top,
+    .client-top,
+    .dash-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .case-title,
+    .client-name,
+    .dash-title {
+      font-weight: 950;
+      line-height: 1.3;
+      word-break: break-word;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .memo {
+      color: var(--muted);
+      font-size: 0.86rem;
+      white-space: pre-wrap;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
     .badge {
-      display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 8px;
-      font-size: 0.8rem; font-weight: 700; border: 1px solid var(--line); background: var(--bg2); color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      min-height: 23px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--muted);
+      font-size: 0.73rem;
+      font-weight: 850;
+      white-space: nowrap;
     }
-    .badge-tag { background: #e0e7ff; color: #3730a3; border-color: transparent; }
-    .badge-low { background: rgba(16, 185, 129, 0.1); color: var(--success); border-color: transparent;}
-    .badge-medium { background: rgba(245, 158, 11, 0.1); color: var(--warning); border-color: transparent;}
-    .badge-high { background: rgba(239, 68, 68, 0.1); color: var(--danger); border-color: transparent;}
 
-    @media (prefers-color-scheme: dark) { .badge-tag { background: rgba(99, 102, 241, 0.2); color: #a5b4fc; } }
+    .badge.overdue {
+      color: var(--red);
+      background: var(--red-soft);
+      border-color: transparent;
+    }
 
-    .task-actions { display: flex; gap: 8px; }
-    .small-btn { border: none; cursor: pointer; padding: 8px 12px; border-radius: 10px; font-weight: 700; font-size: 0.85rem; transition: 0.2s; }
-    .small-btn.edit { background: var(--bg2); color: var(--primary); }
-    .small-btn.edit:hover { filter: brightness(0.9); }
-    .small-btn.delete { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
-    .small-btn.delete:hover { background: rgba(239, 68, 68, 0.2); }
+    .badge.today {
+      color: var(--amber);
+      background: var(--amber-soft);
+      border-color: transparent;
+    }
 
-    .empty { padding: 40px 20px; text-align: center; border: 2px dashed var(--line); border-radius: 16px; color: var(--sub); }
+    .badge.future {
+      color: var(--blue);
+      background: var(--blue-soft);
+      border-color: transparent;
+    }
 
-    @media (max-width: 900px) {
-      .layout { grid-template-columns: 1fr; }
-      .calendar-card { position: static; }
-      .task-item { grid-template-columns: auto 1fr; }
-      .task-actions { grid-column: 1 / -1; justify-content: flex-end; margin-top: 8px; }
-      .drag-handle { margin-top: -4px; }
+    .badge.done {
+      color: var(--green);
+      background: var(--green-soft);
+      border-color: transparent;
+    }
+
+    .actions {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .empty {
+      padding: 24px;
+      text-align: center;
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius-sm);
+      background: var(--panel);
+      color: var(--muted);
+      font-weight: 850;
+    }
+
+    .dash-list {
+      max-height: 420px;
+      overflow: auto;
+      padding-right: 4px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .dash-card {
+      width: 100%;
+      text-align: left;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 1180px) {
+      .shell {
+        grid-template-columns: 300px minmax(0, 1fr);
+      }
+
+      .right-col {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      body {
+        padding: 14px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      .side-sticky {
+        position: static;
+      }
+
+      .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .toolbar .search {
+        grid-column: 1 / -1;
+      }
+
+      .right-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .pad {
+        padding: 14px;
+      }
+
+      .summary-grid,
+      .form-grid,
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .form-actions,
+      .inline-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-primary,
+      .btn-ghost {
+        width: 100%;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="app">
-    <header class="hero">
-      <div class="hero-top">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">N</div>
         <div>
-          <h1>✅ タスク管理アプリ</h1>
-          <p>カレンダー連動 / 詳細メモ（紹介元・注意事項・業務過程・特記事項） / タグ</p>
+          <h1>ニシオカンリシステム</h1>
+          <p>行政書士向け 案件・顧客・期限管理</p>
         </div>
-        <div class="today-chip" id="todayLabel">今日: --</div>
       </div>
+      <div class="today" id="todayLabel">----年--月--日</div>
     </header>
 
-    <main class="layout">
-      <!-- カレンダー -->
-      <aside class="card calendar-card">
-        <div class="section-pad">
+    <main class="shell">
+      <aside class="stack side-sticky">
+        <section class="card pad">
           <div class="calendar-head">
-            <h2 class="calendar-title" id="calendarMonthLabel">📅 ----</h2>
-            <div class="nav-row">
-              <button class="icon-btn" id="prevMonthBtn">‹</button>
-              <button class="icon-btn" id="nextMonthBtn">›</button>
+            <h2 class="month-title" id="calendarMonthLabel">----年 --月</h2>
+            <div class="icon-row">
+              <button class="icon-btn" id="prevMonthBtn" type="button" aria-label="前月へ">‹</button>
+              <button class="icon-btn" id="nextMonthBtn" type="button" aria-label="翌月へ">›</button>
             </div>
           </div>
+
           <div class="calendar-tools">
-            <button class="btn btn-soft" id="todayBtn">🎯 今日へ</button>
-            <button class="btn btn-ghost" id="clearDateFilterBtn">🔄 選択解除</button>
+            <button class="btn-small" id="todayBtn" type="button">今日</button>
+            <button class="btn-small" id="clearDateFilterBtn" type="button">選択解除</button>
           </div>
+
           <div class="calendar-grid" id="calendarGrid"></div>
-          <div class="selected-info" id="selectedInfo">日付を選択してタスクを絞り込みます。</div>
-        </div>
+        </section>
+
+        <section class="card pad">
+          <div class="section-head">
+            <h2 class="section-title">データ管理</h2>
+          </div>
+          <div class="actions" style="justify-content:flex-start;">
+            <button class="btn-small" id="exportJsonBtn" type="button">JSON保存</button>
+            <button class="btn-small" id="importJsonBtn" type="button">JSON読込</button>
+            <input class="hidden" id="importJsonInput" type="file" accept="application/json,.json" />
+          </div>
+        </section>
       </aside>
 
-      <section class="content-stack">
-        <!-- 入力フォーム -->
-        <section class="card">
-          <div class="section-pad">
-            <h2 class="section-title" id="formTitle">✨ 新しい案件・タスクを追加</h2>
-            <div class="form-grid">
-              
-              <div class="field-group full-width">
-                <label class="field-label">件名・タスク名</label>
-                <input id="taskTitleInput" class="input" type="text" placeholder="📝 やることを入力 (必須)" />
-              </div>
-              
-              <div class="field-group">
-                <label class="field-label">期限日 / 予定日</label>
-                <input id="taskDateInput" class="input" type="date" />
-              </div>
-              
-              <div class="field-group">
-                <label class="field-label">タグ分類</label>
-                <select id="taskTagInput" class="select">
-                  <option value="💼 業務">💼 業務</option>
-                  <option value="💻 開発">💻 開発</option>
-                  <option value="🏠 プライベート">🏠 プライベート</option>
-                  <option value="📌 その他">📌 その他</option>
-                </select>
-              </div>
-
-              <!-- 分割されたメモフィールド群 -->
-              <div class="field-group full-width">
-                <label class="field-label">紹介元</label>
-                <input id="taskReferralInput" class="input" type="text" placeholder="例: 〇〇様からのご紹介、自社HP経由 など" />
-              </div>
-
-              <div class="field-group full-width">
-                <label class="field-label">注意事項</label>
-                <textarea id="taskNotesInput" class="textarea" placeholder="例: 連絡は午後のみ、請求条件の指定あり など"></textarea>
-              </div>
-
-              <div class="field-group full-width">
-                <label class="field-label">業務過程</label>
-                <textarea id="taskProcessInput" class="textarea" placeholder="例: &#10;〇月〇日：必要書類をご案内&#10;〇月〇日：書類受領、作成開始 など"></textarea>
-              </div>
-
-              <div class="field-group full-width">
-                <label class="field-label">特記事項</label>
-                <textarea id="taskSpecialInput" class="textarea" placeholder="その他、残しておきたいメモがあれば記入"></textarea>
-              </div>
-              
-              <div class="field-group full-width">
-                <label class="field-label">優先度</label>
-                <select id="taskPriorityInput" class="select" style="width: 50%;">
-                  <option value="medium">⏸ 優先度: 中</option>
-                  <option value="high">⏫ 優先度: 高</option>
-                  <option value="low">⏬ 優先度: 低</option>
-                </select>
-              </div>
-
-              <div class="form-actions full-width">
-                <button id="cancelEditBtn" class="btn btn-ghost" type="button" style="display:none;">❌ キャンセル</button>
-                <button id="submitTaskBtn" class="btn btn-primary">➕ 追加・保存する</button>
-              </div>
+      <section class="stack">
+        <section class="card pad">
+          <div class="section-head">
+            <h2 class="section-title">状況サマリー</h2>
+            <div class="tabs">
+              <button class="tab-btn active" type="button" data-view="cases">案件</button>
+              <button class="tab-btn" type="button" data-view="clients">顧客</button>
             </div>
           </div>
+          <div class="summary-grid" id="summaryGrid"></div>
         </section>
 
-        <!-- タスク一覧 -->
-        <section class="card">
-          <div class="section-pad">
-            <div class="toolbar">
-              <div class="search-wrap">
-                <input id="searchInput" class="input" type="text" placeholder="🔍 タスク・メモを横断検索..." style="padding: 10px 14px;" />
-              </div>
-              <div class="filter-row">
-                <button class="chip-btn active" data-filter="all">すべて</button>
-                <button class="chip-btn" data-filter="active">未完了</button>
-                <button class="chip-btn" data-filter="completed">完了</button>
-              </div>
-              <button class="btn btn-ghost" id="clearCompletedBtn" style="padding: 8px 12px; font-size:0.85rem;">🗑 完了済み削除</button>
+        <section class="card pad" id="caseFormCard">
+          <div class="section-head">
+            <h2 class="section-title" id="caseFormTitle">案件の登録</h2>
+            <span class="hint">顧客リストと連動</span>
+          </div>
+
+          <form id="caseForm" class="form-grid">
+            <div class="field full">
+              <label for="caseTitleInput">タスク・案件名 *</label>
+              <input id="caseTitleInput" class="input" type="text" placeholder="例：建設業許可 更新申請書の作成" required />
             </div>
 
-            <h2 class="section-title" style="margin-bottom: 12px;">📋 タスク・案件一覧 <span id="listCount" style="font-size:0.9rem; color:var(--sub); font-weight:normal;"></span></h2>
-            
-            <div class="task-list" id="taskList"></div>
+            <div class="field">
+              <label for="caseClientSelect">顧客</label>
+              <div class="inline-row">
+                <select id="caseClientSelect" class="select"></select>
+                <button class="btn-small" id="newClientFromCaseBtn" type="button">新規</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="caseCategoryInput">業務カテゴリ</label>
+              <select id="caseCategoryInput" class="select"></select>
+            </div>
+
+            <div class="field">
+              <label for="caseStatusInput">案件ステータス</label>
+              <select id="caseStatusInput" class="select"></select>
+            </div>
+
+            <div class="field">
+              <label for="casePriorityInput">優先度</label>
+              <select id="casePriorityInput" class="select">
+                <option value="high">高 急ぎ</option>
+                <option value="medium" selected>中 通常</option>
+                <option value="low">低 後回し可</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="caseDateInput">提出・完了期限</label>
+              <input id="caseDateInput" class="input" type="date" />
+              <div class="quick-dates">
+                <button type="button" class="btn-small qd-btn" data-days="0">今日</button>
+                <button type="button" class="btn-small qd-btn" data-days="1">明日</button>
+                <button type="button" class="btn-small qd-btn" data-days="7">1週間後</button>
+                <button type="button" class="btn-small qd-btn" data-days="30">1ヶ月後</button>
+              </div>
+            </div>
+
+            <div class="field full">
+              <label for="caseMemoInput">メモ・備考</label>
+              <textarea id="caseMemoInput" class="textarea" placeholder="必要書類、連絡履歴、補正内容など"></textarea>
+              <div class="quick-dates">
+                <button type="button" class="btn-small" id="insertCaseTimestampBtn">日時を挿入</button>
+              </div>
+            </div>
+
+            <div class="form-actions full">
+              <button id="cancelCaseEditBtn" class="btn-ghost" type="button" style="display:none;">キャンセル</button>
+              <button id="submitCaseBtn" class="btn-primary" type="submit">保存する</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="card pad hidden" id="clientFormCard">
+          <div class="section-head">
+            <h2 class="section-title" id="clientFormTitle">顧客の登録</h2>
+            <span class="hint">案件作成時に選択可能</span>
           </div>
+
+          <form id="clientForm" class="form-grid">
+            <div class="field">
+              <label for="clientNameInput">顧客名 *</label>
+              <input id="clientNameInput" class="input" type="text" placeholder="株式会社〇〇 / 山田太郎" required />
+            </div>
+
+            <div class="field">
+              <label for="clientTypeInput">区分</label>
+              <select id="clientTypeInput" class="select">
+                <option value="法人">法人</option>
+                <option value="個人">個人</option>
+                <option value="個人事業主">個人事業主</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="clientPersonInput">担当者</label>
+              <input id="clientPersonInput" class="input" type="text" placeholder="担当者名" />
+            </div>
+
+            <div class="field">
+              <label for="clientPhoneInput">電話</label>
+              <input id="clientPhoneInput" class="input" type="tel" placeholder="090-0000-0000" />
+            </div>
+
+            <div class="field">
+              <label for="clientEmailInput">メール</label>
+              <input id="clientEmailInput" class="input" type="email" placeholder="mail@example.com" />
+            </div>
+
+            <div class="field">
+              <label for="clientAddressInput">住所</label>
+              <input id="clientAddressInput" class="input" type="text" placeholder="大阪府..." />
+            </div>
+
+            <div class="field full">
+              <label for="clientMemoInput">顧客メモ</label>
+              <textarea id="clientMemoInput" class="textarea" placeholder="紹介元、注意事項、請求条件など"></textarea>
+              <div class="quick-dates">
+                <button type="button" class="btn-small" id="insertClientTimestampBtn">日時を挿入</button>
+              </div>
+            </div>
+
+            <div class="form-actions full">
+              <button id="cancelClientEditBtn" class="btn-ghost" type="button" style="display:none;">キャンセル</button>
+              <button id="submitClientBtn" class="btn-primary" type="submit">保存する</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="card pad" id="caseListCard">
+          <div class="toolbar">
+            <input id="caseSearchInput" class="input search" type="text" placeholder="案件・顧客・メモを検索..." />
+            <select id="caseStatusFilter" class="select">
+              <option value="active">未完了</option>
+              <option value="all">すべて</option>
+              <option value="completed">完了</option>
+              <option value="archived">保管</option>
+            </select>
+            <select id="caseCategoryFilter" class="select"></select>
+            <select id="caseUrgencyFilter" class="select">
+              <option value="all">期限すべて</option>
+              <option value="overdue">期限超過</option>
+              <option value="today">本日締切</option>
+              <option value="future">今後の期限</option>
+              <option value="none">期限なし</option>
+            </select>
+          </div>
+          <div class="list" id="caseList"></div>
+        </section>
+
+        <section class="card pad hidden" id="clientListCard">
+          <div class="toolbar" style="grid-template-columns:minmax(180px,1fr) auto;">
+            <input id="clientSearchInput" class="input search" type="text" placeholder="顧客名・担当者・連絡先を検索..." />
+            <select id="clientFilterInput" class="select">
+              <option value="active">利用中</option>
+              <option value="all">すべて</option>
+              <option value="archived">保管</option>
+            </select>
+          </div>
+          <div class="list" id="clientList"></div>
         </section>
       </section>
+
+      <aside class="stack right-col side-sticky">
+        <section class="card pad">
+          <div class="section-head">
+            <h2 class="section-title">優先案件</h2>
+            <span class="hint">クリックで編集</span>
+          </div>
+          <div class="dash-list" id="dashboardList"></div>
+        </section>
+
+        <section class="card pad">
+          <div class="section-head">
+            <h2 class="section-title">顧客クイックビュー</h2>
+            <span class="hint">案件数順</span>
+          </div>
+          <div class="dash-list" id="clientQuickList"></div>
+        </section>
+      </aside>
     </main>
   </div>
 
   <script>
-    // データ保存キー（新仕様用に更新）
-    const STORAGE_KEY = "task_calendar_app_v4_split_memos";
+    const STORAGE_KEY = "nishiokanri_system_v4";
+    const LEGACY_TASK_KEY = "admin_scrivener_task_app_v3";
+
+    const categories = [
+      "風営法許可",
+      "建設業許可",
+      "宅建業免許",
+      "産廃収集運搬",
+      "道路使用",
+      "道路占用",
+      "会社設立",
+      "在留資格",
+      "相続・遺言",
+      "契約書作成",
+      "その他"
+    ];
+
+    const statuses = [
+      "相談中",
+      "書類待ち",
+      "作成中",
+      "申請済み",
+      "補正対応中",
+      "請求済み",
+      "完了"
+    ];
+
+    const priorityLabel = {
+      high: "高",
+      medium: "中",
+      low: "低"
+    };
+
+    const statusDone = new Set(["完了"]);
 
     const state = {
-      tasks: loadTasks(),
+      data: loadData(),
+      view: "cases",
       currentMonth: startOfMonth(new Date()),
       selectedDate: "",
-      statusFilter: "all",
-      keyword: "",
-      editingId: null,
-      drag: null
+      editingCaseId: null,
+      editingClientId: null,
+      caseKeyword: "",
+      clientKeyword: "",
+      caseStatusFilter: "active",
+      caseCategoryFilter: "all",
+      caseUrgencyFilter: "all",
+      clientFilter: "active"
     };
+
+    const $ = id => document.getElementById(id);
 
     const el = {
-      todayLabel: document.getElementById("todayLabel"),
-      calendarMonthLabel: document.getElementById("calendarMonthLabel"),
-      calendarGrid: document.getElementById("calendarGrid"),
-      selectedInfo: document.getElementById("selectedInfo"),
-      prevMonthBtn: document.getElementById("prevMonthBtn"),
-      nextMonthBtn: document.getElementById("nextMonthBtn"),
-      todayBtn: document.getElementById("todayBtn"),
-      clearDateFilterBtn: document.getElementById("clearDateFilterBtn"),
-      
-      formTitle: document.getElementById("formTitle"),
-      taskTitleInput: document.getElementById("taskTitleInput"),
-      taskDateInput: document.getElementById("taskDateInput"),
-      taskPriorityInput: document.getElementById("taskPriorityInput"),
-      taskTagInput: document.getElementById("taskTagInput"),
-      
-      // 新しく追加した入力フィールド群
-      taskReferralInput: document.getElementById("taskReferralInput"),
-      taskNotesInput: document.getElementById("taskNotesInput"),
-      taskProcessInput: document.getElementById("taskProcessInput"),
-      taskSpecialInput: document.getElementById("taskSpecialInput"),
+      todayLabel: $("todayLabel"),
+      calendarMonthLabel: $("calendarMonthLabel"),
+      calendarGrid: $("calendarGrid"),
+      summaryGrid: $("summaryGrid"),
+      dashboardList: $("dashboardList"),
+      clientQuickList: $("clientQuickList"),
 
-      submitTaskBtn: document.getElementById("submitTaskBtn"),
-      cancelEditBtn: document.getElementById("cancelEditBtn"),
-      
-      searchInput: document.getElementById("searchInput"),
-      clearCompletedBtn: document.getElementById("clearCompletedBtn"),
-      taskList: document.getElementById("taskList"),
-      listCount: document.getElementById("listCount"),
-      filterButtons: Array.from(document.querySelectorAll(".chip-btn[data-filter]"))
+      caseFormCard: $("caseFormCard"),
+      clientFormCard: $("clientFormCard"),
+      caseListCard: $("caseListCard"),
+      clientListCard: $("clientListCard"),
+
+      caseForm: $("caseForm"),
+      clientForm: $("clientForm"),
+      caseFormTitle: $("caseFormTitle"),
+      clientFormTitle: $("clientFormTitle"),
+
+      caseTitleInput: $("caseTitleInput"),
+      caseClientSelect: $("caseClientSelect"),
+      caseCategoryInput: $("caseCategoryInput"),
+      caseStatusInput: $("caseStatusInput"),
+      casePriorityInput: $("casePriorityInput"),
+      caseDateInput: $("caseDateInput"),
+      caseMemoInput: $("caseMemoInput"),
+
+      clientNameInput: $("clientNameInput"),
+      clientTypeInput: $("clientTypeInput"),
+      clientPersonInput: $("clientPersonInput"),
+      clientPhoneInput: $("clientPhoneInput"),
+      clientEmailInput: $("clientEmailInput"),
+      clientAddressInput: $("clientAddressInput"),
+      clientMemoInput: $("clientMemoInput"),
+
+      caseSearchInput: $("caseSearchInput"),
+      clientSearchInput: $("clientSearchInput"),
+      caseStatusFilter: $("caseStatusFilter"),
+      caseCategoryFilter: $("caseCategoryFilter"),
+      caseUrgencyFilter: $("caseUrgencyFilter"),
+      clientFilterInput: $("clientFilterInput"),
+
+      caseList: $("caseList"),
+      clientList: $("clientList"),
+      importJsonInput: $("importJsonInput"),
+
+      cancelCaseEditBtn: $("cancelCaseEditBtn"),
+      submitCaseBtn: $("submitCaseBtn"),
+      cancelClientEditBtn: $("cancelClientEditBtn"),
+      submitClientBtn: $("submitClientBtn")
     };
 
-    function loadTasks() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch { return []; } }
-    function saveTasks() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state.tasks)); }
-    function uid() { return "id-" + Date.now() + "-" + Math.random().toString(16).slice(2); }
-    function pad(n) { return String(n).padStart(2, "0"); }
-    function toYMD(date) { return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`; }
-    function parseYMD(ymd) { if (!ymd) return null; const [y, m, d] = ymd.split("-").map(Number); return new Date(y, m - 1, d); }
-    function formatDateJP(ymd) { const dt = parseYMD(ymd); return dt ? `${dt.getFullYear()}/${dt.getMonth() + 1}/${dt.getDate()}` : "期限なし"; }
-    function startOfMonth(date) { return new Date(date.getFullYear(), date.getMonth(), 1); }
-    function escapeHtml(str) { return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]); }
-    function priorityLabel(p) { return { high: "高", low: "低" }[p] || "中"; }
+    function loadData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          return {
+            clients: (parsed.clients || []).map(normalizeClient),
+            cases: (parsed.cases || parsed.tasks || []).map(normalizeCase)
+          };
+        }
 
-    function getFilteredTasks() {
-      const keyword = state.keyword.trim().toLowerCase();
-      return state.tasks.filter(task => {
-        // すべてのメモフィールドを検索対象に含める
-        const matchKeyword = !keyword || 
-          task.title.toLowerCase().includes(keyword) || 
-          (task.referral && task.referral.toLowerCase().includes(keyword)) ||
-          (task.notes && task.notes.toLowerCase().includes(keyword)) ||
-          (task.process && task.process.toLowerCase().includes(keyword)) ||
-          (task.special && task.special.toLowerCase().includes(keyword));
-          
-        const matchStatus = state.statusFilter === "all" || (state.statusFilter === "active" && !task.completed) || (state.statusFilter === "completed" && task.completed);
-        const matchDate = !state.selectedDate || task.dueDate === state.selectedDate;
-        return matchKeyword && matchStatus && matchDate;
-      });
+        const legacy = localStorage.getItem(LEGACY_TASK_KEY);
+        if (legacy) {
+          const tasks = JSON.parse(legacy).map(normalizeCase);
+          const clients = [];
+
+          tasks.forEach(item => {
+            if (!item.clientName) return;
+
+            let client = clients.find(c => c.name === item.clientName);
+            if (!client) {
+              client = normalizeClient({
+                name: item.clientName,
+                type: "法人"
+              });
+              clients.push(client);
+            }
+
+            item.clientId = client.id;
+          });
+
+          return {
+            clients,
+            cases: tasks
+          };
+        }
+      } catch {
+        return {
+          clients: [],
+          cases: []
+        };
+      }
+
+      return {
+        clients: [],
+        cases: []
+      };
     }
 
-    function renderTodayLabel() {
+    function saveData() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.data));
+    }
+
+    function uid() {
+      return "id-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+    }
+
+    function pad(n) {
+      return String(n).padStart(2, "0");
+    }
+
+    function toYMD(date) {
+      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+    }
+
+    function parseYMD(ymd) {
+      if (!ymd) return null;
+      const [y, m, d] = ymd.split("-").map(Number);
+      return new Date(y, m - 1, d);
+    }
+
+    function startOfMonth(date) {
+      return new Date(date.getFullYear(), date.getMonth(), 1);
+    }
+
+    function escapeHtml(str) {
+      return String(str || "").replace(/[&<>"']/g, m => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#39;"
+      })[m]);
+    }
+
+    function clientById(id) {
+      return state.data.clients.find(c => c.id === id);
+    }
+
+    function clientName(id, fallback = "顧客未設定") {
+      return clientById(id)?.name || fallback;
+    }
+
+    function formatDate(ymd) {
+      const d = parseYMD(ymd);
+      return d ? `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}` : "期限なし";
+    }
+
+    function currentTimestamp() {
       const now = new Date();
-      el.todayLabel.textContent = `今日: ${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()}（${["日", "月", "火", "水", "木", "金", "土"][now.getDay()]}）`;
+      return `${now.getFullYear()}/${pad(now.getMonth() + 1)}/${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+    }
+
+    function insertTimestamp(textarea) {
+      const stamp = `[${currentTimestamp()}] `;
+      const start = textarea.selectionStart ?? textarea.value.length;
+      const end = textarea.selectionEnd ?? textarea.value.length;
+      const before = textarea.value.slice(0, start);
+      const after = textarea.value.slice(end);
+      const prefix = before && !before.endsWith("\n") ? "\n" : "";
+
+      textarea.value = before + prefix + stamp + after;
+
+      const cursor = before.length + prefix.length + stamp.length;
+      textarea.focus();
+      textarea.setSelectionRange(cursor, cursor);
+    }
+
+    function dateStatus(dueDate) {
+      if (!dueDate) return "none";
+
+      const today = toYMD(new Date());
+      if (dueDate < today) return "overdue";
+      if (dueDate === today) return "today";
+      return "future";
+    }
+
+    function dateLabel(item) {
+      const st = dateStatus(item.dueDate);
+      if (st === "overdue") return "期限超過";
+      if (st === "today") return "本日締切";
+      if (st === "future") return `${formatDate(item.dueDate)}まで`;
+      return "期限なし";
+    }
+
+    function normalizeClient(c) {
+      return {
+        id: c.id || uid(),
+        name: c.name || c.client || "",
+        type: c.type || "法人",
+        person: c.person || "",
+        phone: c.phone || "",
+        email: c.email || "",
+        address: c.address || "",
+        memo: c.memo || "",
+        archived: Boolean(c.archived),
+        createdAt: c.createdAt || new Date().toISOString(),
+        updatedAt: c.updatedAt || new Date().toISOString()
+      };
+    }
+
+    function normalizeCase(item) {
+      const status = item.status || (item.completed ? "完了" : "作成中");
+
+      return {
+        id: item.id || uid(),
+        title: item.title || "",
+        clientId: item.clientId || "",
+        clientName: item.clientName || item.client || "",
+        category: item.category || item.industry || "その他",
+        status,
+        priority: item.priority || "medium",
+        dueDate: item.dueDate || "",
+        memo: item.memo || "",
+        completed: statusDone.has(status) || Boolean(item.completed),
+        archived: Boolean(item.archived),
+        createdAt: item.createdAt || new Date().toISOString(),
+        updatedAt: item.updatedAt || new Date().toISOString()
+      };
+    }
+
+    function sortCases(a, b) {
+      if (a.archived !== b.archived) return a.archived ? 1 : -1;
+      if (a.completed !== b.completed) return a.completed ? 1 : -1;
+      if (!a.dueDate && b.dueDate) return 1;
+      if (a.dueDate && !b.dueDate) return -1;
+      if (a.dueDate !== b.dueDate) return a.dueDate > b.dueDate ? 1 : -1;
+
+      const priorityRank = {
+        high: 1,
+        medium: 2,
+        low: 3
+      };
+
+      return (priorityRank[a.priority] || 2) - (priorityRank[b.priority] || 2);
+    }
+
+    function renderOptions() {
+      el.caseCategoryInput.innerHTML = categories
+        .map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`)
+        .join("");
+
+      el.caseStatusInput.innerHTML = statuses
+        .map(s => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`)
+        .join("");
+
+      el.caseCategoryFilter.innerHTML =
+        `<option value="all">カテゴリすべて</option>` +
+        categories.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("");
+
+      el.caseClientSelect.innerHTML =
+        `<option value="">顧客未設定</option>` +
+        state.data.clients
+          .filter(c => !c.archived)
+          .sort((a, b) => a.name.localeCompare(b.name, "ja"))
+          .map(c => `<option value="${c.id}">${escapeHtml(c.name)}</option>`)
+          .join("");
+    }
+
+    function renderToday() {
+      const now = new Date();
+      const weekday = ["日", "月", "火", "水", "木", "金", "土"][now.getDay()];
+      el.todayLabel.textContent = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日（${weekday}）`;
+    }
+
+    function renderSummary() {
+      const cases = state.data.cases.filter(c => !c.archived);
+      const active = cases.filter(c => !c.completed);
+      const overdue = active.filter(c => dateStatus(c.dueDate) === "overdue");
+      const today = active.filter(c => dateStatus(c.dueDate) === "today");
+      const clients = state.data.clients.filter(c => !c.archived);
+
+      const metrics = [
+        ["進行中案件", active.length, ""],
+        ["本日締切", today.length, "today"],
+        ["期限超過", overdue.length, "overdue"],
+        ["登録顧客", clients.length, "client"]
+      ];
+
+      el.summaryGrid.innerHTML = metrics.map(([label, value, cls]) => `
+        <div class="metric ${cls}">
+          <div class="metric-label">${label}</div>
+          <div class="metric-value">${value}</div>
+        </div>
+      `).join("");
     }
 
     function renderCalendar() {
-      const monthDate = state.currentMonth;
-      el.calendarMonthLabel.textContent = `📅 ${monthDate.getFullYear()}年 ${monthDate.getMonth() + 1}月`;
-      const firstDay = new Date(monthDate.getFullYear(), monthDate.getMonth(), 1);
-      const startDate = new Date(firstDay); startDate.setDate(1 - firstDay.getDay());
+      const month = state.currentMonth;
+      el.calendarMonthLabel.textContent = `${month.getFullYear()}年 ${month.getMonth() + 1}月`;
 
-      let html = ["日", "月", "火", "水", "木", "金", "土"].map(l => `<div class="weekday">${l}</div>`).join("");
+      const first = new Date(month.getFullYear(), month.getMonth(), 1);
+      const start = new Date(first);
+      start.setDate(1 - first.getDay());
+
+      let html = ["日", "月", "火", "水", "木", "金", "土"]
+        .map(d => `<div class="weekday">${d}</div>`)
+        .join("");
 
       for (let i = 0; i < 42; i++) {
-        const cellDate = new Date(startDate); cellDate.setDate(startDate.getDate() + i);
-        const ymd = toYMD(cellDate); const tasks = state.tasks.filter(t => t.dueDate === ymd);
-        const classes = ["day", cellDate.getMonth() !== monthDate.getMonth() ? "other-month" : "", ymd === toYMD(new Date()) ? "today" : "", state.selectedDate === ymd ? "selected" : ""].filter(Boolean).join(" ");
-        const dots = tasks.slice(0, 4).map(t => `<span class="dot ${t.priority}"></span>`).join("");
-        html += `<div class="${classes}" data-date="${ymd}"><div class="day-top"><span class="day-num">${cellDate.getDate()}</span>${tasks.length ? `<span class="day-count">${tasks.length}</span>` : ""}</div><div class="day-dots">${dots}</div></div>`;
+        const cell = new Date(start);
+        cell.setDate(start.getDate() + i);
+
+        const ymd = toYMD(cell);
+        const cases = state.data.cases.filter(c => c.dueDate === ymd && !c.completed && !c.archived);
+        const classes = [
+          "day",
+          cell.getMonth() !== month.getMonth() ? "other" : "",
+          ymd === toYMD(new Date()) ? "today" : "",
+          state.selectedDate === ymd ? "selected" : ""
+        ].filter(Boolean).join(" ");
+
+        const dots = cases.slice(0, 3)
+          .map(c => `<span class="dot ${c.priority}"></span>`)
+          .join("");
+
+        html += `
+          <button class="${classes}" type="button" data-date="${ymd}" aria-label="${ymd}を選択">
+            ${cell.getDate()}
+            <span class="dots">${dots}</span>
+          </button>
+        `;
       }
+
       el.calendarGrid.innerHTML = html;
-      el.calendarGrid.querySelectorAll(".day").forEach(dayEl => {
-        dayEl.addEventListener("click", () => {
-          state.selectedDate = dayEl.dataset.date; el.taskDateInput.value = state.selectedDate;
-          state.currentMonth = startOfMonth(parseYMD(state.selectedDate));
-          renderCalendar(); renderTasks(); updateSelectedInfo();
-        });
-      });
-      updateSelectedInfo();
     }
 
-    function updateSelectedInfo() {
-      if (!state.selectedDate) return el.selectedInfo.textContent = "👆 カレンダーの日付を選ぶと、その日のタスクだけ表示できます。";
-      el.selectedInfo.innerHTML = `📅 <strong>${formatDateJP(state.selectedDate)}</strong> のタスクは <strong>${state.tasks.filter(t => t.dueDate === state.selectedDate).length}件</strong> です。`;
+    function filteredCases() {
+      const keyword = state.caseKeyword.trim().toLowerCase();
+
+      return state.data.cases.filter(item => {
+        const text = [
+          item.title,
+          item.memo,
+          item.category,
+          item.status,
+          clientName(item.clientId, item.clientName)
+        ].join(" ").toLowerCase();
+
+        let okStatus = true;
+        if (state.caseStatusFilter === "active") okStatus = !item.completed && !item.archived;
+        if (state.caseStatusFilter === "completed") okStatus = item.completed && !item.archived;
+        if (state.caseStatusFilter === "archived") okStatus = item.archived;
+        if (state.caseStatusFilter === "all") okStatus = !item.archived;
+
+        return (!keyword || text.includes(keyword))
+          && okStatus
+          && (!state.selectedDate || item.dueDate === state.selectedDate)
+          && (state.caseCategoryFilter === "all" || item.category === state.caseCategoryFilter)
+          && (state.caseUrgencyFilter === "all" || dateStatus(item.dueDate) === state.caseUrgencyFilter);
+      }).sort(sortCases);
     }
 
-    function renderTasks() {
-      const filtered = getFilteredTasks();
-      el.listCount.textContent = `(${filtered.length}件)`;
-      
-      if (!filtered.length) return el.taskList.innerHTML = `<div class="empty">📭 タスクが見つかりません。新しいタスクを追加しましょう！</div>`;
+    function renderCases() {
+      const items = filteredCases();
 
-      el.taskList.innerHTML = filtered.map(task => {
-        // メモが一つでも入力されていれば表示ボックスを作成
-        const hasDetails = task.referral || task.notes || task.process || task.special;
-        let detailsHtml = '';
-        if (hasDetails) {
-          detailsHtml = `<div class="task-details-box">
-            ${task.referral ? `<div class="task-detail-row"><span class="detail-label-small">🏢 紹介元</span><span class="detail-content">${escapeHtml(task.referral)}</span></div>` : ''}
-            ${task.notes ? `<div class="task-detail-row"><span class="detail-label-small">⚠️ 注意事項</span><span class="detail-content">${escapeHtml(task.notes)}</span></div>` : ''}
-            ${task.process ? `<div class="task-detail-row"><span class="detail-label-small">🔄 業務過程</span><span class="detail-content">${escapeHtml(task.process)}</span></div>` : ''}
-            ${task.special ? `<div class="task-detail-row"><span class="detail-label-small">📌 特記事項</span><span class="detail-content">${escapeHtml(task.special)}</span></div>` : ''}
-          </div>`;
-        }
+      if (!items.length) {
+        el.caseList.innerHTML = `<div class="empty">該当する案件はありません。</div>`;
+        return;
+      }
+
+      el.caseList.innerHTML = items.map(item => {
+        const st = item.completed || item.archived ? "none" : dateStatus(item.dueDate);
 
         return `
-          <article class="task-item ${task.completed ? "completed" : ""}" data-id="${task.id}">
-            <div class="drag-handle" title="ドラッグして並べ替え">⋮⋮</div>
-            <input class="task-check" type="checkbox" ${task.completed ? "checked" : ""} data-action="toggle" data-id="${task.id}" />
-            <div class="task-main">
-              <h3 class="task-title">${escapeHtml(task.title)}</h3>
-              ${detailsHtml}
-              <div class="task-meta">
-                <span class="badge badge-tag">${escapeHtml(task.tag || '📌 その他')}</span>
-                <span class="badge">📅 ${task.dueDate ? formatDateJP(task.dueDate) : "未設定"}</span>
-                <span class="badge badge-${task.priority}">${priorityLabel(task.priority)}</span>
+          <article class="case-card ${st} ${item.completed ? "completed" : ""} ${item.archived ? "archived" : ""}" data-id="${item.id}">
+            <div class="case-top">
+              <div>
+                <div class="case-title">${escapeHtml(item.title)}</div>
+                <div class="meta">${escapeHtml(clientName(item.clientId, item.clientName || "顧客未設定"))}</div>
+              </div>
+              <div class="actions">
+                ${item.archived ? `
+                  <button class="action-btn" data-case-action="restore" data-id="${item.id}" type="button">復元</button>
+                  <button class="action-btn" data-case-action="delete" data-id="${item.id}" type="button">削除</button>
+                ` : `
+                  <button class="action-btn" data-case-action="edit" data-id="${item.id}" type="button">編集</button>
+                  <button class="action-btn" data-case-action="toggle" data-id="${item.id}" type="button">${item.completed ? "未完了" : "完了"}</button>
+                  <button class="action-btn" data-case-action="archive" data-id="${item.id}" type="button">保管</button>
+                `}
               </div>
             </div>
-            <div class="task-actions">
-              <button class="small-btn edit" data-action="edit" data-id="${task.id}">✏️</button>
-              <button class="small-btn delete" data-action="delete" data-id="${task.id}">🗑</button>
+
+            ${item.memo ? `<div class="memo">${escapeHtml(item.memo)}</div>` : ""}
+
+            <div class="badges">
+              <span class="badge">${escapeHtml(item.status)}</span>
+              <span class="badge">${escapeHtml(item.category)}</span>
+              <span class="badge">優先度 ${priorityLabel[item.priority]}</span>
+              <span class="badge ${st}">${dateLabel(item)}</span>
             </div>
           </article>
         `;
       }).join("");
-      bindTaskEvents();
     }
 
-    function bindTaskEvents() {
-      el.taskList.querySelectorAll('[data-action="toggle"]').forEach(n => n.addEventListener("change", () => toggleTask(n.dataset.id)));
-      el.taskList.querySelectorAll('[data-action="edit"]').forEach(n => n.addEventListener("click", () => startEdit(n.dataset.id)));
-      el.taskList.querySelectorAll('[data-action="delete"]').forEach(n => n.addEventListener("click", () => deleteTask(n.dataset.id)));
-      el.taskList.querySelectorAll(".drag-handle").forEach(h => h.addEventListener("pointerdown", startDrag));
-    }
+    function renderDashboard() {
+      const active = state.data.cases
+        .filter(c => !c.completed && !c.archived)
+        .sort(sortCases)
+        .slice(0, 10);
 
-    function addOrUpdateTask() {
-      const title = el.taskTitleInput.value.trim();
-      if (!title) {
-        alert("件名・タスク名を入力してください。");
-        return el.taskTitleInput.focus();
+      if (!active.length) {
+        el.dashboardList.innerHTML = `<div class="empty">優先案件はありません。</div>`;
+      } else {
+        el.dashboardList.innerHTML = active.map(item => {
+          const st = dateStatus(item.dueDate);
+
+          return `
+            <button class="dash-card ${st}" type="button" data-dashboard-id="${item.id}">
+              <div class="dash-top">
+                <div>
+                  <div class="dash-title">${escapeHtml(item.title)}</div>
+                  <div class="meta">${escapeHtml(clientName(item.clientId, item.clientName || "顧客未設定"))}</div>
+                </div>
+                <span class="badge ${st}">${dateLabel(item)}</span>
+              </div>
+            </button>
+          `;
+        }).join("");
       }
-      
-      const taskData = { 
-        title, 
-        dueDate: el.taskDateInput.value, 
-        priority: el.taskPriorityInput.value,
-        tag: el.taskTagInput.value,
-        referral: el.taskReferralInput.value.trim(), // 追加
-        notes: el.taskNotesInput.value.trim(),       // 追加
-        process: el.taskProcessInput.value.trim(),   // 追加
-        special: el.taskSpecialInput.value.trim()    // 追加
+
+      const rows = state.data.clients
+        .filter(c => !c.archived)
+        .map(c => {
+          const count = state.data.cases.filter(item => item.clientId === c.id && !item.archived).length;
+          const activeCount = state.data.cases.filter(item => item.clientId === c.id && !item.completed && !item.archived).length;
+          return {
+            ...c,
+            count,
+            activeCount
+          };
+        })
+        .sort((a, b) => b.activeCount - a.activeCount || b.count - a.count)
+        .slice(0, 8);
+
+      el.clientQuickList.innerHTML = rows.length ? rows.map(c => `
+        <button class="dash-card" type="button" data-client-quick-id="${c.id}">
+          <div class="dash-top">
+            <div>
+              <div class="dash-title">${escapeHtml(c.name)}</div>
+              <div class="meta">${escapeHtml(c.person || c.type)} / 進行中 ${c.activeCount}件</div>
+            </div>
+            <span class="badge">${c.count}件</span>
+          </div>
+        </button>
+      `).join("") : `<div class="empty">顧客が未登録です。</div>`;
+    }
+
+    function filteredClients() {
+      const keyword = state.clientKeyword.trim().toLowerCase();
+
+      return state.data.clients.filter(c => {
+        const text = [
+          c.name,
+          c.type,
+          c.person,
+          c.phone,
+          c.email,
+          c.address,
+          c.memo
+        ].join(" ").toLowerCase();
+
+        let ok = true;
+        if (state.clientFilter === "active") ok = !c.archived;
+        if (state.clientFilter === "archived") ok = c.archived;
+
+        return ok && (!keyword || text.includes(keyword));
+      }).sort((a, b) => a.name.localeCompare(b.name, "ja"));
+    }
+
+    function renderClients() {
+      const clients = filteredClients();
+
+      if (!clients.length) {
+        el.clientList.innerHTML = `<div class="empty">該当する顧客はありません。</div>`;
+        return;
+      }
+
+      el.clientList.innerHTML = clients.map(c => {
+        const cases = state.data.cases.filter(item => item.clientId === c.id && !item.archived);
+        const active = cases.filter(item => !item.completed);
+
+        return `
+          <article class="client-card ${c.archived ? "archived" : ""}" data-id="${c.id}">
+            <div class="client-top">
+              <div>
+                <div class="client-name">${escapeHtml(c.name)}</div>
+                <div class="meta">${escapeHtml(c.type)}${c.person ? " / " + escapeHtml(c.person) : ""}</div>
+              </div>
+              <div class="actions">
+                ${c.archived ? `
+                  <button class="action-btn" data-client-action="restore" data-id="${c.id}" type="button">復元</button>
+                  <button class="action-btn" data-client-action="delete" data-id="${c.id}" type="button">削除</button>
+                ` : `
+                  <button class="action-btn" data-client-action="edit" data-id="${c.id}" type="button">編集</button>
+                  <button class="action-btn" data-client-action="newCase" data-id="${c.id}" type="button">案件追加</button>
+                  <button class="action-btn" data-client-action="archive" data-id="${c.id}" type="button">保管</button>
+                `}
+              </div>
+            </div>
+
+            <div class="meta">${escapeHtml([c.phone, c.email, c.address].filter(Boolean).join(" / ") || "連絡先未登録")}</div>
+
+            ${c.memo ? `<div class="memo">${escapeHtml(c.memo)}</div>` : ""}
+
+            <div class="badges">
+              <span class="badge">案件 ${cases.length}件</span>
+              <span class="badge ${active.length ? "future" : "done"}">進行中 ${active.length}件</span>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderAll() {
+      renderOptions();
+      renderToday();
+      renderSummary();
+      renderCalendar();
+      renderCases();
+      renderClients();
+      renderDashboard();
+      syncView();
+    }
+
+    function syncView() {
+      const isCases = state.view === "cases";
+
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.view === state.view);
+      });
+
+      el.caseFormCard.classList.toggle("hidden", !isCases);
+      el.caseListCard.classList.toggle("hidden", !isCases);
+      el.clientFormCard.classList.toggle("hidden", isCases);
+      el.clientListCard.classList.toggle("hidden", isCases);
+    }
+
+    function resetCaseForm() {
+      state.editingCaseId = null;
+      el.caseForm.reset();
+      el.caseFormTitle.textContent = "案件の登録";
+      el.submitCaseBtn.textContent = "保存する";
+      el.cancelCaseEditBtn.style.display = "none";
+      el.caseStatusInput.value = "作成中";
+      el.casePriorityInput.value = "medium";
+      el.caseCategoryInput.value = categories[0];
+      el.caseDateInput.value = state.selectedDate || "";
+    }
+
+    function resetClientForm() {
+      state.editingClientId = null;
+      el.clientForm.reset();
+      el.clientFormTitle.textContent = "顧客の登録";
+      el.submitClientBtn.textContent = "保存する";
+      el.cancelClientEditBtn.style.display = "none";
+      el.clientTypeInput.value = "法人";
+    }
+
+    function saveCase() {
+      const title = el.caseTitleInput.value.trim();
+
+      if (!title) {
+        alert("案件名を入力してください。");
+        el.caseTitleInput.focus();
+        return;
+      }
+
+      const selectedClient = clientById(el.caseClientSelect.value);
+      const status = el.caseStatusInput.value;
+
+      const item = {
+        title,
+        clientId: selectedClient?.id || "",
+        clientName: selectedClient?.name || "",
+        category: el.caseCategoryInput.value,
+        status,
+        priority: el.casePriorityInput.value,
+        dueDate: el.caseDateInput.value,
+        memo: el.caseMemoInput.value.trim(),
+        completed: statusDone.has(status),
+        updatedAt: new Date().toISOString()
       };
 
-      if (state.editingId) {
-        state.tasks = state.tasks.map(t => t.id === state.editingId ? { ...t, ...taskData } : t);
+      if (state.editingCaseId) {
+        state.data.cases = state.data.cases.map(c => c.id === state.editingCaseId ? {
+          ...c,
+          ...item
+        } : c);
       } else {
-        state.tasks.unshift({ id: uid(), completed: false, createdAt: new Date().toISOString(), ...taskData });
+        state.data.cases.unshift({
+          id: uid(),
+          archived: false,
+          createdAt: new Date().toISOString(),
+          ...item
+        });
       }
-      saveTasks(); resetForm(); renderCalendar(); renderTasks();
+
+      saveData();
+      resetCaseForm();
+      renderAll();
     }
 
-    function resetForm() {
-      state.editingId = null; 
-      el.formTitle.innerHTML = "✨ 新しい案件・タスクを追加"; 
-      el.submitTaskBtn.innerHTML = "➕ 追加・保存する";
-      el.cancelEditBtn.style.display = "none"; 
-      
-      el.taskTitleInput.value = ""; 
-      el.taskPriorityInput.value = "medium";
-      el.taskTagInput.value = "💼 業務"; 
-      
-      // フィールドをクリア
-      el.taskReferralInput.value = "";
-      el.taskNotesInput.value = "";
-      el.taskProcessInput.value = "";
-      el.taskSpecialInput.value = "";
+    function saveClient() {
+      const name = el.clientNameInput.value.trim();
 
-      el.taskDateInput.value = state.selectedDate || ""; 
-      el.taskTitleInput.focus();
-    }
-
-    function startEdit(id) {
-      const task = state.tasks.find(t => t.id === id); if (!task) return;
-      state.editingId = id; 
-      el.formTitle.innerHTML = "✏️ 案件・タスクを編集"; 
-      el.submitTaskBtn.innerHTML = "💾 変更を保存";
-      el.cancelEditBtn.style.display = "inline-flex"; 
-      
-      el.taskTitleInput.value = task.title;
-      el.taskDateInput.value = task.dueDate || ""; 
-      el.taskPriorityInput.value = task.priority || "medium";
-      el.taskTagInput.value = task.tag || "💼 業務";
-      
-      // フィールドにデータをセット（過去データで未入力の場合は空文字）
-      el.taskReferralInput.value = task.referral || "";
-      el.taskNotesInput.value = task.notes || "";
-      el.taskProcessInput.value = task.process || "";
-      el.taskSpecialInput.value = task.special || "";
-
-      window.scrollTo({ top: 0, behavior: "smooth" }); el.taskTitleInput.focus();
-    }
-
-    function toggleTask(id) {
-      state.tasks = state.tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
-      saveTasks(); renderTasks();
-    }
-
-    function deleteTask(id) {
-      if (!confirm("本当に削除しますか？")) return;
-      state.tasks = state.tasks.filter(t => t.id !== id);
-      if (state.editingId === id) resetForm();
-      saveTasks(); renderCalendar(); renderTasks();
-    }
-
-    function clearCompleted() {
-      if (!confirm("完了済みのタスクをすべて削除しますか？")) return;
-      state.tasks = state.tasks.filter(t => !t.completed);
-      saveTasks(); renderCalendar(); renderTasks();
-    }
-
-    // ドラッグ＆ドロップ処理
-    function startDrag(e) {
-      const item = e.currentTarget.closest(".task-item"); if (!item) return;
-      const rect = item.getBoundingClientRect();
-      const placeholder = document.createElement("div");
-      placeholder.className = "drag-placeholder"; placeholder.style.height = rect.height + "px";
-      state.drag = { item, placeholder, pointerId: e.pointerId, offsetX: e.clientX - rect.left, offsetY: e.clientY - rect.top, active: false };
-      e.currentTarget.setPointerCapture(e.pointerId);
-      document.addEventListener("pointermove", onDragMove, { passive: false });
-      document.addEventListener("pointerup", endDrag); document.addEventListener("pointercancel", endDrag);
-    }
-    function activateDrag(e) {
-      const drag = state.drag; if (!drag || drag.active) return;
-      drag.active = true; const rect = drag.item.getBoundingClientRect();
-      drag.placeholder.style.height = rect.height + "px"; drag.item.parentNode.insertBefore(drag.placeholder, drag.item.nextSibling);
-      drag.item.classList.add("dragging");
-      Object.assign(drag.item.style, { width: rect.width + "px", height: rect.height + "px", position: "fixed", left: rect.left + "px", top: rect.top + "px", margin: "0", pointerEvents: "none" });
-      document.body.appendChild(drag.item);
-    }
-    function onDragMove(e) {
-      const drag = state.drag; if (!drag || e.pointerId !== drag.pointerId) return;
-      if (!drag.active && (Math.abs(e.movementX || 0) > 0 || Math.abs(e.movementY || 0) > 0)) activateDrag(e);
-      if (!drag.active) return; e.preventDefault();
-      drag.item.style.left = (e.clientX - drag.offsetX) + "px"; drag.item.style.top = (e.clientY - drag.offsetY) + "px";
-      const target = document.elementsFromPoint(e.clientX, e.clientY).find(n => n.classList?.contains("task-item") && n !== drag.item);
-      if (!target || !el.taskList.contains(target)) return;
-      const targetRect = target.getBoundingClientRect();
-      const referenceNode = e.clientY > targetRect.top + targetRect.height / 2 ? target.nextElementSibling : target;
-      if (referenceNode !== drag.placeholder) el.taskList.insertBefore(drag.placeholder, referenceNode);
-    }
-    function endDrag(e) {
-      const drag = state.drag; if (!drag || e.pointerId !== drag.pointerId) return;
-      document.removeEventListener("pointermove", onDragMove); document.removeEventListener("pointerup", endDrag); document.removeEventListener("pointercancel", endDrag);
-      if (drag.active) {
-        drag.item.classList.remove("dragging"); drag.item.removeAttribute("style");
-        el.taskList.insertBefore(drag.item, drag.placeholder); drag.placeholder.remove();
-        const visibleIds = Array.from(el.taskList.querySelectorAll(".task-item")).map(n => n.dataset.id);
-        const byId = new Map(state.tasks.map(t => [t.id, t]));
-        let index = 0;
-        state.tasks = state.tasks.map(t => visibleIds.includes(t.id) ? byId.get(visibleIds[index++]) : t);
-        saveTasks();
+      if (!name) {
+        alert("顧客名を入力してください。");
+        el.clientNameInput.focus();
+        return;
       }
-      state.drag = null;
+
+      const item = {
+        name,
+        type: el.clientTypeInput.value,
+        person: el.clientPersonInput.value.trim(),
+        phone: el.clientPhoneInput.value.trim(),
+        email: el.clientEmailInput.value.trim(),
+        address: el.clientAddressInput.value.trim(),
+        memo: el.clientMemoInput.value.trim(),
+        updatedAt: new Date().toISOString()
+      };
+
+      if (state.editingClientId) {
+        state.data.clients = state.data.clients.map(c => c.id === state.editingClientId ? {
+          ...c,
+          ...item
+        } : c);
+      } else {
+        state.data.clients.unshift({
+          id: uid(),
+          archived: false,
+          createdAt: new Date().toISOString(),
+          ...item
+        });
+      }
+
+      saveData();
+      resetClientForm();
+      renderAll();
     }
 
-    // イベントリスナー
-    el.prevMonthBtn.addEventListener("click", () => { state.currentMonth.setMonth(state.currentMonth.getMonth() - 1); renderCalendar(); });
-    el.nextMonthBtn.addEventListener("click", () => { state.currentMonth.setMonth(state.currentMonth.getMonth() + 1); renderCalendar(); });
-    el.todayBtn.addEventListener("click", () => { state.currentMonth = startOfMonth(new Date()); state.selectedDate = toYMD(new Date()); el.taskDateInput.value = state.selectedDate; renderCalendar(); renderTasks(); });
-    el.clearDateFilterBtn.addEventListener("click", () => { state.selectedDate = ""; el.taskDateInput.value = ""; renderCalendar(); renderTasks(); });
-    el.submitTaskBtn.addEventListener("click", addOrUpdateTask);
-    el.cancelEditBtn.addEventListener("click", resetForm);
-    el.taskTitleInput.addEventListener("keydown", (e) => { if (e.key === "Enter") addOrUpdateTask(); });
-    el.searchInput.addEventListener("input", (e) => { state.keyword = e.target.value; renderTasks(); });
-    el.clearCompletedBtn.addEventListener("click", clearCompleted);
-    el.filterButtons.forEach(btn => btn.addEventListener("click", () => {
-      state.statusFilter = btn.dataset.filter;
-      el.filterButtons.forEach(b => b.classList.toggle("active", b === btn)); renderTasks();
-    }));
+    function editCase(id) {
+      const item = state.data.cases.find(c => c.id === id);
+      if (!item || item.archived) return;
 
-    // 初期化
-    renderTodayLabel(); resetForm(); renderCalendar(); renderTasks();
+      state.view = "cases";
+      renderAll();
+
+      state.editingCaseId = id;
+      el.caseFormTitle.textContent = "案件の編集";
+      el.submitCaseBtn.textContent = "更新する";
+      el.cancelCaseEditBtn.style.display = "inline-block";
+      el.caseTitleInput.value = item.title;
+      el.caseClientSelect.value = item.clientId || "";
+      el.caseCategoryInput.value = item.category;
+      el.caseStatusInput.value = item.status;
+      el.casePriorityInput.value = item.priority;
+      el.caseDateInput.value = item.dueDate;
+      el.caseMemoInput.value = item.memo;
+
+      el.caseFormTitle.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+
+    function editClient(id) {
+      const c = state.data.clients.find(item => item.id === id);
+      if (!c || c.archived) return;
+
+      state.view = "clients";
+      renderAll();
+
+      state.editingClientId = id;
+      el.clientFormTitle.textContent = "顧客の編集";
+      el.submitClientBtn.textContent = "更新する";
+      el.cancelClientEditBtn.style.display = "inline-block";
+      el.clientNameInput.value = c.name;
+      el.clientTypeInput.value = c.type;
+      el.clientPersonInput.value = c.person;
+      el.clientPhoneInput.value = c.phone;
+      el.clientEmailInput.value = c.email;
+      el.clientAddressInput.value = c.address;
+      el.clientMemoInput.value = c.memo;
+
+      el.clientFormTitle.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+
+    function newCaseForClient(id) {
+      state.view = "cases";
+      renderAll();
+      resetCaseForm();
+      el.caseClientSelect.value = id;
+      el.caseTitleInput.focus();
+    }
+
+    function toggleCase(id) {
+      state.data.cases = state.data.cases.map(c => {
+        if (c.id !== id) return c;
+
+        const completed = !c.completed;
+
+        return {
+          ...c,
+          completed,
+          status: completed ? "完了" : "作成中",
+          updatedAt: new Date().toISOString()
+        };
+      });
+
+      saveData();
+      renderAll();
+    }
+
+    function archiveCase(id, archived = true) {
+      state.data.cases = state.data.cases.map(c => c.id === id ? {
+        ...c,
+        archived,
+        updatedAt: new Date().toISOString()
+      } : c);
+
+      saveData();
+      renderAll();
+    }
+
+    function archiveClient(id, archived = true) {
+      state.data.clients = state.data.clients.map(c => c.id === id ? {
+        ...c,
+        archived,
+        updatedAt: new Date().toISOString()
+      } : c);
+
+      saveData();
+      renderAll();
+    }
+
+    function deleteCase(id) {
+      if (!confirm("保管済み案件を完全に削除しますか？")) return;
+
+      state.data.cases = state.data.cases.filter(c => c.id !== id);
+      saveData();
+      renderAll();
+    }
+
+    function deleteClient(id) {
+      const linked = state.data.cases.some(c => c.clientId === id);
+
+      if (linked) {
+        alert("この顧客に紐づく案件があります。先に案件を別顧客へ変更するか、案件を削除してください。");
+        return;
+      }
+
+      if (!confirm("保管済み顧客を完全に削除しますか？")) return;
+
+      state.data.clients = state.data.clients.filter(c => c.id !== id);
+      saveData();
+      renderAll();
+    }
+
+    function exportJson() {
+      const payload = {
+        app: "ニシオカンリシステム",
+        version: 4,
+        exportedAt: new Date().toISOString(),
+        clients: state.data.clients,
+        cases: state.data.cases
+      };
+
+      const blob = new Blob([JSON.stringify(payload, null, 2)], {
+        type: "application/json"
+      });
+
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+
+      a.href = url;
+      a.download = `nishiokanri-backup-${toYMD(new Date())}.json`;
+
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function importJson(file) {
+      if (!file) return;
+
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        try {
+          const parsed = JSON.parse(reader.result);
+
+          if (!confirm("現在のデータを読み込んだJSONで置き換えますか？")) return;
+
+          state.data = {
+            clients: (parsed.clients || []).map(normalizeClient),
+            cases: (parsed.cases || parsed.tasks || []).map(normalizeCase)
+          };
+
+          saveData();
+          resetCaseForm();
+          resetClientForm();
+          renderAll();
+        } catch {
+          alert("JSONの読み込みに失敗しました。");
+        } finally {
+          el.importJsonInput.value = "";
+        }
+      };
+
+      reader.readAsText(file);
+    }
+
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        state.view = btn.dataset.view;
+        syncView();
+      });
+    });
+
+    document.querySelectorAll(".qd-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const d = new Date();
+        d.setDate(d.getDate() + Number(btn.dataset.days));
+        el.caseDateInput.value = toYMD(d);
+      });
+    });
+
+    $("prevMonthBtn").addEventListener("click", () => {
+      state.currentMonth.setMonth(state.currentMonth.getMonth() - 1);
+      renderCalendar();
+    });
+
+    $("nextMonthBtn").addEventListener("click", () => {
+      state.currentMonth.setMonth(state.currentMonth.getMonth() + 1);
+      renderCalendar();
+    });
+
+    $("todayBtn").addEventListener("click", () => {
+      state.currentMonth = startOfMonth(new Date());
+      state.selectedDate = toYMD(new Date());
+      el.caseDateInput.value = state.selectedDate;
+      renderAll();
+    });
+
+    $("clearDateFilterBtn").addEventListener("click", () => {
+      state.selectedDate = "";
+      el.caseDateInput.value = "";
+      renderAll();
+    });
+
+    el.calendarGrid.addEventListener("click", e => {
+      const day = e.target.closest(".day");
+      if (!day) return;
+
+      state.selectedDate = state.selectedDate === day.dataset.date ? "" : day.dataset.date;
+      el.caseDateInput.value = state.selectedDate;
+      renderAll();
+    });
+
+    el.caseForm.addEventListener("submit", e => {
+      e.preventDefault();
+      saveCase();
+    });
+
+    el.clientForm.addEventListener("submit", e => {
+      e.preventDefault();
+      saveClient();
+    });
+
+    el.cancelCaseEditBtn.addEventListener("click", resetCaseForm);
+    el.cancelClientEditBtn.addEventListener("click", resetClientForm);
+
+    $("insertCaseTimestampBtn").addEventListener("click", () => {
+      insertTimestamp(el.caseMemoInput);
+    });
+
+    $("insertClientTimestampBtn").addEventListener("click", () => {
+      insertTimestamp(el.clientMemoInput);
+    });
+
+    $("newClientFromCaseBtn").addEventListener("click", () => {
+      state.view = "clients";
+      resetClientForm();
+      renderAll();
+      el.clientNameInput.focus();
+    });
+
+    el.caseSearchInput.addEventListener("input", e => {
+      state.caseKeyword = e.target.value;
+      renderCases();
+    });
+
+    el.clientSearchInput.addEventListener("input", e => {
+      state.clientKeyword = e.target.value;
+      renderClients();
+    });
+
+    el.caseStatusFilter.addEventListener("change", e => {
+      state.caseStatusFilter = e.target.value;
+      renderCases();
+    });
+
+    el.caseCategoryFilter.addEventListener("change", e => {
+      state.caseCategoryFilter = e.target.value;
+      renderCases();
+    });
+
+    el.caseUrgencyFilter.addEventListener("change", e => {
+      state.caseUrgencyFilter = e.target.value;
+      renderCases();
+    });
+
+    el.clientFilterInput.addEventListener("change", e => {
+      state.clientFilter = e.target.value;
+      renderClients();
+    });
+
+    el.caseList.addEventListener("click", e => {
+      const btn = e.target.closest("[data-case-action]");
+      if (!btn) return;
+
+      const id = btn.dataset.id;
+      const action = btn.dataset.caseAction;
+
+      if (action === "edit") editCase(id);
+      if (action === "toggle") toggleCase(id);
+      if (action === "archive") archiveCase(id, true);
+      if (action === "restore") archiveCase(id, false);
+      if (action === "delete") deleteCase(id);
+    });
+
+    el.clientList.addEventListener("click", e => {
+      const btn = e.target.closest("[data-client-action]");
+      if (!btn) return;
+
+      const id = btn.dataset.id;
+      const action = btn.dataset.clientAction;
+
+      if (action === "edit") editClient(id);
+      if (action === "newCase") newCaseForClient(id);
+      if (action === "archive") archiveClient(id, true);
+      if (action === "restore") archiveClient(id, false);
+      if (action === "delete") deleteClient(id);
+    });
+
+    el.dashboardList.addEventListener("click", e => {
+      const item = e.target.closest("[data-dashboard-id]");
+      if (item) editCase(item.dataset.dashboardId);
+    });
+
+    el.clientQuickList.addEventListener("click", e => {
+      const item = e.target.closest("[data-client-quick-id]");
+      if (item) editClient(item.dataset.clientQuickId);
+    });
+
+    $("exportJsonBtn").addEventListener("click", exportJson);
+
+    $("importJsonBtn").addEventListener("click", () => {
+      el.importJsonInput.click();
+    });
+
+    el.importJsonInput.addEventListener("change", e => {
+      importJson(e.target.files[0]);
+    });
+
+    resetCaseForm();
+    resetClientForm();
+    renderAll();
   </script>
 </body>
 </html>
