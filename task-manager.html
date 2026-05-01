@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="行政書士業務向けの案件・顧客・期限管理ダッシュボード。" />
   <title>ニシオカンリシステム | 行政書士案件管理</title>
+
   <style>
     :root {
       --bg: #eef3f8;
@@ -123,14 +124,12 @@
       background: var(--navy);
       color: var(--card);
       font-weight: 900;
-      letter-spacing: 0;
       flex: 0 0 auto;
     }
 
     .brand h1 {
       font-size: 1.35rem;
       line-height: 1.2;
-      letter-spacing: 0;
     }
 
     .brand p {
@@ -561,6 +560,56 @@
       white-space: pre-wrap;
     }
 
+    .checklist {
+      display: grid;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 750;
+    }
+
+    .check-item input {
+      accent-color: var(--blue);
+    }
+
+    .check-item.done span {
+      text-decoration: line-through;
+      opacity: 0.62;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .detail-box {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--panel);
+      padding: 12px;
+    }
+
+    .detail-label {
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 850;
+    }
+
+    .detail-value {
+      margin-top: 3px;
+      font-weight: 850;
+      word-break: break-word;
+      white-space: pre-wrap;
+    }
+
     .badges {
       display: flex;
       flex-wrap: wrap;
@@ -694,7 +743,8 @@
 
       .summary-grid,
       .form-grid,
-      .toolbar {
+      .toolbar,
+      .detail-grid {
         grid-template-columns: 1fr;
       }
 
@@ -751,6 +801,8 @@
           <div class="actions" style="justify-content:flex-start;">
             <button class="btn-small" id="exportJsonBtn" type="button">JSON保存</button>
             <button class="btn-small" id="importJsonBtn" type="button">JSON読込</button>
+            <button class="btn-small" id="exportCasesCsvBtn" type="button">案件CSV</button>
+            <button class="btn-small" id="exportClientsCsvBtn" type="button">顧客CSV</button>
             <input class="hidden" id="importJsonInput" type="file" accept="application/json,.json" />
           </div>
         </section>
@@ -824,6 +876,11 @@
               <div class="quick-dates">
                 <button type="button" class="btn-small" id="insertCaseTimestampBtn">日時を挿入</button>
               </div>
+            </div>
+
+            <div class="field full">
+              <label for="caseChecklistInput">チェックリスト</label>
+              <textarea id="caseChecklistInput" class="textarea" placeholder="1行に1項目ずつ入力&#10;例：委任状を受領&#10;例：本人確認書類を確認&#10;例：申請書を作成"></textarea>
             </div>
 
             <div class="form-actions full">
@@ -910,6 +967,14 @@
           <div class="list" id="caseList"></div>
         </section>
 
+        <section class="card pad hidden" id="clientDetailCard">
+          <div class="section-head">
+            <h2 class="section-title">顧客詳細</h2>
+            <span class="hint">案件履歴を一覧表示</span>
+          </div>
+          <div id="clientDetail"></div>
+        </section>
+
         <section class="card pad hidden" id="clientListCard">
           <div class="toolbar" style="grid-template-columns:minmax(180px,1fr) auto;">
             <input id="clientSearchInput" class="input search" type="text" placeholder="顧客名・担当者・連絡先を検索..." />
@@ -944,8 +1009,12 @@
   </div>
 
   <script>
-    const STORAGE_KEY = "nishiokanri_system_v4";
-    const LEGACY_TASK_KEY = "admin_scrivener_task_app_v3";
+    const STORAGE_KEY = "nishiokanri_system_v5";
+    const LEGACY_KEYS = [
+      "nishiokanri_system_v4",
+      "admin_scrivener_task_app_v3",
+      "admin_scrivener_task_app_v2"
+    ];
 
     const categories = [
       "風営法許可",
@@ -984,6 +1053,7 @@
       view: "cases",
       currentMonth: startOfMonth(new Date()),
       selectedDate: "",
+      selectedClientId: "",
       editingCaseId: null,
       editingClientId: null,
       caseKeyword: "",
@@ -1008,6 +1078,8 @@
       clientFormCard: $("clientFormCard"),
       caseListCard: $("caseListCard"),
       clientListCard: $("clientListCard"),
+      clientDetailCard: $("clientDetailCard"),
+      clientDetail: $("clientDetail"),
 
       caseForm: $("caseForm"),
       clientForm: $("clientForm"),
@@ -1021,6 +1093,7 @@
       casePriorityInput: $("casePriorityInput"),
       caseDateInput: $("caseDateInput"),
       caseMemoInput: $("caseMemoInput"),
+      caseChecklistInput: $("caseChecklistInput"),
 
       clientNameInput: $("clientNameInput"),
       clientTypeInput: $("clientTypeInput"),
@@ -1050,38 +1123,21 @@
     function loadData() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) {
-          const parsed = JSON.parse(raw);
-          return {
-            clients: (parsed.clients || []).map(normalizeClient),
-            cases: (parsed.cases || parsed.tasks || []).map(normalizeCase)
-          };
-        }
+        if (raw) return normalizeData(JSON.parse(raw));
 
-        const legacy = localStorage.getItem(LEGACY_TASK_KEY);
-        if (legacy) {
-          const tasks = JSON.parse(legacy).map(normalizeCase);
-          const clients = [];
+        for (const key of LEGACY_KEYS) {
+          const legacy = localStorage.getItem(key);
+          if (!legacy) continue;
 
-          tasks.forEach(item => {
-            if (!item.clientName) return;
+          const parsed = JSON.parse(legacy);
 
-            let client = clients.find(c => c.name === item.clientName);
-            if (!client) {
-              client = normalizeClient({
-                name: item.clientName,
-                type: "法人"
-              });
-              clients.push(client);
-            }
+          if (Array.isArray(parsed)) {
+            return migrateCasesOnly(parsed);
+          }
 
-            item.clientId = client.id;
-          });
-
-          return {
-            clients,
-            cases: tasks
-          };
+          if (parsed.clients || parsed.cases || parsed.tasks) {
+            return normalizeData(parsed);
+          }
         }
       } catch {
         return {
@@ -1093,6 +1149,57 @@
       return {
         clients: [],
         cases: []
+      };
+    }
+
+    function normalizeData(data) {
+      const cases = (data.cases || data.tasks || []).map(normalizeCase);
+      const clients = (data.clients || []).map(normalizeClient);
+
+      cases.forEach(item => {
+        if (item.clientId) return;
+        if (!item.clientName) return;
+
+        let client = clients.find(c => c.name === item.clientName);
+        if (!client) {
+          client = normalizeClient({
+            name: item.clientName,
+            type: "法人"
+          });
+          clients.push(client);
+        }
+
+        item.clientId = client.id;
+      });
+
+      return {
+        clients,
+        cases
+      };
+    }
+
+    function migrateCasesOnly(rawCases) {
+      const cases = rawCases.map(normalizeCase);
+      const clients = [];
+
+      cases.forEach(item => {
+        if (!item.clientName) return;
+
+        let client = clients.find(c => c.name === item.clientName);
+        if (!client) {
+          client = normalizeClient({
+            name: item.clientName,
+            type: "法人"
+          });
+          clients.push(client);
+        }
+
+        item.clientId = client.id;
+      });
+
+      return {
+        clients,
+        cases
       };
     }
 
@@ -1137,7 +1244,7 @@
     }
 
     function clientName(id, fallback = "顧客未設定") {
-      return clientById(id)?.name || fallback;
+      return clientById(id)?.name || fallback || "顧客未設定";
     }
 
     function formatDate(ymd) {
@@ -1198,6 +1305,49 @@
       };
     }
 
+    function normalizeChecklist(list) {
+      if (!Array.isArray(list)) return [];
+
+      return list
+        .map(item => {
+          if (typeof item === "string") {
+            return {
+              id: uid(),
+              text: item.trim(),
+              done: false
+            };
+          }
+
+          return {
+            id: item.id || uid(),
+            text: String(item.text || "").trim(),
+            done: Boolean(item.done)
+          };
+        })
+        .filter(item => item.text);
+    }
+
+    function checklistToText(list) {
+      return normalizeChecklist(list).map(item => item.text).join("\n");
+    }
+
+    function mergeChecklist(existing, rawText) {
+      const oldItems = normalizeChecklist(existing);
+
+      return rawText
+        .split(/\r?\n/)
+        .map(text => text.trim())
+        .filter(Boolean)
+        .map(text => {
+          const found = oldItems.find(item => item.text === text);
+          return found || {
+            id: uid(),
+            text,
+            done: false
+          };
+        });
+    }
+
     function normalizeCase(item) {
       const status = item.status || (item.completed ? "完了" : "作成中");
 
@@ -1211,6 +1361,7 @@
         priority: item.priority || "medium",
         dueDate: item.dueDate || "",
         memo: item.memo || "",
+        checklist: normalizeChecklist(item.checklist),
         completed: statusDone.has(status) || Boolean(item.completed),
         archived: Boolean(item.archived),
         createdAt: item.createdAt || new Date().toISOString(),
@@ -1302,6 +1453,7 @@
 
         const ymd = toYMD(cell);
         const cases = state.data.cases.filter(c => c.dueDate === ymd && !c.completed && !c.archived);
+
         const classes = [
           "day",
           cell.getMonth() !== month.getMonth() ? "other" : "",
@@ -1310,7 +1462,7 @@
         ].filter(Boolean).join(" ");
 
         const dots = cases.slice(0, 3)
-          .map(c => `<span class="dot ${c.priority}"></span>`)
+          .map(c => `<span class="dot ${escapeHtml(c.priority)}"></span>`)
           .join("");
 
         html += `
@@ -1360,6 +1512,7 @@
 
       el.caseList.innerHTML = items.map(item => {
         const st = item.completed || item.archived ? "none" : dateStatus(item.dueDate);
+        const checklist = normalizeChecklist(item.checklist);
 
         return `
           <article class="case-card ${st} ${item.completed ? "completed" : ""} ${item.archived ? "archived" : ""}" data-id="${item.id}">
@@ -1382,10 +1535,21 @@
 
             ${item.memo ? `<div class="memo">${escapeHtml(item.memo)}</div>` : ""}
 
+            ${checklist.length ? `
+              <div class="checklist">
+                ${checklist.map(check => `
+                  <label class="check-item ${check.done ? "done" : ""}">
+                    <input type="checkbox" data-case-action="check" data-id="${item.id}" data-check-id="${check.id}" ${check.done ? "checked" : ""} ${item.archived ? "disabled" : ""} />
+                    <span>${escapeHtml(check.text)}</span>
+                  </label>
+                `).join("")}
+              </div>
+            ` : ""}
+
             <div class="badges">
               <span class="badge">${escapeHtml(item.status)}</span>
               <span class="badge">${escapeHtml(item.category)}</span>
-              <span class="badge">優先度 ${priorityLabel[item.priority]}</span>
+              <span class="badge">優先度 ${priorityLabel[item.priority] || "中"}</span>
               <span class="badge ${st}">${dateLabel(item)}</span>
             </div>
           </article>
@@ -1424,6 +1588,7 @@
         .map(c => {
           const count = state.data.cases.filter(item => item.clientId === c.id && !item.archived).length;
           const activeCount = state.data.cases.filter(item => item.clientId === c.id && !item.completed && !item.archived).length;
+
           return {
             ...c,
             count,
@@ -1492,6 +1657,7 @@
                   <button class="action-btn" data-client-action="restore" data-id="${c.id}" type="button">復元</button>
                   <button class="action-btn" data-client-action="delete" data-id="${c.id}" type="button">削除</button>
                 ` : `
+                  <button class="action-btn" data-client-action="detail" data-id="${c.id}" type="button">詳細</button>
                   <button class="action-btn" data-client-action="edit" data-id="${c.id}" type="button">編集</button>
                   <button class="action-btn" data-client-action="newCase" data-id="${c.id}" type="button">案件追加</button>
                   <button class="action-btn" data-client-action="archive" data-id="${c.id}" type="button">保管</button>
@@ -1512,6 +1678,75 @@
       }).join("");
     }
 
+    function renderClientDetail() {
+      const client = clientById(state.selectedClientId);
+
+      if (!client || client.archived) {
+        el.clientDetail.innerHTML = `<div class="empty">顧客を選択すると、詳細と案件履歴を表示します。</div>`;
+        return;
+      }
+
+      const cases = state.data.cases
+        .filter(item => item.clientId === client.id && !item.archived)
+        .sort(sortCases);
+
+      const active = cases.filter(item => !item.completed);
+      const completed = cases.filter(item => item.completed);
+
+      el.clientDetail.innerHTML = `
+        <div class="detail-grid">
+          <div class="detail-box">
+            <div class="detail-label">顧客名</div>
+            <div class="detail-value">${escapeHtml(client.name)}</div>
+          </div>
+          <div class="detail-box">
+            <div class="detail-label">区分・担当者</div>
+            <div class="detail-value">${escapeHtml(client.type)}${client.person ? " / " + escapeHtml(client.person) : ""}</div>
+          </div>
+          <div class="detail-box">
+            <div class="detail-label">電話</div>
+            <div class="detail-value">${escapeHtml(client.phone || "未登録")}</div>
+          </div>
+          <div class="detail-box">
+            <div class="detail-label">メール</div>
+            <div class="detail-value">${escapeHtml(client.email || "未登録")}</div>
+          </div>
+          <div class="detail-box full">
+            <div class="detail-label">住所</div>
+            <div class="detail-value">${escapeHtml(client.address || "未登録")}</div>
+          </div>
+          <div class="detail-box full">
+            <div class="detail-label">顧客メモ</div>
+            <div class="detail-value">${escapeHtml(client.memo || "メモなし")}</div>
+          </div>
+        </div>
+
+        <div class="badges" style="margin-top:12px;">
+          <span class="badge">全案件 ${cases.length}件</span>
+          <span class="badge future">進行中 ${active.length}件</span>
+          <span class="badge done">完了 ${completed.length}件</span>
+        </div>
+
+        <div class="list" style="margin-top:12px;">
+          ${cases.length ? cases.map(item => {
+            const st = item.completed ? "done" : dateStatus(item.dueDate);
+
+            return `
+              <button class="dash-card ${st}" type="button" data-detail-case-id="${item.id}">
+                <div class="dash-top">
+                  <div>
+                    <div class="dash-title">${escapeHtml(item.title)}</div>
+                    <div class="meta">${escapeHtml(item.status)} / ${escapeHtml(item.category)}</div>
+                  </div>
+                  <span class="badge ${st}">${dateLabel(item)}</span>
+                </div>
+              </button>
+            `;
+          }).join("") : `<div class="empty">この顧客の案件はまだありません。</div>`}
+        </div>
+      `;
+    }
+
     function renderAll() {
       renderOptions();
       renderToday();
@@ -1519,6 +1754,7 @@
       renderCalendar();
       renderCases();
       renderClients();
+      renderClientDetail();
       renderDashboard();
       syncView();
     }
@@ -1533,6 +1769,7 @@
       el.caseFormCard.classList.toggle("hidden", !isCases);
       el.caseListCard.classList.toggle("hidden", !isCases);
       el.clientFormCard.classList.toggle("hidden", isCases);
+      el.clientDetailCard.classList.toggle("hidden", isCases);
       el.clientListCard.classList.toggle("hidden", isCases);
     }
 
@@ -1546,6 +1783,7 @@
       el.casePriorityInput.value = "medium";
       el.caseCategoryInput.value = categories[0];
       el.caseDateInput.value = state.selectedDate || "";
+      el.caseChecklistInput.value = "";
     }
 
     function resetClientForm() {
@@ -1568,6 +1806,7 @@
 
       const selectedClient = clientById(el.caseClientSelect.value);
       const status = el.caseStatusInput.value;
+      const existingCase = state.data.cases.find(c => c.id === state.editingCaseId);
 
       const item = {
         title,
@@ -1578,6 +1817,7 @@
         priority: el.casePriorityInput.value,
         dueDate: el.caseDateInput.value,
         memo: el.caseMemoInput.value.trim(),
+        checklist: mergeChecklist(existingCase?.checklist || [], el.caseChecklistInput.value),
         completed: statusDone.has(status),
         updatedAt: new Date().toISOString()
       };
@@ -1658,6 +1898,7 @@
       el.casePriorityInput.value = item.priority;
       el.caseDateInput.value = item.dueDate;
       el.caseMemoInput.value = item.memo;
+      el.caseChecklistInput.value = checklistToText(item.checklist);
 
       el.caseFormTitle.scrollIntoView({
         behavior: "smooth",
@@ -1698,6 +1939,17 @@
       el.caseTitleInput.focus();
     }
 
+    function showClientDetail(id) {
+      state.view = "clients";
+      state.selectedClientId = id;
+      renderAll();
+
+      el.clientDetailCard.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
     function toggleCase(id) {
       state.data.cases = state.data.cases.map(c => {
         if (c.id !== id) return c;
@@ -1708,6 +1960,24 @@
           ...c,
           completed,
           status: completed ? "完了" : "作成中",
+          updatedAt: new Date().toISOString()
+        };
+      });
+
+      saveData();
+      renderAll();
+    }
+
+    function toggleChecklistItem(caseId, checkId) {
+      state.data.cases = state.data.cases.map(item => {
+        if (item.id !== caseId) return item;
+
+        return {
+          ...item,
+          checklist: normalizeChecklist(item.checklist).map(check => check.id === checkId ? {
+            ...check,
+            done: !check.done
+          } : check),
           updatedAt: new Date().toISOString()
         };
       });
@@ -1764,7 +2034,7 @@
     function exportJson() {
       const payload = {
         app: "ニシオカンリシステム",
-        version: 4,
+        version: 5,
         exportedAt: new Date().toISOString(),
         clients: state.data.clients,
         cases: state.data.cases
@@ -1786,6 +2056,101 @@
       URL.revokeObjectURL(url);
     }
 
+    function csvEscape(value) {
+      const text = String(value ?? "");
+      return `"${text.replace(/"/g, '""')}"`;
+    }
+
+    function downloadText(filename, content, type = "text/csv;charset=utf-8") {
+      const blob = new Blob(["\ufeff" + content], {
+        type
+      });
+
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+
+      a.href = url;
+      a.download = filename;
+
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function exportCasesCsv() {
+      const headers = [
+        "案件名",
+        "顧客名",
+        "カテゴリ",
+        "ステータス",
+        "優先度",
+        "期限",
+        "完了",
+        "保管",
+        "チェックリスト",
+        "メモ"
+      ];
+
+      const rows = state.data.cases.map(item => [
+        item.title,
+        clientName(item.clientId, item.clientName || ""),
+        item.category,
+        item.status,
+        priorityLabel[item.priority] || item.priority,
+        item.dueDate,
+        item.completed ? "完了" : "未完了",
+        item.archived ? "保管" : "",
+        normalizeChecklist(item.checklist).map(check => `${check.done ? "[x]" : "[ ]"} ${check.text}`).join("\n"),
+        item.memo
+      ]);
+
+      const csv = [headers, ...rows]
+        .map(row => row.map(csvEscape).join(","))
+        .join("\n");
+
+      downloadText(`nishiokanri-cases-${toYMD(new Date())}.csv`, csv);
+    }
+
+    function exportClientsCsv() {
+      const headers = [
+        "顧客名",
+        "区分",
+        "担当者",
+        "電話",
+        "メール",
+        "住所",
+        "案件数",
+        "進行中案件数",
+        "保管",
+        "メモ"
+      ];
+
+      const rows = state.data.clients.map(client => {
+        const cases = state.data.cases.filter(item => item.clientId === client.id && !item.archived);
+        const active = cases.filter(item => !item.completed);
+
+        return [
+          client.name,
+          client.type,
+          client.person,
+          client.phone,
+          client.email,
+          client.address,
+          cases.length,
+          active.length,
+          client.archived ? "保管" : "",
+          client.memo
+        ];
+      });
+
+      const csv = [headers, ...rows]
+        .map(row => row.map(csvEscape).join(","))
+        .join("\n");
+
+      downloadText(`nishiokanri-clients-${toYMD(new Date())}.csv`, csv);
+    }
+
     function importJson(file) {
       if (!file) return;
 
@@ -1797,10 +2162,7 @@
 
           if (!confirm("現在のデータを読み込んだJSONで置き換えますか？")) return;
 
-          state.data = {
-            clients: (parsed.clients || []).map(normalizeClient),
-            cases: (parsed.cases || parsed.tasks || []).map(normalizeCase)
-          };
+          state.data = normalizeData(parsed);
 
           saveData();
           resetCaseForm();
@@ -1922,26 +2284,28 @@
     });
 
     el.caseList.addEventListener("click", e => {
-      const btn = e.target.closest("[data-case-action]");
-      if (!btn) return;
+      const target = e.target.closest("[data-case-action]");
+      if (!target) return;
 
-      const id = btn.dataset.id;
-      const action = btn.dataset.caseAction;
+      const id = target.dataset.id;
+      const action = target.dataset.caseAction;
 
       if (action === "edit") editCase(id);
       if (action === "toggle") toggleCase(id);
+      if (action === "check") toggleChecklistItem(id, target.dataset.checkId);
       if (action === "archive") archiveCase(id, true);
       if (action === "restore") archiveCase(id, false);
       if (action === "delete") deleteCase(id);
     });
 
     el.clientList.addEventListener("click", e => {
-      const btn = e.target.closest("[data-client-action]");
-      if (!btn) return;
+      const target = e.target.closest("[data-client-action]");
+      if (!target) return;
 
-      const id = btn.dataset.id;
-      const action = btn.dataset.clientAction;
+      const id = target.dataset.id;
+      const action = target.dataset.clientAction;
 
+      if (action === "detail") showClientDetail(id);
       if (action === "edit") editClient(id);
       if (action === "newCase") newCaseForClient(id);
       if (action === "archive") archiveClient(id, true);
@@ -1956,10 +2320,17 @@
 
     el.clientQuickList.addEventListener("click", e => {
       const item = e.target.closest("[data-client-quick-id]");
-      if (item) editClient(item.dataset.clientQuickId);
+      if (item) showClientDetail(item.dataset.clientQuickId);
+    });
+
+    el.clientDetail.addEventListener("click", e => {
+      const item = e.target.closest("[data-detail-case-id]");
+      if (item) editCase(item.dataset.detailCaseId);
     });
 
     $("exportJsonBtn").addEventListener("click", exportJson);
+    $("exportCasesCsvBtn").addEventListener("click", exportCasesCsv);
+    $("exportClientsCsvBtn").addEventListener("click", exportClientsCsv);
 
     $("importJsonBtn").addEventListener("click", () => {
       el.importJsonInput.click();
