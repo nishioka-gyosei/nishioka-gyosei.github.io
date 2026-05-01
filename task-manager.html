@@ -3,26 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="行政書士業務向けのタスク・顧客管理ダッシュボード。">
-  <title>ニシオカンリシステム | 行政書士タスク管理</title>
+  <meta name="description" content="行政書士業務向けの案件・期限管理ダッシュボード。" />
+  <title>ニシオカンリシステム | 行政書士案件管理</title>
   <style>
     :root {
-      --bg: #f4f7fb;
+      --bg: #f5f7fb;
       --bg2: #e9eef5;
       --card: #ffffff;
-      --line: #e2e8f0;
+      --line: #dfe7f0;
       --text: #1e293b;
       --sub: #64748b;
       --primary: #0f172a;
-      --accent: #3b82f6; 
-      --accent-hover: #2563eb;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
-      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
-      --radius-xl: 16px;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --success: #059669;
+      --warning: #d97706;
+      --danger: #dc2626;
+      --muted: #94a3b8;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 6px 14px rgba(15, 23, 42, 0.08);
       --radius-lg: 12px;
       --radius-md: 8px;
     }
@@ -31,202 +30,621 @@
       :root {
         --bg: #0f172a;
         --bg2: #1e293b;
-        --card: #1e293b;
+        --card: #182235;
         --line: #334155;
         --text: #f8fafc;
         --sub: #94a3b8;
         --primary: #f8fafc;
-        --accent: #3b82f6;
-        --accent-hover: #60a5fa;
-        --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
-        --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.3);
+        --accent: #60a5fa;
+        --accent-hover: #93c5fd;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 6px 14px rgba(0, 0, 0, 0.35);
       }
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
+      min-height: 100vh;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       color: var(--text);
-      background-color: var(--bg);
-      min-height: 100vh;
+      background: var(--bg);
       line-height: 1.5;
     }
 
     body { padding: 24px; }
-
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
     .app { max-width: 1280px; margin: 0 auto; }
 
     .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      flex-wrap: wrap;
       margin-bottom: 24px;
-      display: flex; justify-content: space-between; align-items: flex-end;
-      flex-wrap: wrap; gap: 16px;
-    }
-    .hero-title { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.03em; color: var(--primary); }
-    .hero-subtitle { color: var(--sub); font-size: 0.95rem; margin-top: 4px; }
-    .today-badge {
-      background: var(--card); color: var(--accent); padding: 8px 16px;
-      border-radius: 999px; font-weight: 600; font-size: 0.9rem;
-      box-shadow: var(--shadow-sm); border: 1px solid var(--line);
     }
 
-    .layout { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 24px; align-items: start; }
+    .hero-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0;
+    }
+
+    .hero-subtitle {
+      color: var(--sub);
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+
+    .today-badge {
+      background: var(--card);
+      color: var(--accent);
+      padding: 8px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .main-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
 
     .card {
-      background: var(--card); border: 1px solid var(--line);
-      box-shadow: var(--shadow-sm); border-radius: var(--radius-xl);
-      margin-bottom: 24px; overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
     }
 
     .section-pad { padding: 20px 24px; }
-    .section-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; color: var(--primary); }
 
-    /* カレンダー */
-    .calendar-card { position: sticky; top: 24px; }
-    .calendar-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-    .calendar-title { font-size: 1.1rem; font-weight: 700; }
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .section-note {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--sub);
+    }
+
+    .calendar-card {
+      position: sticky;
+      top: 24px;
+    }
+
+    .calendar-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .calendar-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .icon-row { display: flex; gap: 6px; }
+
     .icon-btn {
-      width: 32px; height: 32px; border-radius: var(--radius-md); border: 1px solid var(--line);
-      background: transparent; color: var(--text); cursor: pointer; display: grid; place-items: center;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: transparent;
+      color: var(--text);
       transition: 0.2s;
     }
-    .icon-btn:hover { background: var(--bg2); }
-    .calendar-tools { display: flex; gap: 8px; margin-bottom: 16px; }
-    .btn-small { padding: 6px 12px; font-size: 0.8rem; border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--bg); cursor: pointer; font-weight: 600; color: var(--sub); transition: 0.2s; }
-    .btn-small:hover { background: var(--line); color: var(--text); }
-    
-    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-    .weekday { text-align: center; color: var(--sub); font-size: 0.75rem; font-weight: 600; padding-bottom: 8px; }
-    .day {
-      aspect-ratio: 1; border-radius: var(--radius-md); display: flex; flex-direction: column;
-      align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 500;
-      cursor: pointer; transition: 0.2s; border: 1px solid transparent; position: relative;
-    }
-    .day:hover { background: var(--bg2); }
-    .day.other-month { opacity: 0.3; }
-    .day.today { color: var(--accent); font-weight: 700; background: rgba(59, 130, 246, 0.1); }
-    .day.selected { background: var(--primary); color: var(--bg); border-color: var(--primary); }
-    .day-dots { position: absolute; bottom: 4px; display: flex; gap: 2px; }
-    .dot { width: 4px; height: 4px; border-radius: 50%; }
-    .dot.low { background: var(--success); } .dot.medium { background: var(--warning); } .dot.high { background: var(--danger); }
 
-    /* ダッシュボード（進行中の全案件） */
-    .dashboard-card { background: linear-gradient(to right bottom, var(--card), var(--bg2)); }
-    
-    .dash-list { display: grid; gap: 8px; max-height: 400px; overflow-y: auto; padding-right: 4px; }
-    .dash-list::-webkit-scrollbar { width: 6px; }
-    .dash-list::-webkit-scrollbar-thumb { background-color: var(--line); border-radius: 999px; }
+    .icon-btn:hover { background: var(--bg2); }
+
+    .calendar-tools {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .btn-small {
+      padding: 7px 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--sub);
+      font-size: 0.8rem;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .btn-small:hover {
+      background: var(--bg2);
+      color: var(--text);
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 4px;
+    }
+
+    .weekday {
+      text-align: center;
+      color: var(--sub);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding-bottom: 8px;
+    }
+
+    .day {
+      position: relative;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      color: var(--text);
+      background: transparent;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .day:hover { background: var(--bg2); }
+    .day.other-month { opacity: 0.35; }
+    .day.today { color: var(--accent); background: rgba(37, 99, 235, 0.1); }
+    .day.selected { color: var(--bg); background: var(--primary); border-color: var(--primary); }
+
+    .day-dots {
+      position: absolute;
+      bottom: 4px;
+      display: flex;
+      gap: 2px;
+    }
+
+    .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+    }
+
+    .dot.low { background: var(--success); }
+    .dot.medium { background: var(--warning); }
+    .dot.high { background: var(--danger); }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .summary-card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--bg);
+    }
+
+    .summary-label {
+      color: var(--sub);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .summary-value {
+      margin-top: 4px;
+      font-size: 1.65rem;
+      font-weight: 850;
+      color: var(--primary);
+    }
+
+    .summary-card.overdue .summary-value { color: var(--danger); }
+    .summary-card.today .summary-value { color: var(--warning); }
+    .summary-card.completed .summary-value { color: var(--success); }
+
+    .dash-list {
+      display: grid;
+      gap: 8px;
+      max-height: 390px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
 
     .dash-item {
-      padding: 12px 16px; border-radius: var(--radius-lg); background: var(--card);
-      border-left: 4px solid var(--line); display: flex; justify-content: space-between; align-items: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--line);
       box-shadow: var(--shadow-sm);
-      cursor: pointer; /* クリック可能なカーソルにする */
-      transition: all 0.2s ease;
+      transition: 0.2s;
     }
-    
-    /* マウスホバー時のスタイル（浮き上がるようなエフェクト） */
+
     .dash-item:hover {
-      transform: translateY(-2px);
+      transform: translateY(-1px);
       box-shadow: var(--shadow-md);
-      filter: brightness(0.97);
     }
 
     .dash-item.overdue { border-left-color: var(--danger); }
     .dash-item.today { border-left-color: var(--warning); }
     .dash-item.future { border-left-color: var(--accent); }
-    .dash-item.none { border-left-color: var(--sub); }
+    .dash-item.none { border-left-color: var(--muted); }
 
-    .dash-item-main { min-width: 0; }
-    .dash-item-title { font-weight: 600; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .dash-item-client { font-size: 0.8rem; color: var(--sub); margin-top: 2px; }
-    
-    .dash-item-badge { font-size: 0.75rem; font-weight: 700; padding: 4px 8px; border-radius: 6px; white-space: nowrap; margin-left: 12px; }
-    .dash-item-badge.overdue { background: rgba(239,68,68,0.1); color: var(--danger); }
-    .dash-item-badge.today { background: rgba(245,158,11,0.1); color: var(--warning); }
-    .dash-item-badge.future { background: rgba(59,130,246,0.1); color: var(--accent); }
-    .dash-item-badge.none { background: var(--bg2); color: var(--sub); }
-    
-    .dash-empty { padding: 16px; text-align: center; color: var(--success); font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 8px; background: rgba(16, 185, 129, 0.05); border-radius: var(--radius-lg); border: 1px dashed rgba(16, 185, 129, 0.3); }
+    .dash-main { min-width: 0; }
+    .dash-title {
+      font-size: 0.94rem;
+      font-weight: 750;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-    /* フォーム */
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .dash-sub {
+      margin-top: 2px;
+      color: var(--sub);
+      font-size: 0.78rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .dash-badge,
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: var(--bg2);
+      color: var(--sub);
+      font-size: 0.74rem;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .dash-badge.overdue,
+    .badge.overdue { color: var(--danger); background: rgba(220, 38, 38, 0.1); border-color: transparent; }
+    .dash-badge.today,
+    .badge.today { color: var(--warning); background: rgba(217, 119, 6, 0.12); border-color: transparent; }
+    .dash-badge.future,
+    .badge.future { color: var(--accent); background: rgba(37, 99, 235, 0.1); border-color: transparent; }
+    .badge.status { color: var(--text); background: var(--card); }
+
+    .empty-panel {
+      padding: 18px;
+      text-align: center;
+      color: var(--sub);
+      border: 1px dashed var(--line);
+      border-radius: var(--radius-md);
+      background: var(--bg);
+      font-weight: 700;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
     .full-width { grid-column: 1 / -1; }
-    .input-group { display: flex; flex-direction: column; gap: 6px; }
-    .input-label { font-size: 0.85rem; font-weight: 600; color: var(--sub); }
-    
-    .input, .select, .textarea {
-      width: 100%; border: 1px solid var(--line); border-radius: var(--radius-md);
-      background: var(--bg); padding: 12px; font-size: 0.95rem; color: var(--text);
-      transition: all 0.2s; font-family: inherit;
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
-    .textarea { resize: vertical; min-height: 80px; }
-    .input:focus, .select:focus, .textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); background: var(--card); }
-    
-    .quick-dates { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
-    .qd-btn { 
-      padding: 4px 10px; font-size: 0.75rem; border-radius: 999px; border: 1px solid var(--line); 
-      background: var(--card); color: var(--sub); cursor: pointer; transition: 0.2s; font-weight: 600; 
+
+    .input-label {
+      color: var(--sub);
+      font-size: 0.85rem;
+      font-weight: 750;
     }
-    .qd-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    .input,
+    .select,
+    .textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--bg);
+      color: var(--text);
+      padding: 11px 12px;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+
+    .textarea {
+      min-height: 82px;
+      resize: vertical;
+    }
+
+    .input:focus,
+    .select:focus,
+    .textarea:focus,
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+      background: var(--card);
+    }
+
+    .quick-dates {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .qd-btn {
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--card);
+      color: var(--sub);
+      font-size: 0.74rem;
+      font-weight: 750;
+      transition: 0.2s;
+    }
+
+    .qd-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
 
     .btn {
-      border: none; cursor: pointer; padding: 12px 24px; border-radius: var(--radius-md);
-      font-weight: 600; font-size: 0.95rem; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 11px 18px;
+      font-size: 0.92rem;
+      font-weight: 750;
+      transition: 0.2s;
     }
-    .btn-primary { background: var(--accent); color: #fff; box-shadow: var(--shadow-sm); }
-    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
-    .btn-ghost { background: transparent; color: var(--sub); border: 1px solid transparent; }
-    .btn-ghost:hover { background: var(--bg2); color: var(--text); }
-    .form-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 8px; border-top: 1px solid var(--line); padding-top: 16px; }
 
-    /* ツールバーとタスクリスト */
-    .toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 20px; justify-content: space-between; }
-    .search-input { flex: 1; min-width: 200px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--text); font-size: 0.9rem; }
-    .search-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
-    .filter-group { display: flex; background: var(--bg); border-radius: 999px; padding: 4px; border: 1px solid var(--line); }
-    .filter-btn { padding: 6px 16px; border-radius: 999px; border: none; background: transparent; color: var(--sub); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
-    .filter-btn.active { background: var(--card); color: var(--text); box-shadow: var(--shadow-sm); }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: var(--shadow-sm);
+    }
 
-    .task-list { display: grid; gap: 12px; }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--sub);
+      border: 1px solid transparent;
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg2);
+      color: var(--text);
+    }
+
+    .btn-danger {
+      background: rgba(220, 38, 38, 0.1);
+      color: var(--danger);
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 4px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(180px, 1fr) auto auto auto;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .search-input {
+      min-width: 0;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .filter-group {
+      display: flex;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--bg);
+    }
+
+    .filter-btn {
+      padding: 6px 13px;
+      border: none;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--sub);
+      font-size: 0.82rem;
+      font-weight: 750;
+      transition: 0.2s;
+    }
+
+    .filter-btn.active {
+      background: var(--card);
+      color: var(--text);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .task-list {
+      display: grid;
+      gap: 12px;
+    }
+
     .task-item {
-      display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: start;
-      padding: 16px; border-radius: var(--radius-lg); background: var(--card); 
-      border: 1px solid var(--line); transition: all 0.2s; box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: start;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--card);
+      box-shadow: var(--shadow-sm);
+      transition: 0.2s;
     }
-    .task-item:hover { border-color: var(--sub); box-shadow: var(--shadow-md); }
-    .task-item.overdue { border-left: 4px solid var(--danger); }
-    .task-item.today { border-left: 4px solid var(--warning); }
-    .task-item.completed { opacity: 0.5; background: var(--bg); box-shadow: none; }
+
+    .task-item:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .task-item.overdue { border-left-color: var(--danger); }
+    .task-item.today { border-left-color: var(--warning); }
+    .task-item.future { border-left-color: var(--accent); }
+    .task-item.completed { opacity: 0.65; background: var(--bg); }
+    .task-item.archived { opacity: 0.62; background: var(--bg2); }
     .task-item.completed .task-title { text-decoration: line-through; }
 
-    .task-check { width: 20px; height: 20px; accent-color: var(--accent); cursor: pointer; margin-top: 2px; }
-    .task-main { min-width: 0; }
-    .task-client { font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 4px; display: inline-block; }
-    .task-title { margin: 0 0 6px; font-size: 1.05rem; font-weight: 600; word-break: break-word; line-height: 1.3; }
-    .task-memo { font-size: 0.85rem; color: var(--sub); margin-bottom: 12px; white-space: pre-wrap; display: none; }
-    .task-memo.has-content { display: block; }
-    
-    .task-meta { display: flex; gap: 6px; flex-wrap: wrap; }
-    .badge {
-      padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;
-      background: var(--bg2); color: var(--sub); border: 1px solid var(--line);
+    .task-check {
+      width: 20px;
+      height: 20px;
+      margin-top: 3px;
+      accent-color: var(--accent);
     }
-    .badge.alert-overdue { background: rgba(239, 68, 68, 0.1); color: var(--danger); border-color: transparent; }
-    .badge.alert-today { background: rgba(245, 158, 11, 0.1); color: var(--warning); border-color: transparent; }
 
-    .task-actions { display: flex; gap: 4px; flex-direction: column; }
-    .act-btn { border: none; background: transparent; cursor: pointer; padding: 6px; border-radius: var(--radius-md); color: var(--sub); transition: 0.2s; display: grid; place-items: center; }
-    .act-btn:hover { background: var(--bg2); color: var(--text); }
-    .act-btn.delete:hover { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
+    .task-client {
+      display: inline-block;
+      margin-bottom: 4px;
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 850;
+    }
 
-    .empty-state { padding: 40px 20px; text-align: center; color: var(--sub); font-size: 0.95rem; }
+    .task-title {
+      margin-bottom: 6px;
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+
+    .task-memo {
+      display: none;
+      margin-bottom: 11px;
+      color: var(--sub);
+      font-size: 0.86rem;
+      white-space: pre-wrap;
+    }
+
+    .task-memo.has-content { display: block; }
+
+    .task-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .task-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .act-btn {
+      display: grid;
+      place-items: center;
+      min-width: 34px;
+      min-height: 32px;
+      padding: 6px 8px;
+      border: none;
+      border-radius: var(--radius-md);
+      background: transparent;
+      color: var(--sub);
+      font-size: 0.82rem;
+      font-weight: 750;
+      transition: 0.2s;
+    }
+
+    .act-btn:hover {
+      background: var(--bg2);
+      color: var(--text);
+    }
+
+    .act-btn.delete:hover {
+      background: rgba(220, 38, 38, 0.1);
+      color: var(--danger);
+    }
+
+    .data-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .hidden { display: none; }
+
+    @media (max-width: 1000px) {
+      .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .toolbar { grid-template-columns: 1fr 1fr; }
+      .search-input { grid-column: 1 / -1; }
+    }
 
     @media (max-width: 900px) {
+      body { padding: 16px; }
       .layout { grid-template-columns: 1fr; }
       .calendar-card { position: static; }
       .form-grid { grid-template-columns: 1fr; }
-      .task-actions { flex-direction: row; }
+      .task-actions { flex-direction: row; flex-wrap: wrap; justify-content: flex-end; }
+    }
+
+    @media (max-width: 560px) {
+      .section-pad { padding: 16px; }
+      .summary-grid { grid-template-columns: 1fr; }
+      .toolbar { grid-template-columns: 1fr; }
+      .filter-group { overflow-x: auto; }
+      .task-item { grid-template-columns: auto minmax(0, 1fr); }
+      .task-actions { grid-column: 1 / -1; }
+      .form-actions { flex-direction: column-reverse; }
+      .btn { width: 100%; }
     }
   </style>
 </head>
@@ -237,71 +655,89 @@
         <h1 class="hero-title">ニシオカンリシステム</h1>
         <p class="hero-subtitle">行政書士 業務・期限管理ダッシュボード</p>
       </div>
-      <div class="today-badge" id="todayLabel">--/--/--</div>
+      <div class="today-badge" id="todayLabel">----年--月--日</div>
     </header>
 
     <main class="layout">
-      <!-- 左サイド：カレンダー -->
       <aside class="calendar-card">
         <div class="card section-pad">
           <div class="calendar-head">
             <h2 class="calendar-title" id="calendarMonthLabel">----年 --月</h2>
-            <div style="display: flex; gap: 4px;">
-              <button class="icon-btn" id="prevMonthBtn">‹</button>
-              <button class="icon-btn" id="nextMonthBtn">›</button>
+            <div class="icon-row">
+              <button class="icon-btn" id="prevMonthBtn" type="button" aria-label="前月へ">‹</button>
+              <button class="icon-btn" id="nextMonthBtn" type="button" aria-label="翌月へ">›</button>
             </div>
           </div>
+
           <div class="calendar-tools">
-            <button class="btn-small" id="todayBtn">今日</button>
-            <button class="btn-small" id="clearDateFilterBtn">選択解除</button>
+            <button class="btn-small" id="todayBtn" type="button">今日</button>
+            <button class="btn-small" id="clearDateFilterBtn" type="button">選択解除</button>
           </div>
+
           <div class="calendar-grid" id="calendarGrid"></div>
+
+          <div class="data-tools">
+            <button class="btn-small" id="exportJsonBtn" type="button">JSON保存</button>
+            <button class="btn-small" id="importJsonBtn" type="button">JSON読込</button>
+            <input class="hidden" id="importJsonInput" type="file" accept="application/json,.json" />
+          </div>
         </div>
       </aside>
 
-      <!-- 右サイド：メインコンテンツ -->
-      <section style="display: flex; flex-direction: column; gap: 24px;">
-        
-        <!-- 全タスクを表示するダッシュボード -->
-        <div class="card dashboard-card">
+      <section class="main-stack">
+        <div class="card">
           <div class="section-pad">
-            <h2 class="section-title">📋 進行中の全案件 <span style="font-size:0.8rem; font-weight:normal; color:var(--sub); margin-left:8px;">※クリックで編集</span></h2>
-            <div class="dash-list" id="dashboardList">
-              <!-- JSで生成 -->
-            </div>
+            <h2 class="section-title">状況サマリー</h2>
+            <div class="summary-grid" id="summaryGrid"></div>
           </div>
         </div>
 
-        <!-- フォーム -->
         <div class="card">
           <div class="section-pad">
-            <h2 class="section-title" id="formTitle">✏️ 案件の登録</h2>
-            <div class="form-grid">
-              
+            <h2 class="section-title">
+              進行中の全案件
+              <span class="section-note">クリックで編集</span>
+            </h2>
+            <div class="dash-list" id="dashboardList"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-pad">
+            <h2 class="section-title" id="formTitle">案件の登録</h2>
+
+            <form id="taskForm" class="form-grid">
               <div class="input-group full-width">
-                <label class="input-label">タスク・案件名 <span style="color:var(--danger)">*</span></label>
-                <input id="taskTitleInput" class="input" type="text" placeholder="例：〇〇許可申請書の作成" />
+                <label class="input-label" for="taskTitleInput">タスク・案件名 *</label>
+                <input id="taskTitleInput" class="input" type="text" placeholder="例：建設業許可 更新申請書の作成" required />
               </div>
-              
+
               <div class="input-group">
-                <label class="input-label">顧客名</label>
+                <label class="input-label" for="taskClientInput">顧客名</label>
                 <input id="taskClientInput" class="input" type="text" placeholder="株式会社〇〇" />
               </div>
-              
+
               <div class="input-group">
-                <label class="input-label">業務カテゴリ</label>
-                <select id="taskIndustryInput" class="select">
-                  <option value="風営法許可">🍷 風営法許可</option>
-                  <option value="建設業許可">🏗 建設業許可</option>
-                  <option value="宅建業免許">🏠 宅建業免許</option>
-                  <option value="産廃収集運搬">♻️ 産廃収集運搬</option>
-                  <option value="会社設立">🏢 会社設立</option>
-                  <option value="その他">📌 その他</option>
+                <label class="input-label" for="taskIndustryInput">業務カテゴリ</label>
+                <select id="taskIndustryInput" class="select"></select>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="taskStatusInput">案件ステータス</label>
+                <select id="taskStatusInput" class="select"></select>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label" for="taskPriorityInput">優先度</label>
+                <select id="taskPriorityInput" class="select">
+                  <option value="high">高 急ぎ</option>
+                  <option value="medium" selected>中 通常</option>
+                  <option value="low">低 後回し可</option>
                 </select>
               </div>
 
               <div class="input-group">
-                <label class="input-label">提出・完了期限</label>
+                <label class="input-label" for="taskDateInput">提出・完了期限</label>
                 <input id="taskDateInput" class="input" type="date" />
                 <div class="quick-dates">
                   <button type="button" class="qd-btn" data-days="0">今日</button>
@@ -311,56 +747,97 @@
                 </div>
               </div>
 
-              <div class="input-group">
-                <label class="input-label">優先度</label>
-                <select id="taskPriorityInput" class="select">
-                  <option value="high">高 (急ぎ)</option>
-                  <option value="medium" selected>中 (通常)</option>
-                  <option value="low">低 (後回し可)</option>
-                </select>
+              <div class="input-group full-width">
+                <label class="input-label" for="taskMemoInput">メモ・備考</label>
+                <textarea id="taskMemoInput" class="textarea" placeholder="必要書類、連絡履歴、補正内容など"></textarea>
               </div>
 
-              <div class="input-group full-width">
-                <label class="input-label">メモ・備考</label>
-                <textarea id="taskMemoInput" class="textarea" placeholder="連絡先や必要書類のメモ"></textarea>
-              </div>
-              
               <div class="form-actions full-width">
                 <button id="cancelEditBtn" class="btn btn-ghost" type="button" style="display:none;">キャンセル</button>
-                <button id="submitTaskBtn" class="btn btn-primary">保存する</button>
+                <button id="submitTaskBtn" class="btn btn-primary" type="submit">保存する</button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
 
-        <!-- タスク詳細一覧 -->
         <div class="card">
           <div class="section-pad">
             <div class="toolbar">
-              <input id="searchInput" class="search-input" type="text" placeholder="🔍 案件・顧客を検索..." />
-              <div class="filter-group">
-                <button class="filter-btn active" data-filter="all">すべて</button>
-                <button class="filter-btn" data-filter="active">未完了</button>
-                <button class="filter-btn" data-filter="completed">完了</button>
+              <input id="searchInput" class="search-input" type="text" placeholder="案件・顧客・メモを検索..." />
+
+              <div class="filter-group" aria-label="完了状態フィルター">
+                <button class="filter-btn active" type="button" data-filter="all">すべて</button>
+                <button class="filter-btn" type="button" data-filter="active">未完了</button>
+                <button class="filter-btn" type="button" data-filter="completed">完了</button>
+                <button class="filter-btn" type="button" data-filter="archived">保管</button>
               </div>
-              <button class="btn-small" id="clearCompletedBtn">完了済みを削除</button>
+
+              <select id="categoryFilterInput" class="select" aria-label="カテゴリで絞り込み"></select>
+              <select id="urgencyFilterInput" class="select" aria-label="期限で絞り込み">
+                <option value="all">期限すべて</option>
+                <option value="overdue">期限超過</option>
+                <option value="today">本日締切</option>
+                <option value="future">今後の期限</option>
+                <option value="none">期限なし</option>
+              </select>
             </div>
-            <div class="task-list" id="taskList"></div>
+
+            <div class="data-tools">
+              <button class="btn-small" id="clearCompletedBtn" type="button">完了を保管</button>
+              <button class="btn-small" id="clearArchivedBtn" type="button">保管済みを完全削除</button>
+            </div>
+
+            <div class="task-list" id="taskList" style="margin-top: 14px;"></div>
           </div>
         </div>
-
       </section>
     </main>
   </div>
 
   <script>
-    const STORAGE_KEY = "admin_scrivener_task_app_v2";
+    const STORAGE_KEY = "admin_scrivener_task_app_v3";
+
+    const categories = [
+      "風営法許可",
+      "建設業許可",
+      "宅建業免許",
+      "産廃収集運搬",
+      "会社設立",
+      "在留資格",
+      "相続・遺言",
+      "契約書作成",
+      "その他"
+    ];
+
+    const statuses = [
+      "相談中",
+      "書類待ち",
+      "作成中",
+      "申請済み",
+      "補正対応中",
+      "請求済み",
+      "完了"
+    ];
+
+    const statusAutoCompleted = new Set(["完了"]);
+    const priorityLabel = { high: "高", medium: "中", low: "低" };
+    const statusRank = {
+      "補正対応中": 1,
+      "書類待ち": 2,
+      "作成中": 3,
+      "申請済み": 4,
+      "相談中": 5,
+      "請求済み": 6,
+      "完了": 7
+    };
 
     const state = {
       tasks: loadTasks(),
       currentMonth: startOfMonth(new Date()),
       selectedDate: "",
       statusFilter: "all",
+      urgencyFilter: "all",
+      categoryFilter: "all",
       keyword: "",
       editingId: null
     };
@@ -369,241 +846,618 @@
       todayLabel: document.getElementById("todayLabel"),
       calendarMonthLabel: document.getElementById("calendarMonthLabel"),
       calendarGrid: document.getElementById("calendarGrid"),
+      summaryGrid: document.getElementById("summaryGrid"),
       dashboardList: document.getElementById("dashboardList"),
+      taskForm: document.getElementById("taskForm"),
       formTitle: document.getElementById("formTitle"),
       taskTitleInput: document.getElementById("taskTitleInput"),
       taskClientInput: document.getElementById("taskClientInput"),
       taskDateInput: document.getElementById("taskDateInput"),
       taskIndustryInput: document.getElementById("taskIndustryInput"),
+      taskStatusInput: document.getElementById("taskStatusInput"),
       taskPriorityInput: document.getElementById("taskPriorityInput"),
       taskMemoInput: document.getElementById("taskMemoInput"),
       submitTaskBtn: document.getElementById("submitTaskBtn"),
       cancelEditBtn: document.getElementById("cancelEditBtn"),
       searchInput: document.getElementById("searchInput"),
       taskList: document.getElementById("taskList"),
+      categoryFilterInput: document.getElementById("categoryFilterInput"),
+      urgencyFilterInput: document.getElementById("urgencyFilterInput"),
+      importJsonInput: document.getElementById("importJsonInput"),
       filterButtons: Array.from(document.querySelectorAll(".filter-btn"))
     };
 
-    function loadTasks() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch { return []; } }
-    function saveTasks() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state.tasks)); }
-    function uid() { return "id-" + Date.now() + "-" + Math.random().toString(16).slice(2); }
-    function pad(n) { return String(n).padStart(2, "0"); }
-    function toYMD(date) { return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`; }
-    function parseYMD(ymd) { if (!ymd) return null; const [y, m, d] = ymd.split("-").map(Number); return new Date(y, m - 1, d); }
-    function formatDateJP(ymd) { const dt = parseYMD(ymd); return dt ? `${dt.getMonth() + 1}月${dt.getDate()}日` : "期限なし"; }
-    function startOfMonth(date) { return new Date(date.getFullYear(), date.getMonth(), 1); }
-    function escapeHtml(str) { return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]); }
-
-    function getDateStatus(dueDate) {
-      if (!dueDate) return 'none';
-      const todayYMD = toYMD(new Date());
-      if (dueDate < todayYMD) return 'overdue';
-      if (dueDate === todayYMD) return 'today';
-      return 'future';
+    function loadTasks() {
+      try {
+        const modern = localStorage.getItem(STORAGE_KEY);
+        const legacy = localStorage.getItem("admin_scrivener_task_app_v2");
+        const raw = modern || legacy;
+        if (!raw) return [];
+        return JSON.parse(raw).map(normalizeTask);
+      } catch {
+        return [];
+      }
     }
 
-    document.querySelectorAll('.qd-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const days = parseInt(e.target.dataset.days);
-        const d = new Date();
-        d.setDate(d.getDate() + days);
-        el.taskDateInput.value = toYMD(d);
-      });
-    });
+    function normalizeTask(task) {
+      const completed = Boolean(task.completed);
+      const status = task.status || (completed ? "完了" : "作成中");
 
-    function getFilteredTasks() {
-      const keyword = state.keyword.trim().toLowerCase();
-      return state.tasks.filter(task => {
-        const matchKeyword = !keyword || 
-          task.title.toLowerCase().includes(keyword) || 
-          (task.memo && task.memo.toLowerCase().includes(keyword)) ||
-          (task.client && task.client.toLowerCase().includes(keyword));
-        const matchStatus = state.statusFilter === "all" || (state.statusFilter === "active" && !task.completed) || (state.statusFilter === "completed" && task.completed);
-        const matchDate = !state.selectedDate || task.dueDate === state.selectedDate;
-        return matchKeyword && matchStatus && matchDate;
-      });
+      return {
+        id: task.id || uid(),
+        title: task.title || "",
+        client: task.client || "",
+        dueDate: task.dueDate || "",
+        priority: task.priority || "medium",
+        industry: task.industry || "その他",
+        status,
+        memo: task.memo || "",
+        completed: statusAutoCompleted.has(status) ? true : completed,
+        archived: Boolean(task.archived),
+        createdAt: task.createdAt || new Date().toISOString(),
+        updatedAt: task.updatedAt || new Date().toISOString()
+      };
+    }
+
+    function saveTasks() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.tasks));
+    }
+
+    function uid() {
+      return "id-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+    }
+
+    function pad(n) {
+      return String(n).padStart(2, "0");
+    }
+
+    function toYMD(date) {
+      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+    }
+
+    function parseYMD(ymd) {
+      if (!ymd) return null;
+      const [y, m, d] = ymd.split("-").map(Number);
+      return new Date(y, m - 1, d);
+    }
+
+    function startOfMonth(date) {
+      return new Date(date.getFullYear(), date.getMonth(), 1);
+    }
+
+    function formatDateJP(ymd) {
+      const dt = parseYMD(ymd);
+      return dt ? `${dt.getFullYear()}/${dt.getMonth() + 1}/${dt.getDate()}` : "期限なし";
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, m => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#39;"
+      })[m]);
+    }
+
+    function getDateStatus(dueDate) {
+      if (!dueDate) return "none";
+      const todayYMD = toYMD(new Date());
+      if (dueDate < todayYMD) return "overdue";
+      if (dueDate === todayYMD) return "today";
+      return "future";
+    }
+
+    function getDateBadgeText(task) {
+      const status = getDateStatus(task.dueDate);
+      if (status === "overdue") return "期限超過";
+      if (status === "today") return "本日締切";
+      if (status === "future") return `${formatDateJP(task.dueDate)}まで`;
+      return "期限なし";
+    }
+
+    function sortTasks(a, b) {
+      if (a.archived !== b.archived) return a.archived ? 1 : -1;
+      if (a.completed !== b.completed) return a.completed ? 1 : -1;
+      if (!a.dueDate && b.dueDate) return 1;
+      if (a.dueDate && !b.dueDate) return -1;
+      if (a.dueDate !== b.dueDate) return a.dueDate > b.dueDate ? 1 : -1;
+      return (statusRank[a.status] || 99) - (statusRank[b.status] || 99);
+    }
+
+    function renderSelectOptions() {
+      el.taskIndustryInput.innerHTML = categories.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("");
+      el.taskStatusInput.innerHTML = statuses.map(s => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join("");
+
+      el.categoryFilterInput.innerHTML = [
+        `<option value="all">カテゴリすべて</option>`,
+        ...categories.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`)
+      ].join("");
     }
 
     function renderTodayLabel() {
       const now = new Date();
-      el.todayLabel.textContent = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+      const weekday = ["日", "月", "火", "水", "木", "金", "土"][now.getDay()];
+      el.todayLabel.textContent = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日（${weekday}）`;
+    }
+
+    function renderSummary() {
+      const visible = state.tasks.filter(t => !t.archived);
+      const active = visible.filter(t => !t.completed);
+      const completed = visible.filter(t => t.completed);
+      const overdue = active.filter(t => getDateStatus(t.dueDate) === "overdue");
+      const today = active.filter(t => getDateStatus(t.dueDate) === "today");
+
+      const items = [
+        ["進行中", active.length, ""],
+        ["本日締切", today.length, "today"],
+        ["期限超過", overdue.length, "overdue"],
+        ["完了済み", completed.length, "completed"]
+      ];
+
+      el.summaryGrid.innerHTML = items.map(([label, value, cls]) => `
+        <div class="summary-card ${cls}">
+          <div class="summary-label">${label}</div>
+          <div class="summary-value">${value}</div>
+        </div>
+      `).join("");
     }
 
     function renderCalendar() {
       const monthDate = state.currentMonth;
       el.calendarMonthLabel.textContent = `${monthDate.getFullYear()}年 ${monthDate.getMonth() + 1}月`;
-      const firstDay = new Date(monthDate.getFullYear(), monthDate.getMonth(), 1);
-      const startDate = new Date(firstDay); startDate.setDate(1 - firstDay.getDay());
 
-      let html = ["日", "月", "火", "水", "木", "金", "土"].map(l => `<div class="weekday">${l}</div>`).join("");
+      const firstDay = new Date(monthDate.getFullYear(), monthDate.getMonth(), 1);
+      const startDate = new Date(firstDay);
+      startDate.setDate(1 - firstDay.getDay());
+
+      let html = ["日", "月", "火", "水", "木", "金", "土"]
+        .map(day => `<div class="weekday">${day}</div>`)
+        .join("");
 
       for (let i = 0; i < 42; i++) {
-        const cellDate = new Date(startDate); cellDate.setDate(startDate.getDate() + i);
-        const ymd = toYMD(cellDate); const tasks = state.tasks.filter(t => t.dueDate === ymd && !t.completed);
-        const classes = ["day", cellDate.getMonth() !== monthDate.getMonth() ? "other-month" : "", ymd === toYMD(new Date()) ? "today" : "", state.selectedDate === ymd ? "selected" : ""].filter(Boolean).join(" ");
-        const dots = tasks.slice(0, 3).map(t => `<span class="dot ${t.priority}"></span>`).join("");
-        html += `<div class="${classes}" data-date="${ymd}">${cellDate.getDate()}<div class="day-dots">${dots}</div></div>`;
+        const cellDate = new Date(startDate);
+        cellDate.setDate(startDate.getDate() + i);
+
+        const ymd = toYMD(cellDate);
+        const tasks = state.tasks.filter(t => t.dueDate === ymd && !t.completed && !t.archived);
+        const classes = [
+          "day",
+          cellDate.getMonth() !== monthDate.getMonth() ? "other-month" : "",
+          ymd === toYMD(new Date()) ? "today" : "",
+          state.selectedDate === ymd ? "selected" : ""
+        ].filter(Boolean).join(" ");
+
+        const dots = tasks.slice(0, 3).map(t => `<span class="dot ${escapeHtml(t.priority)}"></span>`).join("");
+
+        html += `
+          <button class="${classes}" type="button" data-date="${ymd}" aria-label="${ymd}を選択">
+            ${cellDate.getDate()}
+            <span class="day-dots">${dots}</span>
+          </button>
+        `;
       }
+
       el.calendarGrid.innerHTML = html;
-      el.calendarGrid.querySelectorAll(".day").forEach(dayEl => {
-        dayEl.addEventListener("click", () => {
-          state.selectedDate = state.selectedDate === dayEl.dataset.date ? "" : dayEl.dataset.date;
-          el.taskDateInput.value = state.selectedDate;
-          renderCalendar(); renderTasks();
-        });
-      });
     }
 
     function renderDashboard() {
-      const activeTasks = state.tasks.filter(t => !t.completed);
-      
-      activeTasks.sort((a, b) => {
-        if (!a.dueDate) return 1;
-        if (!b.dueDate) return -1;
-        return a.dueDate > b.dueDate ? 1 : -1;
-      });
+      const activeTasks = state.tasks
+        .filter(t => !t.completed && !t.archived)
+        .sort(sortTasks);
 
-      if (activeTasks.length > 0) {
-        // data-id属性を追加してクリック可能に
-        el.dashboardList.innerHTML = activeTasks.map(task => {
-          const status = getDateStatus(task.dueDate);
-          let badgeText = '期限なし';
-          
-          if (status === 'overdue') badgeText = '期限超過';
-          else if (status === 'today') badgeText = '本日締切';
-          else if (status === 'future') badgeText = formatDateJP(task.dueDate) + 'まで';
-
-          return `
-            <div class="dash-item ${status}" data-id="${task.id}" title="クリックで確認・編集">
-              <div class="dash-item-main">
-                <div class="dash-item-title">${escapeHtml(task.title)}</div>
-                ${task.client ? `<div class="dash-item-client">${escapeHtml(task.client)}</div>` : ''}
-              </div>
-              <div class="dash-item-badge ${status}">${badgeText}</div>
-            </div>
-          `;
-        }).join("");
-      } else {
-        el.dashboardList.innerHTML = `<div class="dash-empty">✨ 現在、進行中の案件はありません。</div>`;
+      if (!activeTasks.length) {
+        el.dashboardList.innerHTML = `<div class="empty-panel">現在、進行中の案件はありません。</div>`;
+        return;
       }
+
+      el.dashboardList.innerHTML = activeTasks.map(task => {
+        const dateStatus = getDateStatus(task.dueDate);
+
+        return `
+          <button class="dash-item ${dateStatus}" type="button" data-id="${task.id}" aria-label="${escapeHtml(task.title)}を編集">
+            <span class="dash-main">
+              <span class="dash-title">${escapeHtml(task.title)}</span>
+              <span class="dash-sub">${escapeHtml(task.client || "顧客名なし")} / ${escapeHtml(task.status)} / ${escapeHtml(task.industry)}</span>
+            </span>
+            <span class="dash-badge ${dateStatus}">${getDateBadgeText(task)}</span>
+          </button>
+        `;
+      }).join("");
+    }
+
+    function getFilteredTasks() {
+      const keyword = state.keyword.trim().toLowerCase();
+
+      return state.tasks.filter(task => {
+        const searchable = [
+          task.title,
+          task.client,
+          task.memo,
+          task.industry,
+          task.status
+        ].join(" ").toLowerCase();
+
+        const matchKeyword = !keyword || searchable.includes(keyword);
+        const matchDate = !state.selectedDate || task.dueDate === state.selectedDate;
+        const matchCategory = state.categoryFilter === "all" || task.industry === state.categoryFilter;
+        const matchUrgency = state.urgencyFilter === "all" || getDateStatus(task.dueDate) === state.urgencyFilter;
+
+        let matchStatus = true;
+        if (state.statusFilter === "active") matchStatus = !task.completed && !task.archived;
+        if (state.statusFilter === "completed") matchStatus = task.completed && !task.archived;
+        if (state.statusFilter === "archived") matchStatus = task.archived;
+        if (state.statusFilter === "all") matchStatus = !task.archived;
+
+        return matchKeyword && matchDate && matchCategory && matchUrgency && matchStatus;
+      }).sort(sortTasks);
     }
 
     function renderTasks() {
       const filtered = getFilteredTasks();
+
       if (!filtered.length) {
-        el.taskList.innerHTML = `<div class="empty-state">該当するタスクがありません。</div>`;
+        el.taskList.innerHTML = `<div class="empty-panel">該当する案件はありません。</div>`;
         return;
       }
 
       el.taskList.innerHTML = filtered.map(task => {
-        const dateStatus = task.completed ? 'none' : getDateStatus(task.dueDate);
+        const dateStatus = task.completed || task.archived ? "none" : getDateStatus(task.dueDate);
+        const checked = task.completed ? "checked" : "";
+        const disabled = task.archived ? "disabled" : "";
+
         return `
-        <article class="task-item ${task.completed ? "completed" : ""} ${dateStatus}" data-id="${task.id}">
-          <input class="task-check" type="checkbox" ${task.completed ? "checked" : ""} data-action="toggle" data-id="${task.id}" />
-          <div class="task-main">
-            ${task.client ? `<div class="task-client">${escapeHtml(task.client)}</div>` : ''}
-            <h3 class="task-title">${escapeHtml(task.title)}</h3>
-            <div class="task-memo ${task.memo ? 'has-content' : ''}">${task.memo ? escapeHtml(task.memo) : ''}</div>
-            <div class="task-meta">
-              <span class="badge">${escapeHtml(task.industry || 'その他')}</span>
-              ${task.dueDate ? `<span class="badge alert-${dateStatus}">${parseYMD(task.dueDate).getFullYear()}/${parseYMD(task.dueDate).getMonth() + 1}/${parseYMD(task.dueDate).getDate()}</span>` : ''}
+          <article class="task-item ${dateStatus} ${task.completed ? "completed" : ""} ${task.archived ? "archived" : ""}" data-id="${task.id}">
+            <input class="task-check" type="checkbox" data-action="toggle" data-id="${task.id}" ${checked} ${disabled} aria-label="完了を切り替え" />
+
+            <div class="task-main">
+              ${task.client ? `<div class="task-client">${escapeHtml(task.client)}</div>` : ""}
+              <h3 class="task-title">${escapeHtml(task.title)}</h3>
+              <div class="task-memo ${task.memo ? "has-content" : ""}">${task.memo ? escapeHtml(task.memo) : ""}</div>
+
+              <div class="task-meta">
+                <span class="badge status">${escapeHtml(task.status)}</span>
+                <span class="badge">${escapeHtml(task.industry)}</span>
+                <span class="badge">優先度 ${priorityLabel[task.priority] || "中"}</span>
+                <span class="badge ${dateStatus}">${getDateBadgeText(task)}</span>
+              </div>
             </div>
-          </div>
-          <div class="task-actions">
-            <button class="act-btn" data-action="edit" data-id="${task.id}" title="編集">✏️</button>
-            <button class="act-btn delete" data-action="delete" data-id="${task.id}" title="削除">🗑</button>
-          </div>
-        </article>
-      `}).join("");
-      bindTaskEvents();
+
+            <div class="task-actions">
+              <button class="act-btn" type="button" data-action="edit" data-id="${task.id}" ${task.archived ? "disabled" : ""}>編集</button>
+              ${task.archived
+                ? `<button class="act-btn" type="button" data-action="restore" data-id="${task.id}">復元</button>
+                   <button class="act-btn delete" type="button" data-action="delete" data-id="${task.id}">削除</button>`
+                : `<button class="act-btn" type="button" data-action="archive" data-id="${task.id}">保管</button>`
+              }
+            </div>
+          </article>
+        `;
+      }).join("");
     }
 
-    function bindTaskEvents() {
-      el.taskList.querySelectorAll('[data-action="toggle"]').forEach(n => n.addEventListener("change", () => toggleTask(n.dataset.id)));
-      el.taskList.querySelectorAll('[data-action="edit"]').forEach(n => n.addEventListener("click", () => startEdit(n.dataset.id)));
-      el.taskList.querySelectorAll('[data-action="delete"]').forEach(n => n.addEventListener("click", () => deleteTask(n.dataset.id)));
+    function renderAll() {
+      renderTodayLabel();
+      renderSummary();
+      renderCalendar();
+      renderDashboard();
+      renderTasks();
     }
 
     function addOrUpdateTask() {
       const title = el.taskTitleInput.value.trim();
-      if (!title) { alert("タスク名を入力してください"); return el.taskTitleInput.focus(); }
-      
-      const taskData = { 
-        title, 
+
+      if (!title) {
+        alert("タスク・案件名を入力してください。");
+        el.taskTitleInput.focus();
+        return;
+      }
+
+      const status = el.taskStatusInput.value;
+      const completed = statusAutoCompleted.has(status);
+
+      const taskData = {
+        title,
         client: el.taskClientInput.value.trim(),
-        dueDate: el.taskDateInput.value, 
+        dueDate: el.taskDateInput.value,
         priority: el.taskPriorityInput.value,
         industry: el.taskIndustryInput.value,
-        memo: el.taskMemoInput.value.trim()
+        status,
+        completed,
+        memo: el.taskMemoInput.value.trim(),
+        updatedAt: new Date().toISOString()
       };
 
       if (state.editingId) {
         state.tasks = state.tasks.map(t => t.id === state.editingId ? { ...t, ...taskData } : t);
       } else {
-        state.tasks.unshift({ id: uid(), completed: false, createdAt: new Date().toISOString(), ...taskData });
+        state.tasks.unshift({
+          id: uid(),
+          archived: false,
+          createdAt: new Date().toISOString(),
+          ...taskData
+        });
       }
-      saveTasks(); resetForm(); renderCalendar(); renderTasks(); renderDashboard();
+
+      saveTasks();
+      resetForm();
+      renderAll();
     }
 
     function resetForm() {
-      state.editingId = null; el.formTitle.innerHTML = "✏️ 案件の登録"; el.submitTaskBtn.innerHTML = "保存する";
-      el.cancelEditBtn.style.display = "none"; 
-      el.taskTitleInput.value = ""; el.taskClientInput.value = "";
-      el.taskPriorityInput.value = "medium"; el.taskIndustryInput.value = "風営法許可"; 
-      el.taskMemoInput.value = ""; el.taskDateInput.value = state.selectedDate || ""; 
+      state.editingId = null;
+      el.formTitle.textContent = "案件の登録";
+      el.submitTaskBtn.textContent = "保存する";
+      el.cancelEditBtn.style.display = "none";
+
+      el.taskForm.reset();
+      el.taskDateInput.value = state.selectedDate || "";
+      el.taskPriorityInput.value = "medium";
+      el.taskIndustryInput.value = categories[0];
+      el.taskStatusInput.value = "作成中";
     }
 
     function startEdit(id) {
-      const task = state.tasks.find(t => t.id === id); if (!task) return;
-      state.editingId = id; el.formTitle.innerHTML = "🔄 案件の編集"; el.submitTaskBtn.innerHTML = "更新する";
-      el.cancelEditBtn.style.display = "inline-flex"; 
-      el.taskTitleInput.value = task.title; el.taskClientInput.value = task.client || "";
-      el.taskDateInput.value = task.dueDate || ""; el.taskPriorityInput.value = task.priority || "medium";
-      el.taskIndustryInput.value = task.industry || "風営法許可"; el.taskMemoInput.value = task.memo || "";
-      
-      // 編集フォームの位置までスムーズにスクロール
-      document.getElementById('formTitle').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const task = state.tasks.find(t => t.id === id);
+      if (!task || task.archived) return;
+
+      state.editingId = id;
+      el.formTitle.textContent = "案件の編集";
+      el.submitTaskBtn.textContent = "更新する";
+      el.cancelEditBtn.style.display = "inline-flex";
+
+      el.taskTitleInput.value = task.title;
+      el.taskClientInput.value = task.client || "";
+      el.taskDateInput.value = task.dueDate || "";
+      el.taskPriorityInput.value = task.priority || "medium";
+      el.taskIndustryInput.value = task.industry || "その他";
+      el.taskStatusInput.value = task.status || "作成中";
+      el.taskMemoInput.value = task.memo || "";
+
+      el.formTitle.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.taskTitleInput.focus();
     }
 
     function toggleTask(id) {
-      state.tasks = state.tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
-      saveTasks(); renderTasks(); renderDashboard(); renderCalendar();
+      state.tasks = state.tasks.map(task => {
+        if (task.id !== id) return task;
+
+        const completed = !task.completed;
+        return {
+          ...task,
+          completed,
+          status: completed ? "完了" : (task.status === "完了" ? "作成中" : task.status),
+          updatedAt: new Date().toISOString()
+        };
+      });
+
+      saveTasks();
+      renderAll();
+    }
+
+    function archiveTask(id) {
+      state.tasks = state.tasks.map(task => task.id === id ? {
+        ...task,
+        archived: true,
+        updatedAt: new Date().toISOString()
+      } : task);
+
+      if (state.editingId === id) resetForm();
+      saveTasks();
+      renderAll();
+    }
+
+    function restoreTask(id) {
+      state.tasks = state.tasks.map(task => task.id === id ? {
+        ...task,
+        archived: false,
+        updatedAt: new Date().toISOString()
+      } : task);
+
+      saveTasks();
+      renderAll();
     }
 
     function deleteTask(id) {
-      if (!confirm("本当に削除しますか？")) return;
-      state.tasks = state.tasks.filter(t => t.id !== id);
+      if (!confirm("この保管済み案件を完全に削除しますか？この操作は元に戻せません。")) return;
+
+      state.tasks = state.tasks.filter(task => task.id !== id);
       if (state.editingId === id) resetForm();
-      saveTasks(); renderCalendar(); renderTasks(); renderDashboard();
+
+      saveTasks();
+      renderAll();
     }
 
-    // イベントリスナー
-    document.getElementById("prevMonthBtn").addEventListener("click", () => { state.currentMonth.setMonth(state.currentMonth.getMonth() - 1); renderCalendar(); });
-    document.getElementById("nextMonthBtn").addEventListener("click", () => { state.currentMonth.setMonth(state.currentMonth.getMonth() + 1); renderCalendar(); });
-    document.getElementById("todayBtn").addEventListener("click", () => { state.currentMonth = startOfMonth(new Date()); state.selectedDate = toYMD(new Date()); el.taskDateInput.value = state.selectedDate; renderCalendar(); renderTasks(); });
-    document.getElementById("clearDateFilterBtn").addEventListener("click", () => { state.selectedDate = ""; el.taskDateInput.value = ""; renderCalendar(); renderTasks(); });
-    el.submitTaskBtn.addEventListener("click", addOrUpdateTask);
-    el.cancelEditBtn.addEventListener("click", resetForm);
-    el.searchInput.addEventListener("input", (e) => { state.keyword = e.target.value; renderTasks(); });
-    document.getElementById("clearCompletedBtn").addEventListener("click", () => {
-      if(confirm("完了済みを削除しますか？")) { state.tasks = state.tasks.filter(t => !t.completed); saveTasks(); renderCalendar(); renderTasks(); renderDashboard(); }
-    });
-    el.filterButtons.forEach(btn => btn.addEventListener("click", () => {
-      state.statusFilter = btn.dataset.filter;
-      el.filterButtons.forEach(b => b.classList.toggle("active", b === btn)); renderTasks();
-    }));
+    function archiveCompleted() {
+      const completedCount = state.tasks.filter(t => t.completed && !t.archived).length;
 
-    // ★追加: ダッシュボードのタスククリックイベント
-    el.dashboardList.addEventListener("click", (e) => {
-      // クリックされた要素の親である .dash-item を探す
-      const item = e.target.closest('.dash-item');
-      if (item && item.dataset.id) {
-        startEdit(item.dataset.id);
+      if (!completedCount) {
+        alert("保管できる完了済み案件はありません。");
+        return;
       }
+
+      if (!confirm(`完了済み案件 ${completedCount} 件を保管しますか？`)) return;
+
+      state.tasks = state.tasks.map(task => task.completed ? {
+        ...task,
+        archived: true,
+        updatedAt: new Date().toISOString()
+      } : task);
+
+      saveTasks();
+      renderAll();
+    }
+
+    function clearArchived() {
+      const archivedCount = state.tasks.filter(t => t.archived).length;
+
+      if (!archivedCount) {
+        alert("完全削除できる保管済み案件はありません。");
+        return;
+      }
+
+      if (!confirm(`保管済み案件 ${archivedCount} 件を完全に削除しますか？この操作は元に戻せません。`)) return;
+
+      state.tasks = state.tasks.filter(t => !t.archived);
+      saveTasks();
+      renderAll();
+    }
+
+    function exportJson() {
+      const payload = {
+        app: "ニシオカンリシステム",
+        version: 3,
+        exportedAt: new Date().toISOString(),
+        tasks: state.tasks
+      };
+
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+
+      a.href = url;
+      a.download = `nishiokanri-backup-${toYMD(new Date())}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function importJson(file) {
+      if (!file) return;
+
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        try {
+          const parsed = JSON.parse(reader.result);
+          const importedTasks = Array.isArray(parsed) ? parsed : parsed.tasks;
+
+          if (!Array.isArray(importedTasks)) {
+            alert("読み込める案件データが見つかりません。");
+            return;
+          }
+
+          if (!confirm("現在のデータを読み込んだJSONで置き換えますか？事前にJSON保存しておくことをおすすめします。")) return;
+
+          state.tasks = importedTasks.map(normalizeTask);
+          saveTasks();
+          resetForm();
+          renderAll();
+          alert("データを読み込みました。");
+        } catch {
+          alert("JSONの読み込みに失敗しました。");
+        } finally {
+          el.importJsonInput.value = "";
+        }
+      };
+
+      reader.readAsText(file);
+    }
+
+    document.querySelectorAll(".qd-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const days = Number(btn.dataset.days);
+        const date = new Date();
+        date.setDate(date.getDate() + days);
+        el.taskDateInput.value = toYMD(date);
+      });
     });
 
-    // 初期化
-    renderTodayLabel(); renderCalendar(); renderTasks(); renderDashboard();
+    document.getElementById("prevMonthBtn").addEventListener("click", () => {
+      state.currentMonth.setMonth(state.currentMonth.getMonth() - 1);
+      renderCalendar();
+    });
+
+    document.getElementById("nextMonthBtn").addEventListener("click", () => {
+      state.currentMonth.setMonth(state.currentMonth.getMonth() + 1);
+      renderCalendar();
+    });
+
+    document.getElementById("todayBtn").addEventListener("click", () => {
+      state.currentMonth = startOfMonth(new Date());
+      state.selectedDate = toYMD(new Date());
+      el.taskDateInput.value = state.selectedDate;
+      renderAll();
+    });
+
+    document.getElementById("clearDateFilterBtn").addEventListener("click", () => {
+      state.selectedDate = "";
+      el.taskDateInput.value = "";
+      renderAll();
+    });
+
+    el.calendarGrid.addEventListener("click", event => {
+      const day = event.target.closest(".day");
+      if (!day) return;
+
+      state.selectedDate = state.selectedDate === day.dataset.date ? "" : day.dataset.date;
+      el.taskDateInput.value = state.selectedDate;
+      renderAll();
+    });
+
+    el.dashboardList.addEventListener("click", event => {
+      const item = event.target.closest("[data-id]");
+      if (item) startEdit(item.dataset.id);
+    });
+
+    el.taskForm.addEventListener("submit", event => {
+      event.preventDefault();
+      addOrUpdateTask();
+    });
+
+    el.cancelEditBtn.addEventListener("click", resetForm);
+
+    el.searchInput.addEventListener("input", event => {
+      state.keyword = event.target.value;
+      renderTasks();
+    });
+
+    el.categoryFilterInput.addEventListener("change", event => {
+      state.categoryFilter = event.target.value;
+      renderTasks();
+    });
+
+    el.urgencyFilterInput.addEventListener("change", event => {
+      state.urgencyFilter = event.target.value;
+      renderTasks();
+    });
+
+    el.filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        state.statusFilter = btn.dataset.filter;
+        el.filterButtons.forEach(b => b.classList.toggle("active", b === btn));
+        renderTasks();
+      });
+    });
+
+    el.taskList.addEventListener("click", event => {
+      const target = event.target.closest("[data-action]");
+      if (!target) return;
+
+      const id = target.dataset.id;
+      const action = target.dataset.action;
+
+      if (action === "edit") startEdit(id);
+      if (action === "archive") archiveTask(id);
+      if (action === "restore") restoreTask(id);
+      if (action === "delete") deleteTask(id);
+    });
+
+    el.taskList.addEventListener("change", event => {
+      const target = event.target.closest("[data-action='toggle']");
+      if (target) toggleTask(target.dataset.id);
+    });
+
+    document.getElementById("clearCompletedBtn").addEventListener("click", archiveCompleted);
+    document.getElementById("clearArchivedBtn").addEventListener("click", clearArchived);
+    document.getElementById("exportJsonBtn").addEventListener("click", exportJson);
+    document.getElementById("importJsonBtn").addEventListener("click", () => el.importJsonInput.click());
+    el.importJsonInput.addEventListener("change", event => importJson(event.target.files[0]));
+
+    renderSelectOptions();
+    resetForm();
+    renderAll();
   </script>
 </body>
 </html>
