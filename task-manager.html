@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="行政書士業務向けのタスク・顧客管理ダッシュボード。">
-  <title>行政書士タスク管理 | 顧客・期限・リマインダー</title>
+  <title>ニシオカンリシステム | 行政書士タスク管理</title>
   <style>
     :root {
       /* より洗練されたSaaS風のカラーパレット（ライトモード） */
@@ -14,9 +14,8 @@
       --line: #e2e8f0;
       --text: #1e293b;
       --sub: #64748b;
-      --primary: #0f172a; /* 引き締まったダークネイビー */
-      --primary-dark: #000000;
-      --accent: #3b82f6; /* 操作ボタン等のアクセントブルー */
+      --primary: #0f172a;
+      --accent: #3b82f6; 
       --accent-hover: #2563eb;
       --success: #10b981;
       --warning: #f59e0b;
@@ -39,12 +38,10 @@
         --text: #f8fafc;
         --sub: #94a3b8;
         --primary: #f8fafc;
-        --primary-dark: #e2e8f0;
         --accent: #3b82f6;
         --accent-hover: #60a5fa;
         --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
         --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.3);
-        --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4);
       }
     }
 
@@ -116,27 +113,40 @@
     .dot { width: 4px; height: 4px; border-radius: 50%; }
     .dot.low { background: var(--success); } .dot.medium { background: var(--warning); } .dot.high { background: var(--danger); }
 
-    /* ダッシュボード（リマインダー） */
-    .dashboard-card { background: linear-gradient(to right bottom, #fff, #fef2f2); border-color: #fecaca; }
-    @media (prefers-color-scheme: dark) { .dashboard-card { background: linear-gradient(to right bottom, #1e293b, #451a1a); border-color: #7f1d1d; } }
+    /* ダッシュボード（進行中の全案件） */
+    .dashboard-card { background: linear-gradient(to right bottom, var(--card), var(--bg2)); }
     
-    .dash-list { display: grid; gap: 8px; }
+    .dash-list { display: grid; gap: 8px; max-height: 400px; overflow-y: auto; padding-right: 4px; }
+    /* スクロールバーのスタイル */
+    .dash-list::-webkit-scrollbar { width: 6px; }
+    .dash-list::-webkit-scrollbar-thumb { background-color: var(--line); border-radius: 999px; }
+
     .dash-item {
       padding: 12px 16px; border-radius: var(--radius-lg); background: var(--card);
-      border-left: 4px solid var(--danger); display: flex; justify-content: space-between; align-items: center;
+      border-left: 4px solid var(--line); display: flex; justify-content: space-between; align-items: center;
       box-shadow: var(--shadow-sm);
     }
+    
+    /* 期限ステータス別の左ボーダーカラー */
+    .dash-item.overdue { border-left-color: var(--danger); }
     .dash-item.today { border-left-color: var(--warning); }
+    .dash-item.future { border-left-color: var(--accent); }
+    .dash-item.none { border-left-color: var(--sub); }
+
     .dash-item-main { min-width: 0; }
     .dash-item-title { font-weight: 600; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .dash-item-client { font-size: 0.8rem; color: var(--sub); margin-top: 2px; }
+    
     .dash-item-badge { font-size: 0.75rem; font-weight: 700; padding: 4px 8px; border-radius: 6px; white-space: nowrap; margin-left: 12px; }
+    /* バッジのカラースタイル */
     .dash-item-badge.overdue { background: rgba(239,68,68,0.1); color: var(--danger); }
     .dash-item-badge.today { background: rgba(245,158,11,0.1); color: var(--warning); }
+    .dash-item-badge.future { background: rgba(59,130,246,0.1); color: var(--accent); }
+    .dash-item-badge.none { background: var(--bg2); color: var(--sub); }
     
     .dash-empty { padding: 16px; text-align: center; color: var(--success); font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 8px; background: rgba(16, 185, 129, 0.05); border-radius: var(--radius-lg); border: 1px dashed rgba(16, 185, 129, 0.3); }
 
-    /* フォーム（ワンタップ日付入力追加） */
+    /* フォーム */
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .full-width { grid-column: 1 / -1; }
     .input-group { display: flex; flex-direction: column; gap: 6px; }
@@ -222,8 +232,9 @@
   <div class="app">
     <header class="hero">
       <div>
-        <h1 class="hero-title">Dashboard</h1>
-        <p class="hero-subtitle">行政書士 業務・期限管理システム</p>
+        <!-- アプリ名を変更 -->
+        <h1 class="hero-title">ニシオカンリシステム</h1>
+        <p class="hero-subtitle">行政書士 業務・期限管理ダッシュボード</p>
       </div>
       <div class="today-badge" id="todayLabel">--/--/--</div>
     </header>
@@ -250,10 +261,10 @@
       <!-- 右サイド：メインコンテンツ -->
       <section style="display: flex; flex-direction: column; gap: 24px;">
         
-        <!-- リマインダーダッシュボード（常時表示に変更） -->
+        <!-- 全タスクを表示するダッシュボードに変更 -->
         <div class="card dashboard-card">
           <div class="section-pad">
-            <h2 class="section-title">🚨 要確認タスク (期限切れ・今日期限)</h2>
+            <h2 class="section-title">📋 進行中の全案件</h2>
             <div class="dash-list" id="dashboardList">
               <!-- JSで生成 -->
             </div>
@@ -322,7 +333,7 @@
           </div>
         </div>
 
-        <!-- タスク一覧 -->
+        <!-- タスク詳細一覧 -->
         <div class="card">
           <div class="section-pad">
             <div class="toolbar">
@@ -379,7 +390,7 @@
     function pad(n) { return String(n).padStart(2, "0"); }
     function toYMD(date) { return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`; }
     function parseYMD(ymd) { if (!ymd) return null; const [y, m, d] = ymd.split("-").map(Number); return new Date(y, m - 1, d); }
-    function formatDateJP(ymd) { const dt = parseYMD(ymd); return dt ? `${dt.getFullYear()}/${dt.getMonth() + 1}/${dt.getDate()}` : "期限なし"; }
+    function formatDateJP(ymd) { const dt = parseYMD(ymd); return dt ? `${dt.getMonth() + 1}月${dt.getDate()}日` : "期限なし"; }
     function startOfMonth(date) { return new Date(date.getFullYear(), date.getMonth(), 1); }
     function escapeHtml(str) { return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]); }
 
@@ -444,15 +455,26 @@
       });
     }
 
-    // リマインダー（常時表示・空状態対応）
+    // 進行中のすべての案件をダッシュボードに表示する
     function renderDashboard() {
-      const urgentTasks = state.tasks.filter(t => !t.completed && (getDateStatus(t.dueDate) === 'overdue' || getDateStatus(t.dueDate) === 'today'));
-      urgentTasks.sort((a, b) => (a.dueDate || "") > (b.dueDate || "") ? 1 : -1);
+      const activeTasks = state.tasks.filter(t => !t.completed);
+      
+      // 期限が近い順に並び替え（期限切れ → 今日 → 未来 → 期限なし）
+      activeTasks.sort((a, b) => {
+        if (!a.dueDate) return 1; // 期限なしは最後へ
+        if (!b.dueDate) return -1;
+        return a.dueDate > b.dueDate ? 1 : -1;
+      });
 
-      if (urgentTasks.length > 0) {
-        el.dashboardList.innerHTML = urgentTasks.map(task => {
+      if (activeTasks.length > 0) {
+        el.dashboardList.innerHTML = activeTasks.map(task => {
           const status = getDateStatus(task.dueDate);
-          const badgeText = status === 'overdue' ? '期限超過' : '本日締切';
+          let badgeText = '期限なし';
+          
+          if (status === 'overdue') badgeText = '期限超過';
+          else if (status === 'today') badgeText = '本日締切';
+          else if (status === 'future') badgeText = formatDateJP(task.dueDate) + 'まで';
+
           return `
             <div class="dash-item ${status}">
               <div class="dash-item-main">
@@ -464,8 +486,7 @@
           `;
         }).join("");
       } else {
-        // タスクがない場合でもエリアを消さず、安心感のあるメッセージを表示
-        el.dashboardList.innerHTML = `<div class="dash-empty">✨ 現在、直近で対応が必要なタスクはありません。</div>`;
+        el.dashboardList.innerHTML = `<div class="dash-empty">✨ 現在、進行中の案件はありません。</div>`;
       }
     }
 
@@ -487,7 +508,7 @@
             <div class="task-memo ${task.memo ? 'has-content' : ''}">${task.memo ? escapeHtml(task.memo) : ''}</div>
             <div class="task-meta">
               <span class="badge">${escapeHtml(task.industry || 'その他')}</span>
-              ${task.dueDate ? `<span class="badge alert-${dateStatus}">${formatDateJP(task.dueDate)}</span>` : ''}
+              ${task.dueDate ? `<span class="badge alert-${dateStatus}">${parseYMD(task.dueDate).getFullYear()}/${parseYMD(task.dueDate).getMonth() + 1}/${parseYMD(task.dueDate).getDate()}</span>` : ''}
             </div>
           </div>
           <div class="task-actions">
