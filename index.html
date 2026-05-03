@@ -683,8 +683,17 @@
     西岡行政書士事務所
     <span>NISHIOKA GYOSEI SHOSHI OFFICE</span>
   </div>
-  <a href="#contact" class="header-cta">無料相談する</a>
+  <div style="display:flex;gap:12px;align-items:center;">
+    <a href="blog/" class="header-blog-link" style="font-size:13px;color:var(--navy);text-decoration:none;font-weight:500;letter-spacing:0.05em;padding:8px 14px;border:1px solid var(--navy);transition:all 0.15s;">📚 コラム</a>
+    <a href="#contact" class="header-cta">無料相談する</a>
+  </div>
 </header>
+<style>
+  .header-blog-link:hover { background: var(--navy); color: white !important; }
+  @media (max-width: 600px) {
+    .header-blog-link { padding: 6px 10px !important; font-size: 11px !important; }
+  }
+</style>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
@@ -944,6 +953,66 @@
   </div>
 </section>
 
+<!-- ===== COLUMN / BLOG ===== -->
+<section class="blog-section" style="background:var(--cream);padding:80px 24px;">
+  <style>
+    .blog-section-inner { max-width: 1100px; margin: 0 auto; }
+    .blog-grid { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: start; margin-top: 32px; }
+    @media (min-width: 768px) { .blog-grid { grid-template-columns: 1fr 1.3fr; gap: 40px; } }
+    .blog-intro { padding-top: 8px; }
+    .blog-intro-eyebrow { font-size: 11px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .blog-intro-title { font-size: 26px; line-height: 1.5; color: var(--navy); font-weight: 700; margin-bottom: 18px; }
+    @media (min-width: 768px) { .blog-intro-title { font-size: 32px; } }
+    .blog-intro-desc { font-size: 14px; line-height: 1.9; color: var(--navy-mid); margin-bottom: 24px; }
+    .blog-intro-cta { display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; background: var(--navy); color: white; font-size: 14px; font-weight: 500; letter-spacing: 0.05em; transition: all 0.15s; }
+    .blog-intro-cta:hover { background: var(--gold); color: var(--navy); }
+    .blog-cards { display: flex; flex-direction: column; gap: 14px; }
+    .blog-card { background: white; padding: 20px 24px; border-left: 4px solid var(--gold); transition: all 0.15s; display: block; text-decoration: none; }
+    .blog-card:hover { transform: translateX(4px); border-left-color: var(--navy); }
+    .blog-card-cat { display: inline-block; padding: 3px 10px; background: var(--navy); color: white; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 10px; }
+    .blog-card-title { font-size: 15px; line-height: 1.6; color: var(--navy); font-weight: 700; margin-bottom: 8px; }
+    .blog-card-meta { font-size: 11px; color: var(--navy-mid); opacity: 0.7; letter-spacing: 0.05em; }
+    .blog-card-coming { background: rgba(255,255,255,0.6); border-left-color: rgba(13,31,60,0.2); cursor: default; pointer-events: none; }
+    .blog-card-coming .blog-card-cat { background: rgba(13,31,60,0.4); }
+    .blog-card-coming .blog-card-title { opacity: 0.6; }
+  </style>
+  <div class="blog-section-inner">
+    <div class="section-eyebrow" style="color:var(--gold);">COLUMN</div>
+    <h2 class="section-title" style="color:var(--navy);">許認可の実務、警察官の視点で。</h2>
+
+    <div class="blog-grid">
+      <div class="blog-intro">
+        <p class="blog-intro-desc">
+          「自分の業態は届出が必要なのか？」<br>
+          「いつまでに何を出せばいいのか？」<br>
+          「自分でやるか、行政書士に頼むか迷う」<br><br>
+          そんな疑問に答えるコラムを、元広島県警察官13年の行政書士が書いています。
+          実務でつまずきやすいポイントを、警察の窓口側の視点も交えて解説します。
+        </p>
+        <a href="blog/" class="blog-intro-cta">📚 コラム一覧を見る →</a>
+      </div>
+
+      <div class="blog-cards">
+        <a href="blog/shinya/hiroshima-shinya-eigyo-guide.html" class="blog-card">
+          <span class="blog-card-cat">深夜営業</span>
+          <div class="blog-card-title">広島で深夜営業を始めるには？届出が必要な業態と手続きの全体像</div>
+          <div class="blog-card-meta">2026.05.03 ／ 元警察官の視点で解説</div>
+        </a>
+        <div class="blog-card blog-card-coming">
+          <span class="blog-card-cat">深夜営業</span>
+          <div class="blog-card-title">深夜営業届出の費用相場｜行政書士に頼むといくら？（近日公開）</div>
+          <div class="blog-card-meta">COMING SOON</div>
+        </div>
+        <div class="blog-card blog-card-coming">
+          <span class="blog-card-cat">風営法</span>
+          <div class="blog-card-title">広島の風営法許可とは？4種類の営業許可をわかりやすく解説（近日公開）</div>
+          <div class="blog-card-meta">COMING SOON</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== CALENDAR ===== -->
 <section class="calendar-section" id="calendar">
   <div class="calendar-inner">
@@ -968,6 +1037,16 @@
       </iframe>
       <div class="calendar-note">
         📅 ご予約後、確認のご連絡をさせていただきます。急ぎの場合はLINEまたはお電話でどうぞ。
+      </div>
+      <div style="margin-top:24px;padding:20px 24px;background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,0.4);border-radius:6px;text-align:center;">
+        <div style="font-size:12px;color:var(--gold);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:8px;">PRICE CHECK</div>
+        <div style="font-size:14px;color:white;margin-bottom:14px;line-height:1.7;">
+          ご予約の前に料金を確認したい方は、こちらから<br>
+          60秒で概算金額をシミュレーションできます
+        </div>
+        <a href="simulator.html" style="display:inline-block;padding:12px 28px;background:var(--gold);color:var(--navy);font-size:14px;font-weight:700;letter-spacing:0.05em;text-decoration:none;transition:opacity 0.15s;">
+          💴 料金シミュレーターを開く →
+        </a>
       </div>
     </div>
   </div>
@@ -1024,6 +1103,7 @@
   <p><strong>© 西岡行政書士事務所</strong> ｜ 広島県行政書士会所属 ｜ 登録番号 22341036</p>
   <p style="margin-top:6px;">広島市中区大手町4-6-22 ｜ TEL: 090-8068-8527</p>
   <p style="margin-top:14px; font-size:12px; opacity:0.5;">
+    <a href="blog/" style="color:inherit; margin-right:16px;">📚 コラム</a>
     <a href="police_lp.html" style="color:inherit; margin-right:16px;">警察申請まとめページ</a>
     <a href="sagyoshi_renkai.html" style="color:inherit; margin-right:16px;">士業の先生方へ（業務連携）</a>
     <a href="kobutu_lp.html" style="color:inherit; margin-right:16px;">古物商許可</a>
