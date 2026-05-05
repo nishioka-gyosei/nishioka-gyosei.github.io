@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>バー開業に深夜営業届は必要？営業形態ごとに必要な手続きを整理 ｜ 西岡行政書士事務所</title>
+<meta name="description" content="広島でバー（ショットバー・ガールズバー・コンセプトバー等）を開業する際に必要な手続きを、深夜営業届出と風営法許可の観点から、元広島県警察官13年の行政書士が業態別に整理して解説します。">
+<meta name="keywords" content="バー 深夜営業届, 広島 バー 開業, バー 風営法">
+<meta property="og:title" content="バー開業に深夜営業届は必要？営業形態ごとに必要な手続きを整理">
+<meta property="og:description" content="バーの業態別に必要な手続きを、元警察官の行政書士が整理して解説します。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nishioka-gyosei.github.io/blog/shinya/bar-kaigyou-tetsuduki-hantei.html">
+<link rel="canonical" href="https://nishioka-gyosei.github.io/blog/shinya/bar-kaigyou-tetsuduki-hantei.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+
+<!-- 構造化データ：記事 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "バー開業に深夜営業届は必要？営業形態ごとに必要な手続きを整理",
+  "description": "バーの業態別に必要な手続きを、元広島県警察官13年の行政書士が整理して解説します。",
+  "author": {
+    "@type": "Person",
+    "name": "西岡 祐也",
+    "jobTitle": "行政書士(元広島県警察官)"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "西岡行政書士事務所",
+    "address": "広島市中区大手町4-6-22"
+  },
+  "datePublished": "2026-05-03",
+  "dateModified": "2026-05-03"
+}
+</script>
+
+<style>
+:root {
+  --ink: #14171F;
+  --ink-soft: #2A2D38;
+  --paper: #F5F2EB;
+  --paper-2: #FFFDF7;
+  --cream: #EDE8DC;
+  --crimson: #A8252B;
+  --crimson-dark: #7A1A20;
+  --gold: #B8934A;
+  --gold-light: #D4B876;
+  --hairline: #D4CDBB;
+  --hairline-soft: #E5DFCE;
+  --muted: #6B6657;
+  --line-green: #06C755;
+  --green-dark: #3A6B3E;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Noto Sans JP', system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.85;
+}
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+a { color: inherit; text-decoration: none; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+/* ========= Header ========= */
+.header { background: var(--paper-2); border-bottom: 1px solid var(--hairline); }
+.header-inner { max-width: 880px; margin: 0 auto; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 14px; }
+.badge-shield { width: 44px; height: 44px; flex-shrink: 0; }
+.brand-name { font-family: 'Shippori Mincho B1', serif; font-size: 19px; font-weight: 700; line-height: 1.2; letter-spacing: 0.05em; }
+.brand-en { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 11px; color: var(--muted); }
+.brand-tag { display: none; font-family: 'Bodoni Moda', serif; font-size: 10px; color: var(--crimson); letter-spacing: 0.3em; text-transform: uppercase; }
+.line-btn { background: var(--line-green); color: white; padding: 10px 16px; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: background 0.15s; }
+.line-btn:hover { background: #04a649; }
+@media (min-width: 640px) {
+  .brand-name { font-size: 24px; }
+  .brand-tag { display: inline-block; margin-left: 8px; }
+  .badge-shield { width: 48px; height: 48px; }
+}
+
+/* ========= Breadcrumb ========= */
+.breadcrumb { max-width: 880px; margin: 0 auto; padding: 16px 20px 0; font-size: 12px; color: var(--muted); }
+.breadcrumb a { color: var(--muted); transition: color 0.15s; }
+.breadcrumb a:hover { color: var(--crimson); }
+.breadcrumb-sep { margin: 0 8px; color: var(--hairline); }
+
+/* ========= Article header ========= */
+.article-header { max-width: 880px; margin: 0 auto; padding: 32px 20px 24px; }
+@media (min-width: 768px) { .article-header { padding: 48px 32px 32px; } }
+.article-category { display: inline-block; padding: 4px 12px; background: var(--ink); color: var(--paper); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px; }
+.article-title { font-family: 'Shippori Mincho B1', serif; font-size: 28px; font-weight: 700; line-height: 1.4; color: var(--ink); }
+@media (min-width: 768px) { .article-title { font-size: 36px; line-height: 1.3; } }
+.article-meta { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--hairline-soft); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+.article-author { display: flex; align-items: center; gap: 10px; }
+.article-author-badge { width: 36px; height: 36px; flex-shrink: 0; }
+.article-author-name { font-family: 'Shippori Mincho B1', serif; font-size: 13px; font-weight: 700; color: var(--ink); }
+.article-author-role { font-size: 11px; color: var(--muted); }
+.article-date { font-family: 'Bodoni Moda', serif; font-size: 12px; }
+
+/* ========= Article body ========= */
+.article-body { max-width: 720px; margin: 0 auto; padding: 24px 20px 60px; }
+@media (min-width: 768px) { .article-body { padding: 32px 32px 80px; } }
+.article-body p { margin: 18px 0; font-size: 15px; line-height: 1.95; color: #2A2D38; }
+.article-body h2 { font-family: 'Shippori Mincho B1', serif; font-size: 22px; font-weight: 700; color: var(--ink); margin: 56px 0 20px; padding-top: 32px; border-top: 1px solid var(--hairline-soft); position: relative; line-height: 1.5; }
+.article-body h2::before { content: ''; position: absolute; top: -1px; left: 0; width: 48px; height: 3px; background: var(--crimson); }
+@media (min-width: 768px) { .article-body h2 { font-size: 26px; } }
+.article-body h3 { font-family: 'Shippori Mincho B1', serif; font-size: 18px; font-weight: 700; color: var(--ink); margin: 36px 0 16px; padding-left: 12px; border-left: 4px solid var(--gold); }
+.article-body ul, .article-body ol { margin: 18px 0 18px 24px; }
+.article-body li { margin: 8px 0; font-size: 15px; line-height: 1.85; }
+.article-body strong { font-weight: 700; }
+
+/* ========= Lead paragraph (intro) ========= */
+.lead { font-family: 'Shippori Mincho B1', serif; font-size: 16px; line-height: 1.95; color: var(--ink); padding: 4px 0 8px; }
+@media (min-width: 768px) { .lead { font-size: 17px; } }
+
+/* ========= Conclusion box ========= */
+.conclusion-box { margin: 32px 0; padding: 20px 24px; background: var(--ink); color: var(--paper); position: relative; }
+.conclusion-box::before { content: '結論'; position: absolute; top: -10px; left: 16px; padding: 2px 12px; background: var(--crimson); color: var(--paper); font-family: 'Shippori Mincho B1', serif; font-size: 11px; letter-spacing: 0.3em; }
+.conclusion-box p { margin: 0; color: var(--paper); font-size: 14px; line-height: 1.85; }
+
+/* ========= Tables ========= */
+.article-body table { width: 100%; margin: 24px 0; border-collapse: collapse; font-size: 14px; background: var(--paper-2); border: 1px solid var(--hairline); }
+.article-body table th { background: var(--ink); color: var(--paper); padding: 12px 14px; text-align: left; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
+.article-body table td { padding: 12px 14px; border-bottom: 1px solid var(--hairline-soft); vertical-align: top; }
+.article-body table tr:last-child td { border-bottom: none; }
+
+/* ========= Callout boxes ========= */
+.callout { margin: 32px 0; padding: 20px 24px; background: var(--paper-2); border-left: 4px solid var(--gold); }
+.callout-label { font-family: 'Shippori Mincho B1', serif; font-size: 12px; font-weight: 700; color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 6px; }
+.callout p { margin: 4px 0; }
+.callout.warning { border-left-color: var(--crimson); }
+.callout.warning .callout-label { color: var(--crimson); }
+
+/* ========= Inline CTA ========= */
+.inline-cta { margin: 32px 0; padding: 20px 24px; background: linear-gradient(135deg, var(--paper-2) 0%, var(--cream) 100%); border: 1px solid var(--gold); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.inline-cta-text { flex: 1; min-width: 200px; }
+.inline-cta-title { font-family: 'Shippori Mincho B1', serif; font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.inline-cta-desc { font-size: 12px; color: var(--muted); }
+.inline-cta-btn { padding: 10px 20px; background: var(--ink); color: var(--paper); font-size: 13px; letter-spacing: 0.1em; transition: background 0.15s; white-space: nowrap; }
+.inline-cta-btn:hover { background: var(--crimson); }
+
+/* ========= FAQ ========= */
+.faq-item { margin: 24px 0; padding: 20px 24px; background: var(--paper-2); border: 1px solid var(--hairline-soft); }
+.faq-q { font-family: 'Shippori Mincho B1', serif; font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px; padding-left: 28px; position: relative; }
+.faq-q::before { content: 'Q'; position: absolute; left: 0; top: -2px; width: 22px; height: 22px; background: var(--crimson); color: var(--paper); font-family: 'Bodoni Moda', serif; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+.faq-a { font-size: 14px; line-height: 1.8; color: var(--ink-soft); padding-left: 28px; position: relative; }
+.faq-a::before { content: 'A'; position: absolute; left: 0; top: -2px; width: 22px; height: 22px; background: var(--gold); color: var(--paper); font-family: 'Bodoni Moda', serif; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+.faq-intro { font-family: 'Shippori Mincho B1', serif; font-style: italic; color: var(--muted); margin: -8px 0 24px; font-size: 14px; }
+
+/* ========= End CTA section ========= */
+.end-cta { max-width: 720px; margin: 60px auto 40px; padding: 0 20px; }
+@media (min-width: 768px) { .end-cta { padding: 0 32px; } }
+.end-cta-card { background: var(--ink); color: var(--paper); padding: 32px 24px; position: relative; overflow: hidden; }
+@media (min-width: 768px) { .end-cta-card { padding: 40px 32px; } }
+.end-cta-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--crimson) 0%, var(--gold) 50%, var(--crimson) 100%); }
+.end-cta-eyebrow { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 12px; color: var(--gold-light); letter-spacing: 0.3em; text-transform: uppercase; }
+.end-cta-title { font-family: 'Shippori Mincho B1', serif; font-size: 20px; font-weight: 700; margin-top: 6px; }
+@media (min-width: 768px) { .end-cta-title { font-size: 24px; } }
+.end-cta-desc { margin-top: 12px; font-size: 13px; color: var(--hairline); line-height: 1.85; }
+.end-cta-buttons { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+@media (min-width: 600px) { .end-cta-buttons { flex-direction: row; } }
+.end-cta-btn { padding: 14px 20px; text-align: center; font-size: 13px; letter-spacing: 0.1em; transition: all 0.15s; flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.end-cta-btn-primary { background: var(--crimson); color: white; }
+.end-cta-btn-primary:hover { background: var(--crimson-dark); }
+.end-cta-btn-line { background: var(--line-green); color: white; }
+.end-cta-btn-line:hover { background: #04a649; }
+.end-cta-btn-ghost { background: transparent; color: var(--gold-light); border: 1px solid var(--gold); }
+.end-cta-btn-ghost:hover { background: rgba(184,147,74,0.1); }
+
+/* ========= Related articles ========= */
+.related { max-width: 880px; margin: 60px auto; padding: 0 20px; }
+@media (min-width: 768px) { .related { padding: 0 32px; } }
+.related-title { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 14px; color: var(--muted); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 4px; }
+.related-title-jp { font-family: 'Shippori Mincho B1', serif; font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 24px; }
+.related-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 768px) { .related-grid { grid-template-columns: 1fr 1fr 1fr; } }
+.related-item { background: var(--paper-2); padding: 20px; border: 1px solid var(--hairline-soft); transition: all 0.15s; display: block; }
+.related-item:hover { border-color: var(--ink); transform: translateY(-2px); }
+.related-cat { font-family: 'Bodoni Moda', serif; font-size: 10px; color: var(--crimson); letter-spacing: 0.2em; text-transform: uppercase; }
+.related-name { font-family: 'Shippori Mincho B1', serif; font-size: 14px; font-weight: 700; color: var(--ink); margin-top: 6px; line-height: 1.5; }
+
+/* ========= Footer ========= */
+.footer { background: var(--ink); color: var(--paper); padding: 40px 20px; text-align: center; }
+.footer-name { font-family: 'Shippori Mincho B1', serif; font-size: 16px; font-weight: 700; margin-top: 16px; }
+.footer-en { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 12px; color: var(--gold-light); margin-top: 4px; }
+.footer-tag { font-family: 'Bodoni Moda', serif; font-size: 10px; color: var(--crimson); letter-spacing: 0.3em; text-transform: uppercase; margin-top: 8px; }
+.footer-info { font-size: 11px; line-height: 1.8; color: var(--hairline); margin-top: 24px; }
+.footer-buttons { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+.footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
+.footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
+.footer-back:hover { background: var(--gold); color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- ========= Header ========= -->
+<header class="header">
+  <div class="header-inner">
+    <a href="../../index.html" class="brand">
+      <svg class="badge-shield" viewBox="0 0 48 48" fill="none">
+        <path d="M24 3 L42 9 L42 26 Q42 38 24 45 Q6 38 6 26 L6 9 Z" fill="#14171F" stroke="#B8934A" stroke-width="1"/>
+        <path d="M24 7 L38 11.5 L38 25 Q38 34.5 24 40.5 Q10 34.5 10 25 L10 11.5 Z" fill="none" stroke="#D4B876" stroke-width="0.5"/>
+        <path d="M24 16 L25.5 20 L30 20 L26.5 22.5 L28 26.5 L24 24 L20 26.5 L21.5 22.5 L18 20 L22.5 20 Z" fill="#B8934A"/>
+        <line x1="16" y1="33" x2="32" y2="33" stroke="#D4B876" stroke-width="0.5"/>
+        <text x="24" y="37" text-anchor="middle" font-size="4" fill="#D4B876" font-family="Bodoni Moda, serif" letter-spacing="0.5">EX-POLICE</text>
+      </svg>
+      <div>
+        <div class="brand-name">西岡行政書士事務所</div>
+        <div>
+          <span class="brand-en">Nishioka Gyoseishoshi Office</span>
+          <span class="brand-tag">EX-POLICE OFFICER</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://lin.ee/UKhZQbE" target="_blank" rel="noreferrer" class="line-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.78 2 10.4c0 4.14 3.58 7.6 8.41 8.25.33.07.77.22.88.5.1.26.07.67.03.93l-.14.85c-.04.25-.2.98.86.54 1.06-.45 5.73-3.37 7.81-5.77C21.28 14.07 22 12.31 22 10.4 22 5.78 17.52 2 12 2z"/></svg>
+      LINE
+    </a>
+  </div>
+</header>
+
+<!-- ========= Breadcrumb ========= -->
+<nav class="breadcrumb">
+  <a href="../../index.html">ホーム</a>
+  <span class="breadcrumb-sep">／</span>
+  <a href="../index.html">コラム</a>
+  <span class="breadcrumb-sep">／</span>
+  <span style="color:var(--muted);">深夜営業</span>
+  <span class="breadcrumb-sep">／</span>
+  <span>バー開業の手続き判定</span>
+</nav>
+
+<!-- ========= Article Header ========= -->
+<header class="article-header fade-up">
+  <span class="article-category">深夜営業届出</span>
+  <h1 class="article-title">バー開業に深夜営業届は必要？営業形態ごとに必要な手続きを整理</h1>
+  <div class="article-meta">
+    <div class="article-author">
+      <svg class="article-author-badge" viewBox="0 0 48 48" fill="none">
+        <path d="M24 3 L42 9 L42 26 Q42 38 24 45 Q6 38 6 26 L6 9 Z" fill="#14171F" stroke="#B8934A" stroke-width="1"/>
+        <path d="M24 16 L25.5 20 L30 20 L26.5 22.5 L28 26.5 L24 24 L20 26.5 L21.5 22.5 L18 20 L22.5 20 Z" fill="#B8934A"/>
+      </svg>
+      <div>
+        <div class="article-author-name">西岡 祐也</div>
+        <div class="article-author-role">行政書士（元広島県警察官13年）</div>
+      </div>
+    </div>
+    <div class="article-date">2026.05.03</div>
+  </div>
+</header>
+
+<!-- ========= Article Body ========= -->
+<article class="article-body">
+
+<p class="lead">「広島でバーを開業したいが、どんな手続きが必要なのか？」「深夜営業届を出せばOKなのか、それとも風営法許可が必要なのか？」——バー開業を検討する方の多くが、最初にぶつかる疑問です。</p>
+
+<p>「バー」という業態は実は非常に幅広く、例えば、ショットバー・ガールズバー・コンセプトバー・個室バー・スポーツバーなど多種多様です。それぞれで必要な手続きが異なるため、自分のお店がどのカテゴリーに該当するかを正確に把握しないと、必要な許認可を取らずに営業してしまう可能性がありますよね。</p>
+
+<p>この記事では、バーの業態を整理して、それぞれに必要な手続き（深夜営業届出 or 風営法許可）を、行政書士の視点から判定して行こうと思います。「自分のお店はどの手続きが必要か」が、この記事を読み終わる頃には明確になればと考えています。</p>
+
+<div class="conclusion-box">
+  <p>「酒類提供のみ」のバーは深夜営業届出。「接待行為」「個室・区画席」「低照度」のいずれかがあれば風営法許可が必要です。営業時間が0時前で終わるバーなら、どちらも不要のケースもあります。</p>
+</div>
+
+<h2>1. バーの開業に必要な手続きは「3つの軸」で決まる</h2>
+
+<p>バーの開業に必要な手続きを判定するには、概ね3つの軸で自分のお店をチェックします。</p>
+
+<h3>判定の3軸</h3>
+
+<table>
+  <thead>
+    <tr><th>判定軸</th><th>内容</th><th>該当する場合に必要な手続き</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>軸1：酒類提供</td><td>お酒を提供するか？</td><td>飲食店営業許可（保健所）</td></tr>
+    <tr><td>軸2：営業時間</td><td>午前0時を超えて酒類提供するか？</td><td>深夜営業届出</td></tr>
+    <tr><td>軸3：営業形態</td><td>接待・低照度・区画席のいずれかに該当するか？</td><td>風営法許可（1〜3号営業）</td></tr>
+  </tbody>
+</table>
+
+<p>3つの軸のうち、軸1（飲食店営業許可）はすべてのバーで必須です。軸2と軸3が、業態によって必要・不要が分かれます。</p>
+
+<h3>軸2と軸3の関係性</h3>
+
+<p>軸2と軸3は、両方が必要になるケースは原則ありません。理由は次の通りです。</p>
+
+<table>
+  <thead>
+    <tr><th>営業形態</th><th>必要な手続き</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>接待・低照度・区画席なし、0時超営業あり</td><td>深夜営業届出のみ</td></tr>
+    <tr><td>接待・低照度・区画席のいずれかあり</td><td>風営法許可のみ</td></tr>
+  </tbody>
+</table>
+
+<p>風営法許可（1〜3号営業）を取得すれば、原則として午前0時までの営業に制限されます。一方、深夜営業届出を出すお店は、接待行為などをしない前提で午前0時以降も営業できます。つまり、両者は「営業時間 vs 営業形態」のトレードオフ関係にあり、両方を同時に取得することはできないのです。</p>
+
+<h2>2. ショットバー（接待なし・通常照度）</h2>
+
+<p>最もシンプルで、開業数も多いタイプのバーです。</p>
+
+<h3>ショットバーの典型例</h3>
+
+<ul>
+  <li>カウンターでお酒を提供</li>
+  <li>バーテンダーは注文取りと提供のみ</li>
+  <li>お客様との会話は適度に行うが、特定の客の隣に長時間座ることはない</li>
+  <li>通常の照度（10ルクス以上）</li>
+  <li>客席に高い仕切りなどはない</li>
+</ul>
+
+<h3>必要な手続き</h3>
+
+<table>
+  <thead>
+    <tr><th>営業時間</th><th>必要な手続き</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0時前で閉店（例：18:00〜23:30）</td><td>飲食店営業許可のみ</td></tr>
+    <tr><td>0時超営業（例：19:00〜翌2:00）</td><td>飲食店営業許可＋深夜営業届出</td></tr>
+  </tbody>
+</table>
+
+<p>このタイプのバーは、深夜営業届出での対応が一般的です。「お酒を中心に提供して深夜まで営業する」というスタイルなら、これで問題ありません。</p>
+
+<h3>注意点</h3>
+
+<div class="callout warning">
+  <div class="callout-label">注意</div>
+  <p>ショットバーでも、バーテンダーがお客様の隣に座って長時間会話したり、お酌をしたりすると「接待」と判断され、風営法許可が必要になります。「うちはバーだから接待じゃない」と思い込まず、自店の実態を冷静に見直すことが重要です。</p>
+</div>
+
+<h2>3. ガールズバー（接待の有無で大きく変わる）</h2>
+
+<p>近年特に判断が難しくなっているのがガールズバーです。</p>
+
+<h3>ガールズバーの2つのパターン</h3>
+
+<table>
+  <thead>
+    <tr><th>パターン</th><th>営業内容</th><th>必要な手続き</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>接待なしのガールズバー</td><td>カウンター越しの接客のみ。スタッフは席に着かない</td><td>飲食店営業許可＋深夜営業届出</td></tr>
+    <tr><td>接待ありのガールズバー</td><td>スタッフが客の隣で会話・お酌・カラオケ等</td><td>飲食店営業許可＋風営法1号許可</td></tr>
+  </tbody>
+</table>
+
+<h3>「接待なし」を維持するためのポイント</h3>
+
+<p>ガールズバーで深夜営業届出のまま営業するには、「接待行為」を一切しないことが必要です。</p>
+
+<table>
+  <thead>
+    <tr><th>OK行為</th><th>NG行為（接待になる）</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>カウンター越しの注文取り</td><td>カウンター越しでも、特定の客と長時間会話を続ける</td></tr>
+    <tr><td>お酒の提供</td><td>客の隣に座って提供する</td></tr>
+    <tr><td>簡単な世間話</td><td>客と一緒にお酒を飲む</td></tr>
+    <tr><td>客席間を回って提供</td><td>特定の席に長時間留まる</td></tr>
+    <tr><td>客のカラオケ選曲を手伝う</td><td>客と一緒にカラオケを歌う</td></tr>
+  </tbody>
+</table>
+
+<p>「カウンター内のスタッフが客と会話するのはOKだが、特定の客と長時間つきっきりになる、お酌するために客の隣に座る、これらはNG」という線引きが、警察の判断基準です。</p>
+
+<h3>第5記事との連携</h3>
+
+<p>風営法に該当する接待行為の判定基準については、第5記事「<a href="../fueihou/hiroshima-fueihou-kyoka-4shurui.html">広島の風営法許可とは？4種類の営業許可をわかりやすく解説</a>」で詳しく解説しています。ガールズバー開業を検討中の方は、こちらと併せてご確認ください。</p>
+
+<h2>4. コンセプトバー・コンセプトカフェ（業態判定が複雑）</h2>
+
+<p>メイドカフェ・アニメコラボバー・キャラクターバーなど、コンセプトに特化したバーは、業態判定が特に難しいカテゴリーです。</p>
+
+<h3>コンセプトバーの判定ポイント</h3>
+
+<table>
+  <thead>
+    <tr><th>サービス内容</th><th>該当しうる手続き</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>お酒の提供のみ、スタッフは衣装を着てカウンター内</td><td>深夜営業届出</td></tr>
+    <tr><td>客席で注文取り・配膳のみ（接客の延長で会話あり）</td><td>深夜営業届出（境界例）</td></tr>
+    <tr><td>スタッフが客と一緒に時間を過ごす（チェキ・トーク等）</td><td>風営法1号許可（接待あり）</td></tr>
+    <tr><td>客席が個室や半個室で区切られている</td><td>風営法3号許可</td></tr>
+  </tbody>
+</table>
+
+<h3>実務でよくあるパターン</h3>
+
+<p>第5記事でも触れたように、コンセプトカフェやメイドカフェでは、最初は深夜営業届出で開業し、軌道に乗ってから風営法1号許可に切り替えるパターンが実務でよく見られます。</p>
+
+<p>開業初期はサービスをシンプルに保ち、運営が安定してきた段階でサービスメニューを拡充する——この時にチェキ撮影・客席同席などの接待行為が入ってくるなら、風営法許可への切り替えが必要です。</p>
+
+<h3>「A店はOK、B店はダメ」になる現場の難しさ</h3>
+
+<div class="callout warning">
+  <div class="callout-label">現場の判定事例</div>
+  <p>例えばチェキ撮影などは、様々な要因が絡みます。最近聞くようになったマッチョバーなどの一部サービスなどもそうなのですが、「A店はOKなのにB店はダメと言われた」ということが許可申請時にあるかと思います。</p>
+</div>
+
+<p>業態の細部・サービス内容・店舗の構造によって判断が分かれるため、「あの店が大丈夫だから、うちも大丈夫」という横並びの判断は危険です。不安な部分は必ず担当警察署に伺うことをお勧めいたします。</p>
+
+<h3>コンセプトバーの落とし穴</h3>
+
+<p>「うちはチェキを撮るだけだから接待じゃない」「歌うだけだから問題ない」と思っていても、警察の判断は実態ベースです。</p>
+
+<ul>
+  <li>スタッフが客の隣に座ってチェキを撮る → 接待の可能性</li>
+  <li>スタッフが客と一緒にカラオケを歌う → 接待の可能性</li>
+  <li>スタッフが客のテーブルでトークタイムを取る → 接待の可能性</li>
+</ul>
+
+<p>コンセプトに凝るほど、サービス内容が複雑化し、風営法該当の可能性も上がります。開業前に「どこまでやるか」を明確にし、必要な許可を選ぶことが重要です。</p>
+
+<div class="inline-cta">
+  <div class="inline-cta-text">
+    <div class="inline-cta-title">業態判定だけのご相談も歓迎です</div>
+    <div class="inline-cta-desc">「自分の店はどの手続き？」が分かれば、開業準備の方向性が見えてきます。費用感はシミュレーターでご確認いただけます。</div>
+  </div>
+  <a href="https://nishioka-gyosei.github.io/simulator.html" class="inline-cta-btn">料金シミュレーター →</a>
+</div>
+
+<h2>5. 個室バー・半個室バー（風営法3号営業の典型）</h2>
+
+<p>「プライベート感」を売りにする個室バー・半個室バーは、ほぼ確実に風営法3号営業に該当します。</p>
+
+<h3>個室バーの判定基準</h3>
+
+<table>
+  <thead>
+    <tr><th>構造</th><th>該当する手続き</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>完全な個室で外から見えない</td><td>風営法3号営業</td></tr>
+    <tr><td>高さ1m以上の仕切り（5㎡以上の区画）</td><td>風営法3号営業の可能性</td></tr>
+    <tr><td>高さ1m未満の仕切り</td><td>通常の飲食店扱い</td></tr>
+    <tr><td>半個室だが上部が開放されている</td><td>個別判断</td></tr>
+  </tbody>
+</table>
+
+<h3>よくある誤解</h3>
+
+<p>「個室といっても、半個室みたいなものだから風営法は関係ない」と考える方がいますが、これは危険な誤解です。</p>
+
+<p>風営法上の「区画」の判定基準は、客席間の見通しが妨げられているかどうかです。背の高いソファやパーテーションで仕切られていると、見通しを妨げる構造として風営法3号営業に該当する可能性が高くなります。</p>
+
+<p>物件選定や内装設計の段階で、「どこまで仕切るか」「どの程度の高さで区切るか」を意識しないと、開業後に「風営法違反」と指摘される可能性があります。</p>
+
+<h2>6. スポーツバー・ダーツバー（基本は深夜営業届出）</h2>
+
+<p>スポーツ観戦やダーツプレイを楽しむタイプのバーです。</p>
+
+<h3>スポーツバーの典型例</h3>
+
+<ul>
+  <li>大型モニターでスポーツ中継を放映</li>
+  <li>お酒・軽食の提供</li>
+  <li>客同士の会話を楽しむ雰囲気</li>
+  <li>スタッフは注文取りと提供のみ</li>
+</ul>
+
+<h3>必要な手続き</h3>
+
+<table>
+  <thead>
+    <tr><th>営業時間</th><th>必要な手続き</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0時前で閉店</td><td>飲食店営業許可のみ</td></tr>
+    <tr><td>0時超営業</td><td>飲食店営業許可＋深夜営業届出</td></tr>
+  </tbody>
+</table>
+
+<h3>ダーツバーの注意点</h3>
+
+<p>ダーツバーの場合、ダーツマシンが「遊技用設備」とみなされるかどうかが焦点です。</p>
+
+<table>
+  <thead>
+    <tr><th>ダーツマシンの種類</th><th>判定</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>通常のダーツマシン（プレイ料金あり）</td><td>一般的に風営法4号営業に該当しない</td></tr>
+    <tr><td>賭け事の対象になり得る設備</td><td>風営法4号営業の可能性</td></tr>
+  </tbody>
+</table>
+
+<p>通常のダーツマシンを設置するだけなら、深夜営業届出で対応可能です。ただし、ダーツの腕前で景品を提供するような形態は、風営法4号営業（遊技場営業）に該当するリスクがあります。</p>
+
+<div class="callout">
+  <div class="callout-label">当事務所の実例</div>
+  <p>当事務所のお客様でも、お店にダーツマシンを置かれる方は多いですが、深夜営業届出で対応されているケースが多数を占めています。</p>
+</div>
+
+<h2>7. 元広島県警察官の視点：「グレー業態」を作らない開業の心得</h2>
+
+<div class="callout">
+  <div class="callout-label">元警察官の視点</div>
+  <p>僕は元広島県警察官として13年間勤務しました。その経験から、バー開業時に「グレーゾーン」を作らないための心得をお伝えします。</p>
+</div>
+
+<h3>心得1：「業態の名前」ではなく「実態」で考える</h3>
+
+<p>警察は「お店の看板」や「業態名」では判断しません。実際にどんなサービスが提供されているか、どんな構造の店舗か、これらの実態で判断します。</p>
+
+<p>「ガールズバーだから深夜営業届でOK」「コンセプトカフェだから風営法は関係ない」という思い込みは危険です。自店の営業実態を、第三者の目で冷静に見直すことが重要です。</p>
+
+<h3>心得2：「線引きを越えそうなら、最初から風営法許可」</h3>
+
+<p>「接待ギリギリの線で深夜営業届を維持しよう」という運営方針は、長期的には大きなリスクになります。</p>
+
+<p>近隣からの通報・客同士のトラブル・スタッフの離職時のクレームなど、警察の目に触れるきっかけは数多くあります。一度立入検査が入って「実態は接待行為あり」と判断されると、営業停止処分の対象になりかねません。</p>
+
+<p>「グレーゾーンで攻める」より「最初から風営法許可を取る」ほうが、長期的に安心して営業できるのが実情です。</p>
+
+<h3>心得3：「変更があったらすぐ届出」を徹底する</h3>
+
+<p>バーの営業形態は、運営しているうちに変化していくものです。</p>
+
+<ul>
+  <li>最初は普通のバーだったが、スタッフが客と話すようになった</li>
+  <li>最初は1部屋だったが、後から個室を作った</li>
+  <li>最初は深夜営業だけだったが、ホストクラブ的な接待を始めた</li>
+</ul>
+
+<p>このような変化があった時点で、必要な手続きが変わります。「面倒だから後回し」にすると、後の立入検査で問題になります。営業形態の変更があれば、すぐに変更届や新規許可申請を行うことが、結果的にお店を守ることになります。</p>
+
+<p>お店の経営は、人がかかわるものですから業態も変わっていくのは当然のこと。その時々で必要な動きをしていくことが、長くお店を続けるコツだと考えています。</p>
+
+<h2>8. よくある質問（FAQ）</h2>
+
+<p class="faq-intro">ここでは、当事務所に実際あった質問を思い出してまとめました。</p>
+
+<div class="faq-item">
+  <div class="faq-q">自分のお店がどの業態に該当するか分からない場合、どうすればいいですか？</div>
+  <div class="faq-a">行政書士や警察署の生活安全課に事前相談することをお勧めします。物件契約前・内装工事前の段階で相談すれば、最適な手続きを選択できます。「曖昧なまま開業して、後で問題になる」のが最も避けるべき状況です。</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">ショットバーから始めて、後でガールズバーに業態変更できますか？</div>
+  <div class="faq-a">できますが、新規の風営法許可申請が必要になる場合があります。「接待行為のないガールズバー」の範囲なら深夜営業届の変更届で対応できますが、「接待行為のあるガールズバー」にする場合は風営法1号営業の新規許可申請（手数料24,000円＋実費）が必要です。</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">ダーツバーで景品を提供したいのですが、可能ですか？</div>
+  <div class="faq-a">景品の内容・提供方法によります。プレイ料金の中に含まれる小さな景品（ステッカー・お菓子等）程度であれば問題ない場合が多いですが、現金や金券、高額商品の提供は風営法4号営業（遊技場営業）に該当する可能性があります。具体的な景品内容を決める段階で、専門家に相談することをお勧めします。</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">メニューに「カラオケあり」と書きたいのですが、影響はありますか？</div>
+  <div class="faq-a">カラオケの提供自体は、深夜営業届出のバーでも可能です。ただし「スタッフが客と一緒にカラオケを歌う」「特定の客のリクエストに応じて歌う」などの行為は接待にあたる可能性があります。カラオケを置く場合は、「客が自分で歌うだけのスタイル」を徹底することが基本であると考えることが重要です。</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">開業準備中に手続きを変更したくなったらどうすればいいですか？</div>
+  <div class="faq-a">早ければ早いほど対応しやすいです。物件契約前・保健所許可申請前の段階なら、手続きを変更してもダメージは少なくて済みます。深夜営業届出の準備を進めていたが、途中で「やっぱり接待ありのガールズバーにしたい」となった場合、風営法1号許可の新規申請に切り替えると約2ヶ月の期間追加が必要です。早めの判断が大切です。</div>
+</div>
+
+<h2>9. まとめ</h2>
+
+<p>バー開業に必要な手続きの判定について、ポイントを整理します。</p>
+
+<ul>
+  <li>バーの手続きは「酒類提供」「営業時間」「営業形態」の3軸で判定する</li>
+  <li>通常のショットバー・スポーツバー・ダーツバーは深夜営業届出で対応可能</li>
+  <li>ガールズバー・コンセプトバーは「接待行為の有無」で大きく分かれる</li>
+  <li>個室バー・半個室バーは風営法3号営業に該当することが多い</li>
+  <li>「業態名」ではなく「実態」で警察は判断する</li>
+  <li>グレーゾーンで攻めるより、最初から適切な許可を取るほうが長期的に安心</li>
+</ul>
+
+<p>「自分のお店はどの手続きか」を判断する際の最大のコツは、内装工事や物件契約を始める前に、業態を明確に決めておくことです。後から変更すると、費用も時間も大幅に増えてしまいます。</p>
+
+</article>
+
+<!-- ========= End CTA ========= -->
+<section class="end-cta">
+  <div class="end-cta-card">
+    <div class="end-cta-eyebrow">Free Consultation</div>
+    <h2 class="end-cta-title">業態判定の段階から、ご相談ください</h2>
+    <p class="end-cta-desc">西岡行政書士事務所では、バー開業の業態判定から、必要な許認可申請まで、トータルでサポートいたします。「自分のお店はどの手続きが必要か分からない」「グレーゾーンで判断に迷う」という段階のご相談を歓迎しています。元警察官の視点から、業態判定の段階で「ここまでなら深夜営業届、ここから先は風営法許可」というラインを明確にお伝えできます。物件契約前の早めのご相談ほど、選択肢の幅が広がります。</p>
+    <div class="end-cta-buttons">
+      <a href="https://nishioka-gyosei.github.io/simulator.html" class="end-cta-btn end-cta-btn-primary">💴 料金を見積もる</a>
+      <a href="https://script.google.com/macros/s/AKfycbyDLR3C_rjnHAbD4aui1iN_lwHJPC8KdsGP6pSimeHq39bkL2W0oV8aAaR_vf01zituCw/exec" class="end-cta-btn end-cta-btn-ghost">📅 無料相談予約</a>
+      <a href="https://lin.ee/UKhZQbE" class="end-cta-btn end-cta-btn-line">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.78 2 10.4c0 4.14 3.58 7.6 8.41 8.25.33.07.77.22.88.5.1.26.07.67.03.93l-.14.85c-.04.25-.2.98.86.54 1.06-.45 5.73-3.37 7.81-5.77C21.28 14.07 22 12.31 22 10.4 22 5.78 17.52 2 12 2z"/></svg>
+        LINEで相談
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========= Related Articles ========= -->
+<section class="related">
+  <div class="related-title">Related Articles</div>
+  <h2 class="related-title-jp">あわせて読みたい記事</h2>
+  <div class="related-grid">
+    <a href="hiroshima-shinya-eigyo-guide.html" class="related-item">
+      <div class="related-cat">深夜営業</div>
+      <div class="related-name">広島で深夜営業を始めるには？届出が必要な業態と手続きの全体像</div>
+    </a>
+    <a href="../fueihou/hiroshima-fueihou-kyoka-4shurui.html" class="related-item">
+      <div class="related-cat">風営法</div>
+      <div class="related-name">広島の風営法許可とは？4種類の営業許可をわかりやすく解説</div>
+    </a>
+    <a href="../fueihou/fueihou-kyoka-hiyou-souba.html" class="related-item">
+      <div class="related-cat">風営法</div>
+      <div class="related-name">風俗営業許可の費用相場｜広島で許可取得にいくらかかる？</div>
+    </a>
+  </div>
+  <div style="text-align:center;margin-top:24px;">
+    <a href="../index.html" style="display:inline-block;padding:10px 24px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;border:1px solid #14171F;color:#14171F;transition:all 0.15s;">コラム一覧を見る →</a>
+  </div>
+</section>
+
+<!-- ========= Footer ========= -->
+<footer class="footer">
+  <svg class="badge-shield" viewBox="0 0 48 48" fill="none" style="width:56px;height:56px;">
+    <path d="M24 3 L42 9 L42 26 Q42 38 24 45 Q6 38 6 26 L6 9 Z" fill="#14171F" stroke="#B8934A" stroke-width="1"/>
+    <path d="M24 7 L38 11.5 L38 25 Q38 34.5 24 40.5 Q10 34.5 10 25 L10 11.5 Z" fill="none" stroke="#D4B876" stroke-width="0.5"/>
+    <path d="M24 16 L25.5 20 L30 20 L26.5 22.5 L28 26.5 L24 24 L20 26.5 L21.5 22.5 L18 20 L22.5 20 Z" fill="#B8934A"/>
+  </svg>
+  <div class="footer-name">西岡行政書士事務所</div>
+  <div class="footer-en">Nishioka Gyoseishoshi Office</div>
+  <div class="footer-tag">EX-POLICE OFFICER · 広島</div>
+  <div class="footer-info">
+    広島市中区大手町4-6-22(市役所前電停 徒歩4分)<br>
+    TEL: 090-8068-8527 ／ 受付 9:00 – 19:00（土日祝可）<br>
+    広島県行政書士会 所属 ／ 登録番号 22341036
+  </div>
+  <div class="footer-buttons">
+    <a href="https://lin.ee/UKhZQbE" target="_blank" rel="noreferrer" class="line-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.78 2 10.4c0 4.14 3.58 7.6 8.41 8.25.33.07.77.22.88.5.1.26.07.67.03.93l-.14.85c-.04.25-.2.98.86.54 1.06-.45 5.73-3.37 7.81-5.77C21.28 14.07 22 12.31 22 10.4 22 5.78 17.52 2 12 2z"/></svg>
+      LINEで相談
+    </a>
+    <a href="tel:09080688527" class="footer-tel-btn">📞 090-8068-8527</a>
+  </div>
+  <a href="../index.html" class="footer-back">← コラム一覧に戻る</a>
+</footer>
+
+</body>
+</html>
