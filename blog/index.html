@@ -75,26 +75,82 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .filter-count { font-family: 'Bodoni Moda', serif; font-size: 11px; opacity: 0.7; margin-left: 4px; }
 
 /* Articles grid */
-.articles-section { max-width: 1080px; margin: 0 auto; padding: 40px 20px 80px; }
+.articles-section { max-width: 1200px; margin: 0 auto; padding: 40px 20px 80px; }
 @media (min-width: 768px) { .articles-section { padding: 56px 32px 100px; } }
-.articles-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-@media (min-width: 768px) { .articles-grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
-@media (min-width: 1024px) { .articles-grid { grid-template-columns: 1fr 1fr 1fr; } }
+.articles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (min-width: 600px) { .articles-grid { grid-template-columns: 1fr 1fr 1fr; gap: 14px; } }
+@media (min-width: 900px) { .articles-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; } }
+@media (min-width: 1200px) { .articles-grid { grid-template-columns: repeat(5, 1fr); gap: 16px; } }
 
-/* Article card */
-.article-card { background: var(--paper-2); border: 1px solid var(--hairline-soft); padding: 24px; transition: all 0.2s; cursor: pointer; display: flex; flex-direction: column; min-height: 200px; }
+/* Article card - square gallery style */
+.article-card {
+  background: var(--paper-2);
+  border: 1px solid var(--hairline-soft);
+  padding: 16px;
+  transition: all 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  overflow: hidden;
+}
 .article-card:hover { border-color: var(--ink); transform: translateY(-2px); box-shadow: 0 8px 24px -12px rgba(20,23,31,0.15); }
-.article-card-cat { display: inline-block; padding: 3px 10px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; align-self: flex-start; margin-bottom: 12px; }
+.article-card-cat {
+  display: inline-block;
+  padding: 3px 8px;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  align-self: flex-start;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
 .article-card-cat.shinya { background: var(--blue); color: white; }
 .article-card-cat.fuueihou { background: var(--crimson); color: white; }
 .article-card-cat.kobutsu { background: var(--gold); color: white; }
 .article-card-cat.cross { background: var(--green-dark); color: white; }
 .article-card-cat.coming { background: transparent; border: 1px solid var(--hairline); color: var(--muted); }
-.article-card-num { font-family: 'Bodoni Moda', serif; font-size: 11px; color: var(--muted); margin-bottom: 8px; letter-spacing: 0.2em; }
-.article-card-title { font-family: 'Shippori Mincho B1', serif; font-size: 16px; font-weight: 700; line-height: 1.55; color: var(--ink); flex: 1; }
-.article-card-meta { margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--hairline); display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--muted); }
+.article-card-num {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 10px;
+  color: var(--muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.2em;
+}
+.article-card-title {
+  font-family: 'Shippori Mincho B1', serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--ink);
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+@media (min-width: 600px) { .article-card-title { font-size: 13.5px; } }
+@media (min-width: 900px) { .article-card-title { font-size: 14px; -webkit-line-clamp: 6; } }
+.article-card-meta {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--hairline);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--muted);
+  gap: 6px;
+}
 .article-card-date { font-family: 'Bodoni Moda', serif; }
-.article-card-type { padding: 2px 8px; border: 1px solid var(--hairline); font-size: 10px; letter-spacing: 0.1em; }
+.article-card-type {
+  padding: 1px 6px;
+  border: 1px solid var(--hairline);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
 .article-card-type.interview { border-color: var(--crimson); color: var(--crimson); }
 
 /* Coming soon card */
@@ -226,11 +282,62 @@ const ARTICLES = [
   { num: 2, cat: 'shinya', title: '深夜営業届出の費用相場｜行政書士に頼むといくら？', date: '2026.04.17', type: 'normal', url: 'shinya/shinya-eigyo-hiyou-souba.html', published: true },
   { num: 3, cat: 'shinya', title: '深夜営業届出に必要な書類一覧【2026年版・広島県警対応】', date: '2026.04.20', type: 'normal',url:'shinya/shinya-eigyo-hitsuyou-shorui.html', published: true },
   { num: 4, cat: 'shinya', title: '【元警察官の実話】深夜営業届で警察が本当に見ているポイント', date: '2026.04.23', type: 'interview',  url: 'shinya/shinya-eigyo-keisatsu-honne.html',published: true },
-　{ num: 5, cat: 'fuueihou', title: '広島の風営法許可とは？4種類の営業許可をわかりやすく解説', date: '2026.04.27', type: 'normal', url: 'fueihou/hiroshima-fueihou-kyoka-4shurui.html', published: true },
+  { num: 5, cat: 'fuueihou', title: '広島の風営法許可とは？4種類の営業許可をわかりやすく解説', date: '2026.04.27', type: 'normal', url: 'fueihou/hiroshima-fueihou-kyoka-4shurui.html', published: true },
   { num: 6, cat: 'shinya', title: '深夜営業届出はいつまでに出せばいい？開店日から逆算した提出スケジュール', date: '2026.05.03', type: 'normal', url: 'shinya/shinya-eigyo-schedule-gyakusan.html', published: true },
-　{ num: 7, cat: 'fuueihou', title: '風俗営業許可の費用相場｜広島で許可取得にいくらかかる？', date: '2026.05.03', type: 'normal', url: 'fueihou/fueihou-kyoka-hiyou-souba.html', published: true },
-　{ num: 8, cat: 'shinya', title: 'バー開業に深夜営業届は必要？営業形態ごとに必要な手続きを整理', date: '2026.05.03', type: 'normal', url: 'shinya/bar-kaigyou-tetsuduki-hantei.html', published: true },
+  { num: 7, cat: 'fuueihou', title: '風俗営業許可の費用相場｜広島で許可取得にいくらかかる？', date: '2026.05.03', type: 'normal', url: 'fueihou/fueihou-kyoka-hiyou-souba.html', published: true },
   // ====== 公開予定の記事（公開時にpublished: trueに変更し、urlを記入） ======
+  { num: 8, cat: 'shinya', title: 'バー開業に深夜営業届は必要？営業形態ごとに必要な手続きを整理', date: '近日公開', type: 'normal', published: false },
+
+  // Phase 1 残り
+  { num: 9, cat: 'fuueihou', title: '【元広島県警官が語る】風営法申請で不許可になる典型パターン5選', date: '近日公開', type: 'interview', published: false },
+  { num: 10, cat: 'shinya', title: '深夜営業の図面作成｜自分で作れる？行政書士に依頼すべき判断基準', date: '近日公開', type: 'normal', published: false },
+  { num: 11, cat: 'fuueihou', title: '広島でキャバクラを開業する手順｜物件選びから営業開始まで', date: '近日公開', type: 'normal', published: false },
+  { num: 12, cat: 'shinya', title: 'スナックの深夜営業届出｜カラオケがある場合の注意点', date: '近日公開', type: 'normal', published: false },
+  { num: 13, cat: 'fuueihou', title: '風営法の保護対象施設とは？学校・病院から何メートル離せばOK？', date: '近日公開', type: 'normal', published: false },
+
+  // Phase 2
+  { num: 14, cat: 'fuueihou', title: 'ガールズバーは風営法に該当する？セットでの料金システムの落とし穴', date: '近日公開', type: 'normal', published: false },
+  { num: 15, cat: 'fuueihou', title: 'ホストクラブ開業ガイド｜広島での許可取得から営業開始までの完全マニュアル', date: '近日公開', type: 'normal', published: false },
+  { num: 16, cat: 'fuueihou', title: '【現場の本音】広島中央署の風営法担当に好印象を持たれる申請書とは', date: '近日公開', type: 'interview', published: false },
+  { num: 17, cat: 'shinya', title: '深夜営業中に営業内容を変更した場合の手続き｜変更届の出し方', date: '近日公開', type: 'normal', published: false },
+  { num: 18, cat: 'fuueihou', title: '風営法の管理者・名義人になれる人なれない人｜欠格事由を完全解説', date: '近日公開', type: 'normal', published: false },
+  { num: 19, cat: 'shinya', title: '深夜営業届を出さずに営業したらどうなる？無届営業の罰則とリスク', date: '近日公開', type: 'normal', published: false },
+  { num: 20, cat: 'fuueihou', title: '風営法の用途地域制限｜出店できるエリア・できないエリアの判定方法', date: '近日公開', type: 'normal', published: false },
+  { num: 21, cat: 'cross', title: '【保存版】広島の警察申請まるわかりガイド｜風営法・深夜営業・古物商を網羅', date: '近日公開', type: 'normal', published: false },
+  { num: 22, cat: 'fuueihou', title: '風営法の申請から許可までの期間｜広島県警の標準処理期間と短縮のコツ', date: '近日公開', type: 'normal', published: false },
+  { num: 23, cat: 'kobutsu', title: '広島で古物商許可を取るには？申請の流れと必要書類【2026年版】', date: '近日公開', type: 'normal', published: false },
+  { num: 24, cat: 'shinya', title: '居酒屋の深夜営業｜風営法と深夜営業届の違いと境界線', date: '近日公開', type: 'normal', published: false },
+  { num: 25, cat: 'fuueihou', title: '【元警察官の視点】風営法違反で摘発される店の共通点', date: '近日公開', type: 'interview', published: false },
+
+  // Phase 3
+  { num: 26, cat: 'kobutsu', title: '古物商許可の費用｜行政書士に頼む場合と自分で取る場合の比較', date: '近日公開', type: 'normal', published: false },
+  { num: 27, cat: 'fuueihou', title: '風営法の変更届完全ガイド｜内装変更・管理者変更・役員変更で必要な手続き', date: '近日公開', type: 'normal', published: false },
+  { num: 28, cat: 'shinya', title: '深夜営業届出で図面が通らないケース｜不備パターンと修正方法', date: '近日公開', type: 'normal', published: false },
+  { num: 29, cat: 'kobutsu', title: '中古車販売で古物商許可は必要？自動車商の特殊ルール', date: '近日公開', type: 'normal', published: false },
+  { num: 30, cat: 'fuueihou', title: '広島の風営法でよくある質問Q&A 30選', date: '近日公開', type: 'normal', published: false },
+  { num: 31, cat: 'shinya', title: '深夜営業届の名義変更｜事業承継・法人化のときの手続き', date: '近日公開', type: 'normal', published: false },
+  { num: 32, cat: 'kobutsu', title: 'ネット販売・メルカリ転売で古物商は必要？個人副業の境界線', date: '近日公開', type: 'normal', published: false },
+  { num: 33, cat: 'fuueihou', title: '【元警察官】私が現役時代に「うまく書けてる」と思った申請書の特徴', date: '近日公開', type: 'interview', published: false },
+  { num: 34, cat: 'shinya', title: '深夜営業中の風営法接客で要注意｜こんな営業はNG', date: '近日公開', type: 'normal', published: false },
+  { num: 35, cat: 'fuueihou', title: '風俗営業の譲渡・相続｜許可は引き継げる？', date: '近日公開', type: 'normal', published: false },
+  { num: 36, cat: 'kobutsu', title: '古物商の品目選びで失敗しないために｜13品目の意味と選び方', date: '近日公開', type: 'normal', published: false },
+  { num: 37, cat: 'cross', title: '【独立開業の方へ】広島で水商売を始めるなら、警察申請はこの順番で', date: '近日公開', type: 'interview', published: false },
+  { num: 38, cat: 'fuueihou', title: '風営法の構造設備基準｜内装工事前にチェックすべき7項目', date: '近日公開', type: 'normal', published: false },
+
+  // Phase 4
+  { num: 39, cat: 'shinya', title: '深夜営業届出の手数料は？広島県警の窓口で必要な実費まとめ', date: '近日公開', type: 'normal', published: false },
+  { num: 40, cat: 'fuueihou', title: '広島市内の風営法担当警察署一覧｜中央署・東署・南署の管轄', date: '近日公開', type: 'normal', published: false },
+  { num: 41, cat: 'kobutsu', title: '古物商許可を取得した後にやること｜古物台帳・標識・営業のルール', date: '近日公開', type: 'normal', published: false },
+  { num: 42, cat: 'shinya', title: '深夜営業届出と飲食店営業許可の関係｜両方必要なケースとは', date: '近日公開', type: 'normal', published: false },
+  { num: 43, cat: 'fuueihou', title: '【現場のリアル】風営法立入検査で警察官が確認するポイント', date: '近日公開', type: 'interview', published: false },
+  { num: 44, cat: 'fuueihou', title: '風営法のゲームセンター・ゲームバー｜4号営業の許可要件', date: '近日公開', type: 'normal', published: false },
+  { num: 45, cat: 'cross', title: '【完全保存版】広島で夜の店を開業する手続きフローチャート', date: '近日公開', type: 'normal', published: false },
+  { num: 46, cat: 'shinya', title: '深夜営業届出を受任する行政書士の選び方｜見極めポイント5つ', date: '近日公開', type: 'normal', published: false },
+  { num: 47, cat: 'fuueihou', title: 'コンセプトカフェ・メイドカフェは風営法対象？最新解釈と注意点', date: '近日公開', type: 'normal', published: false },
+  { num: 48, cat: 'kobutsu', title: '古物商のURL届出｜ネット販売を始めるときの届出義務', date: '近日公開', type: 'normal', published: false },
+  { num: 49, cat: 'fuueihou', title: '【西岡が答える】風営法相談で一番多い「これってOK？」事例集', date: '近日公開', type: 'interview', published: false },
+  { num: 50, cat: 'cross', title: '【総まとめ】広島の警察申請ガイド2026 — 風営・深夜・古物の全知識', date: '近日公開', type: 'normal', published: false },
+];
 
 const CAT_LABELS = { shinya: '深夜営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断' };
 
