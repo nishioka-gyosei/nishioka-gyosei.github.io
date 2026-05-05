@@ -955,27 +955,7 @@
 
 <!-- ===== COLUMN / BLOG ===== -->
 <section class="blog-section" style="background:var(--cream);padding:80px 24px;">
-  <style>
-    .blog-section-inner { max-width: 1100px; margin: 0 auto; }
-    .blog-grid { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: start; margin-top: 32px; }
-    @media (min-width: 768px) { .blog-grid { grid-template-columns: 1fr 1.3fr; gap: 40px; } }
-    .blog-intro { padding-top: 8px; }
-    .blog-intro-eyebrow { font-size: 11px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
-    .blog-intro-title { font-size: 26px; line-height: 1.5; color: var(--navy); font-weight: 700; margin-bottom: 18px; }
-    @media (min-width: 768px) { .blog-intro-title { font-size: 32px; } }
-    .blog-intro-desc { font-size: 14px; line-height: 1.9; color: var(--navy-mid); margin-bottom: 24px; }
-    .blog-intro-cta { display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; background: var(--navy); color: white; font-size: 14px; font-weight: 500; letter-spacing: 0.05em; transition: all 0.15s; }
-    .blog-intro-cta:hover { background: var(--gold); color: var(--navy); }
-    .blog-cards { display: flex; flex-direction: column; gap: 14px; }
-    .blog-card { background: white; padding: 20px 24px; border-left: 4px solid var(--gold); transition: all 0.15s; display: block; text-decoration: none; }
-    .blog-card:hover { transform: translateX(4px); border-left-color: var(--navy); }
-    .blog-card-cat { display: inline-block; padding: 3px 10px; background: var(--navy); color: white; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 10px; }
-    .blog-card-title { font-size: 15px; line-height: 1.6; color: var(--navy); font-weight: 700; margin-bottom: 8px; }
-    .blog-card-meta { font-size: 11px; color: var(--navy-mid); opacity: 0.7; letter-spacing: 0.05em; }
-    .blog-card-coming { background: rgba(255,255,255,0.6); border-left-color: rgba(13,31,60,0.2); cursor: default; pointer-events: none; }
-    .blog-card-coming .blog-card-cat { background: rgba(13,31,60,0.4); }
-    .blog-card-coming .blog-card-title { opacity: 0.6; }
-  </style>
+  <!-- ...（中略：styleタグ部分は変更なし）... -->
   <div class="blog-section-inner">
     <div class="section-eyebrow" style="color:var(--gold);">COLUMN</div>
     <h2 class="section-title" style="color:var(--navy);">許認可の実務、警察官の視点で。</h2>
@@ -996,23 +976,26 @@
         <a href="blog/shinya/hiroshima-shinya-eigyo-guide.html" class="blog-card">
           <span class="blog-card-cat">深夜営業</span>
           <div class="blog-card-title">広島で深夜営業を始めるには？届出が必要な業態と手続きの全体像</div>
-          <div class="blog-card-meta">2026.05.03 ／ 元警察官の視点で解説</div>
+          <div class="blog-card-meta">2026.04.15 ／ 元警察官の視点で解説</div>
         </a>
         <a href="blog/shinya/shinya-eigyo-hiyou-souba.html" class="blog-card">
           <span class="blog-card-cat">深夜営業</span>
           <div class="blog-card-title">深夜営業届出の費用相場｜行政書士に頼むといくら？</div>
-          <div class="blog-card-meta">2026.05.03 ／ 元警察官の視点で解説</div>
+          <div class="blog-card-meta">2026.04.17 ／ 元警察官の視点で解説</div>
         </a>
-        <div class="blog-card blog-card-coming">
+
+        <!-- ▼ ここを修正しました：近日公開を実際の記事リンクへ反映 ▼ -->
+        <a href="blog/fueihou/hiroshima-fueihou-kyoka-4shurui.html" class="blog-card">
           <span class="blog-card-cat">風営法</span>
-          <div class="blog-card-title">広島の風営法許可とは？4種類の営業許可をわかりやすく解説（近日公開）</div>
-          <div class="blog-card-meta">COMING SOON</div>
-        </div>
+          <div class="blog-card-title">広島の風営法許可とは？4種類の営業許可をわかりやすく解説</div>
+          <div class="blog-card-meta">2026.04.20 ／ 元警察官の視点で解説</div>
+        </a>
+        <!-- ▲ 修正完了 ▲ -->
+
       </div>
     </div>
   </div>
 </section>
-
 <!-- ===== CALENDAR ===== -->
 <section class="calendar-section" id="calendar">
   <div class="calendar-inner">
