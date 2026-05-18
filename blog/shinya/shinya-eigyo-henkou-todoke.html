@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>深夜営業中に営業内容を変更した場合の手続き｜変更届の出し方 | 西岡行政書士事務所</title>
+<meta name="description" content="深夜営業届をすでに出している店舗が屋号・代表者・内装などを変更した場合の手続きを解説。変更の種類ごとに必要書類・期限・注意点を元広島県警察官の行政書士がわかりやすく整理します。">
+<meta name="keywords" content="深夜営業 変更届,深夜営業届 変更 手続き,深夜酒類提供飲食店営業 変更届出書">
+<style>
+  :root {
+    --color-primary: #1a3a5c;
+    --color-accent: #c9a55c;
+    --color-text: #2c2c2c;
+    --color-text-soft: #555;
+    --color-bg: #fafaf7;
+    --color-card: #ffffff;
+    --color-border: #e5e2da;
+    --color-quote-bg: #f4f1ea;
+    --color-warning-bg: #fff8ec;
+    --color-warning-border: #c9a55c;
+    --color-table-head: #1a3a5c;
+    --color-table-stripe: #f7f5ef;
+    --color-cta-bg: #1a3a5c;
+    --color-cta-text: #ffffff;
+    --max-width: 760px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--color-text);
+    background: var(--color-bg);
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    background: var(--color-primary);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .site-header a { text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .header-logo-mark {
+    width: 36px; height: 36px;
+    background: var(--color-accent);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 900; color: #fff; flex-shrink: 0;
+  }
+  .header-name { color: #fff; font-size: 14px; font-weight: 700; letter-spacing: 0.05em; }
+  .header-sub  { color: rgba(255,255,255,.6); font-size: 11px; }
+
+  /* ===== BREADCRUMB ===== */
+  .breadcrumb {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 12px 20px;
+    font-size: 12px;
+    color: var(--color-text-soft);
+  }
+  .breadcrumb a { color: var(--color-primary); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span { margin: 0 6px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, #1a3a5c 0%, #0d2240 100%);
+    padding: 40px 20px 36px;
+  }
+  .hero-inner { max-width: var(--max-width); margin: 0 auto; }
+  .hero-cat {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    margin: 0 0 16px;
+    font-size: clamp(20px, 4vw, 26px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.45;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,.7);
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 5px; }
+
+  /* ===== LAYOUT ===== */
+  .page-body {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 36px 20px 60px;
+  }
+
+  /* ===== TOC ===== */
+  .toc {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-primary);
+    border-radius: 4px;
+    padding: 22px 24px;
+    margin-bottom: 36px;
+  }
+  .toc-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: .08em;
+    margin: 0 0 12px;
+    text-transform: uppercase;
+  }
+  .toc ol { margin: 0; padding-left: 1.4em; }
+  .toc li { font-size: 14px; margin-bottom: 6px; }
+  .toc a { color: var(--color-primary); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  /* ===== INTRO CARD ===== */
+  .intro-card {
+    background: var(--color-quote-bg);
+    border-left: 4px solid var(--color-accent);
+    padding: 18px 22px;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 32px;
+    font-size: 15px;
+    color: var(--color-text-soft);
+  }
+
+  /* ===== SECTION HEADINGS ===== */
+  h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 8px;
+    margin: 48px 0 20px;
+  }
+  h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 32px 0 14px;
+    padding-left: 10px;
+    border-left: 3px solid var(--color-accent);
+  }
+
+  /* ===== TABLE ===== */
+  .table-wrap { overflow-x: auto; margin: 20px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 460px;
+  }
+  thead th {
+    background: var(--color-table-head);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+  tbody td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+  tbody tr:nth-child(even) td { background: var(--color-table-stripe); }
+  .badge-required {
+    background: #c0392b;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .badge-caution {
+    background: var(--color-accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* ===== CALLOUT ===== */
+  .callout {
+    border-radius: 4px;
+    padding: 18px 22px;
+    margin: 22px 0;
+    font-size: 15px;
+  }
+  .callout-warning {
+    background: var(--color-warning-bg);
+    border: 1px solid var(--color-warning-border);
+    border-left: 4px solid var(--color-warning-border);
+  }
+  .callout-police {
+    background: #eef3f8;
+    border: 1px solid #a8bdd4;
+    border-left: 4px solid var(--color-primary);
+  }
+  .callout-title {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .callout p { margin: 6px 0 0; }
+
+  /* ===== STEP LIST ===== */
+  .step-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+    counter-reset: step;
+  }
+  .step-list li {
+    counter-increment: step;
+    padding: 12px 16px 12px 52px;
+    position: relative;
+    margin-bottom: 8px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 15px;
+  }
+  .step-list li::before {
+    content: counter(step);
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--color-primary);
+    color: #fff;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .step-list strong { color: var(--color-primary); }
+
+  /* ===== DOC LIST ===== */
+  .doc-list {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0;
+  }
+  .doc-list li {
+    padding: 8px 14px 8px 32px;
+    position: relative;
+    font-size: 15px;
+    border-bottom: 1px dashed var(--color-border);
+  }
+  .doc-list li:last-child { border-bottom: none; }
+  .doc-list li::before {
+    content: "📄";
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    font-size: 14px;
+  }
+
+  /* ===== NO-NEED LIST ===== */
+  .noneed-list {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .noneed-list li {
+    padding: 9px 16px 9px 40px;
+    position: relative;
+    font-size: 14px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-soft);
+  }
+  .noneed-list li:last-child { border-bottom: none; }
+  .noneed-list li::before {
+    content: "✔";
+    position: absolute;
+    left: 14px;
+    color: #2ecc71;
+    font-weight: 700;
+  }
+
+  /* ===== TROUBLE BOX ===== */
+  .trouble-box {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .trouble-box-head {
+    background: var(--color-primary);
+    color: #fff;
+    padding: 11px 18px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .trouble-box-body {
+    padding: 16px 18px;
+    font-size: 15px;
+  }
+
+  /* ===== MERIT LIST ===== */
+  .merit-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+    counter-reset: merit;
+  }
+  .merit-list li {
+    counter-increment: merit;
+    padding: 14px 18px 14px 56px;
+    position: relative;
+    margin-bottom: 10px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 15px;
+  }
+  .merit-list li::before {
+    content: counter(merit);
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    background: var(--color-accent);
+    color: #fff;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .merit-list strong { color: var(--color-primary); display: block; margin-bottom: 4px; }
+  .merit-list span { color: var(--color-text-soft); font-size: 14px; }
+
+  /* ===== FAQ ===== */
+  .faq-item {
+    margin-bottom: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .faq-q {
+    background: var(--color-primary);
+    color: #fff;
+    padding: 13px 18px;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .faq-q-badge {
+    background: var(--color-accent);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 0 7px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    line-height: 1.6;
+  }
+  .faq-a {
+    padding: 14px 18px;
+    font-size: 15px;
+    background: var(--color-card);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .faq-a-badge {
+    color: var(--color-primary);
+    font-size: 13px;
+    font-weight: 900;
+    flex-shrink: 0;
+    background: #e8f0f8;
+    padding: 0 7px;
+    border-radius: 2px;
+    line-height: 1.6;
+  }
+
+  /* ===== SUMMARY TABLE ===== */
+  .summary-table-wrap { overflow-x: auto; margin: 20px 0; }
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 380px;
+  }
+  .summary-table thead th {
+    background: var(--color-primary);
+    color: #fff;
+    padding: 10px 14px;
+    font-weight: 700;
+  }
+  .summary-table tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+  .summary-table tbody tr:nth-child(even) td { background: var(--color-table-stripe); }
+
+  /* ===== CTA ===== */
+  .cta-block {
+    background: var(--color-cta-bg);
+    border-radius: 6px;
+    padding: 30px 24px;
+    margin: 40px 0;
+    text-align: center;
+    color: var(--color-cta-text);
+  }
+  .cta-block h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    color: #fff;
+    border: none;
+    padding: 0;
+  }
+  .cta-block p { font-size: 14px; color: rgba(255,255,255,.8); margin: 0 0 20px; }
+  .cta-buttons { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .btn-line {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #06c755;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 24px;
+    border-radius: 4px;
+  }
+  .btn-tel {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,.15);
+    border: 2px solid rgba(255,255,255,.5);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 24px;
+    border-radius: 4px;
+  }
+
+  /* ===== RELATED ===== */
+  .related-section { margin-top: 48px; }
+  .related-section h2 { font-size: 17px; }
+  .related-list { list-style: none; padding: 0; margin: 0; }
+  .related-list li {
+    border-bottom: 1px solid var(--color-border);
+    padding: 0;
+  }
+  .related-list li a {
+    display: block;
+    padding: 12px 14px;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 14px;
+    transition: background .15s;
+  }
+  .related-list li a:hover { background: var(--color-quote-bg); }
+  .related-list li a::before { content: "→ "; }
+
+  /* ===== FOOTER ===== */
+  .site-footer {
+    background: var(--color-primary);
+    padding: 32px 20px;
+    text-align: center;
+    color: rgba(255,255,255,.7);
+    font-size: 13px;
+    margin-top: 60px;
+  }
+  .footer-logo {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    margin-bottom: 10px;
+  }
+  .footer-logo-mark {
+    width: 30px; height: 30px;
+    background: var(--color-accent);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 900; color: #fff;
+  }
+  .footer-name { color: #fff; font-weight: 700; font-size: 15px; }
+  .footer-info { margin: 6px 0 14px; line-height: 1.7; }
+  .footer-buttons {
+    display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+    margin-bottom: 16px;
+  }
+  .line-btn, .footer-tel-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 9px 18px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .line-btn { background: #06c755; color: #fff; }
+  .footer-tel-btn { background: rgba(255,255,255,.15); color: #fff; border: 1px solid rgba(255,255,255,.4); }
+  .footer-back {
+    display: inline-block;
+    margin-top: 6px;
+    color: rgba(255,255,255,.6);
+    text-decoration: none;
+    font-size: 13px;
+  }
+  .footer-back:hover { color: #fff; }
+
+  @media (max-width: 600px) {
+    h2 { font-size: 18px; }
+    h3 { font-size: 16px; }
+    .hero h1 { font-size: 19px; }
+    table, .summary-table { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="../index.html">
+    <div class="header-logo-mark">西</div>
+    <div>
+      <div class="header-name">西岡行政書士事務所</div>
+      <div class="header-sub">EX-POLICE OFFICER · 広島</div>
+    </div>
+  </a>
+</header>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+  <a href="../index.html">ホーム</a>
+  <span>›</span>
+  <a href="../column/index.html">コラム一覧</a>
+  <span>›</span>
+  深夜営業の変更届
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <span class="hero-cat">深夜営業</span>
+    <h1>深夜営業中に営業内容を変更した場合の手続き<br>変更届の出し方</h1>
+    <div class="hero-meta">
+      <span>✍️ 西岡 祐也（行政書士・元広島県警察官）</span>
+      <span>📅 2026年5月公開</span>
+      <span>🕐 約7分で読めます</span>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<main class="page-body">
+
+  <!-- INTRO -->
+  <p>「店名を変えたいけど、警察に何か届けが必要？」「内装を工事したら図面も出し直し？」「メニューを変えたら変更届が必要になる？」——深夜営業届をすでに出している店舗からよくいただく質問です。</p>
+  <p>深夜営業届（正式名称：深夜酒類提供飲食店営業開始届出）は、一度出せば終わりではありません。届け出た内容から変更が生じた場合、所定の変更届を警察に提出する義務があります。変更内容によっては、<strong>変更前に届けが必要なものと、変更後でよいものがある</strong>ため、順番を間違えると「無届営業」状態になるリスクがあります。</p>
+
+  <div class="intro-card">
+    元広島県警察官として13年勤務し、現在は行政書士として許認可申請を専門に扱う西岡祐也が、変更届の実務と注意点を解説します。
+  </div>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-title">目次</div>
+    <ol>
+      <li><a href="#sec1">変更届が必要になる「変更」とは</a></li>
+      <li><a href="#sec2">変更届の手続き：変更の種類ごとに解説</a></li>
+      <li><a href="#sec3">変更届を出し忘れるとどうなるか</a></li>
+      <li><a href="#sec4">変更届に必要な書類・費用まとめ</a></li>
+      <li><a href="#sec5">元警察官の視点：変更届でよくあるトラブル</a></li>
+      <li><a href="#sec6">行政書士に依頼するメリット</a></li>
+      <li><a href="#faq">よくある質問（FAQ）</a></li>
+      <li><a href="#summary">まとめ</a></li>
+    </ol>
+  </nav>
+
+  <!-- SEC 1 -->
+  <h2 id="sec1">1. 変更届が必要になる「変更」とは</h2>
+  <p>深夜酒類提供飲食店営業では、以下の事項に変更が生じた場合、届出が必要です。</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>変更の種類</th>
+          <th>届出の要否</th>
+          <th>タイミング</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>店舗の名称（屋号）の変更</td>
+          <td><span class="badge-required">必要</span></td>
+          <td>変更後10日以内</td>
+        </tr>
+        <tr>
+          <td>経営者（個人）の住所変更</td>
+          <td><span class="badge-required">必要</span></td>
+          <td>変更後10日以内</td>
+        </tr>
+        <tr>
+          <td>法人の名称・所在地変更</td>
+          <td><span class="badge-required">必要</span></td>
+          <td>変更後10日以内</td>
+        </tr>
+        <tr>
+          <td>代表者の変更（法人）</td>
+          <td><span class="badge-required">必要</span></td>
+          <td>変更後10日以内</td>
+        </tr>
+        <tr>
+          <td>営業所の構造・設備の変更（図面変更が伴うもの）</td>
+          <td><span class="badge-required">必要</span></td>
+          <td>変更後10日以内</td>
+        </tr>
+        <tr>
+          <td>営業所の場所（住所）の変更</td>
+          <td><span class="badge-caution">※要注意</span></td>
+          <td>別途手続きが必要</td>
+        </tr>
+        <tr>
+          <td>酒類の提供をやめる（業態変更）</td>
+          <td><span class="badge-required">必要</span></td>
+          <td>廃止届の提出</td>
+        </tr>
+        <tr>
+          <td>深夜営業をやめる</td>
+          <td><span class="badge-required">必要</span></td>
+          <td>廃止届の提出</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>一方で、以下のような変更は届出が不要なケースが多いです（ただし判断に迷ったら<strong>絶対に確認を</strong>）。</p>
+  <ul class="noneed-list">
+    <li>メニューの変更（料理の内容・価格）</li>
+    <li>内装の装飾・色の変更（構造・設備を変えない範囲）</li>
+    <li>従業員の増減</li>
+    <li>営業時間の短縮（深夜0時以降の営業をやめる場合は別途確認）</li>
+  </ul>
+  <p>「自分のケースが変更届の対象かどうか」判断が難しい場合は、管轄警察署の生活安全課に問い合わせるか、行政書士に相談することをおすすめします。</p>
+
+  <!-- SEC 2 -->
+  <h2 id="sec2">2. 変更届の手続き：変更の種類ごとに解説</h2>
+
+  <h3>① 店舗名（屋号）を変更した場合</h3>
+  <p><strong>必要な書類</strong></p>
+  <ul class="doc-list">
+    <li>深夜酒類提供飲食店営業変更届出書（所定の様式）</li>
+    <li>変更を証明する書類（チラシ・看板の写真など）</li>
+  </ul>
+  <p><strong>手続きの流れ</strong></p>
+  <ol class="step-list">
+    <li>変更届出書を記載する</li>
+    <li>添付書類を準備する</li>
+    <li>管轄警察署の生活安全課へ、<strong>変更後10日以内</strong>に提出</li>
+  </ol>
+  <p>屋号は営業実態に直結する事項ではないため、変更後の届出で足ります。ただし「変更後10日以内」という期限があるので、変更してから時間をおかずに動くことが重要です。</p>
+
+  <h3>② 代表者・経営者の住所変更、法人の名称・代表者変更</h3>
+  <p><strong>必要な書類</strong></p>
+  <ul class="doc-list">
+    <li>深夜酒類提供飲食店営業変更届出書</li>
+    <li>住民票の写し（住所変更の場合）</li>
+    <li>登記事項証明書（法人の場合）</li>
+  </ul>
+  <p><strong>手続きの流れ</strong></p>
+  <ol class="step-list">
+    <li>住民票または登記事項証明書を取得する</li>
+    <li>変更届出書に記入する</li>
+    <li>変更後10日以内に管轄警察署へ提出</li>
+  </ol>
+  <p>個人経営者が引っ越した場合、法人が社名変更・合併した場合など、届出の「名義人」情報が変わるすべての場面で必要になります。</p>
+
+  <h3>③ 営業所の構造・設備を変更した場合（内装工事）</h3>
+  <p>これが最も注意が必要な変更です。<strong>図面の変更が伴う内装工事（壁の増設・撤去・出入口の変更・カウンターの移動など）は、変更届が必要になります。</strong></p>
+  <p><strong>必要な書類</strong></p>
+  <ul class="doc-list">
+    <li>深夜酒類提供飲食店営業変更届出書</li>
+    <li>変更後の営業所の平面図（各室の用途・面積・寸法を記載）</li>
+    <li>変更後の音響・照明設備の概要書（設置している場合）</li>
+  </ul>
+  <p><strong>手続きの流れ</strong></p>
+  <ol class="step-list">
+    <li>工事完了後、変更後の状態で図面を作成する</li>
+    <li>変更届出書と図面を準備する</li>
+    <li>変更後10日以内に管轄警察署へ提出</li>
+  </ol>
+  <div class="callout callout-warning">
+    <div class="callout-title">⚠️ 注意点：工事前に確認を</div>
+    <p>内装工事の内容が「構造・設備の変更」に該当するかどうかは、工事前に確認しておくことをおすすめします。工事が完了してから「届出が必要だったか」を議論しても、既成事実になっているので対応が難しくなります。行政書士または警察署に事前に相談するのが安全です。</p>
+  </div>
+
+  <h3>④ 営業所の場所（住所）が変わる場合（移転）</h3>
+  <p>店舗を移転する場合は、単純な「変更届」ではなく、より複雑な手続きが必要です。</p>
+  <div class="callout callout-warning">
+    <div class="callout-title">📌 移転は「廃止＋新規開始」の2段構え</div>
+    <p>・旧店舗：廃止届を提出（深夜営業の廃止）<br>・新店舗：新規の開始届を提出（深夜営業の開始）</p>
+    <p style="margin-top:10px;">旧店舗で取得した届出は新店舗に引き継げません。新店舗では改めて図面作成・書類準備・届出が必要です。移転スケジュールに余裕をもって手続きを進めてください。</p>
+  </div>
+
+  <h3>⑤ 深夜営業をやめる場合（廃止届）</h3>
+  <p>深夜営業を取りやめる場合は廃止届を提出します。営業を取りやめた日から<strong>10日以内</strong>が原則です。</p>
+  <ul class="doc-list">
+    <li>深夜酒類提供飲食店営業廃止届出書</li>
+  </ul>
+
+  <!-- SEC 3 -->
+  <h2 id="sec3">3. 変更届を出し忘れるとどうなるか</h2>
+  <p>「忘れていた」「知らなかった」では済まない場面があります。風俗営業等の規制及び業務の適正化等に関する法律（風営法）では、変更届出義務違反に罰則が設けられています。変更届の提出を怠ると、<strong>50万円以下の罰金</strong>が科される可能性があります。</p>
+  <p>また、警察による立入検査や、他の許認可申請（古物商・風営法許可など）の審査時に「変更届が出ていない」ことが発覚すると、信用面で不利になる可能性もあります。</p>
+
+  <div class="callout callout-police">
+    <div class="callout-title">🚔 元警察官の視点から</div>
+    <p>警察の立入検査で「屋号が変わっているのに変更届がない」「図面と実態が違う」というケースは実際にあります。悪意のある違反ではなくても、「届出内容と実態が一致していない」という状態は、警察からすると見過ごせません。変更が生じたら、まず届出が必要かどうかを確認する習慣をつけることが大切です。</p>
+    <p style="margin-top:8px;font-size:13px;color:#777;">（※西岡の警察官時代・行政書士としての経験を踏まえた見解です）</p>
+  </div>
+
+  <!-- SEC 4 -->
+  <h2 id="sec4">4. 変更届に必要な書類・費用まとめ</h2>
+
+  <h3>必要書類の全体像</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>変更の種類</th>
+          <th>届出書</th>
+          <th>図面</th>
+          <th>住民票</th>
+          <th>登記簿</th>
+          <th>その他</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>屋号変更</td>
+          <td>○</td><td>—</td><td>—</td><td>—</td>
+          <td>看板等の写真</td>
+        </tr>
+        <tr>
+          <td>個人住所変更</td>
+          <td>○</td><td>—</td><td>○</td><td>—</td><td>—</td>
+        </tr>
+        <tr>
+          <td>法人名称・代表者変更</td>
+          <td>○</td><td>—</td><td>—</td><td>○</td><td>—</td>
+        </tr>
+        <tr>
+          <td>構造・設備変更</td>
+          <td>○</td><td>○</td><td>—</td><td>—</td>
+          <td>概要書（必要時）</td>
+        </tr>
+        <tr>
+          <td>廃止</td>
+          <td>○（廃止届）</td><td>—</td><td>—</td><td>—</td><td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--color-text-soft);">※上記は一般に求められるものを記載しています。変更の詳細によって異なる場合があるため、個別に担当者に問い合わせましょう。</p>
+
+  <h3>費用の目安</h3>
+  <p>深夜営業の変更届手続きは、<strong>収入証紙等の実費は基本的に不要</strong>です（収入証紙とは警察署に支払う手数料のことです。新規届出と同様に、変更届も手数料はかかりません）。</p>
+  <p>行政書士に依頼する場合の費用感は以下の通りです。</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>変更の種類</th><th>概算報酬の目安</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>屋号・住所・代表者変更</td><td>2万〜4万円程度</td></tr>
+        <tr><td>構造・設備変更（図面作成込み）</td><td>5万〜10万円程度</td></tr>
+        <tr><td>廃止届</td><td>1万〜2万円程度</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--color-text-soft);">※上記はあくまで一般的な目安です。変更内容の複雑さや事務所ごとに異なります。特に図面作成が必要な場合は比較的高額になりがちですので、当事務所の正確な料金は<a href="#" style="color:var(--color-primary);">お問い合わせ</a>からご確認ください。</p>
+
+  <!-- SEC 5 -->
+  <h2 id="sec5">5. 元警察官の視点：変更届でよくあるトラブル</h2>
+
+  <div class="trouble-box">
+    <div class="trouble-box-head">トラブル①「変更届が必要とは知らなかった」</div>
+    <div class="trouble-box-body">
+      <p>一番多いパターンです。深夜営業届は新規開始時に出して終わり、という認識の方が多く、変更の際の届出義務を知らないまま数年が経過していることがあります。「いつの間にか屋号が変わっていた」「代表者が変わっていたが届出していなかった」というケースは珍しくありません。</p>
+      <p>もし現在、届出内容と実態が一致していない状態に気づいた場合は、速やかに管轄警察署または行政書士に相談することをおすすめします。過去の未届け期間があったとしても、早期に是正することで対応できる場合があります。</p>
+      <p>なお、よくあるのは既存の店舗を引き継いだ際に、前の経営者から変更届の引継ぎがなかったために未届け状態に気づかないというケースです。居抜きで開業された方は、自分の名義で変更届が出ているかどうか、一度確認しておくことをおすすめします。</p>
+    </div>
+  </div>
+
+  <div class="trouble-box">
+    <div class="trouble-box-head">トラブル②「内装工事のたびに図面を更新しなければならない」</div>
+    <div class="trouble-box-body">
+      <p>内装を変えるたびに図面を更新・提出するのは手間ですが、これは法的な義務です。「小さな工事だから大丈夫だろう」と判断するのではなく、工事前に「変更届が必要か」を確認する習慣をつけることが大切です。</p>
+    </div>
+  </div>
+
+  <div class="trouble-box">
+    <div class="trouble-box-head">トラブル③「移転を変更届で済ませようとした」</div>
+    <div class="trouble-box-body">
+      <p>住所移転を「変更届」で処理しようとするケースがありますが、これは誤りです。前述の通り、移転は「廃止＋新規開始届」の手続きになります。移転する店舗を抱えた状態で、新しい届出が出ていない期間が生じると、無届営業になる恐れがあります。移転を検討している場合は、必ず事前に行政書士または警察署に相談した上でスケジュールを組んでください。</p>
+    </div>
+  </div>
+
+  <!-- SEC 6 -->
+  <h2 id="sec6">6. 変更届の手続きを行政書士に依頼するメリット</h2>
+  <p>変更届の書類作成自体は難易度が高いわけではありませんが、以下の理由から行政書士への依頼を検討する方が増えています。</p>
+  <ul class="merit-list">
+    <li>
+      <strong>変更届が必要かどうかの判断ができる</strong>
+      <span>「この変更は届出が必要か」の判断は、知識がないと難しいケースがあります。</span>
+    </li>
+    <li>
+      <strong>図面作成が必要な場合のコストが明確</strong>
+      <span>内装変更の場合、正確な図面作成が必要です。行政書士が作成することで、不備による差し戻しの可能性を下げられます。</span>
+    </li>
+    <li>
+      <strong>本業に集中できる</strong>
+      <span>警察署への往復・書類準備にかかる時間を節約できます。</span>
+    </li>
+    <li>
+      <strong>複数の変更が同時に起きた場合も一括対応</strong>
+      <span>「屋号変更と内装変更が同時に発生した」など、複数の変更が重なった場合もまとめて依頼できます。</span>
+    </li>
+  </ul>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h3>変更届の相談はお気軽に</h3>
+    <p>「うちのケースは届出が必要？」という個別相談も無料でお受けしています。</p>
+    <div class="cta-buttons">
+      <a href="https://lin.ee/UKhZQbE" target="_blank" rel="noreferrer" class="btn-line">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.78 2 10.4c0 4.14 3.58 7.6 8.41 8.25.33.07.77.22.88.5.1.26.07.67.03.93l-.14.85c-.04.25-.2.98.86.54 1.06-.45 5.73-3.37 7.81-5.77C21.28 14.07 22 12.31 22 10.4 22 5.78 17.52 2 12 2z"/></svg>
+        LINEで無料相談
+      </a>
+      <a href="tel:09080688527" class="btn-tel">📞 090-8068-8527</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <h2 id="faq">よくある質問（FAQ）</h2>
+
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-q-badge">Q</span>変更届はどこに提出しますか？</div>
+    <div class="faq-a"><span class="faq-a-badge">A</span><span>営業所の所在地を管轄する警察署の生活安全課（または生活環境課）への提出になります。</span></div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-q-badge">Q</span>変更届の提出期限を過ぎてしまいました。どうすればいいですか？</div>
+    <div class="faq-a"><span class="faq-a-badge">A</span><span>まず速やかに提出することを優先してください。提出期限を過ぎていても、放置するよりは早急に提出する方が望ましいです。期限超過の経緯や状況によっては、警察の担当者に事情を説明した上で対応することが必要になる場合があります。不安な場合は行政書士に相談してください。</span></div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-q-badge">Q</span>法人の役員が一人増えた場合も変更届が必要ですか？</div>
+    <div class="faq-a"><span class="faq-a-badge">A</span><span>役員の変更は届出が必要な事項になります。新たに役員となった方が欠格事由に該当しないかどうかも確認が必要です。詳しくは行政書士または警察署にお問い合わせください。</span></div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-q-badge">Q</span>営業時間を午前2時から午前3時に延長したい場合は？</div>
+    <div class="faq-a"><span class="faq-a-badge">A</span><span>深夜酒類提供飲食店営業の届出では、特定の閉店時刻の届出義務はありません（深夜0時以降に酒類を提供する営業全般が届出の対象です）。ただし、地域によっては条例による規制がある場合もあります。詳しくは管轄警察署へ確認してください。</span></div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-q-badge">Q</span>変更届を行政書士に依頼したい場合、どこに連絡すればいいですか？</div>
+    <div class="faq-a"><span class="faq-a-badge">A</span><span>西岡行政書士事務所では、深夜営業の変更届手続きのご依頼・ご相談をお受けしています。<a href="https://lin.ee/UKhZQbE" style="color:var(--color-primary);">LINEからのお問い合わせ</a>または<a href="tel:09080688527" style="color:var(--color-primary);">お電話</a>でお気軽にご連絡ください。</span></div>
+  </div>
+
+  <!-- SUMMARY -->
+  <h2 id="summary">まとめ：変更があったら「まず確認」の習慣を</h2>
+  <p>深夜営業届は、一度出して終わりではありません。経営を続ける中で生じるさまざまな変更に対し、都度届出義務が発生します。</p>
+
+  <div class="summary-table-wrap">
+    <table class="summary-table">
+      <thead>
+        <tr><th>変更の種類</th><th>必要な対応</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>屋号・住所・代表者変更</td><td>変更後10日以内に変更届を提出</td></tr>
+        <tr><td>内装変更（図面変更あり）</td><td>変更後10日以内に変更届＋図面を提出</td></tr>
+        <tr><td>店舗移転</td><td>廃止届＋新規開始届</td></tr>
+        <tr><td>深夜営業の廃止</td><td>廃止届を提出</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>変更が生じた際に「届出が必要かどうか」判断に迷ったら、まず管轄警察署または行政書士に確認することをおすすめします。対応が遅れると、無届の期間が長くなり、リスクが高まります。</p>
+  <p>当事務所では、変更届の必要性の判断から書類作成・提出まで一括してサポートしています。「うちのケースはどうなるか」という個別相談も受け付けていますので、お気軽にご連絡ください。</p>
+
+  <!-- RELATED -->
+  <div class="related-section">
+    <h2>関連記事</h2>
+    <ul class="related-list">
+      <li><a href="../shinya/hiroshima-shinya-eigyo-todokeout.html">広島で深夜営業を始めるには？届出の流れと必要書類を完全解説</a></li>
+      <li><a href="../shinya/shinya-eigyo-shorui-checklist.html">深夜営業届出に必要な書類一覧｜警察に持参する前のチェックリスト</a></li>
+      <li><a href="../shinya/shinya-eigyo-zumen.html">深夜営業の図面作成｜警察に通る図面の書き方と注意点</a></li>
+      <li><a href="../shinya/shinya-eigyo-mutoddoke-bassoku.html">深夜営業届を出さずに営業したらどうなる？無届営業の罰則とリスク</a></li>
+      <li><a href="../fueihou/fueihou-henkou-todoke-guide.html">風営法の変更届完全ガイド｜内装変更・管理者変更・役員変更で必要な手続き</a></li>
+    </ul>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-logo">
+    <div class="footer-logo-mark">西</div>
+    <div class="footer-name">西岡行政書士事務所</div>
+  </div>
+  <div class="footer-info">
+    広島市中区大手町4-6-22（市役所前電停 徒歩4分）<br>
+    TEL: 090-8068-8527 ／ 受付 9:00 – 19:00（土日祝可）<br>
+    広島県行政書士会 所属 ／ 登録番号 22341036
+  </div>
+  <div class="footer-buttons">
+    <a href="https://lin.ee/UKhZQbE" target="_blank" rel="noreferrer" class="line-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.78 2 10.4c0 4.14 3.58 7.6 8.41 8.25.33.07.77.22.88.5.1.26.07.67.03.93l-.14.85c-.04.25-.2.98.86.54 1.06-.45 5.73-3.37 7.81-5.77C21.28 14.07 22 12.31 22 10.4 22 5.78 17.52 2 12 2z"/></svg>
+      LINEで相談
+    </a>
+    <a href="tel:09080688527" class="footer-tel-btn">📞 090-8068-8527</a>
+  </div>
+  <a href="../column/index.html" class="footer-back">← コラム一覧に戻る</a>
+</footer>
+
+</body>
+</html>
