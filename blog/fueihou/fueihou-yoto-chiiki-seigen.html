@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>風営法の用途地域制限｜出店できるエリア・できないエリアの判定方法 ｜ 西岡行政書士事務所</title>
+<meta name="description" content="風営法許可は商業地域のみ取得可能。広島県の距離制限（学校70m・病院50m等）の正確な数値と、用途地域の調べ方・よくある落とし穴を元広島県警察官の行政書士が解説します。">
+<meta name="keywords" content="風営法 用途地域, 風俗営業 出店できないエリア, 風営法 場所的制限">
+<meta property="og:title" content="風営法の用途地域制限｜出店できるエリア・できないエリアの判定方法">
+<meta property="og:description" content="風営法の場所的制限（用途地域・距離制限）の仕組みと広島県の具体的な数値を解説。物件契約前に必ず確認すべきポイントを整理します。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nishioka-gyosei.github.io/blog/fueihou/fueihou-yoto-chiiki-seigen.html">
+<link rel="canonical" href="https://nishioka-gyosei.github.io/blog/fueihou/fueihou-yoto-chiiki-seigen.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "風営法の用途地域制限｜出店できるエリア・できないエリアの判定方法",
+  "description": "風営法の場所的制限（用途地域・距離制限）の仕組みと広島県の具体的な数値を解説。",
+  "author": {
+    "@type": "Person",
+    "name": "西岡 祐也",
+    "jobTitle": "行政書士(元広島県警察官)"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "西岡行政書士事務所",
+    "address": "広島市中区大手町4-6-22"
+  },
+  "datePublished": "2026-05-20",
+  "dateModified": "2026-05-20"
+}
+</script>
+
+<style>
+:root {
+  --ink: #14171F; --ink-soft: #2A2D38; --paper: #F5F2EB; --paper-2: #FFFDF7; --cream: #EDE8DC;
+  --crimson: #A8252B; --crimson-dark: #7A1A20; --gold: #B8934A; --gold-light: #D4B876;
+  --hairline: #D4CDBB; --hairline-soft: #E5DFCE; --muted: #6B6657; --line-green: #06C755;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans JP', system-ui, sans-serif; background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.85; }
+a { color: inherit; text-decoration: none; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+.header { background: var(--paper-2); border-bottom: 1px solid var(--hairline); }
+.header-inner { max-width: 880px; margin: 0 auto; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 14px; }
+.badge-shield { width: 44px; height: 44px; flex-shrink: 0; }
+.brand-name { font-family: 'Shippori Mincho B1', serif; font-size: 19px; font-weight: 700; line-height: 1.2; letter-spacing: 0.05em; }
+.brand-en { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 11px; color: var(--muted); }
+.brand-tag { display: none; font-family: 'Bodoni Moda', serif; font-size: 10px; color: var(--crimson); letter-spacing: 0.3em; text-transform: uppercase; }
+.line-btn { background: var(--line-green); color: white; padding: 10px 16px; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: background 0.15s; }
+.line-btn:hover { background: #04a649; }
+@media (min-width: 640px) { .brand-name { font-size: 24px; } .brand-tag { display: inline-block; margin-left: 8px; } .badge-shield { width: 48px; height: 48px; } }
+
+.breadcrumb { max-width: 880px; margin: 0 auto; padding: 16px 20px 0; font-size: 12px; color: var(--muted); }
+.breadcrumb a { color: var(--muted); transition: color 0.15s; }
+.breadcrumb a:hover { color: var(--crimson); }
+.breadcrumb-sep { margin: 0 8px; color: var(--hairline); }
+
+.article-header { max-width: 880px; margin: 0 auto; padding: 32px 20px 24px; }
+@media (min-width: 768px) { .article-header { padding: 48px 32px 32px; } }
+.article-category { display: inline-block; padding: 4px 12px; background: var(--ink); color: var(--paper); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px; }
+.article-title { font-family: 'Shippori Mincho B1', serif; font-size: 28px; font-weight: 700; line-height: 1.4; color: var(--ink); }
+@media (min-width: 768px) { .article-title { font-size: 36px; line-height: 1.3; } }
+.article-meta { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--hairline-soft); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+.article-author { display: flex; align-items: center; gap: 10px; }
+.article-author-badge { width: 36px; height: 36px; flex-shrink: 0; }
+.article-author-name { font-family: 'Shippori Mincho B1', serif; font-size: 13px; font-weight: 700; color: var(--ink); }
+.article-author-role { font-size: 11px; color: var(--muted); }
+.article-date { font-family: 'Bodoni Moda', serif; font-size: 12px; }
+
+.article-body { max-width: 720px; margin: 0 auto; padding: 24px 20px 60px; }
+@media (min-width: 768px) { .article-body { padding: 32px 32px 80px; } }
+.article-body p { margin: 18px 0; font-size: 15px; line-height: 1.95; color: #2A2D38; }
+.article-body h2 { font-family: 'Shippori Mincho B1', serif; font-size: 22px; font-weight: 700; color: var(--ink); margin: 56px 0 20px; padding-top: 32px; border-top: 1px solid var(--hairline-soft); position: relative; line-height: 1.5; }
+.article-body h2::before { content: ''; position: absolute; top: -1px; left: 0; width: 48px; height: 3px; background: var(--crimson); }
+@media (min-width: 768px) { .article-body h2 { font-size: 26px; } }
+.article-body h3 { font-family: 'Shippori Mincho B1', serif; font-size: 18px; font-weight: 700; color: var(--ink); margin: 36px 0 16px; padding-left: 12px; border-left: 4px solid var(--gold); }
+.article-body ul, .article-body ol { margin: 18px 0 18px 24px; }
+.article-body li { margin: 8px 0; font-size: 15px; line-height: 1.85; }
+.article-body strong { font-weight: 700; }
+
+.lead { font-family: 'Shippori Mincho B1', serif; font-size: 16px; line-height: 1.95; color: var(--ink); padding: 4px 0 8px; }
+@media (min-width: 768px) { .lead { font-size: 17px; } }
+
+.conclusion-box { margin: 32px 0; padding: 20px 24px; background: var(--ink); color: var(--paper); position: relative; }
+.conclusion-box::before { content: '結論'; position: absolute; top: -10px; left: 16px; padding: 2px 12px; background: var(--crimson); color: var(--paper); font-family: 'Shippori Mincho B1', serif; font-size: 11px; letter-spacing: 0.3em; }
+.conclusion-box p { margin: 0; color: var(--paper); font-size: 14px; line-height: 1.85; }
+
+.article-body table { width: 100%; margin: 20px 0; border-collapse: collapse; font-size: 14px; background: var(--paper-2); border: 1px solid var(--hairline); }
+.article-body table th { background: var(--ink); color: var(--paper); padding: 11px 14px; text-align: left; font-size: 12px; letter-spacing: 0.08em; font-weight: 500; }
+.article-body table td { padding: 11px 14px; border-bottom: 1px solid var(--hairline-soft); vertical-align: top; }
+.article-body table tr:last-child td { border-bottom: none; }
+.ok { color: #2a7a3b; font-weight: 700; }
+.ng { color: var(--crimson); }
+
+/* 広島データボックス */
+.hiroshima-box { margin: 28px 0; padding: 20px 24px; background: linear-gradient(135deg, #FFFDF7 0%, #F5F2EB 100%); border: 1px solid var(--gold); position: relative; }
+.hiroshima-box::before { content: '広島県条例データ'; position: absolute; top: -10px; left: 20px; padding: 3px 12px; background: var(--gold); color: var(--paper); font-family: 'Shippori Mincho B1', serif; font-size: 11px; letter-spacing: 0.2em; }
+
+.callout { margin: 24px 0; padding: 20px 24px; background: var(--paper-2); border-left: 4px solid var(--gold); }
+.callout-label { font-family: 'Shippori Mincho B1', serif; font-size: 12px; font-weight: 700; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 6px; }
+.callout p { margin: 4px 0; }
+.callout.warning { border-left-color: var(--crimson); }
+.callout.warning .callout-label { color: var(--crimson); }
+
+.episode-card { margin: 24px 0; padding: 24px 24px 20px; background: linear-gradient(135deg, #FFFDF7 0%, #F5F2EB 100%); border: 1px solid var(--gold); position: relative; }
+.episode-card::before { content: 'CASE'; position: absolute; top: -10px; left: 20px; padding: 3px 12px; background: var(--crimson); color: var(--paper); font-family: 'Bodoni Moda', serif; font-size: 10px; letter-spacing: 0.3em; }
+.episode-card h4 { font-family: 'Shippori Mincho B1', serif; font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+.episode-card p { margin: 8px 0; font-size: 14px; line-height: 1.9; }
+
+.monologue { margin: 32px 0; padding: 24px 28px; background: var(--paper-2); border-left: 4px solid var(--ink); position: relative; font-family: 'Shippori Mincho B1', serif; }
+.monologue::before { content: '"'; position: absolute; top: -10px; left: 14px; font-family: 'Bodoni Moda', serif; font-size: 64px; color: var(--gold); line-height: 1; font-style: italic; }
+.monologue p { margin: 0 0 12px; font-size: 15px; line-height: 2; color: var(--ink-soft); padding-left: 8px; }
+.monologue p:last-child { margin-bottom: 0; }
+.monologue-note { font-size: 12px; color: var(--muted); margin-top: 8px; padding-left: 8px; }
+
+.inline-cta { margin: 32px 0; padding: 20px 24px; background: linear-gradient(135deg, var(--paper-2) 0%, var(--cream) 100%); border: 1px solid var(--gold); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.inline-cta-text { flex: 1; min-width: 200px; }
+.inline-cta-title { font-family: 'Shippori Mincho B1', serif; font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.inline-cta-desc { font-size: 12px; color: var(--muted); }
+.inline-cta-btn { padding: 10px 20px; background: var(--ink); color: var(--paper); font-size: 13px; letter-spacing: 0.1em; transition: background 0.15s; white-space: nowrap; }
+.inline-cta-btn:hover { background: var(--crimson); }
+
+.faq-item { margin: 24px 0; padding: 20px 24px; background: var(--paper-2); border: 1px solid var(--hairline-soft); }
+.faq-q { font-family: 'Shippori Mincho B1', serif; font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px; padding-left: 28px; position: relative; }
+.faq-q::before { content: 'Q'; position: absolute; left: 0; top: -2px; width: 22px; height: 22px; background: var(--crimson); color: var(--paper); font-family: 'Bodoni Moda', serif; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+.faq-a { font-size: 14px; line-height: 1.85; color: var(--ink-soft); padding-left: 28px; position: relative; }
+.faq-a::before { content: 'A'; position: absolute; left: 0; top: -2px; width: 22px; height: 22px; background: var(--gold); color: var(--paper); font-family: 'Bodoni Moda', serif; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+.faq-intro { font-family: 'Shippori Mincho B1', serif; font-style: italic; color: var(--muted); margin: -8px 0 24px; font-size: 14px; }
+
+.end-cta { max-width: 720px; margin: 60px auto 40px; padding: 0 20px; }
+@media (min-width: 768px) { .end-cta { padding: 0 32px; } }
+.end-cta-card { background: var(--ink); color: var(--paper); padding: 32px 24px; position: relative; overflow: hidden; }
+@media (min-width: 768px) { .end-cta-card { padding: 40px 32px; } }
+.end-cta-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--crimson) 0%, var(--gold) 50%, var(--crimson) 100%); }
+.end-cta-eyebrow { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 12px; color: var(--gold-light); letter-spacing: 0.3em; text-transform: uppercase; }
+.end-cta-title { font-family: 'Shippori Mincho B1', serif; font-size: 20px; font-weight: 700; margin-top: 6px; }
+@media (min-width: 768px) { .end-cta-title { font-size: 24px; } }
+.end-cta-desc { margin-top: 12px; font-size: 13px; color: var(--hairline); line-height: 1.85; }
+.end-cta-buttons { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+@media (min-width: 600px) { .end-cta-buttons { flex-direction: row; } }
+.end-cta-btn { padding: 14px 20px; text-align: center; font-size: 13px; letter-spacing: 0.1em; transition: all 0.15s; flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.end-cta-btn-primary { background: var(--crimson); color: white; }
+.end-cta-btn-primary:hover { background: var(--crimson-dark); }
+.end-cta-btn-line { background: var(--line-green); color: white; }
+.end-cta-btn-line:hover { background: #04a649; }
+.end-cta-btn-ghost { background: transparent; color: var(--gold-light); border: 1px solid var(--gold); }
+.end-cta-btn-ghost:hover { background: rgba(184,147,74,0.1); }
+
+.related { max-width: 880px; margin: 60px auto; padding: 0 20px; }
+@media (min-width: 768px) { .related { padding: 0 32px; } }
+.related-title { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 14px; color: var(--muted); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 4px; }
+.related-title-jp { font-family: 'Shippori Mincho B1', serif; font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 24px; }
+.related-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 768px) { .related-grid { grid-template-columns: 1fr 1fr 1fr; } }
+.related-item { background: var(--paper-2); padding: 20px; border: 1px solid var(--hairline-soft); transition: all 0.15s; display: block; }
+.related-item:hover { border-color: var(--ink); transform: translateY(-2px); }
+.related-cat { font-family: 'Bodoni Moda', serif; font-size: 10px; color: var(--crimson); letter-spacing: 0.2em; text-transform: uppercase; }
+.related-name { font-family: 'Shippori Mincho B1', serif; font-size: 14px; font-weight: 700; color: var(--ink); margin-top: 6px; line-height: 1.5; }
+
+.footer { background: var(--ink); color: var(--paper); padding: 40px 20px; text-align: center; }
+.footer-name { font-family: 'Shippori Mincho B1', serif; font-size: 16px; font-weight: 700; margin-top: 16px; }
+.footer-en { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 12px; color: var(--gold-light); margin-top: 4px; }
+.footer-tag { font-family: 'Bodoni Moda', serif; font-size: 10px; color: var(--crimson); letter-spacing: 0.3em; text-transform: uppercase; margin-top: 8px; }
+.footer-info { font-size: 11px; line-height: 1.8; color: var(--hairline); margin-top: 24px; }
+.footer-buttons { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+.footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
+.footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
+.footer-back:hover { background: var(--gold); color: var(--ink); }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../../index.html" class="brand">
+      <svg class="badge-shield" viewBox="0 0 48 48" fill="none">
+        <path d="M24 3 L42 9 L42 26 Q42 38 24 45 Q6 38 6 26 L6 9 Z" fill="#14171F" stroke="#B8934A" stroke-width="1"/>
+        <path d="M24 7 L38 11.5 L38 25 Q38 34.5 24 40.5 Q10 34.5 10 25 L10 11.5 Z" fill="none" stroke="#D4B876" stroke-width="0.5"/>
+        <path d="M24 16 L25.5 20 L30 20 L26.5 22.5 L28 26.5 L24 24 L20 26.5 L21.5 22.5 L18 20 L22.5 20 Z" fill="#B8934A"/>
+        <line x1="16" y1="33" x2="32" y2="33" stroke="#D4B876" stroke-width="0.5"/>
+        <text x="24" y="37" text-anchor="middle" font-size="4" fill="#D4B876" font-family="Bodoni Moda, serif" letter-spacing="0.5">EX-POLICE</text>
+      </svg>
+      <div>
+        <div class="brand-name">西岡行政書士事務所</div>
+        <div>
+          <span class="brand-en">Nishioka Gyoseishoshi Office</span>
+          <span class="brand-tag">EX-POLICE OFFICER</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://lin.ee/UKhZQbE" target="_blank" rel="noreferrer" class="line-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.78 2 10.4c0 4.14 3.58 7.6 8.41 8.25.33.07.77.22.88.5.1.26.07.67.03.93l-.14.85c-.04.25-.2.98.86.54 1.06-.45 5.73-3.37 7.81-5.77C21.28 14.07 22 12.31 22 10.4 22 5.78 17.52 2 12 2z"/></svg>
+      LINE
+    </a>
+  </div>
+</header>
+
+<nav class="breadcrumb">
+  <a href="../../index.html">ホーム</a>
+  <span class="breadcrumb-sep">／</span>
+  <a href="../index.html">コラム</a>
+  <span class="breadcrumb-sep">／</span>
+  <span style="color:var(--muted);">風営法</span>
+  <span class="breadcrumb-sep">／</span>
+  <span>用途地域制限</span>
+</nav>
+
+<header class="article-header fade-up">
+  <span class="article-category">風営法 / 場所的制限</span>
+  <h1 class="article-title">風営法の用途地域制限｜出店できるエリア・できないエリアの判定方法</h1>
+  <div class="article-meta">
+    <div class="article-author">
+      <svg class="article-author-badge" viewBox="0 0 48 48" fill="none">
+        <path d="M24 3 L42 9 L42 26 Q42 38 24 45 Q6 38 6 26 L6 9 Z" fill="#14171F" stroke="#B8934A" stroke-width="1"/>
+        <path d="M24 16 L25.5 20 L30 20 L26.5 22.5 L28 26.5 L24 24 L20 26.5 L21.5 22.5 L18 20 L22.5 20 Z" fill="#B8934A"/>
+      </svg>
+      <div>
+        <div class="article-author-name">西岡 祐也</div>
+        <div class="article-author-role">行政書士（元広島県警察官13年）</div>
+      </div>
+    </div>
+    <div class="article-date">2026.05.20</div>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p class="lead">「この物件でキャバクラを開きたいが、風営法的に問題ないか？」「住宅街の近くは全部ダメ？」「用途地域って何を見ればいいの？」——物件を決める前に必ずチェックしなければならないのが、風営法の「場所的制限」です。</p>
+
+<p>風俗営業許可（1〜5号営業）は、申請書類が完璧でも、<strong>物件の所在地が制限区域内であれば許可は下りません</strong>。物件契約後に発覚すると、初期費用がすべて無駄になるリスクがあります。</p>
+
+<div class="conclusion-box">
+  <p>風営法の場所的制限は2段構えです。①用途地域（原則として商業地域のみ可）、②保護対象施設からの距離制限（学校・病院等）。どちらか一方でも引っかかれば許可は下りません。確認のタイミングは物件契約前です。</p>
+</div>
+
+<h2>1. 風営法の「場所的制限」とは</h2>
+
+<p>風営法第28条（および各都道府県の条例）は、風俗営業の許可を受けられる場所を制限しています。これを「場所的制限」と呼びます。</p>
+
+<table>
+  <thead><tr><th>制限の種類</th><th>内容</th></tr></thead>
+  <tbody>
+    <tr><td><strong>用途地域による制限</strong></td><td>都市計画法上の用途地域によって、営業できる区域・できない区域が決まる</td></tr>
+    <tr><td><strong>保護対象施設からの距離制限</strong></td><td>学校・病院・図書館などから一定距離内では営業できない</td></tr>
+  </tbody>
+</table>
+
+<p>この2つを両方クリアしなければ、許可は下りません。どちらか一方でも引っかかればアウトです。</p>
+
+<h2>2. 用途地域による制限</h2>
+
+<h3>用途地域とは</h3>
+<p>都市計画法に基づき、土地の用途を定めた区域区分のことです。住居系・商業系・工業系に大別され、全部で13種類あります。風俗営業（1〜5号）が許可を受けられるのは、原則として<strong>商業地域</strong>に限られます（風営法第28条第1項）。</p>
+
+<h3>営業できる用途地域・できない用途地域</h3>
+
+<table>
+  <thead><tr><th>用途地域</th><th>風俗営業（1〜5号）の可否</th></tr></thead>
+  <tbody>
+    <tr><td>第一種〜第二種低層住居専用地域</td><td><span class="ng">✗ 不可</span></td></tr>
+    <tr><td>第一種〜第二種中高層住居専用地域</td><td><span class="ng">✗ 不可</span></td></tr>
+    <tr><td>第一種〜第二種住居地域</td><td><span class="ng">✗ 不可</span></td></tr>
+    <tr><td>準住居地域・田園住居地域</td><td><span class="ng">✗ 不可</span></td></tr>
+    <tr><td>近隣商業地域</td><td><span class="ng">✗ 不可</span>（条例で可となる場合あり）</td></tr>
+    <tr><td><strong>商業地域</strong></td><td><span class="ok">✓ 可</span></td></tr>
+    <tr><td>準工業地域</td><td><span class="ng">✗ 不可</span>（条例で可となる場合あり）</td></tr>
+    <tr><td>工業地域・工業専用地域</td><td><span class="ng">✗ 不可</span></td></tr>
+    <tr><td>用途地域の指定がない区域</td><td>△ 都道府県条例による</td></tr>
+  </tbody>
+</table>
+
+<p>原則として商業地域のみというのが基本ルールです。都道府県の条例によって「近隣商業地域」や「準工業地域」で一部の号営業を認めている場合もあります。具体的な区域については、申請を検討している物件の所在地を管轄する警察署または行政書士に確認することをおすすめします。</p>
+
+<h2>3. 保護対象施設からの距離制限</h2>
+
+<p>用途地域をクリアしても、もう一つの壁があります。学校・病院・図書館などの「保護対象施設」から一定の距離内では、風俗営業の許可が下りません（風営法第28条第1項）。</p>
+
+<h3>広島県の距離制限（学校・図書館・児童福祉施設等）</h3>
+
+<p>広島県の条例では、用途地域と営業の号数によって必要な距離が異なります。</p>
+
+<div class="hiroshima-box">
+  <table style="margin:0;">
+    <thead><tr><th>用途地域</th><th>1〜4号営業</th><th>5号営業</th></tr></thead>
+    <tbody>
+      <tr><td>商業地域</td><td>70m以上</td><td>30m以上</td></tr>
+      <tr><td>近隣商業地域</td><td>80m以上</td><td>40m以上</td></tr>
+      <tr><td>その他の地域（住居系など）</td><td>100m以上</td><td>50m以上</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>広島県の距離制限（病院・診療所等）</h3>
+
+<div class="hiroshima-box">
+  <table style="margin:0;">
+    <thead><tr><th>施設の種類</th><th>必要な距離</th></tr></thead>
+    <tbody>
+      <tr><td>8床以上の病院・診療所、第1種助産施設</td><td>50m以上</td></tr>
+      <tr><td>1〜7床の診療所、第2種助産施設</td><td>20m以上</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>距離制限を受ける主な保護対象施設（広島県）</h3>
+<ul>
+  <li>学校（幼稚園・小学校・中学校・高校・大学・専修学校など）</li>
+  <li>図書館</li>
+  <li>病院・一定の診療所・助産施設</li>
+  <li>児童福祉施設（保育所など）</li>
+</ul>
+
+<p style="font-size:13px;color:var(--muted);">※距離は直線距離（最短距離）で測定します。道路の距離ではありません。<br>※物件の選定時には、用途地域の確認と保護対象施設からの距離制限のダブルチェックが必須です。</p>
+
+<h3>「近くに学校がある」だけでは判断できない</h3>
+
+<p>「学校の近くだから絶対ダメ」とも、「学校から少し離れているから大丈夫」とも、距離を実測せずに判断することはできません。保護対象施設が正確に何m離れているかを計測することが必要です。</p>
+
+<p>また、施設の種類によって対象・距離が異なります。広島県の条例では大学・専修学校も距離制限の対象に含まれます。「学校っぽい建物がある」だけで判断せず、施設の種別と正確な距離を確認することが重要です。</p>
+
+<div class="inline-cta">
+  <div class="inline-cta-text">
+    <div class="inline-cta-title">物件候補の場所的制限、事前に調べます</div>
+    <div class="inline-cta-desc">複数候補でも一括調査可能。物件を決める前にご相談ください。</div>
+  </div>
+  <a href="https://lin.ee/UKhZQbE" class="inline-cta-btn">LINEで相談 →</a>
+</div>
+
+<h2>4. 用途地域の調べ方</h2>
+
+<h3>① 市区町村のウェブサイト・都市計画図</h3>
+<p>多くの市区町村では、都市計画図（用途地域図）をウェブサイトで公開しています。住所を入力するだけで用途地域を確認できるサービスを提供している自治体もあります。広島市の場合は、広島市のウェブサイトから「都市計画情報」を参照することができます。</p>
+
+<h3>② 国土交通省の「国土数値情報」</h3>
+<p>全国の用途地域データがGIS形式で提供されています。地図で視覚的に確認できます。</p>
+
+<h3>③ 不動産業者・物件オーナーへの確認</h3>
+<p>物件の用途地域は、不動産の重要事項説明書に記載されています。物件を紹介してもらう段階で、用途地域を確認するよう依頼することも有効です。</p>
+
+<h3>④ 行政書士への事前確認依頼</h3>
+<p>最も確実な方法です。用途地域の確認・保護対象施設の距離計測・条例確認まで、まとめて調査・判断してもらえます。物件を絞り込んだ段階で相談するのが、時間とコストの無駄を防ぐ最善策です。</p>
+
+<h2>5. よくある落とし穴</h2>
+
+<div class="episode-card">
+  <h4>落とし穴①「商業地域だから大丈夫」という油断</h4>
+  <p>商業地域内であっても、近くに保育所・病院・図書館などがあれば、距離制限に引っかかります。「商業地域だから大丈夫」という油断が落とし穴になります。</p>
+</div>
+
+<div class="episode-card">
+  <h4>落とし穴②「地図で見ると商業地域」でも実測でアウトになる</h4>
+  <p>用途地域の境界線は、地図上では道路や地番の境に引かれていますが、物件の一部が制限区域にかかっているケースがあります。「おおよそ商業地域エリアにある」という認識だけでは不十分です。</p>
+</div>
+
+<div class="episode-card">
+  <h4>落とし穴③「深夜営業届は用途地域に関係ない」の誤解</h4>
+  <p>深夜酒類提供飲食店営業（深夜営業届）は、風俗営業許可とは異なり、用途地域による場所的制限は原則として適用されません。ただし、都道府県条例によって保護対象施設からの距離制限が設けられている場合があります。「深夜営業届は用途地域に関係ない」という認識は基本的には正しいですが、条例の確認は必要です。</p>
+</div>
+
+<div class="episode-card">
+  <h4>落とし穴④「物件契約後に場所的制限が判明」——最も痛いパターン</h4>
+  <p>物件を気に入り、保証金・礼金を支払い、内装工事の計画まで進んだ後に「この場所では許可が下りない」と判明するケースがあります。<strong>物件の内見・候補選定の段階で、場所的制限の確認を必ず行う</strong>ことを強くおすすめします。</p>
+</div>
+
+<h2>6. 元警察官の視点から</h2>
+
+<div class="monologue">
+  <p>申請段階で場所的制限がアウトだと判明した物件は、どれだけ書類が完璧でも許可が下りません。警察署の窓口でも「この場所では受け付けできません」とその場でお断りすることになります。</p>
+  <p>残念なことに、物件を契約した後に相談に来る方が一定数いらっしゃいます。内装工事まで進んでいるケースもあります。「事前に相談していれば」と感じる場面が、行政書士になってから何度かありました。</p>
+  <p>場所的制限の話ではありませんでしたが、内装が風営法の基準に適さない物件を契約された後にご相談に来られた方がいらっしゃいました。幸い、内装に手を加えることで許可にこぎつけましたが、数十万円程度は当初の予定より余計に経費がかかったはずです。物件の適否を事前に確認しておけば、避けられたコストでした。</p>
+  <p>場所的制限の確認は、物件を決める前の段階でできます。物件候補が2〜3件ある段階で行政書士に相談いただければ、許可が取れる物件を絞り込むことができます。</p>
+  <p class="monologue-note">※西岡の行政書士としての経験を踏まえた見解です</p>
+</div>
+
+<h2>7. よくある質問（FAQ）</h2>
+
+<p class="faq-intro">当事務所に実際に寄せられた質問をまとめました。</p>
+
+<div class="faq-item">
+  <div class="faq-q">マンションの1階テナントでも商業地域なら許可は取れますか？</div>
+  <div class="faq-a">用途地域が商業地域であり、保護対象施設からの距離もクリアしていれば、マンションの1階テナントでも許可申請は可能です。ただし、建物のオーナーや管理組合が風俗営業を禁止している場合は、テナント契約上の問題が生じます。許可とは別に、オーナーの承諾が必要な場合があります。</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">地図で見ると商業地域内なのに、担当者に「この場所は難しい」と言われました。なぜですか？</div>
+  <div class="faq-a">用途地域以外の制限（保護対象施設の距離制限・条例による追加制限など）が理由の場合があります。また、物件が用途地域の境界線付近にある場合、実際の測量で制限区域に入ることがあります。警察署や行政書士に詳しく確認することをおすすめします。</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">用途地域の変更（区画整理など）があった場合、既存の許可はどうなりますか？</div>
+  <div class="faq-a">既存の許可を持って営業中の場合、用途地域の変更があっても既存の許可はすぐに無効にはなりません（既存不適格）。ただし、許可内容の変更申請や更新時に制限が適用される場合があります。詳しくは管轄警察署または行政書士に確認してください。</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">近くに大学があります。距離制限の対象になりますか？</div>
+  <div class="faq-a">広島県の条例では、大学・専修学校も距離制限の対象施設に含まれます。他の都道府県では対象外とされている場合もありますが、広島県での申請を検討している場合は、大学の存在も距離制限の確認対象に含めて調査してください。</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">物件候補が複数あります。事前に場所的制限を調べてもらえますか？</div>
+  <div class="faq-a">西岡行政書士事務所では、物件候補の場所的制限の事前調査をお受けしています。複数候補がある場合も一括で調査できますので、物件を決める前にご相談ください。LINEまたはお電話からお気軽にご連絡ください。</div>
+</div>
+
+<h2>まとめ：物件を決める前に必ず確認を</h2>
+
+<table>
+  <thead><tr><th>確認事項</th><th>内容</th></tr></thead>
+  <tbody>
+    <tr><td>① 用途地域</td><td>商業地域かどうか（都道府県条例による追加確認も必要）</td></tr>
+    <tr><td>② 保護対象施設からの距離</td><td>学校・病院・図書館などから規定距離以上離れているか（広島県の数値で確認）</td></tr>
+  </tbody>
+</table>
+
+<p>どちらか一方でも引っかかれば、許可は下りません。そして確認のタイミングは、<strong>物件契約前</strong>です。「この物件で営業できるか」は、行政書士が事前に調査・判断できます。物件候補を絞り込んだ段階でご相談いただければ、無駄なコストと時間を防ぐことができます。</p>
+
+</article>
+
+<section class="end-cta">
+  <div class="end-cta-card">
+    <div class="end-cta-eyebrow">Free Consultation</div>
+    <h2 class="end-cta-title">「この物件で許可が取れるか」を物件契約前に確認します</h2>
+    <p class="end-cta-desc">西岡行政書士事務所では、物件候補の場所的制限（用途地域・距離制限）の事前調査をお受けしています。複数候補の一括調査も可能です。物件を決める前にご相談いただくことで、許可が取れない物件への投資リスクを防ぐことができます。</p>
+    <div class="end-cta-buttons">
+      <a href="https://nishioka-gyosei.github.io/simulator.html" class="end-cta-btn end-cta-btn-primary">💴 料金を見積もる</a>
+      <a href="https://script.google.com/macros/s/AKfycbyDLR3C_rjnHAbD4aui1iN_lwHJPC8KdsGP6pSimeHq39bkL2W0oV8aAaR_vf01zituCw/exec" class="end-cta-btn end-cta-btn-ghost">📅 無料相談予約</a>
+      <a href="https://lin.ee/UKhZQbE" class="end-cta-btn end-cta-btn-line">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.78 2 10.4c0 4.14 3.58 7.6 8.41 8.25.33.07.77.22.88.5.1.26.07.67.03.93l-.14.85c-.04.25-.2.98.86.54 1.06-.45 5.73-3.37 7.81-5.77C21.28 14.07 22 12.31 22 10.4 22 5.78 17.52 2 12 2z"/></svg>
+        LINEで相談
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="related-title">Related Articles</div>
+  <h2 class="related-title-jp">あわせて読みたい記事</h2>
+  <div class="related-grid">
+    <a href="fueihou-fukyoka-pattern-5.html" class="related-item">
+      <div class="related-cat">風営法</div>
+      <div class="related-name">【元広島県警官が語る】風営法申請で不許可になる典型パターン5選</div>
+    </a>
+    <a href="fueihou-kyoka-hiyou-souba.html" class="related-item">
+      <div class="related-cat">風営法</div>
+      <div class="related-name">風俗営業許可の費用相場｜広島で許可取得にいくらかかる？</div>
+    </a>
+    <a href="fueihou-kanrisha-meiginin-kakkaku-jiyu.html" class="related-item">
+      <div class="related-cat">風営法</div>
+      <div class="related-name">風営法の管理者・名義人になれる人なれない人｜欠格事由を完全解説</div>
+    </a>
+  </div>
+  <div style="text-align:center;margin-top:24px;">
+    <a href="../index.html" style="display:inline-block;padding:10px 24px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;border:1px solid #14171F;color:#14171F;">コラム一覧を見る →</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <svg viewBox="0 0 48 48" fill="none" style="width:56px;height:56px;">
+    <path d="M24 3 L42 9 L42 26 Q42 38 24 45 Q6 38 6 26 L6 9 Z" fill="#14171F" stroke="#B8934A" stroke-width="1"/>
+    <path d="M24 7 L38 11.5 L38 25 Q38 34.5 24 40.5 Q10 34.5 10 25 L10 11.5 Z" fill="none" stroke="#D4B876" stroke-width="0.5"/>
+    <path d="M24 16 L25.5 20 L30 20 L26.5 22.5 L28 26.5 L24 24 L20 26.5 L21.5 22.5 L18 20 L22.5 20 Z" fill="#B8934A"/>
+  </svg>
+  <div class="footer-name">西岡行政書士事務所</div>
+  <div class="footer-en">Nishioka Gyoseishoshi Office</div>
+  <div class="footer-tag">EX-POLICE OFFICER · 広島</div>
+  <div class="footer-info">
+    広島市中区大手町4-6-22(市役所前電停 徒歩4分)<br>
+    TEL: 090-8068-8527 ／ 受付 9:00 – 19:00（土日祝可）<br>
+    広島県行政書士会 所属 ／ 登録番号 22341036
+  </div>
+  <div class="footer-buttons">
+    <a href="https://lin.ee/UKhZQbE" target="_blank" rel="noreferrer" class="line-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.78 2 10.4c0 4.14 3.58 7.6 8.41 8.25.33.07.77.22.88.5.1.26.07.67.03.93l-.14.85c-.04.25-.2.98.86.54 1.06-.45 5.73-3.37 7.81-5.77C21.28 14.07 22 12.31 22 10.4 22 5.78 17.52 2 12 2z"/></svg>
+      LINEで相談
+    </a>
+    <a href="tel:09080688527" class="footer-tel-btn">📞 090-8068-8527</a>
+  </div>
+  <a href="../index.html" class="footer-back">← コラム一覧に戻る</a>
+</footer>
+
+</body>
+</html>
