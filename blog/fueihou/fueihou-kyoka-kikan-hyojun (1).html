@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>風営法の申請から許可までの期間｜広島県警の標準処理期間と短縮のコツ ｜ 西岡行政書士事務所</title>
+<meta name="description" content="風俗営業許可の標準処理期間は55日（風営法第7条）。書類準備から許可証交付まで全ステップ・55日が延びる4つのケース・「担当者→係長→課長→署長」の決裁フローの実態を元広島県警察官の行政書士が解説します。">
+<meta name="keywords" content="風営法 許可 期間, 風俗営業許可 何日, 風営法申請 処理期間, 広島 風営法 許可 日数">
+<meta property="og:title" content="風営法の申請から許可までの期間｜広島県警の標準処理期間と短縮のコツ">
+<meta property="og:description" content="風俗営業許可の標準処理期間55日の内訳と、実際の警察内部の決裁フローを元警察官の行政書士が解説します。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nishioka-gyosei.github.io/blog/fueihou/fueihou-kyoka-kikan-hyojun.html">
+<link rel="canonical" href="https://nishioka-gyosei.github.io/blog/fueihou/fueihou-kyoka-kikan-hyojun.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+
+<!-- FAQスキーマ（GEO・強調スニペット対策） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "風俗営業許可の申請から許可まで何日かかりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "標準処理期間は風営法第7条第2項に基づき55日です。この55日は書類が受理された日から起算されます。書類準備期間（2〜4週間）は含まれないため、実質的な開業準備期間として申請日の3ヶ月前から動き出すことが推奨されます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "風営法の許可が55日を超えることはありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい、書類の不備・補正、現地確認での問題発覚、欠格事由照会の長期化などにより55日を超えることがあります。補正対応期間は55日にカウントされないため、書類の完全性が実質的な期間短縮の鍵です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "許可証が届く前に営業を開始してもよいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "いいえ、許可証が交付されるまで営業を開始することはできません。許可なしでの営業は風営法違反（無許可営業）となり、2年以下の懲役または200万円以下の罰金の対象になります。"
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "風営法の申請から許可までの期間｜広島県警の標準処理期間と短縮のコツ",
+  "description": "風俗営業許可の標準処理期間55日の内訳と、警察内部の決裁フローの実態を解説。",
+  "author": {
+    "@type": "Person",
+    "name": "西岡 祐也",
+    "jobTitle": "行政書士(元広島県警察官)",
+    "description": "広島県警察官として13年勤務後、行政書士として風営法・深夜営業・古物商の許認可申請を専門に扱う。"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "西岡行政書士事務所",
+    "address": {"@type": "PostalAddress", "addressLocality": "広島市中区大手町4-6-22"}
+  },
+  "datePublished": "2026-05-21",
+  "dateModified": "2026-05-21"
+}
+</script>
+
+<style>
+:root {
+  --ink: #14171F; --ink-soft: #2A2D38; --paper: #F5F2EB; --paper-2: #FFFDF7; --cream: #EDE8DC;
+  --crimson: #A8252B; --crimson-dark: #7A1A20; --gold: #B8934A; --gold-light: #D4B876;
+  --hairline: #D4CDBB; --hairline-soft: #E5DFCE; --muted: #6B6657; --line-green: #06C755;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans JP', system-ui, sans-serif; background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.85; }
+a { color: inherit; text-decoration: none; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+.header { background: var(--paper-2); border-bottom: 1px solid var(--hairline); }
+.header-inner { max-width: 880px; margin: 0 auto; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 14px; }
+.badge-shield { width: 44px; height: 44px; flex-shrink: 0; }
+.brand-name { font-family: 'Shippori Mincho B1', serif; font-size: 19px; font-weight: 700; line-height: 1.2; letter-spacing: 0.05em; }
+.brand-en { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 11px; color: var(--muted); }
+.brand-tag { display: none; font-family: 'Bodoni Moda', serif; font-size: 10px; color: var(--crimson); letter-spacing: 0.3em; text-transform: uppercase; }
+.line-btn { background: var(--line-green); color: white; padding: 10px 16px; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: background 0.15s; }
+.line-btn:hover { background: #04a649; }
+@media (min-width: 640px) { .brand-name { font-size: 24px; } .brand-tag { display: inline-block; margin-left: 8px; } .badge-shield { width: 48px; height: 48px; } }
+
+.breadcrumb { max-width: 880px; margin: 0 auto; padding: 16px 20px 0; font-size: 12px; color: var(--muted); }
+.breadcrumb a { color: var(--muted); transition: color 0.15s; }
+.breadcrumb a:hover { color: var(--crimson); }
+.breadcrumb-sep { margin: 0 8px; color: var(--hairline); }
+
+.article-header { max-width: 880px; margin: 0 auto; padding: 32px 20px 24px; }
+@media (min-width: 768px) { .article-header { padding: 48px 32px 32px; } }
+.article-category { display: inline-block; padding: 4px 12px; background: var(--ink); color: var(--paper); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px; }
+.article-title { font-family: 'Shippori Mincho B1', serif; font-size: 28px; font-weight: 700; line-height: 1.4; color: var(--ink); }
+@media (min-width: 768px) { .article-title { font-size: 36px; line-height: 1.3; } }
+.article-meta { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--hairline-soft); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+.article-author { display: flex; align-items: center; gap: 10px; }
+.article-author-badge { width: 36px; height: 36px; flex-shrink: 0; }
+.article-author-name { font-family: 'Shippori Mincho B1', serif; font-size: 13px; font-weight: 700; color: var(--ink); }
+.article-author-role { font-size: 11px; color: var(--muted); }
+.article-date { font-family: 'Bodoni Moda', serif; font-size: 12px; }
+
+.article-body { max-width: 720px; margin: 0 auto; padding: 24px 20px 60px; }
+@media (min-width: 768px) { .article-body { padding: 32px 32px 80px; } }
+.article-body p { margin: 18px 0; font-size: 15px; line-height: 1.95; color: #2A2D38; }
+.article-body h2 { font-family: 'Shippori Mincho B1', serif; font-size: 22px; font-weight: 700; color: var(--ink); margin: 56px 0 20px; padding-top: 32px; border-top: 1px solid var(--hairline-soft); position: relative; line-height: 1.5; }
+.article-body h2::before { content: ''; position: absolute; top: -1px; left: 0; width: 48px; height: 3px; background: var(--crimson); }
+@media (min-width: 768px) { .article-body h2 { font-size: 26px; } }
+.article-body h3 { font-family: 'Shippori Mincho B1', serif; font-size: 18px; font-weight: 700; color: var(--ink); margin: 36px 0 16px; padding-left: 12px; border-left: 4px solid var(--gold); }
+.article-body ul, .article-body ol { margin: 18px 0 18px 24px; }
+.article-body li { margin: 8px 0; font-size: 15px; line-height: 1.85; }
+.article-body strong { font-weight: 700; }
+
+.lead { font-family: 'Shippori Mincho B1', serif; font-size: 16px; line-height: 1.95; color: var(--ink); padding: 4px 0 8px; }
+@media (min-width: 768px) { .lead { font-size: 17px; } }
+
+.geo-summary { margin: 28px 0; padding: 18px 22px; background: var(--paper-2); border: 1px solid var(--hairline-soft); border-left: 4px solid var(--crimson); }
+.geo-summary-label { font-family: 'Bodoni Moda', serif; font-size: 10px; color: var(--crimson); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 8px; }
+.geo-summary p { margin: 0; font-size: 14px; line-height: 1.85; color: var(--ink-soft); }
+
+.conclusion-box { margin: 32px 0; padding: 20px 24px; background: var(--ink); color: var(--paper); position: relative; }
+.conclusion-box::before { content: '結論'; position: absolute; top: -10px; left: 16px; padding: 2px 12px; background: var(--crimson); color: var(--paper); font-family: 'Shippori Mincho B1', serif; font-size: 11px; letter-spacing: 0.3em; }
+.conclusion-box p { margin: 0; color: var(--paper); font-size: 14px; line-height: 1.85; }
+
+.article-body table { width: 100%; margin: 20px 0; border-collapse: collapse; font-size: 14px; background: var(--paper-2); border: 1px solid var(--hairline); }
+.article-body table th { background: var(--ink); color: var(--paper); padding: 11px 14px; text-align: left; font-size: 12px; font-weight: 500; }
+.article-body table td { padding: 11px 14px; border-bottom: 1px solid var(--hairline-soft); vertical-align: top; }
+.article-body table tr:last-child td { border-bottom: none; }
+
+/* ステップブロック */
+.step-flow { margin: 24px 0; }
+.step-flow-item { display: flex; gap: 0; margin-bottom: 0; position: relative; }
+.step-flow-item:not(:last-child)::after { content: ''; position: absolute; left: 22px; top: 56px; width: 2px; height: calc(100% - 40px); background: var(--hairline); z-index: 0; }
+.step-flow-left { flex-shrink: 0; width: 46px; display: flex; flex-direction: column; align-items: center; padding-top: 14px; }
+.step-flow-circle { width: 44px; height: 44px; background: var(--ink); color: var(--paper); font-family: 'Bodoni Moda', serif; font-size: 14px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; z-index: 1; position: relative; }
+.step-flow-body { flex: 1; padding: 12px 0 28px 20px; }
+.step-flow-title { font-family: 'Shippori Mincho B1', serif; font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.step-flow-content { font-size: 14px; line-height: 1.85; color: var(--ink-soft); }
+.step-flow-content ul { margin: 8px 0 0 20px; }
+.step-flow-content li { margin: 4px 0; font-size: 14px; }
+.step-flow-content table { margin: 10px 0; }
+
+/* 警察官ノート（元警察官の視点ボックス） */
+.police-note { margin: 14px 0; padding: 14px 18px; background: #EEF3F8; border-left: 3px solid var(--ink); font-size: 14px; line-height: 1.85; color: var(--ink-soft); }
+.police-note strong { color: var(--ink); }
+
+/* 延長ケースカード */
+.delay-card { margin: 16px 0; padding: 18px 22px; background: var(--paper-2); border: 1px solid var(--hairline-soft); border-left: 4px solid var(--crimson); }
+.delay-card-title { font-family: 'Shippori Mincho B1', serif; font-size: 15px; font-weight: 700; color: var(--crimson); margin-bottom: 8px; }
+.delay-card-body { font-size: 14px; line-height: 1.85; color: var(--ink-soft); }
+.delay-card-taisaku { margin-top: 10px; padding: 8px 12px; background: var(--cream); font-size: 13px; color: var(--ink-soft); }
+.delay-card-taisaku::before { content: '→ 対策：'; font-weight: 700; color: var(--ink); }
+
+/* 決裁フロー図 */
+.flow-chart { margin: 20px 0; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.flow-node { padding: 10px 16px; background: var(--ink); color: var(--paper); font-family: 'Shippori Mincho B1', serif; font-size: 13px; font-weight: 700; text-align: center; flex: 1; min-width: 80px; }
+.flow-node.start { background: var(--gold); }
+.flow-node.end { background: var(--crimson); }
+.flow-arrow { color: var(--muted); font-size: 18px; flex-shrink: 0; }
+
+.monologue { margin: 32px 0; padding: 24px 28px; background: var(--paper-2); border-left: 4px solid var(--ink); position: relative; font-family: 'Shippori Mincho B1', serif; }
+.monologue::before { content: '"'; position: absolute; top: -10px; left: 14px; font-family: 'Bodoni Moda', serif; font-size: 64px; color: var(--gold); line-height: 1; font-style: italic; }
+.monologue p { margin: 0 0 12px; font-size: 15px; line-height: 2; color: var(--ink-soft); padding-left: 8px; }
+.monologue p:last-child { margin-bottom: 0; }
+.monologue-note { font-size: 12px; color: var(--muted); margin-top: 8px; padding-left: 8px; }
+
+/* スケジュール表 */
+.schedule-table { width: 100%; margin: 20px 0; border-collapse: collapse; font-size: 14px; }
+.schedule-table th { background: var(--ink); color: var(--paper); padding: 11px 14px; text-align: left; }
+.schedule-table td { padding: 11px 14px; border-bottom: 1px solid var(--hairline-soft); background: var(--paper-2); }
+.schedule-table tr.key td { background: #FFF0F0; font-weight: 700; color: var(--crimson); }
+
+.callout { margin: 24px 0; padding: 20px 24px; background: var(--paper-2); border-left: 4px solid var(--gold); }
+.callout-label { font-family: 'Shippori Mincho B1', serif; font-size: 12px; font-weight: 700; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 6px; }
+.callout p { margin: 4px 0; font-size: 14px; }
+.callout.warning { border-left-color: var(--crimson); }
+.callout.warning .callout-label { color: var(--crimson); }
+
+.inline-cta { margin: 32px 0; padding: 20px 24px; background: linear-gradient(135deg, var(--paper-2) 0%, var(--cream) 100%); border: 1px solid var(--gold); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.inline-cta-text { flex: 1; min-width: 200px; }
+.inline-cta-title { font-family: 'Shippori Mincho B1', serif; font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.inline-cta-desc { font-size: 12px; color: var(--muted); }
+.inline-cta-btn { padding: 10px 20px; background: var(--ink); color: var(--paper); font-size: 13px; letter-spacing: 0.1em; transition: background 0.15s; white-space: nowrap; }
+.inline-cta-btn:hover { background: var(--crimson); }
+
+.faq-item { margin: 24px 0; padding: 20px 24px; background: var(--paper-2); border: 1px solid var(--hairline-soft); }
+.faq-q { font-family: 'Shippori Mincho B1', serif; font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px; padding-left: 28px; position: relative; }
+.faq-q::before { content: 'Q'; position: absolute; left: 0; top: -2px; width: 22px; height: 22px; background: var(--crimson); color: var(--paper); font-family: 'Bodoni Moda', serif; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+.faq-a { font-size: 14px; line-height: 1.85; color: var(--ink-soft); padding-left: 28px; position: relative; }
+.faq-a::before { content: 'A'; position: absolute; left: 0; top: -2px; width: 22px; height: 22px; background: var(--gold); color: var(--paper); font-family: 'Bodoni Moda', serif; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+.faq-a p { margin: 6px 0; font-size: 14px; }
+.faq-intro { font-family: 'Shippori Mincho B1', serif; font-style: italic; color: var(--muted); margin: -8px 0 24px; font-size: 14px; }
+
+.end-cta { max-width: 720px; margin: 60px auto 40px; padding: 0 20px; }
+@media (min-width: 768px) { .end-cta { padding: 0 32px; } }
+.end-cta-card { background: var(--ink); color: var(--paper); padding: 32px 24px; position: relative; overflow: hidden; }
+@media (min-width: 768px) { .end-cta-card { padding: 40px 32px; } }
+.end-cta-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--crimson) 0%, var(--gold) 50%, var(--crimson) 100%); }
+.end-cta-eyebrow { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 12px; color: var(--gold-light); letter-spacing: 0.3em; text-transform: uppercase; }
+.end-cta-title { font-family: 'Shippori Mincho B1', serif; font-size: 20px; font-weight: 700; margin-top: 6px; }
+@media (min-width: 768px) { .end-cta-title { font-size: 24px; } }
+.end-cta-desc { margin-top: 12px; font-size: 13px; color: var(--hairline); line-height: 1.85; }
+.end-cta-buttons { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+@media (min-width: 600px) { .end-cta-buttons { flex-direction: row; } }
+.end-cta-btn { padding: 14px 20px; text-align: center; font-size: 13px; letter-spacing: 0.1em; transition: all 0.15s; flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.end-cta-btn-primary { background: var(--crimson); color: white; }
+.end-cta-btn-primary:hover { background: var(--crimson-dark); }
+.end-cta-btn-line { background: var(--line-green); color: white; }
+.end-cta-btn-line:hover { background: #04a649; }
+.end-cta-btn-ghost { background: transparent; color: var(--gold-light); border: 1px solid var(--gold); }
+.end-cta-btn-ghost:hover { background: rgba(184,147,74,0.1); }
+
+.related { max-width: 880px; margin: 60px auto; padding: 0 20px; }
+@media (min-width: 768px) { .related { padding: 0 32px; } }
+.related-title { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 14px; color: var(--muted); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 4px; }
+.related-title-jp { font-family: 'Shippori Mincho B1', serif; font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 24px; }
+.related-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 768px) { .related-grid { grid-template-columns: 1fr 1fr 1fr; } }
+.related-item { background: var(--paper-2); padding: 20px; border: 1px solid var(--hairline-soft); transition: all 0.15s; display: block; }
+.related-item:hover { border-color: var(--ink); transform: translateY(-2px); }
+.related-cat { font-family: 'Bodoni Moda', serif; font-size: 10px; color: var(--crimson); letter-spacing: 0.2em; text-transform: uppercase; }
+.related-name { font-family: 'Shippori Mincho B1', serif; font-size: 14px; font-weight: 700; color: var(--ink); margin-top: 6px; line-height: 1.5; }
+
+.footer { background: var(--ink); color: var(--paper); padding: 40px 20px; text-align: center; }
+.footer-name { font-family: 'Shippori Mincho B1', serif; font-size: 16px; font-weight: 700; margin-top: 16px; }
+.footer-en { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 12px; color: var(--gold-light); margin-top: 4px; }
+.footer-tag { font-family: 'Bodoni Moda', serif; font-size: 10px; color: var(--crimson); letter-spacing: 0.3em; text-transform: uppercase; margin-top: 8px; }
+.footer-info { font-size: 11px; line-height: 1.8; color: var(--hairline); margin-top: 24px; }
+.footer-buttons { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+.footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
+.footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
+.footer-back:hover { background: var(--gold); color: var(--ink); }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../../index.html" class="brand">
+      <svg class="badge-shield" viewBox="0 0 48 48" fill="none">
+        <path d="M24 3 L42 9 L42 26 Q42 38 24 45 Q6 38 6 26 L6 9 Z" fill="#14171F" stroke="#B8934A" stroke-width="1"/>
+        <path d="M24 7 L38 11.5 L38 25 Q38 34.5 24 40.5 Q10 34.5 10 25 L10 11.5 Z" fill="none" stroke="#D4B876" stroke-width="0.5"/>
+        <path d="M24 16 L25.5 20 L30 20 L26.5 22.5 L28 26.5 L24 24 L20 26.5 L21.5 22.5 L18 20 L22.5 20 Z" fill="#B8934A"/>
+        <line x1="16" y1="33" x2="32" y2="33" stroke="#D4B876" stroke-width="0.5"/>
+        <text x="24" y="37" text-anchor="middle" font-size="4" fill="#D4B876" font-family="Bodoni Moda, serif" letter-spacing="0.5">EX-POLICE</text>
+      </svg>
+      <div>
+        <div class="brand-name">西岡行政書士事務所</div>
+        <div>
+          <span class="brand-en">Nishioka Gyoseishoshi Office</span>
+          <span class="brand-tag">EX-POLICE OFFICER</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://lin.ee/UKhZQbE" target="_blank" rel="noreferrer" class="line-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.78 2 10.4c0 4.14 3.58 7.6 8.41 8.25.33.07.77.22.88.5.1.26.07.67.03.93l-.14.85c-.04.25-.2.98.86.54 1.06-.45 5.73-3.37 7.81-5.77C21.28 14.07 22 12.31 22 10.4 22 5.78 17.52 2 12 2z"/></svg>
+      LINE
+    </a>
+  </div>
+</header>
+
+<nav class="breadcrumb">
+  <a href="../../index.html">ホーム</a>
+  <span class="breadcrumb-sep">／</span>
+  <a href="../index.html">コラム</a>
+  <span class="breadcrumb-sep">／</span>
+  <span style="color:var(--muted);">風営法</span>
+  <span class="breadcrumb-sep">／</span>
+  <span>許可までの期間</span>
+</nav>
+
+<header class="article-header fade-up">
+  <span class="article-category">風営法 / 申請実務</span>
+  <h1 class="article-title">風営法の申請から許可までの期間｜広島県警の標準処理期間と短縮のコツ</h1>
+  <div class="article-meta">
+    <div class="article-author">
+      <svg class="article-author-badge" viewBox="0 0 48 48" fill="none">
+        <path d="M24 3 L42 9 L42 26 Q42 38 24 45 Q6 38 6 26 L6 9 Z" fill="#14171F" stroke="#B8934A" stroke-width="1"/>
+        <path d="M24 16 L25.5 20 L30 20 L26.5 22.5 L28 26.5 L24 24 L20 26.5 L21.5 22.5 L18 20 L22.5 20 Z" fill="#B8934A"/>
+      </svg>
+      <div>
+        <div class="article-author-name">西岡 祐也</div>
+        <div class="article-author-role">行政書士（元広島県警察官13年）</div>
+      </div>
+    </div>
+    <div class="article-date">2026.05.21</div>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p class="lead">「開業日はもう決まっている。許可が間に合うか心配」「風営法の申請から何日で営業できるのか知りたい」——開業を検討している方から最も多く寄せられる質問の一つです。</p>
+
+<p>風俗営業許可の審査期間は法律で定められており、<strong>標準処理期間は55日</strong>です。しかし「55日あれば大丈夫」と単純に考えると落とし穴があります。書類の準備期間・現地確認・書類不備の修正対応によって、実質的な期間は55日を超えることがあります。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary-label">この記事のポイント</div>
+  <p>風俗営業許可の標準処理期間は<strong>風営法第7条第2項に基づき55日</strong>。この55日は書類が「受理された日」から起算されます。書類準備期間（2〜4週間）は含まれません。実質的な開業準備期間として、申請日の<strong>3ヶ月前</strong>から動き出すことが推奨されます。</p>
+</div>
+
+<div class="conclusion-box">
+  <p>「55日で許可が下りる」は正しいですが「申請から55日で開業できる」は誤りです。書類準備・現地確認・修正対応を含めた実質期間を逆算し、開業希望日の3ヶ月以上前に動き出してください。</p>
+</div>
+
+<h2>1. 標準処理期間「55日」の法的な根拠</h2>
+
+<p>風営法第7条第2項は、風俗営業許可申請に対して<strong>標準処理期間を55日</strong>と定めています。これは「申請が受理された日から55日以内に処分（許可または不許可）を行う」という行政上の目標期間です。</p>
+
+<table>
+  <thead><tr><th>項目</th><th>内容</th></tr></thead>
+  <tbody>
+    <tr><td>根拠法令</td><td>風営法第7条第2項</td></tr>
+    <tr><td>標準処理期間</td><td><strong>55日</strong></td></tr>
+    <tr><td>起算点</td><td>申請が「受理」された日</td></tr>
+    <tr><td>対象</td><td>風俗営業許可（1〜5号営業）の新規申請</td></tr>
+    <tr><td>広島県での実態</td><td>概ね55日前後（書類完全な場合）</td></tr>
+  </tbody>
+</table>
+
+<h3>「55日」の3つの注意点</h3>
+
+<div class="callout warning">
+  <div class="callout-label">注意① 「申請した日」ではなく「受理された日」から</div>
+  <p>書類を警察署に持参した日が、そのまま受理日とは限りません。書類に不備がある場合、受理されずに「補正（書類の直し）」を求められます。補正が完了して初めて「受理」となり、55日の起算が始まります。</p>
+</div>
+
+<div class="callout warning">
+  <div class="callout-label">注意② 書類準備期間は含まれない</div>
+  <p>55日は審査期間であり、申請書類の準備期間は含まれません。書類収集・図面作成・申請書の記入には通常2〜4週間かかります。</p>
+</div>
+
+<div class="callout warning">
+  <div class="callout-label">注意③ 現地確認の日程調整がある</div>
+  <p>審査期間中に警察が営業所に現地確認に来ます。この日程調整や現地確認後の問題対応が入ると、55日ぎりぎりになることがあります。</p>
+</div>
+
+<h2>2. 申請から許可までの実際の流れ</h2>
+
+<div class="step-flow">
+
+  <div class="step-flow-item">
+    <div class="step-flow-left"><div class="step-flow-circle">①</div></div>
+    <div class="step-flow-body">
+      <div class="step-flow-title">書類の事前準備（申請日の2〜4週間前）</div>
+      <div class="step-flow-content">
+        <table>
+          <thead><tr><th>書類の種類</th><th>取得先</th><th>所要日数の目安</th></tr></thead>
+          <tbody>
+            <tr><td>住民票の写し</td><td>市区町村役場</td><td>当日〜14日（郵送の場合）</td></tr>
+            <tr><td>身分証明書（本籍地役場）</td><td>本籍地の市区町村役場</td><td>1〜14日（郵送の場合）</td></tr>
+            <tr><td>登記事項証明書（法人）</td><td>法務局</td><td>当日〜3日</td></tr>
+            <tr><td>営業所の平面図・求積図</td><td>自作または行政書士作成</td><td>3日〜2週間</td></tr>
+            <tr><td>申請書（所定の様式）</td><td>警察署または自作</td><td>1〜3日</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:8px;font-size:13px;color:var(--muted);">最も時間がかかるのが図面作成です。営業所の実測→図面への落とし込み→確認には、スムーズに進んでも1週間程度かかります。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-flow-item">
+    <div class="step-flow-left"><div class="step-flow-circle">②</div></div>
+    <div class="step-flow-body">
+      <div class="step-flow-title">申請書の提出と受理（0日目）</div>
+      <div class="step-flow-content">
+        <ul>
+          <li>窓口での確認：担当者が書類に不備がないかその場でチェック</li>
+          <li>受理または補正：問題なければ受理（55日の起算スタート）。不備があれば補正を求められます</li>
+          <li>申請手数料：<strong>24,000円</strong>（収入証紙または収入印紙）の納付</li>
+        </ul>
+        <div class="police-note" style="margin-top:12px;">
+          <strong>元警察官の視点：</strong>窓口での受理確認は、単なる「書類を受け取る」手続きではありません。担当者が申請内容を確認し、明らかな問題がないかをその場でチェックします。事前確認なしに書類を持ち込むと、「この書類が足りない」「この数値はおかしい」と指摘を受け、出直しになることがあります。ただし、簡単な記入漏れや誤字程度であれば、その場で訂正できる場合もあります。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-flow-item">
+    <div class="step-flow-left"><div class="step-flow-circle">③</div></div>
+    <div class="step-flow-body">
+      <div class="step-flow-title">書類審査・欠格事由照会（受理後〜約3週間）</div>
+      <div class="step-flow-content">
+        <ul>
+          <li>申請者・役員の欠格事由照会（前歴・前科の確認）</li>
+          <li>書類間の整合性チェック（申請書と図面の数値が一致するか等）</li>
+          <li>保護対象施設の距離確認（地図での照合）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-flow-item">
+    <div class="step-flow-left"><div class="step-flow-circle">④</div></div>
+    <div class="step-flow-body">
+      <div class="step-flow-title">現地確認（受理後 約3〜4週間目）</div>
+      <div class="step-flow-content">
+        <p>警察官が営業所に現地確認に来ます。</p>
+        <ul>
+          <li>申請書・図面と実際の店舗の一致確認</li>
+          <li>構造設備基準（照度・見通し・区画の高さ）の実測確認</li>
+          <li>営業所の場所が保護対象施設から規定距離以上あるかの実地測定</li>
+        </ul>
+        <div class="callout warning" style="margin-top:12px;">
+          <div class="callout-label">現地確認で問題が発覚した場合</div>
+          <p>改善を指導されます。改善完了の確認が取れるまで審査が止まります。55日の期限内に改善できなければ、最悪の場合不許可になります。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-flow-item">
+    <div class="step-flow-left"><div class="step-flow-circle" style="background:var(--crimson);">⑤</div></div>
+    <div class="step-flow-body">
+      <div class="step-flow-title">許可証の交付（受理後 約55日）</div>
+      <div class="step-flow-content">
+        <p>問題がなければ許可証が交付されます。許可証を受け取り次第、営業を開始できます。受け取り方法（来所または郵送）は事前に確認してください。</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<h2>3. 「55日」が延びる主なケース</h2>
+
+<div class="delay-card">
+  <div class="delay-card-title">ケース①：書類の不備・補正</div>
+  <div class="delay-card-body">申請時の書類に不備があり、補正を求められる場合です。補正対応の期間は55日にカウントされません。図面の縮尺・数値の誤り・住民票の有効期限切れ等が典型的な不備です。</div>
+  <div class="delay-card-taisaku">行政書士が事前に書類をチェックしてから申請する</div>
+</div>
+
+<div class="delay-card">
+  <div class="delay-card-title">ケース②：現地確認での問題発覚</div>
+  <div class="delay-card-body">現地確認で構造設備の問題が発覚し、改善を求められる場合です。照明の照度不足・仕切りの高さオーバー・図面と実態の不一致等が典型です。</div>
+  <div class="delay-card-taisaku">申請前に行政書士が現地確認を行い、問題を事前に解消する</div>
+</div>
+
+<div class="delay-card">
+  <div class="delay-card-title">ケース③：欠格事由の照会に時間がかかる</div>
+  <div class="delay-card-body">申請者・役員の欠格事由照会（前歴・前科確認）に時間がかかる場合があります。特に複数の都道府県にまたがる照会が必要な場合、期間が延びることがあります。照会は警察内部で処理されるため、申請者側からの対応で短縮できるものではありません。</div>
+</div>
+
+<div class="delay-card">
+  <div class="delay-card-title">ケース④：保護対象施設の距離確認で疑義が生じた</div>
+  <div class="delay-card-body">地図上では距離が確保されているように見えても、実地測定で距離不足が判明する場合があります。</div>
+  <div class="delay-card-taisaku">申請前に行政書士が実地測定を行い、確実に距離が確保されていることを確認する</div>
+</div>
+
+<h2>4. 審査期間を「実質的に短縮」するための3つのポイント</h2>
+
+<h3>ポイント①：書類を一発で通す</h3>
+<p>申請時に不備のない完全な書類を持参することが最も重要です。補正が発生するたびに往復のロスが生じます。図面は実測値で正確に作成し、記入漏れ・押印漏れを徹底チェックしてから持参してください。</p>
+
+<h3>ポイント②：現地確認の前に問題を潰す</h3>
+<p>申請後の現地確認で問題が発覚すると、そこから改善→再確認の時間が追加されます。申請前に店舗の現地確認を行い、照明の照度（照度計で実測）・仕切りの高さ・図面と実態の一致・保護対象施設からの距離を先に確認しておくことが重要です。</p>
+
+<h3>ポイント③：申請のタイミングを早める</h3>
+<p>開業希望日から逆算して、余裕を持ったスケジュールで申請することが最善策です。</p>
+
+<table class="schedule-table">
+  <thead><tr><th>開業希望日からの逆算</th><th>やること</th></tr></thead>
+  <tbody>
+    <tr><td>3ヶ月前</td><td>物件確定・行政書士への相談</td></tr>
+    <tr><td>2.5ヶ月前</td><td>現地確認・書類準備開始</td></tr>
+    <tr class="key"><td>2ヶ月前 ← ここが理想の申請タイミング</td><td>申請書類完成・申請</td></tr>
+    <tr><td>申請から55日後</td><td>許可証交付</td></tr>
+    <tr><td>許可証交付後</td><td>営業開始</td></tr>
+  </tbody>
+</table>
+
+<div class="inline-cta">
+  <div class="inline-cta-text">
+    <div class="inline-cta-title">開業スケジュールを一緒に組み立てます</div>
+    <div class="inline-cta-desc">「開業日から逆算して何をいつまでにすべきか」を整理します。</div>
+  </div>
+  <a href="https://lin.ee/UKhZQbE" class="inline-cta-btn">LINEで相談 →</a>
+</div>
+
+<h2>5. 元警察官の視点：「55日」の中で何が起きているか</h2>
+
+<div class="monologue">
+  <p>行政書士として相談を受けていると、「開業まで1ヶ月しかないのに申請がまだ」という方が一定数いらっしゃいます。</p>
+  <p>自分でしっかり調べている方は「提出から許可が出るまで55日」という情報をご存じです。そのため「開業日の55日前に申請すれば大丈夫」と思っていた——というケースが多いのですが、これは55日を「書類準備期間込み」と誤解しているケースです。55日はあくまで書類が受理されてからの審査期間です。</p>
+  <p>警察の仕事は、書類が提出されてからが本番です。提出された申請書をもとに担当者がさまざまな内部書類を作成し、担当者から係長、係長から課長、課長から署長へと決裁が積み上がっていきます。この決裁ルートをすべて通って、ようやく「許可」という処分が下ります。これが55日という期間の実態です。</p>
+  <p>警察官時代を振り返ると、審査に時間がかかった案件のほとんどは、書類の不備や現地確認での問題発覚でした。完璧な書類で申請してきた案件は、ほぼ例外なく55日以内にスムーズに許可が下りていました。急ぐ気持ちはよくわかりますが、「急いで不備のある書類を出す」より「少し時間をかけて完璧な書類を出す」方が、結果的に早く許可が下ります。</p>
+  <p class="monologue-note">※西岡の警察官時代・行政書士としての経験を踏まえた見解です</p>
+</div>
+
+<!-- 決裁フロー図 -->
+<p>参考までに、警察内部の決裁フローを図解すると以下のようになります。</p>
+<div class="flow-chart">
+  <div class="flow-node start">申請受理</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-node">担当者<br><small>書類作成</small></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-node">係長<br><small>決裁</small></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-node">課長<br><small>決裁</small></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-node">署長<br><small>決裁</small></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-node end">許可証<br>交付</div>
+</div>
+
+<h2>6. 飲食店営業許可との並行申請</h2>
+
+<p>風俗営業を行う店舗では、<strong>風営法許可とは別に飲食店営業許可（保健所）も必要</strong>です。この2つは並行して申請できます。</p>
+
+<table>
+  <thead><tr><th>許可の種類</th><th>申請先</th><th>標準処理期間</th></tr></thead>
+  <tbody>
+    <tr><td>風俗営業許可</td><td>管轄警察署（生活安全課）</td><td><strong>55日</strong></td></tr>
+    <tr><td>飲食店営業許可</td><td>管轄保健所</td><td><strong>2〜4週間</strong></td></tr>
+  </tbody>
+</table>
+
+<p>飲食店営業許可は風営法許可より先に下りることが多いため、内装工事が完了した段階で両方に申請するのが効率的です。両方の許可が揃った状態で営業を開始してください。</p>
+
+<h2>7. よくある質問（FAQ）</h2>
+
+<p class="faq-intro">当事務所に実際に寄せられた質問をまとめました。</p>
+
+<div class="faq-item">
+  <div class="faq-q">申請を急ぎたい場合、警察署に頼めば処理を早めてもらえますか？</div>
+  <div class="faq-a">標準処理期間は法律で定められており、警察が恣意的に期間を短縮することはありません。ただし、書類が完全で現地確認も問題なければ、55日より早く許可が下りるケースもあります（法律上は55日「以内」です）。「早くしてほしい」というお願いより、「完璧な書類を出す」方が実質的な早期取得につながります。</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">申請後に書類の誤りに気づいた場合はどうすればいいですか？</div>
+  <div class="faq-a">速やかに管轄警察署に連絡して補正手続きを取ってください。補正の期間は処理期間にカウントされないため、補正対応が長引くほど許可取得が遅れます。申請前の書類の入念なチェックが重要です。</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">許可証が届く前に営業を開始してもよいですか？</div>
+  <div class="faq-a">いいえ、許可証が交付されるまで営業を開始することはできません。許可なしでの営業は風営法違反（無許可営業）となり、2年以下の懲役または200万円以下の罰金の対象になります。許可証の交付を受けてから営業を開始してください。</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">許可が下りた後、深夜0時以降の営業もできますか？</div>
+  <div class="faq-a">風俗営業許可（1〜4号営業）を受けた店舗は、原則として深夜0時以降の営業が禁止されています。深夜0時以降の営業は「特定遊興飲食店営業許可」（別途の許可）が必要なケースを除き、できません。深夜営業届との違いは「居酒屋の深夜営業｜風営法と深夜営業届の違いと境界線」で解説しています。</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">許可証の有効期限はありますか？</div>
+  <div class="faq-a">風俗営業許可証には有効期限がありません（失効しません）。ただし、営業内容や店舗の構造に変更があった場合は変更届の提出が必要です。また、営業を廃止した場合は廃止届の提出が必要です。</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">55日を過ぎても許可も不許可の通知もない場合はどうすればいいですか？</div>
+  <div class="faq-a">55日は「標準処理期間」であり、行政上の努力目標です。55日を過ぎても連絡がない場合は、管轄警察署の担当者に進捗を確認してください。行政書士に依頼している場合は、行政書士が確認します。</div>
+</div>
+
+<h2>まとめ：「55日＋準備期間」で逆算する</h2>
+
+<table>
+  <thead><tr><th>フェーズ</th><th>期間の目安</th><th>注意点</th></tr></thead>
+  <tbody>
+    <tr><td>書類準備</td><td>2〜4週間</td><td>図面作成が最も時間がかかる</td></tr>
+    <tr><td>申請・受理</td><td>0〜1週間</td><td>不備があると補正で延びる</td></tr>
+    <tr><td>書類審査・欠格事由照会</td><td>約3週間</td><td>照会に時間がかかる場合あり</td></tr>
+    <tr><td>現地確認・問題対応</td><td>1〜3週間</td><td>問題発覚で大幅に延びることがある</td></tr>
+    <tr><td>許可証交付</td><td>受理から合計<strong>55日</strong></td><td>問題なければほぼ55日以内</td></tr>
+  </tbody>
+</table>
+
+<p>開業を計画する際は、<strong>許可証交付の希望日から3ヶ月以上前</strong>に動き出すことを強くおすすめします。</p>
+
+</article>
+
+<section class="end-cta">
+  <div class="end-cta-card">
+    <div class="end-cta-eyebrow">Free Consultation</div>
+    <h2 class="end-cta-title">「開業日に間に合うか」を一緒に確認します</h2>
+    <p class="end-cta-desc">西岡行政書士事務所では、書類準備から申請・現地確認対応まで一括してサポートしています。開業日から逆算したスケジュールの作成・書類の事前確認・現地の構造設備チェックも含めて対応します。「間に合うかどうか不安」という段階のご相談も歓迎します。</p>
+    <div class="end-cta-buttons">
+      <a href="https://nishioka-gyosei.github.io/simulator.html" class="end-cta-btn end-cta-btn-primary">💴 料金を見積もる</a>
+      <a href="https://script.google.com/macros/s/AKfycbyDLR3C_rjnHAbD4aui1iN_lwHJPC8KdsGP6pSimeHq39bkL2W0oV8aAaR_vf01zituCw/exec" class="end-cta-btn end-cta-btn-ghost">📅 無料相談予約</a>
+      <a href="https://lin.ee/UKhZQbE" class="end-cta-btn end-cta-btn-line">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.78 2 10.4c0 4.14 3.58 7.6 8.41 8.25.33.07.77.22.88.5.1.26.07.67.03.93l-.14.85c-.04.25-.2.98.86.54 1.06-.45 5.73-3.37 7.81-5.77C21.28 14.07 22 12.31 22 10.4 22 5.78 17.52 2 12 2z"/></svg>
+        LINEで相談
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="related-title">Related Articles</div>
+  <h2 class="related-title-jp">あわせて読みたい記事</h2>
+  <div class="related-grid">
+    <a href="fueihou-fukyoka-pattern-5.html" class="related-item">
+      <div class="related-cat">風営法</div>
+      <div class="related-name">【元広島県警官が語る】風営法申請で不許可になる典型パターン5選</div>
+    </a>
+    <a href="fueihou-kozo-setsubi-kijun.html" class="related-item">
+      <div class="related-cat">風営法</div>
+      <div class="related-name">風俗営業許可の構造設備基準｜図面に落とすべき数値と確認方法</div>
+    </a>
+    <a href="fueihou-yoto-chiiki-seigen.html" class="related-item">
+      <div class="related-cat">風営法</div>
+      <div class="related-name">風営法の用途地域制限｜出店できるエリア・できないエリアの判定方法</div>
+    </a>
+  </div>
+  <div style="text-align:center;margin-top:24px;">
+    <a href="../index.html" style="display:inline-block;padding:10px 24px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;border:1px solid #14171F;color:#14171F;">コラム一覧を見る →</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <svg viewBox="0 0 48 48" fill="none" style="width:56px;height:56px;">
+    <path d="M24 3 L42 9 L42 26 Q42 38 24 45 Q6 38 6 26 L6 9 Z" fill="#14171F" stroke="#B8934A" stroke-width="1"/>
+    <path d="M24 7 L38 11.5 L38 25 Q38 34.5 24 40.5 Q10 34.5 10 25 L10 11.5 Z" fill="none" stroke="#D4B876" stroke-width="0.5"/>
+    <path d="M24 16 L25.5 20 L30 20 L26.5 22.5 L28 26.5 L24 24 L20 26.5 L21.5 22.5 L18 20 L22.5 20 Z" fill="#B8934A"/>
+  </svg>
+  <div class="footer-name">西岡行政書士事務所</div>
+  <div class="footer-en">Nishioka Gyoseishoshi Office</div>
+  <div class="footer-tag">EX-POLICE OFFICER · 広島</div>
+  <div class="footer-info">
+    広島市中区大手町4-6-22(市役所前電停 徒歩4分)<br>
+    TEL: 090-8068-8527 ／ 受付 9:00 – 19:00（土日祝可）<br>
+    広島県行政書士会 所属 ／ 登録番号 22341036
+  </div>
+  <div class="footer-buttons">
+    <a href="https://lin.ee/UKhZQbE" target="_blank" rel="noreferrer" class="line-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.78 2 10.4c0 4.14 3.58 7.6 8.41 8.25.33.07.77.22.88.5.1.26.07.67.03.93l-.14.85c-.04.25-.2.98.86.54 1.06-.45 5.73-3.37 7.81-5.77C21.28 14.07 22 12.31 22 10.4 22 5.78 17.52 2 12 2z"/></svg>
+      LINEで相談
+    </a>
+    <a href="tel:09080688527" class="footer-tel-btn">📞 090-8068-8527</a>
+  </div>
+  <a href="../index.html" class="footer-back">← コラム一覧に戻る</a>
+</footer>
+
+</body>
+</html>
