@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Color — Text</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; font-family: var(--font-sans); background: #fff; color: var(--text); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .panel { border-radius: 8px; border: 1px solid var(--border); padding: 18px 20px; }
+  .panel.navy { background: var(--navy); border-color: var(--navy); }
+  .sample { font-size: 16px; line-height: 1.6; margin-bottom: 10px; }
+  .sample.label { font-family: var(--font-display); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 4px; }
+  .hex { font-family: var(--font-display); font-size: 10px; letter-spacing: 0.08em; }
+  .light .sample { color: #1a1a1a; }
+  .light .sample-mid { color: #4a4a4a; }
+  .light .sample-low { color: #888; }
+  .light .hex { color: #888; }
+  .navy .sample { color: #fff; }
+  .navy .sample-mid { color: rgba(255,255,255,0.72); }
+  .navy .sample-low { color: rgba(255,255,255,0.45); }
+  .navy .hex { color: rgba(255,255,255,0.45); }
+  .row { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="panel light">
+    <div class="sample label" style="color:#c9a84c">ON LIGHT</div>
+    <div class="row"><div class="sample">本文（プライマリ）</div><div class="hex">#1A1A1A</div></div>
+    <div class="row"><div class="sample sample-mid">本文（セカンダリ）</div><div class="hex">#4A4A4A</div></div>
+    <div class="row"><div class="sample sample-low">補助（ティアシャリ）</div><div class="hex">#888888</div></div>
+  </div>
+  <div class="panel navy">
+    <div class="sample label" style="color:#c9a84c">ON NAVY</div>
+    <div class="row"><div class="sample">本文（プライマリ）</div><div class="hex">#FFFFFF</div></div>
+    <div class="row"><div class="sample sample-mid">本文（セカンダリ）</div><div class="hex">72%</div></div>
+    <div class="row"><div class="sample sample-low">補助（ティアシャリ）</div><div class="hex">45%</div></div>
+  </div>
+</div>
+</body>
+</html>

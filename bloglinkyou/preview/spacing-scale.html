@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Spacing Scale</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; font-family: var(--font-sans); background: #fff; color: var(--text); }
+  .row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .bar { background: var(--gold); height: 12px; border-radius: 2px; }
+  .token { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.10em; color: var(--navy); width: 78px; }
+  .px { font-family: var(--font-display); font-size: 11px; color: var(--text-light); width: 50px; }
+  .use { font-size: 12px; color: var(--text-mid); }
+</style>
+</head>
+<body>
+  <div class="row"><div class="token">space-1</div><div class="px">4px</div><div class="bar" style="width:4px"></div><div class="use">— micro gaps inside chips</div></div>
+  <div class="row"><div class="token">space-2</div><div class="px">8px</div><div class="bar" style="width:8px"></div><div class="use">— tight gaps, badge padding</div></div>
+  <div class="row"><div class="token">space-3</div><div class="px">12px</div><div class="bar" style="width:12px"></div><div class="use">— button gap, tag gap</div></div>
+  <div class="row"><div class="token">space-4</div><div class="px">16px</div><div class="bar" style="width:16px"></div><div class="use">— card inner gap</div></div>
+  <div class="row"><div class="token">space-6</div><div class="px">24px</div><div class="bar" style="width:24px"></div><div class="use">— card padding, page side pad</div></div>
+  <div class="row"><div class="token">space-8</div><div class="px">32px</div><div class="bar" style="width:32px"></div><div class="use">— between groups</div></div>
+  <div class="row"><div class="token">space-12</div><div class="px">48px</div><div class="bar" style="width:48px"></div><div class="use">— intra-section blocks</div></div>
+  <div class="row"><div class="token">space-20</div><div class="px">80px</div><div class="bar" style="width:80px"></div><div class="use">— section vertical padding (default)</div></div>
+</body>
+</html>

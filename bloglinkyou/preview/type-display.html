@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Type — Display</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; font-family: var(--font-sans); background: var(--navy); color: #fff; }
+  .display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 72px;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: #fff;
+  }
+  .display span { color: var(--gold); }
+  .meta { display: flex; gap: 24px; margin-top: 16px; font-family: var(--font-display); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+  .meta b { color: var(--gold); font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="display">EX-POLICE<br>OFFICER<span>.</span></div>
+  <div class="meta">
+    <span><b>FAMILY</b> Oswald 700</span>
+    <span><b>SIZE</b> 72px / clamp(42,8vw,80)</span>
+    <span><b>TRACK</b> −0.01em</span>
+    <span><b>LINE</b> 1.0</span>
+  </div>
+</body>
+</html>

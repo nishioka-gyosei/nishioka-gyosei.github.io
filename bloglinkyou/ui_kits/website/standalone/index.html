@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西岡行政書士事務所 — UI Kit</title>
+
+<!-- Resources referenced inside JS/JSX (not as plain HTML attributes) -->
+<meta name="ext-resource-dependency" content="../../../assets/logo-transparent.png" data-resource-id="logo" />
+<meta name="ext-resource-dependency" content="../../../assets/photo.jpg" data-resource-id="photo" />
+
+<!-- Splash thumbnail (also no-JS fallback) -->
+<template id="__bundler_thumbnail" data-bg-color="#0d1f3c">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <!-- soft gradient grid background -->
+    <defs>
+      <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+        <path d="M 80 0 L 0 0 0 80" fill="none" stroke="rgba(201,168,76,0.10)" stroke-width="1"/>
+      </pattern>
+      <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#e8c97a"/>
+        <stop offset="100%" stop-color="#c9a84c"/>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="800" fill="#0d1f3c"/>
+    <rect width="1200" height="800" fill="url(#grid)"/>
+
+    <!-- maple-leaf-like glyph (simplified) — sits center -->
+    <g transform="translate(600 380)">
+      <!-- circle frame -->
+      <circle r="190" fill="none" stroke="url(#gold)" stroke-width="3" opacity="0.5"/>
+      <!-- 5 simple maple leaves arranged radially -->
+      <g fill="#b23a3a">
+        <path d="M 0 -180 L 30 -90 L 0 -40 L -30 -90 Z"/>
+        <g transform="rotate(72)">
+          <path d="M 0 -180 L 30 -90 L 0 -40 L -30 -90 Z"/>
+        </g>
+        <g transform="rotate(144)">
+          <path d="M 0 -180 L 30 -90 L 0 -40 L -30 -90 Z"/>
+        </g>
+        <g transform="rotate(216)">
+          <path d="M 0 -180 L 30 -90 L 0 -40 L -30 -90 Z"/>
+        </g>
+        <g transform="rotate(288)">
+          <path d="M 0 -180 L 30 -90 L 0 -40 L -30 -90 Z"/>
+        </g>
+        <circle r="36" fill="#7a1f1f"/>
+      </g>
+    </g>
+
+    <!-- wordmark -->
+    <g text-anchor="middle">
+      <text x="600" y="660" fill="#ffffff" font-family="serif" font-weight="700" font-size="48" letter-spacing="4">西岡行政書士事務所</text>
+      <text x="600" y="700" fill="#c9a84c" font-family="sans-serif" font-weight="500" font-size="18" letter-spacing="6">NISHIOKA GYOSEI SHOSHI OFFICE</text>
+    </g>
+  </svg>
+</template>
+
+<link rel="icon" type="image/png" href="../../../assets/logo-mark.png">
+
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="kit.css">
+<link rel="stylesheet" href="polish.css">
+
+<!-- React + Babel (pinned) -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="atoms.jsx"></script>
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="sections.jsx"></script>
+  <script type="text/babel" src="app.jsx"></script>
+  <script src="enhance.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Service Card Grid</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; font-family: var(--font-sans); background: #fff; color: var(--text); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .card { background: #fff; padding: 18px 20px 16px; }
+  .icon { font-size: 22px; margin-bottom: 6px; }
+  .title { font-family: var(--font-serif); font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .desc { font-size: 11px; color: var(--text-light); line-height: 1.7; margin-bottom: 8px; }
+  .price { font-family: var(--font-display); font-size: 12px; font-weight: 500; color: var(--gold); letter-spacing: 0.04em; }
+  .link { display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; font-size: 11px; font-weight: 500; color: var(--navy); border: 1px solid var(--border); padding: 4px 10px; border-radius: 4px; }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🎤</div>
+      <div class="title">風俗営業許可</div>
+      <div class="desc">キャバクラ・ガールズバー・ホストクラブ等。図面作成から提出まで一括対応。</div>
+      <div class="price">要見積もり</div>
+    </div>
+    <div class="card">
+      <div class="icon">🌙</div>
+      <div class="title">深夜営業届出</div>
+      <div class="desc">夜0時以降営業のバー・スナック等。届出書類・警察署対応を代行。</div>
+      <div class="price">77,000円〜</div>
+    </div>
+    <div class="card">
+      <div class="icon">♻️</div>
+      <div class="title">古物商許可</div>
+      <div class="desc">リサイクル・中古車・フリマ転売事業者向け。警察署への申請を代行。</div>
+      <div class="price">60,000円〜</div>
+    </div>
+  </div>
+</body>
+</html>

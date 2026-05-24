@@ -1,0 +1,268 @@
+/* ============================================================
+   西岡行政書士事務所 — Design Tokens
+   Nishioka Gyosei Shoshi Office
+   ============================================================
+   Brand position: Ex-police officer (13 yrs) turned administrative
+   scrivener (gyosei-shoshi). Trust + authority + Japanese formality.
+   Visual DNA: deep navy + warm gold (medal / police-badge feel),
+   cream paper, mixed JP/EN typography (Noto Serif JP + Oswald).
+   ============================================================ */
+
+/* --- Fonts (Google Fonts — same as production site) --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Oswald:wght@500;700&display=swap');
+
+:root {
+  /* ===========================================================
+     COLOR — Primary
+     Navy is the brand. Used for headers, dark sections, body
+     text on light bg, buttons, badges. Read as authority +
+     formality (uniformed, official, government-adjacent).
+     =========================================================== */
+  --navy:       #0d1f3c;   /* primary brand — header, dark sections, headings on light */
+  --navy-mid:   #1a3260;   /* hover / secondary surfaces */
+  --navy-light: #243f7a;   /* tertiary surfaces, subtle accents */
+  --navy-deep:  #081425;   /* footer / deepest depth */
+
+  /* ===========================================================
+     COLOR — Accent (Gold)
+     Police-badge gold. ALWAYS pair with navy. Used for CTAs,
+     eyebrow labels, prices, statistic numbers, decorative
+     quote-marks, left-border accents. Never use on white as
+     a flat fill — gold reads weakly without dark surrounding.
+     =========================================================== */
+  --gold:       #c9a84c;   /* primary accent — CTA buttons, eyebrow text on navy */
+  --gold-light: #e8c97a;   /* hover for gold buttons; highlights on navy */
+  --gold-tint:  rgba(201, 168, 76, 0.12);  /* gold wash for badge backgrounds on navy */
+  --gold-line:  rgba(201, 168, 76, 0.30);  /* gold borders on navy */
+
+  /* ===========================================================
+     COLOR — Neutrals (Light)
+     Cream is the "off-white paper" surface — used between
+     navy sections for contrast and to evoke official documents.
+     =========================================================== */
+  --cream:      #f8f5ef;   /* paper / subtle section background */
+  --white:      #ffffff;   /* base background */
+  --border:     #e0dbd0;   /* card borders, dividers (warm beige) */
+  --border-soft:#efeae0;   /* lightest dividers */
+
+  /* ===========================================================
+     COLOR — Text
+     =========================================================== */
+  --text:       #1a1a1a;   /* primary text on light backgrounds */
+  --text-mid:   #4a4a4a;   /* body copy, secondary */
+  --text-light: #888888;   /* tertiary, captions, helper text */
+
+  /* On-navy text (used in dark sections, hero, footer) */
+  --on-navy:           #ffffff;
+  --on-navy-secondary: rgba(255, 255, 255, 0.72);
+  --on-navy-tertiary:  rgba(255, 255, 255, 0.45);
+  --on-navy-faint:     rgba(255, 255, 255, 0.08);
+
+  /* ===========================================================
+     COLOR — Semantic
+     =========================================================== */
+  --line-green: #06C755;   /* LINE brand — used for LINE CTA only */
+  --success:    #2f7d4f;
+  --warning:    #c9a84c;   /* re-use gold */
+  --danger:     #b23a3a;
+
+  /* ===========================================================
+     TYPOGRAPHY — Families
+     =========================================================== */
+  --font-serif:   'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+  --font-sans:    'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --font-display: 'Oswald', 'Noto Sans JP', sans-serif;   /* English/numerals */
+
+  /* ===========================================================
+     TYPOGRAPHY — Roles
+     -----------------------------------------------------------
+     Three roles structure every page:
+       1. EYEBROW   — Oswald, uppercase, gold, tight tracking
+       2. HEADING   — Noto Serif JP, navy or white, bold
+       3. BODY      — Noto Sans JP, 14-15px, generous line-height
+     -----------------------------------------------------------
+     =========================================================== */
+
+  /* Display / Hero English (e.g. "EX-POLICE OFFICER.") */
+  --type-display-size:    clamp(42px, 8vw, 80px);
+  --type-display-weight:  700;
+  --type-display-line:    1;
+  --type-display-track:   -0.01em;
+
+  /* H1 — Section title in Japanese serif */
+  --type-h1-size:    clamp(22px, 4vw, 32px);
+  --type-h1-weight:  700;
+  --type-h1-line:    1.4;
+
+  /* H2 — Sub-section / card cluster heading */
+  --type-h2-size:    clamp(20px, 3.5vw, 28px);
+  --type-h2-weight:  700;
+  --type-h2-line:    1.5;
+
+  /* H3 — Card title */
+  --type-h3-size:    16px;
+  --type-h3-weight:  700;
+  --type-h3-line:    1.4;
+
+  /* Eyebrow label — Oswald uppercase */
+  --type-eyebrow-size:    11px;
+  --type-eyebrow-weight:  500;
+  --type-eyebrow-track:   0.20em;
+  --type-eyebrow-case:    uppercase;
+
+  /* Lead paragraph (intro under H1) */
+  --type-lead-size:  15px;
+  --type-lead-line:  1.85;
+
+  /* Body paragraph */
+  --type-body-size:  14px;
+  --type-body-line:  1.85;
+
+  /* Small / caption */
+  --type-small-size: 12px;
+  --type-small-line: 1.7;
+
+  /* Big stat (Oswald, ex: "13年") */
+  --type-stat-size:    36px;
+  --type-stat-weight:  700;
+
+  /* ===========================================================
+     SPACING — 4px base, soft scale
+     =========================================================== */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;     /* default section vertical padding */
+  --space-24: 96px;
+
+  --section-y: 80px;
+  --container-max: 840px;        /* tight reading width — site default */
+  --container-pad: 24px;
+
+  /* ===========================================================
+     RADII
+     =========================================================== */
+  --radius-xs: 2px;     /* group label tabs */
+  --radius-sm: 4px;     /* small buttons, tags */
+  --radius-md: 6px;     /* primary buttons */
+  --radius-lg: 8px;     /* cards, quote blocks */
+  --radius-xl: 12px;    /* large containers */
+  --radius-2xl: 14px;   /* simulator card */
+  --radius-pill: 999px;
+
+  /* ===========================================================
+     SHADOWS
+     -----------------------------------------------------------
+     Used very sparingly — most depth comes from color contrast,
+     not blur. Only two elevations on the live site.
+     =========================================================== */
+  --shadow-card:   0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-lifted: 0 4px 24px rgba(0, 0, 0, 0.07);
+
+  /* ===========================================================
+     BORDERS
+     =========================================================== */
+  --border-w: 1px;
+  --border-accent-w: 3px;   /* gold left-accent on tags */
+
+  /* ===========================================================
+     TIMING
+     =========================================================== */
+  --ease: cubic-bezier(.2, .7, .3, 1);
+  --t-quick: 0.15s;
+  --t-base:  0.20s;
+  --t-slow:  0.60s;
+}
+
+/* ============================================================
+   SEMANTIC ELEMENT DEFAULTS
+   Use these directly when authoring new pages — they wire up
+   the tokens above. Override locally as needed.
+   ============================================================ */
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: var(--type-eyebrow-weight);
+  letter-spacing: var(--type-eyebrow-track);
+  text-transform: var(--type-eyebrow-case);
+  color: var(--gold);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.h1, h1.section-title {
+  font-family: var(--font-serif);
+  font-size: var(--type-h1-size);
+  font-weight: var(--type-h1-weight);
+  line-height: var(--type-h1-line);
+  color: var(--navy);
+}
+
+.h2, h2.section-title {
+  font-family: var(--font-serif);
+  font-size: var(--type-h2-size);
+  font-weight: var(--type-h2-weight);
+  line-height: var(--type-h2-line);
+  color: var(--navy);
+}
+
+.h3 {
+  font-family: var(--font-serif);
+  font-size: var(--type-h3-size);
+  font-weight: var(--type-h3-weight);
+  line-height: var(--type-h3-line);
+  color: var(--navy);
+}
+
+.lead {
+  font-family: var(--font-sans);
+  font-size: var(--type-lead-size);
+  line-height: var(--type-lead-line);
+  color: var(--text-mid);
+}
+
+.body {
+  font-family: var(--font-sans);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  color: var(--text-mid);
+}
+
+.small {
+  font-family: var(--font-sans);
+  font-size: var(--type-small-size);
+  line-height: var(--type-small-line);
+  color: var(--text-light);
+}
+
+.stat {
+  font-family: var(--font-display);
+  font-size: var(--type-stat-size);
+  font-weight: var(--type-stat-weight);
+  color: var(--gold);
+  line-height: 1;
+}
+
+/* On dark backgrounds */
+.on-navy .h1, .on-navy h1,
+.on-navy .h2, .on-navy h2,
+.on-navy .h3, .on-navy h3 { color: var(--on-navy); }
+.on-navy .body, .on-navy p { color: var(--on-navy-secondary); }
+.on-navy .small { color: var(--on-navy-tertiary); }
+
+/* ============================================================
+   FADE-UP — site's only entry animation
+   ============================================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp var(--t-slow) var(--ease) both; }

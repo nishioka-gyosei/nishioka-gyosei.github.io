@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Quote Block</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; font-family: var(--font-sans); background: var(--cream); color: var(--text); }
+  .quote { background: var(--navy); border-radius: 8px; padding: 28px 32px 26px; position: relative; overflow: hidden; }
+  .quote::before { content: "「"; position: absolute; top: -14px; left: 18px; font-family: var(--font-serif); font-size: 110px; color: rgba(201,168,76,0.12); line-height: 1; }
+  .quote p { font-family: var(--font-serif); font-size: 15px; color: #fff; line-height: 1.85; position: relative; z-index: 1; margin: 0; }
+  .author { font-size: 11px; color: var(--gold); margin-top: 14px; position: relative; z-index: 1; letter-spacing: 0.06em; }
+</style>
+</head>
+<body>
+  <div class="quote">
+    <p>警察の窓口担当者は、申請書の「どこを見て」「何で却下するか」を、一定の基準で評価しています。私は13年間その内側にいたので、相手が何を求めているかが手に取るようにわかります。だから「書類の不備で差し戻し」をほぼゼロにできます。</p>
+    <div class="author">— 代表行政書士 西岡祐也（元広島県警察官）</div>
+  </div>
+</body>
+</html>
