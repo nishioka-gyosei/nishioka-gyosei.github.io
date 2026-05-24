@@ -16,6 +16,17 @@
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
       revealEls.forEach((el) => io.observe(el));
+
+      // Fallback: any reveal still hidden after 1.5s gets force-shown.
+      // Catches edge cases where the observer doesn't fire (iframe contexts, etc).
+      setTimeout(() => {
+        document.querySelectorAll('.reveal:not(.is-visible)').forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) {
+            el.classList.add('is-visible');
+          }
+        });
+      }, 1500);
     } else {
       revealEls.forEach((el) => el.classList.add('is-visible'));
     }

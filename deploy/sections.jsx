@@ -6,6 +6,11 @@
 const Bracket = ({ pos }) => <div className={`nx-bracket nx-bracket--${pos}`}></div>;
 const SectionNum = ({ children }) => <div className="nx-section__num" aria-hidden="true">{children}</div>;
 
+/* External destinations */
+const LINE_URL = 'https://lin.ee/UKhZQbE';
+const BLOG_URL = 'blog/';
+const PHONE_URL = 'tel:09080688527';
+
 /* ===== HEADER ===== */
 const Header = () => (
   <header className="nx-header">
@@ -17,8 +22,8 @@ const Header = () => (
       </div>
     </a>
     <div className="nx-header__nav">
-      <a href="#blog" className="nx-header__link">📚 コラム</a>
-      <Btn variant="header" href="#contact">無料相談する</Btn>
+      <a href={BLOG_URL} className="nx-header__link">📚 コラム</a>
+      <Btn variant="header" href={LINE_URL} target="_blank" rel="noopener noreferrer">無料相談する</Btn>
     </div>
   </header>
 );
@@ -49,7 +54,7 @@ const Hero = () => (
         <span className="nx-hero-chip"><strong>土日祝</strong> 対応可</span>
       </div>
       <div className="nx-hero__buttons reveal reveal--delay-3">
-        <Btn variant="primary" icon="📱" href="#contact">LINE で無料相談</Btn>
+        <Btn variant="primary" icon="📱" href={LINE_URL} target="_blank" rel="noopener noreferrer">LINE で無料相談</Btn>
         <Btn variant="outline" href="#services">サービスを見る →</Btn>
       </div>
     </div>
@@ -106,16 +111,16 @@ const Services = () => (
         <div className="nx-service-grid">
           <ServiceCard icon="🎤" title="風俗営業許可（風営法）"
             desc="キャバクラ・ガールズバー・ホストクラブ等。図面作成から警察署への提出まで一括対応。"
-            price="要見積もり" />
+            price="要見積もり" href="fueihou.html" />
           <ServiceCard icon="🌙" title="深夜営業届出"
             desc="夜0時以降営業のバー・スナック等。図面作成・届出書類・警察署対応をすべて代行。"
-            price="77,000円〜（税込・図面込み）" />
+            price="77,000円〜（税込・図面込み）" href="shinya-eigyou.html" />
           <ServiceCard icon="🚗" title="道路使用・占用許可"
             desc="工事・足場・看板設置等。建設業者からのセット依頼も歓迎。"
-            price="要見積もり" />
+            price="要見積もり" href="douroshiyou.html" />
           <ServiceCard icon="♻️" title="古物商許可"
             desc="リサイクルショップ・中古車・フリマ転売事業者向け。警察署への申請を代行。"
-            price="60,000円〜（税込）" />
+            price="60,000円〜（税込）" href="kobutu.html" />
         </div>
       </div>
 
@@ -124,10 +129,10 @@ const Services = () => (
         <div className="nx-service-grid">
           <ServiceCard icon="🏗️" title="建設業許可"
             desc="新規取得・更新・業種追加・決算変更。道路使用許可とのセット依頼も対応。"
-            price="要見積もり" />
+            price="要見積もり" href="kensetsu.html" />
           <ServiceCard icon="🏢" title="会社設立"
             desc="株式会社・合同会社。定款作成〜公証人手続き〜法務局提出まで一括サポート。"
-            price="150,000円〜（税込・実費別）" />
+            price="150,000円〜（税込・実費別）" href="kaisha-setsuritsu.html" />
           <ServiceCard icon="🍺" title="飲食店開業 / 酒類販売"
             desc="保健所・税務署への届出・申請。個人店から法人まで対応。"
             price="55,000円〜（税込）" />
@@ -304,7 +309,7 @@ const Contact = () => (
             icon="💬"
             title="LINE で無料相談"
             desc="24時間受付・顔出し不要・相談だけでもOK。一番気軽なのはLINEです。"
-            action={<Btn variant="line" icon="📱">LINE を開く</Btn>}
+            action={<Btn variant="line" icon="📱" href={LINE_URL} target="_blank" rel="noopener noreferrer">LINE を開く</Btn>}
           />
         </div>
         <div className="reveal reveal--delay-3">
@@ -348,23 +353,23 @@ const Footer = () => (
     </p>
     <p>広島市中区大手町4-6-22 ｜ TEL: 090-8068-8527</p>
     <div className="nx-footer__links">
-      <a href="#" className="nx-footer__link">コラム</a>
-      <a href="#" className="nx-footer__link">警察申請まとめページ</a>
-      <a href="#" className="nx-footer__link">士業の先生方へ（業務連携）</a>
-      <a href="#" className="nx-footer__link">古物商許可</a>
-      <a href="#" className="nx-footer__link">民泊許可</a>
-      <a href="#" className="nx-footer__link">農地転用</a>
-      <a href="#" className="nx-footer__link">風営法許可</a>
-      <a href="#" className="nx-footer__link">建設業許可</a>
-      <a href="#" className="nx-footer__link">深夜営業届</a>
-      <a href="#" className="nx-footer__link">道路使用・占用許可</a>
+      <a href={BLOG_URL} className="nx-footer__link">コラム</a>
+      <a href="police.html" className="nx-footer__link">警察申請まとめページ</a>
+      <a href="sagyoshi-renkai.html" className="nx-footer__link">士業の先生方へ（業務連携）</a>
+      <a href="kobutu.html" className="nx-footer__link">古物商許可</a>
+      <a href="minpaku.html" className="nx-footer__link">民泊許可</a>
+      <a href="nochi.html" className="nx-footer__link">農地転用</a>
+      <a href="fueihou.html" className="nx-footer__link">風営法許可</a>
+      <a href="kensetsu.html" className="nx-footer__link">建設業許可</a>
+      <a href="shinya-eigyou.html" className="nx-footer__link">深夜営業届</a>
+      <a href="douroshiyou.html" className="nx-footer__link">道路使用・占用許可</a>
     </div>
   </footer>
 );
 
 /* ===== LINE FAB ===== */
 const FloatingLineCTA = () => (
-  <a href="#contact" className="nx-fab" aria-label="LINEで無料相談">
+  <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="nx-fab" aria-label="LINEで無料相談">
     <span>📱</span><span>LINE で相談</span>
   </a>
 );

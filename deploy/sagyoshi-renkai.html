@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>士業の先生方へ｜業務連携のご案内｜西岡行政書士事務所（広島）</title>
+<meta name="description" content="弁護士・司法書士・税理士・社労士の先生方へ。許認可（特に警察関連）でお困りの案件は、元広島県警察官13年の行政書士・西岡祐也が責任を持って対応します。広島の士業ネットワーク強化にご活用ください。">
+<link rel="canonical" href="https://nishioka-gyosei.github.io/sagyoshi-renkai.html">
+
+<meta property="og:title" content="士業の先生方へ｜業務連携｜西岡行政書士事務所">
+<meta property="og:description" content="弁護士・司法書士・税理士・社労士の先生方とのプロフェッショナルな業務連携を歓迎しています。広島の許認可案件を一緒に。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://nishioka-gyosei.github.io/sagyoshi-renkai.html">
+<meta property="og:image" content="https://nishioka-gyosei.github.io/photo.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/png" href="assets/logo-mark.png">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6JQDLBVSQ8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-6JQDLBVSQ8');
+  window.gtag = gtag;
+</script>
+
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="kit.css">
+<link rel="stylesheet" href="polish.css">
+<link rel="stylesheet" href="lp.css">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel" src="atoms.jsx"></script>
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="sections.jsx"></script>
+  <script type="text/babel" src="lp-sections.jsx"></script>
+  <script type="text/babel">
+    const App = () => (
+      <React.Fragment>
+        <Header />
+        <LPHero
+          category="FOR PROFESSIONALS · 業務連携"
+          breadcrumb="士業の先生方へ"
+          icon="🤝"
+          title={<>士業の先生方へ。<br/>警察関連の案件、お任せください。</>}
+          lead={<>弁護士・司法書士・税理士・社労士の先生方が、<strong>許認可（特に警察関連）</strong>でお困りの案件を、責任を持って対応します。元広島県警察官13年の経験は、他の行政書士にはない強みです。クライアントを介さず、先生と直接やり取りする<strong>パートナー型の連携</strong>を歓迎します。</>}
+          meta={[
+            { label: '対応エリア', value: '広島県全域' },
+            { label: '紹介料', value: '応相談' },
+            { label: '対応分野', value: '許認可全般' },
+            { label: '相談', value: '0', unit: '円' },
+          ]}
+        />
+
+        <LPSection num="01" tone="cream" screenLabel="02 For Whom">
+          <Eyebrow>FOR WHOM</Eyebrow>
+          <SectionTitle>こんな先生のお役に立てます</SectionTitle>
+          <InfoCardGrid items={[
+            { icon: '⚖️', title: '弁護士の先生',     body: '顧問先・依頼者の許認可手続き（風営法・建設業 等）が必要になったとき。刑事弁護絡みで再開業を支援する案件にも対応します。' },
+            { icon: '📜', title: '司法書士の先生',   body: '会社設立とセットの許認可案件。当事務所と相互紹介の関係を築けます。設立後すぐ営業開始したい依頼者をスムーズに案内可能。' },
+            { icon: '💰', title: '税理士の先生',     body: '顧問先の事業転換・新規開業時の許認可。建設業許可の決算変更届は税理士の決算データが必要なので連携が肝です。' },
+            { icon: '👥', title: '社労士の先生',     body: '警備業認定の取得時には、社労士の労務管理ノウハウとセットで対応するのが理想。共同提案も可能。' },
+          ]} />
+        </LPSection>
+
+        <LPSection num="02" tone="white" screenLabel="03 Strengths">
+          <Eyebrow>STRENGTHS</Eyebrow>
+          <SectionTitle>連携先として選ばれる理由</SectionTitle>
+          <InfoCardGrid items={[
+            { icon: '🚨', title: '警察関連に圧倒的に強い', body: '元広島県警察官13年。風営法・深夜営業・古物商・道路使用・警備業——すべての警察申請に対応可能。' },
+            { icon: '🤐', title: '守秘義務の徹底',         body: 'クライアント情報の取扱いは細心の注意を払います。先生のお客様との関係性を損なう動きは絶対にしません。' },
+            { icon: '⏱️', title: '即レス・スピード対応',   body: '士業同士の連携は時間との戦い。LINEまたはお電話で即レスし、24時間以内に方針を出します。' },
+            { icon: '📊', title: '報告・連携のマナー',     body: '進捗報告・問題発生時の即時連絡・終了報告まで、ビジネスマナーを守った連携を約束します。' },
+          ]} />
+        </LPSection>
+
+        <LPSection num="03" tone="cream" screenLabel="04 Cases">
+          <Eyebrow>CASES</Eyebrow>
+          <SectionTitle>連携実績の例</SectionTitle>
+          <Lead>守秘義務上、具体名は伏せますが、過去にご一緒した連携の典型例をご紹介します。</Lead>
+          <InfoCardGrid items={[
+            { icon: '🍷', title: '弁護士 × 風営法案件',          body: '前科のある依頼者の風営法1号許可申請。欠格事由の判定から書類作成まで、刑事担当の弁護士先生と密に連携。' },
+            { icon: '🏢', title: '司法書士 × 会社設立+建設業',   body: '建設会社の設立と建設業許可を並行進行。司法書士登記完了の日に許可申請を提出できるスケジュールで連携。' },
+            { icon: '🏗️', title: '税理士 × 建設業の決算変更届',  body: '顧問税理士から決算書を受領 → 建設業会計への組替 → 県へ届出、を毎年定型業務として連携。' },
+          ]} />
+          <CTABand
+            title="先生のクライアント、私が責任もって対応します。"
+            sub="まずはLINEまたはお電話で「こういう案件があるんだけど」と一言いただければ、その場で対応可否をお返事します。"
+          />
+        </LPSection>
+
+        <LPSection num="04" tone="white" screenLabel="05 Compliance">
+          <Eyebrow>COMPLIANCE</Eyebrow>
+          <SectionTitle>連携にあたっての姿勢</SectionTitle>
+          <InfoCardGrid items={[
+            { icon: '✋', title: '業際の遵守',                 body: '行政書士の業務範囲を超える対応はいたしません。司法書士業務・税理士業務・社労士業務は、先生のテリトリーを尊重します。' },
+            { icon: '🤝', title: '紹介料の取扱い',             body: '紹介料は応相談です。先生方のご事情・関係性に応じて柔軟に対応します。透明性を最優先します。' },
+            { icon: '📝', title: '進捗報告',                   body: '案件進行中は定期的に進捗をご報告。問題発生時は即時連絡します。' },
+            { icon: '🏃', title: '逆紹介もウェルカム',         body: '当事務所のクライアントから法律相談・税務相談・労務相談・登記が必要になったときは、信頼できる先生方をご紹介します。' },
+          ]} />
+        </LPSection>
+
+        <Contact />
+        <InfoStrip />
+        <Footer />
+        <FloatingLineCTA />
+      </React.Fragment>
+    );
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+  <script src="enhance.js"></script>
+</body>
+</html>
