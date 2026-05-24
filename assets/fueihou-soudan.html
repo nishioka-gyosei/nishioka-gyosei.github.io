@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>広島の風営法 無料相談センター｜まずは気軽に聞いてみる｜西岡行政書士事務所</title>
+<meta name="description" content="広島で「風営法ってウチも必要？」「いくらかかるの？」と迷っている方の無料相談センター。元広島県警察官13年の行政書士が、LINEで写真1枚から判定。深夜営業届との違いも、その場で教えます。">
+<link rel="canonical" href="https://nishioka-gyosei.github.io/fueihou-soudan.html">
+
+<meta property="og:title" content="広島の風営法 無料相談センター｜西岡行政書士事務所">
+<meta property="og:description" content="「ウチは風営法？深夜営業届？」LINEで写真1枚から判定。元警察官行政書士が無料で相談に乗ります。広島市中区。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://nishioka-gyosei.github.io/fueihou-soudan.html">
+<meta property="og:image" content="https://nishioka-gyosei.github.io/photo.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/png" href="assets/logo-mark.png">
+
+<!-- Google Fonts: add a script-ish accent face -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6JQDLBVSQ8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-6JQDLBVSQ8');
+  window.gtag = gtag;
+</script>
+
+<style>
+/* =========================================================
+   風営法 相談センター — Friendlier theme
+   ローカル完全動作のため、CSS全てインラインで定義。
+   ========================================================= */
+
+:root {
+  /* Brand base colors — same as main site but soften */
+  --navy: #0d1f3c;
+  --navy-deep: #081425;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --cream: #fbf7ee;
+  --cream-deep: #f3ecdc;
+  --paper: #fffdf7;
+  --maple: #c2453e;       /* warm red from the maple leaf */
+  --maple-soft: #e88a82;
+  --maple-tint: #fce6e1;
+  --leaf-green: #5d7a55;  /* gentle green for accents */
+  --text: #2b2b2b;
+  --text-mid: #555;
+  --text-light: #888;
+  --border: #ead9c0;
+  --border-soft: #f1e6cf;
+
+  --font-jp:      'Zen Kaku Gothic New', 'Hiragino Sans', sans-serif;
+  --font-jp-soft: 'Klee One', 'Yu Mincho', serif;
+  --font-serif:   'Noto Serif JP', 'Yu Mincho', serif;
+  --font-display: 'Oswald', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+
+  --shadow-soft:  0 4px 18px rgba(13,31,60,0.06);
+  --shadow-card:  0 8px 28px rgba(13,31,60,0.08);
+  --shadow-pop:   0 12px 40px rgba(194,69,62,0.18);
+
+  --ease: cubic-bezier(.2,.7,.3,1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-jp);
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.85;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+::selection { background: var(--gold); color: var(--navy); }
+
+/* ============== HEADER ============== */
+.s-header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255, 253, 247, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-soft);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 24px;
+}
+.s-brand { display: flex; align-items: center; gap: 12px; }
+.s-brand__mark { width: 42px; height: 42px; object-fit: contain; }
+.s-brand__txt { line-height: 1.25; }
+.s-brand__ja { font-family: var(--font-serif); font-weight: 700; font-size: 14px; color: var(--navy); letter-spacing: 0.02em; }
+.s-brand__en { font-family: var(--font-display); font-size: 9px; letter-spacing: 0.16em; color: var(--gold); margin-top: 2px; }
+.s-nav { display: flex; align-items: center; gap: 12px; }
+.s-nav a { font-size: 13px; color: var(--text-mid); padding: 8px 12px; border-radius: var(--radius-pill); transition: background 0.2s ease, color 0.2s ease; }
+.s-nav a:hover { background: var(--cream-deep); color: var(--navy); }
+.s-nav__cta {
+  background: var(--maple); color: #fff !important;
+  font-weight: 700;
+  padding: 10px 20px !important;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-pop);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.s-nav__cta:hover { background: var(--maple) !important; color: #fff !important; transform: translateY(-1px); }
+
+/* ============== HERO ============== */
+.s-hero {
+  position: relative;
+  padding: 80px 24px 100px;
+  overflow: hidden;
+}
+.s-hero__bg-blob {
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 540px; height: 540px;
+  background: radial-gradient(circle, var(--maple-tint), transparent 70%);
+  z-index: 0;
+}
+.s-hero__bg-blob2 {
+  position: absolute;
+  bottom: -160px; left: -160px;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(201,168,76,0.18), transparent 70%);
+  z-index: 0;
+}
+.s-hero__inner {
+  position: relative; z-index: 1;
+  max-width: 1080px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.2fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.s-hero__copy { position: relative; }
+.s-hero__greet {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-jp-soft);
+  font-size: 14px;
+  color: var(--maple);
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 22px;
+  font-weight: 600;
+}
+.s-hero__greet::before { content: "🍁"; font-size: 16px; }
+.s-hero__title {
+  font-family: var(--font-jp-soft);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--navy);
+  margin-bottom: 22px;
+  letter-spacing: 0.01em;
+}
+.s-hero__title em {
+  font-style: normal;
+  position: relative;
+  background: linear-gradient(transparent 62%, rgba(201,168,76,0.45) 62%);
+  padding: 0 4px;
+}
+.s-hero__title .accent { color: var(--maple); }
+.s-hero__lead {
+  font-size: 15.5px;
+  line-height: 1.95;
+  color: var(--text-mid);
+  margin-bottom: 30px;
+  max-width: 520px;
+}
+.s-hero__buttons {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.s-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 28px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  font-family: var(--font-jp);
+}
+.s-btn--line {
+  background: linear-gradient(135deg, var(--maple), #b03832);
+  color: #fff;
+  box-shadow: var(--shadow-pop);
+}
+.s-btn--line:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(194,69,62,0.32); }
+.s-btn--ghost {
+  background: #fff;
+  color: var(--navy);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-soft);
+}
+.s-btn--ghost:hover { border-color: var(--maple); color: var(--maple); }
+.s-hero__trust {
+  display: flex; flex-wrap: wrap; gap: 18px;
+  font-size: 13px;
+  color: var(--text-light);
+}
+.s-hero__trust span { display: inline-flex; align-items: center; gap: 6px; }
+.s-hero__trust span::before { content: "✓"; color: var(--leaf-green); font-weight: 700; }
+.s-hero__visual {
+  position: relative;
+  display: flex; justify-content: center; align-items: center;
+}
+.s-hero-photo-wrap {
+  position: relative;
+  width: 340px; height: 340px;
+}
+.s-hero-photo {
+  position: relative;
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 8px solid #fff;
+  box-shadow: 0 20px 60px rgba(13,31,60,0.20);
+  background: var(--cream-deep);
+}
+.s-hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.s-hero-badge {
+  position: absolute;
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  box-shadow: var(--shadow-card);
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.s-hero-badge--1 { top: 20px; left: -30px; animation: floatB 4s ease-in-out infinite; }
+.s-hero-badge--2 { bottom: 60px; right: -50px; animation: floatB 4s ease-in-out infinite 1s; }
+.s-hero-badge--3 { bottom: -20px; left: 30px; animation: floatB 4s ease-in-out infinite 2s; }
+.s-hero-badge__icon { font-size: 18px; }
+.s-hero-badge strong { color: var(--maple); font-family: var(--font-display); font-size: 18px; }
+@keyframes floatB { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+.s-hero-mark {
+  position: absolute;
+  top: -10px; right: 0;
+  width: 64px; height: 64px;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+  animation: floatB 5s ease-in-out infinite;
+  z-index: 2;
+}
+
+/* ============== SECTION BASE ============== */
+.s-section {
+  position: relative;
+  padding: 72px 24px;
+}
+.s-section--paper { background: var(--paper); }
+.s-section--cream { background: var(--cream); }
+.s-section--maple {
+  background: linear-gradient(180deg, var(--maple-tint), #fbf7ee);
+}
+.s-section__inner { max-width: 920px; margin: 0 auto; position: relative; z-index: 1; }
+.s-section__eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--maple);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+.s-section__eyebrow::before {
+  content: "";
+  display: block;
+  width: 28px; height: 2px;
+  background: var(--maple);
+  border-radius: 2px;
+}
+.s-section__title {
+  font-family: var(--font-jp-soft);
+  font-size: clamp(24px, 3.5vw, 32px);
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+.s-section__lead {
+  font-size: 15px;
+  line-height: 1.95;
+  color: var(--text-mid);
+  margin-bottom: 40px;
+  max-width: 680px;
+}
+
+/* Wave divider */
+.s-wave {
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+
+/* ============== "悩み"カード（speech bubbles）============== */
+.s-bubbles {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 30px;
+}
+.s-bubble {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 22px 22px;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  border: 1px solid var(--border-soft);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.s-bubble:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); }
+.s-bubble::after {
+  content: "";
+  position: absolute; bottom: -10px; left: 36px;
+  width: 20px; height: 20px;
+  background: #fff;
+  transform: rotate(45deg);
+  border-right: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+}
+.s-bubble__person {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border);
+}
+.s-bubble__avatar {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--maple-tint);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.s-bubble__person-text { font-size: 12px; color: var(--text-light); }
+.s-bubble__text {
+  font-family: var(--font-jp-soft);
+  font-size: 15px;
+  color: var(--navy);
+  font-weight: 600;
+  line-height: 1.7;
+}
+.s-bubble__text::before { content: "“"; font-size: 22px; color: var(--maple); vertical-align: top; line-height: 0; margin-right: 4px; }
+
+/* ============== Soudan flow (steps) ============== */
+.s-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 36px;
+  position: relative;
+}
+.s-flow::before {
+  content: "";
+  position: absolute;
+  top: 50px; left: 5%; right: 5%;
+  height: 2px;
+  background-image: linear-gradient(90deg, var(--maple-soft) 50%, transparent 50%);
+  background-size: 12px 2px;
+  z-index: 0;
+}
+.s-flow-step {
+  position: relative; z-index: 1;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 22px 18px 20px;
+  text-align: center;
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+}
+.s-flow-step__num {
+  width: 38px; height: 38px;
+  margin: 0 auto 14px;
+  background: var(--maple);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(194,69,62,0.30);
+}
+.s-flow-step__icon { font-size: 28px; margin-bottom: 8px; }
+.s-flow-step__title {
+  font-family: var(--font-jp-soft);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+.s-flow-step__desc { font-size: 12px; line-height: 1.7; color: var(--text-mid); }
+
+/* ============== 写真送って判定！ ============== */
+.s-photo-cta {
+  background: linear-gradient(135deg, #fff 0%, var(--cream-deep) 100%);
+  border-radius: var(--radius-xl);
+  padding: 40px 36px;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: center;
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+.s-photo-cta::before {
+  content: "📸";
+  position: absolute;
+  font-size: 200px;
+  right: -40px; bottom: -60px;
+  opacity: 0.04;
+}
+.s-photo-cta__head {
+  font-family: var(--font-jp-soft);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.s-photo-cta__head em {
+  font-style: normal;
+  color: var(--maple);
+}
+.s-photo-cta__body { font-size: 14px; color: var(--text-mid); line-height: 1.9; margin-bottom: 22px; }
+.s-photo-cta__example {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  font-size: 12.5px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  border-left: 4px solid var(--maple);
+}
+.s-photo-cta__example b { color: var(--navy); display: block; margin-bottom: 4px; font-size: 13px; }
+
+/* ============== Q&A ============== */
+.s-qa {
+  display: flex; flex-direction: column; gap: 14px;
+  margin-top: 28px;
+}
+.s-qa-item {
+  background: #fff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  overflow: hidden;
+  transition: box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.s-qa-item.is-open { border-color: var(--maple-soft); box-shadow: var(--shadow-soft); }
+.s-qa-item__q {
+  padding: 18px 22px;
+  cursor: pointer;
+  display: flex; gap: 16px; align-items: flex-start;
+  font-family: var(--font-jp-soft);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--navy);
+  list-style: none;
+}
+.s-qa-item__q::-webkit-details-marker { display: none; }
+.s-qa-item__q::before {
+  content: "Q";
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  background: var(--maple);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+}
+.s-qa-item__q::after {
+  content: "+";
+  margin-left: auto;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 22px;
+  color: var(--text-light);
+  transition: transform 0.25s ease;
+}
+.s-qa-item[open] .s-qa-item__q::after { content: "−"; }
+.s-qa-item__a {
+  padding: 0 22px 22px 66px;
+  font-size: 14px; line-height: 1.95;
+  color: var(--text-mid);
+  position: relative;
+}
+.s-qa-item__a::before {
+  content: "A.";
+  position: absolute;
+  left: 22px; top: 0;
+  color: var(--leaf-green);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* ============== About expert ============== */
+.s-expert {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  align-items: center;
+  margin-top: 30px;
+  background: #fff;
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  border: 1px solid var(--border-soft);
+}
+.s-expert__photo {
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid var(--gold);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 8px rgba(201,168,76,0.15);
+}
+.s-expert__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.s-expert__name-ja { font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.s-expert__name-en { font-family: var(--font-display); font-size: 11px; color: var(--gold); letter-spacing: 0.16em; margin-bottom: 14px; }
+.s-expert__bio { font-size: 14px; line-height: 1.95; color: var(--text-mid); }
+.s-expert__bio strong { color: var(--maple); font-weight: 700; }
+
+/* ============== Closer CTA ============== */
+.s-closer {
+  background: linear-gradient(135deg, var(--navy) 0%, #15294e 100%);
+  color: #fff;
+  border-radius: var(--radius-xl);
+  padding: 48px 40px;
+  margin-top: 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.s-closer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 20%, rgba(201,168,76,0.15), transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(194,69,62,0.15), transparent 50%);
+}
+.s-closer__inner { position: relative; z-index: 1; }
+.s-closer__title {
+  font-family: var(--font-jp-soft);
+  font-size: clamp(22px, 3.5vw, 30px);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+.s-closer__title em { font-style: normal; color: var(--gold-light); }
+.s-closer__sub { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.7); max-width: 540px; margin: 0 auto 28px; }
+.s-closer__buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.s-closer__buttons .s-btn--ghost { background: rgba(255,255,255,0.05); color: #fff; border-color: rgba(255,255,255,0.25); }
+.s-closer__buttons .s-btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ============== Footer (simple) ============== */
+.s-footer {
+  background: var(--navy-deep);
+  color: rgba(255,255,255,0.7);
+  padding: 36px 24px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.85;
+}
+.s-footer__mark { width: 52px; height: 52px; margin: 0 auto 12px; display: block; }
+.s-footer__wordmark { font-family: var(--font-serif); font-weight: 700; color: #fff; font-size: 14px; }
+.s-footer__wordmark small { display: block; font-family: var(--font-display); color: var(--gold); font-size: 9px; letter-spacing: 0.16em; margin-top: 3px; }
+.s-footer p { margin-top: 14px; font-size: 12px; color: rgba(255,255,255,0.5); }
+.s-footer__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 14px; }
+.s-footer__links a { font-size: 11px; color: rgba(255,255,255,0.45); transition: color 0.2s ease; }
+.s-footer__links a:hover { color: var(--gold); }
+
+/* ============== Floating LINE FAB ============== */
+.s-fab {
+  position: fixed;
+  bottom: 22px; right: 22px;
+  z-index: 200;
+  background: linear-gradient(135deg, var(--maple), #b03832);
+  color: #fff;
+  font-weight: 700;
+  padding: 16px 22px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 12px 32px rgba(194,69,62,0.40);
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.s-fab:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(194,69,62,0.50); }
+.s-fab::before { content: "💬"; font-size: 18px; }
+
+/* ============== Responsive ============== */
+@media (max-width: 820px) {
+  .s-hero__inner { grid-template-columns: 1fr; gap: 36px; }
+  .s-hero-photo-wrap { width: 260px; height: 260px; margin: 0 auto; }
+  .s-hero-badge--1 { left: -10px; }
+  .s-hero-badge--2 { right: -10px; }
+  .s-hero-badge--3 { left: 10px; }
+  .s-flow { grid-template-columns: repeat(2, 1fr); }
+  .s-flow::before { display: none; }
+  .s-photo-cta { grid-template-columns: 1fr; padding: 32px 24px; }
+  .s-expert { grid-template-columns: 1fr; text-align: center; }
+  .s-expert__photo { margin: 0 auto; }
+  .s-section { padding: 56px 20px; }
+}
+</style>
+
+<!-- ===== Schema.org ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "風営法 無料相談センター",
+  "serviceType": "風俗営業許可 無料相談",
+  "provider": {
+    "@type": "LegalService",
+    "name": "西岡行政書士事務所",
+    "url": "https://nishioka-gyosei.github.io/",
+    "telephone": "+81-90-8068-8527",
+    "address": { "@type": "PostalAddress", "streetAddress": "大手町4-6-22", "addressLocality": "広島市中区", "addressRegion": "広島県", "addressCountry": "JP" }
+  },
+  "areaServed": { "@type": "Place", "name": "広島県" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY", "description": "初回相談 無料" }
+}
+</script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="s-header">
+  <a href="index.html" class="s-brand">
+    <img src="assets/logo-transparent.png" alt="" class="s-brand__mark">
+    <div class="s-brand__txt">
+      <div class="s-brand__ja">西岡行政書士事務所</div>
+      <div class="s-brand__en">NISHIOKA GYOSEI SHOSHI OFFICE</div>
+    </div>
+  </a>
+  <nav class="s-nav">
+    <a href="fueihou.html">詳しい料金</a>
+    <a href="https://nishioka-gyosei.github.io/blog/">📚 コラム</a>
+    <a class="s-nav__cta" href="https://lin.ee/UKhZQbE" target="_blank" rel="noopener noreferrer">無料で相談する</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="s-hero">
+  <div class="s-hero__bg-blob"></div>
+  <div class="s-hero__bg-blob2"></div>
+  <div class="s-hero__inner">
+    <div class="s-hero__copy">
+      <div class="s-hero__greet">広島の<em>風営法 無料相談センター</em></div>
+      <h1 class="s-hero__title">
+        「<em class="accent">これって相談していいのかな？</em>」<br>
+        と思った時点で、もう一歩近づいています。
+      </h1>
+      <p class="s-hero__lead">
+        広島で<em>「キャバクラ・ガールズバー・スナック・ホストクラブ」</em>を始めたい、もしくは続けていきたい方の <em>「ふと気になる」</em>を、その日のうちに解決します。<br>
+        元広島県警察官13年の行政書士が、<strong style="color:var(--maple)">物件などの写真・LINE 1通</strong>から、お話を聞かせてもらいます。
+      </p>
+      <div class="s-hero__buttons">
+        <a class="s-btn s-btn--line" href="https://lin.ee/UKhZQbE" target="_blank" rel="noopener noreferrer">
+          💬 LINE で気軽に相談する
+        </a>
+        <a class="s-btn s-btn--ghost" href="#flow">
+          相談の流れを見る
+        </a>
+      </div>
+      <div class="s-hero__trust">
+        <span>初回相談 0円</span>
+        <span>顔出し不要</span>
+        <span>土日祝もOK</span>
+        <span>強引な営業なし</span>
+      </div>
+    </div>
+    <div class="s-hero__visual">
+      <div class="s-hero-photo-wrap">
+        <img src="assets/logo-transparent.png" alt="" class="s-hero-mark">
+        <div class="s-hero-photo">
+          <img src="assets/photo.jpg" alt="行政書士 西岡祐也">
+        </div>
+        <div class="s-hero-badge s-hero-badge--1">
+          <span class="s-hero-badge__icon">🚓</span>
+          <span>元警察官<strong>13年</strong></span>
+        </div>
+        <div class="s-hero-badge s-hero-badge--2">
+          <span class="s-hero-badge__icon">💬</span>
+          <span>LINE<strong>24h</strong>OK</span>
+        </div>
+        <div class="s-hero-badge s-hero-badge--3">
+          <span class="s-hero-badge__icon">💰</span>
+          <span>相談<strong>0円</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 悩み bubbles -->
+<section class="s-section s-section--paper">
+  <div class="s-section__inner">
+    <div class="s-section__eyebrow">よくあるお悩み</div>
+    <h2 class="s-section__title">「これ、ウチも対象なの？」<br>そんな声に、ぜんぶ答えます。</h2>
+    <p class="s-section__lead">
+      「相談するほどのことかな…」と迷う方ほど、お電話ください。<br>
+      ※ LINE は仕様上、通知が届かないことがあります。お急ぎの方は <a href="tel:09080688527" style="color: var(--maple); font-weight: 600; text-decoration: underline;">📞 090-8068-8527</a> までお電話ください。<br>
+      実際にいただいたご相談の例です。あなたの状況に近いものがあるかも。
+    </p>
+    <div class="s-bubbles">
+      <div class="s-bubble">
+        <div class="s-bubble__text">これからガールズバーをオープンしたいんですが、風営法と深夜営業届、どっちが必要ですか？</div>
+        <div class="s-bubble__person">
+          <div class="s-bubble__avatar">👩</div>
+          <div class="s-bubble__person-text">30代女性／オーナー予定</div>
+        </div>
+      </div>
+      <div class="s-bubble">
+        <div class="s-bubble__text">店舗物件を内見中。風営法的にOKな立地なのか、契約前に確認したいです。</div>
+        <div class="s-bubble__person">
+          <div class="s-bubble__avatar">👨</div>
+          <div class="s-bubble__person-text">40代男性／物件選定中</div>
+        </div>
+      </div>
+      <div class="s-bubble">
+        <div class="s-bubble__text">5年前に罰金歴があります。許可って取れるんですか？</div>
+        <div class="s-bubble__person">
+          <div class="s-bubble__avatar">🧑</div>
+          <div class="s-bubble__person-text">不安を抱えるオーナーさん</div>
+        </div>
+      </div>
+      <div class="s-bubble">
+        <div class="s-bubble__text">ぶっちゃけ、いくらかかるんですか？</div>
+        <div class="s-bubble__person">
+          <div class="s-bubble__avatar">💰</div>
+          <div class="s-bubble__person-text">予算を組みたい方</div>
+        </div>
+      </div>
+      <div class="s-bubble">
+        <div class="s-bubble__text">他で「ウチは無理」と断られたんですが、本当に無理ですか？</div>
+        <div class="s-bubble__person">
+          <div class="s-bubble__avatar">😟</div>
+          <div class="s-bubble__person-text">セカンドオピニオン希望</div>
+        </div>
+      </div>
+      <div class="s-bubble">
+        <div class="s-bubble__text">オープン日が決まっています。いつまでに動けば間に合いますか？</div>
+        <div class="s-bubble__person">
+          <div class="s-bubble__avatar">⏰</div>
+          <div class="s-bubble__person-text">時間との戦い</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Soudan flow -->
+<section class="s-section s-section--cream" id="flow">
+  <div class="s-section__inner">
+    <div class="s-section__eyebrow">相談の流れ</div>
+    <h2 class="s-section__title">LINE 1通から、その日のうちに返事が来ます。</h2>
+    <p class="s-section__lead">「無料相談」って身構えなくて大丈夫。<br>気軽に質問できる相手が広島にいる、ぐらいの感覚でどうぞ。</p>
+    <div class="s-flow">
+      <div class="s-flow-step">
+        <div class="s-flow-step__num">1</div>
+        <div class="s-flow-step__icon">📱</div>
+        <div class="s-flow-step__title">LINE でメッセージ</div>
+        <div class="s-flow-step__desc">業態・場所・状況を一言。写真があれば添えてください。</div>
+      </div>
+      <div class="s-flow-step">
+        <div class="s-flow-step__num">2</div>
+        <div class="s-flow-step__icon">🍁</div>
+        <div class="s-flow-step__title">西岡が返信</div>
+        <div class="s-flow-step__desc">通常24時間以内に。元警察官の視点で「ここが論点ですね」と整理します。<br><small style="color:var(--maple); font-weight:600;">※お急ぎはお電話を</small></div>
+      </div>
+      <div class="s-flow-step">
+        <div class="s-flow-step__num">3</div>
+        <div class="s-flow-step__icon">💬</div>
+        <div class="s-flow-step__title">気が済むまでやり取り</div>
+        <div class="s-flow-step__desc">写真の追加・追加質問など、何度でもどうぞ。営業電話はかけません。</div>
+      </div>
+      <div class="s-flow-step">
+        <div class="s-flow-step__num">4</div>
+        <div class="s-flow-step__icon">✅</div>
+        <div class="s-flow-step__title">納得してから判断</div>
+        <div class="s-flow-step__desc">自分で進めるか、依頼するか、もう少し考えるか——お任せください。</div>
+      </div>
+    </div>
+
+    <!-- Photo CTA -->
+    <div class="s-photo-cta">
+      <div>
+        <div class="s-photo-cta__head">
+          <em>物件などの写真</em> を送ってください。<br>
+          その場で <em>「いける / いけない」</em> を判定します。
+        </div>
+        <div class="s-photo-cta__body">
+          風営法でいちばん大事なのは「場所」と「構造」。<br>
+          物件の <strong>外観・周辺の地図・店内</strong> どれでも構いません。LINE で送ってもらえれば、内側を知っている目線で判定します。
+        </div>
+        <a class="s-btn s-btn--line" href="https://lin.ee/UKhZQbE" target="_blank" rel="noopener noreferrer">
+          📸 写真を送って相談する
+        </a>
+      </div>
+      <div class="s-photo-cta__example">
+        <b>例：こんな写真が役立ちます</b>
+        ・物件の外観（看板が見えるとなお良し）<br>
+        ・店内の見取図 or 内装写真<br>
+        ・物件の住所が分かるもの<br>
+        ・他社で言われた内容のスクショ
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Expert (西岡先生) -->
+<section class="s-section s-section--maple">
+  <div class="s-section__inner">
+    <div class="s-section__eyebrow">相談を担当するのは</div>
+    <h2 class="s-section__title">「窓口の中の人」を13年やっていた、<br>元警察官の行政書士です。</h2>
+    <div class="s-expert">
+      <div class="s-expert__photo">
+        <img src="assets/photo.jpg" alt="行政書士 西岡祐也">
+      </div>
+      <div>
+        <div class="s-expert__name-ja">西岡 祐也</div>
+        <div class="s-expert__name-en">YUYA NISHIOKA</div>
+        <p class="s-expert__bio">
+          広島県警察に <strong>13年間</strong> 勤務してきました。交番・パトカー・鑑識を経験する中で、風営法の現場・窓口にも数えきれないほど立ち会ってきました。<br>
+          だから「審査担当者が何を見ているか・どんな質問を投げてくるか」が、手に取るようにわかります。<br>
+          <strong>無理な依頼を強引にすすめることはしません。</strong> 「自分でやれそう」と判断されたら、そう伝えますし、必要なら他の専門家を紹介することもあります。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Q&A -->
+<section class="s-section s-section--paper">
+  <div class="s-section__inner">
+    <div class="s-section__eyebrow">よくある質問</div>
+    <h2 class="s-section__title">事前に知っておきたいこと、<br>ぜんぶ書いておきます。</h2>
+    <div class="s-qa">
+      <details class="s-qa-item">
+        <summary class="s-qa-item__q">本当に相談だけで終わっても大丈夫ですか？営業されませんか？</summary>
+        <div class="s-qa-item__a">
+          もちろん大丈夫です。「うちはこういう状況だけど、どうすればいい？」だけの相談、大歓迎です。<br>
+          こちらから営業電話をかけることもありませんし、「相談したのにあとで請求された」みたいなトラブルもありません。気軽にどうぞ。
+        </div>
+      </details>
+      <details class="s-qa-item">
+        <summary class="s-qa-item__q">LINEで顔写真や本名を出さなくてもいいですか？</summary>
+        <div class="s-qa-item__a">
+          はい、ニックネームでもOKです。実際にご依頼に進む段階で本名・身分証が必要になりますが、相談だけなら匿名で構いません。
+        </div>
+      </details>
+      <details class="s-qa-item">
+        <summary class="s-qa-item__q">「他社で断られた」案件でも相談OK？</summary>
+        <div class="s-qa-item__a">
+          むしろお声かけください。場所要件・人的要件・物件構造のどこで引っかかったかを聞かせていただければ、別ルートで進められる可能性を一緒に探します。
+        </div>
+      </details>
+      <details class="s-qa-item">
+        <summary class="s-qa-item__q">他県（県外）からの相談でも対応してもらえますか？</summary>
+        <div class="s-qa-item__a">
+          基本は広島県全域に対応していますが、県外のご相談もLINEで一度お聞きします。場合によっては、その地域の信頼できる行政書士をご紹介することもあります。
+        </div>
+      </details>
+      <details class="s-qa-item">
+        <summary class="s-qa-item__q">深夜だけど質問していい？</summary>
+        <div class="s-qa-item__a">
+          LINEなら24時間いつでもメッセージOKです。返信は翌営業日になることが多いですが、土日祝も対応しています。<br>
+          <strong style="color: var(--maple);">※ LINE は仕様上、通知が届かないことがあります。</strong>お急ぎの場合は、その旨をメッセージに添えていただくか、<a href="tel:09080688527" style="color: var(--maple); font-weight: 600; text-decoration: underline;">📞 090-8068-8527</a> までお電話ください。
+        </div>
+      </details>
+      <details class="s-qa-item">
+        <summary class="s-qa-item__q">相談から「実際の依頼」に進む場合の料金は？</summary>
+        <div class="s-qa-item__a">
+          料金はご相談後、正式なお見積もりを提示します。風営法1号許可は、店舗の規模・図面の複雑さ・法人/個人で変動するため、お見積もり制です。料金にご納得いただいてから着手するので、料金トラブルはありません。<a href="fueihou.html" style="color: var(--maple); text-decoration: underline;">詳しい料金ページはこちら</a>。
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Closer -->
+<section class="s-section s-section--cream">
+  <div class="s-section__inner">
+    <div class="s-closer">
+      <div class="s-closer__inner">
+        <h2 class="s-closer__title">「いまの状況、誰かに聞いてみたい」<br><em>その一言から始めましょう。</em></h2>
+        <p class="s-closer__sub">
+          相談料はいただきません。営業もしません。<br>
+          「ちょっと聞いてみたい」だけで、十分なご相談です。<br>
+          <small style="color: var(--gold-light); font-size: 12px; line-height: 1.7;">※ LINE は仕様上通知が届かないことがあります。お急ぎはお電話をご利用ください。</small>
+        </p>
+        <div class="s-closer__buttons">
+          <a class="s-btn s-btn--line" href="https://lin.ee/UKhZQbE" target="_blank" rel="noopener noreferrer">
+            💬 LINE で無料相談する
+          </a>
+          <a class="s-btn s-btn--ghost" href="tel:09080688527">
+            📞 090-8068-8527
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="s-footer">
+  <img src="assets/logo-transparent.png" alt="" class="s-footer__mark">
+  <div class="s-footer__wordmark">
+    西岡行政書士事務所
+    <small>NISHIOKA GYOSEI SHOSHI OFFICE</small>
+  </div>
+  <p>© 西岡行政書士事務所 ｜ 広島県行政書士会所属 ｜ 登録番号 22341036</p>
+  <p>広島市中区大手町4-6-22 ｜ TEL: 090-8068-8527 ｜ 9:00–19:00（土日祝対応可）</p>
+  <div class="s-footer__links">
+    <a href="index.html">トップ</a>
+    <a href="fueihou.html">風営法 詳細</a>
+    <a href="shinya-eigyou.html">深夜営業届</a>
+    <a href="police.html">警察申請まとめ</a>
+    <a href="https://nishioka-gyosei.github.io/blog/">コラム</a>
+  </div>
+</footer>
+
+<!-- Floating LINE FAB -->
+<a class="s-fab" href="https://lin.ee/UKhZQbE" target="_blank" rel="noopener noreferrer">
+  LINEで相談
+</a>
+
+<script>
+  // GA4 event tracking on key CTAs
+  const track = (name, params = {}) => { if (typeof gtag === 'function') gtag('event', name, params); };
+  document.querySelectorAll('a[href*="lin.ee"]').forEach((el) => {
+    el.addEventListener('click', () => track('soudan_line_click', { location: el.closest('section')?.className || 'header' }));
+  });
+  document.querySelectorAll('a[href^="tel:"]').forEach((el) => {
+    el.addEventListener('click', () => track('soudan_phone_click'));
+  });
+  // FAQ open events
+  document.querySelectorAll('.s-qa-item').forEach((item) => {
+    item.addEventListener('toggle', () => {
+      if (item.open) track('soudan_faq_open', { question: item.querySelector('.s-qa-item__q')?.textContent?.slice(0, 40) });
+    });
+  });
+</script>
+
+</body>
+</html>
