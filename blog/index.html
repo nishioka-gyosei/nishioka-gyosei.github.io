@@ -1,909 +1,999 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>コラム ｜ 西岡行政書士事務所 — 元警察官が語る、許認可の実務</title>
-<meta name="description" content="広島の許認可・行政手続きに関するコラム。元広島県警察官13年の行政書士が、風営法・深夜営業届・古物商許可など、警察申請の実務を解説します。">
-<link rel="canonical" href="https://nishioka-gyosei.github.io/blog/">
 
-<meta property="og:title" content="コラム ｜ 元警察官が語る、許認可の実務｜西岡行政書士事務所">
-<meta property="og:description" content="元広島県警察官13年の行政書士が、風営法・深夜営業届・古物商許可の実務を解説します。">
+<!-- ============================================================
+     SEO / GEO 再構築版 index.html
+     方針:
+     1. 完全静的HTML（React/Babel排除）— AIクローラーは JS を実行しない
+     2. JSON-LD @graph 統合（LegalService / Person / WebSite / FAQPage / Breadcrumb）
+     3. FAQ・定義文・数値を本文に直書き — LLMが引用しやすい「自己完結文」
+     4. セマンティックHTML5 + 見出し階層の厳密化（h1は1つ）
+     ============================================================ -->
+
+<title>広島の風営法・古物商・深夜営業届なら元警察官の行政書士｜西岡行政書士事務所（広島市中区）</title>
+<meta name="description" content="西岡行政書士事務所は、広島県警察に13年勤務した元警察官・西岡祐也が代表を務める広島市中区の行政書士事務所。風俗営業許可（風営法）12万円〜、深夜営業届出7.7万円〜（図面込み）、古物商許可6万円〜。建設業許可・会社設立・創業融資も対応。初回相談無料・土日祝可・LINE24時間受付。">
+<link rel="canonical" href="https://nishioka-gyosei.github.io/">
+<meta name="author" content="西岡祐也（行政書士・元広島県警察官）">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+<!-- Geo（ローカルSEO） -->
+<meta name="geo.region" content="JP-34">
+<meta name="geo.placename" content="広島市中区">
+<meta name="geo.position" content="34.3889;132.4520">
+<meta name="ICBM" content="34.3889, 132.4520">
+
+<!-- Open Graph -->
+<meta property="og:title" content="広島の風営法・古物商・深夜営業届なら元警察官の行政書士｜西岡行政書士事務所">
+<meta property="og:description" content="元広島県警察官13年の行政書士・西岡祐也。警察窓口の許可申請（風営法・深夜営業届・古物商・道路使用許可）から建設業許可・会社設立まで。広島市中区。初回相談無料・土日祝対応・LINE24時間受付。">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:url" content="https://nishioka-gyosei.github.io/blog/">
+<meta property="og:url" content="https://nishioka-gyosei.github.io/">
+<meta property="og:site_name" content="西岡行政書士事務所">
 <meta property="og:image" content="https://nishioka-gyosei.github.io/photo.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="行政書士 西岡祐也（元広島県警察官13年）">
+
+<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="広島の風営法・古物商・深夜営業届｜元警察官の行政書士・西岡行政書士事務所">
+<meta name="twitter:description" content="元広島県警察官13年の行政書士。風営法12万円〜・深夜営業届7.7万円〜・古物商6万円〜。広島市中区。初回無料相談・土日祝対応。">
+<meta name="twitter:image" content="https://nishioka-gyosei.github.io/photo.jpg">
 
-<link rel="icon" type="image/png" href="../assets/logo-mark.png">
+<link rel="icon" type="image/png" href="assets/logo-mark.png">
 
+<!-- Fonts: preconnect で初回接続を高速化 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700;900&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 
-<!-- GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G7400P5VVY"></script>
+<!-- LCP画像の先読み -->
+<link rel="preload" as="image" href="assets/logo-transparent.png">
+
+<!-- ===== Google Analytics (GA4) ===== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6JQDLBVSQ8"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
-  gtag('config', 'G-G7400P5VVY');
+  gtag('config', 'G-6JQDLBVSQ8', { send_page_view: true });
+  window.gtag = gtag;
+</script>
+
+<!-- ============================================================
+     Schema.org JSON-LD — @graph 統合版
+     LegalService / Person / WebSite / FAQPage / BreadcrumbList
+     本文のFAQと完全一致させること（不一致はリッチリザルト除外要因）
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "alternateName": "Nishioka Gyosei Shoshi Office",
+      "description": "広島県警察に13年勤務した元警察官の行政書士が代表を務める、広島市中区の行政書士事務所。風俗営業許可（風営法）・深夜営業届出・古物商許可・道路使用許可など警察窓口の許可申請を専門とし、建設業許可・会社設立・創業融資にも対応。",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "logo": "https://nishioka-gyosei.github.io/assets/logo-transparent.png",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "priceRange": "¥¥",
+      "currenciesAccepted": "JPY",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3889,
+        "longitude": 132.4520
+      },
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      }],
+      "founder": { "@id": "https://nishioka-gyosei.github.io/#person" },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "広島県" },
+        { "@type": "City", "name": "広島市" },
+        { "@type": "City", "name": "呉市" },
+        { "@type": "City", "name": "東広島市" },
+        { "@type": "City", "name": "廿日市市" },
+        { "@type": "City", "name": "福山市" }
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://lin.ee/UKhZQbE"
+      ],
+      "knowsAbout": ["風俗営業許可", "風営法", "深夜酒類提供飲食店営業届出", "古物商許可", "道路使用許可", "道路占用許可", "建設業許可", "会社設立", "創業融資", "飲食店営業許可", "酒類販売業免許", "農地転用", "民泊", "遺言書作成", "改葬許可"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "取り扱い業務・報酬",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "風俗営業許可申請（風営法1号営業）", "url": "https://nishioka-gyosei.github.io/fueihou.html" }, "priceSpecification": { "@type": "PriceSpecification", "price": 120000, "priceCurrency": "JPY", "valueAddedTaxIncluded": true }, "description": "キャバクラ・ガールズバー・ホストクラブ等の風俗営業許可。図面作成から警察署への提出まで一括対応。120,000円〜" },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "深夜酒類提供飲食店営業届出", "url": "https://nishioka-gyosei.github.io/shinya-eigyou.html" }, "priceSpecification": { "@type": "PriceSpecification", "price": 77000, "priceCurrency": "JPY", "valueAddedTaxIncluded": true }, "description": "深夜0時以降に酒類を提供するバー・スナック等の届出。図面作成込み 77,000円〜（税込）" },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "古物商許可申請", "url": "https://nishioka-gyosei.github.io/kobutu.html" }, "priceSpecification": { "@type": "PriceSpecification", "price": 60000, "priceCurrency": "JPY", "valueAddedTaxIncluded": true }, "description": "リサイクルショップ・中古車販売・フリマ転売事業者向けの古物商許可。60,000円〜（税込）" },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "道路使用・道路占用許可申請", "url": "https://nishioka-gyosei.github.io/douroshiyou.html" }, "description": "工事・足場・看板設置等の道路使用許可・占用許可。要見積もり" },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "建設業許可申請", "url": "https://nishioka-gyosei.github.io/kensetsu.html" }, "description": "新規取得・更新・業種追加・決算変更届。要見積もり" },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "会社設立（株式会社・合同会社）", "url": "https://nishioka-gyosei.github.io/kaisha-setsuritsu.html" }, "priceSpecification": { "@type": "PriceSpecification", "price": 150000, "priceCurrency": "JPY", "valueAddedTaxIncluded": true }, "description": "定款作成から法務局提出まで一括サポート。150,000円〜（税込・実費別）" },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "飲食店営業許可・酒類販売業免許", "url": "https://nishioka-gyosei.github.io/inshokuten.html" }, "priceSpecification": { "@type": "PriceSpecification", "price": 55000, "priceCurrency": "JPY", "valueAddedTaxIncluded": true }, "description": "保健所・税務署への申請・届出。55,000円〜（税込）" },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "創業融資サポート（日本政策金融公庫）", "url": "https://nishioka-gyosei.github.io/sogyo-yushi.html" }, "priceSpecification": { "@type": "PriceSpecification", "price": 55000, "priceCurrency": "JPY", "valueAddedTaxIncluded": true }, "description": "事業計画書作成から面談対策まで。55,000円〜＋成功報酬" },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "遺言書作成サポート", "url": "https://nishioka-gyosei.github.io/igon.html" }, "priceSpecification": { "@type": "PriceSpecification", "price": 66000, "priceCurrency": "JPY", "valueAddedTaxIncluded": true }, "description": "自筆証書遺言・公正証書遺言。66,000円〜（税込）" },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "墓じまい（改葬許可申請）", "url": "https://nishioka-gyosei.github.io/hakajimai.html" }, "priceSpecification": { "@type": "PriceSpecification", "price": 44000, "priceCurrency": "JPY", "valueAddedTaxIncluded": true }, "description": "改葬許可申請・関係機関への連絡代行。44,000円〜（税込）" }
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#person",
+      "name": "西岡祐也",
+      "alternateName": "Yuya Nishioka",
+      "jobTitle": "行政書士",
+      "description": "広島県警察に13年間勤務（交番・パトカー・鑑識等）した後、行政書士試験に合格し西岡行政書士事務所を開業。広島県行政書士会所属、登録番号22341036。警察窓口の許可申請（風営法・深夜営業届・古物商・道路使用許可）を専門とする。",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "url": "https://nishioka-gyosei.github.io/",
+      "worksFor": { "@id": "https://nishioka-gyosei.github.io/#office" },
+      "sameAs": ["https://note.com/nishioka2405"],
+      "knowsAbout": ["風営法", "古物営業法", "道路交通法", "警察行政", "建設業法", "会社設立"],
+      "memberOf": { "@type": "Organization", "name": "広島県行政書士会" },
+      "identifier": { "@type": "PropertyValue", "propertyID": "行政書士登録番号", "value": "22341036" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "publisher": { "@id": "https://nishioka-gyosei.github.io/#office" },
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://nishioka-gyosei.github.io/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "広島で風俗営業許可（風営法）を行政書士に依頼すると費用はいくらですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "西岡行政書士事務所の風俗営業許可（風営法1号営業）の報酬は120,000円〜です。キャバクラ・ガールズバー・ホストクラブ等が対象で、求積図面の作成から広島県警察各署への申請・補正対応まで一括して代行します。許可までの標準処理期間は申請受理から約55日（土日祝を除く）です。" }
+        },
+        {
+          "@type": "Question",
+          "name": "深夜営業届出（深夜酒類提供飲食店）の費用と期間はどれくらいですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "深夜酒類提供飲食店営業の届出は77,000円〜（税込・図面作成込み）で承っています。深夜0時以降に酒類を提供するバー・スナック等が対象で、営業開始日の10日前までに警察署へ届け出る必要があります。図面作成・届出書類の作成・警察署対応をすべて代行します。" }
+        },
+        {
+          "@type": "Question",
+          "name": "広島で古物商許可を取るにはどうすればいいですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "古物商許可は、営業所の所在地を管轄する警察署（公安委員会）に申請します。標準処理期間は約40日です。リサイクルショップ・中古車販売・フリマやネットでの転売事業が対象です。西岡行政書士事務所では書類作成から警察署への申請まで60,000円〜（税込）で代行します。" }
+        },
+        {
+          "@type": "Question",
+          "name": "元警察官の行政書士に警察窓口の申請を依頼するメリットは何ですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "風営法・深夜営業届・古物商・道路使用許可はすべて警察署が窓口の申請です。代表の西岡祐也は広島県警察に13年勤務しており、窓口の審査担当者がどの書類のどこを確認し、何が差し戻しの原因になるかを内側から経験しています。そのため書類不備による差し戻しを最小限に抑え、最短での許可取得につながります。" }
+        },
+        {
+          "@type": "Question",
+          "name": "相談に費用はかかりますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "初回相談は無料です。LINEなら24時間受け付けており、「これは許可が必要か知りたい」「費用感だけ確認したい」という段階のご相談でも費用はかかりません。正式にご依頼いただく前に必ずお見積もりを提示します。" }
+        },
+        {
+          "@type": "Question",
+          "name": "土日祝や夜間でも対応してもらえますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "受付時間は9:00〜19:00で、土日祝も対応可能です。現場で忙しい建設業者の方や、夜間営業の飲食店オーナーの方でもご相談いただけるよう、LINEでの相談は24時間受け付けています。" }
+        },
+        {
+          "@type": "Question",
+          "name": "対応エリアはどこまでですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "事務所は広島市中区大手町4-6-22にあり、広島市内を中心に広島県全域（呉市・東広島市・廿日市市・福山市など）に対応しています。警察署への申請は管轄ごとに窓口が異なりますが、県内各署での申請経験があります。" }
+        }
+      ]
+    }
+  ]
+}
 </script>
 
 <style>
+/* ============================================================
+   西岡行政書士事務所 — Design Tokens（静的版）
+   navy + gold / Noto Serif JP + Oswald — 既存ブランド踏襲
+   ============================================================ */
 :root {
-  --navy: #0d1f3c;
-  --navy-mid: #1a3260;
-  --navy-deep: #081425;
-  --gold: #c9a84c;
-  --gold-light: #e8c97a;
-  --gold-deep: #a88a35;
-  --cream: #f8f5ef;
-  --paper: #fffdf7;
-  --maple: #c2453e;
-  --maple-tint: #fce6e1;
-  --leaf: #5d7a55;
-  --ink: #1a1a1a;
-  --ink-mid: #4a4a4a;
-  --ink-light: #888;
-  --hairline: #e0dbd0;
-  --hairline-soft: #efeae0;
-  --line-green: #06C755;
+  --navy:#0d1f3c; --navy-mid:#1a3260; --navy-light:#243f7a; --navy-deep:#081425;
+  --gold:#c9a84c; --gold-light:#e8c97a;
+  --gold-tint:rgba(201,168,76,.12); --gold-line:rgba(201,168,76,.30);
+  --cream:#f8f5ef; --white:#fff; --border:#e0dbd0; --border-soft:#efeae0;
+  --text:#1a1a1a; --text-mid:#4a4a4a; --text-light:#888;
+  --line-green:#06C755;
+  --font-serif:'Noto Serif JP','Yu Mincho','Hiragino Mincho ProN',serif;
+  --font-sans:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;
+  --font-display:'Oswald','Noto Sans JP',sans-serif;
+  --ease:cubic-bezier(.2,.7,.3,1); --t-quick:.15s; --t-base:.2s;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-sans);color:var(--text);background:var(--white);line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:var(--gold);color:var(--navy)}
 
-  --font-jp: 'Noto Sans JP', system-ui, sans-serif;
-  --font-serif: 'Noto Serif JP', 'Yu Mincho', serif;
-  --font-display: 'Oswald', sans-serif;
-}
+.nx-eyebrow{font-family:var(--font-display);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px;color:var(--gold)}
+.nx-eyebrow--white{color:rgba(255,255,255,.5)}
+.nx-section-title{font-family:var(--font-serif);font-size:clamp(22px,4vw,32px);font-weight:700;line-height:1.4;margin-bottom:20px;color:var(--navy)}
+.nx-section-title--white{color:#fff}
+.nx-lead{font-size:15px;line-height:1.85;max-width:600px;margin-bottom:48px;color:var(--text-mid)}
+.nx-lead--on-navy{color:rgba(255,255,255,.65)}
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-jp);
-  color: var(--ink);
-  background: var(--cream);
-  line-height: 1.75;
-  font-size: 15px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-a { color: inherit; text-decoration: none; }
-button { font-family: inherit; cursor: pointer; border: none; background: none; }
-::selection { background: var(--gold); color: var(--navy); }
+.nx-btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;padding:14px 28px;border-radius:6px;letter-spacing:.04em;transition:background var(--t-base) var(--ease),transform var(--t-quick) var(--ease),color var(--t-base) var(--ease),border-color var(--t-base) var(--ease);cursor:pointer;white-space:nowrap}
+.nx-btn--primary{background:var(--gold);color:var(--navy);border:1px solid var(--gold)}
+.nx-btn--primary:hover{background:var(--gold-light);transform:translateY(-1px)}
+.nx-btn--outline{border:1px solid rgba(255,255,255,.4);color:#fff;background:transparent;font-weight:500}
+.nx-btn--outline:hover{border-color:var(--gold);color:var(--gold)}
+.nx-btn--header{background:var(--gold);color:var(--navy);font-size:12px;padding:8px 16px;border-radius:4px;border:1px solid var(--gold)}
+.nx-btn--header:hover{background:var(--gold-light)}
+.nx-btn--line{background:var(--line-green);color:#fff;font-size:13px;padding:10px 20px;border-radius:5px;border:1px solid var(--line-green);width:100%;justify-content:center}
+.nx-btn--phone{background:var(--cream);color:var(--navy);font-size:18px;font-weight:700;padding:10px 20px;border-radius:5px;border:1px solid var(--cream);width:100%;display:block;text-align:center}
+.nx-btn--phone small{display:block;font-size:11px;font-weight:400;color:var(--text-light);margin-top:2px;letter-spacing:0}
+.nx-btn--sim{background:var(--gold);color:var(--navy);border:1px solid var(--gold);padding:14px 20px;border-radius:8px;justify-content:center;width:100%}
+.nx-btn--sim:hover{background:var(--gold-light);transform:translateY(-1px)}
 
-/* ============ HEADER ============ */
-.h {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(13,31,60,0.97);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(201,168,76,0.3);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 24px; height: 64px;
-}
-.h__brand { display: flex; align-items: center; gap: 12px; }
-.h__mark { width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.35)); }
-.h__txt { line-height: 1.25; }
-.h__ja { font-family: var(--font-serif); font-weight: 700; font-size: 14px; color: #fff; letter-spacing: 0.02em; }
-.h__en { font-family: var(--font-display); font-size: 10px; letter-spacing: 0.15em; color: var(--gold); margin-top: 2px; }
-.h__nav { display: flex; align-items: center; gap: 14px; }
-.h__link { color: rgba(255,255,255,0.7); font-size: 12px; transition: color 0.2s; }
-.h__link:hover { color: var(--gold); }
-.h__cta {
-  background: var(--gold); color: var(--navy);
-  font-size: 12px; font-weight: 700;
-  padding: 8px 16px; border-radius: 4px;
-  letter-spacing: 0.05em;
-}
-.h__cta:hover { background: var(--gold-light); }
-@media (max-width: 640px) {
-  .h__link { display: none; }
-}
+.nx-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.4);color:var(--gold-light);font-size:12px;font-weight:500;padding:6px 14px;border-radius:20px;letter-spacing:.08em;width:fit-content}
+.nx-hero-badge::before{content:"●";font-size:8px;color:var(--gold)}
+.nx-police-tag{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;font-size:13px;font-weight:500;padding:9px 16px 9px 14px;border-radius:4px;border-left:3px solid var(--gold);transition:transform var(--t-base) var(--ease),background var(--t-base) var(--ease)}
+.nx-police-tag:hover{transform:translateY(-2px);background:var(--navy-mid)}
+.nx-group-label{font-size:11px;font-weight:700;letter-spacing:.18em;display:inline-block;padding:5px 16px;margin-bottom:20px;border-radius:2px}
+.nx-group-label--navy{background:var(--navy);color:#fff}
+.nx-group-label--gold{background:var(--gold);color:var(--navy)}
+.nx-sim-chip{font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);white-space:nowrap}
 
-/* ============ HERO ============ */
-.hero {
-  background: radial-gradient(ellipse at 30% 50%, var(--navy-mid) 0%, var(--navy) 60%, var(--navy-deep) 100%);
-  color: #fff;
-  padding: 80px 24px 88px;
-  position: relative;
-  overflow: hidden;
-}
-.hero__pattern {
-  position: absolute; inset: 0;
-  background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(201,168,76,0.06) 80px),
-    repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(201,168,76,0.06) 80px);
-  pointer-events: none;
-}
-.hero__seal {
-  position: absolute;
-  right: -120px; top: 50%;
-  transform: translateY(-50%);
-  width: clamp(320px, 38vw, 520px);
-  opacity: 0.16;
-  filter: drop-shadow(0 8px 40px rgba(0,0,0,0.4));
-  pointer-events: none;
-}
-.hero__inner { position: relative; max-width: 1200px; margin: 0 auto; }
-.hero__eyebrow {
-  display: inline-flex; align-items: center; gap: 12px;
-  font-family: var(--font-display);
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 0.24em; text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 18px;
-}
-.hero__eyebrow::before {
-  content: ""; display: block;
-  width: 32px; height: 2px;
-  background: var(--gold);
-}
-.hero__title {
-  font-family: var(--font-serif);
-  font-size: clamp(36px, 6vw, 64px);
-  font-weight: 900;
-  line-height: 1.25;
-  letter-spacing: 0.02em;
-  margin-bottom: 22px;
-}
-.hero__title em {
-  font-style: normal;
-  color: var(--gold-light);
-  position: relative;
-}
-.hero__lead {
-  font-size: 16px;
-  line-height: 1.95;
-  color: rgba(255,255,255,0.72);
-  max-width: 640px;
-  margin-bottom: 44px;
-}
-.hero__lead strong { color: var(--gold-light); font-weight: 500; }
-.hero__stats {
-  display: flex;
-  gap: 0;
-  flex-wrap: wrap;
-  margin-top: 32px;
-}
-.hero__stat {
-  padding: 16px 28px 16px 0;
-  margin-right: 28px;
-  border-right: 1px solid rgba(255,255,255,0.18);
-}
-.hero__stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
-.hero__stat-num {
-  font-family: var(--font-display);
-  font-size: 36px; font-weight: 700;
-  color: var(--gold);
-  line-height: 1; letter-spacing: -0.02em;
-}
-.hero__stat-num small { font-size: 16px; color: rgba(255,255,255,0.55); margin-left: 4px; font-weight: 400; }
-.hero__stat-label {
-  font-family: var(--font-display);
-  font-size: 10px; letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  margin-top: 6px;
-}
+.nx-stat{position:relative;padding-left:18px}
+.nx-stat::before{content:"";position:absolute;left:0;top:4px;bottom:12px;width:2px;background:linear-gradient(180deg,var(--gold),rgba(201,168,76,.1))}
+.nx-stat__val{font-family:var(--font-display);font-size:48px;font-weight:700;color:var(--gold);line-height:1}
+.nx-stat__val span{font-size:20px;margin-left:2px;color:rgba(201,168,76,.7)}
+.nx-stat__label{font-family:var(--font-display);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:6px;white-space:nowrap}
+.nx-career-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+.nx-career-item__dot{width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:7px;flex-shrink:0}
+.nx-career-item__text{font-size:12px;color:rgba(255,255,255,.7);line-height:1.5}
 
-/* ============ FILTER ============ */
-.filter-bar {
-  position: sticky;
-  top: 64px; z-index: 90;
-  background: var(--paper);
-  border-bottom: 1px solid var(--hairline);
-  padding: 16px 24px;
-  display: flex; align-items: center; gap: 8px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-.filter-bar::-webkit-scrollbar { display: none; }
-.filter-bar { scrollbar-width: none; }
-.filter-bar__inner {
-  max-width: 1200px; margin: 0 auto;
-  width: 100%;
-  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-}
-.filter-bar__lbl {
-  font-family: var(--font-display);
-  font-size: 10px; letter-spacing: 0.20em;
-  color: var(--ink-light);
-  margin-right: 8px;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.filter-btn {
-  padding: 9px 16px;
-  font-size: 13px; font-weight: 500;
-  color: var(--ink-mid);
-  background: #fff;
-  border: 1px solid var(--hairline);
-  border-radius: 99px;
-  white-space: nowrap;
-  transition: all 0.18s ease;
-  display: inline-flex; align-items: center; gap: 6px;
-}
-.filter-btn:hover { border-color: var(--navy); color: var(--navy); }
-.filter-btn.active {
-  background: var(--navy); color: #fff;
-  border-color: var(--navy);
-  box-shadow: 0 4px 12px rgba(13,31,60,0.18);
-}
-.filter-btn__count {
-  font-family: var(--font-display);
-  font-size: 11px;
-  opacity: 0.65;
-  letter-spacing: 0.04em;
-}
-.filter-btn.active .filter-btn__count { color: var(--gold-light); opacity: 1; }
+/* HEADER */
+.nx-header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,31,60,.97);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px;border-bottom:1px solid rgba(201,168,76,.3)}
+.nx-header__brand{display:flex;align-items:center;gap:12px}
+.nx-header__mark{width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 1px 3px rgba(0,0,0,.35));flex-shrink:0;transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+.nx-header__brand:hover .nx-header__mark{transform:rotate(-6deg) scale(1.08)}
+.nx-header__logo{font-family:var(--font-serif);font-size:14px;font-weight:700;color:#fff;line-height:1.3;letter-spacing:.02em}
+.nx-header__logo small{color:var(--gold);display:block;font-size:10px;font-weight:400;letter-spacing:.1em;font-family:var(--font-display)}
+.nx-header__nav{display:flex;align-items:center;gap:18px}
+.nx-header__link{color:rgba(255,255,255,.7);font-size:12px;transition:color var(--t-base) var(--ease)}
+.nx-header__link:hover{color:var(--gold)}
 
-/* ============ ARTICLES ============ */
-.articles { max-width: 1200px; margin: 0 auto; padding: 56px 24px 72px; }
+/* HERO */
+.nx-hero{min-height:100vh;background:radial-gradient(ellipse at 30% 40%,#1a3260 0%,#0d1f3c 55%,#081425 100%);position:relative;display:flex;flex-direction:column;justify-content:center;padding:120px 24px 80px;overflow:hidden}
+.nx-hero__pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(201,168,76,.06) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(201,168,76,.06) 80px);pointer-events:none}
+.nx-hero__seal{position:absolute;right:-80px;top:50%;transform:translateY(-50%);width:clamp(380px,48vw,620px);height:auto;opacity:.2;pointer-events:none;filter:drop-shadow(0 8px 40px rgba(0,0,0,.4));z-index:0;animation:sealFloat 9s ease-in-out infinite}
+@keyframes sealFloat{0%,100%{transform:translateY(-50%) rotate(0)}50%{transform:translateY(calc(-50% - 14px)) rotate(2deg)}}
+.nx-hero__inner{position:relative;max-width:840px;margin:0 auto;width:100%}
+.nx-hero__display{font-family:var(--font-display);font-size:clamp(42px,8vw,80px);font-weight:700;color:#fff;letter-spacing:-.01em;line-height:1;margin-bottom:8px;position:relative}
+.nx-hero__display span{color:var(--gold)}
+.nx-hero__display::after{content:"";position:absolute;left:0;bottom:-14px;width:92px;height:3px;background:linear-gradient(90deg,var(--gold),transparent);border-radius:2px}
+.nx-hero__jp{font-family:var(--font-serif);font-size:clamp(18px,4vw,28px);font-weight:700;color:rgba(255,255,255,.92);margin:0 0 28px;letter-spacing:.04em}
+.nx-hero__copy{font-size:clamp(14px,2.5vw,17px);color:rgba(255,255,255,.65);max-width:560px;line-height:1.85;margin-bottom:24px}
+.nx-hero__copy strong{color:var(--gold-light);font-weight:500}
+.nx-hero__meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.nx-hero-chip{display:inline-flex;align-items:baseline;gap:8px;font-family:var(--font-display);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:5px 0;white-space:nowrap}
+.nx-hero-chip strong{color:var(--gold);font-weight:500;font-size:16px;letter-spacing:0}
+.nx-hero-chip + .nx-hero-chip{padding-left:14px;border-left:1px solid rgba(255,255,255,.14)}
+.nx-hero__buttons{display:flex;flex-wrap:wrap;gap:12px}
+.nx-hero__scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.35);font-family:var(--font-display);font-size:11px;font-weight:500;letter-spacing:.18em;display:flex;flex-direction:column;align-items:center;gap:8px}
+.nx-hero__scroll::after{content:"";width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);animation:scrollLine 1.8s ease-in-out infinite}
+@keyframes scrollLine{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:.4;transform:scaleY(.6)}}
 
-.section-divider {
-  margin-bottom: 32px;
-  display: flex; align-items: center; gap: 16px;
-}
-.section-divider__eyebrow {
-  font-family: var(--font-display);
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--maple);
-}
-.section-divider__title {
-  font-family: var(--font-serif);
-  font-size: 24px; font-weight: 700;
-  color: var(--navy);
-}
-.section-divider__line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, var(--hairline) 0%, transparent 100%);
-}
-.section-divider__count {
-  font-family: var(--font-display);
-  font-size: 13px;
-  color: var(--ink-light);
-  letter-spacing: 0.08em;
-}
+/* SECTIONS */
+.nx-section{position:relative;overflow:hidden}
+.nx-section__num{position:absolute;top:28px;right:28px;font-family:var(--font-display);font-size:clamp(80px,12vw,180px);font-weight:700;line-height:1;color:rgba(13,31,60,.04);letter-spacing:-.04em;pointer-events:none;user-select:none;z-index:0}
+.nx-section--dark .nx-section__num{color:rgba(201,168,76,.08)}
+.nx-bracket{position:absolute;width:22px;height:22px;pointer-events:none;z-index:1}
+.nx-bracket--tl{top:28px;left:28px;border-top:2px solid var(--gold);border-left:2px solid var(--gold)}
+.nx-bracket--br{bottom:28px;right:28px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold)}
+.nx-section--dark .nx-bracket{opacity:.6}
+.nx-inner{max-width:840px;margin:0 auto;position:relative;z-index:1}
 
-/* Featured top article */
-.featured-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 24px;
-  margin-bottom: 56px;
-}
-@media (max-width: 880px) { .featured-grid { grid-template-columns: 1fr; } }
+/* POLICE */
+.nx-police{background:var(--cream);padding:80px 24px}
+.nx-police__tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:48px}
+.nx-quote{background:linear-gradient(135deg,#0d1f3c 0%,#15294e 50%,#0d1f3c 100%);border:1px solid rgba(201,168,76,.18);border-radius:8px;padding:44px 48px 40px;position:relative;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.18)}
+.nx-quote::before{content:"「";position:absolute;top:-38px;left:14px;font-family:var(--font-serif);font-size:200px;color:rgba(201,168,76,.2);line-height:1}
+.nx-quote p{font-family:var(--font-serif);font-size:clamp(16px,2.5vw,19px);color:#fff;line-height:1.9;position:relative;z-index:1}
+.nx-quote__author{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-family:var(--font-display);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);position:relative;z-index:1}
+.nx-quote__author::before{content:"";display:inline-block;width:28px;height:1px;background:var(--gold)}
 
-.featured-main {
-  background: #fff;
-  border-radius: 16px;
-  padding: 36px;
-  border: 1px solid var(--hairline-soft);
-  position: relative;
-  overflow: hidden;
-  display: flex; flex-direction: column;
-  transition: all 0.25s ease;
-}
-.featured-main:hover {
-  border-color: var(--gold);
-  transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(13,31,60,0.10);
-}
-.featured-main::before {
-  content: "";
-  position: absolute;
-  top: 0; right: 0;
-  width: 4px;
-  height: 80px;
-  background: linear-gradient(180deg, var(--maple), transparent);
-}
-.featured-main__num {
-  font-family: var(--font-display);
-  font-size: 96px;
-  font-weight: 700;
-  color: var(--hairline-soft);
-  line-height: 1; letter-spacing: -0.04em;
-  margin-bottom: -32px;
-  position: relative;
-}
-.featured-main__cat {
-  display: inline-block;
-  padding: 4px 12px;
-  font-family: var(--font-display);
-  font-size: 10px; font-weight: 500;
-  letter-spacing: 0.20em; text-transform: uppercase;
-  border-radius: 4px;
-  margin-bottom: 14px;
-  color: #fff;
-}
-.featured-main__title {
-  font-family: var(--font-serif);
-  font-size: clamp(22px, 3vw, 28px);
-  font-weight: 700;
-  line-height: 1.5;
-  color: var(--navy);
-  margin-bottom: 14px;
-}
-.featured-main__body {
-  font-size: 14px;
-  color: var(--ink-mid);
-  line-height: 1.95;
-  margin-bottom: auto;
-  max-width: 500px;
-}
-.featured-main__meta {
-  margin-top: 24px;
-  padding-top: 20px;
-  border-top: 1px dashed var(--hairline);
-  display: flex; justify-content: space-between; align-items: center;
-}
-.featured-main__date {
-  font-family: var(--font-display);
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  color: var(--ink-light);
-}
-.featured-main__arrow {
-  font-family: var(--font-display);
-  font-size: 13px; font-weight: 500;
-  letter-spacing: 0.10em;
-  color: var(--navy);
-  display: inline-flex; align-items: center; gap: 6px;
-  transition: gap 0.2s ease;
-}
-.featured-main:hover .featured-main__arrow { gap: 12px; color: var(--maple); }
+/* SERVICES */
+.nx-services{padding:80px 24px;background:var(--white)}
+.nx-service-group{margin-bottom:56px}
+.nx-service-group:last-child{margin-bottom:0}
+.nx-service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(13,31,60,.06)}
+.nx-service-card{background:#fff;padding:24px;transition:background var(--t-base) var(--ease);display:flex;flex-direction:column;position:relative}
+.nx-service-card:hover{background:#fafaf8}
+.nx-service-card::before{content:"";position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 14px 14px 0;border-color:transparent var(--gold) transparent transparent;opacity:0;transition:opacity .25s ease}
+.nx-service-card:hover::before{opacity:1}
+.nx-service-card__icon{font-size:22px;margin-bottom:10px;transition:transform .4s cubic-bezier(.34,1.56,.64,1);transform-origin:bottom left}
+.nx-service-card:hover .nx-service-card__icon{transform:scale(1.18) rotate(-4deg)}
+.nx-service-card__title{font-family:var(--font-serif);font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.nx-service-card__desc{font-size:12px;color:var(--text-light);line-height:1.7;flex:1}
+.nx-service-card__price{margin-top:12px;font-size:14px;font-weight:700;color:var(--gold);font-family:var(--font-display);letter-spacing:.04em}
+.nx-service-card__link{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:12px;font-weight:500;color:var(--navy-mid);border:1px solid var(--border);padding:5px 12px;border-radius:4px;align-self:flex-start;transition:background .18s ease,color .18s ease,border-color .18s ease;white-space:nowrap}
+.nx-service-card__link:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
 
-.featured-side {
-  display: flex; flex-direction: column;
-  gap: 12px;
-}
-.featured-side-card {
-  background: #fff;
-  border: 1px solid var(--hairline-soft);
-  border-radius: 12px;
-  padding: 20px 22px;
-  transition: all 0.25s ease;
-  display: block;
-}
-.featured-side-card:hover {
-  border-color: var(--gold);
-  transform: translateX(3px);
-  box-shadow: 0 8px 24px rgba(13,31,60,0.08);
-}
-.featured-side-card__head {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 10px;
-}
-.featured-side-card__num {
-  font-family: var(--font-display);
-  font-size: 13px; font-weight: 500;
-  color: var(--ink-light);
-  letter-spacing: 0.08em;
-}
-.featured-side-card__cat {
-  font-family: var(--font-display);
-  font-size: 9px; font-weight: 500;
-  letter-spacing: 0.20em; text-transform: uppercase;
-  padding: 2px 8px;
-  border-radius: 3px;
-  color: #fff;
-}
-.featured-side-card__title {
-  font-family: var(--font-serif);
-  font-size: 15px; font-weight: 700;
-  color: var(--navy);
-  line-height: 1.6;
-}
-.featured-side-card__meta {
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px dashed var(--hairline);
-  display: flex; justify-content: space-between; align-items: center;
-  font-size: 11px;
-  color: var(--ink-light);
-}
-.featured-side-card__date {
-  font-family: var(--font-display);
-  letter-spacing: 0.06em;
-}
+/* ABOUT */
+.nx-about{background:var(--navy);padding:80px 24px}
+.nx-about__inner{max-width:840px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:start;position:relative;z-index:1}
+.nx-about__name-block{background:linear-gradient(180deg,rgba(201,168,76,.14),rgba(201,168,76,.05));border:1px solid rgba(201,168,76,.32);border-radius:8px;padding:28px 22px 22px;text-align:center;position:relative}
+.nx-about__name-block::before{content:"";position:absolute;top:14px;left:14px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);opacity:.7}
+.nx-about__name-block::after{content:"";position:absolute;bottom:14px;right:14px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);opacity:.7}
+.nx-about__photo{width:160px;height:160px;border-radius:50%;margin:0 auto 18px;position:relative;border:3px solid var(--gold);box-shadow:0 0 0 6px rgba(201,168,76,.12),0 10px 30px rgba(0,0,0,.35);background:var(--cream)}
+.nx-about__photo img{width:100%;height:100%;object-fit:cover;object-position:center 18%;border-radius:50%}
+.nx-about__photo-badge{position:absolute;bottom:-8px;right:-10px;width:56px;height:56px;padding:8px;background:var(--navy);border-radius:50%;border:2px solid var(--gold);filter:drop-shadow(0 3px 8px rgba(0,0,0,.5));object-fit:contain;box-sizing:border-box}
+.nx-about__name{font-family:var(--font-serif);font-size:19px;font-weight:700;color:#fff;margin:4px 0 4px}
+.nx-about__name-en{font-family:var(--font-display);font-size:11px;color:var(--gold);letter-spacing:.18em}
+.nx-about__career{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);text-align:left}
+.nx-about__heading{font-family:var(--font-serif);font-size:clamp(20px,3.5vw,28px);font-weight:700;color:#fff;line-height:1.5;margin-bottom:24px}
+.nx-about__body{font-size:14px;color:rgba(255,255,255,.72);line-height:1.9;margin-bottom:16px}
+.nx-about__body strong{color:var(--gold-light);font-weight:500}
+.nx-about__stats{display:flex;gap:36px;flex-wrap:wrap;margin-top:32px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1)}
 
-/* Standard articles grid */
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 16px;
-}
-.article-card {
-  background: #fff;
-  border: 1px solid var(--hairline-soft);
-  border-radius: 12px;
-  padding: 22px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.25s ease;
-  display: flex; flex-direction: column;
-  min-height: 230px;
-}
-.article-card:hover {
-  border-color: var(--gold);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(13,31,60,0.10);
-}
-.article-card.coming {
-  background: linear-gradient(135deg, var(--paper) 0%, var(--hairline-soft) 100%);
-  cursor: default;
-  pointer-events: none;
-  opacity: 0.65;
-  border-style: dashed;
-}
-.article-card.coming:hover { transform: none; box-shadow: none; border-color: var(--hairline); }
-.article-card__top {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  margin-bottom: 16px;
-}
-.article-card__cat {
-  display: inline-block;
-  padding: 3px 10px;
-  font-family: var(--font-display);
-  font-size: 9px; font-weight: 500;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  border-radius: 3px;
-  color: #fff;
-}
-.article-card__cat.coming {
-  background: transparent;
-  border: 1px solid var(--ink-light);
-  color: var(--ink-light);
-}
-.article-card__num {
-  font-family: var(--font-display);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  color: var(--ink-light);
-  text-align: right;
-}
-.article-card__title {
-  font-family: var(--font-serif);
-  font-size: 14.5px;
-  font-weight: 700;
-  line-height: 1.65;
-  color: var(--navy);
-  margin-bottom: auto;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.article-card.coming .article-card__title { color: var(--ink-mid); }
-.article-card__meta {
-  margin-top: 18px;
-  padding-top: 12px;
-  border-top: 1px dashed var(--hairline);
-  display: flex; justify-content: space-between; align-items: center;
-}
-.article-card__date {
-  font-family: var(--font-display);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--ink-light);
-}
-.article-card__type {
-  font-family: var(--font-display);
-  font-size: 9px;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  padding: 2px 7px;
-  border: 1px solid var(--hairline);
-  border-radius: 3px;
-  color: var(--ink-light);
-}
-.article-card__type.interview {
-  border-color: var(--maple);
-  color: var(--maple);
-  font-weight: 500;
-}
+/* REASONS */
+.nx-reasons{padding:80px 24px;background:var(--cream)}
+.nx-reasons__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;margin-top:40px}
+.nx-reason-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:28px 24px;position:relative;height:100%;transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow var(--t-base) var(--ease),border-color var(--t-base) var(--ease)}
+.nx-reason-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(13,31,60,.1);border-color:rgba(201,168,76,.6)}
+.nx-reason-card__num{font-family:var(--font-display);font-size:64px;font-weight:700;line-height:1;margin-bottom:12px;background:linear-gradient(135deg,rgba(201,168,76,.18) 0%,rgba(13,31,60,.04) 60%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.nx-reason-card__title{font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:10px;line-height:1.4}
+.nx-reason-card__body{font-size:13px;color:var(--text-mid);line-height:1.8}
+.nx-reason-card__accent{position:absolute;top:0;left:0;width:6px;height:80px;border-radius:0 0 4px 0;background:linear-gradient(180deg,var(--gold),transparent)}
 
-/* Category color mapping */
-.cat-shinya { background: #2d4f7c; }
-.cat-fuueihou { background: var(--maple); }
-.cat-kobutsu { background: var(--gold-deep); }
-.cat-cross { background: var(--leaf); }
+/* FAQ（新設 — GEOの中核） */
+.nx-faq{padding:80px 24px;background:var(--white)}
+.nx-faq__list{margin-top:8px}
+.nx-faq__item{border:1px solid var(--border);border-radius:8px;margin-bottom:12px;background:#fff;overflow:hidden;transition:border-color var(--t-base) var(--ease)}
+.nx-faq__item[open]{border-color:rgba(201,168,76,.55);box-shadow:0 6px 24px rgba(13,31,60,.07)}
+.nx-faq__q{font-family:var(--font-serif);font-size:15px;font-weight:700;color:var(--navy);padding:18px 48px 18px 20px;cursor:pointer;list-style:none;position:relative;line-height:1.5}
+.nx-faq__q::-webkit-details-marker{display:none}
+.nx-faq__q::before{content:"Q";font-family:var(--font-display);color:var(--gold);margin-right:10px;font-size:16px}
+.nx-faq__q::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-family:var(--font-display);font-size:20px;color:var(--gold);transition:transform .25s ease}
+.nx-faq__item[open] .nx-faq__q::after{transform:translateY(-50%) rotate(45deg)}
+.nx-faq__a{padding:0 20px 20px 46px;font-size:13.5px;color:var(--text-mid);line-height:1.9}
 
-/* Empty state */
-.empty {
-  grid-column: 1 / -1;
-  padding: 60px 20px; text-align: center;
-}
-.empty__icon { font-size: 40px; margin-bottom: 12px; opacity: 0.4; }
-.empty__text {
-  font-family: var(--font-serif);
-  font-size: 16px; color: var(--ink-mid);
-}
+/* SIMULATOR */
+.nx-sim-section{padding:0 24px 72px;background:var(--cream)}
+.nx-sim-card{max-width:840px;margin:0 auto;background:#fff;border:1px solid rgba(201,168,76,.2);border-radius:16px;overflow:hidden;box-shadow:0 12px 50px rgba(13,31,60,.1),0 2px 4px rgba(13,31,60,.04);display:grid;grid-template-columns:1fr 1fr;position:relative;z-index:1}
+.nx-sim__left{background:linear-gradient(135deg,#0d1f3c 0%,#1a3260 100%);padding:36px 32px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.nx-sim__left::after{content:"¥";position:absolute;right:-10px;bottom:-28px;font-family:var(--font-display);font-size:150px;font-weight:700;color:rgba(201,168,76,.06);line-height:1;pointer-events:none}
+.nx-sim__eyebrow{font-family:var(--font-display);font-size:10px;font-weight:500;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;position:relative;z-index:1}
+.nx-sim__heading{font-family:var(--font-serif);font-size:clamp(18px,3vw,24px);font-weight:700;color:#fff;line-height:1.45;margin-bottom:12px;position:relative;z-index:1}
+.nx-sim__heading em{font-style:normal;color:var(--gold-light)}
+.nx-sim__lead{font-size:13px;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:20px;position:relative;z-index:1}
+.nx-sim__chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;position:relative;z-index:1}
+.nx-sim__btn-note{font-size:11px;color:rgba(255,255,255,.38);text-align:center;margin-top:10px;position:relative;z-index:1}
+.nx-sim__right{padding:28px 24px;background:#f8f9fc;display:flex;flex-direction:column;justify-content:center}
+.nx-sim__right-label{font-family:var(--font-display);font-size:10px;font-weight:500;letter-spacing:.14em;color:var(--text-light);text-transform:uppercase;margin-bottom:12px}
+.nx-sim__row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:7px;background:#fff;border:1px solid var(--border);margin-bottom:7px;transition:border-color .2s ease,box-shadow .2s ease,transform .18s ease}
+.nx-sim__row:hover{transform:translateX(2px);border-color:var(--gold);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.nx-sim__row-left{display:flex;align-items:center;gap:9px}
+.nx-sim__row-icon{font-size:15px;flex-shrink:0}
+.nx-sim__row-name{font-size:13px;font-weight:500;color:var(--text)}
+.nx-sim__row-price{font-family:var(--font-display);font-size:13px;color:var(--gold);font-weight:500;white-space:nowrap}
+.nx-sim__all-link{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px;font-size:12px;font-weight:500;color:var(--navy);padding:9px;border-radius:6px;border:1px solid var(--border);background:#fff;transition:background var(--t-quick) var(--ease),color var(--t-quick) var(--ease)}
+.nx-sim__all-link:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
 
-/* Coming soon section */
-.coming-section { margin-top: 64px; }
-.coming-section .section-divider__eyebrow { color: var(--ink-light); }
-.coming-section .section-divider__line { background: linear-gradient(90deg, var(--hairline) 0%, transparent 100%); }
+/* BOOKING */
+.nx-calendar-section{padding:80px 24px;background:var(--navy)}
+.nx-calendar__wrap{margin-top:40px;background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.25);border-radius:12px;overflow:hidden}
+.nx-calendar__iframe{width:100%;height:720px;border:0;display:block;background:#fff}
+.nx-calendar__note{background:rgba(201,168,76,.08);border-top:1px solid rgba(201,168,76,.2);padding:16px 24px;font-size:13px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:8px}
 
-/* ============ FOOTER ============ */
-.foot {
-  background: var(--navy-deep);
-  color: rgba(255,255,255,0.55);
-  padding: 56px 24px 40px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.foot::before {
-  content: ""; position: absolute;
-  top: 0; left: 50%; transform: translateX(-50%);
-  width: 240px; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-.foot__mark { width: 56px; margin: 0 auto 14px; display: block; }
-.foot__brand { font-family: var(--font-serif); color: #fff; font-weight: 700; font-size: 16px; letter-spacing: 0.04em; }
-.foot__brand small {
-  display: block;
-  font-family: var(--font-display);
-  color: var(--gold);
-  font-size: 10px; letter-spacing: 0.14em;
-  margin-top: 4px;
-  font-weight: 400;
-}
-.foot__info { font-size: 12px; margin-top: 18px; line-height: 1.9; }
-.foot__back {
-  display: inline-flex; align-items: center; gap: 8px;
-  margin-top: 28px;
-  padding: 12px 26px;
-  border: 1px solid var(--gold);
-  border-radius: 99px;
-  color: var(--gold-light);
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  transition: all 0.2s ease;
-}
-.foot__back:hover { background: var(--gold); color: var(--navy); transform: translateY(-1px); }
+/* CONTACT */
+.nx-contact{padding:80px 24px;background:#fff}
+.nx-contact__grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+.nx-contact-card{border:1px solid var(--border);border-radius:8px;padding:32px 28px;text-align:center;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.nx-contact-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(13,31,60,.1);border-color:rgba(201,168,76,.4)}
+.nx-contact-card--featured{background:var(--navy);border-color:var(--navy)}
+.nx-contact-card--featured:hover{box-shadow:0 12px 36px rgba(13,31,60,.35);border-color:var(--gold)}
+.nx-contact-card__icon{font-size:34px;margin-bottom:16px}
+.nx-contact-card__title{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.nx-contact-card--featured .nx-contact-card__title{color:var(--gold)}
+.nx-contact-card__desc{font-size:13px;color:var(--text-light);line-height:1.7;margin-bottom:18px}
+.nx-contact-card--featured .nx-contact-card__desc{color:rgba(255,255,255,.6)}
 
-/* ============ FAB ============ */
-.fab {
-  position: fixed;
-  right: 22px; bottom: 22px;
-  z-index: 200;
-  background: var(--line-green);
-  color: #fff;
-  font-weight: 700;
-  font-size: 13px;
-  padding: 14px 20px;
-  border-radius: 99px;
-  box-shadow: 0 12px 32px rgba(6,199,85,0.40);
-  display: inline-flex; align-items: center; gap: 8px;
-  transition: all 0.2s ease;
-}
-.fab:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(6,199,85,0.50); }
+/* INFO + FOOTER */
+.nx-info-strip{background:var(--navy);padding:44px 24px;display:flex;flex-wrap:wrap;gap:36px;justify-content:center;border-top:1px solid rgba(201,168,76,.18)}
+.nx-info-item{text-align:center;min-width:120px}
+.nx-info-item__label{font-family:var(--font-display);font-size:10px;letter-spacing:.14em;color:var(--gold);margin-bottom:4px;text-transform:uppercase}
+.nx-info-item__val{font-family:var(--font-serif);font-size:15px;color:#fff;font-weight:500}
+.nx-footer{background:var(--navy-deep);padding:56px 24px 40px;text-align:center;border-top:1px solid rgba(201,168,76,.2);position:relative;overflow:hidden}
+.nx-footer::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:240px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.nx-footer__mark{width:56px;height:56px;object-fit:contain;margin:0 auto 14px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.nx-footer__wordmark{font-family:var(--font-serif);font-size:16px;font-weight:700;color:rgba(255,255,255,.92);line-height:1.3;letter-spacing:.04em;margin-bottom:18px}
+.nx-footer__wordmark small{display:block;font-family:var(--font-display);font-size:10px;font-weight:400;color:var(--gold);letter-spacing:.14em;margin-top:3px}
+.nx-footer p{font-size:12px;color:rgba(255,255,255,.4);line-height:1.8}
+.nx-footer strong{color:rgba(255,255,255,.7)}
+.nx-footer__links{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:18px;max-width:760px;margin-left:auto;margin-right:auto}
+.nx-footer__link{font-size:11px;color:rgba(255,255,255,.4);transition:color var(--t-base) var(--ease)}
+.nx-footer__link:hover{color:var(--gold)}
 
-/* Responsive */
-@media (max-width: 720px) {
-  .hero { padding: 56px 20px 64px; }
-  .hero__stat { padding-right: 18px; margin-right: 18px; }
-  .hero__stat-num { font-size: 28px; }
-  .articles { padding: 40px 20px 56px; }
-  .featured-main { padding: 28px 24px; }
-  .featured-main__num { font-size: 72px; }
+/* FAB */
+.nx-fab{position:fixed;right:18px;bottom:18px;z-index:200;background:var(--line-green);color:#fff;font-weight:700;font-size:13px;padding:14px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(6,199,85,.35),0 2px 8px rgba(0,0,0,.2);display:inline-flex;align-items:center;gap:8px;transition:transform .2s ease,box-shadow .2s ease,opacity .2s ease;opacity:0;transform:translateY(20px);pointer-events:none}
+.nx-fab.is-visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.nx-fab:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(6,199,85,.45)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.16,.84,.32,1),transform .9s cubic-bezier(.16,.84,.32,1)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+.reveal--delay-1{transition-delay:.1s}
+.reveal--delay-2{transition-delay:.2s}
+.reveal--delay-3{transition-delay:.3s}
+/* JS無効環境（=クローラー含む）では全要素を表示。html.jsクラスはJSが付与 */
+html:not(.js) .reveal{opacity:1;transform:none;transition:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.nx-hero__seal{animation:none!important}}
+
+@media (max-width:720px){
+  .nx-about__inner,.nx-contact__grid,.nx-sim-card,.nx-service-grid{grid-template-columns:1fr}
+  .nx-hero__scroll{display:none}
+  .nx-section__num{top:12px;right:12px;font-size:70px}
+  .nx-bracket--tl{top:16px;left:16px}
+  .nx-bracket--br{bottom:16px;right:16px}
+  .nx-hero__seal{opacity:.1;right:-20%;width:90%}
+  .nx-about__photo{width:130px;height:130px}
+  .nx-quote{padding:32px 26px 28px}
+  .nx-quote::before{font-size:130px}
 }
 </style>
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="h">
-  <a href="../index.html" class="h__brand">
-    <img src="../assets/logo-transparent.png" alt="" class="h__mark">
-    <div class="h__txt">
-      <div class="h__ja">西岡行政書士事務所</div>
-      <div class="h__en">NISHIOKA GYOSEI SHOSHI OFFICE</div>
+<!-- ===== HEADER ===== -->
+<header class="nx-header">
+  <a href="#top" class="nx-header__brand">
+    <img src="assets/logo-transparent.png" alt="西岡行政書士事務所のロゴ" class="nx-header__mark" width="44" height="44">
+    <div class="nx-header__logo">
+      西岡行政書士事務所
+      <small>NISHIOKA GYOSEI SHOSHI OFFICE</small>
     </div>
   </a>
-  <nav class="h__nav">
-    <a href="../index.html" class="h__link">トップ</a>
-    <a href="../simulator.html" class="h__link">料金シミュレーター</a>
-    <a class="h__cta" href="https://lin.ee/UKhZQbE" target="_blank" rel="noopener noreferrer">無料相談する</a>
+  <nav class="nx-header__nav" aria-label="メインナビゲーション">
+    <a href="blog/" class="nx-header__link">📚 コラム</a>
+    <a href="https://lin.ee/UKhZQbE" target="_blank" rel="noopener noreferrer" class="nx-btn nx-btn--header">無料相談する</a>
   </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero__pattern"></div>
-  <img src="../assets/logo-transparent.png" alt="" class="hero__seal">
-  <div class="hero__inner">
-    <div class="hero__eyebrow">COLUMN · INSIGHTS FROM EX-POLICE OFFICER</div>
-    <h1 class="hero__title">許認可の実務、<br><em>警察官の視点</em>で。</h1>
-    <p class="hero__lead">
-      広島で許可を取りたい、届出を出したい、けれど自分一人で進めていいのか不安——<br>
-      そんな方のために、<strong>元広島県警察官13年の行政書士</strong>が「窓口の本音」をお伝えするコラムです。
+<main id="top">
+
+<!-- ===== HERO ===== -->
+<section class="nx-hero" aria-label="メインビジュアル">
+  <div class="nx-hero__pattern"></div>
+  <img src="assets/logo-transparent.png" alt="" class="nx-hero__seal" aria-hidden="true">
+  <div class="nx-hero__inner">
+    <div class="reveal"><span class="nx-hero-badge">元広島県警察官13年 ｜ 行政書士</span></div>
+    <h1 class="nx-hero__display reveal reveal--delay-1">EX-POLICE<br>OFFICER<span>.</span></h1>
+    <p class="nx-hero__jp reveal reveal--delay-2">警察を知る行政書士が、あなたの許可を取る。</p>
+    <p class="nx-hero__copy reveal reveal--delay-2">
+      風営法・深夜営業届・道路使用許可・古物商許可——<br>
+      <strong>これらはすべて、警察が窓口の申請です。</strong><br>
+      13年間、広島県警察に勤務した経験があるからこそ、<br>
+      窓口の審査担当者が何を見ているか、私は知っています。
     </p>
-    <div class="hero__stats">
-      <div class="hero__stat">
-        <div class="hero__stat-num"><span id="totalCount">26</span><small>本</small></div>
-        <div class="hero__stat-label">公開記事</div>
+    <div class="nx-hero__meta reveal reveal--delay-3">
+      <span class="nx-hero-chip"><strong>13年</strong> 警察勤務</span>
+      <span class="nx-hero-chip"><strong>0円</strong> 初回相談</span>
+      <span class="nx-hero-chip"><strong>24h</strong> LINE受付</span>
+      <span class="nx-hero-chip"><strong>土日祝</strong> 対応可</span>
+    </div>
+    <div class="nx-hero__buttons reveal reveal--delay-3">
+      <a class="nx-btn nx-btn--primary" href="https://lin.ee/UKhZQbE" target="_blank" rel="noopener noreferrer"><span>📱</span><span>LINE で無料相談</span></a>
+      <a class="nx-btn nx-btn--outline" href="#services"><span>サービスを見る →</span></a>
+    </div>
+  </div>
+  <div class="nx-hero__scroll" aria-hidden="true">SCROLL</div>
+</section>
+
+<!-- ===== POLICE STRENGTH ===== -->
+<section class="nx-section nx-police" aria-labelledby="police-title">
+  <div class="nx-section__num" aria-hidden="true">01</div>
+  <div class="nx-bracket nx-bracket--tl"></div>
+  <div class="nx-bracket nx-bracket--br"></div>
+  <div class="nx-inner">
+    <p class="nx-eyebrow reveal">WHY EX-OFFICER</p>
+    <h2 id="police-title" class="nx-section-title reveal reveal--delay-1">「元警察官の行政書士」が選ばれる、本当の理由。</h2>
+    <!-- GEO: エンティティ定義文。AIが事務所を要約する際の「正解文」をここで提供する -->
+    <p class="nx-lead reveal reveal--delay-2">
+      西岡行政書士事務所は、広島県警察に13年間勤務した元警察官・西岡祐也が代表を務める、広島市中区大手町の行政書士事務所です。
+      風俗営業許可（風営法）・深夜営業届出・古物商許可・道路使用許可といった「警察署が窓口になる許可申請」を専門としています。
+      警察への申請は、書類を揃えるだけでは通りません。担当者の判断基準・審査の流れ・不備になりやすいポイント——
+      内側から見てきたからこそ、最短で許可を取る方法がわかります。
+    </p>
+    <div class="nx-police__tags reveal reveal--delay-2">
+      <span class="nx-police-tag">🚨 風俗営業許可（風営法）</span>
+      <span class="nx-police-tag">🌙 深夜営業届出</span>
+      <span class="nx-police-tag">🚗 道路使用許可</span>
+      <span class="nx-police-tag">♻️ 古物商許可</span>
+      <span class="nx-police-tag">🛡️ 警備業認定</span>
+    </div>
+    <blockquote class="nx-quote reveal reveal--delay-3">
+      <p>警察の窓口担当者は、申請書の「どこを見て」「何で却下するか」を、一定の基準で評価しています。私は13年間その内側にいたので、相手が何を求めているかが手に取るようにわかります。だから「書類の不備で差し戻し」をほぼゼロにできます。</p>
+      <footer class="nx-quote__author">— 代表行政書士 西岡祐也（元広島県警察官）</footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="nx-section nx-services" id="services" aria-labelledby="services-title">
+  <div class="nx-section__num" aria-hidden="true">02</div>
+  <div class="nx-bracket nx-bracket--tl"></div>
+  <div class="nx-bracket nx-bracket--br"></div>
+  <div class="nx-inner">
+    <p class="nx-eyebrow reveal">SERVICES</p>
+    <h2 id="services-title" class="nx-section-title reveal reveal--delay-1">取り扱い業務と料金</h2>
+
+    <div class="nx-service-group reveal">
+      <span class="nx-group-label nx-group-label--navy">警察窓口の申請 — 元警察官の強み</span>
+      <div class="nx-service-grid">
+        <article class="nx-service-card">
+          <div class="nx-service-card__icon" aria-hidden="true">🎤</div>
+          <h3 class="nx-service-card__title">風俗営業許可（風営法）</h3>
+          <p class="nx-service-card__desc">キャバクラ・ガールズバー・ホストクラブ等の風営法1号営業。求積図面の作成から警察署への申請・補正対応まで一括対応。</p>
+          <p class="nx-service-card__price">120,000円〜（税込）</p>
+          <a href="fueihou.html" class="nx-service-card__link">詳しく見る →</a>
+        </article>
+        <article class="nx-service-card">
+          <div class="nx-service-card__icon" aria-hidden="true">🍁</div>
+          <h3 class="nx-service-card__title">風営法 無料相談センター</h3>
+          <p class="nx-service-card__desc">「これって風営法の対象？」「いくらかかる？」LINEで物件などの写真から無料判定。営業は一切ありません。</p>
+          <p class="nx-service-card__price">相談 0円</p>
+          <a href="fuueihou_center.html" class="nx-service-card__link">無料で相談 →</a>
+        </article>
+        <article class="nx-service-card">
+          <div class="nx-service-card__icon" aria-hidden="true">🌙</div>
+          <h3 class="nx-service-card__title">深夜営業届出（深夜酒類提供飲食店）</h3>
+          <p class="nx-service-card__desc">深夜0時以降に酒類を提供するバー・スナック等。図面作成・届出書類・警察署対応をすべて代行。営業開始の10日前までの届出が必要です。</p>
+          <p class="nx-service-card__price">77,000円〜（税込・図面込み）</p>
+          <a href="shinya-eigyou.html" class="nx-service-card__link">詳しく見る →</a>
+        </article>
+        <article class="nx-service-card">
+          <div class="nx-service-card__icon" aria-hidden="true">🚗</div>
+          <h3 class="nx-service-card__title">道路使用・占用許可</h3>
+          <p class="nx-service-card__desc">工事・足場・看板設置等の道路使用許可（警察署）・道路占用許可（道路管理者）。建設業者からのセット依頼も歓迎。</p>
+          <p class="nx-service-card__price">要見積もり</p>
+          <a href="douroshiyou.html" class="nx-service-card__link">詳しく見る →</a>
+        </article>
+        <article class="nx-service-card">
+          <div class="nx-service-card__icon" aria-hidden="true">♻️</div>
+          <h3 class="nx-service-card__title">古物商許可</h3>
+          <p class="nx-service-card__desc">リサイクルショップ・中古車販売・フリマやネット転売事業者向け。警察署（公安委員会）への申請を代行。標準処理期間は約40日。</p>
+          <p class="nx-service-card__price">60,000円〜（税込）</p>
+          <a href="kobutu.html" class="nx-service-card__link">詳しく見る →</a>
+        </article>
       </div>
-      <div class="hero__stat">
-        <div class="hero__stat-num">50<small>本</small></div>
-        <div class="hero__stat-label">公開予定</div>
+    </div>
+
+    <div class="nx-service-group reveal">
+      <span class="nx-group-label nx-group-label--gold">事業・開業サポート</span>
+      <div class="nx-service-grid">
+        <article class="nx-service-card">
+          <div class="nx-service-card__icon" aria-hidden="true">🏗️</div>
+          <h3 class="nx-service-card__title">建設業許可</h3>
+          <p class="nx-service-card__desc">新規取得・更新・業種追加・決算変更届。道路使用許可とのセット依頼にも対応。</p>
+          <p class="nx-service-card__price">要見積もり</p>
+          <a href="kensetsu.html" class="nx-service-card__link">詳しく見る →</a>
+        </article>
+        <article class="nx-service-card">
+          <div class="nx-service-card__icon" aria-hidden="true">🏢</div>
+          <h3 class="nx-service-card__title">会社設立</h3>
+          <p class="nx-service-card__desc">株式会社・合同会社。定款作成から公証人手続き・法務局提出まで一括サポート。</p>
+          <p class="nx-service-card__price">150,000円〜（税込・実費別）</p>
+          <a href="kaisha-setsuritsu.html" class="nx-service-card__link">詳しく見る →</a>
+        </article>
+        <article class="nx-service-card">
+          <div class="nx-service-card__icon" aria-hidden="true">🍺</div>
+          <h3 class="nx-service-card__title">飲食店開業 / 酒類販売</h3>
+          <p class="nx-service-card__desc">飲食店営業許可（保健所）・酒類販売業免許（税務署）の申請・届出。個人店から法人まで対応。</p>
+          <p class="nx-service-card__price">55,000円〜（税込）</p>
+          <a href="inshokuten.html" class="nx-service-card__link">詳しく見る →</a>
+        </article>
+        <article class="nx-service-card">
+          <div class="nx-service-card__icon" aria-hidden="true">💰</div>
+          <h3 class="nx-service-card__title">創業融資サポート</h3>
+          <p class="nx-service-card__desc">日本政策金融公庫向け。事業計画書作成から面談対策まで。元警察官という経歴が信用補完に活きる。</p>
+          <p class="nx-service-card__price">55,000円〜 + 成功報酬</p>
+          <a href="sogyo-yushi.html" class="nx-service-card__link">詳しく見る →</a>
+        </article>
       </div>
-      <div class="hero__stat">
-        <div class="hero__stat-num">週2<small>回</small></div>
-        <div class="hero__stat-label">更新ペース</div>
+    </div>
+
+    <div class="nx-service-group reveal">
+      <span class="nx-group-label nx-group-label--navy">暮らしのサポート</span>
+      <div class="nx-service-grid">
+        <article class="nx-service-card">
+          <div class="nx-service-card__icon" aria-hidden="true">📜</div>
+          <h3 class="nx-service-card__title">遺言書作成</h3>
+          <p class="nx-service-card__desc">自筆証書遺言・公正証書遺言。公証人とのやり取りまでサポート。</p>
+          <p class="nx-service-card__price">66,000円〜（税込）</p>
+          <a href="igon.html" class="nx-service-card__link">詳しく見る →</a>
+        </article>
+        <article class="nx-service-card">
+          <div class="nx-service-card__icon" aria-hidden="true">🪦</div>
+          <h3 class="nx-service-card__title">墓じまい（改葬許可）</h3>
+          <p class="nx-service-card__desc">お墓の引っ越し・整理。改葬許可申請の書類作成から関係機関への連絡まで代行。</p>
+          <p class="nx-service-card__price">44,000円〜（税込）</p>
+          <a href="hakajimai.html" class="nx-service-card__link">詳しく見る →</a>
+        </article>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FILTER -->
-<nav class="filter-bar">
-  <div class="filter-bar__inner">
-    <span class="filter-bar__lbl">Filter</span>
-    <button class="filter-btn active" data-filter="all">すべて<span class="filter-btn__count" id="count-all"></span></button>
-    <button class="filter-btn" data-filter="shinya">🌙 深夜営業<span class="filter-btn__count" id="count-shinya"></span></button>
-    <button class="filter-btn" data-filter="fuueihou">🎤 風営法<span class="filter-btn__count" id="count-fuueihou"></span></button>
-    <button class="filter-btn" data-filter="kobutsu">♻️ 古物商<span class="filter-btn__count" id="count-kobutsu"></span></button>
-    <button class="filter-btn" data-filter="cross">📚 横断<span class="filter-btn__count" id="count-cross"></span></button>
-  </div>
-</nav>
-
-<!-- ARTICLES -->
-<section class="articles">
-
-  <!-- Featured: latest published article + 3 below -->
-  <div id="featured-section">
-    <div class="section-divider">
-      <div>
-        <div class="section-divider__eyebrow">FEATURED · 注目の記事</div>
+<!-- ===== ABOUT ===== -->
+<section class="nx-section nx-section--dark nx-about" aria-labelledby="about-title">
+  <div class="nx-section__num" aria-hidden="true">03</div>
+  <div class="nx-bracket nx-bracket--tl"></div>
+  <div class="nx-bracket nx-bracket--br"></div>
+  <div class="nx-about__inner">
+    <aside class="nx-about__name-block reveal">
+      <div class="nx-about__photo">
+        <img src="assets/photo.jpg" alt="行政書士 西岡祐也の顔写真" loading="lazy" width="160" height="160">
+        <img src="assets/logo-transparent.png" alt="" class="nx-about__photo-badge" aria-hidden="true">
       </div>
-      <div class="section-divider__line"></div>
-    </div>
-    <div class="featured-grid" id="featuredGrid"></div>
-  </div>
-
-  <!-- Published articles -->
-  <div id="published-section">
-    <div class="section-divider">
-      <div>
-        <div class="section-divider__eyebrow">LATEST · 最新の公開記事</div>
-        <div class="section-divider__title">すべての記事</div>
+      <p class="nx-about__name">西岡 祐也</p>
+      <p class="nx-about__name-en">YUYA NISHIOKA</p>
+      <div class="nx-about__career">
+        <div class="nx-career-item"><div class="nx-career-item__dot"></div><div class="nx-career-item__text">広島県警察 勤務 13年（交番・パトカー・鑑識等）</div></div>
+        <div class="nx-career-item"><div class="nx-career-item__dot"></div><div class="nx-career-item__text">行政書士試験 合格</div></div>
+        <div class="nx-career-item"><div class="nx-career-item__dot"></div><div class="nx-career-item__text">西岡行政書士事務所 開業 ／ 広島県行政書士会 所属（登録番号 22341036）</div></div>
       </div>
-      <div class="section-divider__line"></div>
-      <div class="section-divider__count" id="publishedCount"></div>
-    </div>
-    <div class="articles-grid" id="publishedGrid"></div>
-  </div>
-
-  <!-- Coming soon -->
-  <div class="coming-section">
-    <div class="section-divider">
-      <div>
-        <div class="section-divider__eyebrow">COMING SOON · 公開予定</div>
-        <div class="section-divider__title">これから書く記事</div>
+    </aside>
+    <div>
+      <p class="nx-eyebrow reveal">ABOUT ME</p>
+      <h2 id="about-title" class="nx-about__heading reveal reveal--delay-1">「やらせてくれないなら、自分でやってやろう」と思った。</h2>
+      <div class="reveal reveal--delay-2">
+        <p class="nx-about__body">19歳のとき、大学受験に失敗し、フリーターになりました。貯めたお金で公務員予備校に通い、警察官に。広島県警察で13年間、交番・パトカー・鑑識など様々な現場を経験しました。</p>
+        <p class="nx-about__body">やりたい仕事をなかなかさせてもらえない日々の中、行政書士試験に挑戦。合格して退職し、事務所を開業しました。</p>
+        <p class="nx-about__body">行政書士を志したのは、<strong>脳障害のある妹の存在</strong>がきっかけです。成年後見制度を調べるうちに、「人のために動ける仕事がしたい」と思うようになりました。</p>
+        <p class="nx-about__body"><strong>公務員が何を考えて仕事をしているか、私はよく知っています。</strong>だから、許可申請の窓口担当者の視点に立って書類を作ることができます。それが私の最大の強みです。</p>
+        <p class="nx-about__body">警察官時代の経験談は <a href="https://note.com/nishioka2405" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);text-decoration:underline">note（nishioka2405）</a> でも発信しています。</p>
       </div>
-      <div class="section-divider__line"></div>
-      <div class="section-divider__count" id="upcomingCount"></div>
+      <div class="nx-about__stats reveal reveal--delay-3">
+        <div class="nx-stat"><div class="nx-stat__val"><span data-count="13">13</span><span>年</span></div><div class="nx-stat__label">広島県警察 勤務</div></div>
+        <div class="nx-stat"><div class="nx-stat__val">0<span>円</span></div><div class="nx-stat__label">初回相談 無料</div></div>
+        <div class="nx-stat"><div class="nx-stat__val"><span data-count="365">365</span><span>日</span></div><div class="nx-stat__label">LINE相談 対応</div></div>
+      </div>
     </div>
-    <div class="articles-grid" id="upcomingGrid"></div>
   </div>
-
 </section>
 
-<!-- FOOTER -->
-<footer class="foot">
-  <img src="../assets/logo-transparent.png" alt="" class="foot__mark">
-  <div class="foot__brand">
-    西岡行政書士事務所
-    <small>NISHIOKA GYOSEI SHOSHI OFFICE</small>
+<!-- ===== REASONS ===== -->
+<section class="nx-section nx-reasons" aria-labelledby="reasons-title">
+  <div class="nx-section__num" aria-hidden="true">04</div>
+  <div class="nx-bracket nx-bracket--tl"></div>
+  <div class="nx-bracket nx-bracket--br"></div>
+  <div class="nx-inner">
+    <p class="nx-eyebrow reveal">WHY CHOOSE US</p>
+    <h2 id="reasons-title" class="nx-section-title reveal reveal--delay-1">西岡行政書士事務所が選ばれる3つの理由</h2>
+    <div class="nx-reasons__grid">
+      <div class="reveal reveal--delay-1">
+        <article class="nx-reason-card">
+          <div class="nx-reason-card__accent"></div>
+          <div class="nx-reason-card__num" aria-hidden="true">01</div>
+          <h3 class="nx-reason-card__title">警察への申請は、<br>元警察官に任せるのが最速</h3>
+          <p class="nx-reason-card__body">風営法・深夜営業届・道路使用許可など、警察が窓口の申請は審査基準が複雑です。内側を知っているから、差し戻しなく最短で通します。</p>
+        </article>
+      </div>
+      <div class="reveal reveal--delay-2">
+        <article class="nx-reason-card">
+          <div class="nx-reason-card__accent"></div>
+          <div class="nx-reason-card__num" aria-hidden="true">02</div>
+          <h3 class="nx-reason-card__title">土日祝・夜間も対応。<br>昼間忙しい事業者のために。</h3>
+          <p class="nx-reason-card__body">受付時間9〜19時、土日祝も対応可。LINE相談は24時間受付。現場で忙しい建設業者・飲食店オーナーでも気軽に相談できます。</p>
+        </article>
+      </div>
+      <div class="reveal reveal--delay-3">
+        <article class="nx-reason-card">
+          <div class="nx-reason-card__accent"></div>
+          <div class="nx-reason-card__num" aria-hidden="true">03</div>
+          <h3 class="nx-reason-card__title">料金明確・相談無料。<br>見積もりに納得してから依頼。</h3>
+          <p class="nx-reason-card__body">料金は事前にお見積もり。「話だけ聞いてみたい」「いくらかかるか知りたい」だけでも大歓迎。相談費用はいただきません。</p>
+        </article>
+      </div>
+    </div>
   </div>
-  <div class="foot__info">
-    広島市中区大手町4-6-22（市役所前電停 徒歩4分）<br>
-    TEL: 090-8068-8527 ／ 受付 9:00 – 19:00（土日祝可）
+</section>
+
+<!-- ===== FAQ（新設 — GEO/リッチリザルトの中核） ===== -->
+<section class="nx-section nx-faq" id="faq" aria-labelledby="faq-title">
+  <div class="nx-section__num" aria-hidden="true">05</div>
+  <div class="nx-bracket nx-bracket--tl"></div>
+  <div class="nx-bracket nx-bracket--br"></div>
+  <div class="nx-inner">
+    <p class="nx-eyebrow reveal">FAQ</p>
+    <h2 id="faq-title" class="nx-section-title reveal reveal--delay-1">よくあるご質問</h2>
+    <p class="nx-lead reveal reveal--delay-2">広島での許可申請について、よくいただく質問にお答えします。ここにない疑問はLINEでお気軽にどうぞ。</p>
+    <div class="nx-faq__list reveal reveal--delay-2">
+
+      <details class="nx-faq__item">
+        <summary class="nx-faq__q">広島で風俗営業許可（風営法）を行政書士に依頼すると費用はいくらですか？</summary>
+        <p class="nx-faq__a">西岡行政書士事務所の風俗営業許可（風営法1号営業）の報酬は120,000円〜です。キャバクラ・ガールズバー・ホストクラブ等が対象で、求積図面の作成から広島県警察各署への申請・補正対応まで一括して代行します。許可までの標準処理期間は申請受理から約55日（土日祝を除く）です。</p>
+      </details>
+
+      <details class="nx-faq__item">
+        <summary class="nx-faq__q">深夜営業届出（深夜酒類提供飲食店）の費用と期間はどれくらいですか？</summary>
+        <p class="nx-faq__a">深夜酒類提供飲食店営業の届出は77,000円〜（税込・図面作成込み）で承っています。深夜0時以降に酒類を提供するバー・スナック等が対象で、営業開始日の10日前までに警察署へ届け出る必要があります。図面作成・届出書類の作成・警察署対応をすべて代行します。</p>
+      </details>
+
+      <details class="nx-faq__item">
+        <summary class="nx-faq__q">広島で古物商許可を取るにはどうすればいいですか？</summary>
+        <p class="nx-faq__a">古物商許可は、営業所の所在地を管轄する警察署（公安委員会）に申請します。標準処理期間は約40日です。リサイクルショップ・中古車販売・フリマやネットでの転売事業が対象です。西岡行政書士事務所では書類作成から警察署への申請まで60,000円〜（税込）で代行します。</p>
+      </details>
+
+      <details class="nx-faq__item">
+        <summary class="nx-faq__q">元警察官の行政書士に警察窓口の申請を依頼するメリットは何ですか？</summary>
+        <p class="nx-faq__a">風営法・深夜営業届・古物商・道路使用許可はすべて警察署が窓口の申請です。代表の西岡祐也は広島県警察に13年勤務しており、窓口の審査担当者がどの書類のどこを確認し、何が差し戻しの原因になるかを内側から経験しています。そのため書類不備による差し戻しを最小限に抑え、最短での許可取得につながります。</p>
+      </details>
+
+      <details class="nx-faq__item">
+        <summary class="nx-faq__q">相談に費用はかかりますか？</summary>
+        <p class="nx-faq__a">初回相談は無料です。LINEなら24時間受け付けており、「これは許可が必要か知りたい」「費用感だけ確認したい」という段階のご相談でも費用はかかりません。正式にご依頼いただく前に必ずお見積もりを提示します。</p>
+      </details>
+
+      <details class="nx-faq__item">
+        <summary class="nx-faq__q">土日祝や夜間でも対応してもらえますか？</summary>
+        <p class="nx-faq__a">受付時間は9:00〜19:00で、土日祝も対応可能です。現場で忙しい建設業者の方や、夜間営業の飲食店オーナーの方でもご相談いただけるよう、LINEでの相談は24時間受け付けています。</p>
+      </details>
+
+      <details class="nx-faq__item">
+        <summary class="nx-faq__q">対応エリアはどこまでですか？</summary>
+        <p class="nx-faq__a">事務所は広島市中区大手町4-6-22にあり、広島市内を中心に広島県全域（呉市・東広島市・廿日市市・福山市など）に対応しています。警察署への申請は管轄ごとに窓口が異なりますが、県内各署での申請経験があります。</p>
+      </details>
+
+    </div>
   </div>
-  <a href="../index.html" class="foot__back">← 事務所トップに戻る</a>
+</section>
+
+<!-- ===== SIMULATOR CTA ===== -->
+<section class="nx-sim-section" aria-label="費用シミュレーター">
+  <div class="nx-sim-card reveal">
+    <div class="nx-sim__left">
+      <p class="nx-sim__eyebrow">ONLINE QUOTE SIMULATOR</p>
+      <h2 class="nx-sim__heading">「<em>いくらかかる？</em>」<br>60秒でわかります。</h2>
+      <p class="nx-sim__lead">業務と状況を選ぶだけで概算費用が表示されます。個人情報不要・完全無料。まず費用感を確認してから相談できます。</p>
+      <div class="nx-sim__chips">
+        <span class="nx-sim-chip">約60秒</span>
+        <span class="nx-sim-chip">個人情報不要</span>
+        <span class="nx-sim-chip">完全無料</span>
+        <span class="nx-sim-chip">全11サービス対応</span>
+      </div>
+      <a class="nx-btn nx-btn--sim" href="simulator.html"><span>💴</span><span>費用をシミュレーションする →</span></a>
+      <p class="nx-sim__btn-note">納得してからご依頼いただけます</p>
+    </div>
+    <div class="nx-sim__right">
+      <p class="nx-sim__right-label">業務を選んで即シミュレーション</p>
+      <a href="simulator.html" class="nx-sim__row"><span class="nx-sim__row-left"><span class="nx-sim__row-icon">🎤</span><span class="nx-sim__row-name">風俗営業許可（風営法）</span></span><span class="nx-sim__row-price">12万円〜</span></a>
+      <a href="simulator.html" class="nx-sim__row"><span class="nx-sim__row-left"><span class="nx-sim__row-icon">🌙</span><span class="nx-sim__row-name">深夜営業届出</span></span><span class="nx-sim__row-price">7.7万円〜</span></a>
+      <a href="simulator.html" class="nx-sim__row"><span class="nx-sim__row-left"><span class="nx-sim__row-icon">♻️</span><span class="nx-sim__row-name">古物商許可</span></span><span class="nx-sim__row-price">6万円〜</span></a>
+      <a href="simulator.html" class="nx-sim__row"><span class="nx-sim__row-left"><span class="nx-sim__row-icon">🏗️</span><span class="nx-sim__row-name">建設業許可</span></span><span class="nx-sim__row-price">15万円〜</span></a>
+      <a href="simulator.html" class="nx-sim__row"><span class="nx-sim__row-left"><span class="nx-sim__row-icon">🏢</span><span class="nx-sim__row-name">会社設立</span></span><span class="nx-sim__row-price">15万円〜</span></a>
+      <a class="nx-sim__all-link" href="simulator.html">全11サービスのシミュレーターを開く →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOOKING ===== -->
+<section class="nx-section nx-section--dark nx-calendar-section" aria-labelledby="booking-title">
+  <div class="nx-section__num" aria-hidden="true">06</div>
+  <div class="nx-bracket nx-bracket--tl"></div>
+  <div class="nx-bracket nx-bracket--br"></div>
+  <div class="nx-inner">
+    <p class="nx-eyebrow reveal">BOOK A CONSULTATION</p>
+    <h2 id="booking-title" class="nx-section-title nx-section-title--white reveal reveal--delay-1">無料相談の予約はこちら</h2>
+    <p class="nx-lead nx-lead--on-navy reveal reveal--delay-2">空いている時間をクリックして、そのままご予約いただけます。<br>相談は無料です。お気軽にどうぞ。</p>
+    <div class="nx-calendar__wrap reveal reveal--delay-2">
+      <iframe
+        class="nx-calendar__iframe"
+        src="https://script.google.com/macros/s/AKfycbyDLR3C_rjnHAbD4aui1iN_lwHJPC8KdsGP6pSimeHq39bkL2W0oV8aAaR_vf01zituCw/exec"
+        title="無料相談の予約カレンダー"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p class="nx-calendar__note">📅 ご予約後、確認のご連絡をさせていただきます。急ぎの場合はLINEまたはお電話でどうぞ。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="nx-section nx-contact" id="contact" aria-labelledby="contact-title">
+  <div class="nx-section__num" aria-hidden="true">07</div>
+  <div class="nx-bracket nx-bracket--tl"></div>
+  <div class="nx-bracket nx-bracket--br"></div>
+  <div class="nx-inner">
+    <p class="nx-eyebrow reveal">CONTACT</p>
+    <h2 id="contact-title" class="nx-section-title reveal reveal--delay-1">まず、気軽に相談してください。</h2>
+    <p class="nx-lead reveal reveal--delay-2">「これって相談していいのかな？」そんな問い合わせでも、まったく問題ありません。費用もかかりません。</p>
+    <div class="nx-contact__grid">
+      <div class="reveal reveal--delay-2">
+        <div class="nx-contact-card nx-contact-card--featured">
+          <div class="nx-contact-card__icon" aria-hidden="true">💬</div>
+          <h3 class="nx-contact-card__title">LINE で無料相談</h3>
+          <p class="nx-contact-card__desc">24時間受付・顔出し不要・相談だけでもOK。一番気軽なのはLINEです。</p>
+          <a class="nx-btn nx-btn--line" href="https://lin.ee/UKhZQbE" target="_blank" rel="noopener noreferrer"><span>📱</span><span>LINE を開く</span></a>
+        </div>
+      </div>
+      <div class="reveal reveal--delay-3">
+        <div class="nx-contact-card">
+          <div class="nx-contact-card__icon" aria-hidden="true">📞</div>
+          <h3 class="nx-contact-card__title">電話でのお問い合わせ</h3>
+          <p class="nx-contact-card__desc">受付時間 9:00〜19:00（土日祝も対応可）通話中・外出中は折り返します。</p>
+          <a class="nx-btn nx-btn--phone" href="tel:09080688527">090-8068-8527<small>タップで発信</small></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INFO STRIP ===== -->
+<aside class="nx-info-strip" aria-label="事務所情報">
+  <div class="nx-info-item"><p class="nx-info-item__label">OFFICE</p><p class="nx-info-item__val">西岡行政書士事務所</p></div>
+  <div class="nx-info-item"><p class="nx-info-item__label">ADDRESS</p><p class="nx-info-item__val">広島市中区大手町4-6-22</p></div>
+  <div class="nx-info-item"><p class="nx-info-item__label">REGISTRATION</p><p class="nx-info-item__val">2234 1036</p></div>
+  <div class="nx-info-item"><p class="nx-info-item__label">HOURS</p><p class="nx-info-item__val">9:00〜19:00（土日祝可）</p></div>
+</aside>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="nx-footer">
+  <img src="assets/logo-transparent.png" alt="" class="nx-footer__mark" aria-hidden="true">
+  <p class="nx-footer__wordmark">西岡行政書士事務所<small>NISHIOKA GYOSEI SHOSHI OFFICE</small></p>
+  <p><strong>© 西岡行政書士事務所</strong> ｜ 広島県行政書士会所属 ｜ 登録番号 22341036</p>
+  <p>広島市中区大手町4-6-22 ｜ TEL: <a href="tel:09080688527">090-8068-8527</a></p>
+  <nav class="nx-footer__links" aria-label="フッターナビゲーション">
+    <a href="blog/" class="nx-footer__link">コラム</a>
+    <a href="police.html" class="nx-footer__link">警察申請まとめページ</a>
+    <a href="sagyoshi-renkai.html" class="nx-footer__link">士業の先生方へ（業務連携）</a>
+    <a href="fueihou.html" class="nx-footer__link">風営法許可</a>
+    <a href="shinya-eigyou.html" class="nx-footer__link">深夜営業届</a>
+    <a href="kobutu.html" class="nx-footer__link">古物商許可</a>
+    <a href="douroshiyou.html" class="nx-footer__link">道路使用・占用許可</a>
+    <a href="kensetsu.html" class="nx-footer__link">建設業許可</a>
+    <a href="minpaku.html" class="nx-footer__link">民泊許可</a>
+    <a href="nochi.html" class="nx-footer__link">農地転用</a>
+    <a href="https://note.com/nishioka2405" class="nx-footer__link" target="_blank" rel="noopener noreferrer">note（警察官時代のエッセイ）</a>
+  </nav>
 </footer>
 
-<a class="fab" href="https://lin.ee/UKhZQbE" target="_blank" rel="noopener noreferrer">💬 LINE で相談</a>
+<!-- ===== LINE FAB ===== -->
+<a href="https://lin.ee/UKhZQbE" target="_blank" rel="noopener noreferrer" class="nx-fab" aria-label="LINEで無料相談"><span>📱</span><span>LINE で相談</span></a>
 
 <script>
-// ========================================================
-// 記事データ — 公開済みは published: true、url を記入
-// ========================================================
-const ARTICLES = [
-  { num: 1, cat: 'shinya', title: '広島で深夜営業を始めるには？届出が必要な業態と手続きの全体像', date: '2026.04.15', type: 'normal', url: 'shinya/hiroshima-shinya-eigyo-guide.html', published: true },
-  { num: 2, cat: 'shinya', title: '深夜営業届出の費用相場｜行政書士に頼むといくら？', date: '2026.04.17', type: 'normal', url: 'shinya/shinya-eigyo-hiyou-souba.html', published: true },
-  { num: 3, cat: 'shinya', title: '深夜営業届出に必要な書類一覧【2026年版・広島県警対応】', date: '2026.04.20', type: 'normal', url: 'shinya/shinya-eigyo-hitsuyou-shorui.html', published: true },
-  { num: 4, cat: 'shinya', title: '【元警察官の実話】深夜営業届で警察が本当に見ているポイント', date: '2026.04.23', type: 'interview', url: 'shinya/shinya-eigyo-keisatsu-honne.html', published: true },
-  { num: 5, cat: 'fuueihou', title: '広島の風営法許可とは？5種類の営業許可をわかりやすく解説', date: '2026.04.27', type: 'normal', url: 'fueihou/hiroshima-fueihou-kyoka-4shurui.html', published: true },
-  { num: 6, cat: 'shinya', title: '深夜営業届出はいつまでに出せばいい？開店日から逆算した提出スケジュール', date: '2026.04.28', type: 'normal', url: 'shinya/shinya-eigyo-schedule-gyakusan.html', published: true },
-  { num: 7, cat: 'fuueihou', title: '風俗営業許可の費用相場｜広島で許可取得にいくらかかる？', date: '2026.04.28', type: 'normal', url: 'fueihou/fueihou-kyoka-hiyou-souba.html', published: true },
-  { num: 8, cat: 'shinya', title: 'バー開業に深夜営業届は必要？営業形態ごとに必要な手続きを整理', date: '2026.04.29', type: 'normal', url: 'shinya/bar-kaigyou-tetsuduki-hantei.html', published: true },
-  { num: 9, cat: 'fuueihou', title: '【元広島県警官が語る】風営法申請で不許可になる典型パターン5選', date: '2026.04.29', type: 'interview', url: 'fueihou/fueihou-fukyoka-pattern-5.html', published: true },
-  { num: 10, cat: 'shinya', title: '深夜営業の図面作成｜自分で作れる？行政書士に依頼すべき判断基準', date: '2026.05.01', type: 'normal', url: 'shinya/shinya-eigyo-zumen-handan.html', published: true },
-  { num: 11, cat: 'fuueihou', title: '広島でキャバクラを開業する手順｜物件選びから営業開始までの完全ガイド', date: '2026.05.02', type: 'normal', url: 'fueihou/hiroshima-cabaclub-kaigyou-tejun.html', published: true },
-  { num: 12, cat: 'shinya', title: 'スナックの深夜営業届出｜カラオケがある場合の注意点', date: '2026.05.02', type: 'normal', url: 'shinya/snack-shinya-eigyo-karaoke.html', published: true },
-  { num: 13, cat: 'fuueihou', title: '風営法の保護対象施設とは?学校・病院から何メートル離せばOK？', date: '2026.05.05', type: 'normal', url: 'fueihou/fueihou-hogo-taishou-shisetsu.html', published: true },
-  { num: 14, cat: 'fuueihou', title: 'ガールズバーは風営法に該当する？セットでの料金システムの落とし穴', date: '2026.05.09', type: 'normal', url: 'fueihou/girlsbar-fueihou-set-ryokin.html', published: true },
-  { num: 15, cat: 'fuueihou', title: 'ホストクラブ開業ガイド｜広島での許可取得から営業開始までの完全マニュアル', date: '2026.05.10', type: 'normal', url: 'fueihou/hostclub-kaigyou-hiroshima.html', published: true },
-  { num: 16, cat: 'fuueihou', title: '【現場の本音】広島中央署の風営法担当に好印象を持たれる申請書とは', date: '2026.05.11', type: 'interview', url: 'fueihou/hiroshima-chuo-fueihou-shinseisho-koinshou.html', published: true },
-  { num: 17, cat: 'shinya', title: '深夜営業中に営業内容を変更した場合の手続き｜変更届の出し方', date: '2026.05.13', type: 'normal', url: 'shinya/shinya-eigyo-henkou-todoke.html', published: true },
-  { num: 18, cat: 'fuueihou', title: '風営法の管理者・名義人になれる人なれない人｜欠格事由を完全解説', date: '2026.05.14', type: 'normal', url: 'fueihou/fueihou-kanrisha-meiginin-kakkaku-jiyu.html', published: true },
-  { num: 19, cat: 'shinya', title: '深夜営業届を出さずに営業したらどうなる？無届営業の罰則とリスク', date: '2026.05.16', type: 'normal', url: 'shinya/shinya-eigyo-mutoddoke-bassoku-risk.html', published: true },
-  { num: 20, cat: 'fuueihou', title: '風営法の用途地域制限｜出店できるエリア・できないエリアの判定方法', date: '2026.05.17', type: 'normal', url: 'fueihou/fueihou-yoto-chiiki-seigen.html', published: true },
-  { num: 21, cat: 'fuueihou', title: '風俗営業許可の構造設備基準｜図面に落とすべき数値と確認方法', date: '2026.05.18', type: 'normal', url: 'fueihou/fueihou-kozo-setsubi-kijun.html', published: true },
-  { num: 22, cat: 'fuueihou', title: '風営法の申請から許可までの期間｜広島県警の標準処理期間と短縮のコツ', date: '2026.05.18', type: 'normal', url: 'fueihou/fueihou-kyoka-kikan-hyojun.html', published: true },
-  { num: 23, cat: 'kobutsu', title: '広島で古物商許可を取るには？申請の流れと必要書類【2026年版】', date: '2026.05.19', type: 'normal', url: 'kobutsu/hiroshima-kobutsu-kyoka-nagare.html', published: true },
-  { num: 24, cat: 'kobutsu', title: '古物商許可の欠格事由とは？許可を取れない人・取れなくなる人の条件', date: '2026.05.19', type: 'normal', url: 'kobutsu/kobutsu-kyoka-kakkaku-jiyu.html', published: true },
-  { num: 25, cat: 'fuueihou', title: '【元警察官の視点】風営法違反で摘発される店の共通点', date: '2026.05.20', type: 'normal', url: 'fueihou/fueihou-ihan-taiho-kyotsu-ten.html', published: true },
-  { num: 26, cat: 'kobutsu', title: '古物商許可の費用｜行政書士に頼む場合と自分で取る場合の比較', date: '2026.05.20', type: 'normal', url: 'kobutsu/kobutsu-kyoka-hiyou-hikaku.html', published: true },
-  { num: 27, cat: 'fuueihou', title: '風営法の変更届完全ガイド｜内装変更・管理者変更・役員変更で必要な手続き', date: '2026.05.21', type: 'normal', url: 'fueihou/fueihou-henkou-todoke-kanzen-guide.html', published: true },
-  { num: 28, cat: 'shinya', title: '深夜営業届出の図面が通らないケース｜警察に差し戻される図面の特徴', date: '2026.05.21', type: 'normal', url: 'shinya/shinya-eigyo-zumen-tooranai-case.html', published: true },
-  { num: 29, cat: 'kobutsu', title: '中古車販売で古物商許可は必要？自動車商の特殊ルール', date: '2026.05.22', type: 'normal', url: 'kobutsu/chukosha-kobutsu-tokushu-rule.html', published: true },
-  { num: 30, cat: 'fuueihou', title: '広島の風営法でよくある質問Q&A 30選', date: '2026.05.23', type: 'normal', url: 'fueihou/hiroshima-fueihou-faq-30.html', published: true },
-　{ num: 31, cat: 'shinya', title: '深夜営業届の名義変更はできる？事業承継・法人化のときの手続き', date: '2026.05.24', type: 'normal', url: 'shinya/shinya-eigyo-meigi-henkou.html', published: true },
-  { num: 32, cat: 'kobutsu', title: 'ネット販売・メルカリ転売で古物商は必要？個人副業の境界線', date: '2026.05.31', type: 'normal', url: 'kobutsu/mercari-tenbai-kobutsu-hitsuyo.html', published: true },
-  { num: 33, cat: 'fuueihou', title: '【元警察官】私が現役時代に「うまく書けてる」と思った申請書の特徴', date: '2026.06.01', type: 'interview', url: 'fueihou/fueihou-shinseisho-umaku-kakeru-tokucho.html', published: true },
-  { num: 34, cat: 'shinya', title: '深夜営業中の風営法接客で要注意｜こんな営業はNG', date: '2026.06.02', type: 'normal', url: 'shinya/shinya-eigyo-settai-ng.html', published: true },
-  { num: 35, cat: 'fuueihou', title: '風俗営業の譲渡・相続｜許可は引き継げる？', date: '2026.06.03', type: 'normal', url: 'fueihou/fueihou-jouto-souzoku.html', published: true },
-  { num: 36, cat: 'kobutsu', title: '古物商の品目選びで失敗しないために｜13品目の意味と選び方', date: '2026.06.04', type: 'normal', url: 'kobutsu/kobutsu-13hinmoku-erabikata.html', published: true },
-  { num: 37, cat: 'cross', title: '【独立開業の方へ】広島で水商売を始めるなら、警察申請はこの順番で', date: '2026.06.05', type: 'interview', url: 'mizushobai-kaigyo-junban.html', published: true },
-  { num: 38, cat: 'fuueihou', title: '風営法の構造設備基準｜内装工事前にチェックすべき7項目', date: '2026.06.06', type: 'normal', url: 'fueihou/fueihou-naisou-koji-mae-check7.html', published: true },
-  { num: 39, cat: 'shinya', title: '深夜営業届出の手数料は？広島県警の窓口で必要な実費まとめ', date: '2026.06.07', type: 'normal', url: 'shinya/shinya-eigyo-tesuryo-jippi.html', published: true },
-  { num: 40, cat: 'fuueihou', title: '広島市内の風営法担当警察署一覧｜中央署・東署・南署の管轄', date: '2026.06.08', type: 'normal', url: 'fueihou/hiroshima-fueihou-keisatsusho-kankatsu.html', published: true },
-  // ====== 公開予定 ======
-  
-  { num: 41, cat: 'kobutsu', title: '古物商許可を取得した後にやること｜古物台帳・標識・営業のルール', date: '近日公開', type: 'normal', published: false },
-  { num: 42, cat: 'shinya', title: '深夜営業届出と飲食店営業許可の関係｜両方必要なケースとは', date: '近日公開', type: 'normal', published: false },
-  { num: 43, cat: 'fuueihou', title: '【現場のリアル】風営法立入検査で警察官が確認するポイント', date: '近日公開', type: 'interview', published: false },
-  { num: 44, cat: 'fuueihou', title: '風営法のゲームセンター・ゲームバー｜4号営業の許可要件', date: '近日公開', type: 'normal', published: false },
-  { num: 45, cat: 'cross', title: '【完全保存版】広島で夜の店を開業する手続きフローチャート', date: '近日公開', type: 'normal', published: false },
-  { num: 46, cat: 'shinya', title: '深夜営業届出を受任する行政書士の選び方｜見極めポイント5つ', date: '近日公開', type: 'normal', published: false },
-  { num: 47, cat: 'fuueihou', title: 'コンセプトカフェ・メイドカフェは風営法対象？最新解釈と注意点', date: '近日公開', type: 'normal', published: false },
-  { num: 48, cat: 'kobutsu', title: '古物商のURL届出｜ネット販売を始めるときの届出義務', date: '近日公開', type: 'normal', published: false },
-  { num: 49, cat: 'fuueihou', title: '【西岡が答える】風営法相談で一番多い「これってOK？」事例集', date: '近日公開', type: 'interview', published: false },
-  { num: 50, cat: 'cross', title: '【総まとめ】広島の警察申請ガイド2026 — 風営・深夜・古物の全知識', date: '近日公開', type: 'normal', published: false },
-];
-
-const CAT_LABELS = { shinya: '深夜営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断' };
-
-let currentFilter = 'all';
-
-function renderCounts() {
-  const all = ARTICLES.length;
-  document.getElementById('count-all').textContent = '(' + all + ')';
-  document.getElementById('count-shinya').textContent = '(' + ARTICLES.filter(a => a.cat === 'shinya').length + ')';
-  document.getElementById('count-fuueihou').textContent = '(' + ARTICLES.filter(a => a.cat === 'fuueihou').length + ')';
-  document.getElementById('count-kobutsu').textContent = '(' + ARTICLES.filter(a => a.cat === 'kobutsu').length + ')';
-  document.getElementById('count-cross').textContent = '(' + ARTICLES.filter(a => a.cat === 'cross').length + ')';
-  document.getElementById('totalCount').textContent = ARTICLES.filter(a => a.published).length;
-}
-
-function pad(n) { return String(n).padStart(2, '0'); }
-
-// Standard article card
-function renderArticleCard(a) {
-  const catLabel = CAT_LABELS[a.cat];
-  const typeBadge = a.type === 'interview'
-    ? '<span class="article-card__type interview">Interview</span>'
-    : '<span class="article-card__type">Article</span>';
-
-  if (!a.published) {
-    return `<div class="article-card coming">
-      <div class="article-card__top">
-        <span class="article-card__cat coming">${catLabel}</span>
-        <span class="article-card__num">№${pad(a.num)}</span>
-      </div>
-      <div class="article-card__title">${a.title}</div>
-      <div class="article-card__meta">
-        <span class="article-card__date">${a.date}</span>
-        ${typeBadge}
-      </div>
-    </div>`;
-  }
-
-  return `<a href="${a.url}" class="article-card">
-    <div class="article-card__top">
-      <span class="article-card__cat cat-${a.cat}">${catLabel}</span>
-      <span class="article-card__num">№${pad(a.num)}</span>
-    </div>
-    <div class="article-card__title">${a.title}</div>
-    <div class="article-card__meta">
-      <span class="article-card__date">${a.date}</span>
-      ${typeBadge}
-    </div>
-  </a>`;
-}
-
-// Featured grid: 1 large card + 3 side cards
-function renderFeatured(filtered) {
-  const featuredEl = document.getElementById('featuredGrid');
-  const featuredSection = document.getElementById('featured-section');
-  const published = filtered.filter(a => a.published).sort((x, y) => y.num - x.num);
-
-  if (published.length === 0) {
-    featuredSection.style.display = 'none';
-    return;
-  }
-  featuredSection.style.display = '';
-
-  const main = published[0];
-  const sides = published.slice(1, 4);
-
-  const mainCatLabel = CAT_LABELS[main.cat];
-  const mainHtml = `<a class="featured-main" href="${main.url}">
-    <div class="featured-main__num">№${pad(main.num)}</div>
-    <span class="featured-main__cat cat-${main.cat}">${mainCatLabel}</span>
-    <h3 class="featured-main__title">${main.title}</h3>
-    <p class="featured-main__body">元広島県警察官13年の視点から、実務に直結するポイントをまとめました。${main.type === 'interview' ? '現場のリアルなインタビュー形式でお届けします。' : '広島で許認可をお考えの方は、まずこちらをご一読ください。'}</p>
-    <div class="featured-main__meta">
-      <span class="featured-main__date">${main.date}</span>
-      <span class="featured-main__arrow">続きを読む →</span>
-    </div>
-  </a>`;
-
-  const sidesHtml = sides.map(a => `<a class="featured-side-card" href="${a.url}">
-    <div class="featured-side-card__head">
-      <span class="featured-side-card__num">№${pad(a.num)}</span>
-      <span class="featured-side-card__cat cat-${a.cat}">${CAT_LABELS[a.cat]}</span>
-    </div>
-    <div class="featured-side-card__title">${a.title}</div>
-    <div class="featured-side-card__meta">
-      <span class="featured-side-card__date">${a.date}</span>
-      <span>${a.type === 'interview' ? 'Interview' : '記事'}</span>
-    </div>
-  </a>`).join('');
-
-  featuredEl.innerHTML = mainHtml + `<div class="featured-side">${sidesHtml}</div>`;
-}
-
-function renderArticles() {
-  const filtered = currentFilter === 'all'
-    ? ARTICLES
-    : ARTICLES.filter(a => a.cat === currentFilter);
-
-  // Featured (latest 4 published)
-  renderFeatured(filtered);
-
-  // Published (excluding the top 4 already shown as featured)
-  const allPublished = filtered.filter(a => a.published).sort((x, y) => y.num - x.num);
-  const remainingPublished = allPublished.slice(4);
-  const upcoming = filtered.filter(a => !a.published);
-
-  document.getElementById('publishedCount').textContent = allPublished.length + ' 本';
-  document.getElementById('upcomingCount').textContent = upcoming.length + ' 本';
-
-  const publishedGrid = document.getElementById('publishedGrid');
-  if (remainingPublished.length > 0) {
-    publishedGrid.innerHTML = remainingPublished.map(renderArticleCard).join('');
-  } else if (allPublished.length === 0) {
-    publishedGrid.innerHTML = '<div class="empty"><div class="empty__icon">📭</div><div class="empty__text">該当する公開記事はまだありません</div></div>';
+/* enhance.js（静的版）— reveal / counter / FAB / GA4イベント
+   コンテンツ表示にJSは一切不要。ここは「演出と計測」だけ。 */
+(function () {
+  /* Scroll reveal */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
+    setTimeout(function () {
+      document.querySelectorAll('.reveal:not(.is-visible)').forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+      });
+    }, 1500);
   } else {
-    publishedGrid.innerHTML = '<div class="empty"><div class="empty__icon">🎉</div><div class="empty__text">注目記事に全件表示されています</div></div>';
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  const upcomingGrid = document.getElementById('upcomingGrid');
-  if (upcoming.length > 0) {
-    upcomingGrid.innerHTML = upcoming.map(renderArticleCard).join('');
-  } else {
-    upcomingGrid.innerHTML = '<div class="empty"><div class="empty__icon">📝</div><div class="empty__text">該当する予定記事はありません</div></div>';
-  }
-}
-
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentFilter = btn.dataset.filter;
-    renderArticles();
-    if (typeof gtag === 'function') gtag('event', 'blog_filter', { category: currentFilter });
+  /* Counter（JS無効時は最初から最終値が表示される設計） */
+  var easeOutCubic = function (t) { return 1 - Math.pow(1 - t, 3); };
+  document.querySelectorAll('[data-count]').forEach(function (el) {
+    var target = parseInt(el.dataset.count, 10);
+    if (isNaN(target)) return;
+    var run = function () {
+      el.textContent = '0';
+      var dur = 1200, t0 = performance.now();
+      var tick = function (now) {
+        var t = Math.min(1, (now - t0) / dur);
+        el.textContent = Math.round(target * easeOutCubic(t)).toLocaleString();
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    if ('IntersectionObserver' in window) {
+      var cio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { run(); cio.unobserve(e.target); } });
+      }, { threshold: 0.5 });
+      cio.observe(el);
+    }
   });
-});
 
-renderCounts();
-renderArticles();
+  /* LINE FAB */
+  var fab = document.querySelector('.nx-fab');
+  var hero = document.querySelector('.nx-hero');
+  if (fab && hero) {
+    var onScroll = function () {
+      fab.classList.toggle('is-visible', hero.getBoundingClientRect().bottom < 80);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* GA4 イベント */
+  var track = function (name, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+  };
+  document.querySelectorAll('a[href*="lin.ee"]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      track('cta_click', {
+        cta_type: 'line',
+        cta_location: el.closest('.nx-hero') ? 'hero'
+          : el.closest('.nx-header') ? 'header'
+          : el.closest('.nx-contact') ? 'contact'
+          : el.classList.contains('nx-fab') ? 'fab' : 'other'
+      });
+    });
+  });
+  document.querySelectorAll('a[href^="tel:"]').forEach(function (el) {
+    el.addEventListener('click', function () { track('cta_click', { cta_type: 'phone', cta_location: 'contact' }); });
+  });
+  document.querySelectorAll('.nx-service-card__link').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var card = el.closest('.nx-service-card');
+      var title = card && card.querySelector('.nx-service-card__title');
+      track('service_click', { service_name: title ? title.textContent.trim() : 'unknown' });
+    });
+  });
+  document.querySelectorAll('.nx-btn--sim, .nx-sim__all-link').forEach(function (el) {
+    el.addEventListener('click', function () { track('cta_click', { cta_type: 'simulator', cta_location: 'sim_card' }); });
+  });
+  document.querySelectorAll('.nx-sim__row').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var name = el.querySelector('.nx-sim__row-name');
+      track('simulator_row_click', { service_name: name ? name.textContent.trim() : 'unknown' });
+    });
+  });
+  /* FAQ開閉も計測（どの疑問が多いかが分かる） */
+  document.querySelectorAll('.nx-faq__item').forEach(function (el) {
+    el.addEventListener('toggle', function () {
+      if (el.open) {
+        var q = el.querySelector('.nx-faq__q');
+        track('faq_open', { question: q ? q.textContent.trim().slice(0, 60) : 'unknown' });
+      }
+    });
+  });
+
+  /* Scroll depth */
+  var milestones = [25, 50, 75, 100], seen = {};
+  window.addEventListener('scroll', function () {
+    var doc = document.documentElement;
+    var pct = Math.round(((window.scrollY + window.innerHeight) / doc.scrollHeight) * 100);
+    milestones.forEach(function (m) {
+      if (pct >= m && !seen[m]) { seen[m] = true; track('scroll_depth', { percent: m }); }
+    });
+  }, { passive: true });
+})();
 </script>
-
 </body>
 </html>
