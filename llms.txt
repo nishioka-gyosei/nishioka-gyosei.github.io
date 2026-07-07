@@ -19,6 +19,7 @@
 - [古物商許可](https://nishioka-gyosei.github.io/kobutu.html): 60,000円〜。標準処理期間 約40日
 - [道路使用・占用許可](https://nishioka-gyosei.github.io/douroshiyou.html): 要見積もり
 - [建設業許可](https://nishioka-gyosei.github.io/kensetsu.html): 要見積もり。新規・更新・業種追加・決算変更
+- [賃貸住宅管理業者登録（国土交通大臣登録）](https://nishioka-gyosei.github.io/chintai-kanri.html): 132,000円〜（別途登録免許税90,000円）。管理戸数200戸以上は登録義務。gBizID取得〜電子申請〜補正対応まで一括代行、電子申請のため全国対応
 - [会社設立](https://nishioka-gyosei.github.io/kaisha-setsuritsu.html): 150,000円〜（実費別）
 - [飲食店営業許可・酒類販売](https://nishioka-gyosei.github.io/inshokuten.html): 55,000円〜
 - [創業融資サポート](https://nishioka-gyosei.github.io/sogyo-yushi.html): 55,000円〜＋成功報酬
