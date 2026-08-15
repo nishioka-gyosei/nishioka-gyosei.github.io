@@ -507,6 +507,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .cat-fuueihou { background: var(--maple); }
 .cat-kobutsu { background: var(--gold-deep); }
 .cat-cross { background: var(--leaf); }
+.cat-douro { background: #2f6b6e; }
 
 /* Empty state */
 .empty {
@@ -646,6 +647,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <button class="filter-btn" data-filter="fuueihou">🎤 風営法<span class="filter-btn__count" id="count-fuueihou"></span></button>
     <button class="filter-btn" data-filter="kobutsu">♻️ 古物商<span class="filter-btn__count" id="count-kobutsu"></span></button>
     <button class="filter-btn" data-filter="cross">📚 横断<span class="filter-btn__count" id="count-cross"></span></button>
+    <button class="filter-btn" data-filter="douro">🚧 道路使用<span class="filter-btn__count" id="count-douro"></span></button>
   </div>
 </nav>
 
@@ -762,10 +764,11 @@ const ARTICLES = [
   { num: 48, cat: 'kobutsu', title: '古物商のURL届出とは？ネット販売を始めるときの届出義務【2026年版】', date: '2026.06.16', type: 'normal', url: 'kobutsu/kobutsu-url-todokede.html', published: true },
   { num: 49, cat: 'fuueihou', title: '【西岡が答える】風営法相談で一番多い「これってOK？」事例集', date: '2026.06.17', type: 'interview', url: 'fueihou/fueihou-korette-ok-jireishu.html', published: true },
   { num: 50, cat: 'cross', title: '【総まとめ】広島の警察申請ガイド｜風営法・深夜営業・古物商の全知識', date: '2026.06.18', type: 'normal', url: 'hiroshima-keisatsu-shinsei-guide.html', published: true },
+  { num: 51, cat: 'douro', title: '広島の道路使用許可とは？必要なケース・費用・取り方を解説', date: '2026.06.19', type: 'normal', url: 'douro/hiroshima-douro-shiyou-kyoka-towa.html', published: true },
   // ====== 公開予定 ======
 ];
 
-const CAT_LABELS = { shinya: '深夜営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断' };
+const CAT_LABELS = { shinya: '深夜営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断', douro: '道路使用' };
 
 let currentFilter = 'all';
 
@@ -776,6 +779,7 @@ function renderCounts() {
   document.getElementById('count-fuueihou').textContent = '(' + ARTICLES.filter(a => a.cat === 'fuueihou').length + ')';
   document.getElementById('count-kobutsu').textContent = '(' + ARTICLES.filter(a => a.cat === 'kobutsu').length + ')';
   document.getElementById('count-cross').textContent = '(' + ARTICLES.filter(a => a.cat === 'cross').length + ')';
+  document.getElementById('count-douro').textContent = '(' + ARTICLES.filter(a => a.cat === 'douro').length + ')';
   document.getElementById('totalCount').textContent = ARTICLES.filter(a => a.published).length;
 }
 
