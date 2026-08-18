@@ -508,6 +508,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .cat-kobutsu { background: var(--gold-deep); }
 .cat-cross { background: var(--leaf); }
 .cat-douro { background: #2f6b6e; }
+.cat-keibi { background: #454b54; }
 
 /* Empty state */
 .empty {
@@ -648,6 +649,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <button class="filter-btn" data-filter="kobutsu">♻️ 古物商<span class="filter-btn__count" id="count-kobutsu"></span></button>
     <button class="filter-btn" data-filter="cross">📚 横断<span class="filter-btn__count" id="count-cross"></span></button>
     <button class="filter-btn" data-filter="douro">🚧 道路使用<span class="filter-btn__count" id="count-douro"></span></button>
+    <button class="filter-btn" data-filter="keibi">🛡 警備業<span class="filter-btn__count" id="count-keibi"></span></button>
   </div>
 </nav>
 
@@ -767,10 +769,11 @@ const ARTICLES = [
   { num: 51, cat: 'douro', title: '広島の道路使用許可とは？必要なケース・費用・取り方を解説', date: '2026.06.19', type: 'normal', url: 'douro/hiroshima-douro-shiyou-kyoka-towa.html', published: true },
     { num: 52, cat: 'douro', title: 'キッチンカーは公道で営業できる？道路使用許可の実際', date: '2026.06.20', type: 'normal', url: 'douro/kitchencar-douro-shiyou-kyoka.html', published: true },
     { num: 53, cat: 'douro', title: 'お祭り・イベントで道路を使うには？主催者が取る道路使用許可', date: '2026.06.21', type: 'normal', url: 'douro/event-matsuri-douro-shiyou-kyoka.html', published: true },
+  { num: 54, cat: 'keibi', title: '広島で警備業を始めるには？認定申請の要件・費用・流れ', date: '2026.06.22', type: 'normal', url: 'keibi/hiroshima-keibigyou-nintei.html', published: true },
   // ====== 公開予定 ======
 ];
 
-const CAT_LABELS = { shinya: '深夜営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断', douro: '道路使用' };
+const CAT_LABELS = { shinya: '深夜営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断', douro: '道路使用', keibi: '警備業' };
 
 let currentFilter = 'all';
 
@@ -782,6 +785,7 @@ function renderCounts() {
   document.getElementById('count-kobutsu').textContent = '(' + ARTICLES.filter(a => a.cat === 'kobutsu').length + ')';
   document.getElementById('count-cross').textContent = '(' + ARTICLES.filter(a => a.cat === 'cross').length + ')';
   document.getElementById('count-douro').textContent = '(' + ARTICLES.filter(a => a.cat === 'douro').length + ')';
+  document.getElementById('count-keibi').textContent = '(' + ARTICLES.filter(a => a.cat === 'keibi').length + ')';
   document.getElementById('totalCount').textContent = ARTICLES.filter(a => a.published).length;
 }
 
