@@ -37,6 +37,109 @@
 }
 </script>
 
+<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "西岡行政書士事務所",
+  "image": "https://nishioka-gyosei.github.io/photo.jpg",
+  "url": "https://nishioka-gyosei.github.io/",
+  "telephone": "+81-90-8068-8527",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "大手町4-6-22",
+    "addressLocality": "広島市中区",
+    "addressRegion": "広島県",
+    "addressCountry": "JP"
+  },
+  "areaServed": [
+    "広島県",
+    "広島市"
+  ],
+  "openingHours": "Mo-Su 09:00-19:00",
+  "priceRange": "¥¥"
+}
+</script>
+
+<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "警察手数料24,000円は、申請が不許可だった場合も返ってきませんか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "返ってきません。警察手数料は「申請に対する審査の対価」なので、許可・不許可にかかわらず納付した金額は還付されないのが原則です。だからこそ、申請前の段階で許可が取れる見込みがあるかをしっかり確認することが、結果的にコストを抑えることにつながります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "行政書士の報酬は、許可が下りなかった場合も発生しますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "事務所によって異なります。成功報酬制を採用している事務所では、許可が下りなければ報酬の一部または全部が返還される場合があります。着手金＋成功報酬型では、着手金は返還されないが残りは返金、というパターンが多いです。契約時に確認しておくことが重要です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "1号営業から4号営業に変更したい場合、新規申請と同じ費用がかかりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい、原則として新規申請と同じ手数料24,000円が必要です。風営法上、業態区分が変わる場合は新規許可の取得とみなされるためです。行政書士に依頼する場合の報酬も、新規申請とほぼ同等の金額になります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "深夜営業届出から風俗営業許可へ切り替える場合の費用は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "深夜営業届出で営業を始めて、軌道に乗ってから風俗営業許可に切り替えるケースは実務でよくあります。この場合、新規許可申請として手数料24,000円＋実費＋行政書士報酬がかかります。深夜営業届出時の費用とは別途必要になります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "法人化すると費用は変わりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "警察手数料は変わりませんが、書類取得費用は法人のほうが多くなります。法人の登記事項証明書（600円）が追加で必要なほか、役員全員分の住民票・身分証明書・登記されていないことの証明書が必要です。役員5名なら個人申請より5,000〜7,000円ほど実費が増えます。"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://nishioka-gyosei.github.io/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "コラム",
+      "item": "https://nishioka-gyosei.github.io/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "風俗営業許可の費用相場",
+      "item": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-kyoka-hiyou-souba.html"
+    }
+  ]
+}
+</script>
+
 <style>
 :root {
   --ink: #14171F;
@@ -196,6 +299,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* ========= GEO直接回答ブロック（フェーズ2改修） ========= */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -260,6 +371,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「キャバクラを開業したいが、許可取得にいくらかかるのか？」「行政書士に頼んだ場合と自分でやる場合、費用差はどのくらい？」——風俗営業の開業を検討する段階で、誰もが直面する疑問です。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li>広島で風俗営業（1号）許可を取る費用は、<strong>警察手数料24,000円＋実費＋行政書士報酬</strong>。</li>
+    <li>自分で申請すれば<strong>約3万円</strong>、行政書士に依頼すると報酬相場は<strong>15〜30万円</strong>。</li>
+    <li>手数料は<strong>不許可でも返還されない</strong>ため、事前の要件確認が費用を抑えるカギ。</li>
+  </ul>
+</div>
 
 <p>ネットで調べると「20万円から」「30万円が相場」など事務所によって金額にばらつきがあり、何が含まれるのか分かりにくいのが実情です。さらに、深夜営業届出（手数料無料）と違って風営法許可には警察への手数料24,000円が必要なので、最低限かかる費用も変わってきます。</p>
 
