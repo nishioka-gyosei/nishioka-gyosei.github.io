@@ -36,6 +36,108 @@
 }
 </script>
 
+
+<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "西岡行政書士事務所",
+  "image": "https://nishioka-gyosei.github.io/photo.jpg",
+  "url": "https://nishioka-gyosei.github.io/",
+  "telephone": "+81-90-8068-8527",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "大手町4-6-22",
+    "addressLocality": "広島市中区",
+    "addressRegion": "広島県",
+    "addressCountry": "JP"
+  },
+  "areaServed": [
+    "広島県",
+    "広島市"
+  ],
+  "openingHours": "Mo-Su 09:00-19:00",
+  "priceRange": "¥¥"
+}
+</script>
+<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "1号営業と深夜営業届出、両方必要なケースはありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ありません。1号営業の許可を取れば、深夜営業届出は不要です。ただし風営法上の営業時間規制（原則として午前0時または1時まで）に従う必要があります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "個人事業主と法人、どちらで申請すべきですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "お店の規模や経営方針によります。個人事業主のメリットは申請が簡素なこと、法人のメリットは事業承継がしやすいこと・社会的信用が高いことです。複数店舗展開を考えているなら法人化、単店舗で長く営業するなら個人事業主、という判断が一般的です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "営業時間に制限はありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "あります。1号営業は原則として午前0時までですが、広島県の条例で特定地域に指定されている繁華街エリアでは午前1時までの営業が認められる場合があります。物件選定の段階で、その地域の営業時間規制を確認することが重要です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "風営法許可は譲渡できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "風営法許可は一身専属的な許可なので、原則として譲渡できません。営業承継の際には、新しい経営者が改めて許可申請を行う必要があります。法人化されている場合は、株式や事業の譲渡で実質的な承継が可能になりますが、別途手続きが必要です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ゲームセンターは4号営業ですか？5号営業ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "射幸性のない遊技設備（クレーンゲーム・ビデオゲーム等）を設置するゲームセンターは5号営業に該当します。4号営業はパチンコ・麻雀など射幸性のある設備が対象です。設置する設備の種類によって該当が変わりますので、開業前に必ず確認してください。"
+      }
+    }
+  ]
+}
+</script>
+<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://nishioka-gyosei.github.io/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "コラム",
+      "item": "https://nishioka-gyosei.github.io/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "風営法許可とは（5種類）",
+      "item": "https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-fueihou-kyoka-4shurui.html"
+    }
+  ]
+}
+</script>
+
 <style>
 :root {
   --ink: #14171F; --ink-soft: #2A2D38; --paper: #F5F2EB; --paper-2: #FFFDF7; --cream: #EDE8DC;
@@ -174,6 +276,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -234,6 +344,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「キャバクラを開業したい」「ゲームセンターを始めたい」「ホストクラブの経営に興味がある」——こうした業態を考えたとき、必ず関わってくるのが「風営法（ふうえいほう）」です。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li>風営法は、キャバクラ・スナック・ゲームセンター等の営業を規制する法律。<strong>風俗営業は1号〜5号</strong>に分かれ、営むには<strong>公安委員会の許可</strong>が必要。</li>
+    <li><strong>1号</strong>=社交飲食（接待あり）／<strong>2号</strong>=低照度飲食／<strong>3号</strong>=区画席／<strong>4号</strong>=まぁじゃん・ぱちんこ等／<strong>5号</strong>=ゲームセンター等。</li>
+    <li>深夜に酒類提供のみなら許可でなく<strong>深夜営業の届出</strong>。業態でどの号か・許可か届出かが変わる。</li>
+  </ul>
+</div>
 
 <p>いざ調べ始めると「1号営業」「2号営業」など聞き慣れない用語が次々と出てきて、「結局、自分のお店はどれに該当するのか？」と混乱される方が多いと思います。この記事では、広島で風営法に関わる事業を始める方に向けて、風営法とは何か、5種類ある営業許可の違い、自分の業態がどれに該当するかの判断ポイントを、行政書士の視点から整理してお伝えします。</p>
 
@@ -565,6 +684,9 @@ a { color: inherit; text-decoration: none; }
   </div>
   <a href="../index.html" class="footer-back">← コラム一覧に戻る</a>
 </footer>
+
+</body>
+</html>
 
 </body>
 </html>
