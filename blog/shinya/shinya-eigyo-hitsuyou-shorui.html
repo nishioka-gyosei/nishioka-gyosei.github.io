@@ -37,6 +37,110 @@
 }
 </script>
 
+
+<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "西岡行政書士事務所",
+  "image": "https://nishioka-gyosei.github.io/photo.jpg",
+  "url": "https://nishioka-gyosei.github.io/",
+  "telephone": "+81-90-8068-8527",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "大手町4-6-22",
+    "addressLocality": "広島市中区",
+    "addressRegion": "広島県",
+    "addressCountry": "JP"
+  },
+  "areaServed": [
+    "広島県",
+    "広島市"
+  ],
+  "openingHours": "Mo-Su 09:00-19:00",
+  "priceRange": "¥¥"
+}
+</script>
+
+<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "書類の有効期限を過ぎてしまいました。再取得が必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "住民票・登記事項証明書は発行から3ヶ月以内のものが必要です。3ヶ月を1日でも過ぎていれば再取得が必要になります。書類収集は提出予定日から逆算して、2ヶ月以内に集中させるのが効率的です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "共同経営の場合、住民票は誰の分が必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "個人事業主の共同経営は形式上「代表者一名」での届出となるため、代表者の住民票のみで足ります。ただし、実態として複数名で経営している場合は、後の立入検査などで実態確認が入る可能性があります。法人化して全員を役員として登記するか、明確に代表者を一名に絞るかの判断が必要です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "飲食店営業許可をまだ取っていません。深夜営業届出を先に出せますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "出せません。深夜営業届出には飲食店営業許可証の写しが必須なので、保健所許可の取得が前提となります。一般的な順序は「物件契約→保健所許可申請→深夜営業届出」となります。両方の手続きを並行して進めると、開業までの期間を短縮できます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "平面図はCADソフトで作る必要がありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CADソフトは必須ではありません。方眼紙への手書き、Excel・PowerPoint、無料の作図ツール（draw.io、Canva等）でも問題ありません。重要なのは「寸法が正確に記載されているか」「実態と一致しているか」の2点です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "書類の代理提出は可能ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "行政書士への委任であれば代理提出が可能です。ご家族や従業員など、行政書士資格のない方が代理提出することは認められていません。ご自身で対応するか、行政書士に依頼するかのいずれかとなります。"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://nishioka-gyosei.github.io/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "コラム",
+      "item": "https://nishioka-gyosei.github.io/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "深夜営業届出の必要書類",
+      "item": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-hitsuyou-shorui.html"
+    }
+  ]
+}
+</script>
+
 <style>
 :root {
   --ink: #14171F;
@@ -201,6 +305,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -265,6 +377,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「深夜営業届出を出すと決めたが、結局どの書類を、どこで、どうやって揃えればいいのか？」——この記事はその疑問に答えるための一覧記事です。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li>深夜営業届の必要書類は、<strong>営業開始届出書＋営業所の図面（求積図・平面図）＋飲食店営業許可証の写し</strong>が基本。</li>
+    <li>法人は<strong>定款・登記事項証明書</strong>も必要。住民票・登記事項証明書は<strong>発行3ヶ月以内</strong>のもの。</li>
+    <li><strong>飲食店営業許可が前提</strong>（先に取得が必要）。図面は寸法の正確さと実態一致が最重要。</li>
+  </ul>
+</div>
 
 <p>「書類を揃える」と一言で言っても、警察署で入手するもの、市役所で取得するもの、自分で作成するものが混在しており、一つ抜けるだけで提出当日に差し戻しになってしまいます。</p>
 
