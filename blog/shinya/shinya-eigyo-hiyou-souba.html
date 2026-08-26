@@ -37,6 +37,110 @@
 }
 </script>
 
+
+<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "西岡行政書士事務所",
+  "image": "https://nishioka-gyosei.github.io/photo.jpg",
+  "url": "https://nishioka-gyosei.github.io/",
+  "telephone": "+81-90-8068-8527",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "大手町4-6-22",
+    "addressLocality": "広島市中区",
+    "addressRegion": "広島県",
+    "addressCountry": "JP"
+  },
+  "areaServed": [
+    "広島県",
+    "広島市"
+  ],
+  "openingHours": "Mo-Su 09:00-19:00",
+  "priceRange": "¥¥"
+}
+</script>
+
+<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "行政書士の報酬はどうやって決まるのですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "主に「業務範囲」「店舗の広さ・複雑さ」「対応スピード」の3要素で決まります。客室が複数ある複雑な店舗、急ぎ対応が必要なケース、法人化と同時に届出するケースなどは、相場の上限に近くなる傾向があります。事務所によっては定額制を採用しているところもあれば、現地確認後に見積もりを出すところもあります。複数の事務所で見積もりを取って比較するのも一つの方法です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "行政書士に依頼すれば必ず受理されますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "「必ず」と断言することはできません。ただし、経験豊富な行政書士であれば、警察署のチェックポイントを押さえた書類作成と、事前の物件確認をしっかり行うため、差し戻しリスクは大きく下がります。当事務所では、物件契約前の段階から相談に対応しており、「届出が通る前提での開業準備」をサポートしています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "報酬の支払いタイミングはいつですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "事務所によって異なりますが、一般的には「契約時に着手金30〜50%、届出受理後に残額」というパターンが多いです。当事務所も同様の二段階制を採用しています。お支払い方法は銀行振込が中心ですが、クレジットカード対応の事務所も増えています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "深夜営業届出と一緒に飲食店営業許可も取れますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "取れます。むしろセットで依頼する方が、書類の整合性が取りやすく結果的に効率的です。飲食店営業許可は保健所の管轄で、深夜営業届出は警察署の管轄ですが、両方の手続きを並行して進めることで、開業までの期間を短縮できます。セット料金を設定している事務所も多いので、相談時に確認してみてください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "報酬が安い事務所と高い事務所、何が違うのですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "大きく分けて「サービス範囲」「経験値」「対応の手厚さ」の違いです。書類作成のみで提出は自分で行うプランなら相場より安くなりますし、警察署OBなど深夜営業届出の経験が豊富な行政書士は相場の上限近い金額になることがあります。安さだけで選ぶと、結局自分で動く部分が多くなってしまうケースもあるため、サービス範囲をよく確認することをおすすめします。"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://nishioka-gyosei.github.io/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "コラム",
+      "item": "https://nishioka-gyosei.github.io/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "深夜営業届出の費用相場",
+      "item": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-hiyou-souba.html"
+    }
+  ]
+}
+</script>
+
 <style>
 :root {
   --ink: #14171F;
@@ -200,6 +304,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -264,6 +376,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「深夜営業届出を出すのに、いったいいくらかかるのか？」「行政書士に頼んだ場合と自分でやる場合、どれくらい差があるのか？」——開業を控えた段階で、この疑問にぶつかる方は多いと思います。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li>深夜営業届（深夜酒類提供飲食店営業開始届）は、<strong>警察への手数料が無料</strong>。</li>
+    <li>行政書士に依頼した場合の<strong>報酬相場は6〜15万円程度</strong>。自分で届け出れば実費（書類取得・図面作成）のみ。</li>
+    <li>費用差の主因は「サービス範囲・経験・対応の手厚さ」。安さだけでなく<strong>差し戻しリスク</strong>も考慮を。</li>
+  </ul>
+</div>
 
 <p>ネットで調べると「6万円から」「10万円が相場」など、事務所によって金額にばらつきがあり、何を基準に判断すればいいのか分かりにくいのが実情です。</p>
 
