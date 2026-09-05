@@ -36,6 +36,114 @@
 }
 </script>
 
+
+<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "西岡行政書士事務所",
+  "image": "https://nishioka-gyosei.github.io/photo.jpg",
+  "url": "https://nishioka-gyosei.github.io/",
+  "telephone": "+81-90-8068-8527",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "大手町4-6-22",
+    "addressLocality": "広島市中区",
+    "addressRegion": "広島県",
+    "addressCountry": "JP"
+  },
+  "areaServed": [
+    "広島県",
+    "広島市"
+  ],
+  "openingHours": "Mo-Su 09:00-19:00",
+  "priceRange": "¥¥",
+  "sameAs": [
+    "https://note.com/nishioka2405",
+    "https://maps.google.com/?cid=16992030545009074796"
+  ]
+}
+</script>
+
+<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "届出を出さずに数か月営業してしまいました。今から出しても大丈夫ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "今からでも届出を提出することを強くおすすめします。無届の期間が長くなるほど、万が一発覚した際のリスクが高まります。今から出しても過去の無届期間は消えませんが、今後の違反を止めることができます。行政書士に相談の上、速やかに手続きを進めてください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "深夜0時直前に閉店すれば届出は不要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "深夜0時より前に閉店し、酒類の提供もその時点で終了していれば、届出は不要です。ただし、「閉店時間を0時と表示しているが、実際には客が深夜1時まで残っている」という状況は、0時以降も営業しているとみなされる可能性があります。実態としての閉店時間を管理することが重要です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "風営法の許可を持っていれば深夜営業届は不要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "いいえ、別々の手続きです。風営法の許可（1〜4号営業）を持っている店舗は、そもそも深夜0時以降に酒類提供を行う営業が原則禁止されています（一部例外あり）。深夜営業届が必要なのは、風営法の許可が不要な飲食店が深夜に酒類を提供する場合です。つまり、風営法許可と深夜営業届は両立できない関係にあります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "深夜営業届を出すと、警察に何か定期的に報告する義務がありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "定期報告の義務はありません。ただし、届け出た内容に変更が生じた場合（屋号・代表者・内装など）は変更届の提出が必要です。また、立入調査が来た際に届出受理書を提示できるよう、保管しておくことをおすすめします。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "今すぐ届出を出したい場合、行政書士に頼むとどのくらいかかりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "当事務所では最短2日で申請を完了した実績があります。費用・期間の目安は料金シミュレーターからご確認いただけます。LINEからの個別相談も受け付けていますので、お気軽にご連絡ください。"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://nishioka-gyosei.github.io/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "コラム",
+      "item": "https://nishioka-gyosei.github.io/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "深夜営業の無届営業の罰則とリスク",
+      "item": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-mutoddoke-bassoku-risk.html"
+    }
+  ]
+}
+</script>
+
 <style>
 :root {
   --ink: #14171F; --ink-soft: #2A2D38; --paper: #F5F2EB; --paper-2: #FFFDF7; --cream: #EDE8DC;
@@ -177,6 +285,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -237,6 +353,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「届出がいることは知っているけど、営業を先に始めてしまった」「届出をしないと、実際のところどうなるの？」「ばれなければ大丈夫でしょ？」——深夜営業届について、こうした問い合わせをいただくことがあります。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li>深夜営業届を出さずに深夜0時以降に酒類を提供すると、<strong>50万円以下の罰金</strong>（刑事罰・<strong>前科がつく</strong>）の対象になる。</li>
+    <li>無届が発覚するルートは主に4つ。罰金だけでなく、<strong>前科による将来の許可取得への影響</strong>や店舗の信用低下というリスクを伴う。</li>
+    <li><strong>気づいた時点で速やかに届出</strong>を行うのが最善。無届のまま営業を続けるほどリスクは大きくなる。</li>
+  </ul>
+</div>
 
 <p>結論から言えば、深夜酒類提供飲食店営業の届出をせずに深夜0時以降に酒類を提供して営業することは、<strong>風営法違反</strong>です。「ばれなければ大丈夫」という考えは通用しません。この記事では、無届営業の具体的な罰則・発覚のルート・発覚後の対応について、元広島県警察官・現行政書士の視点から整理します。</p>
 
