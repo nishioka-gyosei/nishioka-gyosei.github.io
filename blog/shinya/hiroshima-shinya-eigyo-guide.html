@@ -37,6 +37,114 @@
 }
 </script>
 
+
+<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "西岡行政書士事務所",
+  "image": "https://nishioka-gyosei.github.io/photo.jpg",
+  "url": "https://nishioka-gyosei.github.io/",
+  "telephone": "+81-90-8068-8527",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "大手町4-6-22",
+    "addressLocality": "広島市中区",
+    "addressRegion": "広島県",
+    "addressCountry": "JP"
+  },
+  "areaServed": [
+    "広島県",
+    "広島市"
+  ],
+  "openingHours": "Mo-Su 09:00-19:00",
+  "priceRange": "¥¥",
+  "sameAs": [
+    "https://note.com/nishioka2405",
+    "https://maps.google.com/?cid=16992030545009074796"
+  ]
+}
+</script>
+
+<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "深夜営業届出は自分で出せますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可能です。書類自体は警察署で入手でき、記載例も用意されています。ただし、図面作成が最大のハードルで、専門知識がないと差し戻しを繰り返すケースが多いです。本業の準備で忙しい時期ですので、行政書士に依頼するか、自分で挑戦するかは費用対効果で判断するのが良いでしょう。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "届出を出さずに深夜営業を始めたらどうなりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "風営法違反となり、50万円以下の罰金が科される可能性があります。また、警察の指導対象となり、その後の許認可申請にも影響が出る場合があります。「気づかなかった」では済まされないので、必ず届出を行ってください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "届出後に店舗の内装を変更したい場合は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "構造を変更する場合は変更届が必要です。客室の広さを変える、間仕切りを増やす、トイレの位置を変えるなど、図面に変更が出る工事は届出対象です。模様替え・装飾変更程度であれば不要です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "屋号（店名）を変えたら届出はやり直しですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "やり直しではなく、変更届で対応します。法人格が変わる（例：個人事業から法人化）場合は、新規届出が必要になります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "広島県外の本店から、広島市内に新規出店する場合は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "営業所ごとに届出が必要です。本店が東京にあっても、広島の店舗は広島県公安委員会（管轄警察署）への届出となります。"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://nishioka-gyosei.github.io/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "コラム",
+      "item": "https://nishioka-gyosei.github.io/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "広島で深夜営業を始めるには",
+      "item": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html"
+    }
+  ]
+}
+</script>
+
 <style>
 :root {
   --ink: #14171F;
@@ -200,6 +308,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -264,6 +380,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「これから広島でバーを開きたい」「居酒屋を遅い時間まで営業したい」——そう考えたとき、必ず関わってくるのが「深夜営業の届出」です。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li>深夜0時以降に酒類を提供する飲食店は、営業開始の<strong>10日前まで</strong>に警察署へ<strong>深夜酒類提供飲食店営業開始届</strong>が必要。</li>
+    <li><strong>手数料は無料</strong>。ただし<strong>飲食店営業許可（保健所）が前提</strong>で、先に取得しておく必要がある。</li>
+    <li><strong>接待をすると風営法1号営業の許可</strong>が必要になり、届出では対応できない。業態の線引きが最重要。</li>
+  </ul>
+</div>
 
 <p>しかし実際に調べ始めると、「自分の業態は届出が必要なのか？」「いつまでに何を出せばいいのか？」「警察署に行くって本当？」と、わからないことが次々と出てきます。</p>
 
