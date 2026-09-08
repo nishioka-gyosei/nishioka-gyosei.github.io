@@ -36,6 +36,114 @@
 }
 </script>
 
+
+<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "西岡行政書士事務所",
+  "image": "https://nishioka-gyosei.github.io/photo.jpg",
+  "url": "https://nishioka-gyosei.github.io/",
+  "telephone": "+81-90-8068-8527",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "大手町4-6-22",
+    "addressLocality": "広島市中区",
+    "addressRegion": "広島県",
+    "addressCountry": "JP"
+  },
+  "areaServed": [
+    "広島県",
+    "広島市"
+  ],
+  "openingHours": "Mo-Su 09:00-19:00",
+  "priceRange": "¥¥",
+  "sameAs": [
+    "https://note.com/nishioka2405",
+    "https://maps.google.com/?cid=16992030545009074796"
+  ]
+}
+</script>
+
+<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "マンションの1階テナントでも商業地域なら許可は取れますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "用途地域が商業地域であり、保護対象施設からの距離もクリアしていれば、マンションの1階テナントでも許可申請は可能です。ただし、建物のオーナーや管理組合が風俗営業を禁止している場合は、テナント契約上の問題が生じます。許可とは別に、オーナーの承諾が必要な場合があります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "地図で見ると商業地域内なのに、担当者に「この場所は難しい」と言われました。なぜですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "用途地域以外の制限（保護対象施設の距離制限・条例による追加制限など）が理由の場合があります。また、物件が用途地域の境界線付近にある場合、実際の測量で制限区域に入ることがあります。警察署や行政書士に詳しく確認することをおすすめします。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "用途地域の変更（区画整理など）があった場合、既存の許可はどうなりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "既存の許可を持って営業中の場合、用途地域の変更があっても既存の許可はすぐに無効にはなりません（既存不適格）。ただし、許可内容の変更申請や更新時に制限が適用される場合があります。詳しくは管轄警察署または行政書士に確認してください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "近くに大学があります。距離制限の対象になりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "広島県の条例では、大学・専修学校も距離制限の対象施設に含まれます。他の都道府県では対象外とされている場合もありますが、広島県での申請を検討している場合は、大学の存在も距離制限の確認対象に含めて調査してください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "物件候補が複数あります。事前に場所的制限を調べてもらえますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "西岡行政書士事務所では、物件候補の場所的制限の事前調査をお受けしています。複数候補がある場合も一括で調査できますので、物件を決める前にご相談ください。LINEまたはお電話からお気軽にご連絡ください。"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://nishioka-gyosei.github.io/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "コラム",
+      "item": "https://nishioka-gyosei.github.io/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "風営法の用途地域制限｜出店できるエリア・できないエリアの判定方法",
+      "item": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-yoto-chiiki-seigen.html"
+    }
+  ]
+}
+</script>
+
 <style>
 :root {
   --ink: #14171F; --ink-soft: #2A2D38; --paper: #F5F2EB; --paper-2: #FFFDF7; --cream: #EDE8DC;

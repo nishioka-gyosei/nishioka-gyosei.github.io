@@ -23,18 +23,18 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "風俗営業許可の申請から許可まで何日かかりますか？",
+      "name": "申請を急ぎたい場合、警察署に頼めば処理を早めてもらえますか？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "標準処理期間は風営法第7条第2項に基づき55日です。この55日は書類が受理された日から起算されます。書類準備期間（2〜4週間）は含まれないため、実質的な開業準備期間として申請日の3ヶ月前から動き出すことが推奨されます。"
+        "text": "標準処理期間は法律で定められており、警察が恣意的に期間を短縮することはありません。ただし、書類が完全で現地確認も問題なければ、55日より早く許可が下りるケースもあります（法律上は55日「以内」です）。「早くしてほしい」というお願いより、「完璧な書類を出す」方が実質的な早期取得につながります。"
       }
     },
     {
       "@type": "Question",
-      "name": "風営法の許可が55日を超えることはありますか？",
+      "name": "申請後に書類の誤りに気づいた場合はどうすればいいですか？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "はい、書類の不備・補正、現地確認での問題発覚、欠格事由照会の長期化などにより55日を超えることがあります。補正対応期間は55日にカウントされないため、書類の完全性が実質的な期間短縮の鍵です。"
+        "text": "速やかに管轄警察署に連絡して補正手続きを取ってください。補正の期間は処理期間にカウントされないため、補正対応が長引くほど許可取得が遅れます。申請前の書類の入念なチェックが重要です。"
       }
     },
     {
@@ -42,7 +42,31 @@
       "name": "許可証が届く前に営業を開始してもよいですか？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "いいえ、許可証が交付されるまで営業を開始することはできません。許可なしでの営業は風営法違反（無許可営業）となり、2年以下の懲役または200万円以下の罰金の対象になります。"
+        "text": "いいえ、許可証が交付されるまで営業を開始することはできません。許可なしでの営業は風営法違反（無許可営業）となり、2年以下の懲役または200万円以下の罰金の対象になります。許可証の交付を受けてから営業を開始してください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "許可が下りた後、深夜0時以降の営業もできますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "風俗営業許可（1〜4号営業）を受けた店舗は、原則として深夜0時以降の営業が禁止されています。深夜0時以降の営業は「特定遊興飲食店営業許可」（別途の許可）が必要なケースを除き、できません。深夜営業届との違いは「居酒屋の深夜営業｜風営法と深夜営業届の違いと境界線」で解説しています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "許可証の有効期限はありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "風俗営業許可証には有効期限がありません（失効しません）。ただし、営業内容や店舗の構造に変更があった場合は変更届の提出が必要です。また、営業を廃止した場合は廃止届の提出が必要です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "55日を過ぎても許可も不許可の通知もない場合はどうすればいいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "55日は「標準処理期間」であり、行政上の努力目標です。55日を過ぎても連絡がない場合は、管轄警察署の担当者に進捗を確認してください。行政書士に依頼している場合は、行政書士が確認します。"
       }
     }
   ]
@@ -68,6 +92,64 @@
   },
   "datePublished": "2026-05-21",
   "dateModified": "2026-05-21"
+}
+</script>
+
+
+<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "西岡行政書士事務所",
+  "image": "https://nishioka-gyosei.github.io/photo.jpg",
+  "url": "https://nishioka-gyosei.github.io/",
+  "telephone": "+81-90-8068-8527",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "大手町4-6-22",
+    "addressLocality": "広島市中区",
+    "addressRegion": "広島県",
+    "addressCountry": "JP"
+  },
+  "areaServed": [
+    "広島県",
+    "広島市"
+  ],
+  "openingHours": "Mo-Su 09:00-19:00",
+  "priceRange": "¥¥",
+  "sameAs": [
+    "https://note.com/nishioka2405",
+    "https://maps.google.com/?cid=16992030545009074796"
+  ]
+}
+</script>
+
+<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://nishioka-gyosei.github.io/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "コラム",
+      "item": "https://nishioka-gyosei.github.io/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "風営法の申請から許可までの期間｜広島県警の標準処理期間と短縮のコツ",
+      "item": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-kyoka-kikan-hyojun.html"
+    }
+  ]
 }
 </script>
 

@@ -36,6 +36,114 @@
 }
 </script>
 
+
+<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "西岡行政書士事務所",
+  "image": "https://nishioka-gyosei.github.io/photo.jpg",
+  "url": "https://nishioka-gyosei.github.io/",
+  "telephone": "+81-90-8068-8527",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "大手町4-6-22",
+    "addressLocality": "広島市中区",
+    "addressRegion": "広島県",
+    "addressCountry": "JP"
+  },
+  "areaServed": [
+    "広島県",
+    "広島市"
+  ],
+  "openingHours": "Mo-Su 09:00-19:00",
+  "priceRange": "¥¥",
+  "sameAs": [
+    "https://note.com/nishioka2405",
+    "https://maps.google.com/?cid=16992030545009074796"
+  ]
+}
+</script>
+
+<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "物件契約後に保護対象施設の存在に気づいた場合、どうすればいいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "すぐに専門家に相談してください。場合によっては、距離測定で「ぎりぎり要件を満たす」と判明することもありますし、業態を変更して通常飲食店として開業する選択肢もあります。契約解除の交渉も含めて、早めの対応が重要です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "大学のキャンパスから近い物件ですが、大学生相手のお店なら大丈夫？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "客層は関係ありません。風営法は「保護対象施設からの距離」を画一的に判定しており、客層や営業内容では判断しません。物件の用途地域と営業区分による基準距離を満たさない場合は、原則として不許可です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ビルの上階に診療所が入っている場合、ビルの1階で開業できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "同じビル内に保護対象施設がある場合、距離0mと扱われるので原則として不許可です。「同じビル内に保護対象施設がある」物件は風営法対象業態には不向きです。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "距離測定を専門家に頼む場合、費用はいくらくらいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "当事務所では、物件契約前の保護対象施設調査を比較的低額で承っています。詳しい料金は でご確認いただくか、お問い合わせください。物件契約前の数千円のコストで、契約後の数十万円の損失を防げる費用対効果の高い調査です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "駅から徒歩5分、繁華街の中心地ですが、保護対象施設の有無を確認すべきですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい、必ず確認してください。繁華街の中心地でも、ビルの一部に診療所が入っていたり、近くに小規模な児童福祉施設があることがあります。「繁華街だから大丈夫」と思い込まず、半径100m以上を一度確認することをお勧めします。"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://nishioka-gyosei.github.io/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "コラム",
+      "item": "https://nishioka-gyosei.github.io/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "風営法の保護対象施設とは?学校・病院から何メートル離せばOK？",
+      "item": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-hogo-taishou-shisetsu.html"
+    }
+  ]
+}
+</script>
+
 <style>
 :root {
   --ink: #14171F;
