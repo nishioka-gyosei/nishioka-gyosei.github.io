@@ -37,6 +37,114 @@
 }
 </script>
 
+
+<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "西岡行政書士事務所",
+  "image": "https://nishioka-gyosei.github.io/photo.jpg",
+  "url": "https://nishioka-gyosei.github.io/",
+  "telephone": "+81-90-8068-8527",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "大手町4-6-22",
+    "addressLocality": "広島市中区",
+    "addressRegion": "広島県",
+    "addressCountry": "JP"
+  },
+  "areaServed": [
+    "広島県",
+    "広島市"
+  ],
+  "openingHours": "Mo-Su 09:00-19:00",
+  "priceRange": "¥¥",
+  "sameAs": [
+    "https://note.com/nishioka2405",
+    "https://maps.google.com/?cid=16992030545009074796"
+  ]
+}
+</script>
+
+<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "図面は手書きでも受理されますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "受理されます。当事務所も手書きで作成しています。ただし、手書きの場合でも「定規で正確に線を引く」「寸法を明記する」「読みやすい字で書く」を徹底してください。雑な手書きだと、それだけで「正確性に欠ける」と判断されるリスクがあります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "内装工事前に図面を作るべきですか、工事後に作るべきですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "工事後に作るのが基本です。工事前の予定図面と完成後の実態が違うことはよくあります。完成した状態を実測して図面化するほうが、現地確認で問題が起きません。ただし、内装業者と連携して「申請を見越した内装設計」をしてもらうのも有効です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "図面に押印は必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "広島県警には必要ありません。他の都道府県については全てを存じておりませんので、必要に応じて調査をいたします。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "図面の寸法は何センチ刻みで書けばいいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "一般的にはセンチメートル単位で記載すれば足ります。長辺が4m23cmなら「423cm」または「4.23m」と記載します。ミリ単位まで記載しても受理はされますが、そこまでは求められていないというのが経験に基づく感覚です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "既存の店舗を借りて、図面が前のオーナーから引き継がれた場合は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "その図面を参考にしつつ、必ず自分で実測した数値で作り直してください。前のオーナーの図面が正確でない可能性もありますし、内装変更があれば実態とズレています。「引き継いだ図面をそのまま使う」のは避けましょう。"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://nishioka-gyosei.github.io/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "コラム",
+      "item": "https://nishioka-gyosei.github.io/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "深夜営業の図面作成｜自分で作れる？行政書士に依頼すべき判断基準",
+      "item": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-zumen-handan.html"
+    }
+  ]
+}
+</script>
+
 <style>
 :root {
   --ink: #14171F;

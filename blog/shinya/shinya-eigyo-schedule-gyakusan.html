@@ -37,6 +37,114 @@
 }
 </script>
 
+
+<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "西岡行政書士事務所",
+  "image": "https://nishioka-gyosei.github.io/photo.jpg",
+  "url": "https://nishioka-gyosei.github.io/",
+  "telephone": "+81-90-8068-8527",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "大手町4-6-22",
+    "addressLocality": "広島市中区",
+    "addressRegion": "広島県",
+    "addressCountry": "JP"
+  },
+  "areaServed": [
+    "広島県",
+    "広島市"
+  ],
+  "openingHours": "Mo-Su 09:00-19:00",
+  "priceRange": "¥¥",
+  "sameAs": [
+    "https://note.com/nishioka2405",
+    "https://maps.google.com/?cid=16992030545009074796"
+  ]
+}
+</script>
+
+<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "開店日が確定していない場合、いつ提出すればいいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "開店日が未定でも、おおよその目処が立った段階で書類準備を始めることをおすすめします。書類は「営業開始予定日」を記載して提出するため、後から日付がずれた場合は変更届で対応できます。最初から「絶対にこの日」と決めずに、ある程度の幅を持たせて計画するのが現実的です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "開店日に間に合わなかった場合、どうなりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "深夜営業届出が受理されていない状態で営業を始めると、無届営業として風営法違反になります。開店日に届出が間に合わない場合、深夜営業（午前0時以降の酒類提供）を一時的に取りやめる必要があります。営業時間を24時までに短縮して開店し、届出受理後に深夜営業に切り替えるという選択肢もあります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "警察署が混んでいる時期はありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "経験上、年度末（3月）と年末（12月）は飲食店の開業ラッシュで警察署の窓口が混む傾向があります。この時期に提出予定の方は、特に余裕を持ったスケジュールが大切です。可能であれば、繁忙期を避けて開店日を設定するのも一つの工夫です。また、公務員の異動期は窓口対応が遅れます。具体的には4月と10月です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "提出から受理まで、待たされることはありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "通常はその場で書類確認が行われ、不備がなければ即日受理されます。ただし、書類が複雑な店舗（客室が多い・特殊な構造など）の場合、確認に時間がかかることがあります。「半日かかった」というケースも実際にあるので、提出当日は時間に余裕を持って訪問することをおすすめします。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "行政書士に依頼すれば、もっと早く進められますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ある程度短縮できますが、限界はあります。書類作成のスピードは早くなりますが、住民票・登記事項証明書などの取得や、飲食店営業許可（保健所）の取得期間は、行政書士に依頼しても短縮できません。ただし、並行作業や差し戻し対応のノウハウがあるので、トータルでは1〜2週間ほど時間を短縮できる場合が多いです。"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://nishioka-gyosei.github.io/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "コラム",
+      "item": "https://nishioka-gyosei.github.io/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "深夜営業届出はいつまでに出せばいい？開店日から逆算した提出スケジュール",
+      "item": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-schedule-gyakusan.html"
+    }
+  ]
+}
+</script>
+
 <style>
 :root {
   --ink: #14171F;

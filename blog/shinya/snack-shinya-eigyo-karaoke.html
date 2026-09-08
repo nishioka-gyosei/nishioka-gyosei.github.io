@@ -36,6 +36,114 @@
 }
 </script>
 
+
+<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "西岡行政書士事務所",
+  "image": "https://nishioka-gyosei.github.io/photo.jpg",
+  "url": "https://nishioka-gyosei.github.io/",
+  "telephone": "+81-90-8068-8527",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "大手町4-6-22",
+    "addressLocality": "広島市中区",
+    "addressRegion": "広島県",
+    "addressCountry": "JP"
+  },
+  "areaServed": [
+    "広島県",
+    "広島市"
+  ],
+  "openingHours": "Mo-Su 09:00-19:00",
+  "priceRange": "¥¥",
+  "sameAs": [
+    "https://note.com/nishioka2405",
+    "https://maps.google.com/?cid=16992030545009074796"
+  ]
+}
+</script>
+
+<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "スナックでカラオケがあると、必ず風営法許可が必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "いいえ、必須ではありません。カラオケの「使い方」がポイントです。客が自分で選んで自分で歌うスタイルなら、深夜営業届出のままでOKです。スタッフが客と一緒に歌う・歌うことが日常的なサービスになっている場合は、風営法1号許可が必要になります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ママが「お客様の前で1〜2曲だけ歌う」のはどうですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "微妙なラインです。「客の前で歌う」のと「客と一緒に歌う」は別の話ですが、頻度や態様によっては接待と判断されることがあります。例えば客のリクエストに応じて歌うのは接待寄りです。判断に迷う場合は、管轄警察署に相談されるのが安全です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "開業当初は接待なしで、軌道に乗ったら接待ありに変更できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "できますが、風営法1号許可の新規申請(手数料24,000円+書類作成・図面作成・約2ヶ月の申請期間)が必要です。第5記事でも触れた通り、「コンセプトカフェから風営法切替」のパターンと同じ構造です。最初から接待ありで運営するつもりなら、開業時に風営法許可を取るほうが効率的です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "スナックの経営者がママを引退する場合、店をどうすればいいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "経営者(申請者)が変わる場合、新しい経営者が改めて手続きを取る必要があります。深夜営業届出も風営法許可も、申請者本人に対する手続きなので、引き継ぎはできません。経営者変更の準備期間として、新規開業と同じ程度の時間を見ておく必要があります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "既存のスナックを買い取って引き継ぐ場合の手続きは？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "物件・設備を引き継ぐとしても、深夜営業届出・風営法許可は新規申請が必要です。前のオーナーの届出・許可は引き継げません。前のオーナーから図面を譲り受けても、必ず自分で実測した数値で作り直してください。詳しくは第10記事「 」もご覧ください。"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://nishioka-gyosei.github.io/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "コラム",
+      "item": "https://nishioka-gyosei.github.io/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "スナックの深夜営業届出｜カラオケがある場合の注意点",
+      "item": "https://nishioka-gyosei.github.io/blog/shinya/snack-shinya-eigyo-karaoke.html"
+    }
+  ]
+}
+</script>
+
 <style>
 :root {
   --ink: #14171F;
