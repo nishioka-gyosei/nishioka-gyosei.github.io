@@ -31,6 +31,85 @@
 - 警察窓口の許可申請（風営法・深夜営業届・古物商・道路使用許可）は、元警察官として審査担当者の視点を内側から知っているため、書類不備による差し戻しを最小限に抑えられる
 - 料金は事前見積もり制。費用シミュレーター（https://nishioka-gyosei.github.io/simulator.html）で60秒・無料・個人情報不要の概算が可能
 
+## コラム記事一覧（許認可の実務解説・全57本）
+
+> 広島の許認可について、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事のポイント）とFAQを備える。
+
+### 風営法（風俗営業許可）（23本）
+
+- [広島の風営法許可とは？5種類の営業許可をわかりやすく解説](https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-fueihou-kyoka-4shurui.html)
+- [風俗営業許可の費用相場｜広島で許可取得にいくらかかる？](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-kyoka-hiyou-souba.html)
+- [【元広島県警官が語る】風営法申請で不許可になる典型パターン5選](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-fukyoka-pattern-5.html)
+- [広島でキャバクラを開業する手順｜物件選びから営業開始までの完全ガイド](https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-cabaclub-kaigyou-tejun.html)
+- [風営法の保護対象施設とは?学校・病院から何メートル離せばOK？](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-hogo-taishou-shisetsu.html)
+- [ガールズバーは風営法に該当する？セットでの料金システムの落とし穴](https://nishioka-gyosei.github.io/blog/fueihou/girlsbar-fueihou-set-ryokin.html)
+- [ホストクラブ開業ガイド｜広島での許可取得から営業開始までの完全マニュアル](https://nishioka-gyosei.github.io/blog/fueihou/hostclub-kaigyou-hiroshima.html)
+- [【現場の本音】広島中央署の風営法担当に好印象を持たれる申請書とは](https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-chuo-fueihou-shinseisho-koinshou.html)
+- [風営法の管理者・名義人になれる人なれない人｜欠格事由を完全解説](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-kanrisha-meiginin-kakkaku-jiyu.html)
+- [風営法の用途地域制限｜出店できるエリア・できないエリアの判定方法](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-yoto-chiiki-seigen.html)
+- [風俗営業許可の構造設備基準｜図面に落とすべき数値と確認方法](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-kozo-setsubi-kijun.html)
+- [風営法の申請から許可までの期間｜広島県警の標準処理期間と短縮のコツ](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-kyoka-kikan-hyojun.html)
+- [【元警察官の視点】風営法違反で摘発される店の共通点](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-ihan-taiho-kyotsu-ten.html)
+- [風営法の変更届完全ガイド｜内装変更・管理者変更・役員変更で必要な手続き](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-henkou-todoke-kanzen-guide.html)
+- [広島の風営法でよくある質問Q&A 30選](https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-fueihou-faq-30.html)
+- [【元警察官】私が現役時代に「うまく書けてる」と思った申請書の特徴](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-shinseisho-umaku-kakeru-tokucho.html)
+- [風俗営業の譲渡・相続｜許可は引き継げる？](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-jouto-souzoku.html)
+- [風営法の構造設備基準｜内装工事前にチェックすべき7項目](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-naisou-koji-mae-check7.html)
+- [広島市内の風営法担当警察署一覧｜中央署・東署・南署の管轄](https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-fueihou-keisatsusho-kankatsu.html)
+- [【元警察官が語る】風営法の立入検査で見られるポイント](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-tachiiri-kensa-mirareru-point.html)
+- [ゲームセンターと風営法｜5号営業の許可が必要なケースと10%ルール](https://nishioka-gyosei.github.io/blog/fueihou/game-center-fueihou-5gou-kyoka.html)
+- [コンセプトカフェ・メイドカフェは風営法対象？接待の線引きと最新の注意点](https://nishioka-gyosei.github.io/blog/fueihou/concafe-meidcafe-fueihou.html)
+- [【西岡が答える】風営法相談で一番多い「これってOK？」事例集](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-korette-ok-jireishu.html)
+
+### 深夜営業（深夜酒類提供飲食店）（16本）
+
+- [広島で深夜営業を始めるには？届出が必要な業態と手続きの全体像](https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html)
+- [深夜営業届出の費用相場｜行政書士に頼むといくら？](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-hiyou-souba.html)
+- [深夜営業届出に必要な書類一覧【2026年版・広島県警対応】](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-hitsuyou-shorui.html)
+- [【元警察官の実話】深夜営業届で警察が本当に見ているポイント](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-keisatsu-honne.html)
+- [深夜営業届出はいつまでに出せばいい？開店日から逆算した提出スケジュール](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-schedule-gyakusan.html)
+- [バー開業に深夜営業届は必要？営業形態ごとに必要な手続きを整理](https://nishioka-gyosei.github.io/blog/shinya/bar-kaigyou-tetsuduki-hantei.html)
+- [深夜営業の図面作成｜自分で作れる？行政書士に依頼すべき判断基準](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-zumen-handan.html)
+- [スナックの深夜営業届出｜カラオケがある場合の注意点](https://nishioka-gyosei.github.io/blog/shinya/snack-shinya-eigyo-karaoke.html)
+- [深夜営業中に営業内容を変更した場合の手続き｜変更届の出し方](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-henkou-todoke.html)
+- [深夜営業届を出さずに営業したらどうなる？無届営業の罰則とリスク](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-mutoddoke-bassoku-risk.html)
+- [深夜営業届出の図面が通らないケース｜警察に差し戻される図面の特徴](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-zumen-tooranai-case.html)
+- [深夜営業届の名義変更はできる？事業承継・法人化のときの手続き](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-meigi-henkou.html)
+- [深夜営業中の風営法接客で要注意｜こんな営業はNG](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-settai-ng.html)
+- [深夜営業届出の手数料は？広島県警の窓口で必要な実費まとめ](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-tesuryo-jippi.html)
+- [深夜営業届と飲食店営業許可の関係｜どっちが先？両方いる？](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-inshokuten-kyoka-kankei.html)
+- [深夜営業届・風営法を頼む行政書士の選び方｜見極めポイント5つ](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-gyosei-erabikata.html)
+
+### 古物商許可（8本）
+
+- [広島で古物商許可を取るには？申請の流れと必要書類【2026年版】](https://nishioka-gyosei.github.io/blog/kobutsu/hiroshima-kobutsu-kyoka-nagare.html)
+- [古物商許可の欠格事由とは？許可を取れない人・取れなくなる人の条件](https://nishioka-gyosei.github.io/blog/kobutsu/kobutsu-kyoka-kakkaku-jiyu.html)
+- [古物商許可の費用｜行政書士に頼む場合と自分で取る場合の比較](https://nishioka-gyosei.github.io/blog/kobutsu/kobutsu-kyoka-hiyou-hikaku.html)
+- [中古車販売で古物商許可は必要？自動車商の特殊ルール](https://nishioka-gyosei.github.io/blog/kobutsu/chukosha-kobutsu-tokushu-rule.html)
+- [ネット販売・メルカリ転売で古物商は必要？個人副業の境界線](https://nishioka-gyosei.github.io/blog/kobutsu/mercari-tenbai-kobutsu-hitsuyo.html)
+- [古物商の品目選びで失敗しないために｜13品目の意味と選び方](https://nishioka-gyosei.github.io/blog/kobutsu/kobutsu-13hinmoku-erabikata.html)
+- [古物商許可を取った後にやること｜標識・帳簿・URL届出](https://nishioka-gyosei.github.io/blog/kobutsu/kobutsu-kyoka-go-yarukoto.html)
+- [古物商のURL届出とは？ネット販売を始めるときの届出義務【2026年版】](https://nishioka-gyosei.github.io/blog/kobutsu/kobutsu-url-todokede.html)
+
+### 道路使用許可（3本）
+
+- [広島の道路使用許可とは？必要なケース・費用・取り方を解説](https://nishioka-gyosei.github.io/blog/douro/hiroshima-douro-shiyou-kyoka-towa.html)
+- [キッチンカーは公道で営業できる？道路使用許可の実際](https://nishioka-gyosei.github.io/blog/douro/kitchencar-douro-shiyou-kyoka.html)
+- [お祭り・イベントで道路を使うには？主催者が取る道路使用許可](https://nishioka-gyosei.github.io/blog/douro/event-matsuri-douro-shiyou-kyoka.html)
+
+### 警備業（2本）
+
+- [広島で警備業を始めるには？認定申請の要件・費用・流れ](https://nishioka-gyosei.github.io/blog/keibi/hiroshima-keibigyou-nintei.html)
+- [交通誘導警備（2号）とは？工事・イベントで必要なケースと検定](https://nishioka-gyosei.github.io/blog/keibi/koutsuu-yuudou-keibi-2gou.html)
+
+### 横断・基礎知識（5本）
+
+- [【独立開業の方へ】広島で水商売を始めるなら、警察申請はこの順番で](https://nishioka-gyosei.github.io/blog/mizushobai-kaigyo-junban.html)
+- [【完全保存版】広島で夜の店を開業する手続きフローチャート](https://nishioka-gyosei.github.io/blog/yoru-no-mise-kaigyou-flowchart.html)
+- [【総まとめ】広島の警察申請ガイド｜風営法・深夜営業・古物商の全知識](https://nishioka-gyosei.github.io/blog/hiroshima-keisatsu-shinsei-guide.html)
+- [許可・届出・認可・登録・認定はどう違う？](https://nishioka-gyosei.github.io/blog/kyoka-todokede-ninka-touroku-chigai.html)
+- [行政書士・司法書士・弁護士はどう違う？許認可は誰に頼む？](https://nishioka-gyosei.github.io/blog/gyosei-shihoshoshi-bengoshi-chigai.html)
+
 ## 関連リンク
 
 - [警察申請まとめページ](https://nishioka-gyosei.github.io/police.html)
