@@ -286,6 +286,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -346,6 +354,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「社長の過去に問題があっても申請できる？」「管理者は従業員でもなれる？」「役員に前科があったらだめですか？」——風営法許可の申請において、「誰が名義人・管理者になれるか」は、許可の可否を左右する最も重要なポイントのひとつです。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li><strong>欠格事由に該当すると、どれだけ書類を整えても許可は下りない</strong>。</li>
+    <li>対象は<strong>個人申請なら申請者本人、法人申請なら役員全員</strong>。<strong>管理者</strong>も欠格事由がないことが必須。</li>
+    <li>「名義人」と「管理者」は別の概念。<strong>申請前に必ず現状を確認</strong>する。</li>
+  </ul>
+</div>
 
 <p>風俗営業等の規制及び業務の適正化等に関する法律（風営法）は、<strong>営業者（名義人）と管理者の双方に、一定の欠格事由がないこと</strong>を求めています。この欠格事由に該当すると、書類が完璧に揃っていても許可は下りません。</p>
 

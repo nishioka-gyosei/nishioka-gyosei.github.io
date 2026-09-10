@@ -279,6 +279,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -339,6 +347,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「警察に書類を出すなんて緊張する」「申請書の不備で叱られたらどうしよう」「ちゃんと受理してもらえるか不安」——風営法許可申請で警察署に出向く方の多くが、こうした緊張感を持っています。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li>好印象を持たれる申請書は<strong>「正確・整理整頓・誠実」</strong>の3点に尽きる。裏技や特別なテクニックは要らない。</li>
+    <li>差が出るのは<strong>「警察担当者が何を見ているか」「どんな申請者を信頼するか」</strong>を知っているかどうか。</li>
+    <li>元広島県警察官の視点から、広島中央署での申請で意識したい実務ポイントを解説。</li>
+  </ul>
+</div>
 
 <p>実は、申請書の出来栄えや、提出時の振る舞いによって、警察担当者から受ける印象は大きく変わります。そして、この「印象」は、その後の現地確認や審査の進み具合にも影響することがあります。</p>
 

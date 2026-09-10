@@ -309,6 +309,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -373,6 +381,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「風営法の申請を準備しているが、もし不許可になったらどうしよう」「不許可って実際どのくらいの確率で起きるの？」——風俗営業許可は許可制で審査が厳格なため、こうした不安を抱える方は多いと思います。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li>風営法が不許可になる典型は5つ——<strong>欠格事由／立地不適合／構造設備の不備／書類の虚偽・不備／管理者要件の不充足</strong>。</li>
+    <li><strong>5つすべて事前確認で回避できる</strong>。申請してから判明すると手数料は戻らない。</li>
+    <li>だからこそ<strong>申請前の専門家チェック</strong>が重要になる。</li>
+  </ul>
+</div>
 
 <p>風営法の不許可は、実は不許可になる理由が決まっています。13年間、広島県警察官として現場で見てきた経験から言うと、ほとんどの不許可案件は5つの典型パターンのどれかに当てはまります。</p>
 
