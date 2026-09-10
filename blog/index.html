@@ -509,6 +509,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .cat-cross { background: var(--leaf); }
 .cat-douro { background: #2f6b6e; }
 .cat-keibi { background: #454b54; }
+.cat-nouchi { background: #6b7c3a; }
 
 /* Empty state */
 .empty {
@@ -650,6 +651,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <button class="filter-btn" data-filter="cross">📚 横断<span class="filter-btn__count" id="count-cross"></span></button>
     <button class="filter-btn" data-filter="douro">🚧 道路使用<span class="filter-btn__count" id="count-douro"></span></button>
     <button class="filter-btn" data-filter="keibi">🛡 警備業<span class="filter-btn__count" id="count-keibi"></span></button>
+    <button class="filter-btn" data-filter="nouchi">🌾 農地転用<span class="filter-btn__count" id="count-nouchi"></span></button>
   </div>
 </nav>
 
@@ -773,10 +775,11 @@ const ARTICLES = [
     { num: 55, cat: 'keibi', title: '交通誘導警備（2号）とは？工事・イベントで必要なケースと検定', date: '2026.06.23', type: 'normal', url: 'keibi/koutsuu-yuudou-keibi-2gou.html', published: true },
     { num: 56, cat: 'cross', title: '許可・届出・認可・登録・認定はどう違う？', date: '2026.06.24', type: 'normal', url: 'kyoka-todokede-ninka-touroku-chigai.html', published: true },
     { num: 57, cat: 'cross', title: '行政書士・司法書士・弁護士はどう違う？許認可は誰に頼む？', date: '2026.06.25', type: 'normal', url: 'gyosei-shihoshoshi-bengoshi-chigai.html', published: true },
+  { num: 58, cat: 'nouchi', title: '農地転用とは？4条・5条の違いと許可・届出の判断', date: '2026.06.26', type: 'normal', url: 'nouchi/hiroshima-nouchi-tenyou-towa.html', published: true },
   // ====== 公開予定 ======
 ];
 
-const CAT_LABELS = { shinya: '深夜営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断', douro: '道路使用', keibi: '警備業' };
+const CAT_LABELS = { shinya: '深夜営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断', douro: '道路使用', keibi: '警備業', nouchi: '農地転用' };
 
 let currentFilter = 'all';
 
@@ -789,6 +792,7 @@ function renderCounts() {
   document.getElementById('count-cross').textContent = '(' + ARTICLES.filter(a => a.cat === 'cross').length + ')';
   document.getElementById('count-douro').textContent = '(' + ARTICLES.filter(a => a.cat === 'douro').length + ')';
   document.getElementById('count-keibi').textContent = '(' + ARTICLES.filter(a => a.cat === 'keibi').length + ')';
+  document.getElementById('count-nouchi').textContent = '(' + ARTICLES.filter(a => a.cat === 'nouchi').length + ')';
   document.getElementById('totalCount').textContent = ARTICLES.filter(a => a.published).length;
 }
 
