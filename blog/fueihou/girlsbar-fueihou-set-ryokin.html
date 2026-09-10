@@ -269,6 +269,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -329,6 +337,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「ガールズバーを開業したいが、風営法は必要？」「セット料金やドリンクバックは大丈夫なの？」——ガールズバー開業を検討する方からよく受けるご質問です。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li>ガールズバーは<strong>接待行為がなければ深夜営業の届出</strong>で足り、<strong>接待があれば風営法1号許可</strong>が必要。</li>
+    <li>「カウンター越しでも特定の客と長時間話す」「<strong>セット料金でスタッフが客に着く時間を売る</strong>」形態は、<strong>接待と判定される可能性が高い</strong>。</li>
+    <li>料金システムの設計そのものが風営法の判定に影響するため、開業前の線引き確認が重要。</li>
+  </ul>
+</div>
 
 <p>ガールズバーは、深夜営業届出と風営法1号許可の境界線で<strong>最も判定が難しい業態</strong>です。「カウンター越しの接客だから接待じゃない」と思っていても、料金システムや実際の接客スタイル次第で、警察の判定が大きく変わります。</p>
 

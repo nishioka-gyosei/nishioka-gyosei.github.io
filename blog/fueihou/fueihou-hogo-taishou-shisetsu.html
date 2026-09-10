@@ -291,6 +291,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -351,6 +359,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「気に入った物件が見つかったが、近くに学校がある。風営法は通るのか？」「病院から何メートル離れていれば大丈夫？」——物件選定の段階で、こうした不安を抱える方は多いと思います。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li>保護対象施設とは<strong>学校・病院・図書館・児童福祉施設</strong>など。風営法の許可はこれらからの距離で制限される。</li>
+    <li>広島県では<strong>用途地域と営業区分</strong>により距離が定められ、最も厳しいケース（その他地域・1〜4号営業）で<strong>100m以上</strong>の距離確保が必要。</li>
+    <li>物件契約前に「<strong>半径100m以上に余裕を持って</strong>保護対象施設がないか」を必ず確認する。</li>
+  </ul>
+</div>
 
 <p>風営法では、教育・医療・福祉に関わる施設の周辺に風俗営業の店舗が集中することを防ぐため、特定の施設からの「距離制限」が設けられています。これに該当する施設を「保護対象施設」と呼びます。</p>
 

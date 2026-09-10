@@ -283,6 +283,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -343,6 +351,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「この物件でキャバクラを開きたいが、風営法的に問題ないか？」「住宅街の近くは全部ダメ？」「用途地域って何を見ればいいの？」——物件を決める前に必ずチェックしなければならないのが、風営法の「場所的制限」です。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li>風営法の場所的制限は<strong>2段構え</strong>。①<strong>用途地域</strong>（原則として<strong>商業地域のみ</strong>可）②<strong>保護対象施設からの距離制限</strong>（学校・病院等）。</li>
+    <li><strong>どちらか一方でも引っかかれば許可は下りない</strong>。住居系・工業系の用途地域では原則不可。</li>
+    <li>確認のタイミングは<strong>物件契約前</strong>。契約後に判明しても取り返しがつかない。</li>
+  </ul>
+</div>
 
 <p>風俗営業許可（1〜5号営業）は、申請書類が完璧でも、<strong>物件の所在地が制限区域内であれば許可は下りません</strong>。物件契約後に発覚すると、初期費用がすべて無駄になるリスクがあります。</p>
 
