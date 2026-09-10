@@ -299,6 +299,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -359,6 +367,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「店名を変えたいけど、警察に何か届けが必要？」「内装を工事したら図面も出し直し？」「メニューを変えたら変更届が必要になる？」——深夜営業届をすでに出している店舗からよくいただく質問です。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li>変更届の要否は<strong>変更の種類</strong>による。<strong>屋号・住所・代表者・内装</strong>の変更は届出が必要。</li>
+    <li>提出期限は<strong>変更後10日以内</strong>が原則。</li>
+    <li>最大の注意点は<strong>店舗移転</strong>——「<strong>廃止＋新規開始</strong>」の2段構えになる。</li>
+  </ul>
+</div>
 
 <p>深夜営業届（正式名称：深夜酒類提供飲食店営業開始届出）は、一度出せば終わりではありません。届け出た内容から変更が生じた場合、所定の変更届を警察に提出する義務があります。変更内容によっては、<strong>変更前に届けが必要なものと、変更後でよいものがある</strong>ため、順番を間違えると「無届営業」状態になるリスクがあります。</p>
 

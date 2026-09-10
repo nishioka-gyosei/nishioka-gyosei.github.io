@@ -303,6 +303,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -367,6 +375,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「広島でバーを開業したいが、どんな手続きが必要なのか？」「深夜営業届を出せばOKなのか、それとも風営法許可が必要なのか？」——バー開業を検討する方の多くが、最初にぶつかる疑問です。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li>バーの手続きは<strong>「接待」「個室・区画席」「低照度」の3つの軸</strong>で決まる。</li>
+    <li><strong>酒類提供のみ</strong>なら<strong>深夜営業届出</strong>。<strong>接待・個室区画席・低照度のいずれか</strong>があれば<strong>風営法許可</strong>が必要。</li>
+    <li>営業時間が<strong>0時前に終わる</strong>バーなら、どちらも不要のケースもある。</li>
+  </ul>
+</div>
 
 <p>「バー」という業態は実は非常に幅広く、例えば、ショットバー・ガールズバー・コンセプトバー・個室バー・スポーツバーなど多種多様です。それぞれで必要な手続きが異なるため、自分のお店がどのカテゴリーに該当するかを正確に把握しないと、必要な許認可を取らずに営業してしまう可能性がありますよね。</p>
 

@@ -292,6 +292,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -352,6 +360,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「深夜営業届出のために図面が必要らしいが、自分で作れるものなのか？」「行政書士に頼んだら何万円もかかるなら、自分で作りたい」——図面作成は、深夜営業届出の準備で多くの方が悩むポイントです。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li>深夜営業届出に必要な図面は<strong>3種類</strong>——<strong>平面図・求積図・周辺地図</strong>。</li>
+    <li><strong>カウンターのみのバー</strong>などシンプルな店舗は自分で作れる場合もある。</li>
+    <li><strong>客室が複数ある・特殊な構造</strong>の店舗は、専門家への依頼が安全。</li>
+  </ul>
+</div>
 
 <p>正直に言えば、深夜営業届出の図面は「自分で作ろうと思えば作れる」レベルのものです。風営法許可で必要な図面と比べると、専門的な要素は少なめです。しかし、その「作れる」と「警察に通用する」の間には、思っている以上に深い溝があります。</p>
 

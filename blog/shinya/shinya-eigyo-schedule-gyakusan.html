@@ -318,6 +318,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -382,6 +390,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「3ヶ月後に開店予定だけど、深夜営業届はいつ出せばいいんだろう？」「ぎりぎりに提出して間に合うのか不安」——開店日が見えてきた段階で、こうした疑問を持つ方は多いと思います。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li>法律上の期限は<strong>営業開始の10日前まで</strong>。ただしこれは最低ラインで、実務上は間に合わないことがある。</li>
+    <li>実務の標準は<strong>開店2ヶ月前から準備開始</strong>。物件契約からのスケジュールを逆算して動く。</li>
+    <li>ぎりぎりの提出は、<strong>不備の修正時間が取れず開店日に間に合わないリスク</strong>がある。</li>
+  </ul>
+</div>
 
 <p>深夜営業届出は法律上「営業開始の10日前まで」と定められていますが、実際にはそれより早めに準備を始めないと間に合わないのが現実です。書類収集に2〜3週間、図面作成に1週間、不備による差し戻しの可能性も考慮すると、最低でも開店2ヶ月前から動き始めるのが理想です。</p>
 

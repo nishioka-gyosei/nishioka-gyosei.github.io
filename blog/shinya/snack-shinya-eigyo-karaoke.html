@@ -291,6 +291,14 @@ a { color: inherit; text-decoration: none; }
 .footer-tel-btn { padding: 10px 16px; font-size: 12px; font-weight: 500; border: 1px solid var(--gold); color: var(--gold-light); display: inline-flex; align-items: center; gap: 8px; }
 .footer-back { display: inline-block; margin-top: 24px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; transition: all 0.15s; }
 .footer-back:hover { background: var(--gold); color: var(--ink); }
+/* GEO直接回答ブロック（フェーズ2改修） */
+.geo-summary{background:var(--paper-2); border-left:4px solid var(--crimson); border-radius:0 8px 8px 0; padding:22px 24px; margin:28px auto; max-width:720px; box-shadow:0 4px 18px rgba(20,23,31,.05);}
+.geo-summary__ttl{font-family:'Shippori Mincho B1',serif; font-weight:700; font-size:15px; color:var(--crimson); margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.geo-summary__ttl::before{content:""; width:16px; height:16px; background:var(--crimson); border-radius:50%; display:inline-block; flex:none;}
+.geo-summary ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.geo-summary li{position:relative; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink-soft);}
+.geo-summary li::before{content:""; position:absolute; left:0; top:.65em; width:7px; height:7px; background:var(--gold); border-radius:50%;}
+.geo-summary strong{color:var(--crimson); font-weight:700;}
 </style>
 </head>
 <body>
@@ -351,6 +359,15 @@ a { color: inherit; text-decoration: none; }
 <article class="article-body">
 
 <p class="lead">「スナックを開業したい。カラオケも置きたいけど、深夜営業届だけでいいの？それとも風営法？」——スナック開業を検討する方からよく受けるご質問です。</p>
+
+<div class="geo-summary">
+  <div class="geo-summary__ttl">この記事のポイント</div>
+  <ul>
+    <li><strong>お酒の提供だけ</strong>のスナックなら<strong>深夜営業届出</strong>でよい。</li>
+    <li><strong>ママが客の隣で接客する・客と一緒にカラオケを歌う</strong>といった行為があれば<strong>風営法1号許可</strong>が必要になる。</li>
+    <li>判断の分かれ目は<strong>カラオケの「置き方」と「使い方」</strong>。設備の有無だけでは決まらない。</li>
+  </ul>
+</div>
 
 <p>スナックは飲食店の中でも、深夜営業届出と風営法許可の境界線で迷いやすい業態です。「接待ありかなしか」「カラオケで一緒に歌うか歌わないか」など、サービスの内容によって必要な手続きが大きく変わります。</p>
 
