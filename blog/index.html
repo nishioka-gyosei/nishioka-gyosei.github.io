@@ -510,6 +510,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .cat-douro { background: #2f6b6e; }
 .cat-keibi { background: #454b54; }
 .cat-nouchi { background: #6b7c3a; }
+.cat-kensetsu { background: #8a5a2b; }
 
 /* Empty state */
 .empty {
@@ -652,6 +653,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <button class="filter-btn" data-filter="douro">🚧 道路使用<span class="filter-btn__count" id="count-douro"></span></button>
     <button class="filter-btn" data-filter="keibi">🛡 警備業<span class="filter-btn__count" id="count-keibi"></span></button>
     <button class="filter-btn" data-filter="nouchi">🌾 農地転用<span class="filter-btn__count" id="count-nouchi"></span></button>
+    <button class="filter-btn" data-filter="kensetsu">🏗 建設業<span class="filter-btn__count" id="count-kensetsu"></span></button>
   </div>
 </nav>
 
@@ -777,10 +779,11 @@ const ARTICLES = [
     { num: 57, cat: 'cross', title: '行政書士・司法書士・弁護士はどう違う？許認可は誰に頼む？', date: '2026.06.25', type: 'normal', url: 'gyosei-shihoshoshi-bengoshi-chigai.html', published: true },
   { num: 58, cat: 'nouchi', title: '農地転用とは？4条・5条の違いと許可・届出の判断', date: '2026.06.26', type: 'normal', url: 'nouchi/hiroshima-nouchi-tenyou-towa.html', published: true },
     { num: 59, cat: 'nouchi', title: '農振除外とは？青地を農用地区域から外す手続きと6要件', date: '2026.10.07', type: 'normal', url: 'nouchi/noushin-jogai-tetsuzuki.html', published: true },
+  { num: 60, cat: 'kensetsu', title: '建設業許可とは？広島で取るための5要件・費用・期間', date: '2026.10.07', type: 'normal', url: 'kensetsu/hiroshima-kensetsugyou-kyoka-towa.html', published: true },
   // ====== 公開予定 ======
 ];
 
-const CAT_LABELS = { shinya: '深夜営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断', douro: '道路使用', keibi: '警備業', nouchi: '農地転用' };
+const CAT_LABELS = { shinya: '深夜営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断', douro: '道路使用', keibi: '警備業', nouchi: '農地転用', kensetsu: '建設業' };
 
 let currentFilter = 'all';
 
@@ -794,6 +797,7 @@ function renderCounts() {
   document.getElementById('count-douro').textContent = '(' + ARTICLES.filter(a => a.cat === 'douro').length + ')';
   document.getElementById('count-keibi').textContent = '(' + ARTICLES.filter(a => a.cat === 'keibi').length + ')';
   document.getElementById('count-nouchi').textContent = '(' + ARTICLES.filter(a => a.cat === 'nouchi').length + ')';
+  document.getElementById('count-kensetsu').textContent = '(' + ARTICLES.filter(a => a.cat === 'kensetsu').length + ')';
   document.getElementById('totalCount').textContent = ARTICLES.filter(a => a.published).length;
 }
 

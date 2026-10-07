@@ -31,7 +31,7 @@
 - 警察窓口の許可申請（風営法・深夜営業届・古物商・道路使用許可）は、元警察官として審査担当者の視点を内側から知っているため、書類不備による差し戻しを最小限に抑えられる
 - 料金は事前見積もり制。費用シミュレーター（https://nishioka-gyosei.github.io/simulator.html）で60秒・無料・個人情報不要の概算が可能
 
-## コラム記事一覧（許認可の実務解説・全59本）
+## コラム記事一覧（許認可の実務解説・全60本）
 
 > 広島の許認可について、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事のポイント）とFAQを備える。
 
@@ -106,6 +106,10 @@
 
 - [農地転用とは？4条・5条の違いと許可・届出の判断](https://nishioka-gyosei.github.io/blog/nouchi/hiroshima-nouchi-tenyou-towa.html)
 - [農振除外とは？青地を農用地区域から外す手続きと6要件](https://nishioka-gyosei.github.io/blog/nouchi/noushin-jogai-tetsuzuki.html)
+
+### 建設業（1本）
+
+- [建設業許可とは？広島で取るための5要件・費用・期間](https://nishioka-gyosei.github.io/blog/kensetsu/hiroshima-kensetsugyou-kyoka-towa.html)
 
 ### 横断・基礎知識（5本）
 
