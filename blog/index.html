@@ -511,6 +511,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .cat-keibi { background: #454b54; }
 .cat-nouchi { background: #6b7c3a; }
 .cat-kensetsu { background: #8a5a2b; }
+.cat-shuhan { background: #6b2f4a; }
 
 /* Empty state */
 .empty {
@@ -654,6 +655,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <button class="filter-btn" data-filter="keibi">🛡 警備業<span class="filter-btn__count" id="count-keibi"></span></button>
     <button class="filter-btn" data-filter="nouchi">🌾 農地転用<span class="filter-btn__count" id="count-nouchi"></span></button>
     <button class="filter-btn" data-filter="kensetsu">🏗 建設業<span class="filter-btn__count" id="count-kensetsu"></span></button>
+    <button class="filter-btn" data-filter="shuhan">🍶 酒販免許<span class="filter-btn__count" id="count-shuhan"></span></button>
   </div>
 </nav>
 
@@ -782,10 +784,11 @@ const ARTICLES = [
   { num: 60, cat: 'kensetsu', title: '建設業許可とは？広島で取るための5要件・費用・期間', date: '2026.10.07', type: 'normal', url: 'kensetsu/hiroshima-kensetsugyou-kyoka-towa.html', published: true },
     { num: 61, cat: 'kensetsu', title: '経営業務の管理責任者とは？要件と証明方法', date: '2026.10.07', type: 'normal', url: 'kensetsu/keiei-gyomu-kanri-sekininsha.html', published: true },
     { num: 62, cat: 'kensetsu', title: '専任技術者（営業所技術者）とは？3つのルートと2024年改正', date: '2026.10.07', type: 'normal', url: 'kensetsu/senin-gijutsusha-eigyosho-gijutsusha.html', published: true },
+    { num: 63, cat: 'shuhan', title: '酒類販売業免許とは？種類・4要件・費用と広島の窓口', date: '2026.10.07', type: 'normal', url: 'shuhan/hiroshima-shurui-hanbai-menkyo-towa.html', published: true },
   // ====== 公開予定 ======
 ];
 
-const CAT_LABELS = { shinya: '深夜営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断', douro: '道路使用', keibi: '警備業', nouchi: '農地転用', kensetsu: '建設業' };
+const CAT_LABELS = { shinya: '深夜営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断', douro: '道路使用', keibi: '警備業', nouchi: '農地転用', kensetsu: '建設業', shuhan: '酒販免許' };
 
 let currentFilter = 'all';
 
@@ -800,6 +803,7 @@ function renderCounts() {
   document.getElementById('count-keibi').textContent = '(' + ARTICLES.filter(a => a.cat === 'keibi').length + ')';
   document.getElementById('count-nouchi').textContent = '(' + ARTICLES.filter(a => a.cat === 'nouchi').length + ')';
   document.getElementById('count-kensetsu').textContent = '(' + ARTICLES.filter(a => a.cat === 'kensetsu').length + ')';
+  document.getElementById('count-shuhan').textContent = '(' + ARTICLES.filter(a => a.cat === 'shuhan').length + ')';
   document.getElementById('totalCount').textContent = ARTICLES.filter(a => a.published).length;
 }
 
