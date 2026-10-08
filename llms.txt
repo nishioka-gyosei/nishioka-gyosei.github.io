@@ -31,7 +31,7 @@
 - 警察窓口の許可申請（風営法・深夜営業届・古物商・道路使用許可）は、元警察官として審査担当者の視点を内側から知っているため、書類不備による差し戻しを最小限に抑えられる
 - 料金は事前見積もり制。費用シミュレーター（https://nishioka-gyosei.github.io/simulator.html）で60秒・無料・個人情報不要の概算が可能
 
-## コラム記事一覧（許認可の実務解説・全66本）
+## コラム記事一覧（許認可の実務解説・全67本）
 
 > 広島の許認可について、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事のポイント）とFAQを備える。
 
@@ -113,12 +113,13 @@
 - [経営業務の管理責任者とは？要件と証明方法](https://nishioka-gyosei.github.io/blog/kensetsu/keiei-gyomu-kanri-sekininsha.html)
 - [専任技術者（営業所技術者）とは？3つのルートと2024年改正](https://nishioka-gyosei.github.io/blog/kensetsu/senin-gijutsusha-eigyosho-gijutsusha.html)
 
-### 酒販免許（酒類販売業免許）（4本）
+### 酒販免許（酒類販売業免許）（5本）
 
 - [酒類販売業免許とは？種類・4要件・費用と広島の窓口](https://nishioka-gyosei.github.io/blog/shuhan/hiroshima-shurui-hanbai-menkyo-towa.html)
 - [飲食店でお酒を販売するには？店内小売の免許と区画の分け方](https://nishioka-gyosei.github.io/blog/shuhan/inshokuten-shurui-kouri-menkyo.html)
 - [通信販売酒類小売業免許とは？ネットで酒を売る3つの壁](https://nishioka-gyosei.github.io/blog/shuhan/tsushin-hanbai-shurui-kouri-menkyo.html)
 - [期限付酒類小売業免許とは？イベント・祭りで酒を売る手続き](https://nishioka-gyosei.github.io/blog/shuhan/kigenzuki-shurui-kouri-menkyo.html)
+- [酒類卸売業免許とは？8区分と抽選・広島の免許可能件数](https://nishioka-gyosei.github.io/blog/shuhan/shurui-oroshiuri-menkyo.html)
 
 ### 横断・基礎知識（5本）
 
