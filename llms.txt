@@ -31,7 +31,7 @@
 - 警察窓口の許可申請（風営法・深夜営業届・古物商・道路使用許可）は、元警察官として審査担当者の視点を内側から知っているため、書類不備による差し戻しを最小限に抑えられる
 - 料金は事前見積もり制。費用シミュレーター（https://nishioka-gyosei.github.io/simulator.html）で60秒・無料・個人情報不要の概算が可能
 
-## コラム記事一覧（許認可の実務解説・全68本）
+## コラム記事一覧（許認可の実務解説・全69本）
 
 > 広島の許認可について、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事のポイント）とFAQを備える。
 
@@ -107,12 +107,13 @@
 - [農地転用とは？4条・5条の違いと許可・届出の判断](https://nishioka-gyosei.github.io/blog/nouchi/hiroshima-nouchi-tenyou-towa.html)
 - [農振除外とは？青地を農用地区域から外す手続きと6要件](https://nishioka-gyosei.github.io/blog/nouchi/noushin-jogai-tetsuzuki.html)
 
-### 建設業（4本）
+### 建設業（5本）
 
 - [建設業許可とは？広島で取るための5要件・費用・期間](https://nishioka-gyosei.github.io/blog/kensetsu/hiroshima-kensetsugyou-kyoka-towa.html)
 - [経営業務の管理責任者とは？要件と証明方法](https://nishioka-gyosei.github.io/blog/kensetsu/keiei-gyomu-kanri-sekininsha.html)
 - [専任技術者（営業所技術者）とは？3つのルートと2024年改正](https://nishioka-gyosei.github.io/blog/kensetsu/senin-gijutsusha-eigyosho-gijutsusha.html)
 - [一般建設業と特定建設業の違いは？5,000万円の基準と財産4要件](https://nishioka-gyosei.github.io/blog/kensetsu/ippan-tokutei-kensetsugyou-chigai.html)
+- [建設業許可の29業種とは？一式工事の誤解と附帯工事](https://nishioka-gyosei.github.io/blog/kensetsu/kensetsugyou-kyoka-29gyoshu.html)
 
 ### 酒販免許（酒類販売業免許）（5本）
 
