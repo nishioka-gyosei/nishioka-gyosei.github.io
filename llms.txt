@@ -31,7 +31,7 @@
 - 警察窓口の許可申請（風営法・深夜営業届・古物商・道路使用許可）は、元警察官として審査担当者の視点を内側から知っているため、書類不備による差し戻しを最小限に抑えられる
 - 料金は事前見積もり制。費用シミュレーター（https://nishioka-gyosei.github.io/simulator.html）で60秒・無料・個人情報不要の概算が可能
 
-## コラム記事一覧（許認可の実務解説・全72本）
+## コラム記事一覧（許認可の実務解説・全73本）
 
 > 広島の許認可について、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事のポイント）とFAQを備える。
 
@@ -125,9 +125,10 @@
 - [期限付酒類小売業免許とは？イベント・祭りで酒を売る手続き](https://nishioka-gyosei.github.io/blog/shuhan/kigenzuki-shurui-kouri-menkyo.html)
 - [酒類卸売業免許とは？8区分と抽選・広島の免許可能件数](https://nishioka-gyosei.github.io/blog/shuhan/shurui-oroshiuri-menkyo.html)
 
-### 産業廃棄物（1本）
+### 産業廃棄物（2本）
 
 - [産業廃棄物収集運搬業許可とは？広島の要件・費用・政令市の扱い](https://nishioka-gyosei.github.io/blog/sanpai/hiroshima-sanpai-shushu-unpan-kyoka.html)
+- [産業廃棄物の20種類と建設廃棄物｜排出事業者は元請](https://nishioka-gyosei.github.io/blog/sanpai/sanpai-20shurui-kensetsu-haikibutsu.html)
 
 ### 横断・基礎知識（5本）
 
