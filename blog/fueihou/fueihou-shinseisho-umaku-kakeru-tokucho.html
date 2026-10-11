@@ -30,101 +30,185 @@
   gtag('config', 'G-6JQDLBVSQ8');
 </script>
 
-<!-- FAQ 構造化データ -->
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / Article / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "風営法の申請書で、いちばん重視されるポイントは何ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "記載に矛盾がないことです。申請書の氏名・住所・建物情報が、住民票・登記事項証明書・賃貸借契約書などの添付書類と一字一句そろっていることが、審査をスムーズに進める土台になります。番地の表記など細かい部分まで、添付書類のとおりに記載することが大切です。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "図面は手書きでも大丈夫ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "受理はされます。大切なのは、現場の寸法と図面が一致していること、求積に計算式が添えられていること、縮尺が正確なことです。不動産業者の間取り図は外法計算や計算式の欠如などで風営法の審査にはほぼ使えないため、流用せず、現場を測って作成することをおすすめします。"
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "風俗営業許可",
+        "接待飲食等営業",
+        "風営法の欠格事由",
+        "構造設備基準",
+        "保護対象施設",
+        "キャバクラ・ホストクラブの開業手続き"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-shinseisho-umaku-kakeru-tokucho.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-shinseisho-umaku-kakeru-tokucho.html",
+      "name": "【元警察官が語る】「うまく書けてる」と思った風営法の申請書の特徴",
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary"
+        ]
       }
     },
     {
-      "@type": "Question",
-      "name": "申請書を「通りやすく」する裏技のようなものはありますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "特別な裏技はありません。本質は審査する側が確認しやすいかどうかです。記載が正確で、図面が現場と合っていて、審査官が読む順番で疑問が湧かないように作られた申請書は、補正が少なく、結果的に早く通ります。相手の立場で作ることが、いちばんの近道です。"
-      }
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-shinseisho-umaku-kakeru-tokucho.html#article",
+      "headline": "【元警察官が語る】「うまく書けてる」と思った風営法の申請書の特徴",
+      "description": "風営法の申請書は何があれば通るのか。元広島県警察官13年の行政書士が、現役時代に審査する側として「これはうまく書けている」と感じた申請書の共通点を対話形式で語ります。記載の正確さ・図面の完成度・読み手目線の3つが鍵です。",
+      "datePublished": "2026-06-01T10:00:00+09:00",
+      "dateModified": "2026-06-01T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-shinseisho-umaku-kakeru-tokucho.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-fueihou-kyoka-4shurui.html#article"
+      },
+      "articleSection": "風営法",
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-shinseisho-umaku-kakeru-tokucho.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "風営法の申請書で、いちばん重視されるポイントは何ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "記載に矛盾がないことです。申請書の氏名・住所・建物情報が、住民票・登記事項証明書・賃貸借契約書などの添付書類と一字一句そろっていることが、審査をスムーズに進める土台になります。番地の表記など細かい部分まで、添付書類のとおりに記載することが大切です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "図面は手書きでも大丈夫ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "受理はされます。大切なのは、現場の寸法と図面が一致していること、求積に計算式が添えられていること、縮尺が正確なことです。不動産業者の間取り図は外法計算や計算式の欠如などで風営法の審査にはほぼ使えないため、流用せず、現場を測って作成することをおすすめします。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "申請書を「通りやすく」する裏技のようなものはありますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "特別な裏技はありません。本質は審査する側が確認しやすいかどうかです。記載が正確で、図面が現場と合っていて、審査官が読む順番で疑問が湧かないように作られた申請書は、補正が少なく、結果的に早く通ります。相手の立場で作ることが、いちばんの近道です。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-shinseisho-umaku-kakeru-tokucho.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "うまく書けてる申請書の特徴",
+          "item": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-shinseisho-umaku-kakeru-tokucho.html"
+        }
+      ]
     }
-  ]
-}
-</script>
-
-<!-- パンくず 構造化データ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://nishioka-gyosei.github.io/index.html" },
-    { "@type": "ListItem", "position": 2, "name": "コラム", "item": "https://nishioka-gyosei.github.io/blog/" },
-    { "@type": "ListItem", "position": 3, "name": "うまく書けてる申請書の特徴", "item": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-shinseisho-umaku-kakeru-tokucho.html" }
-  ]
-}
-</script>
-
-
-<!-- 構造化データ：記事Article（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "【元警察官が語る】「うまく書けてる」と思った風営法の申請書の特徴",
-  "datePublished": "2026-06-01",
-  "dateModified": "2026-06-01",
-  "author": {
-    "@type": "Person",
-    "name": "西岡祐也",
-    "jobTitle": "行政書士"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "西岡行政書士事務所"
-  },
-  "mainEntityOfPage": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-shinseisho-umaku-kakeru-tokucho.html",
-  "inLanguage": "ja"
-}
-</script>
-
-<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
   ]
 }
 </script>

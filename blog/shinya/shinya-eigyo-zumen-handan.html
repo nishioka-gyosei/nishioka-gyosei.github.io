@@ -15,131 +15,200 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 
-<!-- 構造化データ：記事 -->
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / Article / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "深夜営業の図面作成｜自分で作れる？行政書士に依頼すべき判断基準",
-  "description": "深夜営業届出に必要な3種類の図面の作り方と、自分で作るか専門家に依頼するかの判断基準を、元広島県警察官13年の行政書士が実体験から解説します。",
-  "author": {
-    "@type": "Person",
-    "name": "西岡 祐也",
-    "jobTitle": "行政書士(元広島県警察官)"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "西岡行政書士事務所",
-    "address": "広島市中区大手町4-6-22"
-  },
-  "datePublished": "2026-05-05",
-  "dateModified": "2026-05-05"
-}
-</script>
-
-
-<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
-  ]
-}
-</script>
-
-<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "図面は手書きでも受理されますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "受理されます。当事務所も手書きで作成しています。ただし、手書きの場合でも「定規で正確に線を引く」「寸法を明記する」「読みやすい字で書く」を徹底してください。雑な手書きだと、それだけで「正確性に欠ける」と判断されるリスクがあります。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "内装工事前に図面を作るべきですか、工事後に作るべきですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "工事後に作るのが基本です。工事前の予定図面と完成後の実態が違うことはよくあります。完成した状態を実測して図面化するほうが、現地確認で問題が起きません。ただし、内装業者と連携して「申請を見越した内装設計」をしてもらうのも有効です。"
-      }
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "図面に押印は必要ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "広島県警には必要ありません。他の都道府県については全てを存じておりませんので、必要に応じて調査をいたします。"
-      }
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "深夜酒類提供飲食店営業開始届出",
+        "風営法",
+        "飲食店営業許可",
+        "バー・スナックの開業手続き",
+        "広島県警察への届出"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "図面の寸法は何センチ刻みで書けばいいですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "一般的にはセンチメートル単位で記載すれば足ります。長辺が4m23cmなら「423cm」または「4.23m」と記載します。ミリ単位まで記載しても受理はされますが、そこまでは求められていないというのが経験に基づく感覚です。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "既存の店舗を借りて、図面が前のオーナーから引き継がれた場合は？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "その図面を参考にしつつ、必ず自分で実測した数値で作り直してください。前のオーナーの図面が正確でない可能性もありますし、内装変更があれば実態とズレています。「引き継いだ図面をそのまま使う」のは避けましょう。"
-      }
-    }
-  ]
-}
-</script>
-
-<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "ホーム",
-      "item": "https://nishioka-gyosei.github.io/index.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "コラム",
-      "item": "https://nishioka-gyosei.github.io/blog/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-zumen-handan.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-zumen-handan.html",
       "name": "深夜営業の図面作成｜自分で作れる？行政書士に依頼すべき判断基準",
-      "item": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-zumen-handan.html"
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary",
+          ".conclusion-box"
+        ]
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-zumen-handan.html#article",
+      "headline": "深夜営業の図面作成｜自分で作れる？行政書士に依頼すべき判断基準",
+      "description": "深夜営業届出に必要な3種類の図面の作り方と、自分で作るか専門家に依頼するかの判断基準を、元広島県警察官13年の行政書士が実体験から解説します。",
+      "datePublished": "2026-05-02T10:00:00+09:00",
+      "dateModified": "2026-05-05T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-zumen-handan.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html#article"
+      },
+      "articleSection": "深夜営業",
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-zumen-handan.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "図面は手書きでも受理されますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "受理されます。当事務所も手書きで作成しています。ただし、手書きの場合でも「定規で正確に線を引く」「寸法を明記する」「読みやすい字で書く」を徹底してください。雑な手書きだと、それだけで「正確性に欠ける」と判断されるリスクがあります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "内装工事前に図面を作るべきですか、工事後に作るべきですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "工事後に作るのが基本です。工事前の予定図面と完成後の実態が違うことはよくあります。完成した状態を実測して図面化するほうが、現地確認で問題が起きません。ただし、内装業者と連携して「申請を見越した内装設計」をしてもらうのも有効です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "図面に押印は必要ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "広島県警には必要ありません。他の都道府県については全てを存じておりませんので、必要に応じて調査をいたします。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "図面の寸法は何センチ刻みで書けばいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "一般的にはセンチメートル単位で記載すれば足ります。長辺が4m23cmなら「423cm」または「4.23m」と記載します。ミリ単位まで記載しても受理はされますが、そこまでは求められていないというのが経験に基づく感覚です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "既存の店舗を借りて、図面が前のオーナーから引き継がれた場合は？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "その図面を参考にしつつ、必ず自分で実測した数値で作り直してください。前のオーナーの図面が正確でない可能性もありますし、内装変更があれば実態とズレています。「引き継いだ図面をそのまま使う」のは避けましょう。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-zumen-handan.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "深夜営業の図面作成｜自分で作れる？行政書士に依頼すべき判断基準",
+          "item": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-zumen-handan.html"
+        }
+      ]
     }
   ]
 }
@@ -361,7 +430,7 @@ a { color: inherit; text-decoration: none; }
         <div class="article-author-role">行政書士（元広島県警察官13年）</div>
       </div>
     </div>
-    <div class="article-date">2026.05.05</div>
+    <div class="article-date">2026.05.02</div>
   </div>
 </header>
 

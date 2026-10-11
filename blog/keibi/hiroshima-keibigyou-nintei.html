@@ -30,110 +30,198 @@
   gtag('config', 'G-6JQDLBVSQ8');
 </script>
 
-<!-- 記事 構造化データ -->
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / Article / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "広島で警備業を始めるには？認定申請の要件・費用・流れを行政書士が解説",
-  "description": "警備業は許可ではなく公安委員会の認定。4区分・警備員指導教育責任者・欠格事由・手数料・約40日の流れを元広島県警察官の行政書士が解説。",
-  "datePublished": "2026-06-22",
-  "dateModified": "2026-06-22",
-  "author": { "@type": "Person", "name": "西岡祐也", "jobTitle": "行政書士" },
-  "publisher": { "@type": "Organization", "name": "西岡行政書士事務所" },
-  "mainEntityOfPage": "https://nishioka-gyosei.github.io/blog/keibi/hiroshima-keibigyou-nintei.html",
-  "inLanguage": "ja"
-}
-</script>
-
-<!-- 事務所情報 構造化データ（LocalBusiness / LegalService） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
-  ]
-}
-</script>
-
-<!-- FAQ 構造化データ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "警備業は「許可」ですか「認定」ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "認定です。都道府県公安委員会の認定を受けないと警備業を営めません。「警備業許可」と呼ばれることもありますが、正式には認定です。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "認定までどれくらいかかりますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "主たる営業所を管轄する警察署に申請し、受理から約40日で認定または不認定が通知されます。"
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "警備業の認定",
+        "警備業法",
+        "交通誘導警備業務",
+        "警備員指導教育責任者",
+        "検定合格警備員の配置"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/keibi/hiroshima-keibigyou-nintei.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/keibi/hiroshima-keibigyou-nintei.html",
+      "name": "広島で警備業を始めるには？認定申請の要件・費用・流れを行政書士が解説",
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary",
+          ".conclusion-box"
+        ]
       }
     },
     {
-      "@type": "Question",
-      "name": "費用はいくらですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "認定申請の手数料は23,000円程度です（広島県証紙）。このほか、証明書類の実費や、指導教育責任者の資格取得に関する費用がかかります。"
-      }
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/keibi/hiroshima-keibigyou-nintei.html#article",
+      "headline": "広島で警備業を始めるには？認定申請の要件・費用・流れを行政書士が解説",
+      "description": "警備業は許可ではなく公安委員会の認定。4区分・警備員指導教育責任者・欠格事由・手数料・約40日の流れを元広島県警察官の行政書士が解説。",
+      "datePublished": "2026-06-22T10:00:00+09:00",
+      "dateModified": "2026-06-22T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/keibi/hiroshima-keibigyou-nintei.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "articleSection": "警備業",
+      "inLanguage": "ja"
     },
     {
-      "@type": "Question",
-      "name": "一人でも警備会社を始められますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "制度上は個人でも認定を受けられますが、区分ごとに警備員指導教育責任者を選任・常駐させる必要があるため、人の要件を満たせるかが鍵になります。"
-      }
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/keibi/hiroshima-keibigyou-nintei.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "警備業は「許可」ですか「認定」ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "認定です。都道府県公安委員会の認定を受けないと警備業を営めません。「警備業許可」と呼ばれることもありますが、正式には認定です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "認定までどれくらいかかりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "主たる営業所を管轄する警察署に申請し、受理から約40日で認定または不認定が通知されます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "費用はいくらですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "認定申請の手数料は23,000円程度です（広島県証紙）。このほか、証明書類の実費や、指導教育責任者の資格取得に関する費用がかかります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "一人でも警備会社を始められますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "制度上は個人でも認定を受けられますが、区分ごとに警備員指導教育責任者を選任・常駐させる必要があるため、人の要件を満たせるかが鍵になります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "認定証に期限はありますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "有効期間は5年です。継続するには、満了前に更新手続きが必要です。"
+          }
+        }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "認定証に期限はありますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "有効期間は5年です。継続するには、満了前に更新手続きが必要です。"
-      }
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/keibi/hiroshima-keibigyou-nintei.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "広島で警備業を始めるには",
+          "item": "https://nishioka-gyosei.github.io/blog/keibi/hiroshima-keibigyou-nintei.html"
+        }
+      ]
     }
-  ]
-}
-</script>
-
-<!-- パンくず 構造化データ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://nishioka-gyosei.github.io/index.html" },
-    { "@type": "ListItem", "position": 2, "name": "コラム", "item": "https://nishioka-gyosei.github.io/blog/" },
-    { "@type": "ListItem", "position": 3, "name": "広島で警備業を始めるには", "item": "https://nishioka-gyosei.github.io/blog/keibi/hiroshima-keibigyou-nintei.html" }
   ]
 }
 </script>

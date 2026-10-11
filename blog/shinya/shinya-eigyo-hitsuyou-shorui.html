@@ -15,131 +15,200 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 
-<!-- 構造化データ：記事 -->
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / Article / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "深夜営業届出に必要な書類一覧【2026年版・広島県警対応】",
-  "description": "広島で深夜営業届出に必要な書類を、個人事業主・法人別に徹底解説。各書類の取得場所、有効期限、記載のコツを、元広島県警察官13年の行政書士がお伝えします。",
-  "author": {
-    "@type": "Person",
-    "name": "西岡 祐也",
-    "jobTitle": "行政書士(元広島県警察官)"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "西岡行政書士事務所",
-    "address": "広島市中区大手町4-6-22"
-  },
-  "datePublished": "2026-05-03",
-  "dateModified": "2026-05-03"
-}
-</script>
-
-
-<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
-  ]
-}
-</script>
-
-<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "書類の有効期限を過ぎてしまいました。再取得が必要ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "住民票・登記事項証明書は発行から3ヶ月以内のものが必要です。3ヶ月を1日でも過ぎていれば再取得が必要になります。書類収集は提出予定日から逆算して、2ヶ月以内に集中させるのが効率的です。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "共同経営の場合、住民票は誰の分が必要ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "個人事業主の共同経営は形式上「代表者一名」での届出となるため、代表者の住民票のみで足ります。ただし、実態として複数名で経営している場合は、後の立入検査などで実態確認が入る可能性があります。法人化して全員を役員として登記するか、明確に代表者を一名に絞るかの判断が必要です。"
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "深夜酒類提供飲食店営業開始届出",
+        "風営法",
+        "飲食店営業許可",
+        "バー・スナックの開業手続き",
+        "広島県警察への届出"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-hitsuyou-shorui.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-hitsuyou-shorui.html",
+      "name": "深夜営業届出に必要な書類一覧【2026年版・広島県警対応】",
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary",
+          ".conclusion-box"
+        ]
       }
     },
     {
-      "@type": "Question",
-      "name": "飲食店営業許可をまだ取っていません。深夜営業届出を先に出せますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "出せません。深夜営業届出には飲食店営業許可証の写しが必須なので、保健所許可の取得が前提となります。一般的な順序は「物件契約→保健所許可申請→深夜営業届出」となります。両方の手続きを並行して進めると、開業までの期間を短縮できます。"
-      }
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-hitsuyou-shorui.html#article",
+      "headline": "深夜営業届出に必要な書類一覧【2026年版・広島県警対応】",
+      "description": "広島で深夜営業届出に必要な書類を、個人事業主・法人別に徹底解説。各書類の取得場所、有効期限、記載のコツを、元広島県警察官13年の行政書士がお伝えします。",
+      "datePublished": "2026-04-20T10:00:00+09:00",
+      "dateModified": "2026-05-03T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-hitsuyou-shorui.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html#article"
+      },
+      "articleSection": "深夜営業",
+      "inLanguage": "ja"
     },
     {
-      "@type": "Question",
-      "name": "平面図はCADソフトで作る必要がありますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "CADソフトは必須ではありません。方眼紙への手書き、Excel・PowerPoint、無料の作図ツール（draw.io、Canva等）でも問題ありません。重要なのは「寸法が正確に記載されているか」「実態と一致しているか」の2点です。"
-      }
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-hitsuyou-shorui.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "書類の有効期限を過ぎてしまいました。再取得が必要ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "住民票・登記事項証明書は発行から3ヶ月以内のものが必要です。3ヶ月を1日でも過ぎていれば再取得が必要になります。書類収集は提出予定日から逆算して、2ヶ月以内に集中させるのが効率的です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "共同経営の場合、住民票は誰の分が必要ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "個人事業主の共同経営は形式上「代表者一名」での届出となるため、代表者の住民票のみで足ります。ただし、実態として複数名で経営している場合は、後の立入検査などで実態確認が入る可能性があります。法人化して全員を役員として登記するか、明確に代表者を一名に絞るかの判断が必要です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "飲食店営業許可をまだ取っていません。深夜営業届出を先に出せますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "出せません。深夜営業届出には飲食店営業許可証の写しが必須なので、保健所許可の取得が前提となります。一般的な順序は「物件契約→保健所許可申請→深夜営業届出」となります。両方の手続きを並行して進めると、開業までの期間を短縮できます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "平面図はCADソフトで作る必要がありますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CADソフトは必須ではありません。方眼紙への手書き、Excel・PowerPoint、無料の作図ツール（draw.io、Canva等）でも問題ありません。重要なのは「寸法が正確に記載されているか」「実態と一致しているか」の2点です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "書類の代理提出は可能ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "行政書士への委任であれば代理提出が可能です。ご家族や従業員など、行政書士資格のない方が代理提出することは認められていません。ご自身で対応するか、行政書士に依頼するかのいずれかとなります。"
+          }
+        }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "書類の代理提出は可能ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "行政書士への委任であれば代理提出が可能です。ご家族や従業員など、行政書士資格のない方が代理提出することは認められていません。ご自身で対応するか、行政書士に依頼するかのいずれかとなります。"
-      }
-    }
-  ]
-}
-</script>
-
-<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "ホーム",
-      "item": "https://nishioka-gyosei.github.io/index.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "コラム",
-      "item": "https://nishioka-gyosei.github.io/blog/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "深夜営業届出の必要書類",
-      "item": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-hitsuyou-shorui.html"
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-hitsuyou-shorui.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "深夜営業届出の必要書類",
+          "item": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-hitsuyou-shorui.html"
+        }
+      ]
     }
   ]
 }
@@ -381,7 +450,7 @@ a { color: inherit; text-decoration: none; }
         <div class="article-author-role">行政書士（元広島県警察官13年）</div>
       </div>
     </div>
-    <div class="article-date">2026.05.03</div>
+    <div class="article-date">2026.04.20</div>
   </div>
 </header>
 

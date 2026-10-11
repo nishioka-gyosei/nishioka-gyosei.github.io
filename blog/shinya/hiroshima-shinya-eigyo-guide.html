@@ -15,131 +15,210 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 
-<!-- 構造化データ：記事 -->
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / DefinedTerm / Article / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "広島で深夜営業を始めるには？届出が必要な業態と手続きの全体像",
-  "description": "広島で深夜営業を始めたい方へ。届出が必要な業態、手続きの流れ、費用、必要期間を、元広島県警察官13年の行政書士が解説します。",
-  "author": {
-    "@type": "Person",
-    "name": "西岡 祐也",
-    "jobTitle": "行政書士（元広島県警察官）"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "西岡行政書士事務所",
-    "address": "広島市中区大手町4-6-22"
-  },
-  "datePublished": "2026-05-03",
-  "dateModified": "2026-05-03"
-}
-</script>
-
-
-<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
-  ]
-}
-</script>
-
-<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "深夜営業届出は自分で出せますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "可能です。書類自体は警察署で入手でき、記載例も用意されています。ただし、図面作成が最大のハードルで、専門知識がないと差し戻しを繰り返すケースが多いです。本業の準備で忙しい時期ですので、行政書士に依頼するか、自分で挑戦するかは費用対効果で判断するのが良いでしょう。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "届出を出さずに深夜営業を始めたらどうなりますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "風営法違反となり、50万円以下の罰金が科される可能性があります。また、警察の指導対象となり、その後の許認可申請にも影響が出る場合があります。「気づかなかった」では済まされないので、必ず届出を行ってください。"
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "深夜酒類提供飲食店営業開始届出",
+        "風営法",
+        "飲食店営業許可",
+        "バー・スナックの開業手続き",
+        "広島県警察への届出"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html",
+      "name": "広島で深夜営業を始めるには？届出が必要な業態と手続きの全体像",
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "about": {
+        "@id": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html#term"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary",
+          ".conclusion-box"
+        ]
       }
     },
     {
-      "@type": "Question",
-      "name": "届出後に店舗の内装を変更したい場合は？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "構造を変更する場合は変更届が必要です。客室の広さを変える、間仕切りを増やす、トイレの位置を変えるなど、図面に変更が出る工事は届出対象です。模様替え・装飾変更程度であれば不要です。"
-      }
+      "@type": "DefinedTerm",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html#term",
+      "name": "深夜酒類提供飲食店営業",
+      "description": "風俗営業等の規制及び業務の適正化等に関する法律（風営法）が定める営業形態で、午前0時から午前6時までの時間帯に酒類を提供する飲食店営業をいう。営業を始める前に営業所を管轄する警察署へ営業開始届出書を提出する義務があり、接待を伴う風俗営業許可とは別の、届出制の手続きである。",
+      "inDefinedTermSet": "深夜営業"
     },
     {
-      "@type": "Question",
-      "name": "屋号（店名）を変えたら届出はやり直しですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "やり直しではなく、変更届で対応します。法人格が変わる（例：個人事業から法人化）場合は、新規届出が必要になります。"
-      }
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html#article",
+      "headline": "広島で深夜営業を始めるには？届出が必要な業態と手続きの全体像",
+      "description": "広島で深夜営業を始めたい方へ。届出が必要な業態、手続きの流れ、費用、必要期間を、元広島県警察官13年の行政書士が解説します。",
+      "datePublished": "2026-04-15T10:00:00+09:00",
+      "dateModified": "2026-05-03T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "about": {
+        "@id": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html#term"
+      },
+      "articleSection": "深夜営業",
+      "inLanguage": "ja"
     },
     {
-      "@type": "Question",
-      "name": "広島県外の本店から、広島市内に新規出店する場合は？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "営業所ごとに届出が必要です。本店が東京にあっても、広島の店舗は広島県公安委員会（管轄警察署）への届出となります。"
-      }
-    }
-  ]
-}
-</script>
-
-<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "ホーム",
-      "item": "https://nishioka-gyosei.github.io/index.html"
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "深夜営業届出は自分で出せますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可能です。書類自体は警察署で入手でき、記載例も用意されています。ただし、図面作成が最大のハードルで、専門知識がないと差し戻しを繰り返すケースが多いです。本業の準備で忙しい時期ですので、行政書士に依頼するか、自分で挑戦するかは費用対効果で判断するのが良いでしょう。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "届出を出さずに深夜営業を始めたらどうなりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "風営法違反となり、50万円以下の罰金が科される可能性があります。また、警察の指導対象となり、その後の許認可申請にも影響が出る場合があります。「気づかなかった」では済まされないので、必ず届出を行ってください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "届出後に店舗の内装を変更したい場合は？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "構造を変更する場合は変更届が必要です。客室の広さを変える、間仕切りを増やす、トイレの位置を変えるなど、図面に変更が出る工事は届出対象です。模様替え・装飾変更程度であれば不要です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "屋号（店名）を変えたら届出はやり直しですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "やり直しではなく、変更届で対応します。法人格が変わる（例：個人事業から法人化）場合は、新規届出が必要になります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "広島県外の本店から、広島市内に新規出店する場合は？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "営業所ごとに届出が必要です。本店が東京にあっても、広島の店舗は広島県公安委員会（管轄警察署）への届出となります。"
+          }
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "コラム",
-      "item": "https://nishioka-gyosei.github.io/blog/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "広島で深夜営業を始めるには",
-      "item": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html"
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "広島で深夜営業を始めるには",
+          "item": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html"
+        }
+      ]
     }
   ]
 }
@@ -380,7 +459,7 @@ a { color: inherit; text-decoration: none; }
         <div class="article-author-role">行政書士（元広島県警察官13年）</div>
       </div>
     </div>
-    <div class="article-date">2026.05.03</div>
+    <div class="article-date">2026.04.15</div>
   </div>
 </header>
 

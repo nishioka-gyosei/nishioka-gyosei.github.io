@@ -15,130 +15,201 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / Article / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "ガールズバーは風営法に該当する？セットでの料金システムの落とし穴",
-  "description": "ガールズバーの風営法判定について、料金システムを中心に元警察官の行政書士が解説します。",
-  "author": {
-    "@type": "Person",
-    "name": "西岡 祐也",
-    "jobTitle": "行政書士(元広島県警察官)"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "西岡行政書士事務所",
-    "address": "広島市中区大手町4-6-22"
-  },
-  "datePublished": "2026-05-05",
-  "dateModified": "2026-05-05"
-}
-</script>
-
-
-<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
-  ]
-}
-</script>
-
-<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "ガールズバーで「カウンター越しなら絶対大丈夫」と聞きました。本当ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "半分正解で、半分は危険な認識です。カウンター越しは物理的な構造上の条件ですが、それだけで接待にならないわけではありません。カウンター越しでも、特定の客と長時間つきっきりで会話を続けていれば、接待と判定される可能性があります。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "セット料金「1時間○○円」のお店は、すべて風営法対象ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "セット料金自体が違法ではありません。問題は「セット料金の中に何が含まれているか」です。「時間内のお酒の飲み放題」のみなら接待には当たりません。「スタッフが客に着く時間」を含むなら、接待行為と判定される可能性が高くなります。"
-      }
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "スタッフがお酒を飲むのは、すべて接待になりますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "業務上の試飲(新しい商品の味見等)は接待に当たりません。しかし、客と一緒にお酒を飲む・客にお酌してもらうなどは接待に該当します。「業務上か、お客様サービスか」の区別を明確にすることが重要です。"
-      }
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "風俗営業許可",
+        "接待飲食等営業",
+        "風営法の欠格事由",
+        "構造設備基準",
+        "保護対象施設",
+        "キャバクラ・ホストクラブの開業手続き"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "客から「一緒に飲んで」と頼まれた場合、断っても大丈夫ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "もちろん断って大丈夫です。深夜営業届のお店ということを最初にお伝えしておけば、お客様も理解してくださることが多いです。「うちのスタイルではお客様と一緒には飲まない」というルールを最初から徹底することが、お店全体を守ります。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "深夜営業届で開業して、後でガールズバーらしい接待スタイルに変えたくなったら？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "風営法1号許可の新規申請(手数料24,000円+書類作成・約2ヶ月の申請期間)が必要です。第5記事「 」でも触れたように、「軌道に乗ったら風営法に切替」というパターンは実務でよくありますが、警察の心証や申請手間を考えると、最初から方向性を固めるほうが効率的です。"
-      }
-    }
-  ]
-}
-</script>
-
-<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "ホーム",
-      "item": "https://nishioka-gyosei.github.io/index.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "コラム",
-      "item": "https://nishioka-gyosei.github.io/blog/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/girlsbar-fueihou-set-ryokin.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/fueihou/girlsbar-fueihou-set-ryokin.html",
       "name": "ガールズバーは風営法に該当する？セットでの料金システムの落とし穴",
-      "item": "https://nishioka-gyosei.github.io/blog/fueihou/girlsbar-fueihou-set-ryokin.html"
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary",
+          ".conclusion-box"
+        ]
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/girlsbar-fueihou-set-ryokin.html#article",
+      "headline": "ガールズバーは風営法に該当する？セットでの料金システムの落とし穴",
+      "description": "ガールズバーの風営法判定について、料金システムを中心に元警察官の行政書士が解説します。",
+      "datePublished": "2026-05-09T10:00:00+09:00",
+      "dateModified": "2026-05-09T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/girlsbar-fueihou-set-ryokin.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-fueihou-kyoka-4shurui.html#article"
+      },
+      "articleSection": "風営法",
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/girlsbar-fueihou-set-ryokin.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ガールズバーで「カウンター越しなら絶対大丈夫」と聞きました。本当ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "半分正解で、半分は危険な認識です。カウンター越しは物理的な構造上の条件ですが、それだけで接待にならないわけではありません。カウンター越しでも、特定の客と長時間つきっきりで会話を続けていれば、接待と判定される可能性があります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "セット料金「1時間○○円」のお店は、すべて風営法対象ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "セット料金自体が違法ではありません。問題は「セット料金の中に何が含まれているか」です。「時間内のお酒の飲み放題」のみなら接待には当たりません。「スタッフが客に着く時間」を含むなら、接待行為と判定される可能性が高くなります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "スタッフがお酒を飲むのは、すべて接待になりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "業務上の試飲(新しい商品の味見等)は接待に当たりません。しかし、客と一緒にお酒を飲む・客にお酌してもらうなどは接待に該当します。「業務上か、お客様サービスか」の区別を明確にすることが重要です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "客から「一緒に飲んで」と頼まれた場合、断っても大丈夫ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "もちろん断って大丈夫です。深夜営業届のお店ということを最初にお伝えしておけば、お客様も理解してくださることが多いです。「うちのスタイルではお客様と一緒には飲まない」というルールを最初から徹底することが、お店全体を守ります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "深夜営業届で開業して、後でガールズバーらしい接待スタイルに変えたくなったら？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "風営法1号許可の新規申請(手数料24,000円+書類作成・約2ヶ月の申請期間)が必要です。第5記事「 」でも触れたように、「軌道に乗ったら風営法に切替」というパターンは実務でよくありますが、警察の心証や申請手間を考えると、最初から方向性を固めるほうが効率的です。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/girlsbar-fueihou-set-ryokin.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ガールズバーは風営法に該当する？セットでの料金システムの落とし穴",
+          "item": "https://nishioka-gyosei.github.io/blog/fueihou/girlsbar-fueihou-set-ryokin.html"
+        }
+      ]
     }
   ]
 }
@@ -338,7 +409,7 @@ a { color: inherit; text-decoration: none; }
         <div class="article-author-role">行政書士（元広島県警察官13年）</div>
       </div>
     </div>
-    <div class="article-date">2026.05.05</div>
+    <div class="article-date">2026.05.09</div>
   </div>
 </header>
 

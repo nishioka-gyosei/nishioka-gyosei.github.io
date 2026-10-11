@@ -15,130 +15,214 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / DefinedTerm / Article / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "風営法の用途地域制限｜出店できるエリア・できないエリアの判定方法",
-  "description": "風営法の場所的制限（用途地域・距離制限）の仕組みと広島県の具体的な数値を解説。",
-  "author": {
-    "@type": "Person",
-    "name": "西岡 祐也",
-    "jobTitle": "行政書士(元広島県警察官)"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "西岡行政書士事務所",
-    "address": "広島市中区大手町4-6-22"
-  },
-  "datePublished": "2026-05-20",
-  "dateModified": "2026-05-20"
-}
-</script>
-
-
-<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
-  ]
-}
-</script>
-
-<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "マンションの1階テナントでも商業地域なら許可は取れますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "用途地域が商業地域であり、保護対象施設からの距離もクリアしていれば、マンションの1階テナントでも許可申請は可能です。ただし、建物のオーナーや管理組合が風俗営業を禁止している場合は、テナント契約上の問題が生じます。許可とは別に、オーナーの承諾が必要な場合があります。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "地図で見ると商業地域内なのに、担当者に「この場所は難しい」と言われました。なぜですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "用途地域以外の制限（保護対象施設の距離制限・条例による追加制限など）が理由の場合があります。また、物件が用途地域の境界線付近にある場合、実際の測量で制限区域に入ることがあります。警察署や行政書士に詳しく確認することをおすすめします。"
-      }
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "用途地域の変更（区画整理など）があった場合、既存の許可はどうなりますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "既存の許可を持って営業中の場合、用途地域の変更があっても既存の許可はすぐに無効にはなりません（既存不適格）。ただし、許可内容の変更申請や更新時に制限が適用される場合があります。詳しくは管轄警察署または行政書士に確認してください。"
-      }
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "風俗営業許可",
+        "接待飲食等営業",
+        "風営法の欠格事由",
+        "構造設備基準",
+        "保護対象施設",
+        "キャバクラ・ホストクラブの開業手続き"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "近くに大学があります。距離制限の対象になりますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "広島県の条例では、大学・専修学校も距離制限の対象施設に含まれます。他の都道府県では対象外とされている場合もありますが、広島県での申請を検討している場合は、大学の存在も距離制限の確認対象に含めて調査してください。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "物件候補が複数あります。事前に場所的制限を調べてもらえますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "西岡行政書士事務所では、物件候補の場所的制限の事前調査をお受けしています。複数候補がある場合も一括で調査できますので、物件を決める前にご相談ください。LINEまたはお電話からお気軽にご連絡ください。"
-      }
-    }
-  ]
-}
-</script>
-
-<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "ホーム",
-      "item": "https://nishioka-gyosei.github.io/index.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "コラム",
-      "item": "https://nishioka-gyosei.github.io/blog/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-yoto-chiiki-seigen.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-yoto-chiiki-seigen.html",
       "name": "風営法の用途地域制限｜出店できるエリア・できないエリアの判定方法",
-      "item": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-yoto-chiiki-seigen.html"
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "about": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-yoto-chiiki-seigen.html#term"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary",
+          ".conclusion-box"
+        ]
+      }
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-yoto-chiiki-seigen.html#term",
+      "name": "場所的制限（風俗営業）",
+      "description": "風俗営業の許可を受けられる場所を限定する規制。風営法第4条第2項第2号は、良好な風俗環境を保全するため特にその設置を制限する必要がある地域として、政令の基準に従い都道府県の条例で定める地域内に営業所があるときは許可をしてはならないとしている。実務上は用途地域による制限と保護対象施設からの距離による制限の2つがあり、いずれか一方でも満たさなければ許可は受けられない。",
+      "inDefinedTermSet": "風営法"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-yoto-chiiki-seigen.html#article",
+      "headline": "風営法の用途地域制限｜出店できるエリア・できないエリアの判定方法",
+      "description": "風営法の場所的制限（用途地域・距離制限）の仕組みと広島県の具体的な数値を解説。",
+      "datePublished": "2026-05-17T10:00:00+09:00",
+      "dateModified": "2026-05-20T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-yoto-chiiki-seigen.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "about": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-yoto-chiiki-seigen.html#term"
+      },
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-fueihou-kyoka-4shurui.html#article"
+      },
+      "articleSection": "風営法",
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-yoto-chiiki-seigen.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "マンションの1階テナントでも商業地域なら許可は取れますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "用途地域が商業地域であり、保護対象施設からの距離もクリアしていれば、マンションの1階テナントでも許可申請は可能です。ただし、建物のオーナーや管理組合が風俗営業を禁止している場合は、テナント契約上の問題が生じます。許可とは別に、オーナーの承諾が必要な場合があります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "地図で見ると商業地域内なのに、担当者に「この場所は難しい」と言われました。なぜですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "用途地域以外の制限（保護対象施設の距離制限・条例による追加制限など）が理由の場合があります。また、物件が用途地域の境界線付近にある場合、実際の測量で制限区域に入ることがあります。警察署や行政書士に詳しく確認することをおすすめします。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "用途地域の変更（区画整理など）があった場合、既存の許可はどうなりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "既存の許可を持って営業中の場合、用途地域の変更があっても既存の許可はすぐに無効にはなりません（既存不適格）。ただし、許可内容の変更申請や更新時に制限が適用される場合があります。詳しくは管轄警察署または行政書士に確認してください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "近くに大学があります。距離制限の対象になりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "広島県の条例では、大学・専修学校も距離制限の対象施設に含まれます。他の都道府県では対象外とされている場合もありますが、広島県での申請を検討している場合は、大学の存在も距離制限の確認対象に含めて調査してください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "物件候補が複数あります。事前に場所的制限を調べてもらえますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "西岡行政書士事務所では、物件候補の場所的制限の事前調査をお受けしています。複数候補がある場合も一括で調査できますので、物件を決める前にご相談ください。LINEまたはお電話からお気軽にご連絡ください。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-yoto-chiiki-seigen.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "風営法の用途地域制限｜出店できるエリア・できないエリアの判定方法",
+          "item": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-yoto-chiiki-seigen.html"
+        }
+      ]
     }
   ]
 }
@@ -352,7 +436,7 @@ a { color: inherit; text-decoration: none; }
         <div class="article-author-role">行政書士（元広島県警察官13年）</div>
       </div>
     </div>
-    <div class="article-date">2026.05.20</div>
+    <div class="article-date">2026.05.17</div>
   </div>
 </header>
 
@@ -377,7 +461,7 @@ a { color: inherit; text-decoration: none; }
 
 <h2>1. 風営法の「場所的制限」とは</h2>
 
-<p>風営法第28条（および各都道府県の条例）は、風俗営業の許可を受けられる場所を制限しています。これを「場所的制限」と呼びます。</p>
+<p>風営法第4条第2項第2号は、「良好な風俗環境を保全するため特にその設置を制限する必要があるものとして政令で定める基準に従い都道府県の条例で定める地域内」に営業所があるときは、公安委員会は許可をしてはならないと定めています。これを「場所的制限」と呼びます。具体的にどの区域がだめで、どの施設からどれだけ離れていなければならないかは、風営法施行令の基準に従って<strong>各都道府県の条例</strong>が決めています。</p>
 
 <table>
   <thead><tr><th>制限の種類</th><th>内容</th></tr></thead>
@@ -392,7 +476,7 @@ a { color: inherit; text-decoration: none; }
 <h2>2. 用途地域による制限</h2>
 
 <h3>用途地域とは</h3>
-<p>都市計画法に基づき、土地の用途を定めた区域区分のことです。住居系・商業系・工業系に大別され、全部で13種類あります。風俗営業（1〜5号）が許可を受けられるのは、原則として<strong>商業地域</strong>に限られます（風営法第28条第1項）。</p>
+<p>都市計画法に基づき、土地の用途を定めた区域区分のことです。住居系・商業系・工業系に大別され、全部で13種類あります。風俗営業（1〜5号）が許可を受けられるのは、原則として<strong>商業地域</strong>に限られます（風営法第4条第2項第2号・同法施行令の基準に従い都道府県の条例で定める）。</p>
 
 <h3>営業できる用途地域・できない用途地域</h3>
 
@@ -415,7 +499,7 @@ a { color: inherit; text-decoration: none; }
 
 <h2>3. 保護対象施設からの距離制限</h2>
 
-<p>用途地域をクリアしても、もう一つの壁があります。学校・病院・図書館などの「保護対象施設」から一定の距離内では、風俗営業の許可が下りません（風営法第28条第1項）。</p>
+<p>用途地域をクリアしても、もう一つの壁があります。学校・病院・図書館などの「保護対象施設」から一定の距離内では、風俗営業の許可が下りません（風営法第4条第2項第2号・同法施行令の基準に従い都道府県の条例で定める）。</p>
 
 <h3>広島県の距離制限（学校・図書館・児童福祉施設等）</h3>
 

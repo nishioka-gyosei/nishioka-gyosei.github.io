@@ -30,110 +30,214 @@
   gtag('config', 'G-6JQDLBVSQ8');
 </script>
 
-<!-- 記事 構造化データ -->
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / DefinedTerm / Article / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "交通誘導警備（2号）とは？工事・イベントで必要なケースと検定を行政書士が解説",
-  "description": "交通誘導警備（警備業2号）が必要なケース、資格者配置路線での検定合格警備員の配置義務（警備業法18条）、交通誘導警備業務検定を元広島県警察官の行政書士が解説。",
-  "datePublished": "2026-06-23",
-  "dateModified": "2026-06-23",
-  "author": { "@type": "Person", "name": "西岡祐也", "jobTitle": "行政書士" },
-  "publisher": { "@type": "Organization", "name": "西岡行政書士事務所" },
-  "mainEntityOfPage": "https://nishioka-gyosei.github.io/blog/keibi/koutsuu-yuudou-keibi-2gou.html",
-  "inLanguage": "ja"
-}
-</script>
-
-<!-- 事務所情報 構造化データ（LocalBusiness / LegalService） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
-  ]
-}
-</script>
-
-<!-- FAQ 構造化データ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "交通誘導警備はどんなときに必要ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "道路工事や、道路を使うイベントで、車と歩行者の安全を確保するために必要になります。特に交通量の多い場所では、道路使用許可の条件として配置を求められることがあります。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "誰でも交通誘導員になれますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "指定路線（資格者配置路線）や高速道路では、交通誘導警備業務1級・2級の検定合格警備員を場所ごとに1人以上配置する義務があります。指定路線以外でも、契約や協議で有資格者・経験者を求められることが多いです。"
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "警備業の認定",
+        "警備業法",
+        "交通誘導警備業務",
+        "警備員指導教育責任者",
+        "検定合格警備員の配置"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/keibi/koutsuu-yuudou-keibi-2gou.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/keibi/koutsuu-yuudou-keibi-2gou.html",
+      "name": "交通誘導警備（2号）とは？工事・イベントで必要なケースと検定を行政書士が解説",
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "about": {
+        "@id": "https://nishioka-gyosei.github.io/blog/keibi/koutsuu-yuudou-keibi-2gou.html#term"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary",
+          ".conclusion-box"
+        ]
       }
     },
     {
-      "@type": "Question",
-      "name": "広島の指定路線はどこで分かりますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "広島県公安委員会が認定・公示しており、広島県警のサイトで確認できます。路線は改正されることがあるため、現場ごとに最新の情報を確認してください。"
-      }
+      "@type": "DefinedTerm",
+      "@id": "https://nishioka-gyosei.github.io/blog/keibi/koutsuu-yuudou-keibi-2gou.html#term",
+      "name": "交通誘導警備業務",
+      "description": "警備業法が定める警備業務の区分のうち2号警備業務。人もしくは車両の雑踏する場所、またはこれらの通行に危険のある場所における負傷等の事故の発生を警戒し、防止する業務をいう。工事現場やイベント会場での交通誘導が典型で、国家公安委員会規則が定める一定の場所では検定合格警備員の配置が義務づけられている。",
+      "inDefinedTermSet": "警備業"
     },
     {
-      "@type": "Question",
-      "name": "無資格者を指定路線に配置するとどうなりますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "有資格者を配置せずに指定路線・高速道路で交通誘導警備を行うと、行政処分の対象になります。"
-      }
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/keibi/koutsuu-yuudou-keibi-2gou.html#article",
+      "headline": "交通誘導警備（2号）とは？工事・イベントで必要なケースと検定を行政書士が解説",
+      "description": "交通誘導警備（警備業2号）が必要なケース、資格者配置路線での検定合格警備員の配置義務（警備業法18条）、交通誘導警備業務検定を元広島県警察官の行政書士が解説。",
+      "datePublished": "2026-06-23T10:00:00+09:00",
+      "dateModified": "2026-06-23T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/keibi/koutsuu-yuudou-keibi-2gou.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "about": {
+        "@id": "https://nishioka-gyosei.github.io/blog/keibi/koutsuu-yuudou-keibi-2gou.html#term"
+      },
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/blog/keibi/hiroshima-keibigyou-nintei.html#article"
+      },
+      "articleSection": "警備業",
+      "inLanguage": "ja"
     },
     {
-      "@type": "Question",
-      "name": "交通誘導警備を自社でやるには何が必要ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "警備業として公安委員会の認定を受け、区分ごとに警備員指導教育責任者を選任する必要があります。継続的に必要なら自社認定、単発なら警備会社への依頼が現実的です。"
-      }
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/keibi/koutsuu-yuudou-keibi-2gou.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "交通誘導警備はどんなときに必要ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "道路工事や、道路を使うイベントで、車と歩行者の安全を確保するために必要になります。特に交通量の多い場所では、道路使用許可の条件として配置を求められることがあります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "誰でも交通誘導員になれますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "指定路線（資格者配置路線）や高速道路では、交通誘導警備業務1級・2級の検定合格警備員を場所ごとに1人以上配置する義務があります。指定路線以外でも、契約や協議で有資格者・経験者を求められることが多いです。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "広島の指定路線はどこで分かりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "広島県公安委員会が認定・公示しており、広島県警のサイトで確認できます。路線は改正されることがあるため、現場ごとに最新の情報を確認してください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "無資格者を指定路線に配置するとどうなりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "有資格者を配置せずに指定路線・高速道路で交通誘導警備を行うと、行政処分の対象になります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "交通誘導警備を自社でやるには何が必要ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "警備業として公安委員会の認定を受け、区分ごとに警備員指導教育責任者を選任する必要があります。継続的に必要なら自社認定、単発なら警備会社への依頼が現実的です。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/keibi/koutsuu-yuudou-keibi-2gou.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "交通誘導警備（2号）とは",
+          "item": "https://nishioka-gyosei.github.io/blog/keibi/koutsuu-yuudou-keibi-2gou.html"
+        }
+      ]
     }
-  ]
-}
-</script>
-
-<!-- パンくず 構造化データ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://nishioka-gyosei.github.io/index.html" },
-    { "@type": "ListItem", "position": 2, "name": "コラム", "item": "https://nishioka-gyosei.github.io/blog/" },
-    { "@type": "ListItem", "position": 3, "name": "交通誘導警備（2号）とは", "item": "https://nishioka-gyosei.github.io/blog/keibi/koutsuu-yuudou-keibi-2gou.html" }
   ]
 }
 </script>

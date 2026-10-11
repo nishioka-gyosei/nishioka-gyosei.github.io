@@ -30,110 +30,211 @@
   gtag('config', 'G-6JQDLBVSQ8');
 </script>
 
-<!-- 記事 構造化データ -->
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / DefinedTerm / Article / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "広島の道路使用許可とは？必要なケース・費用・取り方を行政書士が解説",
-  "description": "道路使用許可が必要なケース、広島県の手数料、標準処理期間、道路占用許可との違いを元広島県警察官の行政書士が解説。",
-  "datePublished": "2026-06-19",
-  "dateModified": "2026-06-19",
-  "author": { "@type": "Person", "name": "西岡祐也", "jobTitle": "行政書士" },
-  "publisher": { "@type": "Organization", "name": "西岡行政書士事務所" },
-  "mainEntityOfPage": "https://nishioka-gyosei.github.io/blog/douro/hiroshima-douro-shiyou-kyoka-towa.html",
-  "inLanguage": "ja"
-}
-</script>
-
-<!-- 事務所情報 構造化データ（LocalBusiness / LegalService） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
-  ]
-}
-</script>
-
-<!-- FAQ 構造化データ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "道路使用許可はどこに申請しますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "使用場所を管轄する警察署の交通課（交通規制係）です。風営法や古物商の生活安全課とは別の窓口になります。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "道路使用許可と道路占用許可は何が違いますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "道路使用許可は道路交通法に基づき警察署長が出す「一時的な使用」の許可、道路占用許可は道路法に基づき道路管理者が出す「継続的な占用」の許可です。両方必要な場合もあります。"
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "道路使用許可",
+        "道路交通法第77条",
+        "キッチンカーの出店",
+        "祭礼行事・催しの道路使用",
+        "道路占用許可"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/douro/hiroshima-douro-shiyou-kyoka-towa.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/douro/hiroshima-douro-shiyou-kyoka-towa.html",
+      "name": "広島の道路使用許可とは？必要なケース・費用・取り方を行政書士が解説",
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "about": {
+        "@id": "https://nishioka-gyosei.github.io/blog/douro/hiroshima-douro-shiyou-kyoka-towa.html#term"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary",
+          ".conclusion-box"
+        ]
       }
     },
     {
-      "@type": "Question",
-      "name": "広島で道路使用許可を取る費用はいくらですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "広島県の手数料は1件・1期間あたり2,400円程度です（証紙納付・不許可でも還付なし）。改定されることがあるため申請前にご確認ください。"
-      }
+      "@type": "DefinedTerm",
+      "@id": "https://nishioka-gyosei.github.io/blog/douro/hiroshima-douro-shiyou-kyoka-towa.html#term",
+      "name": "道路使用許可",
+      "description": "道路交通法第77条に基づき、道路を本来の交通の目的以外の特別な方法で使用する場合に、営業所ではなく使用する場所を管轄する警察署長から受ける許可。工事や作業、石碑・広告塔などの工作物の設置、露店や屋台の出店、祭礼行事やロケーション撮影などが対象となる。道路そのものを継続して占用する場合の道路法第32条の道路占用許可とは、根拠法令も窓口も異なる。",
+      "inDefinedTermSet": "道路使用許可"
     },
     {
-      "@type": "Question",
-      "name": "許可が下りるまでどれくらいかかりますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "広島県警の標準処理期間は3〜5日です。交通規制や道路管理者との協議を伴う場合は、さらに時間がかかります。"
-      }
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/douro/hiroshima-douro-shiyou-kyoka-towa.html#article",
+      "headline": "広島の道路使用許可とは？必要なケース・費用・取り方を行政書士が解説",
+      "description": "道路使用許可が必要なケース、広島県の手数料、標準処理期間、道路占用許可との違いを元広島県警察官の行政書士が解説。",
+      "datePublished": "2026-06-19T10:00:00+09:00",
+      "dateModified": "2026-06-19T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/douro/hiroshima-douro-shiyou-kyoka-towa.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "about": {
+        "@id": "https://nishioka-gyosei.github.io/blog/douro/hiroshima-douro-shiyou-kyoka-towa.html#term"
+      },
+      "articleSection": "道路使用許可",
+      "inLanguage": "ja"
     },
     {
-      "@type": "Question",
-      "name": "キッチンカーやイベントでも道路使用許可は必要ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "道路上で出店・開催する場合は必要です（3号・4号）。私有地やイベント会場内であれば不要な場合もあるため、場所の性質で判断が変わります。"
-      }
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/douro/hiroshima-douro-shiyou-kyoka-towa.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "道路使用許可はどこに申請しますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "使用場所を管轄する警察署の交通課（交通規制係）です。風営法や古物商の生活安全課とは別の窓口になります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "道路使用許可と道路占用許可は何が違いますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "道路使用許可は道路交通法に基づき警察署長が出す「一時的な使用」の許可、道路占用許可は道路法に基づき道路管理者が出す「継続的な占用」の許可です。両方必要な場合もあります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "広島で道路使用許可を取る費用はいくらですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "広島県の手数料は1件・1期間あたり2,400円程度です（証紙納付・不許可でも還付なし）。改定されることがあるため申請前にご確認ください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "許可が下りるまでどれくらいかかりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "広島県警の標準処理期間は3〜5日です。交通規制や道路管理者との協議を伴う場合は、さらに時間がかかります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "キッチンカーやイベントでも道路使用許可は必要ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "道路上で出店・開催する場合は必要です（3号・4号）。私有地やイベント会場内であれば不要な場合もあるため、場所の性質で判断が変わります。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/douro/hiroshima-douro-shiyou-kyoka-towa.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "道路使用許可とは",
+          "item": "https://nishioka-gyosei.github.io/blog/douro/hiroshima-douro-shiyou-kyoka-towa.html"
+        }
+      ]
     }
-  ]
-}
-</script>
-
-<!-- パンくず 構造化データ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://nishioka-gyosei.github.io/index.html" },
-    { "@type": "ListItem", "position": 2, "name": "コラム", "item": "https://nishioka-gyosei.github.io/blog/" },
-    { "@type": "ListItem", "position": 3, "name": "道路使用許可とは", "item": "https://nishioka-gyosei.github.io/blog/douro/hiroshima-douro-shiyou-kyoka-towa.html" }
   ]
 }
 </script>

@@ -15,131 +15,200 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 
-<!-- 構造化データ：記事 -->
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / Article / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "バー開業に深夜営業届は必要？営業形態ごとに必要な手続きを整理",
-  "description": "バーの業態別に必要な手続きを、元広島県警察官13年の行政書士が整理して解説します。",
-  "author": {
-    "@type": "Person",
-    "name": "西岡 祐也",
-    "jobTitle": "行政書士(元広島県警察官)"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "西岡行政書士事務所",
-    "address": "広島市中区大手町4-6-22"
-  },
-  "datePublished": "2026-05-03",
-  "dateModified": "2026-05-03"
-}
-</script>
-
-
-<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
-  ]
-}
-</script>
-
-<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "自分のお店がどの業態に該当するか分からない場合、どうすればいいですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "行政書士や警察署の生活安全課に事前相談することをお勧めします。物件契約前・内装工事前の段階で相談すれば、最適な手続きを選択できます。「曖昧なまま開業して、後で問題になる」のが最も避けるべき状況です。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "ショットバーから始めて、後でガールズバーに業態変更できますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "できますが、新規の風営法許可申請が必要になる場合があります。「接待行為のないガールズバー」の範囲なら深夜営業届の変更届で対応できますが、「接待行為のあるガールズバー」にする場合は風営法1号営業の新規許可申請（手数料24,000円＋実費）が必要です。"
-      }
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "ダーツバーで景品を提供したいのですが、可能ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "景品の内容・提供方法によります。プレイ料金の中に含まれる小さな景品（ステッカー・お菓子等）程度であれば問題ない場合が多いですが、現金や金券、高額商品の提供は風営法4号営業（遊技場営業）に該当する可能性があります。具体的な景品内容を決める段階で、専門家に相談することをお勧めします。"
-      }
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "深夜酒類提供飲食店営業開始届出",
+        "風営法",
+        "飲食店営業許可",
+        "バー・スナックの開業手続き",
+        "広島県警察への届出"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "メニューに「カラオケあり」と書きたいのですが、影響はありますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "カラオケの提供自体は、深夜営業届出のバーでも可能です。ただし「スタッフが客と一緒にカラオケを歌う」「特定の客のリクエストに応じて歌う」などの行為は接待にあたる可能性があります。カラオケを置く場合は、「客が自分で歌うだけのスタイル」を徹底することが基本であると考えることが重要です。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "開業準備中に手続きを変更したくなったらどうすればいいですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "早ければ早いほど対応しやすいです。物件契約前・保健所許可申請前の段階なら、手続きを変更してもダメージは少なくて済みます。深夜営業届出の準備を進めていたが、途中で「やっぱり接待ありのガールズバーにしたい」となった場合、風営法1号許可の新規申請に切り替えると約2ヶ月の期間追加が必要です。早めの判断が大切です。"
-      }
-    }
-  ]
-}
-</script>
-
-<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "ホーム",
-      "item": "https://nishioka-gyosei.github.io/index.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "コラム",
-      "item": "https://nishioka-gyosei.github.io/blog/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/bar-kaigyou-tetsuduki-hantei.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/shinya/bar-kaigyou-tetsuduki-hantei.html",
       "name": "バー開業に深夜営業届は必要？営業形態ごとに必要な手続きを整理",
-      "item": "https://nishioka-gyosei.github.io/blog/shinya/bar-kaigyou-tetsuduki-hantei.html"
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary",
+          ".conclusion-box"
+        ]
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/bar-kaigyou-tetsuduki-hantei.html#article",
+      "headline": "バー開業に深夜営業届は必要？営業形態ごとに必要な手続きを整理",
+      "description": "バーの業態別に必要な手続きを、元広島県警察官13年の行政書士が整理して解説します。",
+      "datePublished": "2026-04-30T10:00:00+09:00",
+      "dateModified": "2026-05-03T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/shinya/bar-kaigyou-tetsuduki-hantei.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html#article"
+      },
+      "articleSection": "深夜営業",
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/bar-kaigyou-tetsuduki-hantei.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "自分のお店がどの業態に該当するか分からない場合、どうすればいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "行政書士や警察署の生活安全課に事前相談することをお勧めします。物件契約前・内装工事前の段階で相談すれば、最適な手続きを選択できます。「曖昧なまま開業して、後で問題になる」のが最も避けるべき状況です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ショットバーから始めて、後でガールズバーに業態変更できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "できますが、新規の風営法許可申請が必要になる場合があります。「接待行為のないガールズバー」の範囲なら深夜営業届の変更届で対応できますが、「接待行為のあるガールズバー」にする場合は風営法1号営業の新規許可申請（手数料24,000円＋実費）が必要です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ダーツバーで景品を提供したいのですが、可能ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "景品の内容・提供方法によります。プレイ料金の中に含まれる小さな景品（ステッカー・お菓子等）程度であれば問題ない場合が多いですが、現金や金券、高額商品の提供は風営法4号営業（遊技場営業）に該当する可能性があります。具体的な景品内容を決める段階で、専門家に相談することをお勧めします。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "メニューに「カラオケあり」と書きたいのですが、影響はありますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "カラオケの提供自体は、深夜営業届出のバーでも可能です。ただし「スタッフが客と一緒にカラオケを歌う」「特定の客のリクエストに応じて歌う」などの行為は接待にあたる可能性があります。カラオケを置く場合は、「客が自分で歌うだけのスタイル」を徹底することが基本であると考えることが重要です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "開業準備中に手続きを変更したくなったらどうすればいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "早ければ早いほど対応しやすいです。物件契約前・保健所許可申請前の段階なら、手続きを変更してもダメージは少なくて済みます。深夜営業届出の準備を進めていたが、途中で「やっぱり接待ありのガールズバーにしたい」となった場合、風営法1号許可の新規申請に切り替えると約2ヶ月の期間追加が必要です。早めの判断が大切です。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/bar-kaigyou-tetsuduki-hantei.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "バー開業に深夜営業届は必要？営業形態ごとに必要な手続きを整理",
+          "item": "https://nishioka-gyosei.github.io/blog/shinya/bar-kaigyou-tetsuduki-hantei.html"
+        }
+      ]
     }
   ]
 }
@@ -375,7 +444,7 @@ a { color: inherit; text-decoration: none; }
         <div class="article-author-role">行政書士（元広島県警察官13年）</div>
       </div>
     </div>
-    <div class="article-date">2026.05.03</div>
+    <div class="article-date">2026.04.30</div>
   </div>
 </header>
 

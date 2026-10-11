@@ -15,130 +15,214 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / DefinedTerm / Article / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "風営法の保護対象施設とは？学校・病院から何メートル離せばOK？",
-  "description": "風営法の保護対象施設からの距離要件を、広島県の用途地域別に元警察官の行政書士が解説します。",
-  "author": {
-    "@type": "Person",
-    "name": "西岡 祐也",
-    "jobTitle": "行政書士(元広島県警察官)"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "西岡行政書士事務所",
-    "address": "広島市中区大手町4-6-22"
-  },
-  "datePublished": "2026-05-05",
-  "dateModified": "2026-05-05"
-}
-</script>
-
-
-<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
-  ]
-}
-</script>
-
-<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "物件契約後に保護対象施設の存在に気づいた場合、どうすればいいですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "すぐに専門家に相談してください。場合によっては、距離測定で「ぎりぎり要件を満たす」と判明することもありますし、業態を変更して通常飲食店として開業する選択肢もあります。契約解除の交渉も含めて、早めの対応が重要です。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "大学のキャンパスから近い物件ですが、大学生相手のお店なら大丈夫？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "客層は関係ありません。風営法は「保護対象施設からの距離」を画一的に判定しており、客層や営業内容では判断しません。物件の用途地域と営業区分による基準距離を満たさない場合は、原則として不許可です。"
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "風俗営業許可",
+        "接待飲食等営業",
+        "風営法の欠格事由",
+        "構造設備基準",
+        "保護対象施設",
+        "キャバクラ・ホストクラブの開業手続き"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-hogo-taishou-shisetsu.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-hogo-taishou-shisetsu.html",
+      "name": "風営法の保護対象施設とは？学校・病院から何メートル離せばOK？",
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "about": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-hogo-taishou-shisetsu.html#term"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary",
+          ".conclusion-box"
+        ]
       }
     },
     {
-      "@type": "Question",
-      "name": "ビルの上階に診療所が入っている場合、ビルの1階で開業できますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "同じビル内に保護対象施設がある場合、距離0mと扱われるので原則として不許可です。「同じビル内に保護対象施設がある」物件は風営法対象業態には不向きです。"
-      }
+      "@type": "DefinedTerm",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-hogo-taishou-shisetsu.html#term",
+      "name": "保護対象施設",
+      "description": "風俗営業の許可にあたって一定の距離を確保しなければならない施設。学校、図書館、児童福祉施設、病院、診療所などが風営法施行令の基準に従って定められており、これらの施設から都道府県の条例で定める距離の範囲内では風俗営業の許可を受けられない。",
+      "inDefinedTermSet": "風営法"
     },
     {
-      "@type": "Question",
-      "name": "距離測定を専門家に頼む場合、費用はいくらくらいですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "当事務所では、物件契約前の保護対象施設調査を比較的低額で承っています。詳しい料金は でご確認いただくか、お問い合わせください。物件契約前の数千円のコストで、契約後の数十万円の損失を防げる費用対効果の高い調査です。"
-      }
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-hogo-taishou-shisetsu.html#article",
+      "headline": "風営法の保護対象施設とは？学校・病院から何メートル離せばOK？",
+      "description": "風営法の保護対象施設からの距離要件を、広島県の用途地域別に元警察官の行政書士が解説します。",
+      "datePublished": "2026-05-05T10:00:00+09:00",
+      "dateModified": "2026-05-05T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-hogo-taishou-shisetsu.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "about": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-hogo-taishou-shisetsu.html#term"
+      },
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-fueihou-kyoka-4shurui.html#article"
+      },
+      "articleSection": "風営法",
+      "inLanguage": "ja"
     },
     {
-      "@type": "Question",
-      "name": "駅から徒歩5分、繁華街の中心地ですが、保護対象施設の有無を確認すべきですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "はい、必ず確認してください。繁華街の中心地でも、ビルの一部に診療所が入っていたり、近くに小規模な児童福祉施設があることがあります。「繁華街だから大丈夫」と思い込まず、半径100m以上を一度確認することをお勧めします。"
-      }
-    }
-  ]
-}
-</script>
-
-<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "ホーム",
-      "item": "https://nishioka-gyosei.github.io/index.html"
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-hogo-taishou-shisetsu.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "物件契約後に保護対象施設の存在に気づいた場合、どうすればいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "すぐに専門家に相談してください。場合によっては、距離測定で「ぎりぎり要件を満たす」と判明することもありますし、業態を変更して通常飲食店として開業する選択肢もあります。契約解除の交渉も含めて、早めの対応が重要です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "大学のキャンパスから近い物件ですが、大学生相手のお店なら大丈夫？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "客層は関係ありません。風営法は「保護対象施設からの距離」を画一的に判定しており、客層や営業内容では判断しません。物件の用途地域と営業区分による基準距離を満たさない場合は、原則として不許可です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ビルの上階に診療所が入っている場合、ビルの1階で開業できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "同じビル内に保護対象施設がある場合、距離0mと扱われるので原則として不許可です。「同じビル内に保護対象施設がある」物件は風営法対象業態には不向きです。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "距離測定を専門家に頼む場合、費用はいくらくらいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "当事務所では、物件契約前の保護対象施設調査を比較的低額で承っています。詳しい料金は でご確認いただくか、お問い合わせください。物件契約前の数千円のコストで、契約後の数十万円の損失を防げる費用対効果の高い調査です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "駅から徒歩5分、繁華街の中心地ですが、保護対象施設の有無を確認すべきですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい、必ず確認してください。繁華街の中心地でも、ビルの一部に診療所が入っていたり、近くに小規模な児童福祉施設があることがあります。「繁華街だから大丈夫」と思い込まず、半径100m以上を一度確認することをお勧めします。"
+          }
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "コラム",
-      "item": "https://nishioka-gyosei.github.io/blog/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "風営法の保護対象施設とは?学校・病院から何メートル離せばOK？",
-      "item": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-hogo-taishou-shisetsu.html"
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-hogo-taishou-shisetsu.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "風営法の保護対象施設とは?学校・病院から何メートル離せばOK？",
+          "item": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-hogo-taishou-shisetsu.html"
+        }
+      ]
     }
   ]
 }

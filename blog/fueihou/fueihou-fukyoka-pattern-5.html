@@ -15,131 +15,201 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 
-<!-- 構造化データ：記事 -->
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / Article / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "【元広島県警官が語る】風営法申請で不許可になる典型パターン5選",
-  "description": "元広島県警察官13年の行政書士が、風営法申請で不許可になる5つの典型パターンを語ります。",
-  "author": {
-    "@type": "Person",
-    "name": "西岡 祐也",
-    "jobTitle": "行政書士(元広島県警察官)"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "西岡行政書士事務所",
-    "address": "広島市中区大手町4-6-22"
-  },
-  "datePublished": "2026-05-05",
-  "dateModified": "2026-05-05"
-}
-</script>
-
-
-<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
-  ]
-}
-</script>
-
-<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "過去の犯罪歴は、どのくらい昔のものまで影響しますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "禁錮以上の刑については、執行終了（出所・執行猶予の経過等）から5年が経過すれば欠格事由から外れます。罰金刑は欠格事由に該当しないことが多いですが、風営法違反の罰金は5年間の欠格事由になります。古い案件でも、当時の処分内容を確認することが重要です。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "申請してから不許可と分かるまで、どのくらいの期間がかかりますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "標準処理期間は約55日です。多くの不許可案件は、この期間内に警察側の調査で発覚します。ただし、申請後すぐに不許可と判明する明らかなケース（欠格事由の発覚等）は、申請から1〜2週間で連絡が来ることもあります。"
-      }
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "不許可になった後、すぐに再申請はできますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "不許可理由が解消されていれば再申請できますが、再度手数料24,000円が必要です。また、警察側の心証としては「不許可になった申請者」というマイナス評価がついている可能性があるため、再申請の準備はより慎重に行う必要があります。"
-      }
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "風俗営業許可",
+        "接待飲食等営業",
+        "風営法の欠格事由",
+        "構造設備基準",
+        "保護対象施設",
+        "キャバクラ・ホストクラブの開業手続き"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "「不安なので相談だけ」は受けてもらえますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "当事務所は受けています。「自分が欠格事由に該当するか不安」「物件は決まっていないが事前に確認したい」といった段階のご相談を歓迎しています。正式依頼の前段階での相談こそ、不許可を防ぐ最大のチャンスだと考えているからです。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "行政書士に依頼すれば、不許可は絶対回避できますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "「絶対」とは断言できません。行政書士は事前確認で不許可リスクを大幅に下げられますが、申請者本人の欠格事由など、本人が情報を出さないと分からない要素もあります。逆に言えば、行政書士に正直に情報共有していただければ、ほとんどの不許可リスクは事前に発見可能です。"
-      }
-    }
-  ]
-}
-</script>
-
-<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "ホーム",
-      "item": "https://nishioka-gyosei.github.io/index.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "コラム",
-      "item": "https://nishioka-gyosei.github.io/blog/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-fukyoka-pattern-5.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-fukyoka-pattern-5.html",
       "name": "【元広島県警官が語る】風営法申請で不許可になる典型パターン5選",
-      "item": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-fukyoka-pattern-5.html"
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary",
+          ".conclusion-box"
+        ]
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-fukyoka-pattern-5.html#article",
+      "headline": "【元広島県警官が語る】風営法申請で不許可になる典型パターン5選",
+      "description": "元広島県警察官13年の行政書士が、風営法申請で不許可になる5つの典型パターンを語ります。",
+      "datePublished": "2026-05-01T10:00:00+09:00",
+      "dateModified": "2026-05-05T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-fukyoka-pattern-5.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-fueihou-kyoka-4shurui.html#article"
+      },
+      "articleSection": "風営法",
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-fukyoka-pattern-5.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "過去の犯罪歴は、どのくらい昔のものまで影響しますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "禁錮以上の刑については、執行終了（出所・執行猶予の経過等）から5年が経過すれば欠格事由から外れます。罰金刑は欠格事由に該当しないことが多いですが、風営法違反の罰金は5年間の欠格事由になります。古い案件でも、当時の処分内容を確認することが重要です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "申請してから不許可と分かるまで、どのくらいの期間がかかりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "標準処理期間は約55日です。多くの不許可案件は、この期間内に警察側の調査で発覚します。ただし、申請後すぐに不許可と判明する明らかなケース（欠格事由の発覚等）は、申請から1〜2週間で連絡が来ることもあります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "不許可になった後、すぐに再申請はできますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不許可理由が解消されていれば再申請できますが、再度手数料24,000円が必要です。また、警察側の心証としては「不許可になった申請者」というマイナス評価がついている可能性があるため、再申請の準備はより慎重に行う必要があります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "「不安なので相談だけ」は受けてもらえますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "当事務所は受けています。「自分が欠格事由に該当するか不安」「物件は決まっていないが事前に確認したい」といった段階のご相談を歓迎しています。正式依頼の前段階での相談こそ、不許可を防ぐ最大のチャンスだと考えているからです。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "行政書士に依頼すれば、不許可は絶対回避できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "「絶対」とは断言できません。行政書士は事前確認で不許可リスクを大幅に下げられますが、申請者本人の欠格事由など、本人が情報を出さないと分からない要素もあります。逆に言えば、行政書士に正直に情報共有していただければ、ほとんどの不許可リスクは事前に発見可能です。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-fukyoka-pattern-5.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "【元広島県警官が語る】風営法申請で不許可になる典型パターン5選",
+          "item": "https://nishioka-gyosei.github.io/blog/fueihou/fueihou-fukyoka-pattern-5.html"
+        }
+      ]
     }
   ]
 }
@@ -381,7 +451,7 @@ a { color: inherit; text-decoration: none; }
         <div class="article-author-role">行政書士（元広島県警察官13年）</div>
       </div>
     </div>
-    <div class="article-date">2026.05.05</div>
+    <div class="article-date">2026.05.01</div>
   </div>
 </header>
 

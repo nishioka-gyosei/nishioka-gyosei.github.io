@@ -15,130 +15,201 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / Article / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "【現場の本音】広島中央署の風営法担当に好印象を持たれる申請書とは",
-  "description": "広島中央警察署での風営法申請で好印象を持たれる方法を、元警察官の行政書士が現場目線で語ります。",
-  "author": {
-    "@type": "Person",
-    "name": "西岡 祐也",
-    "jobTitle": "行政書士(元広島県警察官)"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "西岡行政書士事務所",
-    "address": "広島市中区大手町4-6-22"
-  },
-  "datePublished": "2026-05-05",
-  "dateModified": "2026-05-05"
-}
-</script>
-
-
-<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
-  ]
-}
-</script>
-
-<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "申請書は手書きでもいいですか?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "構いません。手書きでも正確で丁寧であれば、十分に評価されます。第10記事の図面でも同じことをお伝えしましたが、「正確さ」と「丁寧さ」が大切です。下手な字でも、字を整えようとする努力が見えれば問題ありません。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "申請時にスーツを着ないとダメですか?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "スーツは必須ではありません。清潔感のある服装であれば、ビジネスカジュアルでも構いません。ただし軽装は避けたほうが、警察担当者から受ける印象は良くなります。"
-      }
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "事前相談は必ず行くべきですか?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "よほど自信がない限りは強くお勧めします。本申請でいきなり不備を指摘されると、書類の作り直しなどで時間がかかります。事前相談の段階で問題点を洗い出しておけば、本申請でスムーズに受理されます。事前相談自体に費用はかかりません。"
-      }
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "風俗営業許可",
+        "接待飲食等営業",
+        "風営法の欠格事由",
+        "構造設備基準",
+        "保護対象施設",
+        "キャバクラ・ホストクラブの開業手続き"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "行政書士に頼んだ場合、申請者本人は警察署に行かなくてもいいですか?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "行政書士が代行できますので、申請者本人は基本的に同行不要です。同行しなくても申請に支障はありません。同行を希望される場合は応じますが、当事務所からも特別に推奨することはしていません。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "警察担当者の名前や担当を覚えておくべきですか?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "名前まで覚える必要はありませんが、「いつ・誰に対応してもらったか」をメモに残しておくと、後で問い合わせる際に役立ちます。「先日、○月○日の午後に対応いただいた件で」と伝えるだけで、スムーズに引き継いでもらえると思いますよ。"
-      }
-    }
-  ]
-}
-</script>
-
-<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "ホーム",
-      "item": "https://nishioka-gyosei.github.io/index.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "コラム",
-      "item": "https://nishioka-gyosei.github.io/blog/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-chuo-fueihou-shinseisho-koinshou.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-chuo-fueihou-shinseisho-koinshou.html",
       "name": "【現場の本音】広島中央署の風営法担当に好印象を持たれる申請書とは",
-      "item": "https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-chuo-fueihou-shinseisho-koinshou.html"
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary",
+          ".conclusion-box"
+        ]
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-chuo-fueihou-shinseisho-koinshou.html#article",
+      "headline": "【現場の本音】広島中央署の風営法担当に好印象を持たれる申請書とは",
+      "description": "広島中央警察署での風営法申請で好印象を持たれる方法を、元警察官の行政書士が現場目線で語ります。",
+      "datePublished": "2026-05-11T10:00:00+09:00",
+      "dateModified": "2026-05-11T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-chuo-fueihou-shinseisho-koinshou.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-fueihou-kyoka-4shurui.html#article"
+      },
+      "articleSection": "風営法",
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-chuo-fueihou-shinseisho-koinshou.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "申請書は手書きでもいいですか?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "構いません。手書きでも正確で丁寧であれば、十分に評価されます。第10記事の図面でも同じことをお伝えしましたが、「正確さ」と「丁寧さ」が大切です。下手な字でも、字を整えようとする努力が見えれば問題ありません。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "申請時にスーツを着ないとダメですか?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "スーツは必須ではありません。清潔感のある服装であれば、ビジネスカジュアルでも構いません。ただし軽装は避けたほうが、警察担当者から受ける印象は良くなります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "事前相談は必ず行くべきですか?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "よほど自信がない限りは強くお勧めします。本申請でいきなり不備を指摘されると、書類の作り直しなどで時間がかかります。事前相談の段階で問題点を洗い出しておけば、本申請でスムーズに受理されます。事前相談自体に費用はかかりません。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "行政書士に頼んだ場合、申請者本人は警察署に行かなくてもいいですか?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "行政書士が代行できますので、申請者本人は基本的に同行不要です。同行しなくても申請に支障はありません。同行を希望される場合は応じますが、当事務所からも特別に推奨することはしていません。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "警察担当者の名前や担当を覚えておくべきですか?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "名前まで覚える必要はありませんが、「いつ・誰に対応してもらったか」をメモに残しておくと、後で問い合わせる際に役立ちます。「先日、○月○日の午後に対応いただいた件で」と伝えるだけで、スムーズに引き継いでもらえると思いますよ。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-chuo-fueihou-shinseisho-koinshou.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "【現場の本音】広島中央署の風営法担当に好印象を持たれる申請書とは",
+          "item": "https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-chuo-fueihou-shinseisho-koinshou.html"
+        }
+      ]
     }
   ]
 }
@@ -348,7 +419,7 @@ a { color: inherit; text-decoration: none; }
         <div class="article-author-role">行政書士（元広島県警察官13年）</div>
       </div>
     </div>
-    <div class="article-date">2026.05.05</div>
+    <div class="article-date">2026.05.11</div>
   </div>
 </header>
 

@@ -30,110 +30,197 @@
   gtag('config', 'G-6JQDLBVSQ8');
 </script>
 
-<!-- 記事 構造化データ -->
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / Article / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "許可・届出・認可・登録・認定はどう違う？行政書士がわかりやすく解説",
-  "description": "許可・届出・認可・登録・認定の違いを一覧表で整理し、広島の許認可の具体例で元広島県警察官の行政書士が解説。",
-  "datePublished": "2026-06-24",
-  "dateModified": "2026-06-24",
-  "author": { "@type": "Person", "name": "西岡祐也", "jobTitle": "行政書士" },
-  "publisher": { "@type": "Organization", "name": "西岡行政書士事務所" },
-  "mainEntityOfPage": "https://nishioka-gyosei.github.io/blog/kyoka-todokede-ninka-touroku-chigai.html",
-  "inLanguage": "ja"
-}
-</script>
-
-<!-- 事務所情報 構造化データ（LocalBusiness / LegalService） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
-  ]
-}
-</script>
-
-<!-- FAQ 構造化データ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "許可と届出はどう違いますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "許可は原則禁止されている行為を審査のうえ解除するもので、行政の裁量が働きます。届出は一定の事項を通知するもので、要件を満たして到達すれば効力が生じ、原則として諾否の裁量はありません。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "届出なら簡単ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "手続きの性質としては許可より軽いですが、中身が簡単とは限りません。たとえば深夜営業の届出は、添付する図面が許可並みに厳密で、準備でつまずくことがあります。"
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "許可・届出・認可・登録・認定の区分",
+        "行政書士の業務範囲",
+        "警察関係の許認可",
+        "水商売の開業手続き"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/kyoka-todokede-ninka-touroku-chigai.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/kyoka-todokede-ninka-touroku-chigai.html",
+      "name": "許可・届出・認可・登録・認定はどう違う？行政書士がわかりやすく解説",
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary",
+          ".conclusion-box"
+        ]
       }
     },
     {
-      "@type": "Question",
-      "name": "認可と許可の違いは何ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "許可は禁止の解除、認可は私人の契約や法人設立などの法律行為に効力を補って有効にするものです。認可がないと、その法律行為自体が効力を持ちません。"
-      }
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/kyoka-todokede-ninka-touroku-chigai.html#article",
+      "headline": "許可・届出・認可・登録・認定はどう違う？行政書士がわかりやすく解説",
+      "description": "許可・届出・認可・登録・認定の違いを一覧表で整理し、広島の許認可の具体例で元広島県警察官の行政書士が解説。",
+      "datePublished": "2026-06-24T10:00:00+09:00",
+      "dateModified": "2026-06-24T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/kyoka-todokede-ninka-touroku-chigai.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "articleSection": "許認可の基礎",
+      "inLanguage": "ja"
     },
     {
-      "@type": "Question",
-      "name": "登録は許可とどう違いますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "登録は名簿に記載して効力を生じさせる制度で、要件を満たせば原則拒否できません。行政の裁量が広い許可と、通知で足りる届出の中間的な性質を持ちます。"
-      }
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/kyoka-todokede-ninka-touroku-chigai.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "許可と届出はどう違いますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "許可は原則禁止されている行為を審査のうえ解除するもので、行政の裁量が働きます。届出は一定の事項を通知するもので、要件を満たして到達すれば効力が生じ、原則として諾否の裁量はありません。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "届出なら簡単ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "手続きの性質としては許可より軽いですが、中身が簡単とは限りません。たとえば深夜営業の届出は、添付する図面が許可並みに厳密で、準備でつまずくことがあります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "認可と許可の違いは何ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "許可は禁止の解除、認可は私人の契約や法人設立などの法律行為に効力を補って有効にするものです。認可がないと、その法律行為自体が効力を持ちません。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "登録は許可とどう違いますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "登録は名簿に記載して効力を生じさせる制度で、要件を満たせば原則拒否できません。行政の裁量が広い許可と、通知で足りる届出の中間的な性質を持ちます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "警備業は「許可」ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "正式には公安委員会の「認定」です。「警備業許可」と呼ばれることもありますが、制度上は基準への適合を認める認定にあたります。"
+          }
+        }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "警備業は「許可」ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "正式には公安委員会の「認定」です。「警備業許可」と呼ばれることもありますが、制度上は基準への適合を認める認定にあたります。"
-      }
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/kyoka-todokede-ninka-touroku-chigai.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "許可・届出・認可・登録・認定の違い",
+          "item": "https://nishioka-gyosei.github.io/blog/kyoka-todokede-ninka-touroku-chigai.html"
+        }
+      ]
     }
-  ]
-}
-</script>
-
-<!-- パンくず 構造化データ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://nishioka-gyosei.github.io/index.html" },
-    { "@type": "ListItem", "position": 2, "name": "コラム", "item": "https://nishioka-gyosei.github.io/blog/" },
-    { "@type": "ListItem", "position": 3, "name": "許可・届出・認可・登録・認定の違い", "item": "https://nishioka-gyosei.github.io/blog/kyoka-todokede-ninka-touroku-chigai.html" }
   ]
 }
 </script>

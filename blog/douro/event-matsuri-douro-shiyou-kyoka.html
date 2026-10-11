@@ -30,110 +30,201 @@
   gtag('config', 'G-6JQDLBVSQ8');
 </script>
 
-<!-- 記事 構造化データ -->
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / Article / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "お祭り・イベントで道路を使うには？主催者の道路使用許可を行政書士が解説",
-  "description": "お祭り・イベントで道路を使うときの道路使用許可を主催者向けに解説。公益性・合意形成の審査、通行止めの事前協議、道路占用許可との関係を元広島県警察官の行政書士が解説。",
-  "datePublished": "2026-06-21",
-  "dateModified": "2026-06-21",
-  "author": { "@type": "Person", "name": "西岡祐也", "jobTitle": "行政書士" },
-  "publisher": { "@type": "Organization", "name": "西岡行政書士事務所" },
-  "mainEntityOfPage": "https://nishioka-gyosei.github.io/blog/douro/event-matsuri-douro-shiyou-kyoka.html",
-  "inLanguage": "ja"
-}
-</script>
-
-<!-- 事務所情報 構造化データ（LocalBusiness / LegalService） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
-  ]
-}
-</script>
-
-<!-- FAQ 構造化データ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "イベントの道路使用許可は誰が申請しますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "原則として主催者・実行委員会が、イベント全体として申請します。出店するキッチンカーや露店は、主催者が取った許可の枠内で営業するのが一般的です。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "お祭りで道路を通行止めにできますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "交通規制を伴うイベントは、交通への影響が大きいため事前協議が必要になる場合があります。迂回路の確保や地域住民への周知を求められます。早めに管轄警察署へ相談してください。"
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "道路使用許可",
+        "道路交通法第77条",
+        "キッチンカーの出店",
+        "祭礼行事・催しの道路使用",
+        "道路占用許可"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/douro/event-matsuri-douro-shiyou-kyoka.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/douro/event-matsuri-douro-shiyou-kyoka.html",
+      "name": "お祭り・イベントで道路を使うには？主催者の道路使用許可を行政書士が解説",
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary",
+          ".conclusion-box"
+        ]
       }
     },
     {
-      "@type": "Question",
-      "name": "手数料と期間はどれくらいですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "広島県の手数料は2,400円程度です。標準処理期間は3〜5日ですが、交通規制を伴う大規模イベントは1ヶ月以上かかることもあります。"
-      }
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/douro/event-matsuri-douro-shiyou-kyoka.html#article",
+      "headline": "お祭り・イベントで道路を使うには？主催者の道路使用許可を行政書士が解説",
+      "description": "お祭り・イベントで道路を使うときの道路使用許可を主催者向けに解説。公益性・合意形成の審査、通行止めの事前協議、道路占用許可との関係を元広島県警察官の行政書士が解説。",
+      "datePublished": "2026-06-21T10:00:00+09:00",
+      "dateModified": "2026-06-21T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/douro/event-matsuri-douro-shiyou-kyoka.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/blog/douro/hiroshima-douro-shiyou-kyoka-towa.html#article"
+      },
+      "articleSection": "道路使用許可",
+      "inLanguage": "ja"
     },
     {
-      "@type": "Question",
-      "name": "テントや露店を出すときは別の許可も要りますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "道路にテント・やぐら・露店等を設置する場合は、道路占用許可（道路管理者）も必要になることがあります。飲食提供があれば保健所の許可も関わります。"
-      }
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/douro/event-matsuri-douro-shiyou-kyoka.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "イベントの道路使用許可は誰が申請しますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "原則として主催者・実行委員会が、イベント全体として申請します。出店するキッチンカーや露店は、主催者が取った許可の枠内で営業するのが一般的です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "お祭りで道路を通行止めにできますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "交通規制を伴うイベントは、交通への影響が大きいため事前協議が必要になる場合があります。迂回路の確保や地域住民への周知を求められます。早めに管轄警察署へ相談してください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "手数料と期間はどれくらいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "広島県の手数料は2,400円程度です。標準処理期間は3〜5日ですが、交通規制を伴う大規模イベントは1ヶ月以上かかることもあります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "テントや露店を出すときは別の許可も要りますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "道路にテント・やぐら・露店等を設置する場合は、道路占用許可（道路管理者）も必要になることがあります。飲食提供があれば保健所の許可も関わります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "いつ申請すればいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "日程が決まったらできるだけ早く、まず交通課に事前相談してください。通行止め等を伴うほど、余裕を持った準備が必要になります。"
+          }
+        }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "いつ申請すればいいですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "日程が決まったらできるだけ早く、まず交通課に事前相談してください。通行止め等を伴うほど、余裕を持った準備が必要になります。"
-      }
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/douro/event-matsuri-douro-shiyou-kyoka.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "お祭り・イベントの道路使用許可",
+          "item": "https://nishioka-gyosei.github.io/blog/douro/event-matsuri-douro-shiyou-kyoka.html"
+        }
+      ]
     }
-  ]
-}
-</script>
-
-<!-- パンくず 構造化データ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://nishioka-gyosei.github.io/index.html" },
-    { "@type": "ListItem", "position": 2, "name": "コラム", "item": "https://nishioka-gyosei.github.io/blog/" },
-    { "@type": "ListItem", "position": 3, "name": "お祭り・イベントの道路使用許可", "item": "https://nishioka-gyosei.github.io/blog/douro/event-matsuri-douro-shiyou-kyoka.html" }
   ]
 }
 </script>

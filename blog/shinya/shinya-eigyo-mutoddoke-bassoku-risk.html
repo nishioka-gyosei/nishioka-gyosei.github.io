@@ -15,130 +15,245 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 
+<!-- 構造化データ：@graph統合（WebSite / LegalService / Person / WebPage / DefinedTerm / Article / HowTo / FAQPage / BreadcrumbList） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "深夜営業届を出さずに営業したらどうなる？無届営業の罰則とリスク",
-  "description": "深夜営業届を出さずに営業するとどうなるか。50万円以下の罰金・前科・発覚4ルートを解説。",
-  "author": {
-    "@type": "Person",
-    "name": "西岡 祐也",
-    "jobTitle": "行政書士(元広島県警察官)"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "西岡行政書士事務所",
-    "address": "広島市中区大手町4-6-22"
-  },
-  "datePublished": "2026-05-20",
-  "dateModified": "2026-05-20"
-}
-</script>
-
-
-<!-- 構造化データ：事務所LegalService（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "西岡行政書士事務所",
-  "image": "https://nishioka-gyosei.github.io/photo.jpg",
-  "url": "https://nishioka-gyosei.github.io/",
-  "telephone": "+81-90-8068-8527",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "大手町4-6-22",
-    "addressLocality": "広島市中区",
-    "addressRegion": "広島県",
-    "addressCountry": "JP"
-  },
-  "areaServed": [
-    "広島県",
-    "広島市"
-  ],
-  "openingHours": "Mo-Su 09:00-19:00",
-  "priceRange": "¥¥",
-  "sameAs": [
-    "https://note.com/nishioka2405",
-    "https://maps.google.com/?cid=16992030545009074796"
-  ]
-}
-</script>
-
-<!-- 構造化データ：FAQ（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "届出を出さずに数か月営業してしまいました。今から出しても大丈夫ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "今からでも届出を提出することを強くおすすめします。無届の期間が長くなるほど、万が一発覚した際のリスクが高まります。今から出しても過去の無届期間は消えませんが、今後の違反を止めることができます。行政書士に相談の上、速やかに手続きを進めてください。"
+      "@type": "WebSite",
+      "@id": "https://nishioka-gyosei.github.io/#website",
+      "url": "https://nishioka-gyosei.github.io/",
+      "name": "西岡行政書士事務所",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
       }
     },
     {
-      "@type": "Question",
-      "name": "深夜0時直前に閉店すれば届出は不要ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "深夜0時より前に閉店し、酒類の提供もその時点で終了していれば、届出は不要です。ただし、「閉店時間を0時と表示しているが、実際には客が深夜1時まで残っている」という状況は、0時以降も営業しているとみなされる可能性があります。実態としての閉店時間を管理することが重要です。"
+      "@type": "LegalService",
+      "@id": "https://nishioka-gyosei.github.io/#office",
+      "name": "西岡行政書士事務所",
+      "description": "広島市中区の行政書士事務所。風営法・深夜営業・古物商などの警察申請、建設業許可、農地転用、酒類販売業免許、産業廃棄物収集運搬業許可などの許認可を扱う。",
+      "url": "https://nishioka-gyosei.github.io/",
+      "telephone": "+81-90-8068-8527",
+      "image": "https://nishioka-gyosei.github.io/photo.jpg",
+      "priceRange": "¥¥",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "大手町4-6-22",
+        "addressLocality": "広島市中区",
+        "addressRegion": "広島県",
+        "postalCode": "730-0051",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 34.3853,
+        "longitude": 132.4553
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "広島県"
+      },
+      "founder": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "sameAs": [
+        "https://note.com/nishioka2405",
+        "https://maps.google.com/?cid=16992030545009074796"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://nishioka-gyosei.github.io/#nishioka",
+      "name": "西岡 祐也",
+      "jobTitle": "行政書士",
+      "worksFor": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "knowsAbout": [
+        "深夜酒類提供飲食店営業開始届出",
+        "風営法",
+        "飲食店営業許可",
+        "バー・スナックの開業手続き",
+        "広島県警察への届出"
+      ],
+      "sameAs": [
+        "https://note.com/nishioka2405"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-mutoddoke-bassoku-risk.html#webpage",
+      "url": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-mutoddoke-bassoku-risk.html",
+      "name": "深夜営業届を出さずに営業したらどうなる？無届営業の罰則とリスク",
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/#website"
+      },
+      "about": {
+        "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-mutoddoke-bassoku-risk.html#term"
+      },
+      "inLanguage": "ja",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".geo-summary",
+          ".conclusion-box"
+        ]
       }
     },
     {
-      "@type": "Question",
-      "name": "風営法の許可を持っていれば深夜営業届は不要ですか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "いいえ、別々の手続きです。風営法の許可（1〜4号営業）を持っている店舗は、そもそも深夜0時以降に酒類提供を行う営業が原則禁止されています（一部例外あり）。深夜営業届が必要なのは、風営法の許可が不要な飲食店が深夜に酒類を提供する場合です。つまり、風営法許可と深夜営業届は両立できない関係にあります。"
-      }
+      "@type": "DefinedTerm",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-mutoddoke-bassoku-risk.html#term",
+      "name": "深夜酒類提供飲食店営業開始届出",
+      "description": "深夜0時以降に酒類を提供して飲食店営業を行う場合に、営業を開始する前に営業所を管轄する警察署へ提出する義務のある届出（風営法第33条）。許可制ではなく届出制で、書類が整えば原則として受理されるが、提出しないまま営業すれば違反となり罰則の対象になる。",
+      "inDefinedTermSet": "深夜営業"
     },
     {
-      "@type": "Question",
-      "name": "深夜営業届を出すと、警察に何か定期的に報告する義務がありますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "定期報告の義務はありません。ただし、届け出た内容に変更が生じた場合（屋号・代表者・内装など）は変更届の提出が必要です。また、立入調査が来た際に届出受理書を提示できるよう、保管しておくことをおすすめします。"
-      }
+      "@type": "Article",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-mutoddoke-bassoku-risk.html#article",
+      "headline": "深夜営業届を出さずに営業したらどうなる？無届営業の罰則とリスク",
+      "description": "深夜営業届を出さずに営業するとどうなるか。50万円以下の罰金・前科・発覚4ルートを解説。",
+      "datePublished": "2026-05-16T10:00:00+09:00",
+      "dateModified": "2026-05-20T10:00:00+09:00",
+      "author": {
+        "@id": "https://nishioka-gyosei.github.io/#nishioka"
+      },
+      "publisher": {
+        "@id": "https://nishioka-gyosei.github.io/#office"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-mutoddoke-bassoku-risk.html#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://nishioka-gyosei.github.io/photo.jpg"
+      },
+      "about": {
+        "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-mutoddoke-bassoku-risk.html#term"
+      },
+      "isPartOf": {
+        "@id": "https://nishioka-gyosei.github.io/blog/shinya/hiroshima-shinya-eigyo-guide.html#article"
+      },
+      "articleSection": "深夜営業",
+      "inLanguage": "ja"
     },
     {
-      "@type": "Question",
-      "name": "今すぐ届出を出したい場合、行政書士に頼むとどのくらいかかりますか？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "当事務所では最短2日で申請を完了した実績があります。費用・期間の目安は料金シミュレーターからご確認いただけます。LINEからの個別相談も受け付けていますので、お気軽にご連絡ください。"
-      }
-    }
-  ]
-}
-</script>
-
-<!-- 構造化データ：パンくず（フェーズ2改修で追加） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "ホーム",
-      "item": "https://nishioka-gyosei.github.io/index.html"
+      "@type": "HowTo",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-mutoddoke-bassoku-risk.html#howto",
+      "name": "深夜営業の無届に気づいたときの対応",
+      "description": "深夜酒類提供飲食店営業開始届出を出さずに営業していることに気づいた場合、無届期間を延ばさないための進め方。",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "すぐに届出の準備を始める",
+          "text": "時間が経つほど無届期間が長くなり、リスクが高まります。気づいた時点で準備を始めてください。"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "必要書類を揃える",
+          "text": "営業開始届出書、営業所の平面図（面積・用途を記載）、音響・照明設備の設置図、個人なら住民票の写し、法人なら登記事項証明書を揃えます。"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "行政書士に相談する",
+          "text": "書類と図面の作成から提出代行まで依頼できます。無届状態が発覚している、または発覚しそうな場合は、警察への対応も含めて事前に相談してください。"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "速やかに提出する",
+          "text": "管轄警察署の生活安全課に提出し、届出受理書を受け取って保管します。"
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "コラム",
-      "item": "https://nishioka-gyosei.github.io/blog/"
+      "@type": "FAQPage",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-mutoddoke-bassoku-risk.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "届出を出さずに数か月営業してしまいました。今から出しても大丈夫ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "今からでも届出を提出することを強くおすすめします。無届の期間が長くなるほど、万が一発覚した際のリスクが高まります。今から出しても過去の無届期間は消えませんが、今後の違反を止めることができます。行政書士に相談の上、速やかに手続きを進めてください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "深夜0時直前に閉店すれば届出は不要ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "深夜0時より前に閉店し、酒類の提供もその時点で終了していれば、届出は不要です。ただし、「閉店時間を0時と表示しているが、実際には客が深夜1時まで残っている」という状況は、0時以降も営業しているとみなされる可能性があります。実態としての閉店時間を管理することが重要です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "風営法の許可を持っていれば深夜営業届は不要ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "いいえ、別々の手続きです。風営法の許可（1〜4号営業）を持っている店舗は、そもそも深夜0時以降に酒類提供を行う営業が原則禁止されています（一部例外あり）。深夜営業届が必要なのは、風営法の許可が不要な飲食店が深夜に酒類を提供する場合です。つまり、風営法許可と深夜営業届は両立できない関係にあります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "深夜営業届を出すと、警察に何か定期的に報告する義務がありますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "定期報告の義務はありません。ただし、届け出た内容に変更が生じた場合（屋号・代表者・内装など）は変更届の提出が必要です。また、立入調査が来た際に届出受理書を提示できるよう、保管しておくことをおすすめします。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "今すぐ届出を出したい場合、行政書士に頼むとどのくらいかかりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "当事務所では最短2日で申請を完了した実績があります。費用・期間の目安は料金シミュレーターからご確認いただけます。LINEからの個別相談も受け付けていますので、お気軽にご連絡ください。"
+          }
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "深夜営業の無届営業の罰則とリスク",
-      "item": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-mutoddoke-bassoku-risk.html"
+      "@type": "BreadcrumbList",
+      "@id": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-mutoddoke-bassoku-risk.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://nishioka-gyosei.github.io/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://nishioka-gyosei.github.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "深夜営業の無届営業の罰則とリスク",
+          "item": "https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-mutoddoke-bassoku-risk.html"
+        }
+      ]
     }
   ]
 }
@@ -354,7 +469,7 @@ a { color: inherit; text-decoration: none; }
         <div class="article-author-role">行政書士（元広島県警察官13年）</div>
       </div>
     </div>
-    <div class="article-date">2026.05.20</div>
+    <div class="article-date">2026.05.16</div>
   </div>
 </header>
 
