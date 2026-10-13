@@ -514,6 +514,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .cat-shuhan { background: #6b2f4a; }
 .cat-sanpai { background: #5a4a7c; }
 .cat-daiko { background: #2f6b8a; }
+.cat-chintai { background: #2f6b4a; }
 
 /* Empty state */
 .empty {
@@ -660,6 +661,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <button class="filter-btn" data-filter="shuhan">🍶 酒販免許<span class="filter-btn__count" id="count-shuhan"></span></button>
     <button class="filter-btn" data-filter="sanpai">♻️ 産業廃棄物<span class="filter-btn__count" id="count-sanpai"></span></button>
     <button class="filter-btn" data-filter="daiko">🚗 運転代行<span class="filter-btn__count" id="count-daiko"></span></button>
+    <button class="filter-btn" data-filter="chintai">🏘 賃貸管理<span class="filter-btn__count" id="count-chintai"></span></button>
   </div>
 </nav>
 
@@ -803,10 +805,11 @@ const ARTICLES = [
     { num: 75, cat: 'sanpai', title: '産業廃棄物処分業許可とは？中間処理と15条施設の二段構え', date: '2026.10.15', type: 'normal', url: 'sanpai/sanpai-shobungyou-kyoka.html', published: true },
     { num: 76, cat: 'daiko', title: '自動車運転代行業の認定とは？二種免許・標識・2024年改正', date: '2026.10.16', type: 'normal', url: 'daiko/hiroshima-unten-daiko-nintei.html', published: true },
   { num: 77, cat: 'daiko', title: '運転代行の認定申請に必要な書類と流れ｜広島の窓口・手数料・審査期間', date: '2026.10.17', type: 'normal', url: 'daiko/unten-daiko-nintei-shorui-nagare.html', published: true },
+  { num: 78, cat: 'chintai', title: '賃貸住宅管理業者登録とは？200戸の数え方と業務管理者', date: '2026.10.19', type: 'normal', url: 'chintai/chintai-kanrigyou-touroku-towa.html', published: true },
   // ====== 公開予定 ======
 ];
 
-const CAT_LABELS = { shinya: '深夜営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断', douro: '道路使用', keibi: '警備業', nouchi: '農地転用', kensetsu: '建設業', shuhan: '酒販免許', sanpai: '産業廃棄物', daiko: '運転代行' };
+const CAT_LABELS = { shinya: '深夜営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断', douro: '道路使用', keibi: '警備業', nouchi: '農地転用', kensetsu: '建設業', shuhan: '酒販免許', sanpai: '産業廃棄物', daiko: '運転代行', chintai: '賃貸管理' };
 
 let currentFilter = 'all';
 
@@ -824,6 +827,7 @@ function renderCounts() {
   document.getElementById('count-shuhan').textContent = '(' + ARTICLES.filter(a => a.cat === 'shuhan').length + ')';
   document.getElementById('count-sanpai').textContent = '(' + ARTICLES.filter(a => a.cat === 'sanpai').length + ')';
   document.getElementById('count-daiko').textContent = '(' + ARTICLES.filter(a => a.cat === 'daiko').length + ')';
+  document.getElementById('count-chintai').textContent = '(' + ARTICLES.filter(a => a.cat === 'chintai').length + ')';
   document.getElementById('totalCount').textContent = ARTICLES.filter(a => a.published).length;
 }
 
