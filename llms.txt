@@ -31,7 +31,7 @@
 - 警察窓口の許可申請（風営法・深夜営業届・古物商・道路使用許可）は、元警察官として審査担当者の視点を内側から知っているため、書類不備による差し戻しを最小限に抑えられる
 - 料金は事前見積もり制。費用シミュレーター（https://nishioka-gyosei.github.io/simulator.html）で60秒・無料・個人情報不要の概算が可能
 
-## コラム記事一覧（許認可の実務解説・全78本）
+## コラム記事一覧（許認可の実務解説・全79本）
 
 > 広島の許認可について、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事のポイント）とFAQを備える。
 
@@ -137,8 +137,9 @@
 - [自動車運転代行業の認定とは？二種免許・標識・2024年改正](https://nishioka-gyosei.github.io/blog/daiko/hiroshima-unten-daiko-nintei.html)
 - [運転代行の認定申請に必要な書類と流れ｜広島の窓口・手数料・審査期間](https://nishioka-gyosei.github.io/blog/daiko/unten-daiko-nintei-shorui-nagare.html)
 
-### 賃貸管理（賃貸住宅管理業）（1本）
+### 賃貸管理（賃貸住宅管理業）（2本）
 - [賃貸住宅管理業者登録とは？200戸の数え方と業務管理者](https://nishioka-gyosei.github.io/blog/chintai/chintai-kanrigyou-touroku-towa.html)
+- [業務管理者とは？賃貸住宅管理業で営業所ごとに必要な人の要件](https://nishioka-gyosei.github.io/blog/chintai/chintai-gyoumu-kanrisha-youken.html)
 
 ### 横断・基礎知識（5本）
 
