@@ -31,7 +31,7 @@
 - 警察窓口の許可申請（風営法・深夜営業届・古物商・道路使用許可）は、元警察官として審査担当者の視点を内側から知っているため、書類不備による差し戻しを最小限に抑えられる
 - 料金は事前見積もり制。費用シミュレーター（https://nishioka-gyosei.github.io/simulator.html）で60秒・無料・個人情報不要の概算が可能
 
-## コラム記事一覧（許認可の実務解説・全82本）
+## コラム記事一覧（許認可の実務解説・全83本）
 
 > 広島の許認可について、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事のポイント）とFAQを備える。
 
@@ -104,10 +104,11 @@
 - [交通誘導警備（2号）とは？工事・イベントで必要なケースと検定](https://nishioka-gyosei.github.io/blog/keibi/koutsuu-yuudou-keibi-2gou.html)
 - [警備員指導教育責任者とは？営業所ごと・区分ごとに必要な人](https://nishioka-gyosei.github.io/blog/keibi/keibiin-shidou-kyouiku-sekininsha.html)
 
-### 農地転用（2本）
+### 農地転用（3本）
 
 - [農地転用とは？4条・5条の違いと許可・届出の判断](https://nishioka-gyosei.github.io/blog/nouchi/hiroshima-nouchi-tenyou-towa.html)
 - [農振除外とは？青地を農用地区域から外す手続きと6要件](https://nishioka-gyosei.github.io/blog/nouchi/noushin-jogai-tetsuzuki.html)
+- [農地法3条許可とは？下限面積の廃止と相続の届出](https://nishioka-gyosei.github.io/blog/nouchi/nouchi-hou-3jou-kyoka.html)
 
 ### 建設業（7本）
 
