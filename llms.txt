@@ -31,7 +31,7 @@
 - 警察窓口の許可申請（風営法・深夜営業届・古物商・道路使用許可）は、元警察官として審査担当者の視点を内側から知っているため、書類不備による差し戻しを最小限に抑えられる
 - 料金は事前見積もり制。費用シミュレーター（https://nishioka-gyosei.github.io/simulator.html）で60秒・無料・個人情報不要の概算が可能
 
-## コラム記事一覧（許認可の実務解説・全81本）
+## コラム記事一覧（許認可の実務解説・全82本）
 
 > 広島の許認可について、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事のポイント）とFAQを備える。
 
@@ -91,11 +91,12 @@
 - [古物商許可を取った後にやること｜標識・帳簿・URL届出](https://nishioka-gyosei.github.io/blog/kobutsu/kobutsu-kyoka-go-yarukoto.html)
 - [古物商のURL届出とは？ネット販売を始めるときの届出義務【2026年版】](https://nishioka-gyosei.github.io/blog/kobutsu/kobutsu-url-todokede.html)
 
-### 道路使用許可（3本）
+### 道路（道路使用許可・道路占用許可）（4本）
 
 - [広島の道路使用許可とは？必要なケース・費用・取り方を解説](https://nishioka-gyosei.github.io/blog/douro/hiroshima-douro-shiyou-kyoka-towa.html)
 - [キッチンカーは公道で営業できる？道路使用許可の実際](https://nishioka-gyosei.github.io/blog/douro/kitchencar-douro-shiyou-kyoka.html)
 - [お祭り・イベントで道路を使うには？主催者が取る道路使用許可](https://nishioka-gyosei.github.io/blog/douro/event-matsuri-douro-shiyou-kyoka.html)
+- [道路占用許可とは？突出看板・足場に必要な許可と広島市の窓口](https://nishioka-gyosei.github.io/blog/douro/douro-senyou-kyoka-kanban.html)
 
 ### 警備業（3本）
 
