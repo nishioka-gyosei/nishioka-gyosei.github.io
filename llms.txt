@@ -31,7 +31,7 @@
 - 警察窓口の許可申請（風営法・深夜営業届・古物商・道路使用許可）は、元警察官として審査担当者の視点を内側から知っているため、書類不備による差し戻しを最小限に抑えられる
 - 料金は事前見積もり制。費用シミュレーター（https://nishioka-gyosei.github.io/simulator.html）で60秒・無料・個人情報不要の概算が可能
 
-## コラム記事一覧（許認可の実務解説・全83本）
+## コラム記事一覧（許認可の実務解説・全84本）
 
 > 広島の許認可について、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事のポイント）とFAQを備える。
 
@@ -145,13 +145,14 @@
 - [業務管理者とは？賃貸住宅管理業で営業所ごとに必要な人の要件](https://nishioka-gyosei.github.io/blog/chintai/chintai-gyoumu-kanrisha-youken.html)
 - [サブリース規制とは？登録が不要でも適用される4つのルール](https://nishioka-gyosei.github.io/blog/chintai/sublease-tokutei-chintaishaku-kisei.html)
 
-### 横断・基礎知識（5本）
+### 横断・基礎知識（6本）
 
 - [【独立開業の方へ】広島で水商売を始めるなら、警察申請はこの順番で](https://nishioka-gyosei.github.io/blog/mizushobai-kaigyo-junban.html)
 - [【完全保存版】広島で夜の店を開業する手続きフローチャート](https://nishioka-gyosei.github.io/blog/yoru-no-mise-kaigyou-flowchart.html)
 - [【総まとめ】広島の警察申請ガイド｜風営法・深夜営業・古物商の全知識](https://nishioka-gyosei.github.io/blog/hiroshima-keisatsu-shinsei-guide.html)
 - [許可・届出・認可・登録・認定はどう違う？](https://nishioka-gyosei.github.io/blog/kyoka-todokede-ninka-touroku-chigai.html)
 - [行政書士・司法書士・弁護士はどう違う？許認可は誰に頼む？](https://nishioka-gyosei.github.io/blog/gyosei-shihoshoshi-bengoshi-chigai.html)
+- [会社設立で許認可を取るなら？定款の事業目的で失敗しない書き方](https://nishioka-gyosei.github.io/blog/teikan-mokuteki-kyoninka.html)
 
 ## 関連リンク
 
