@@ -31,7 +31,7 @@
 - 警察窓口の許可申請（風営法・深夜営業届・古物商・道路使用許可）は、元警察官として審査担当者の視点を内側から知っているため、書類不備による差し戻しを最小限に抑えられる
 - 料金は事前見積もり制。費用シミュレーター（https://nishioka-gyosei.github.io/simulator.html）で60秒・無料・個人情報不要の概算が可能
 
-## コラム記事一覧（許認可の実務解説・全84本）
+## コラム記事一覧（許認可の実務解説・全85本）
 
 > 広島の許認可について、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事のポイント）とFAQを備える。
 
@@ -135,10 +135,11 @@
 - [産業廃棄物マニフェストとは？返送期限と6月30日の報告](https://nishioka-gyosei.github.io/blog/sanpai/sanpai-manifest-houkoku.html)
 - [産業廃棄物処分業許可とは？中間処理と15条施設の二段構え](https://nishioka-gyosei.github.io/blog/sanpai/sanpai-shobungyou-kyoka.html)
 
-### 運転代行（自動車運転代行業）（2本）
+### 運転代行（自動車運転代行業）（3本）
 
 - [自動車運転代行業の認定とは？二種免許・標識・2024年改正](https://nishioka-gyosei.github.io/blog/daiko/hiroshima-unten-daiko-nintei.html)
 - [運転代行の認定申請に必要な書類と流れ｜広島の窓口・手数料・審査期間](https://nishioka-gyosei.github.io/blog/daiko/unten-daiko-nintei-shorui-nagare.html)
+- [飲食店が問われる飲酒運転の責任とは？酒類提供の罰則と運転代行の使い方](https://nishioka-gyosei.github.io/blog/daiko/inshokuten-insyu-unten-sekinin.html)
 
 ### 賃貸管理（賃貸住宅管理業）（3本）
 - [賃貸住宅管理業者登録とは？200戸の数え方と業務管理者](https://nishioka-gyosei.github.io/blog/chintai/chintai-kanrigyou-touroku-towa.html)
