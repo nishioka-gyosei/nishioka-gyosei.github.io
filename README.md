@@ -52,7 +52,7 @@ git push origin main
 
 ## 移行前に確認すること
 
-- 既存の `photo.jpg`（オリジナル原寸）はリポジトリのルートにあります。OG画像として参照されているので **消さずに残してください**（`index.html` の `og:image` が参照中）。
+- 既存の `photo.jpg`（オリジナル原寸）はリポジトリのルートにあります。代表者の写真として構造化データ（Person）から参照されているので **消さずに残してください**。SNS・LINEで共有されたときの画像は `assets/og-image.png`（1200×630）です。
 - **Google Analytics（GA4・`G-6JQDLBVSQ8`）が統合済み** ✓ — 既存サイトと同じ計測ID。デプロイ後、新サイトでもそのまま計測されます。
 - 既存の他ページ（`fuueihou_lp.html`、`kobutu_lp.html`、`/blog/` など）はこのデプロイには含まれていません。古いまま残ります。デザインを揃えたい場合は順番に作り直します。
 
@@ -73,8 +73,16 @@ GA4のレポート → 「探索」で `cta_type` や `service_name` を**カス
 
 ## 注意
 
-- このサイトは **CDNから React と Babel を読み込んで、ブラウザ内でJSXをコンパイル** します。初回アクセス時は少しだけ重くなります（〜1秒）。気になる場合は将来「ビルド済みJSに変換」する選択肢があります。
-- インターネット接続が必要です（オフライン版が必要なら別途 `Nishioka Gyosei — Standalone.html` を使ってください）。
+- 2026-10-17 以降、トップ・サービスページ14枚・ブログ一覧はすべて **静的HTML** です（React / Babel は使っていません）。AI検索のクローラーはJavaScriptを実行しないため、本文は必ずHTMLに直接書いてください。`*.jsx` は旧版のソースで、どのページからも読み込まれていません。
+- 手元に古い `fueihou.html` などが残っていても、**上書きアップロードしないでください**（静的化・構造化データ・内部リンクが消えます）。リポジトリにある版が正本です。
+
+## 新しい記事を公開するときのチェックリスト
+
+1. 記事HTMLを `blog/<カテゴリ>/` に置く（構造化データは WebSite / LegalService / Person / WebPage / Article / FAQPage / BreadcrumbList。`@id` は `https://nishioka-gyosei.github.io/#office` と `#nishioka` で統一）
+2. 記事の終わり（`end-cta` の直前）に、対応するサービスページへのリンク（`<!-- seo:service-link -->` の区画）を入れる
+3. `blog/index.html` の `ARTICLES` に1行追加し、記事リストの静的HTML（`featuredGrid` / `publishedGrid` の中身と件数）も更新する
+4. `sitemap.xml` に追加（`loc` は記事の canonical と同じURL）、`llms.txt` の該当カテゴリに追加
+5. 公開後、Search Console でサイトマップを再送信
 
 ## 次のステップの候補
 
