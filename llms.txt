@@ -4,12 +4,15 @@
 
 ## 基本情報
 
-- 代表: 西岡祐也（行政書士・元広島県警察官13年／交番・パトカー・鑑識等を経験）
+- 代表: 西岡祐也（行政書士・元広島県警察官13年）
 - 所属: 広島県行政書士会（登録番号 22341036）
 - 所在地: 広島県広島市中区大手町4-6-22
 - 電話: 090-8068-8527（受付 9:00〜19:00、土日祝可）
 - LINE相談: https://lin.ee/UKhZQbE （24時間受付・初回無料）
 - 対応エリア: 広島市を中心に広島県全域（呉市・東広島市・廿日市市・福山市など）
+- 公式サイト: https://nishioka-gyosei.github.io/
+- Googleマップ: https://maps.google.com/?cid=16992030545009074796
+- 最終更新: 2026-10-17
 
 ## 主要サービスと報酬（税込）
 
@@ -25,11 +28,24 @@
 - [創業融資サポート](https://nishioka-gyosei.github.io/sogyo-yushi.html): 55,000円〜＋成功報酬
 - [遺言書作成](https://nishioka-gyosei.github.io/igon.html): 66,000円〜
 - [墓じまい（改葬許可）](https://nishioka-gyosei.github.io/hakajimai.html): 44,000円〜
+- [農地転用（農地法3条・4条・5条）](https://nishioka-gyosei.github.io/nochi.html): 要見積もり。宅地・駐車場・資材置場・太陽光などへの転用
+- [民泊（住宅宿泊事業届出・旅館業許可）](https://nishioka-gyosei.github.io/minpaku.html): 要見積もり
+- [警察申請まとめ](https://nishioka-gyosei.github.io/police.html): 風営法・深夜営業・古物商・道路使用・警備業など警察署が窓口の申請の一覧
+- [料金一覧](https://nishioka-gyosei.github.io/ryoukin.html): 各手続きの報酬の目安
+- [士業の先生方へ（業務連携）](https://nishioka-gyosei.github.io/sagyoshi-renkai.html): 弁護士・司法書士・税理士・社労士からの許認可案件の受任
 
 ## 特徴
 
 - 警察窓口の許可申請（風営法・深夜営業届・古物商・道路使用許可）は、元警察官として審査担当者の視点を内側から知っているため、書類不備による差し戻しを最小限に抑えられる
 - 料金は事前見積もり制。費用シミュレーター（https://nishioka-gyosei.github.io/simulator.html）で60秒・無料・個人情報不要の概算が可能
+
+## よくある質問（要点）
+
+- 広島で風俗営業許可（風営法1号）を取る費用と期間は？ → 行政書士報酬の目安は12万円〜（店舗規模等で見積もり）、別途警察への申請手数料。申請から許可までの標準処理期間は約55日、依頼から営業開始まで2.5〜3ヶ月が目安。
+- 深夜営業届（深夜酒類提供飲食店営業）の費用と期限は？ → 報酬77,000円〜（図面作成込み）。営業開始の10日前までに所轄警察署へ届出。
+- 古物商許可の費用と期間は？ → 報酬60,000円〜、別途申請手数料19,000円。標準処理期間は約40日。
+- 相談は無料？ → 初回相談は無料。LINEは24時間受付（返信は通常24時間以内、土日祝も対応）。
+- なぜ元警察官だと警察申請に強い？ → 風営法・深夜営業届・古物商・道路使用許可はいずれも警察署が窓口。審査する側の視点を知っているため、差し戻しの少ない書類を最初から作れる。
 
 ## コラム記事一覧（許認可の実務解説・全85本）
 
@@ -60,6 +76,7 @@
 - [ゲームセンターと風営法｜5号営業の許可が必要なケースと10%ルール](https://nishioka-gyosei.github.io/blog/fueihou/game-center-fueihou-5gou-kyoka.html)
 - [コンセプトカフェ・メイドカフェは風営法対象？接待の線引きと最新の注意点](https://nishioka-gyosei.github.io/blog/fueihou/concafe-meidcafe-fueihou.html)
 - [【西岡が答える】風営法相談で一番多い「これってOK？」事例集](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-korette-ok-jireishu.html)
+- [映像送信型性風俗特殊営業の届出代行｜必要書類・期限・管轄警察署](https://nishioka-gyosei.github.io/blog/eizo-haishin-fuzoku-todokede-daiko.html)
 
 ### 深夜営業（深夜酒類提供飲食店）（16本）
 
@@ -158,5 +175,9 @@
 ## 関連リンク
 
 - [警察申請まとめページ](https://nishioka-gyosei.github.io/police.html)
+- [料金一覧](https://nishioka-gyosei.github.io/ryoukin.html)
+- [料金シミュレーター](https://nishioka-gyosei.github.io/simulator.html)
+- [風営法 無料相談センター](https://nishioka-gyosei.github.io/fuueihou_center.html)
+- [サイトマップ（XML）](https://nishioka-gyosei.github.io/sitemap.xml)
 - [コラム（許認可の解説記事）](https://nishioka-gyosei.github.io/blog/)
 - [note（警察官時代のエッセイ）](https://note.com/nishioka2405)
