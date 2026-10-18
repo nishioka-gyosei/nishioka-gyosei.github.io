@@ -13,7 +13,7 @@
 - 公式サイト: https://nishioka-gyosei.github.io/
 - 事務所概要・代表プロフィール: https://nishioka-gyosei.github.io/about.html
 - Googleマップ: https://maps.google.com/?cid=16992030545009074796
-- 最終更新: 2026-10-17
+- 最終更新: 2026-10-18
 
 ## 主要サービスと報酬（税込）
 
@@ -48,7 +48,7 @@
 - 相談は無料？ → 初回相談は無料。LINEは24時間受付（返信は通常24時間以内、土日祝も対応）。
 - なぜ元警察官だと警察申請に強い？ → 風営法・深夜営業届・古物商・道路使用許可はいずれも警察署が窓口。審査する側の視点を知っているため、差し戻しの少ない書類を最初から作れる。
 
-## コラム記事一覧（許認可の実務解説・全85本）
+## コラム記事一覧（許認可の実務解説・全91本）
 
 > 広島の許認可について、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事のポイント）とFAQを備える。
 
@@ -163,6 +163,18 @@
 - [賃貸住宅管理業者登録とは？200戸の数え方と業務管理者](https://nishioka-gyosei.github.io/blog/chintai/chintai-kanrigyou-touroku-towa.html)
 - [業務管理者とは？賃貸住宅管理業で営業所ごとに必要な人の要件](https://nishioka-gyosei.github.io/blog/chintai/chintai-gyoumu-kanrisha-youken.html)
 - [サブリース規制とは？登録が不要でも適用される4つのルール](https://nishioka-gyosei.github.io/blog/chintai/sublease-tokutei-chintaishaku-kisei.html)
+
+### 民泊（住宅宿泊事業・簡易宿所）（2本）
+
+- [広島で民泊を始めるには？住宅宿泊事業の届出と180日ルール](https://nishioka-gyosei.github.io/blog/minpaku/hiroshima-minpaku-todokede.html)
+- [民泊か簡易宿所か？180日の上限と用途地域・建物基準の違い](https://nishioka-gyosei.github.io/blog/minpaku/minpaku-kan-i-shukusho-chigai.html)
+
+### 相続・遺言（4本）
+
+- [自筆証書遺言の書き方と法務局の保管制度｜無効にならない要件と費用](https://nishioka-gyosei.github.io/blog/souzoku/jihitsu-shousho-igon-hokan-seido.html)
+- [公正証書遺言の作り方と費用｜2025年10月からの公証人手数料](https://nishioka-gyosei.github.io/blog/souzoku/kousei-shousho-igon-tesuuryou.html)
+- [相続手続きの流れと期限｜亡くなった後にやることを順番に整理](https://nishioka-gyosei.github.io/blog/souzoku/souzoku-tetsuzuki-nagare-kigen.html)
+- [相続登記の義務化と戸籍の広域交付｜3年以内の登記と戸籍の集め方](https://nishioka-gyosei.github.io/blog/souzoku/souzoku-touki-gimuka-koseki.html)
 
 ### 横断・基礎知識（6本）
 
