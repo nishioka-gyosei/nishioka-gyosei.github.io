@@ -1,6 +1,6 @@
 # 西岡行政書士事務所
 
-> 広島県警察に13年勤務した元警察官・西岡祐也が代表を務める、広島市中区大手町4-6-22の行政書士事務所。風俗営業許可（風営法）・深夜営業届出・古物商許可・道路使用許可など「警察署が窓口になる許可申請」を専門とし、建設業許可・会社設立・創業融資・飲食店開業にも対応。初回相談無料・土日祝対応・LINE24時間受付。
+> 広島県警察に13年勤務した元警察官・西岡祐也が代表を務める、広島市中区大手町4-6-22の行政書士事務所。風俗営業許可（風営法）・深夜営業届出・古物商許可・道路使用許可など「警察署が窓口になる許可申請」を専門とし、建設業許可・会社設立・創業融資・飲食店開業、民泊・遺言・相続・墓じまい・在留資格・帰化・補助金にも対応。初回相談無料・土日祝対応・LINE24時間受付。
 
 ## 基本情報
 
@@ -48,9 +48,9 @@
 - 相談は無料？ → 初回相談は無料。LINEは24時間受付（返信は通常24時間以内、土日祝も対応）。
 - なぜ元警察官だと警察申請に強い？ → 風営法・深夜営業届・古物商・道路使用許可はいずれも警察署が窓口。審査する側の視点を知っているため、差し戻しの少ない書類を最初から作れる。
 
-## コラム記事一覧（許認可の実務解説・全91本）
+## コラム記事一覧（許認可の実務解説・全99本）
 
-> 広島の許認可について、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事のポイント）とFAQを備える。
+> 広島の許認可・行政手続きについて、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事の要点）・結論・FAQ・根拠（法令や公的資料）を備える。
 
 ### 風営法（風俗営業許可）（23本）
 
@@ -175,6 +175,23 @@
 - [公正証書遺言の作り方と費用｜2025年10月からの公証人手数料](https://nishioka-gyosei.github.io/blog/souzoku/kousei-shousho-igon-tesuuryou.html)
 - [相続手続きの流れと期限｜亡くなった後にやることを順番に整理](https://nishioka-gyosei.github.io/blog/souzoku/souzoku-tetsuzuki-nagare-kigen.html)
 - [相続登記の義務化と戸籍の広域交付｜3年以内の登記と戸籍の集め方](https://nishioka-gyosei.github.io/blog/souzoku/souzoku-touki-gimuka-koseki.html)
+
+### 墓じまい（改葬許可）（2本）
+
+- [墓じまいの手続きと流れ｜広島市の改葬許可申請と必要書類](https://nishioka-gyosei.github.io/blog/hakajimai/hakajimai-kaisou-kyoka-tetsuzuki.html)
+- [改葬許可が要るとき・要らないとき｜分骨・散骨・手元供養・自宅の遺骨](https://nishioka-gyosei.github.io/blog/hakajimai/kaisou-kyoka-iru-iranai.html)
+
+### 在留資格・帰化（2本）
+
+- [帰化申請の要件と流れ｜2026年4月からの審査の見直しと広島法務局での相談](https://nishioka-gyosei.github.io/blog/nyukan/kika-shinsei-youken-2026.html)
+- [在留資格の更新・変更の手数料が改定｜2026年10月からの金額と注意点](https://nishioka-gyosei.github.io/blog/nyukan/zairyu-tesuuryou-kaitei-2026.html)
+
+### 融資・補助金（創業融資・補助金）（4本）
+
+- [日本政策金融公庫の創業融資とは｜新規開業・スタートアップ支援資金の条件](https://nishioka-gyosei.github.io/blog/shikin/jfc-sogyo-yushi-startup.html)
+- [創業計画書の書き方｜日本政策金融公庫の9つの記入欄と面談の準備](https://nishioka-gyosei.github.io/blog/shikin/sogyo-keikakusho-kakikata.html)
+- [補助金の申請は誰に頼める？2026年1月施行の改正行政書士法と注意点](https://nishioka-gyosei.github.io/blog/shikin/hojokin-shinsei-gyoseishoshi-hou.html)
+- [小規模事業者持続化補助金とは｜第20回公募の補助額・対象経費・申請の流れ](https://nishioka-gyosei.github.io/blog/shikin/jizokuka-hojokin-dai20kai.html)
 
 ### 横断・基礎知識（6本）
 
