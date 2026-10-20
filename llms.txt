@@ -48,7 +48,7 @@
 - 相談は無料？ → 初回相談は無料。LINEは24時間受付（返信は通常24時間以内、土日祝も対応）。
 - なぜ元警察官だと警察申請に強い？ → 風営法・深夜営業届・古物商・道路使用許可はいずれも警察署が窓口。審査する側の視点を知っているため、差し戻しの少ない書類を最初から作れる。
 
-## コラム記事一覧（許認可の実務解説・全101本）
+## コラム記事一覧（許認可の実務解説・全102本）
 
 > 広島の許認可・行政手続きについて、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事の要点）・結論・FAQ・根拠（法令や公的資料）を備える。
 
@@ -97,6 +97,10 @@
 - [深夜営業届出の手数料は？広島県警の窓口で必要な実費まとめ](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-tesuryo-jippi.html)
 - [深夜営業届と飲食店営業許可の関係｜どっちが先？両方いる？](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-inshokuten-kyoka-kankei.html)
 - [深夜営業届・風営法を頼む行政書士の選び方｜見極めポイント5つ](https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-gyosei-erabikata.html)
+
+### 飲食店営業（飲食店営業許可）（1本）
+
+- [広島で飲食店営業許可を取るには？保健所への申請の流れ・施設基準・手数料](https://nishioka-gyosei.github.io/blog/inshoku/hiroshima-inshokuten-eigyo-kyoka.html)
 
 ### 古物商許可（8本）
 
