@@ -519,6 +519,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .cat-kobutsu { background: var(--gold-deep); }
 .cat-cross { background: var(--leaf); }
 .cat-douro { background: #2f6b6e; }
+.cat-shako { background: #56707c; }
 .cat-keibi { background: #454b54; }
 .cat-nouchi { background: #6b7c3a; }
 .cat-kensetsu { background: #8a5a2b; }
@@ -1473,7 +1474,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     </p>
     <div class="hero__stats">
       <div class="hero__stat">
-        <div class="hero__stat-num"><span id="totalCount">104</span><small>本</small></div>
+        <div class="hero__stat-num"><span id="totalCount">105</span><small>本</small></div>
         <div class="hero__stat-label">公開記事</div>
       </div>
       <div class="hero__stat">
@@ -1492,13 +1493,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <nav class="filter-bar">
   <div class="filter-bar__inner">
     <span class="filter-bar__lbl">Filter</span>
-    <button class="filter-btn active" data-filter="all">すべて<span class="filter-btn__count" id="count-all">(104)</span></button>
+    <button class="filter-btn active" data-filter="all">すべて<span class="filter-btn__count" id="count-all">(105)</span></button>
     <button class="filter-btn" data-filter="shinya">🌙 深夜営業<span class="filter-btn__count" id="count-shinya">(16)</span></button>
     <button class="filter-btn" data-filter="inshoku">🍽 飲食店営業<span class="filter-btn__count" id="count-inshoku">(2)</span></button>
     <button class="filter-btn" data-filter="fuueihou">🎤 風営法<span class="filter-btn__count" id="count-fuueihou">(24)</span></button>
     <button class="filter-btn" data-filter="kobutsu">♻️ 古物商<span class="filter-btn__count" id="count-kobutsu">(8)</span></button>
     <button class="filter-btn" data-filter="cross">📚 横断<span class="filter-btn__count" id="count-cross">(6)</span></button>
     <button class="filter-btn" data-filter="douro">🚧 道路<span class="filter-btn__count" id="count-douro">(4)</span></button>
+    <button class="filter-btn" data-filter="shako">🅿 車庫証明<span class="filter-btn__count" id="count-shako">(1)</span></button>
     <button class="filter-btn" data-filter="keibi">🛡 警備業<span class="filter-btn__count" id="count-keibi">(4)</span></button>
     <button class="filter-btn" data-filter="nouchi">🌾 農地転用<span class="filter-btn__count" id="count-nouchi">(3)</span></button>
     <button class="filter-btn" data-filter="kensetsu">🏗 建設業<span class="filter-btn__count" id="count-kensetsu">(7)</span></button>
@@ -1525,16 +1527,26 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       </div>
       <div class="section-divider__line"></div>
     </div>
-    <div class="featured-grid" id="featuredGrid"><a class="featured-main" href="minpaku/minpaku-kanri-gyosha-itaku-touroku.html">
-    <div class="featured-main__num">№104</div>
-    <span class="featured-main__cat cat-minpaku">民泊</span>
-    <h3 class="featured-main__title">民泊の管理を人に任せるには？住宅宿泊管理業者への委託と登録</h3>
+    <div class="featured-grid" id="featuredGrid"><a class="featured-main" href="shako/hiroshima-shako-shomei.html">
+    <div class="featured-main__num">№105</div>
+    <span class="featured-main__cat cat-shako">車庫証明</span>
+    <h3 class="featured-main__title">広島で車庫証明を取るには？必要書類・手数料と2kmルール</h3>
     <p class="featured-main__body">行政書士の実務の視点から、押さえておきたいポイントをまとめました。広島で手続きをお考えの方は、まずこちらをご一読ください。</p>
     <div class="featured-main__meta">
-      <span class="featured-main__date">2026.10.21</span>
+      <span class="featured-main__date">2026.10.22</span>
       <span class="featured-main__arrow">続きを読む →</span>
     </div>
-  </a><div class="featured-side"><a class="featured-side-card" href="inshoku/hiroshima-kitchencar-eigyo-kyoka.html">
+  </a><div class="featured-side"><a class="featured-side-card" href="minpaku/minpaku-kanri-gyosha-itaku-touroku.html">
+    <div class="featured-side-card__head">
+      <span class="featured-side-card__num">№104</span>
+      <span class="featured-side-card__cat cat-minpaku">民泊</span>
+    </div>
+    <div class="featured-side-card__title">民泊の管理を人に任せるには？住宅宿泊管理業者への委託と登録</div>
+    <div class="featured-side-card__meta">
+      <span class="featured-side-card__date">2026.10.21</span>
+      <span>記事</span>
+    </div>
+  </a><a class="featured-side-card" href="inshoku/hiroshima-kitchencar-eigyo-kyoka.html">
     <div class="featured-side-card__head">
       <span class="featured-side-card__num">№103</span>
       <span class="featured-side-card__cat cat-inshoku">飲食店営業</span>
@@ -1554,16 +1566,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <span class="featured-side-card__date">2026.10.19</span>
       <span>記事</span>
     </div>
-  </a><a class="featured-side-card" href="keibi/keibigyou-nintei-koushin.html">
-    <div class="featured-side-card__head">
-      <span class="featured-side-card__num">№101</span>
-      <span class="featured-side-card__cat cat-keibi">警備業</span>
-    </div>
-    <div class="featured-side-card__title">警備業の認定は5年で切れる｜更新申請の期限・手数料と忘れたときに起きること</div>
-    <div class="featured-side-card__meta">
-      <span class="featured-side-card__date">2026.10.18</span>
-      <span>記事</span>
-    </div>
   </a></div></div>
   </div>
 
@@ -1575,9 +1577,19 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <div class="section-divider__title">すべての記事</div>
       </div>
       <div class="section-divider__line"></div>
-      <div class="section-divider__count" id="publishedCount">104 本</div>
+      <div class="section-divider__count" id="publishedCount">105 本</div>
     </div>
-    <div class="articles-grid" id="publishedGrid"><a href="eizo-haishin-fuzoku-todokede-daiko.html" class="article-card">
+    <div class="articles-grid" id="publishedGrid"><a href="keibi/keibigyou-nintei-koushin.html" class="article-card">
+    <div class="article-card__top">
+      <span class="article-card__cat cat-keibi">警備業</span>
+      <span class="article-card__num">№101</span>
+    </div>
+    <div class="article-card__title">警備業の認定は5年で切れる｜更新申請の期限・手数料と忘れたときに起きること</div>
+    <div class="article-card__meta">
+      <span class="article-card__date">2026.10.18</span>
+      <span class="article-card__type">Article</span>
+    </div>
+  </a><a href="eizo-haishin-fuzoku-todokede-daiko.html" class="article-card">
     <div class="article-card__top">
       <span class="article-card__cat cat-fuueihou">風営法</span>
       <span class="article-card__num">№100</span>
@@ -2721,10 +2733,11 @@ const ARTICLES = [
   { num: 102, cat: 'inshoku', title: '広島で飲食店営業許可を取るには？保健所への申請の流れ・施設基準・手数料', date: '2026.10.19', type: 'normal', url: 'inshoku/hiroshima-inshokuten-eigyo-kyoka.html', published: true },
   { num: 103, cat: 'inshoku', title: '広島でキッチンカーを始めるには？飲食店営業（自動車）の許可と給水タンクの容量', date: '2026.10.20', type: 'normal', url: 'inshoku/hiroshima-kitchencar-eigyo-kyoka.html', published: true },
   { num: 104, cat: 'minpaku', title: '民泊の管理を人に任せるには？住宅宿泊管理業者への委託と登録', date: '2026.10.21', type: 'normal', url: 'minpaku/minpaku-kanri-gyosha-itaku-touroku.html', published: true },
+  { num: 105, cat: 'shako', title: '広島で車庫証明を取るには？必要書類・手数料と2kmルール', date: '2026.10.22', type: 'normal', url: 'shako/hiroshima-shako-shomei.html', published: true },
   // ====== 公開予定 ======
 ];
 
-const CAT_LABELS = { shinya: '深夜営業', inshoku: '飲食店営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断', douro: '道路', keibi: '警備業', nouchi: '農地転用', kensetsu: '建設業', shuhan: '酒販免許', sanpai: '産業廃棄物', daiko: '運転代行', chintai: '賃貸管理', minpaku: '民泊', souzoku: '相続・遺言', hakajimai: '墓じまい', nyukan: '在留資格・帰化', shikin: '融資・補助金' };
+const CAT_LABELS = { shinya: '深夜営業', inshoku: '飲食店営業', fuueihou: '風営法', kobutsu: '古物商', cross: '横断', douro: '道路', shako: '車庫証明', keibi: '警備業', nouchi: '農地転用', kensetsu: '建設業', shuhan: '酒販免許', sanpai: '産業廃棄物', daiko: '運転代行', chintai: '賃貸管理', minpaku: '民泊', souzoku: '相続・遺言', hakajimai: '墓じまい', nyukan: '在留資格・帰化', shikin: '融資・補助金' };
 
 let currentFilter = 'all';
 
@@ -2737,6 +2750,7 @@ function renderCounts() {
   document.getElementById('count-kobutsu').textContent = '(' + ARTICLES.filter(a => a.cat === 'kobutsu').length + ')';
   document.getElementById('count-cross').textContent = '(' + ARTICLES.filter(a => a.cat === 'cross').length + ')';
   document.getElementById('count-douro').textContent = '(' + ARTICLES.filter(a => a.cat === 'douro').length + ')';
+  document.getElementById('count-shako').textContent = '(' + ARTICLES.filter(a => a.cat === 'shako').length + ')';
   document.getElementById('count-keibi').textContent = '(' + ARTICLES.filter(a => a.cat === 'keibi').length + ')';
   document.getElementById('count-nouchi').textContent = '(' + ARTICLES.filter(a => a.cat === 'nouchi').length + ')';
   document.getElementById('count-kensetsu').textContent = '(' + ARTICLES.filter(a => a.cat === 'kensetsu').length + ')';
