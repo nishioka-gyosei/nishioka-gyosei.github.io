@@ -48,7 +48,7 @@
 - 相談は無料？ → 初回相談は無料。LINEは24時間受付（返信は通常24時間以内、土日祝も対応）。
 - なぜ元警察官だと警察申請に強い？ → 風営法・深夜営業届・古物商・道路使用許可はいずれも警察署が窓口。審査する側の視点を知っているため、差し戻しの少ない書類を最初から作れる。
 
-## コラム記事一覧（許認可の実務解説・全105本）
+## コラム記事一覧（許認可の実務解説・全106本）
 
 > 広島の許認可・行政手続きについて、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事の要点）・結論・FAQ・根拠（法令や公的資料）を備える。
 
@@ -121,9 +121,10 @@
 - [お祭り・イベントで道路を使うには？主催者が取る道路使用許可](https://nishioka-gyosei.github.io/blog/douro/event-matsuri-douro-shiyou-kyoka.html)
 - [道路占用許可とは？突出看板・足場に必要な許可と広島市の窓口](https://nishioka-gyosei.github.io/blog/douro/douro-senyou-kyoka-kanban.html)
 
-### 車庫証明（自動車保管場所証明）（1本）
+### 車庫証明（自動車保管場所証明）（2本）
 
 - [広島で車庫証明を取るには？必要書類・手数料と2kmルール](https://nishioka-gyosei.github.io/blog/shako/hiroshima-shako-shomei.html)
+- [車庫証明の所在図・配置図の書き方｜広島県警の記載例から必要な項目を整理](https://nishioka-gyosei.github.io/blog/shako/shako-shomei-shozaizu-haichizu.html)
 
 ### 警備業（4本）
 
