@@ -48,7 +48,7 @@
 - 相談は無料？ → 初回相談は無料。LINEは24時間受付（返信は通常24時間以内、土日祝も対応）。
 - なぜ元警察官だと警察申請に強い？ → 風営法・深夜営業届・古物商・道路使用許可はいずれも警察署が窓口。審査する側の視点を知っているため、差し戻しの少ない書類を最初から作れる。
 
-## コラム記事一覧（許認可の実務解説・全107本）
+## コラム記事一覧（許認可の実務解説・全108本）
 
 > 広島の許認可・行政手続きについて、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事の要点）・結論・FAQ・根拠（法令や公的資料）を備える。
 
@@ -134,11 +134,12 @@
 - [警備員指導教育責任者とは？営業所ごと・区分ごとに必要な人](https://nishioka-gyosei.github.io/blog/keibi/keibiin-shidou-kyouiku-sekininsha.html)
 - [警備業の認定は5年で切れる｜更新申請の期限・手数料と忘れたときに起きること](https://nishioka-gyosei.github.io/blog/keibi/keibigyou-nintei-koushin.html)
 
-### 農地転用（3本）
+### 農地転用（4本）
 
 - [農地転用とは？4条・5条の違いと許可・届出の判断](https://nishioka-gyosei.github.io/blog/nouchi/hiroshima-nouchi-tenyou-towa.html)
 - [農振除外とは？青地を農用地区域から外す手続きと6要件](https://nishioka-gyosei.github.io/blog/nouchi/noushin-jogai-tetsuzuki.html)
 - [農地法3条許可とは？下限面積の廃止と相続の届出](https://nishioka-gyosei.github.io/blog/nouchi/nouchi-hou-3jou-kyoka.html)
+- [許可なく農地を駐車場などにしてしまったら？違反転用の罰則と追認許可](https://nishioka-gyosei.github.io/blog/nouchi/nouchi-ihan-tenyou-tsuinin.html)
 
 ### 建設業（7本）
 
