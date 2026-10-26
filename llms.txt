@@ -48,7 +48,7 @@
 - 相談は無料？ → 初回相談は無料。LINEは24時間受付（返信は通常24時間以内、土日祝も対応）。
 - なぜ元警察官だと警察申請に強い？ → 風営法・深夜営業届・古物商・道路使用許可はいずれも警察署が窓口。審査する側の視点を知っているため、差し戻しの少ない書類を最初から作れる。
 
-## コラム記事一覧（許認可の実務解説・全110本）
+## コラム記事一覧（許認可の実務解説・全111本）
 
 > 広島の許認可・行政手続きについて、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事の要点）・結論・FAQ・根拠（法令や公的資料）を備える。
 
@@ -178,11 +178,12 @@
 - [業務管理者とは？賃貸住宅管理業で営業所ごとに必要な人の要件](https://nishioka-gyosei.github.io/blog/chintai/chintai-gyoumu-kanrisha-youken.html)
 - [サブリース規制とは？登録が不要でも適用される4つのルール](https://nishioka-gyosei.github.io/blog/chintai/sublease-tokutei-chintaishaku-kisei.html)
 
-### 民泊（住宅宿泊事業・簡易宿所）（3本）
+### 民泊（住宅宿泊事業・簡易宿所）（4本）
 
 - [広島で民泊を始めるには？住宅宿泊事業の届出と180日ルール](https://nishioka-gyosei.github.io/blog/minpaku/hiroshima-minpaku-todokede.html)
 - [民泊か簡易宿所か？180日の上限と用途地域・建物基準の違い](https://nishioka-gyosei.github.io/blog/minpaku/minpaku-kan-i-shukusho-chigai.html)
 - [民泊の管理を人に任せるには？住宅宿泊管理業者への委託と登録](https://nishioka-gyosei.github.io/blog/minpaku/minpaku-kanri-gyosha-itaku-touroku.html)
+- [広島市で旅館業（簡易宿所）の許可を取るには？標識の設置から許可までの流れ](https://nishioka-gyosei.github.io/blog/minpaku/hiroshima-ryokangyo-kyoka-nagare.html)
 
 ### 相続・遺言（4本）
 
