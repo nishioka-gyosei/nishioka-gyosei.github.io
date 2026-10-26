@@ -82,7 +82,15 @@ GA4のレポート → 「探索」で `cta_type` や `service_name` を**カス
 2. 記事の終わり（`end-cta` の直前）に、対応するサービスページへのリンク（`<!-- seo:service-link -->` の区画）を入れる
 3. `blog/index.html` の `ARTICLES` に1行追加し、記事リストの静的HTML（`featuredGrid` / `publishedGrid` の中身と件数）も更新する
 4. `sitemap.xml` に追加（`loc` は記事の canonical と同じURL）、`llms.txt` の該当カテゴリに追加
-5. 公開後、Search Console でサイトマップを再送信
+5. 公開後、Search Console でサイトマップを再送信（Bing へは IndexNow で自動通知されるので手作業は不要）
+
+## IndexNow（Bing への自動通知）
+
+- `main` に push すると GitHub Actions（`.github/workflows/indexnow.yml`）が動き、その push で追加・変更された `.html` のうち **`sitemap.xml` に載っているページだけ** を IndexNow に送ります。noindex のツールや `*_lp.html` などの移転用ページは送りません。
+- 送る前に GitHub Pages への反映を待ちます（最大10分）。
+- 全ページを送り直したいときは、GitHub の Actions タブ →「IndexNow（Bingへ更新を通知）」→ Run workflow。
+- 鍵ファイル `dc969be8a041056c178f8bdabed76df9.txt` はリポジトリ直下に置いたまま、**消したり中身を変えたりしないでください**（消すと送信が受け付けられなくなります）。
+- 新しい記事は `sitemap.xml` に載せないと送られません（チェックリスト4）。
 
 ## 次のステップの候補
 

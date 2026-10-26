@@ -1,0 +1,33 @@
+name: IndexNow（Bingへ更新を通知）
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      all:
+        description: 'サイトマップの全URLを送る'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: 更新ページを IndexNow に送信
+        env:
+          EVENT: ${{ github.event_name }}
+          ALL: ${{ inputs.all }}
+          BEFORE: ${{ github.event.before }}
+        run: python3 .github/scripts/indexnow.py
