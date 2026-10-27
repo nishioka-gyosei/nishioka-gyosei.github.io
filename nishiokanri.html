@@ -1367,6 +1367,8 @@ body.drawer-open .dx .edit-preview { display: none; }
 .dx-modal .modal-body > p { margin-bottom: 12px; }
 .dx-modal .modal-body > p:last-child { margin-bottom: 0; }
 
+.dx .dx-warn-text { color: var(--amber); font-weight: 800; }
+
 
 /* =====================================================================
    委任状（旧：委任状作成システム v8）
@@ -2132,7 +2134,9 @@ body.drawer-open .dx .edit-preview { display: none; }
         </div>
         <div class="set-row">
           <label class="check"><input type="checkbox" data-dset="confirmOverwrite"> 上書き保存の前に確認する</label>
+          <label class="check"><input type="checkbox" data-dset="autoCase"> 新しい帳票を保存したとき、案件も自動で作ってひも付ける</label>
         </div>
+        <p class="hint" style="margin-top:8px">案件名は件名から付けます。帳票ごとに作成画面の「案件」欄で「ひも付けない」や、既存の案件を選ぶこともできます。</p>
       </div>
 
       <div class="card">
@@ -7755,7 +7759,7 @@ function openHelp() {
         <li>丸いボタンで完了、「→」で次のステータスに進みます。間違えたら「元に戻す」で取り消せます。</li>
         <li>ステータスを「申請済み」にすると、申請日と許可予定日（標準処理期間から計算）が自動で入ります。</li>
         <li>顧客を削除するときは、顧客の詳細の「削除」から。重複して登録した顧客は「顧客」画面の「重複チェック」か「ほかの顧客とまとめる」で、案件ごと1件にまとめられます。</li>
-        <li>見積書・請求書・領収書は「見積・請求」、委任状は「委任状」で作ります。案件や顧客の詳細から作ると、宛名や委任者が自動で入り、その案件にひも付きます。</li>
+        <li>見積書・請求書・領収書は「見積・請求」、委任状は「委任状」で作ります。案件や顧客の詳細から作ると、宛名や委任者が自動で入り、その案件にひも付きます。「見積・請求」で新しく作った帳票は、保存すると案件も自動で作られます（「見積・請求」の「設定」で止められます）。</li>
         <li>案件にひも付いた請求書を「請求書を発行」「入金を記録」すると、案件の報酬・請求状況にも自動で反映されます。</li>
         <li>顧客は3つの書類で共通です。見積・請求書や委任状で新しく入力した宛名・委任者は、保存時に顧客に登録されます。</li>
         <li>データはこのブラウザ内に保存されます。定期的にバックアップを保存してください。</li>
@@ -9236,6 +9240,7 @@ const DEFAULT_SETTINGS = {
   showSeal: true,
   sealSize: 22,
   confirmOverwrite: true,
+  autoCase: true,
   snippets: DEFAULT_SNIPPETS.slice(),
   templates: null
 };
@@ -9559,6 +9564,7 @@ function feeCategories() {
 function normInvoice(c) {
   const o = normCase(c);
   if (!o.id) o.id = uid('c');
+  if (o.caseId === '__new') o.caseId = '';   // 「保存時に新しい案件を作る」はフォーム上だけの値
   return o;
 }
 function normSettings(raw) {
@@ -9753,7 +9759,7 @@ function blankCase() {
     custHonor: '様', docDate: today,
     validUntil: toNum(settings.validDays) > 0 ? addDays(today, toNum(settings.validDays)) : '',
     status: 'estimate', taxRate: settings.taxRate, taxMode: settings.taxMode, taxRounding: settings.taxRounding, fees: [], exps: [],
-    clientId: '', caseId: ''
+    clientId: '', caseId: defaultCaseLink()
   };
 }
 function snapshotOf(d) { return JSON.stringify(d); }
@@ -9849,7 +9855,9 @@ function renderStepper() {
     const pm = $('payMethod').value;
     html = `<span class="badge green">入金済　${esc(fmtShort(val('receivedDate')))}${pm ? '・' + esc(pm) : ''}</span><button type="button" class="btn small" data-action="print-doc" data-type="receipt">領収書を印刷</button><button type="button" class="linkish" data-action="step" data-step="paid">入金日を直す</button>`;
   }
-  $('statusRow').innerHTML = html;
+  // 入力欄から直接ボタンを押したとき、blur で作り直すとクリックが消えるので、変わったときだけ書き換える
+  const row = $('statusRow');
+  if (row.dataset.html !== html) { row.innerHTML = html; row.dataset.html = html; }
 }
 
 /* 行の操作 */
@@ -9954,9 +9962,13 @@ function saveNew(opts) {
   currentCaseId = c.id; storage.set(LKEY.current, c.id);
   upsertClientFromDoc(c, { quiet: opts.silent });
   formClientId = c.clientId;
+  const made = resolveNewCaseLink(c);
   persistCases();
   markSaved();
-  if (!opts.silent) toast(`新しい帳票として保存しました（No.${c.docNo}）`);
+  if (made) {
+    if (opts.silent) setTimeout(() => caseMadeToast(made), 450);
+    else caseMadeToast(made, `新しい帳票として保存しました（No.${c.docNo}）`);
+  } else if (!opts.silent) toast(`新しい帳票として保存しました（No.${c.docNo}）`);
   afterDataChange(c);
   return true;
 }
@@ -9974,9 +9986,13 @@ function overwrite(opts) {
   cases[idx] = normCase(Object.assign({}, prev, d, { id: prev.id, createdAt: prev.createdAt || Date.now(), updatedAt: Date.now() }));
   upsertClientFromDoc(cases[idx], { quiet: opts.silent });
   formClientId = cases[idx].clientId;
+  const made = resolveNewCaseLink(cases[idx]);
   persistCases();
   markSaved();
-  if (!opts.silent) toast('上書き保存しました');
+  if (made) {
+    if (opts.silent) setTimeout(() => caseMadeToast(made), 450);
+    else caseMadeToast(made, '上書き保存しました');
+  } else if (!opts.silent) toast('上書き保存しました');
   afterDataChange(cases[idx], prev);
   return true;
 }
@@ -10016,13 +10032,15 @@ function duplicateCase(id) {
   const d = JSON.parse(JSON.stringify(c));
   delete d.id; delete d.createdAt; delete d.updatedAt;
   const today = todayStr();
-  Object.assign(d, { docNo: '', docDate: today, invoiceDate: '', dueDate: '', receivedDate: '', payMethod: '', receiptNote: '', status: 'estimate', caseId: '',
+  Object.assign(d, { docNo: '', docDate: today, invoiceDate: '', dueDate: '', receivedDate: '', payMethod: '', receiptNote: '', status: 'estimate', caseId: defaultCaseLink(),
     validUntil: toNum(settings.validDays) > 0 ? addDays(today, toNum(settings.validDays)) : '' });
   currentCaseId = null; storage.set(LKEY.current, null);
   setForm(d); savedSnapshot = null;
   ui.docType = 'estimate'; saveUi();
   switchTab('edit'); updateSaveState(); saveDraft();
-  toast('複製しました。「新しい帳票として保存」で別の帳票として登録されます（案件とのひも付けは外しています）');
+  toast(autoCaseOn()
+    ? '複製しました。「新しい帳票として保存」を押すと、別の帳票として登録され、新しい案件も作られます'
+    : '複製しました。「新しい帳票として保存」で別の帳票として登録されます（案件とのひも付けは外しています）');
 }
 function deleteCase(id) {
   const idx = cases.findIndex(c => c.id === id); if (idx < 0) return;
@@ -10096,7 +10114,12 @@ function offerCaseStep(doc) {
   const c = caseById(doc.caseId);
   if (!c || !isOpen(c)) return;
   const sts = S().statuses;
-  if (doc.status === 'invoiced' && sts.includes('請求済み') && c.status !== '請求済み' && statusOrder(c.status) < statusOrder('請求済み')) {
+  const ds = S().defaultStatus;
+  if (doc.status === 'ordered' && ds && c.status !== ds && statusOrder(c.status) < statusOrder(ds)) {
+    setTimeout(() => coreToast(`受注にしました。案件「${c.title}」のステータスも「${ds}」にしますか？`, { action: `「${ds}」にする`, onAction: () => setStatus(c.id, ds), timeout: 9000 }), 400);
+  } else if (doc.status === 'lost' && !activeInvoicesOfCase(c.id).length) {
+    setTimeout(() => coreToast(`見送りにしました。案件「${c.title}」を保管（一覧から外す）しますか？`, { action: '案件を保管', onAction: () => archiveCase(c.id, true), timeout: 9000 }), 400);
+  } else if (doc.status === 'invoiced' && sts.includes('請求済み') && c.status !== '請求済み' && statusOrder(c.status) < statusOrder('請求済み')) {
     setTimeout(() => coreToast(`案件「${c.title}」のステータスも「請求済み」にしますか？`, { action: '請求済みにする', onAction: () => setStatus(c.id, '請求済み'), timeout: 9000 }), 400);
   } else if (doc.status === 'paid' && activeInvoicesOfCase(c.id).every(d => d.status === 'paid')) {
     setTimeout(() => coreToast(`入金を記録しました。案件「${c.title}」を完了にしますか？`, { action: '完了にする', onAction: () => setCompleted(c.id, true), timeout: 9000 }), 400);
@@ -10245,15 +10268,110 @@ function renderLinkInfo() {
   const box = $('dxLink');
   if (!box) return;
   const c = formClientId ? clientById(formClientId) : null;
-  const cs = formCaseId ? caseById(formCaseId) : null;
+  const cs = formCaseId && formCaseId !== NEW_CASE ? caseById(formCaseId) : null;
+  const isNew = formCaseId === NEW_CASE;
+  const openN = isNew && c ? openCasesOfClient(c.id).length : 0;
   const clientCases = c ? state.data.cases.filter(x => x.clientId === c.id && (!x.archived || x.id === formCaseId)).sort((a, b) => Number(a.completed) - Number(b.completed) || String(b.updatedAt).localeCompare(String(a.updatedAt))) : [];
   box.innerHTML = `
     <div class="dx-link-row"><span class="dx-link-k">${icon('users')}顧客</span>${c ? `<button type="button" class="linkish" data-open-client="${esc(c.id)}">${esc(c.name)}</button><span class="hint">（宛名から自動でひも付け）</span>` : `<span class="hint">未登録（保存すると顧客に登録されます）</span>`}</div>
     <div class="dx-link-row"><span class="dx-link-k">${icon('cases')}案件</span>
-      <select id="dxCaseSel" aria-label="ひも付ける案件"><option value="">（ひも付けない）</option>${cs && !clientCases.includes(cs) ? `<option value="${esc(cs.id)}" selected>${esc(cs.title || '（無題）')}（${esc(caseClientName(cs) || '顧客未設定')}）</option>` : ''}${clientCases.map(x => `<option value="${esc(x.id)}"${x.id === formCaseId ? ' selected' : ''}>${esc(x.title || '（無題）')}${x.completed ? '（完了）' : ''}</option>`).join('')}<option value="__pick">ほかの案件から探す…</option></select>
+      <select id="dxCaseSel" aria-label="ひも付ける案件"><option value="${NEW_CASE}"${isNew ? ' selected' : ''}>＋ 保存時に新しい案件を作る</option><option value=""${!formCaseId ? ' selected' : ''}>（ひも付けない）</option>${cs && !clientCases.includes(cs) ? `<option value="${esc(cs.id)}" selected>${esc(cs.title || '（無題）')}（${esc(caseClientName(cs) || '顧客未設定')}）</option>` : ''}${clientCases.map(x => `<option value="${esc(x.id)}"${x.id === formCaseId ? ' selected' : ''}>${esc(x.title || '（無題）')}${x.completed ? '（完了）' : ''}</option>`).join('')}<option value="__pick">ほかの案件から探す…</option></select>
       ${cs ? `<button type="button" class="btn small ghost" data-open-case="${esc(cs.id)}">${icon('external')}案件を開く</button>` : ''}
     </div>
-    ${cs ? `<p class="hint" style="margin:4px 0 0">この帳票の金額と請求・入金の状況は、案件「${esc(cs.title)}」の報酬・請求に反映されます。</p>` : ''}`;
+    ${cs ? `<p class="hint" style="margin:4px 0 0">この帳票の金額と請求・入金の状況は、案件「${esc(cs.title)}」の報酬・請求に反映されます。</p>` : ''}
+    ${isNew ? `<p class="hint" style="margin:4px 0 0">保存すると、件名を案件名にした案件を作ってひも付けます（同じ顧客・同じ名前の進行中の案件があれば、そちらにひも付けます）。${openN ? `<br><span class="dx-warn-text">この顧客には進行中の案件が${openN}件あります。そのどれかの帳票なら、上の欄で選んでください。</span>` : ''}</p>` : ''}`;
+}
+
+/* ===================== 案件の自動作成 =====================
+   新しく作った帳票は「案件」欄が「保存時に新しい案件を作る」（NEW_CASE）になっていて、
+   保存したときに件名を案件名にした案件を作り、帳票をひも付ける。
+   NEW_CASE はフォーム上だけの値で、保存データには残さない。 */
+const NEW_CASE = '__new';
+function autoCaseOn() { return settings.autoCase !== false; }
+function defaultCaseLink() { return autoCaseOn() ? NEW_CASE : ''; }
+function caseTitleFromDoc(d) {
+  const s = String(d.subject || '').trim();
+  if (s) return s;
+  const f = (d.fees || []).find(x => x && String(x.name || '').trim());
+  if (f) return String(f.name).trim();
+  return `${d.custName || '（宛名なし）'}${d.custHonor ? ' ' + d.custHonor : ''}の案件`;
+}
+/* 件名・明細から案件の業務カテゴリを推測（案件側に無いカテゴリは使わない） */
+const CASE_CAT_RULES = [
+  [/風俗営業|風営|社交飲食|接待飲食|ぱちんこ|パチンコ|ゲームセンター|まあじゃん|麻雀/, '風営法許可'],
+  [/深夜酒類|深夜における酒類|深夜営業/, '深夜酒類提供'],
+  [/古物/, '古物商許可'],
+  [/道路使用/, '道路使用'],
+  [/道路占用/, '道路占用'],
+  [/警備業/, '警備業認定'],
+  [/建設業|経営事項審査|経審|入札参加|決算変更届/, '建設業許可'],
+  [/産業廃棄物|産廃/, '産廃収集運搬'],
+  [/賃貸住宅管理/, '賃貸住宅管理業'],
+  [/農地/, '農地転用'],
+  [/酒類販売|酒販|酒類の販売/, '酒類販売免許'],
+  [/飲食店営業|食品衛生|菓子製造/, '飲食店営業許可'],
+  [/会社設立|法人設立|設立登記|定款/, '会社設立'],
+  [/補助金|助成金/, '補助金'],
+  [/太陽光|ＦＩＴ|FIT|再エネ|発電設備/i, '太陽光・FIT'],
+  [/宅建|宅地建物/, '宅建業免許'],
+  [/在留|ビザ|帰化|永住/, '在留資格'],
+  [/相続|遺言|遺産分割|戸籍調査/, '相続・遺言'],
+  [/墓じまい|改葬/, '墓じまい・改葬'],
+  [/契約書/, '契約書作成']
+];
+function guessCaseCategory(d) {
+  const cats = S().categories.filter(c => c && c !== 'その他');
+  const texts = [String(d.subject || ''), (d.fees || []).map(f => f && f.name).filter(Boolean).join(' ')].filter(Boolean);
+  for (const text of texts) {
+    const n = norm(text);
+    const direct = cats.filter(c => n.includes(norm(c))).sort((a, b) => b.length - a.length)[0];
+    if (direct) return direct;
+    const rule = CASE_CAT_RULES.find(([re, cat]) => re.test(text) && cats.includes(cat));
+    if (rule) return rule[1];
+  }
+  return S().categories.includes('その他') ? 'その他' : (S().categories[0] || 'その他');
+}
+/* 同じ顧客・同じ案件名の進行中の案件があれば、新しく作らずにそちらを使う */
+function findSameOpenCase(clientId, title) {
+  if (!clientId) return null;
+  const k = norm(title);
+  return state.data.cases.find(c => c.clientId === clientId && !c.archived && !c.completed && norm(c.title) === k) || null;
+}
+function openCasesOfClient(clientId) {
+  return clientId ? state.data.cases.filter(c => c.clientId === clientId && !c.archived && !c.completed) : [];
+}
+function createCaseForDoc(d) {
+  const title = caseTitleFromDoc(d);
+  const same = findSameOpenCase(d.clientId, title);
+  if (same) return { id: same.id, title: same.title, reused: true };
+  const s = S();
+  const client = d.clientId ? clientById(d.clientId) : null;
+  let status = s.defaultStatus;
+  if (d.status === 'estimate' && s.statuses.includes('相談中')) status = '相談中';
+  else if (d.status === 'invoiced' && s.statuses.includes('請求済み')) status = '請求済み';
+  const c = normalizeCase({
+    title, clientId: d.clientId || '', clientName: client ? client.name : (d.custName || ''),
+    category: guessCaseCategory(d), status
+  }, s);
+  c.createdAt = c.updatedAt = nowISO();
+  state.data.cases.unshift(c);
+  if (d.status === 'paid') applyStatusChange(state.data, c, DONE_STATUS);
+  return { id: c.id, title: c.title, reused: false };
+}
+/* 保存する帳票の「案件」欄が NEW_CASE なら、案件を作って（または同じ案件を見つけて）ひも付ける */
+function resolveNewCaseLink(doc) {
+  if (doc.caseId !== NEW_CASE) return null;
+  if (doc.status === 'lost') { doc.caseId = ''; return null; }
+  const r = createCaseForDoc(doc);
+  doc.caseId = r.id;
+  formCaseId = r.id;
+  return r;
+}
+function caseMadeText(made) {
+  return made.reused ? `登録済みの案件「${made.title}」にひも付けました` : `案件「${made.title}」も作りました`;
+}
+function caseMadeToast(made, lead) {
+  coreToast((lead ? lead + '。' : '') + caseMadeText(made), { type: 'ok', action: '案件を開く', onAction: () => openDrawer('case', made.id), timeout: 9000 });
 }
 
 
@@ -11026,7 +11144,7 @@ function openHelp() {
       <h4>基本の流れ</h4>
       <ol>
         <li>「＋ 新規作成」で宛名と明細を入力します。宛名を打つと顧客の候補が出ます。明細は「よく使う」「マスタから選択」「セットから読込」で入れると早いです。</li>
-        <li>「案件」の欄で、この帳票をどの案件のものか選べます。ひも付けると、帳票の金額と請求・入金の状況が案件の「報酬・請求」と「報酬・売上」に反映されます。</li>
+        <li>「案件」の欄は、新しい帳票では「保存時に新しい案件を作る」になっています。保存すると、件名を案件名にした案件ができてひも付きます。すでにある案件の帳票なら、その案件を選んでください。ひも付けると、帳票の金額と請求・入金の状況が案件の「報酬・請求」と「報酬・売上」に反映されます。</li>
         <li>「新しい帳票として保存」を押すと、書類番号（R8-0001 など）が付いて一覧に残ります。宛名はまだ登録されていなければ顧客に登録されます。</li>
         <li>右側（画面が狭いときは「プレビュー・印刷」）で帳票を選び、「印刷」から紙またはPDFにします。PDFのファイル名は自動で付きます。</li>
         <li>ご依頼が決まったら「受注にする」、請求するときは「請求書を発行」、入金があったら「入金を記録」。日付が自動で入ります。案件にひも付いていれば、案件のステータスも進めるか聞きます。</li>
