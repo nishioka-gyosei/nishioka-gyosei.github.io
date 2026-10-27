@@ -6435,7 +6435,8 @@ function caseDrawerHTML(c) {
         ${c.dueDate ? `<button type="button" class="btn small" data-action="gcal-case" data-id="${esc(c.id)}" title="Googleカレンダーに期限を登録">${icon("calendar")}Googleカレンダー</button>` : ""}
         <button type="button" class="btn small" data-action="print-case" data-id="${esc(c.id)}">${icon("print")}案件票を印刷</button>
         <button type="button" class="btn small" data-action="duplicate-case" data-id="${esc(c.id)}">${icon("copy")}複製</button>
-        <button type="button" class="btn small" data-action="archive-case" data-id="${esc(c.id)}">${icon("archive")}保管</button>`}
+        <button type="button" class="btn small" data-action="archive-case" data-id="${esc(c.id)}">${icon("archive")}保管</button>
+        <button type="button" class="btn small danger" data-action="delete-case" data-id="${esc(c.id)}" style="margin-left:auto">${icon("trash")}削除</button>`}
     </div>`;
 }
 
@@ -8369,10 +8370,24 @@ function archiveCase(id, archived = true) {
 async function deleteCase(id) {
   const c = caseById(id);
   if (!c) return;
-  const ok = await askConfirm({ title: "案件を完全に削除", message: `「${c.title}」を削除します。この操作は直後の「元に戻す」か復元ポイントでのみ取り消せます。`, ok: "削除する", danger: true });
+  const invN = invoicesOfCase(id).length, poaN = poasOfCase(id).length;
+  const docs = [invN ? `見積書・請求書 ${invN}件` : "", poaN ? `委任状 ${poaN}件` : ""].filter(Boolean).join("・");
+  const ok = await askConfirm({
+    title: "案件を削除",
+    message: `「${c.title}」を削除します。${docs ? `\n\nこの案件にひも付いている${docs}は削除しません（案件とのひも付けだけ外れます）。` : ""}\n\n間違えて削除したときは、直後に出る「元に戻す」で戻せます。あとからは「設定・データ」の復元ポイントで戻せます。`,
+    ok: "削除する", danger: true
+  });
   if (!ok) return;
   if (state.drawer && state.drawer.id === id) state.drawer = null;
-  commit(data => { data.cases = data.cases.filter(x => x.id !== id); return true; }, { undo: `「${c.title}」を削除しました` });
+  commit(data => {
+    data.cases = data.cases.filter(x => x.id !== id);
+    data.invoices.forEach(d => { if (d.caseId === id) d.caseId = ""; });
+    data.poas.forEach(r => { if (r.caseId === id) { r.caseId = ""; if (r.doc) r.doc.caseId = ""; } });
+    return true;
+  }, { undo: `「${c.title}」を削除しました` });
+  // 見積・請求、委任状で開いている書類のひも付けも合わせる
+  Docs.rebind();
+  Poa.rebind();
 }
 function duplicateCase(id) {
   const c = caseById(id);
@@ -9382,6 +9397,8 @@ function rebind() {
       const c = currentCase();
       if (c) { setForm(c); markSaved(); }
     }
+    // ひも付けていた案件が削除されたら、作成画面の「案件」欄も外す
+    if (formReady && formCaseId && formCaseId !== '__new' && !caseById(formCaseId)) formCaseId = '';
     if (formReady) { updateSaveState(); renderEditIdent(); renderLinkInfo(); }
   }
 }
@@ -10360,6 +10377,7 @@ function createCaseForDoc(d) {
 }
 /* 保存する帳票の「案件」欄が NEW_CASE なら、案件を作って（または同じ案件を見つけて）ひも付ける */
 function resolveNewCaseLink(doc) {
+  if (doc.caseId && doc.caseId !== NEW_CASE && !caseById(doc.caseId)) { doc.caseId = ''; formCaseId = ''; }   // 削除された案件
   if (doc.caseId !== NEW_CASE) return null;
   if (doc.status === 'lost') { doc.caseId = ''; return null; }
   const r = createCaseForDoc(doc);
@@ -11856,6 +11874,7 @@ function rebind() {
     doc = normalizeDoc(clone(rec.doc)); doc.id = rec.id; doc.name = rec.name; doc.caseId = rec.caseId || '';
     savedSnap = snap(doc);
   }
+  if (doc.caseId && !caseById(doc.caseId)) doc.caseId = '';   // ひも付けていた案件が削除されたとき
   refreshLists();
   renderAll();
 }
@@ -12576,6 +12595,7 @@ function saveCurrent({ quiet = false, asNew = false } = {}) {
   if (settings.autoClient) doc.persons.forEach(p => { if (upsertClientFromPerson(p, { onlyNew: true, defer: true })) added++; });
   if (added) refreshLists();
   doc.updatedAt = t;
+  if (doc.caseId && !caseById(doc.caseId)) doc.caseId = '';   // 削除された案件にはひも付けない
   rec.name = doc.name; rec.updatedAt = t; rec.caseId = doc.caseId || ''; rec.doc = clone(doc);
   cases.sort((a, b) => b.updatedAt - a.updatedAt);
   persistCases();
