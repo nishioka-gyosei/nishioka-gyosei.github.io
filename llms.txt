@@ -48,7 +48,7 @@
 - 相談は無料？ → 初回相談は無料。LINEは24時間受付（返信は通常24時間以内、土日祝も対応）。
 - なぜ元警察官だと警察申請に強い？ → 風営法・深夜営業届・古物商・道路使用許可はいずれも警察署が窓口。審査する側の視点を知っているため、差し戻しの少ない書類を最初から作れる。
 
-## コラム記事一覧（許認可の実務解説・全112本）
+## コラム記事一覧（許認可の実務解説・全113本）
 
 > 広島の許認可・行政手続きについて、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事の要点）・結論・FAQ・根拠（法令や公的資料）を備える。
 
@@ -192,11 +192,12 @@
 - [相続手続きの流れと期限｜亡くなった後にやることを順番に整理](https://nishioka-gyosei.github.io/blog/souzoku/souzoku-tetsuzuki-nagare-kigen.html)
 - [相続登記の義務化と戸籍の広域交付｜3年以内の登記と戸籍の集め方](https://nishioka-gyosei.github.io/blog/souzoku/souzoku-touki-gimuka-koseki.html)
 
-### 墓じまい（改葬許可）（3本）
+### 墓じまい（改葬許可）（4本）
 
 - [墓じまいの手続きと流れ｜広島市の改葬許可申請と必要書類](https://nishioka-gyosei.github.io/blog/hakajimai/hakajimai-kaisou-kyoka-tetsuzuki.html)
 - [改葬許可が要るとき・要らないとき｜分骨・散骨・手元供養・自宅の遺骨](https://nishioka-gyosei.github.io/blog/hakajimai/kaisou-kyoka-iru-iranai.html)
 - [お墓は誰が継ぐ？祭祀承継者の決め方と名義変更の手続き](https://nishioka-gyosei.github.io/blog/hakajimai/haka-shoukei-meigi-henkou.html)
+- [広島市で納骨堂を設けるには？墓地埋葬法の経営許可と申請の流れ](https://nishioka-gyosei.github.io/blog/hakajimai/noukotsudou-keiei-kyoka.html)
 
 ### 在留資格・帰化（3本）
 
