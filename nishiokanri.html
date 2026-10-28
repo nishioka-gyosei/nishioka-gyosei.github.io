@@ -2862,6 +2862,27 @@ body.has-layer .toasts{bottom:auto;top:calc(16px + env(safe-area-inset-top,0px))
 .nk-embed .preview-pane { top: 16px; height: calc(100vh - 32px); }
 .nk-embed .layout { padding-top: 16px; }
 @media (max-width:640px){ .nk-embed .layout { padding-top: 12px; } }
+
+/* ---- 入力画面をニシオカンリと同じやわらかい見た目に ---- */
+.nk-embed { --kon:#2563eb; --kon-2:#1d4ed8; --kon-soft:#e8f0fe; --kon-ring:rgba(37,99,235,.18); --r-s:10px; --r-m:14px; --r-l:18px; }
+.nk-embed .step { font-family: var(--font-ui); width: 26px; height: 26px; border-radius: 50%; background: var(--kon-soft); color: var(--kon);
+  font-size: 13.5px; font-weight: 800; display: grid; place-items: center; transform: none; line-height: 1; }
+.nk-embed .sec-hd h2 { font-family: var(--font-ui); font-size: 16px; font-weight: 800; letter-spacing: .02em; }
+.nk-embed .dlg-hd h3, .nk-embed .fs > legend { font-family: var(--font-ui); font-weight: 800; letter-spacing: .02em; }
+.nk-embed .wareki { font-family: var(--font-ui); font-size: 15px; font-weight: 700; letter-spacing: normal; }
+.nk-embed .sentence { font-family: var(--font-ui); font-size: 15.5px; }
+.nk-embed .num, .nk-embed .help-steps li .n, .nk-embed .h-main, .nk-embed .dropzone .card b { font-family: var(--font-ui); letter-spacing: normal; }
+/* 文面の切り替え */
+.tone { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.tone .lbl { margin: 0; }
+.tone-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.tone-opts button { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; padding: 8px 14px; border: 1px solid var(--line-2); border-radius: 12px;
+  background: var(--surface); color: var(--ink-2); cursor: pointer; font: inherit; text-align: left; transition: border-color .15s, background .15s, box-shadow .15s; }
+.tone-opts button b { font-size: 13.5px; }
+.tone-opts button small { font-size: 11.5px; color: var(--muted); }
+.tone-opts button[aria-checked="true"] { border-color: var(--kon); background: var(--kon-soft); color: var(--kon); box-shadow: 0 0 0 3px var(--kon-ring); }
+.tone-opts button[aria-checked="true"] small { color: var(--kon); }
+.tone-note { font-size: 12px; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -2933,7 +2954,7 @@ body.has-layer .toasts{bottom:auto;top:calc(16px + env(safe-area-inset-top,0px))
 
     <div class="sec" id="secTemplate">
       <div class="sec-hd">
-        <span class="step">①</span><h2>テンプレート</h2>
+        <span class="step">1</span><h2>テンプレート</h2>
         <span class="sec-sub">よく使う組み合わせを呼び出す</span>
         <div class="end"><button class="link-btn" type="button" id="managePresetsBtn"><svg class="ic"><use href="#i-edit"/></svg>管理</button></div>
       </div>
@@ -2942,7 +2963,7 @@ body.has-layer .toasts{bottom:auto;top:calc(16px + env(safe-area-inset-top,0px))
     </div>
 
     <div class="sec">
-      <div class="sec-hd"><span class="step">②</span><h2>作成日・送付先</h2></div>
+      <div class="sec-hd"><span class="step">2</span><h2>作成日・送付先</h2></div>
       <div class="date-grid">
         <div class="field">
           <label class="lbl" for="date">作成日</label>
@@ -2969,11 +2990,19 @@ body.has-layer .toasts{bottom:auto;top:calc(16px + env(safe-area-inset-top,0px))
           <div class="sel"><select class="inp" id="honorific" aria-label="敬称" data-hl="to"><option value="御中">御中</option><option value="様">様</option><option value="殿">殿</option><option value="">敬称なし</option></select></div>
         </div>
         <label class="switch"><input type="checkbox" id="printAddressee"><span class="tr"></span><span>文書の左上に宛名として印字する</span></label>
+        <div class="tone" id="toneBox">
+          <span class="lbl">文面</span>
+          <div class="tone-opts" role="radiogroup" aria-label="文面の雰囲気">
+            <button type="button" role="radio" data-tone="formal"><b>改まった文面</b><small>役所・警察あて</small></button>
+            <button type="button" role="radio" data-tone="friendly"><b>やわらかい文面</b><small>お客様あて</small></button>
+          </div>
+          <span class="tone-note" id="toneNote"></span>
+        </div>
       </div>
     </div>
 
     <div class="sec">
-      <div class="sec-hd"><span class="step">③</span><h2>本文</h2></div>
+      <div class="sec-hd"><span class="step">3</span><h2>本文</h2></div>
       <div class="seg full" id="modeSeg" role="radiogroup" aria-label="本文の種類">
         <button type="button" role="radio" data-v="request">郵送請求</button>
         <button type="button" role="radio" data-v="free">書類送付（自由入力）</button>
@@ -3031,7 +3060,7 @@ body.has-layer .toasts{bottom:auto;top:calc(16px + env(safe-area-inset-top,0px))
     </div>
 
     <div class="sec">
-      <div class="sec-hd"><span class="step">④</span><h2>送付書類</h2><span class="sec-sub" id="docsSub"></span></div>
+      <div class="sec-hd"><span class="step">4</span><h2>送付書類</h2><span class="sec-sub" id="docsSub"></span></div>
       <div class="doc-head" aria-hidden="true"><span></span><span>No.</span><span>書類名</span><span>数量</span><span>単位</span><span></span></div>
       <div class="doc-rows" id="docRows"></div>
       <button class="add-row" type="button" id="addRowBtn"><svg class="ic"><use href="#i-plus"/></svg>行を追加</button>
@@ -3177,6 +3206,13 @@ const DEFAULT_SETTINGS = {
   close1: "ご確認お願い申し上げます。",
   close2: "お手数ですが、書類不備などございましたら、下記連絡先までご連絡願います。",
   listHeading: "送付書類",
+  fGreet1: "いつもお世話になっております。",
+  fGreet2: "行政書士の西岡です。",
+  fLead: "",
+  fClose1: "お手すきの際に、内容をご確認ください。",
+  fClose2: "ご不明な点がありましたら、どうぞお気軽にお問い合わせください。",
+  fListHeading: "同封している書類",
+  fBoxHead: "お問い合わせ先",
   filePattern: "title_dest",
   askSaveLocation: false,
   autoToday: true,
@@ -3223,7 +3259,7 @@ const UNDO = [];
 function blankState(){
   return {v: 2, date: todayISO(), mode: "request", target: "", autoSama: true, reqdoc: "身分証明書", freeText: "",
     tail: "をさせていただきました。", lead: null, note: "", docs: clone(DEFAULT_DOCS), dest: "", dept: "", honorific: "御中",
-    honorificAuto: true, printAddressee: false, presetId: "b1", caseId: ""};
+    honorificAuto: true, printAddressee: false, presetId: "b1", caseId: "", tone: "auto"};
 }
 function normalizeState(x){
   const s = Object.assign(blankState(), (x && typeof x === "object") ? x : {});
@@ -3238,6 +3274,7 @@ function normalizeState(x){
   s.printAddressee = !!s.printAddressee;
   s.honorificAuto = s.honorificAuto !== false;
   s.caseId = String(s.caseId || "");
+  s.tone = (s.tone === "formal" || s.tone === "friendly") ? s.tone : "auto";
   return s;
 }
 function loadAll(){
@@ -3267,7 +3304,11 @@ function underlineOf(s = S){
   if (!ns && !rd) return "";
   return (ns ? ns + "の" : "") + rd + "郵送請求";
 }
-function leadOf(s = S){ return s.lead == null ? CFG.lead : s.lead; }
+/* 文面の雰囲気：formal（改まった）／friendly（やわらかい）。auto は敬称が「様」ならやわらかい */
+function toneOf(s = S){ return s.tone === "formal" || s.tone === "friendly" ? s.tone : (String(s.honorific || "") === "様" ? "friendly" : "formal"); }
+function isFriendly(s = S){ return toneOf(s) === "friendly"; }
+function txt(k, s = S){ const fk = "f" + k[0].toUpperCase() + k.slice(1); return isFriendly(s) && CFG[fk] != null ? CFG[fk] : CFG[k]; }
+function leadOf(s = S){ return s.lead == null ? txt("lead", s) : s.lead; }
 function noteLines(s = S){ return String(s.note || "").split(/\r?\n/).map(x => x.replace(/\s+$/, "")).filter(x => x.trim()); }
 function validDocs(s = S){ return (s.docs || []).filter(d => String(d.name || "").trim()); }
 function docLine(d, i){
@@ -3339,34 +3380,55 @@ function telRuns(){
 }
 function buildLayout(s, fit){
   const P = [];
-  P.push(P_({key: "title", align: "center", size: 20, runs: [{t: CFG.title}]}));
+  const F = isFriendly(s);
+  P.push(P_({key: "title", align: "center", size: 20, runs: [{t: CFG.title}], rule: F, left: F ? 2268 : 0, right: F ? 2268 : 0}));
   P.push(P_({key: "date", align: "right", size: 9, ind: 3600, runs: [{t: wareki(s.date)}]}));
   if (CFG.address) P.push(P_({key: "hdr", align: "right", size: 9, ind: 3600, runs: [{t: CFG.address}]}));
   if (CFG.office) P.push(P_({key: "hdr", align: "right", size: 9, ind: 3600, runs: [{t: CFG.office}]}));
   const to = s.printAddressee ? addresseeOf(s) : "";
   if (to){ P.push(P_({key: "to", align: "left", size: 12, runs: [{t: to}]})); P.push(B_()); }
-  if (CFG.greet1) P.push(P_({key: "greet", ind: IND1, runs: [{t: CFG.greet1}]}));
-  if (CFG.greet2) P.push(P_({key: "greet", ind: IND1, runs: [{t: CFG.greet2}]}));
-  if (CFG.greet1 || CFG.greet2) P.push(B_());
+  const g1 = txt("greet1", s), g2 = txt("greet2", s);
+  if (g1) P.push(P_({key: "greet", ind: IND1, runs: [{t: g1}]}));
+  if (g2) P.push(P_({key: "greet", ind: IND1, runs: [{t: g2}]}));
+  if (g1 || g2) P.push(B_());
   const lead = leadOf(s);
   if (lead) P.push(P_({key: "lead", ind: IND1, runs: [{t: lead}]}));
   const ul = underlineOf(s);
   P.push(P_({key: "main", ind: IND1, runs: [{t: ul, u: true}, {t: s.tail || ""}].filter(r => r.t)}));
   noteLines(s).forEach(l => P.push(P_({key: "note", ind: IND1, runs: [{t: l}]})));
   P.push(B_());
-  if (CFG.close1){ P.push(P_({key: "close", ind: IND1, runs: [{t: CFG.close1}]})); P.push(B_()); }
-  if (CFG.close2) P.push(P_({key: "close", ind: IND1, runs: [{t: CFG.close2}]}));
+  const c1 = txt("close1", s), c2 = txt("close2", s);
+  if (c1){ P.push(P_({key: "close", ind: IND1, runs: [{t: c1}]})); P.push(B_()); }
+  if (c2) P.push(P_({key: "close", ind: IND1, runs: [{t: c2}]}));
   for (let i = 0; i < fit.g4; i++) P.push(B_());
-  P.push(P_({key: "lh", size: 12, runs: [{t: CFG.listHeading || "送付書類"}]}));
+  P.push(P_({key: "lh", size: 12, runs: [{t: txt("listHeading", s) || (F ? "同封している書類" : "送付書類")}]}));
   for (let i = 0; i < fit.g5; i++) P.push(B_(12));
-  validDocs(s).forEach((d, i) => P.push(P_({key: "doc", size: fit.list, runs: [{t: docLine(d, i), u: true}]})));
+  validDocs(s).forEach((d, i) => P.push(F
+    ? P_({key: "doc", size: fit.list, ind: IND1, runs: [{t: docLineF(d)}]})
+    : P_({key: "doc", size: fit.list, runs: [{t: docLine(d, i), u: true}]})));
   for (let i = 0; i < fit.g6; i++) P.push(B_(12));
+  if (F){
+    /* やわらかい文面：差出人は「お問い合わせ先」の枠にまとめる */
+    const box = [];
+    if (CFG.fBoxHead) box.push({size: 9, runs: [{t: CFG.fBoxHead}]});
+    if (CFG.office) box.push({runs: [{t: CFG.office}]});
+    const addr = [CFG.zip ? "〒" + CFG.zip : "", CFG.address].filter(Boolean).join("　");
+    if (addr) box.push({runs: [{t: addr}]});
+    const tr2 = telRuns(); if (tr2) box.push({runs: tr2});
+    if (CFG.signer) box.push({runs: [{t: CFG.signer}]});
+    box.forEach((b, i) => P.push(P_({key: "box", size: b.size || 10.5, left: 3990, box: true, boxFirst: i === 0, boxLast: i === box.length - 1, runs: b.runs})));
+    return P;
+  }
   P.push(P_({key: "sender", ind: 4410, runs: [{t: (CFG.senderLabel || "") + (CFG.zip ? (CFG.senderLabel ? "　" : "") + "〒" + CFG.zip : "")}]}));
   if (CFG.address) P.push(P_({key: "sender", ind: 4410, runs: [{t: CFG.address}]}));
   if (CFG.office) P.push(P_({key: "sender", ind: 4410, runs: [{t: CFG.office}]}));
   const tr = telRuns(); if (tr) P.push(P_({key: "sender", ind: 4410, runs: tr}));
   if (CFG.signer) P.push(P_({key: "sender", ind: 4830, runs: [{t: CFG.signer}]}));
   return P;
+}
+function docLineF(d){
+  const q = han(String(d.qty ?? "")).trim(), u = String(d.unit ?? "").trim();
+  return "□　" + String(d.name).trim() + ((q || u) ? "　" + zen(q) + u : "");
 }
 /* rough line-wrap estimate that mirrors Word (full-width = 1em, half-width ≈ .55em, 、。 may hang) */
 function charEm(ch){
@@ -3392,7 +3454,8 @@ function measure(P){
   const width = PT(PAGE.w - PAGE.left - PAGE.right);
   let h = 0;
   for (const p of P){
-    const n = p.blank ? 1 : lineCount(p.runs.map(r => r.t).join(""), p.size, PT(p.ind), width);
+    const n = p.blank ? 1 : lineCount(p.runs.map(r => r.t).join(""), p.size, PT(p.ind), width - PT((p.left || 0) + (p.right || 0)));
+    if (p.boxFirst) h += 5; if (p.boxLast) h += 5; if (p.rule) h += 3;
     h += n * PT(LH[p.size] || LH[10.5]);
   }
   return h;
@@ -3423,7 +3486,13 @@ function renderSheet(P){
   const html = P.map(p => {
     const lh = PT(LH[p.size] || LH[10.5]);
     const al = p.align === "both" ? "justify" : p.align;
-    const st = `font-size:${p.size}pt;line-height:${lh}pt;min-height:${lh}pt;text-align:${al};` + (p.ind ? `text-indent:${PT(p.ind)}pt;` : "");
+    let st = `font-size:${p.size}pt;line-height:${lh}pt;min-height:${lh}pt;text-align:${al};` + (p.ind ? `text-indent:${PT(p.ind)}pt;` : "");
+    if (p.left) st += `margin-left:${PT(p.left)}pt;`;
+    if (p.right) st += `margin-right:${PT(p.right)}pt;`;
+    if (p.rule) st += `border-bottom:.75pt solid #8a96a8;padding-bottom:3pt;`;
+    if (p.box) st += `border-left:.75pt solid #8a96a8;border-right:.75pt solid #8a96a8;padding-left:6pt;padding-right:6pt;margin-right:-6pt;margin-left:${PT(p.left || 0) - 6}pt;`
+      + (p.boxFirst ? `border-top:.75pt solid #8a96a8;padding-top:4pt;border-top-left-radius:4pt;border-top-right-radius:4pt;` : "")
+      + (p.boxLast ? `border-bottom:.75pt solid #8a96a8;padding-bottom:4pt;border-bottom-left-radius:4pt;border-bottom-right-radius:4pt;` : "");
     const inner = p.blank ? "" : p.runs.map(r => r.u ? `<u>${esc(r.t)}</u>` : esc(r.t)).join("");
     return `<p class="${p.key ? "k-" + p.key : "k-blank"}" style="${st}">${inner}</p>`;
   }).join("");
@@ -3458,9 +3527,15 @@ function rPrXml(size, u, sym){
 }
 function paraXml(p){
   const lh = LH[p.size] || LH[10.5];
-  const ind = p.ind ? `<w:ind w:firstLine="${p.ind}"/>` : "";
+  const ia = [];
+  if (p.left) ia.push(`w:left="${p.left}"`);
+  if (p.right) ia.push(`w:right="${p.right}"`);
+  if (p.ind) ia.push(`w:firstLine="${p.ind}"`);
+  const ind = ia.length ? `<w:ind ${ia.join(" ")}/>` : "";
   const jc = p.align === "both" ? "" : `<w:jc w:val="${p.align}"/>`;
-  const pPr = `<w:pPr><w:spacing w:line="${lh}" w:lineRule="exact"/>${ind}${jc}${rPrXml(p.size, false, false)}</w:pPr>`;
+  const bd = (side, sp) => `<w:${side} w:val="single" w:sz="6" w:space="${sp}" w:color="8A96A8"/>`;
+  const bdr = p.box ? `<w:pBdr>${bd("top", 4)}${bd("left", 6)}${bd("bottom", 4)}${bd("right", 6)}</w:pBdr>` : p.rule ? `<w:pBdr>${bd("bottom", 3)}</w:pBdr>` : "";
+  const pPr = `<w:pPr>${bdr}<w:spacing w:line="${lh}" w:lineRule="exact"/>${ind}${jc}${rPrXml(p.size, false, false)}</w:pPr>`;
   if (p.blank || !p.runs.length) return `<w:p>${pPr}</w:p>`;
   const runs = p.runs.map(r => `<w:r>${rPrXml(p.size, !!r.u, !!r.sym)}<w:t xml:space="preserve">${xesc(r.t)}</w:t></w:r>`).join("");
   return `<w:p>${pPr}${runs}</w:p>`;
@@ -3576,8 +3651,8 @@ async function copyText(text, okMsg){
 
 /* ---------- history ---------- */
 function snapshot(s = S){
-  const {date, mode, target, autoSama, reqdoc, freeText, tail, lead, note, docs, dest, dept, honorific, printAddressee, caseId} = s;
-  return clone({date, mode, target, autoSama, reqdoc, freeText, tail, lead, note, docs, dest, dept, honorific, printAddressee, caseId: caseId || ""});
+  const {date, mode, target, autoSama, reqdoc, freeText, tail, lead, note, docs, dest, dept, honorific, printAddressee, caseId, tone} = s;
+  return clone({date, mode, target, autoSama, reqdoc, freeText, tail, lead, note, docs, dest, dept, honorific, printAddressee, caseId: caseId || "", tone: tone || "auto"});
 }
 function recordHistory(kind){
   const snap = snapshot(), key = JSON.stringify(snap);
@@ -4092,6 +4167,7 @@ function refresh(){
   const vd = validDocs();
   $("#docsSub").textContent = vd.length ? `${vd.length}点` : "";
   $("#moreAside").textContent = [S.lead != null && S.lead !== CFG.lead ? "前置きを変更" : "", noteLines().length ? `追記${noteLines().length}行` : ""].filter(Boolean).join("・");
+  renderTone();
   renderPresets();
   renderSuggChips();
   renderChecks();
@@ -4219,7 +4295,7 @@ function openSettings(){
         <div class="field"><label class="lbl" for="cfSigner">肩書・氏名（送付者欄の最終行）</label><input class="inp" id="cfSigner" value="${esc(c.signer)}"></div>
       </div>
     </fieldset>
-    <fieldset class="fs"><legend>文面</legend>
+    <fieldset class="fs"><legend>改まった文面（役所・警察あて）</legend>
       <div class="field"><label class="lbl" for="cfTitle">表題</label><input class="inp" id="cfTitle" value="${esc(c.title)}"></div>
       <div class="g2">
         <div class="field"><label class="lbl" for="cfGreet1">あいさつ（1行目）</label><input class="inp" id="cfGreet1" value="${esc(c.greet1)}"></div>
@@ -4230,6 +4306,20 @@ function openSettings(){
       <div class="field"><label class="lbl" for="cfClose2">結びのあいさつ（2行目）</label><input class="inp" id="cfClose2" value="${esc(c.close2)}"></div>
       <div class="field"><label class="lbl" for="cfListHeading">送付書類の見出し</label><input class="inp" id="cfListHeading" value="${esc(c.listHeading)}"></div>
       <p class="hint">空欄にした行は文書から省かれます。</p>
+    </fieldset>
+    <fieldset class="fs"><legend>やわらかい文面（お客様あて）</legend>
+      <div class="g2">
+        <div class="field"><label class="lbl" for="cfFGreet1">あいさつ（1行目）</label><input class="inp" id="cfFGreet1" value="${esc(c.fGreet1)}"></div>
+        <div class="field"><label class="lbl" for="cfFGreet2">あいさつ（2行目）</label><input class="inp" id="cfFGreet2" value="${esc(c.fGreet2)}"></div>
+      </div>
+      <div class="field"><label class="lbl" for="cfFLead">前置き（既定・空欄でも可）</label><input class="inp" id="cfFLead" value="${esc(c.fLead)}"></div>
+      <div class="field"><label class="lbl" for="cfFClose1">結びのあいさつ（1行目）</label><input class="inp" id="cfFClose1" value="${esc(c.fClose1)}"></div>
+      <div class="field"><label class="lbl" for="cfFClose2">結びのあいさつ（2行目）</label><input class="inp" id="cfFClose2" value="${esc(c.fClose2)}"></div>
+      <div class="g2">
+        <div class="field"><label class="lbl" for="cfFListHeading">同封書類の見出し</label><input class="inp" id="cfFListHeading" value="${esc(c.fListHeading)}"></div>
+        <div class="field"><label class="lbl" for="cfFBoxHead">お問い合わせ欄の見出し</label><input class="inp" id="cfFBoxHead" value="${esc(c.fBoxHead)}"></div>
+      </div>
+      <p class="hint">送付先の敬称が「様」のときは、自動でこちらの文面になります（送付先の下の「文面」で切り替えられます）。</p>
     </fieldset>
     <fieldset class="fs"><legend>保存</legend>
       <div class="radios">${fp("title_dest", "表題_送付先")}${fp("date_title_dest", "日付_表題_送付先")}${fp("dest_title_date", "送付先_表題_日付")}</div>
@@ -4250,7 +4340,8 @@ function openSettings(){
     {label: "差出人・文面を既定に戻す", quiet: true, onClick: () => {
       const d = DEFAULT_SETTINGS;
       [["cfOffice", "office"], ["cfZip", "zip"], ["cfAddress", "address"], ["cfTel", "tel"], ["cfSenderLabel", "senderLabel"], ["cfSigner", "signer"], ["cfTitle", "title"],
-       ["cfGreet1", "greet1"], ["cfGreet2", "greet2"], ["cfLead", "lead"], ["cfClose1", "close1"], ["cfClose2", "close2"], ["cfListHeading", "listHeading"]]
+       ["cfGreet1", "greet1"], ["cfGreet2", "greet2"], ["cfLead", "lead"], ["cfClose1", "close1"], ["cfClose2", "close2"], ["cfListHeading", "listHeading"],
+       ["cfFGreet1", "fGreet1"], ["cfFGreet2", "fGreet2"], ["cfFLead", "fLead"], ["cfFClose1", "fClose1"], ["cfFClose2", "fClose2"], ["cfFListHeading", "fListHeading"], ["cfFBoxHead", "fBoxHead"]]
         .forEach(([id, k]) => { $("#" + id).value = d[k]; });
       $("#cfTelMark").value = d.telMark;
       toast("既定の文面を入れました。「保存」で確定します");
@@ -4264,6 +4355,8 @@ function openSettings(){
         senderLabel: v("cfSenderLabel").trim(), signer: v("cfSigner").trim(), title: v("cfTitle").trim() || DEFAULT_SETTINGS.title,
         greet1: v("cfGreet1").trim(), greet2: v("cfGreet2").trim(), lead: v("cfLead").trim(), close1: v("cfClose1").trim(), close2: v("cfClose2").trim(),
         listHeading: v("cfListHeading").trim() || "送付書類",
+        fGreet1: v("cfFGreet1").trim(), fGreet2: v("cfFGreet2").trim(), fLead: v("cfFLead").trim(), fClose1: v("cfFClose1").trim(), fClose2: v("cfFClose2").trim(),
+        fListHeading: v("cfFListHeading").trim() || "同封している書類", fBoxHead: v("cfFBoxHead").trim(),
         filePattern: ($('input[name="fp"]:checked', m.el) || {}).value || "title_dest",
         askSaveLocation: $("#cfAsk").checked, autoToday: $("#cfAutoToday").checked,
         theme: ($('input[name="th"]:checked', m.el) || {}).value || "auto"});
@@ -4459,7 +4552,7 @@ function bind(){
   onField("#tail", "tail");
   onField("#note", "note", e => autoGrow(e.target));
   onField("#dept", "dept");
-  $("#lead").addEventListener("input", e => { S.lead = e.target.value === CFG.lead ? null : e.target.value; refresh(); });
+  $("#lead").addEventListener("input", e => { S.lead = e.target.value === txt("lead") ? null : e.target.value; refresh(); });
   $("#leadResetBtn").addEventListener("click", () => { S.lead = null; $("#lead").value = leadOf(); refresh(); });
   $("#dest").addEventListener("input", e => {
     S.dest = e.target.value;
@@ -4596,7 +4689,7 @@ function bind(){
   // header
   $("#newBtn").addEventListener("click", () => {
     pushUndo();
-    Object.assign(S, {target: "", dest: "", dept: "", note: "", date: todayISO(), honorificAuto: true, honorific: "御中", caseId: ""});
+    Object.assign(S, {target: "", dest: "", dept: "", note: "", date: todayISO(), honorificAuto: true, honorific: "御中", caseId: "", tone: "auto"});
     fillForm(); $(S.mode === "request" ? "#target" : "#freeText").focus();
     toast("新しい送付状にしました（テンプレートと送付書類はそのまま）", {undo: true});
   });
@@ -4674,20 +4767,37 @@ function boot(){
   }
   if (!store.set("nsg2_probe", 1)){ const s = $("#saved"); s.classList.add("bad"); $("#savedText").textContent = "保存できません"; } else store.del("nsg2_probe");
 }
+/* ---- 文面の切り替え ---- */
+function renderTone(){
+  const t = toneOf();
+  $$("#toneBox [data-tone]").forEach(b => b.setAttribute("aria-checked", String(b.dataset.tone === t)));
+  const note = $("#toneNote");
+  if (note) note.innerHTML = (S.tone === "formal" || S.tone === "friendly")
+    ? `<button type="button" class="link-btn" id="toneAutoBtn">敬称に合わせて自動で選ぶ</button>`
+    : `敬称に合わせて自動（「様」ならやわらかい文面）`;
+  const lead = $("#lead");
+  if (lead && document.activeElement !== lead && S.lead == null) lead.value = leadOf();
+  const sheet = $("#sheet"); if (sheet) sheet.classList.toggle("friendly", t === "friendly");
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest && e.target.closest("#toneBox [data-tone]");
+  if (b){ if (S.tone !== b.dataset.tone){ pushUndo(); S.tone = b.dataset.tone; refresh(); } return; }
+  if (e.target.closest && e.target.closest("#toneAutoBtn")){ pushUndo(); S.tone = "auto"; refresh(); }
+});
 /* ---- ニシオカンリから呼ぶ入口 ---- */
 window.NKAPP = {
   getCaseId: () => (S && S.caseId) || "",
   setCaseId: id => { S.caseId = id || ""; store.set(K.state, S); nkNotify(); },
   newFor: (pre = {}) => {
     pushUndo();
-    Object.assign(S, {target: "", dest: "", dept: "", note: "", date: todayISO(), honorificAuto: true, honorific: "御中", caseId: ""}, pre);
+    Object.assign(S, {target: "", dest: "", dept: "", note: "", date: todayISO(), honorificAuto: true, honorific: "御中", caseId: "", tone: "auto"}, pre);
     if (pre.dest) { S.honorific = guessHonorific(pre.dest); S.honorificAuto = true; }
     fillForm();
   },
   open: (snap, asNew) => { loadSnapshot(snap, asNew); },
   setDest: (o = {}) => {
     pushUndo();
-    Object.assign(S, {dest: o.dest || "", dept: o.dept || "", honorific: o.honorific != null ? o.honorific : guessHonorific(o.dest), honorificAuto: false});
+    Object.assign(S, {dest: o.dest || "", dept: o.dept || "", honorific: o.honorific != null ? o.honorific : guessHonorific(o.dest), honorificAuto: false, tone: o.tone || "auto"});
     fillForm();
   },
   setTheme: t => { CFG.theme = (t === "light" || t === "dark") ? t : "auto"; applyTheme(); },
@@ -16151,7 +16261,7 @@ const Letters = (() => {
       out.push({ k: "office", label: `提出先：${office}`, dest: m ? m[1] : office, dept: m ? m[2] : "", honorific: "御中" });
     }
     const cl = cs.clientId ? clientById(cs.clientId) : null;
-    if (cl && cl.name) out.push({ k: "client", label: `顧客：${cl.name}`, dest: cl.name, dept: "", honorific: clientHonor(cl) || (cl.type === "法人" ? "御中" : "様") });
+    if (cl && cl.name) out.push({ k: "client", label: `顧客：${cl.name}`, dest: cl.name, dept: "", honorific: clientHonor(cl) || (cl.type === "法人" ? "御中" : "様"), tone: "friendly" });
     return out;
   }
 
@@ -16208,8 +16318,8 @@ const Letters = (() => {
       const c = choices[+b.dataset.ltDest];
       const ap = app();
       if (!c || !ap) return;
-      ap.setDest({ dest: c.dest, dept: c.dept, honorific: c.honorific });
-      toast(`送付先を「${[c.dest, c.dept].filter(Boolean).join(" ")} ${c.honorific}」にしました`);
+      ap.setDest({ dest: c.dest, dept: c.dept, honorific: c.honorific, tone: c.tone || "auto" });
+      toast(`送付先を「${[c.dest, c.dept].filter(Boolean).join(" ")} ${c.honorific}」にしました${c.tone === "friendly" ? "（やわらかい文面）" : ""}`);
     }));
   }
 
