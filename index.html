@@ -147,6 +147,14 @@
           },
           {
             "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "風営法許可店の事業承継（相続・合併・分割の承認申請、新規許可）",
+              "url": "https://nishioka-gyosei.github.io/fueihou-shoukei.html"
+            }
+          },
+          {
+            "@type": "Offer",
             "price": "77000",
             "priceCurrency": "JPY",
             "itemOffered": {
@@ -199,6 +207,14 @@
               "@type": "Service",
               "name": "飲食店開業・酒類販売業免許 申請代行",
               "url": "https://nishioka-gyosei.github.io/inshokuten.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "飲食店の事業承継（営業許可の地位承継届ほか）",
+              "url": "https://nishioka-gyosei.github.io/inshokuten-shoukei.html"
             }
           },
           {
@@ -1536,6 +1552,9 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 
 <style>
 /* ===== Static-page additions (no-JS safety + FAQ + entity) ===== */
+/* ヘッダーの「コラム」リンク：狭い画面では1行に収まらないため非表示（ブログへはフッターなどから） */
+.nx-header__link { white-space: nowrap; }
+@media (max-width: 480px) { .nx-header__link { display: none; } }
 
 /* Reveal animations only when JS is present — crawlers/no-JS see full content */
 html:not(.js) .reveal,
@@ -1726,6 +1745,13 @@ html:not(.js) .nx-fab { opacity: 1; transform: none; pointer-events: auto; }
           <a href="https://nishioka-gyosei.github.io/fuueihou_center.html" class="nx-service-card__link" target="_blank" rel="noopener noreferrer">無料で相談 →</a>
         </article>
         <article class="nx-service-card">
+          <div class="nx-service-card__icon" aria-hidden="true">🤝</div>
+          <h3 class="nx-service-card__title">風営法許可店の事業承継</h3>
+          <p class="nx-service-card__desc">相続は60日以内の承認申請、合併・分割は事前の承認、譲渡や法人成りは新規の許可。引き継ぎ方を判定し、申請まで代行。</p>
+          <p class="nx-service-card__price">要見積もり</p>
+          <a href="fueihou-shoukei.html" class="nx-service-card__link">詳しく見る →</a>
+        </article>
+        <article class="nx-service-card">
           <div class="nx-service-card__icon" aria-hidden="true">🌙</div>
           <h3 class="nx-service-card__title">深夜営業届出</h3>
           <p class="nx-service-card__desc">夜0時以降営業のバー・スナック等。図面作成・届出書類・警察署対応をすべて代行。営業開始10日前までの届出が必要。</p>
@@ -1779,6 +1805,13 @@ html:not(.js) .nx-fab { opacity: 1; transform: none; pointer-events: auto; }
           <p class="nx-service-card__desc">保健所・税務署への届出・申請。個人店から法人まで対応。</p>
           <p class="nx-service-card__price">55,000円〜（税込）</p>
           <a href="inshokuten.html" class="nx-service-card__link">詳しく見る →</a>
+        </article>
+        <article class="nx-service-card">
+          <div class="nx-service-card__icon" aria-hidden="true">🤝</div>
+          <h3 class="nx-service-card__title">飲食店の事業承継</h3>
+          <p class="nx-service-card__desc">店を譲り受ける・親から継ぐ・会社にする。保健所の営業許可は地位承継届で引き継ぎ、深夜営業や酒類の手続きもまとめて段取り。</p>
+          <p class="nx-service-card__price">要見積もり</p>
+          <a href="inshokuten-shoukei.html" class="nx-service-card__link">詳しく見る →</a>
         </article>
         <article class="nx-service-card">
           <div class="nx-service-card__icon" aria-hidden="true">💰</div>
@@ -2033,11 +2066,13 @@ html:not(.js) .nx-fab { opacity: 1; transform: none; pointer-events: auto; }
     <a href="minpaku.html" class="nx-footer__link">民泊許可</a>
     <a href="nochi.html" class="nx-footer__link">農地転用</a>
     <a href="fueihou.html" class="nx-footer__link">風営法許可</a>
+    <a href="fueihou-shoukei.html" class="nx-footer__link">風営法許可店の事業承継</a>
     <a href="kensetsu.html" class="nx-footer__link">建設業許可</a>
     <a href="chintai-kanri.html" class="nx-footer__link">賃貸住宅管理業登録</a>
     <a href="shinya-eigyou.html" class="nx-footer__link">深夜営業届</a>
     <a href="douroshiyou.html" class="nx-footer__link">道路使用・占用許可</a>
     <a href="inshokuten.html" class="nx-footer__link">飲食店営業許可・酒類販売</a>
+    <a href="inshokuten-shoukei.html" class="nx-footer__link">飲食店の事業承継</a>
     <a href="kaisha-setsuritsu.html" class="nx-footer__link">会社設立</a>
     <a href="sogyo-yushi.html" class="nx-footer__link">創業融資</a>
     <a href="igon.html" class="nx-footer__link">遺言書作成</a>

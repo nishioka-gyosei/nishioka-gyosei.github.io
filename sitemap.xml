@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://nishioka-gyosei.github.io/</loc>
-<lastmod>2026-10-17</lastmod>
+<lastmod>2026-10-30</lastmod>
 <priority>1.0</priority>
 </url>
 <url>
 <loc>https://nishioka-gyosei.github.io/about.html</loc>
-<lastmod>2026-10-17</lastmod>
+<lastmod>2026-10-30</lastmod>
 <priority>0.9</priority>
 </url>
 <url>
@@ -21,8 +21,18 @@
 <priority>0.9</priority>
 </url>
 <url>
+<loc>https://nishioka-gyosei.github.io/fueihou-shoukei.html</loc>
+<lastmod>2026-10-30</lastmod>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://nishioka-gyosei.github.io/inshokuten-shoukei.html</loc>
+<lastmod>2026-10-30</lastmod>
+<priority>0.9</priority>
+</url>
+<url>
 <loc>https://nishioka-gyosei.github.io/fueihou.html</loc>
-<lastmod>2026-10-17</lastmod>
+<lastmod>2026-10-30</lastmod>
 <priority>0.9</priority>
 </url>
 <url>
@@ -42,7 +52,7 @@
 </url>
 <url>
 <loc>https://nishioka-gyosei.github.io/inshokuten.html</loc>
-<lastmod>2026-10-17</lastmod>
+<lastmod>2026-10-30</lastmod>
 <priority>0.9</priority>
 </url>
 <url>
@@ -72,12 +82,12 @@
 </url>
 <url>
 <loc>https://nishioka-gyosei.github.io/police.html</loc>
-<lastmod>2026-10-17</lastmod>
+<lastmod>2026-10-30</lastmod>
 <priority>0.9</priority>
 </url>
 <url>
 <loc>https://nishioka-gyosei.github.io/ryoukin.html</loc>
-<lastmod>2026-10-17</lastmod>
+<lastmod>2026-10-30</lastmod>
 <priority>0.9</priority>
 </url>
 <url>
@@ -87,7 +97,7 @@
 </url>
 <url>
 <loc>https://nishioka-gyosei.github.io/shinya-eigyou.html</loc>
-<lastmod>2026-10-17</lastmod>
+<lastmod>2026-10-30</lastmod>
 <priority>0.9</priority>
 </url>
 <url>
@@ -187,7 +197,7 @@
 </url>
 <url>
 <loc>https://nishioka-gyosei.github.io/blog/fueihou/fueihou-jouto-souzoku.html</loc>
-<lastmod>2026-10-17</lastmod>
+<lastmod>2026-10-30</lastmod>
 <priority>0.7</priority>
 </url>
 <url>
@@ -462,7 +472,7 @@
 </url>
 <url>
 <loc>https://nishioka-gyosei.github.io/blog/shinya/shinya-eigyo-meigi-henkou.html</loc>
-<lastmod>2026-10-17</lastmod>
+<lastmod>2026-10-30</lastmod>
 <priority>0.7</priority>
 </url>
 <url>
@@ -612,7 +622,7 @@
 </url>
 <url>
 <loc>https://nishioka-gyosei.github.io/blog/inshoku/hiroshima-inshokuten-eigyo-kyoka.html</loc>
-<lastmod>2026-10-19</lastmod>
+<lastmod>2026-10-30</lastmod>
 <priority>0.7</priority>
 </url>
 <url>
