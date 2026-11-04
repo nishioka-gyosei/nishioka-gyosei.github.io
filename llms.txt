@@ -52,7 +52,7 @@
 - 相談は無料？ → 初回相談は無料。LINEは24時間受付（返信は通常24時間以内、土日祝も対応）。
 - なぜ元警察官だと警察申請に強い？ → 風営法・深夜営業届・古物商・道路使用許可はいずれも警察署が窓口。審査する側の視点を知っているため、差し戻しの少ない書類を最初から作れる。
 
-## コラム記事一覧（許認可の実務解説・全119本）
+## コラム記事一覧（許認可の実務解説・全120本）
 
 > 広島の許認可・行政手続きについて、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事の要点）・結論・FAQ・根拠（法令や公的資料）を備える。
 
@@ -129,11 +129,12 @@
 - [工事や作業で道路を使うときの道路使用許可｜足場・クレーン・高所作業車・引越しと広島県警の手続き](https://nishioka-gyosei.github.io/blog/douro/kouji-sagyou-douro-shiyou-kyoka.html)
 - [道路法24条の承認とは？駐車場や店舗の出入口をつくる乗り入れ工事の手続き](https://nishioka-gyosei.github.io/blog/douro/dourohou-24jou-shounin-noriire.html)
 
-### 車庫証明（自動車保管場所証明）（3本）
+### 車庫証明（自動車保管場所証明）（4本）
 
 - [広島で車庫証明を取るには？必要書類・手数料と2kmルール](https://nishioka-gyosei.github.io/blog/shako/hiroshima-shako-shomei.html)
 - [車庫証明の所在図・配置図の書き方｜広島県警の記載例から必要な項目を整理](https://nishioka-gyosei.github.io/blog/shako/shako-shomei-shozaizu-haichizu.html)
 - [駐車場を変えたら15日以内に届出｜保管場所の変更届と引越しのときの車庫証明](https://nishioka-gyosei.github.io/blog/shako/shako-hokanbasho-henkou-todokede.html)
+- [車を相続したときの名義変更｜運輸支局での移転登録と車庫証明が必要な場合](https://nishioka-gyosei.github.io/blog/shako/kuruma-souzoku-meigi-henkou.html)
 
 ### 警備業（4本）
 
