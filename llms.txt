@@ -52,7 +52,7 @@
 - 相談は無料？ → 初回相談は無料。LINEは24時間受付（返信は通常24時間以内、土日祝も対応）。
 - なぜ元警察官だと警察申請に強い？ → 風営法・深夜営業届・古物商・道路使用許可はいずれも警察署が窓口。審査する側の視点を知っているため、差し戻しの少ない書類を最初から作れる。
 
-## コラム記事一覧（許認可の実務解説・全118本）
+## コラム記事一覧（許認可の実務解説・全119本）
 
 > 広島の許認可・行政手続きについて、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事の要点）・結論・FAQ・根拠（法令や公的資料）を備える。
 
@@ -181,10 +181,11 @@
 - [運転代行の認定申請に必要な書類と流れ｜広島の窓口・手数料・審査期間](https://nishioka-gyosei.github.io/blog/daiko/unten-daiko-nintei-shorui-nagare.html)
 - [飲食店が問われる飲酒運転の責任とは？酒類提供の罰則と運転代行の使い方](https://nishioka-gyosei.github.io/blog/daiko/inshokuten-insyu-unten-sekinin.html)
 
-### 賃貸管理（賃貸住宅管理業）（3本）
+### 賃貸管理（賃貸住宅管理業）（4本）
 - [賃貸住宅管理業者登録とは？200戸の数え方と業務管理者](https://nishioka-gyosei.github.io/blog/chintai/chintai-kanrigyou-touroku-towa.html)
 - [業務管理者とは？賃貸住宅管理業で営業所ごとに必要な人の要件](https://nishioka-gyosei.github.io/blog/chintai/chintai-gyoumu-kanrisha-youken.html)
 - [サブリース規制とは？登録が不要でも適用される4つのルール](https://nishioka-gyosei.github.io/blog/chintai/sublease-tokutei-chintaishaku-kisei.html)
+- [管理受託契約の重要事項説明と契約書面｜賃貸住宅管理業者がオーナーに説明する11項目と進め方](https://nishioka-gyosei.github.io/blog/chintai/kanri-jutaku-keiyaku-juyou-jikou-setsumei.html)
 
 ### 民泊（住宅宿泊事業・簡易宿所）（4本）
 
