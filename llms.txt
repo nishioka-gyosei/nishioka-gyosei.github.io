@@ -52,11 +52,11 @@
 - 相談は無料？ → 初回相談は無料。LINEは24時間受付（返信は通常24時間以内、土日祝も対応）。
 - なぜ元警察官だと警察申請に強い？ → 風営法・深夜営業届・古物商・道路使用許可はいずれも警察署が窓口。審査する側の視点を知っているため、差し戻しの少ない書類を最初から作れる。
 
-## コラム記事一覧（許認可の実務解説・全120本）
+## コラム記事一覧（許認可の実務解説・全121本）
 
 > 広島の許認可・行政手続きについて、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事の要点）・結論・FAQ・根拠（法令や公的資料）を備える。
 
-### 風営法（風俗営業許可）（24本）
+### 風営法（風俗営業許可）（25本）
 
 - [広島の風営法許可とは？5種類の営業許可をわかりやすく解説](https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-fueihou-kyoka-4shurui.html)
 - [風俗営業許可の費用相場｜広島で許可取得にいくらかかる？](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-kyoka-hiyou-souba.html)
@@ -82,6 +82,7 @@
 - [コンセプトカフェ・メイドカフェは風営法対象？接待の線引きと最新の注意点](https://nishioka-gyosei.github.io/blog/fueihou/concafe-meidcafe-fueihou.html)
 - [【西岡が答える】風営法相談で一番多い「これってOK？」事例集](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-korette-ok-jireishu.html)
 - [映像送信型性風俗特殊営業の届出代行｜必要書類・期限・管轄警察署](https://nishioka-gyosei.github.io/blog/eizo-haishin-fuzoku-todokede-daiko.html)
+- [特定遊興飲食店営業許可とは？深夜にショーやダンスで客を楽しませる店の許可と、広島で営業できる地域](https://nishioka-gyosei.github.io/blog/fueihou/tokutei-yuukyou-inshokuten-kyoka.html)
 
 ### 深夜営業（深夜酒類提供飲食店）（16本）
 
