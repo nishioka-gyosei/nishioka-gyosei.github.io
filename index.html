@@ -249,6 +249,16 @@
           },
           {
             "@type": "Offer",
+            "price": "33000",
+            "priceCurrency": "JPY",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "家系図作成",
+              "url": "https://nishioka-gyosei.github.io/kakeizu.html"
+            }
+          },
+          {
+            "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
               "name": "民泊（住宅宿泊事業）届出 代行",
@@ -1013,6 +1023,8 @@ img { max-width: 100%; display: block; }
   border-radius: 8px;
   overflow: hidden;
 }
+.nx-service-grid--3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 920px) and (min-width: 721px) { .nx-service-grid--3 { grid-template-columns: repeat(2, 1fr); } .nx-service-grid--3 > :last-child:nth-child(odd) { grid-column: 1 / -1; } }
 .nx-service-card {
   background: #fff;
   padding: 24px;
@@ -1825,7 +1837,7 @@ html:not(.js) .nx-fab { opacity: 1; transform: none; pointer-events: auto; }
 
     <div class="nx-service-group reveal">
       <span class="nx-group-label nx-group-label--navy">暮らしのサポート</span>
-      <div class="nx-service-grid">
+      <div class="nx-service-grid nx-service-grid--3">
         <article class="nx-service-card">
           <div class="nx-service-card__icon" aria-hidden="true">📜</div>
           <h3 class="nx-service-card__title">遺言書作成</h3>
@@ -1839,6 +1851,13 @@ html:not(.js) .nx-fab { opacity: 1; transform: none; pointer-events: auto; }
           <p class="nx-service-card__desc">お墓の引っ越し・整理。書類作成から関係機関への連絡まで代行。</p>
           <p class="nx-service-card__price">44,000円〜（税込）</p>
           <a href="hakajimai.html" class="nx-service-card__link">詳しく見る →</a>
+        </article>
+        <article class="nx-service-card">
+          <div class="nx-service-card__icon" aria-hidden="true">🌳</div>
+          <h3 class="nx-service-card__title">家系図作成</h3>
+          <p class="nx-service-card__desc">戸籍をたどってご先祖のつながりを一枚に。PDFでお渡し、修正は何度でも無料。</p>
+          <p class="nx-service-card__price">33,000円〜（税込）</p>
+          <a href="kakeizu.html" class="nx-service-card__link">詳しく見る →</a>
         </article>
       </div>
     </div>
@@ -2079,6 +2098,7 @@ html:not(.js) .nx-fab { opacity: 1; transform: none; pointer-events: auto; }
     <a href="hakajimai.html" class="nx-footer__link">墓じまい</a>
     <a href="ryoukin.html" class="nx-footer__link">料金一覧</a>
 <a href="koe.html" class="nx-footer__link">お客様の声</a>
+<a href="kakeizu.html" class="nx-footer__link">家系図作成</a>
     <a href="simulator.html" class="nx-footer__link">料金シミュレーター</a>
   </nav>
 </footer>
