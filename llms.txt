@@ -35,6 +35,7 @@
 - [民泊（住宅宿泊事業届出・旅館業許可）](https://nishioka-gyosei.github.io/minpaku.html): 要見積もり
 - [警察申請まとめ](https://nishioka-gyosei.github.io/police.html): 風営法・深夜営業・古物商・道路使用・警備業など警察署が窓口の申請の一覧
 - [料金一覧](https://nishioka-gyosei.github.io/ryoukin.html): 各手続きの報酬の目安
+- [お客様の声](https://nishioka-gyosei.github.io/koe.html): Googleマップにいただいた口コミの紹介
 - [士業の先生方へ（業務連携）](https://nishioka-gyosei.github.io/sagyoshi-renkai.html): 弁護士・司法書士・税理士・社労士からの許認可案件の受任
 
 ## 特徴
