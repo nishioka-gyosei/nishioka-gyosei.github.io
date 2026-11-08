@@ -11857,7 +11857,7 @@ const DEFAULT_EXP_MASTER = [
   {cat:'駐車場代', name:'駐車場代（実費）', price:0}
 ];
 
-const BASE_CATEGORIES = ['許可申請','風営法','深夜営業','古物商','飲食・酒類','建設','農地','民泊','産廃','相続','法人','たばこ','同行','その他'];
+const BASE_CATEGORIES = ['許可申請','風営法','深夜営業','古物商','飲食・酒類','建設','農地','民泊','産廃','相続','家系図','法人','たばこ','同行','その他'];
 const EXP_CATS = ['立替金','証紙・手数料','登記簿等公文書取得','手数料','郵送料','交通費','駐車場代','その他経費'];
 const STATUS = { estimate: '見積中', ordered: '受注', invoiced: '請求済', paid: '入金済', lost: '見送り' };
 const STATUS_ORDER = ['estimate', 'ordered', 'invoiced', 'paid'];
@@ -11903,6 +11903,7 @@ function rebind() {
   trash = d.trash.invoices;
   versions = d.invoiceVersions;
   meta = d.meta.docs;
+  seedKakeizu();
   if (inited) {
     rebuildIndexes();
     renderSnippetChips();
@@ -12139,6 +12140,43 @@ function normMaster(dm) {
   const sets = Array.isArray(m.sets) ? m.sets.filter(x => x && typeof x === 'object') : defaultSets(fee);
   sets.forEach(x => { if (!x.id) x.id = uid('s'); });
   return { fee, exp, sets };
+}
+
+/* 家系図作成の見積もり：報酬マスタ・セット・備考の定型文を、足りないときだけ1回追加する（既存データは変えない） */
+const KAKEIZU_SEED_KEY = 'nk8.docs.seed.kakeizu1';
+const KAKEIZU_REMARKS = [
+  '※家系図作成の報酬は、1系統（名字ひとつ）ごとの金額です。',
+  '※広島市内の役所への戸籍請求は、基本料金に含みます。広島市外の役所への請求は、1回ごとに5,000円（税別）です。回数は、本籍地がどの市町村にあるかで変わります。',
+  '※戸籍の交付手数料（戸籍謄本450円、除籍・改製原戸籍謄本750円）と郵送料は実費です。通数は見込みで、実際にかかった分で精算します。',
+  '※戸籍は、ご依頼者様の委任状により取り寄せます。',
+  '※家系図はPDFデータでお渡しします。収集した戸籍に基づく直しは、何度でも無料です。'
+];
+function seedKakeizu() {
+  if (!settings || !Array.isArray(master) || !Array.isArray(sets)) return;
+  if (storage.get(KAKEIZU_SEED_KEY, null)) return;
+  let changed = false;
+  [{ cat: '家系図', name: '家系図作成（1系統・名字ひとつ）', price: 30000, unit: '系統' },
+   { cat: '家系図', name: '広島市外の役所への戸籍請求', price: 5000, unit: '回' }].forEach(it => {
+    if (!master.some(m => m.name === it.name)) { master.push(Object.assign({}, it)); changed = true; }
+  });
+  if (!sets.some(s => s.name === '家系図作成（1系統）')) {
+    sets.push({ id: uid('s'), name: '家系図作成（1系統）', subject: '家系図作成', createdAt: Date.now(),
+      fees: [
+        { cat: '家系図', name: '家系図作成（1系統・名字ひとつ）', qty: 1, unit: '系統', unitPrice: 30000 },
+        { cat: '家系図', name: '広島市外の役所への戸籍請求', qty: 1, unit: '回', unitPrice: 5000 }
+      ],
+      exps: [
+        { cat: '登記簿等公文書取得', name: '除籍謄本・改製原戸籍謄本', qty: 3, unit: '通', unitPrice: 750, taxable: false },
+        { cat: '登記簿等公文書取得', name: '戸籍謄本（戸籍全部事項証明書）', qty: 1, unit: '通', unitPrice: 450, taxable: false }
+      ],
+      remarks: KAKEIZU_REMARKS.join('\n') });
+    changed = true;
+  }
+  if (Array.isArray(settings.snippets)) {
+    KAKEIZU_REMARKS.forEach(r => { if (!settings.snippets.includes(r)) { settings.snippets.push(r); changed = true; } });
+  }
+  storage.set(KAKEIZU_SEED_KEY, { at: Date.now() });
+  if (changed) { state.data.docsMaster.fee = master; state.data.docsMaster.sets = sets; state.data.settings.docs = settings; save(); }
 }
 
 
@@ -13358,6 +13396,7 @@ function applySet(s, mode) {
   if (!tbodyOf('fee').children.length) tbodyOf('fee').appendChild(makeRow('fee'));
   if (!tbodyOf('exp').children.length) tbodyOf('exp').appendChild(makeRow('exp'));
   if (!val('subject').trim() && s.subject) setVal('subject', s.subject);
+  if (s.remarks && (mode === 'replace' || !$('remarks').value.trim())) setVal('remarks', s.remarks);
   suppressInput = false;
   onFormInput();
   toast(`セット「${s.name}」を${mode === 'replace' ? '読み込み' : '追加し'}ました`);
@@ -13369,7 +13408,7 @@ function saveSetFromForm() {
   if (!name) return;
   const existing = sets.find(s => s.name === name);
   if (existing && !confirm(`「${name}」はすでにあります。今の明細で上書きしますか？`)) return;
-  const data = { name, subject: d.subject, fees: d.fees, exps: d.exps, taxMode: d.taxMode, updatedAt: Date.now() };
+  const data = { name, subject: d.subject, fees: d.fees, exps: d.exps, taxMode: d.taxMode, remarks: d.remarks, updatedAt: Date.now() };
   if (existing) Object.assign(existing, data); else sets.unshift(Object.assign({ id: uid('s'), createdAt: Date.now() }, data));
   persistSets();
   toast(`セット「${name}」を保存しました。次からは「セットから読込」で呼び出せます`);
