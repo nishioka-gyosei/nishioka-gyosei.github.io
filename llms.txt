@@ -26,9 +26,9 @@
 - [建設業許可](https://nishioka-gyosei.github.io/kensetsu.html): 要見積もり。新規・更新・業種追加・決算変更
 - [賃貸住宅管理業者登録（国土交通大臣登録）](https://nishioka-gyosei.github.io/chintai-kanri.html): 132,000円〜（別途登録免許税90,000円）。管理戸数200戸以上は登録義務。gBizID取得〜電子申請〜補正対応まで一括代行、電子申請のため全国対応
 - [会社設立](https://nishioka-gyosei.github.io/kaisha-setsuritsu.html): 150,000円〜（実費別）
-- [飲食店営業許可](https://nishioka-gyosei.github.io/inshokuten.html): 55,000円〜。保健所への営業許可の申請（工事前の図面の確認・申請・施設検査の立会い）。広島市の手数料は17,000円、許可証は検査日から7日程度
+- [飲食店営業許可](https://nishioka-gyosei.github.io/inshokuten.html): 55,000円〜。保健所への営業許可の申請（工事前の図面の確認・申請・施設検査の立会い）。広島市の手数料は17,000円、許可証は検査日から7日程度。角打ち（酒屋の店内で飲んでもらう営業）のお店の相談にも対応
 - [飲食店の事業承継（営業許可の地位承継届）](https://nishioka-gyosei.github.io/inshokuten-shoukei.html): 要見積もり。事業譲渡・相続・合併・会社分割・法人成りのとき、保健所の飲食店営業許可は地位承継届で引き継ぐ（食品衛生法第56条、事業譲渡は2023年12月13日から）。深夜営業の届出は新規のやり直し、酒類販売業免許は相続・事業譲渡なら税務署へ申告
-- [酒類販売業免許](https://nishioka-gyosei.github.io/shuhan.html): 150,000円〜。税務署への免許の申請（一般酒類小売・通信販売酒類小売・酒類卸売・期限付）。登録免許税は小売業免許3万円・卸売業免許9万円、標準処理期間は申請の翌日から2か月以内
+- [酒類販売業免許](https://nishioka-gyosei.github.io/shuhan.html): 150,000円〜。税務署への免許の申請（一般酒類小売・通信販売酒類小売・酒類卸売・期限付）。登録免許税は小売業免許3万円・卸売業免許9万円、標準処理期間は申請の翌日から2か月以内。角打ちのお店の相談にも対応（酒類販売業免許と飲食店営業許可をまとめて段取り）
 - [創業融資サポート](https://nishioka-gyosei.github.io/sogyo-yushi.html): 55,000円〜＋成功報酬
 - [遺言書作成](https://nishioka-gyosei.github.io/igon.html): 66,000円〜
 - [墓じまい（改葬許可）](https://nishioka-gyosei.github.io/hakajimai.html): 44,000円〜
