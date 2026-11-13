@@ -60,11 +60,11 @@
 - 相談は無料？ → 初回相談は無料。LINEは24時間受付（返信は通常24時間以内、土日祝も対応）。
 - なぜ元警察官だと警察申請に強い？ → 風営法・深夜営業届・古物商・道路使用許可はいずれも警察署が窓口。警察署の中で書類がどう回るか、警察がどんな狙いで書類を求めるかを知っているため、狙いに沿った書類を最初から作り、速やかに申請できる。
 
-## コラム記事一覧（許認可の実務解説・全129本）
+## コラム記事一覧（許認可の実務解説・全130本）
 
 > 広島の許認可・行政手続きについて、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事の要点）・結論・FAQ・根拠（法令や公的資料）を備える。
 
-### 風営法（風俗営業許可）（29本）
+### 風営法（風俗営業許可）（30本）
 
 - [広島の風営法許可とは？5種類の営業許可をわかりやすく解説](https://nishioka-gyosei.github.io/blog/fueihou/hiroshima-fueihou-kyoka-4shurui.html)
 - [風俗営業許可の費用相場｜広島で許可取得にいくらかかる？](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-kyoka-hiyou-souba.html)
@@ -95,6 +95,7 @@
 - [麻雀店（雀荘）を開くには？風営法の許可（4号営業）の要件と、広島での申請の流れ](https://nishioka-gyosei.github.io/blog/fueihou/mahjong-jansou-fueihou-kyoka.html)
 - [2025年の風営法改正で何が変わった？キャバクラ・スナック・ホストクラブが守る新しいルール](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-kaisei-2025-point.html)
 - [深夜営業の届出から風俗営業の許可に切り替えるには？スナック・ガールズバーが接待をしたいときの手順](https://nishioka-gyosei.github.io/blog/fueihou/shinya-kara-fueihou-kyoka-kirikae.html)
+- [広島で風俗営業は何時まで営業できる？午前1時まで営業できる日と地域、パチンコ店の営業時間](https://nishioka-gyosei.github.io/blog/fueihou/fueihou-eigyou-jikan-hiroshima.html)
 
 ### 深夜営業（深夜酒類提供飲食店）（16本）
 
