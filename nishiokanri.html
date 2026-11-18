@@ -3231,16 +3231,18 @@ const BUILTIN = [
   {id: "b3", name: "建設業許可 申請書類送付", builtin: true, mode: "free", reqdoc: "", freeText: "建設業許可（般・新規）申請書類一式", tail: "を送付いたします。",
    docs: [{name: "許可申請書", qty: "1", unit: "部"}, RETURN_ENV]},
   {id: "b4", name: "古物商許可 申請書類送付", builtin: true, mode: "free", reqdoc: "", freeText: "古物商許可申請書類一式", tail: "を送付いたします。",
-   docs: [{name: "許可申請書", qty: "1", unit: "部"}, {name: "添付書類一式", qty: "1", unit: "部"}, RETURN_ENV]}
+   docs: [{name: "許可申請書", qty: "1", unit: "部"}, {name: "添付書類一式", qty: "1", unit: "部"}, RETURN_ENV]},
+  {id: "b5", name: "非農地証明 申請書類送付", builtin: true, mode: "free", reqdoc: "", freeText: "非農地証明申請書類一式", tail: "を送付いたします。",
+   docs: [{name: "非農地証明申請書", qty: "1", unit: "部"}, {name: "位置図・公図の写し", qty: "1", unit: "式"}, {name: "登記事項証明書", qty: "1", unit: "通"}, {name: "現況写真", qty: "1", unit: "式"}, {name: "委任状", qty: "1", unit: "通"}, RETURN_ENV]}
 ];
 const SUGG = {
   reqdoc: ["身分証明書", "戸籍謄本", "戸籍抄本", "住民票", "戸籍の附票", "登記されていないことの証明書", "除籍謄本"],
   free: ["建設業許可申請書類一式", "古物商許可申請書類一式", "風俗営業許可申請書類一式", "深夜酒類提供飲食店営業開始届出書類一式",
-         "産業廃棄物収集運搬業許可申請書類一式", "賃貸住宅管理業者登録申請書類一式", "道路使用許可申請書類一式", "会社設立書類一式"],
+         "産業廃棄物収集運搬業許可申請書類一式", "賃貸住宅管理業者登録申請書類一式", "道路使用許可申請書類一式", "会社設立書類一式", "非農地証明申請書類一式", "農地転用許可申請書類一式"],
   tail: ["をさせていただきました。", "を送付いたします。", "を提出いたします。", "をお送りいたします。", "を同封いたしました。"],
   docs: [["申請書", "1", "部"], ["委任状", "1", "通"], ["定額小為替", "1", "枚"], ["西岡の身分証コピー", "1", "通"], ["返信用封筒（レターパック）", "1", "通"],
          ["職務上請求書", "1", "通"], ["許可申請書", "1", "部"], ["添付書類一式", "1", "部"], ["返信用封筒（切手貼付）", "1", "通"], ["行政書士証票の写し", "1", "通"],
-         ["住民票", "1", "通"], ["印鑑証明書", "1", "通"], ["登記事項証明書", "1", "通"], ["納税証明書", "1", "通"]],
+         ["住民票", "1", "通"], ["印鑑証明書", "1", "通"], ["登記事項証明書", "1", "通"], ["納税証明書", "1", "通"], ["公図の写し", "1", "通"], ["位置図", "1", "通"], ["現況写真", "1", "式"]],
   units: ["部", "通", "枚", "冊", "式", "組", "件", "点"],
   dept: ["市民課", "戸籍住民課", "市民窓口課", "住民課", "戸籍係"]
 };
@@ -4873,6 +4875,7 @@ const DEFAULT_CATEGORIES = [
   "産廃収集運搬",
   "賃貸住宅管理業",
   "農地転用",
+  "非農地証明",
   "酒類販売免許",
   "飲食店営業許可",
   "会社設立",
@@ -5217,6 +5220,29 @@ const DEFAULT_TEMPLATES = [
       "申請書・届出書の作成",
       "農業委員会へ提出（締切日の確認）",
       "許可書・受理通知書の受領"
+    ]
+  },
+  {
+    id: "tpl-hinouchi",
+    name: "非農地証明",
+    category: "非農地証明",
+    title: "非農地証明申請",
+    office: "農業委員会",
+    periodN: null, periodUnit: "days",
+    fee: null, expense: 0,
+    note: "登記の地目が田・畑でも、長く農地として使われていない土地を「農地ではない」と証明してもらう手続き（地目変更登記などに使う）。広島市：手数料1枚700円（6筆まで、2枚目以降は1枚ごとに100円）、締切は毎月15日と月末、交付は申請から約2週間後。添付書類は農業委員会事務局へ事前に確認。",
+    checklist: [
+      "登記事項証明書・公図の取得（地目が田・畑か確認）",
+      "現地の確認と現況写真の撮影",
+      "農地でなくなった時期と経緯の聞き取り",
+      "時期を裏付ける資料の収集（航空写真・固定資産の課税台帳・建物の登記など）",
+      "農地法違反の転用として扱われる案件でないかの確認",
+      "位置図の作成",
+      "添付書類を農業委員会事務局へ事前確認",
+      "非農地証明申請書・委任状の作成",
+      "締切日（広島市は毎月15日・月末）までに提出",
+      "証明書の受領（申請から約2週間後）",
+      "地目変更登記の案内（土地家屋調査士の紹介）"
     ]
   },
   {
@@ -11825,6 +11851,7 @@ const STANDARD_FEE_ITEMS = [
   {cat:'農地', name:'農地法第3条許可申請'},
   {cat:'農地', name:'農地法第4条・第5条許可申請'},
   {cat:'農地', name:'農地法第4条・第5条届出'},
+  {cat:'農地', name:'非農地証明申請'},
   {cat:'産廃', name:'産業廃棄物収集運搬業許可申請'},
   {cat:'法人', name:'株式会社設立（定款作成・認証）'},
   {cat:'法人', name:'合同会社設立（定款作成）'},
@@ -11850,6 +11877,8 @@ const DEFAULT_EXP_MASTER = [
   {cat:'登記簿等公文書取得', name:'登記事項証明書（書面請求）', price:600, unit:'通'},
   {cat:'登記簿等公文書取得', name:'登記事項証明書（オンライン請求・送付）', price:520, unit:'通'},
   {cat:'登記簿等公文書取得', name:'印鑑証明書（法務局・書面請求）', price:500, unit:'通'},
+  {cat:'登記簿等公文書取得', name:'公図の写し（地図証明書・書面請求）', price:450, unit:'通'},
+  {cat:'証紙・手数料', name:'非農地証明手数料（広島市・1枚6筆まで）', price:700, unit:'枚'},
   {cat:'郵送料', name:'レターパックプラス', price:600, unit:'通'},
   {cat:'郵送料', name:'レターパックライト', price:430, unit:'通'},
   {cat:'郵送料', name:'定形郵便（50gまで）', price:110, unit:'通'},
@@ -11904,6 +11933,7 @@ function rebind() {
   versions = d.invoiceVersions;
   meta = d.meta.docs;
   seedKakeizu();
+  seedHinouchi();
   if (inited) {
     rebuildIndexes();
     renderSnippetChips();
@@ -12179,6 +12209,40 @@ function seedKakeizu() {
   if (changed) { state.data.docsMaster.fee = master; state.data.docsMaster.sets = sets; state.data.settings.docs = settings; save(); }
 }
 
+
+/* 非農地証明の見積もり：報酬マスタ・実費・セット・備考の定型文を、足りないときだけ1回追加する（既存データは変えない） */
+const HINOUCHI_SEED_KEY = 'nk8.docs.seed.hinouchi1';
+const HINOUCHI_REMARKS = [
+  '※非農地証明の交付手数料（広島市：1枚700円・6筆まで。2枚目以降は1枚ごとに100円）と、登記事項証明書・公図の取得費用は実費です。',
+  '※証明書の交付は、農業委員会の締切日（広島市は毎月15日と月末）から約2週間後です。',
+  '※証明書の交付後の地目変更登記は、土地家屋調査士をご紹介します。'
+];
+function seedHinouchi() {
+  if (!settings || !Array.isArray(master) || !Array.isArray(sets) || !Array.isArray(expMaster)) return;
+  if (storage.get(HINOUCHI_SEED_KEY, null)) return;
+  let changed = false;
+  if (!master.some(m => m.name === '非農地証明申請')) { master.push({ cat: '農地', name: '非農地証明申請', price: 0, unit: '' }); changed = true; }
+  [{ cat: '証紙・手数料', name: '非農地証明手数料（広島市・1枚6筆まで）', price: 700, unit: '枚', taxable: false },
+   { cat: '登記簿等公文書取得', name: '公図の写し（地図証明書・書面請求）', price: 450, unit: '通', taxable: false }].forEach(it => {
+    if (!expMaster.some(m => m.name === it.name)) { expMaster.push(Object.assign({}, it)); changed = true; }
+  });
+  if (!sets.some(s => s.name === '非農地証明')) {
+    sets.push({ id: uid('s'), name: '非農地証明', subject: '非農地証明申請', createdAt: Date.now(),
+      fees: [{ cat: '農地', name: '非農地証明申請', qty: 1, unit: '件', unitPrice: (master.find(m => m.name === '非農地証明申請') || {}).price || 0 }],
+      exps: [
+        { cat: '証紙・手数料', name: '非農地証明手数料（広島市・1枚6筆まで）', qty: 1, unit: '枚', unitPrice: 700, taxable: false },
+        { cat: '登記簿等公文書取得', name: '登記事項証明書（書面請求）', qty: 1, unit: '通', unitPrice: 600, taxable: false },
+        { cat: '登記簿等公文書取得', name: '公図の写し（地図証明書・書面請求）', qty: 1, unit: '通', unitPrice: 450, taxable: false }
+      ],
+      remarks: HINOUCHI_REMARKS.join('\n') });
+    changed = true;
+  }
+  if (Array.isArray(settings.snippets)) {
+    HINOUCHI_REMARKS.forEach(r => { if (!settings.snippets.includes(r)) { settings.snippets.push(r); changed = true; } });
+  }
+  storage.set(HINOUCHI_SEED_KEY, { at: Date.now() });
+  if (changed) { state.data.docsMaster.fee = master; state.data.docsMaster.exp = expMaster; state.data.docsMaster.sets = sets; state.data.settings.docs = settings; save(); }
+}
 
 /* ===================== 索引（使用回数・前回単価・候補） ===================== */
 function rebuildIndexes() {
@@ -12879,6 +12943,7 @@ const CASE_CAT_RULES = [
   [/建設業|経営事項審査|経審|入札参加|決算変更届/, '建設業許可'],
   [/産業廃棄物|産廃/, '産廃収集運搬'],
   [/賃貸住宅管理/, '賃貸住宅管理業'],
+  [/非農地/, '非農地証明'],
   [/農地/, '農地転用'],
   [/酒類販売|酒販|酒類の販売/, '酒類販売免許'],
   [/飲食店営業|食品衛生|菓子製造/, '飲食店営業許可'],
@@ -14311,6 +14376,11 @@ const BUILTIN = [
     items: [['土地の表示', '', PH_LAND, 'land'], ['転用の目的', '農地から宅地への変更', ''], ['権利の内容', '所有権移転', '']], roles: ['譲渡人', '譲受人'], kw: '農地 5条 転用 売買', legacy: ['nouchi5'] },
   { key: 'nouchi5_todoke', cat: 'farm', label: '農地法第５条 届出（市街化区域）', procedure: '農地法第５条第１項第６号の規定に基づく農地転用届出手続き', note: NOTE_NOUCHI, noteOn: true,
     items: [['土地の表示', '', PH_LAND, 'land'], ['転用の目的', '農地から宅地への変更', ''], ['権利の内容', '所有権移転', '']], roles: ['譲渡人', '譲受人'], kw: '農地 5条 届出 市街化区域' },
+  { key: 'hinouchi', cat: 'farm', label: '非農地証明の申請', procedure: '農業委員会に対する非農地証明（農地法の適用を受けない土地であることの証明）の申請及び証明書の受領に関する手続き',
+    items: [['土地の表示', '', PH_LAND, 'land'], ['土地の現況', '', '例：宅地（昭和〇〇年頃から住宅の敷地として使用）'], ['証明の使用目的', '地目変更登記のため', '']],
+    roles: ['申請者'],
+    hint: '登記の地目が田・畑のままでも、長い間農地として使われていない土地について、農業委員会が「農地ではない」ことを証明するものです（地目変更登記などに使います）。広島市は手数料1枚700円（6筆まで）、締切は毎月15日と月末、交付は申請から約2週間後です。添付書類は事前に農業委員会事務局へ確認してください。',
+    kw: '非農地 非農地証明 現況証明 地目変更 農業委員会 田 畑 宅地 雑種地 農地でない' },
 
   { key: 'inshoku', cat: 'biz', label: '飲食店営業許可', procedure: '食品衛生法第５５条第１項の規定に基づく飲食店営業許可申請手続き',
     items: [['営業所の名称', '', ''], ['営業所の所在地', '', '']], roles: ['申請者'], kw: '飲食 保健所 食品衛生', legacy: ['inshoku'] },
@@ -16655,6 +16725,32 @@ function showMigrationReport(report) {
 }
 
 
+/* 後から足した業務（非農地証明）を、保存済みの設定にも1回だけ追加する（消した後に戻すことはしない） */
+function seedHubAdditions() {
+  const KEY = "nk8.seed.hinouchi1";
+  try { if (localStorage.getItem(KEY)) return; } catch { return; }
+  const s = state.data && state.data.settings;
+  if (!s) return;
+  let changed = false;
+  if (!s.categories.includes("非農地証明")) {
+    const i = s.categories.indexOf("農地転用");
+    if (i >= 0) s.categories.splice(i + 1, 0, "非農地証明"); else s.categories.splice(Math.max(0, s.categories.length - 1), 0, "非農地証明");
+    changed = true;
+  }
+  if (!s.templates.some(t => t.id === "tpl-hinouchi")) {
+    const t = DEFAULT_TEMPLATES.find(x => x.id === "tpl-hinouchi");
+    if (t) {
+      const i = s.templates.findIndex(x => x.id === "tpl-nouchi");
+      const nt = normalizeTemplate(JSON.parse(JSON.stringify(t)));
+      if (i >= 0) s.templates.splice(i + 1, 0, nt); else s.templates.push(nt);
+      changed = true;
+    }
+  }
+  try { localStorage.setItem(KEY, String(Date.now())); } catch { /* noop */ }
+  if (changed) persist();
+}
+
+
 /* ============ 起動 ============ */
 
 function tick() {
@@ -16712,6 +16808,7 @@ async function init() {
     try { migrated = firstRunMigration(); } catch (e) { console.error("migration failed", e); migrated = null; }
     state.data = migrated ? migrated.data : normalizeData({});
   }
+  seedHubAdditions();
   Docs.rebind();
   Poa.rebind(); Letters.rebind();
   Docs.init();
