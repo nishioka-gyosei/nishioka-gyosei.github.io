@@ -2853,7 +2853,8 @@ body.has-layer .toasts{bottom:auto;top:calc(16px + env(safe-area-inset-top,0px))
   #printRoot .sheet{position:static;transform:none!important;width:210mm;min-height:0;padding:35.01mm 30mm 0 30mm;box-shadow:none;border-radius:0;color:#000}
   #printRoot .sheet.multi{page:multi;width:auto;padding:0}
   #printRoot .sheet::before,#printRoot .pgline{display:none!important}
-  #printRoot .sheet p{background:none!important}
+  #printRoot .sheet p:not(.sh){background:none!important}
+  #printRoot .sheet{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 </style>
 <style>
@@ -3216,6 +3217,7 @@ const DEFAULT_SETTINGS = {
   filePattern: "title_dest",
   askSaveLocation: false,
   autoToday: true,
+  design: "modern",
   theme: "auto"
 };
 const DEFAULT_DOCS = [
@@ -3384,7 +3386,58 @@ function telRuns(){
   runs.push({t: tel});
   return runs;
 }
+/* デザイン（モダン）：色・罫線・網掛けを段落に足す。プレビュー・印刷・Wordで共通 */
+const DZ = {navy: "1F3A5F", line: "B8C2CF", shade: "F2F5F9", sub: "4A5568"};
+function isModern(){ return CFG.design !== "classic"; }
+function decorate(P, F, C){
+  const N = DZ.navy;
+  P.forEach(p => {
+    if (p.blank) return;
+    if (p.key === "title"){
+      p.color = N; p.spc = 80; p.rule = false; p.left = 1700; p.right = 1700;
+      p.bd = {bottom: [12, N, C ? 2 : 5]};
+    } else if (p.key === "date" || p.key === "hdr"){
+      p.color = DZ.sub;
+      if (p.key === "hdr" && p.runs[0] && p.runs[0].t === CFG.office){ p.color = N; }
+    } else if (p.key === "to"){
+     
+    } else if (p.key === "main"){
+      p.runs = p.runs.map(r => r.u ? Object.assign({}, r, {color: N}) : r);
+    } else if (p.key === "note"){
+      p.ind = 0; p.left = 0; p.right = 0; p.shade = DZ.shade;
+      p.bd = {top: [4, DZ.shade, C ? 0 : 3], left: [18, N, 7], bottom: [4, DZ.shade, C ? 0 : 3], right: [4, DZ.shade, 5]};
+    } else if (p.key === "lh"){
+      p.color = N; p.left = 150;
+      p.bd = {left: [24, N, 6]};
+    } else if (p.key === "doc"){
+      p.ind = 0; p.left = 210; p.right = 0;
+      p.runs = p.runs.map(r => Object.assign({}, r, {u: false}));
+      if (!C) p.bd = {bottom: [4, DZ.line, 1], between: [4, DZ.line, 1]};
+    } else if (p.key === "sender"){
+      const signer = CFG.signer && p.runs[0] && p.runs[0].t === CFG.signer;
+      p.left = 4250; p.ind = signer ? 420 : 0;
+      if (p.runs[0] && p.runs[0].t === CFG.office){ p.color = N; }
+      p.bd = {left: [12, N, 9]};
+    } else if (p.key === "box"){
+      p.bdColor = N;
+      if (p.boxFirst && CFG.fBoxHead){ p.color = N; }
+      if (p.runs[0] && p.runs[0].t === CFG.office){ p.color = N; }
+    }
+  });
+  /* 同じ罫線の段落が続くとき、Wordは1つの枠にまとめる。プレビュー側も同じ見え方にするための印 */
+  const sig = p => p.bd ? JSON.stringify([p.bd, p.left || 0, p.right || 0]) : "";
+  P.forEach((p, i) => {
+    if (!p.bd) return;
+    p.gFirst = !(i > 0 && sig(P[i - 1]) === sig(p));
+    p.gLast = !(i < P.length - 1 && sig(P[i + 1]) === sig(p));
+  });
+  return P;
+}
 function buildLayout(s, fit){
+  const P = buildLayoutBase(s, fit);
+  return isModern() ? decorate(P, isFriendly(s), !!(fit && fit.compact)) : P;
+}
+function buildLayoutBase(s, fit){
   const P = [];
   const F = isFriendly(s);
   P.push(P_({key: "title", align: "center", size: 20, runs: [{t: CFG.title}], rule: F, left: F ? 2268 : 0, right: F ? 2268 : 0}));
@@ -3462,6 +3515,11 @@ function measure(P){
   for (const p of P){
     const n = p.blank ? 1 : lineCount(p.runs.map(r => r.t).join(""), p.size, PT(p.ind), width - PT((p.left || 0) + (p.right || 0)));
     if (p.boxFirst) h += 5; if (p.boxLast) h += 5; if (p.rule) h += 3;
+    if (p.bd){
+      const bh = b => b ? b[0] / 8 + b[2] : 0;
+      if (p.gFirst) h += bh(p.bd.top);
+      h += p.gLast ? bh(p.bd.bottom) : bh(p.bd.between);
+    }
     h += n * PT(LH[p.size] || LH[10.5]);
   }
   return h;
@@ -3479,6 +3537,7 @@ function computeFit(s){
     else if (f.g4 > 1) f.g4--;
     else if (f.g6 > 0) f.g6--;
     else if (f.g4 > 0) f.g4--;
+    else if (!f.compact && isModern()) f.compact = true;
     else break;
     h = H();
   }
@@ -3496,11 +3555,31 @@ function renderSheet(P){
     if (p.left) st += `margin-left:${PT(p.left)}pt;`;
     if (p.right) st += `margin-right:${PT(p.right)}pt;`;
     if (p.rule) st += `border-bottom:.75pt solid #8a96a8;padding-bottom:3pt;`;
-    if (p.box) st += `border-left:.75pt solid #8a96a8;border-right:.75pt solid #8a96a8;padding-left:6pt;padding-right:6pt;margin-right:-6pt;margin-left:${PT(p.left || 0) - 6}pt;`
-      + (p.boxFirst ? `border-top:.75pt solid #8a96a8;padding-top:4pt;border-top-left-radius:4pt;border-top-right-radius:4pt;` : "")
-      + (p.boxLast ? `border-bottom:.75pt solid #8a96a8;padding-bottom:4pt;border-bottom-left-radius:4pt;border-bottom-right-radius:4pt;` : "");
-    const inner = p.blank ? "" : p.runs.map(r => r.u ? `<u>${esc(r.t)}</u>` : esc(r.t)).join("");
-    return `<p class="${p.key ? "k-" + p.key : "k-blank"}" style="${st}">${inner}</p>`;
+    if (p.color) st += `color:#${p.color};`;
+    if (p.bold) st += `font-weight:700;`;
+    if (p.spc) st += `letter-spacing:${PT(p.spc)}pt;`;
+    if (p.shade) st += `background:#${p.shade};`;
+    if (p.bd){
+      const css = b => `${b[0] / 8}pt solid #${b[1]}`;
+      const b = p.bd;
+      let ml = PT(p.left || 0), mr = PT(p.right || 0);
+      if (b.left){ st += `border-left:${css(b.left)};padding-left:${b.left[2]}pt;`; ml -= b.left[2] + b.left[0] / 8; }
+      if (b.right){ st += `border-right:${css(b.right)};padding-right:${b.right[2]}pt;`; mr -= b.right[2] + b.right[0] / 8; }
+      st += `margin-left:${ml}pt;margin-right:${mr}pt;`;
+      if (p.gFirst && b.top) st += `border-top:${css(b.top)};padding-top:${b.top[2]}pt;`;
+      const bb = p.gLast ? b.bottom : b.between;
+      if (bb) st += `border-bottom:${css(bb)};padding-bottom:${bb[2]}pt;`;
+    }
+    const bc = p.bdColor ? "#" + p.bdColor : "#8a96a8";
+    if (p.box) st += `border-left:.75pt solid ${bc};border-right:.75pt solid ${bc};padding-left:6pt;padding-right:6pt;margin-right:-6pt;margin-left:${PT(p.left || 0) - 6}pt;`
+      + (p.boxFirst ? `border-top:.75pt solid ${bc};padding-top:4pt;border-top-left-radius:4pt;border-top-right-radius:4pt;` : "")
+      + (p.boxLast ? `border-bottom:.75pt solid ${bc};padding-bottom:4pt;border-bottom-left-radius:4pt;border-bottom-right-radius:4pt;` : "");
+    const inner = p.blank ? "" : p.runs.map(r => {
+      let h = r.u ? `<u>${esc(r.t)}</u>` : esc(r.t);
+      if (r.color || r.bold) h = `<span style="${r.color ? `color:#${r.color};` : ""}${r.bold ? "font-weight:700;" : ""}">${h}</span>`;
+      return h;
+    }).join("");
+    return `<p class="${p.key ? "k-" + p.key : "k-blank"}${p.shade ? " sh" : ""}" style="${st}">${inner}</p>`;
   }).join("");
   sheet.innerHTML = html + (FIT && FIT.overflow ? `<div class="pgline"><span>ここから2ページ目</span></div>` : "");
   sheet.classList.toggle("guides", !!UI.guides);
@@ -3525,10 +3604,11 @@ function fitPreview(){
 
 /* ---------- Word (.docx) ---------- */
 const FONT = "游明朝";
-function rPrXml(size, u, sym){
+function rPrXml(size, u, sym, o = {}){
   const sz = Math.round(size * 2);
   const f = sym ? "Segoe UI Symbol" : FONT;
   return `<w:rPr><w:rFonts w:ascii="${f}" w:eastAsia="${f}" w:hAnsi="${f}" w:cs="${f}"${sym ? "" : ' w:hint="eastAsia"'}/>` +
+    (o.bold ? "<w:b/><w:bCs/>" : "") + (o.color ? `<w:color w:val="${o.color}"/>` : "") + (o.spc ? `<w:spacing w:val="${o.spc}"/>` : "") +
     `<w:sz w:val="${sz}"/><w:szCs w:val="${sz}"/>${u ? '<w:u w:val="single"/>' : ""}<w:lang w:val="ja-JP" w:eastAsia="ja-JP"/></w:rPr>`;
 }
 function paraXml(p){
@@ -3539,11 +3619,16 @@ function paraXml(p){
   if (p.ind) ia.push(`w:firstLine="${p.ind}"`);
   const ind = ia.length ? `<w:ind ${ia.join(" ")}/>` : "";
   const jc = p.align === "both" ? "" : `<w:jc w:val="${p.align}"/>`;
-  const bd = (side, sp) => `<w:${side} w:val="single" w:sz="6" w:space="${sp}" w:color="8A96A8"/>`;
-  const bdr = p.box ? `<w:pBdr>${bd("top", 4)}${bd("left", 6)}${bd("bottom", 4)}${bd("right", 6)}</w:pBdr>` : p.rule ? `<w:pBdr>${bd("bottom", 3)}</w:pBdr>` : "";
-  const pPr = `<w:pPr>${bdr}<w:spacing w:line="${lh}" w:lineRule="exact"/>${ind}${jc}${rPrXml(p.size, false, false)}</w:pPr>`;
+  const bc = p.bdColor || "8A96A8";
+  const bd = (side, sp) => `<w:${side} w:val="single" w:sz="6" w:space="${sp}" w:color="${bc}"/>`;
+  const bx = (side, b) => b ? `<w:${side} w:val="single" w:sz="${b[0]}" w:space="${b[2]}" w:color="${b[1]}"/>` : "";
+  const bdr = p.bd ? `<w:pBdr>${bx("top", p.bd.top)}${bx("left", p.bd.left)}${bx("bottom", p.bd.bottom)}${bx("right", p.bd.right)}${bx("between", p.bd.between)}</w:pBdr>`
+    : p.box ? `<w:pBdr>${bd("top", 4)}${bd("left", 6)}${bd("bottom", 4)}${bd("right", 6)}</w:pBdr>` : p.rule ? `<w:pBdr>${bd("bottom", 3)}</w:pBdr>` : "";
+  const shd = p.shade ? `<w:shd w:val="clear" w:color="auto" w:fill="${p.shade}"/>` : "";
+  const po = {bold: p.bold, color: p.color, spc: p.spc};
+  const pPr = `<w:pPr>${bdr}${shd}<w:spacing w:line="${lh}" w:lineRule="exact"/>${ind}${jc}${rPrXml(p.size, false, false, po)}</w:pPr>`;
   if (p.blank || !p.runs.length) return `<w:p>${pPr}</w:p>`;
-  const runs = p.runs.map(r => `<w:r>${rPrXml(p.size, !!r.u, !!r.sym)}<w:t xml:space="preserve">${xesc(r.t)}</w:t></w:r>`).join("");
+  const runs = p.runs.map(r => `<w:r>${rPrXml(p.size, !!r.u, !!r.sym, {bold: r.bold || p.bold, color: r.color || p.color, spc: p.spc})}<w:t xml:space="preserve">${xesc(r.t)}</w:t></w:r>`).join("");
   return `<w:p>${pPr}${runs}</w:p>`;
 }
 function coreXml(){
@@ -4327,6 +4412,9 @@ function openSettings(){
       </div>
       <p class="hint">送付先の敬称が「様」のときは、自動でこちらの文面になります（送付先の下の「文面」で切り替えられます）。</p>
     </fieldset>
+    <fieldset class="fs"><legend>デザイン</legend>
+      <div class="radios"><label class="radio"><input type="radio" name="dz" value="modern"${c.design !== "classic" ? " checked" : ""}>モダン（紺のアクセント・枠・網掛け）</label><label class="radio"><input type="radio" name="dz" value="classic"${c.design === "classic" ? " checked" : ""}>クラシック（黒一色・下線）</label></div>
+    </fieldset>
     <fieldset class="fs"><legend>保存</legend>
       <div class="radios">${fp("title_dest", "表題_送付先")}${fp("date_title_dest", "日付_表題_送付先")}${fp("dest_title_date", "送付先_表題_日付")}</div>
       <label class="check"><input type="checkbox" id="cfAsk" ${c.askSaveLocation ? "checked" : ""} ${window.showSaveFilePicker ? "" : "disabled"}> 保存するたびに保存先を選ぶ${window.showSaveFilePicker ? "" : "（このブラウザは未対応。Chrome・Edgeで使えます）"}</label>
@@ -4365,7 +4453,8 @@ function openSettings(){
         fListHeading: v("cfFListHeading").trim() || "同封している書類", fBoxHead: v("cfFBoxHead").trim(),
         filePattern: ($('input[name="fp"]:checked', m.el) || {}).value || "title_dest",
         askSaveLocation: $("#cfAsk").checked, autoToday: $("#cfAutoToday").checked,
-        theme: ($('input[name="th"]:checked', m.el) || {}).value || "auto"});
+        theme: ($('input[name="th"]:checked', m.el) || {}).value || "auto",
+        design: ($('input[name="dz"]:checked', m.el) || {}).value || "modern"});
       if (S.lead != null && S.lead === oldLead) S.lead = null;
       store.set(K.settings, CFG); applyTheme(); applyBrand(); $("#lead").value = leadOf(); refresh();
       toast("設定を保存しました", {kind: "ok"});
