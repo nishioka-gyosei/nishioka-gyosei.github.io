@@ -3228,6 +3228,10 @@ const RETURN_ENV = {name: "返信用封筒（レターパック）", qty: "1", u
 const BUILTIN = [
   {id: "b1", name: "身分証明書 郵送請求", builtin: true, mode: "request", reqdoc: "身分証明書", freeText: "", tail: "をさせていただきました。", docs: DEFAULT_DOCS},
   {id: "b2", name: "戸籍謄本 郵送請求", builtin: true, mode: "request", reqdoc: "戸籍謄本", freeText: "", tail: "をさせていただきました。", docs: DEFAULT_DOCS},
+  {id: "b6", name: "家系図用 母方の戸籍 郵送請求", builtin: true, mode: "request", reqdoc: "戸籍謄本・除籍謄本・改製原戸籍謄本", freeText: "", tail: "をさせていただきました。",
+   note: "家系図作成のため、委任者〇〇〇〇の母〇〇〇〇（本籍：〇〇〇〇）から始めて、母方の直系尊属（母・祖父母・曾祖父母…）が載っている戸籍のうち、貴庁で保管しているものをすべてご交付ください。\n①戸籍謄本（全部事項証明書）・除籍謄本・改製原戸籍謄本（平成・昭和の改製とも）を各１通お願いします。\n②その戸籍に載っている方全員の氏名がわかるよう、抄本ではなく謄本でお願いします。\n③婚姻や死亡などで除籍された方も、省略せずに載ったものでお願いします。\n④貴庁で出せない古い戸籍がある場合や転籍してきている場合は、前の本籍地をお知らせいただけると助かります。\n手数料として定額小為替を同封しています。不足の場合はご連絡ください。余った分はご返送いただけますと幸いです。",
+   docs: [{name: "戸籍謄本等交付請求書", qty: "1", unit: "通"}, {name: "委任状", qty: "1", unit: "通"}, {name: "委任者と母のつながりがわかる戸籍の写し", qty: "1", unit: "通"},
+          {name: "定額小為替", qty: "1", unit: "式"}, {name: "西岡の身分証コピー", qty: "1", unit: "通"}, RETURN_ENV]},
   {id: "b3", name: "建設業許可 申請書類送付", builtin: true, mode: "free", reqdoc: "", freeText: "建設業許可（般・新規）申請書類一式", tail: "を送付いたします。",
    docs: [{name: "許可申請書", qty: "1", unit: "部"}, RETURN_ENV]},
   {id: "b4", name: "古物商許可 申請書類送付", builtin: true, mode: "free", reqdoc: "", freeText: "古物商許可申請書類一式", tail: "を送付いたします。",
