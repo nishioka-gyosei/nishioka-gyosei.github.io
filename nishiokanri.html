@@ -1745,6 +1745,20 @@ body.drawer-open .dx .edit-preview { display: none; }
   #printRoot .poa-sheet .ph { visibility: hidden !important; }
 }
 
+/* 飾り枠 */
+.poa-sheet .nk-frame { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.poa-sheet .nk-frame svg { display: block; width: 100%; height: 100%; }
+.poa-sheet.framed .d-sutein { top: 12.5mm; left: 12.5mm; }
+.pa .pa-frames { display: grid; grid-template-columns: repeat(auto-fill, minmax(86px, 1fr)); gap: 8px; }
+.pa .pa-frames button { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px; height: auto; border-radius: 10px; }
+.pa .pa-frames button svg { width: 56px; height: 79px; border: 1px solid var(--line); border-radius: 3px; background: #fff; }
+.pa .pa-frames button span { font-size: 11.5px; font-weight: 700; }
+.pa .pa-frames button.on svg { outline: 2px solid var(--blue, #2563eb); outline-offset: 1px; }
+.pa .pa-fcolors { display: flex; flex-wrap: wrap; gap: 6px; }
+.pa .pa-fcolors button { display: inline-flex; align-items: center; gap: 6px; }
+.pa .pa-fcolors i { display: inline-block; width: 14px; height: 14px; border-radius: 50%; }
+.poa-sheet.framed .d-foot { bottom: 11.5mm; }
+
   </style>
 </head>
 <body>
@@ -2886,6 +2900,15 @@ body.has-layer .toasts{bottom:auto;top:calc(16px + env(safe-area-inset-top,0px))
 .tone-opts button[aria-checked="true"] { border-color: var(--kon); background: var(--kon-soft); color: var(--kon); box-shadow: 0 0 0 3px var(--kon-ring); }
 .tone-opts button[aria-checked="true"] small { color: var(--kon); }
 .tone-note { font-size: 12px; color: var(--muted); }
+.frame-pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
+.fp-item{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px;border:1px solid var(--line-2);border-radius:12px;cursor:pointer;background:var(--surface)}
+.fp-item input{position:absolute;opacity:0;pointer-events:none}
+.fp-thumb svg{display:block;width:54px;height:76px;border:1px solid var(--line-2);border-radius:3px;background:#fff}
+.fp-l{font-size:11.5px;font-weight:700;color:var(--ink-2)}
+.fp-item:has(input:checked){border-color:var(--kon,#2563eb);box-shadow:0 0 0 3px var(--kon-ring,rgba(37,99,235,.18))}
+.radios.fc-pick{display:flex;flex-wrap:wrap;gap:6px}
+.radios.fc-pick .radio{width:auto;flex:0 0 auto;padding:6px 12px;margin:0}
+.fc-pick .fc-dot{display:inline-block;width:13px;height:13px;border-radius:50%;margin-right:4px;vertical-align:-2px}
 </style>
 </head>
 <body>
@@ -3221,6 +3244,7 @@ const DEFAULT_SETTINGS = {
   autoToday: true,
   design: "modern",
   frame: "none",
+  frameColor: "auto",
   theme: "auto"
 };
 const DEFAULT_DOCS = [
@@ -3396,27 +3420,18 @@ function telRuns(){
 /* デザイン（モダン）：色・罫線・網掛けを段落に足す。プレビュー・印刷・Wordで共通 */
 const DZ = {navy: "1F3A5F", line: "B8C2CF", shade: "F2F5F9", sub: "4A5568"};
 function isModern(){ return CFG.design !== "classic"; }
-/* ページの枠（Wordはページ罫線、プレビュー・印刷は同じ位置に描く） */
-const FRAMES = {
-  none:   {label: "なし"},
-  line:   {label: "細い線", w: "single", sz: 8, css: (c) => `border:1pt solid ${c}`},
-  double: {label: "二重線", w: "double", sz: 6, css: (c) => `border:3.25pt double ${c}`},
-  thick:  {label: "太線＋細線", w: "thickThinSmallGap", sz: 18, css: (c) => `border:2.25pt solid ${c};box-shadow:inset 0 0 0 2pt #fff,inset 0 0 0 2.75pt ${c}`},
-  band:   {label: "上下の線", w: "single", sz: 12, sides: ["top", "bottom"], css: (c) => `border-top:1.5pt solid ${c};border-bottom:1.5pt solid ${c}`}
-};
-const FRAME_GAP = 24; // ページの端からの距離（pt）
-function frameOf(){ const f = FRAMES[CFG.frame]; return f && f.w ? f : null; }
-function frameColor(){ return isModern() ? DZ.navy : "3A3F47"; }
+/* ページの枠：ニシオカンリの飾り枠（委任状と共通）を使う。Word は線の枠ならページ罫線、飾りのある枠は背面の画像 */
+const NKF = (NK_PARENT && NK_PARENT.NKFrames) || null;
+const FRAMES = NKF ? NKF.kinds : {none: {label: "なし"}};
+const FRAME_COLORS = NKF ? NKF.colors : {auto: {label: "おまかせ", hex: ""}};
+function frameKind(){ return CFG.frame && FRAMES[CFG.frame] && CFG.frame !== "none" ? CFG.frame : ""; }
+function frameOf(){ const k = frameKind(); return k ? FRAMES[k] : null; }
+function frameColor(){ return NKF ? NKF.color(CFG.frameColor, isModern() ? DZ.navy : "3A3F47") : "3A3F47"; }
 function frameHtml(){
-  const f = frameOf(); if (!f) return "";
-  return `<div class="pgframe" style="position:absolute;inset:${FRAME_GAP}pt;pointer-events:none;${f.css("#" + frameColor())}"></div>`;
+  const k = frameKind(); if (!k || !NKF) return "";
+  return `<div class="pgframe" style="position:absolute;inset:0;pointer-events:none">${NKF.svg(k, frameColor())}</div>`;
 }
-function frameXml(){
-  const f = frameOf(); if (!f) return "";
-  const sides = f.sides || ["top", "left", "bottom", "right"];
-  return `<w:pgBorders w:offsetFrom="page">` + ["top", "left", "bottom", "right"].filter(x => sides.includes(x))
-    .map(x => `<w:${x} w:val="${f.w}" w:sz="${f.sz}" w:space="${FRAME_GAP}" w:color="${frameColor()}"/>`).join("") + `</w:pgBorders>`;
-}
+function frameXml(){ const k = frameKind(); return k && NKF ? NKF.pgBorders(k, frameColor()) : ""; }
 function decorate(P, F, C){
   const N = DZ.navy;
   P.forEach(p => {
@@ -3678,7 +3693,22 @@ async function buildDocx(){
   const zip = await JSZip.loadAsync(b64ToBytes(TEMPLATE_B64));
   const tpl = await zip.file("word/document.xml").async("string");
   const head = tpl.slice(0, tpl.indexOf("<w:body>") + "<w:body>".length);
-  const sect = ((tpl.match(/<w:sectPr[\s\S]*?<\/w:sectPr>/) || [""])[0]).replace(/(<w:pgMar[^>]*\/>)/, "$1" + frameXml());
+  let sect = ((tpl.match(/<w:sectPr[\s\S]*?<\/w:sectPr>/) || [""])[0]).replace(/(<w:pgMar[^>]*\/>)/, "$1" + frameXml());
+  const fk = frameKind();
+  if (fk && NKF && NKF.isImage(fk)){
+    const png = new Uint8Array(await NKF.png(fk, frameColor()));   // この画面側の型にそろえる（JSZip が受け取れるように）
+    zip.file("word/media/nkframe.png", png);
+    zip.file("word/header_nkframe.xml", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<w:hdr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" ${NKF.wpNs}><w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="40" w:lineRule="exact"/><w:rPr><w:sz w:val="4"/></w:rPr></w:pPr>${NKF.drawingRun("rIdNkf1")}</w:p></w:hdr>`);
+    zip.file("word/_rels/header_nkframe.xml.rels", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdNkf1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/nkframe.png"/></Relationships>`);
+    let rels = await zip.file("word/_rels/document.xml.rels").async("string");
+    rels = rels.replace("</Relationships>", `<Relationship Id="rIdNkfH" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/header" Target="header_nkframe.xml"/></Relationships>`);
+    zip.file("word/_rels/document.xml.rels", rels);
+    let ct = await zip.file("[Content_Types].xml").async("string");
+    if (!/Extension="png"/.test(ct)) ct = ct.replace("<Default Extension=\"xml\"", `<Default Extension="png" ContentType="image/png"/><Default Extension="xml"`);
+    ct = ct.replace("</Types>", `<Override PartName="/word/header_nkframe.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.header+xml"/></Types>`);
+    zip.file("[Content_Types].xml", ct);
+    sect = sect.replace(/(<w:sectPr[^>]*>)/, `$1<w:headerReference w:type="default" r:id="rIdNkfH"/>`);
+  }
   const P = buildLayout(S, FIT);
   zip.file("word/document.xml", head + P.map(paraXml).join("") + sect + "</w:body></w:document>", {createFolders: false});
   zip.file("docProps/core.xml", coreXml(), {createFolders: false});
@@ -4447,7 +4477,8 @@ function openSettings(){
     </fieldset>
     <fieldset class="fs"><legend>デザイン</legend>
       <div class="radios"><label class="radio"><input type="radio" name="dz" value="modern"${c.design !== "classic" ? " checked" : ""}>モダン（紺のアクセント・枠・網掛け）</label><label class="radio"><input type="radio" name="dz" value="classic"${c.design === "classic" ? " checked" : ""}>クラシック（黒一色・下線）</label></div>
-      <div class="field"><label class="lbl">ページの枠</label><div class="radios">${Object.entries(FRAMES).map(([k, f]) => `<label class="radio"><input type="radio" name="fr" value="${k}"${(c.frame || "none") === k ? " checked" : ""}>${f.label}</label>`).join("")}</div></div>
+      <div class="field"><label class="lbl">ページの枠</label><div class="frame-pick" id="framePick">${Object.entries(FRAMES).map(([k, f]) => `<label class="fp-item"><input type="radio" name="fr" value="${k}"${(c.frame || "none") === k ? " checked" : ""}><span class="fp-thumb">${NKF ? NKF.thumb(k, NKF.color(c.frameColor, c.design !== "classic" ? DZ.navy : "3A3F47")) : ""}</span><span class="fp-l">${esc(f.label)}</span></label>`).join("")}</div></div>
+      <div class="field"><label class="lbl">枠の色</label><div class="radios fc-pick">${Object.entries(FRAME_COLORS).map(([k, x]) => `<label class="radio"><input type="radio" name="frc" value="${k}"${(c.frameColor || "auto") === k ? " checked" : ""}><i class="fc-dot" style="background:${x.hex ? "#" + x.hex : "linear-gradient(135deg,#1F3A5F 50%,#3A3F47 50%)"}"></i>${esc(x.label)}</label>`).join("")}</div><p class="hint">「おまかせ」はデザインに合わせます（モダン＝紺・クラシック＝墨）。お客様あてには金茶・桜もおすすめです。</p></div>
     </fieldset>
     <fieldset class="fs"><legend>保存</legend>
       <div class="radios">${fp("title_dest", "表題_送付先")}${fp("date_title_dest", "日付_表題_送付先")}${fp("dest_title_date", "送付先_表題_日付")}</div>
@@ -4489,12 +4520,21 @@ function openSettings(){
         askSaveLocation: $("#cfAsk").checked, autoToday: $("#cfAutoToday").checked,
         theme: ($('input[name="th"]:checked', m.el) || {}).value || "auto",
         design: ($('input[name="dz"]:checked', m.el) || {}).value || "modern",
-        frame: ($('input[name="fr"]:checked', m.el) || {}).value || "none"});
+        frame: ($('input[name="fr"]:checked', m.el) || {}).value || "none",
+        frameColor: ($('input[name="frc"]:checked', m.el) || {}).value || "auto"});
       if (S.lead != null && S.lead === oldLead) S.lead = null;
       store.set(K.settings, CFG); applyTheme(); applyBrand(); $("#lead").value = leadOf(); refresh();
       toast("設定を保存しました", {kind: "ok"});
     }}
   ]});
+  /* 色・デザインを変えたら枠の見本も塗り直す */
+  m.el.addEventListener("change", e => {
+    if (!NKF || !["frc", "dz"].includes(e.target.name)) return;
+    const fc = ($('input[name="frc"]:checked', m.el) || {}).value || "auto";
+    const dz = ($('input[name="dz"]:checked', m.el) || {}).value || "modern";
+    const hx = NKF.color(fc, dz !== "classic" ? DZ.navy : "3A3F47");
+    $$("#framePick .fp-item", m.el).forEach(l => { const k = l.querySelector("input").value; l.querySelector(".fp-thumb").innerHTML = NKF.thumb(k, hx); });
+  });
   m.el.addEventListener("click", async e => {
     if (e.target.closest("#cfExport")) exportBackup();
     else if (e.target.closest("#cfImport")) $("#fileInput").click();
@@ -14620,6 +14660,7 @@ function defaultSettings() {
     wordFont: '游明朝', wordSeal: 'shape', agentBirth: '',
     autoSaveOnOutput: true, autoClient: true,
     newDocTpl: 'last', backupDays: 30,
+    frame: 'none', frameColor: 'auto',
   };
 }
 let settings = defaultSettings();
@@ -15090,11 +15131,15 @@ function sheetHTML(m) {
   </div></div>${m.footer ? `<div class="d-foot">${esc(m.footer)}</div>` : ''}`;
 }
 const A4W = 210 * 96 / 25.4, A4H = 296 * 96 / 25.4;
+/* 飾り枠（設定の「文書の体裁」） */
+function frameOn() { return !!(settings && settings.frame && settings.frame !== 'none' && NK_FRAME_KINDS[settings.frame]); }
+function frameHex() { return nkFrameColor(settings.frameColor, '3A3F47'); }
+function frameLayer() { return frameOn() ? `<div class="nk-frame">${nkFrameSvg(settings.frame, frameHex())}</div>` : ''; }
 function renderPreviewNow() {
   schedulePreview.cancel();
   const models = buildModels();
   const box = $('#sheets');
-  box.innerHTML = models.map((m, i) => `<div class="sheet-wrap">${models.length > 1 ? `<div class="sheet-cap">${i + 1} / ${models.length} 枚目 ― ${esc(m.persons.map(p => personLabel(doc.persons[p.idx]) || '').join('') || '（未入力）')}</div>` : ''}<div class="scaler"><div class="poa-sheet ${m.footer ? 'has-foot' : ''}">${sheetHTML(m)}</div></div></div>`).join('');
+  box.innerHTML = models.map((m, i) => `<div class="sheet-wrap">${models.length > 1 ? `<div class="sheet-cap">${i + 1} / ${models.length} 枚目 ― ${esc(m.persons.map(p => personLabel(doc.persons[p.idx]) || '').join('') || '（未入力）')}</div>` : ''}<div class="scaler"><div class="poa-sheet ${m.footer ? 'has-foot' : ''}${frameOn() ? ' framed' : ''}">${frameLayer()}${sheetHTML(m)}</div></div></div>`).join('');
   fitAll();
   applyZoom();
   $('#pageInfo').textContent = `${models.length}枚`;
@@ -15866,7 +15911,7 @@ function preparePrint() {
   if (!doc) return;
   const models = buildModels();
   const root = document.getElementById('printRoot');
-  root.innerHTML = models.map(m => `<div class="poa-sheet ${m.footer ? 'has-foot' : ''}">${sheetHTML(m)}</div>`).join('');
+  root.innerHTML = models.map(m => `<div class="poa-sheet ${m.footer ? 'has-foot' : ''}${frameOn() ? ' framed' : ''}">${frameLayer()}${sheetHTML(m)}</div>`).join('');
   setPrintMode('a4');
   $$('.poa-sheet', root).forEach(fitSheet);
   titleChanged = true;
@@ -15940,7 +15985,7 @@ function padLabel(label, cols) {
   const unit = g => { const full = Math.floor(g + 1e-6), half = g - full >= 0.5 - 1e-6 ? 1 : 0; return '　'.repeat(full) + ' '.repeat(half); };
   return chars.map((c, i) => (i < n - 1 ? c + unit(gap) : c)).join('');
 }
-function buildDocx(models) {
+function buildDocx(models, opt = {}) {
   const FONT = WFONTS[settings.wordFont] ? settings.wordFont : '游明朝';
   const PAGE_W = 11906, PAGE_H = 16838, MT = 1247, MB = 1134, ML = 1418, MR = 1418;
   const TW = PAGE_W - ML - MR, TH = PAGE_H - MT - MB;
@@ -16039,12 +16084,13 @@ function buildDocx(models) {
   }
   pages = models.map((m, i) => pageBlocks(m, chosen, i === 0));
   const NS = 'xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word"';
-  const hasHdr = models.some(m => m.sutein), hasFtr = models.some(m => m.footer);
-  const sectPr = `<w:sectPr>${hasHdr ? '<w:headerReference w:type="default" r:id="rId10"/>' : ''}${hasFtr ? '<w:footerReference w:type="default" r:id="rId11"/>' : ''}<w:pgSz w:w="${PAGE_W}" w:h="${PAGE_H}"/><w:pgMar w:top="${MT}" w:right="${MR}" w:bottom="${MB}" w:left="${ML}" w:header="397" w:footer="454" w:gutter="0"/><w:cols w:space="425"/><w:docGrid w:linePitch="360"/></w:sectPr>`;
+  const framePng = frameOn() && nkFrameIsImage(settings.frame) ? opt.framePng : null;
+  const hasHdr = models.some(m => m.sutein) || !!framePng, hasFtr = models.some(m => m.footer);
+  const sectPr = `<w:sectPr>${hasHdr ? '<w:headerReference w:type="default" r:id="rId10"/>' : ''}${hasFtr ? '<w:footerReference w:type="default" r:id="rId11"/>' : ''}<w:pgSz w:w="${PAGE_W}" w:h="${PAGE_H}"/><w:pgMar w:top="${MT}" w:right="${MR}" w:bottom="${MB}" w:left="${ML}" w:header="397" w:footer="${frameOn() ? 652 : 454}" w:gutter="0"/>${frameOn() ? nkFramePgBorders(settings.frame, frameHex()) : ''}<w:cols w:space="425"/><w:docGrid w:linePitch="360"/></w:sectPr>`;
   const documentXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<w:document ${NS}><w:body>${pages.map(p => p.xml).join('')}${sectPr}</w:body></w:document>`;
   const suteinN = Math.max(...models.map(m => m.sutein), 0);
-  const circle = 31, gapPt = 6.2, x0 = 25.5, y0 = 20;
-  const headerXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<w:hdr ${NS}><w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="40" w:lineRule="exact"/><w:rPr><w:sz w:val="4"/></w:rPr></w:pPr>${Array.from({ length: suteinN }, (_, i) => `<w:r>${rPr({ sz: 2 })}<w:pict><v:oval id="sutein${i + 1}" o:spid="_x0000_s${2048 + i}" style="position:absolute;margin-left:${(x0 + i * (circle + gapPt)).toFixed(1)}pt;margin-top:${y0}pt;width:${circle}pt;height:${circle}pt;z-index:${251658240 + i};mso-position-horizontal:absolute;mso-position-horizontal-relative:page;mso-position-vertical:absolute;mso-position-vertical-relative:page" filled="f" strokecolor="#9a9a9a" strokeweight=".75pt"><w10:wrap anchorx="page" anchory="page"/></v:oval></w:pict></w:r>`).join('')}${suteinN ? `<w:r>${rPr({ sz: 2 })}<w:pict><v:rect id="suteinLabel" o:spid="_x0000_s2100" style="position:absolute;margin-left:${x0 + 1}pt;margin-top:${y0 + circle + 2}pt;width:60pt;height:12pt;z-index:251658250;mso-position-horizontal:absolute;mso-position-horizontal-relative:page;mso-position-vertical:absolute;mso-position-vertical-relative:page" filled="f" stroked="f"><v:textbox inset="0,0,0,0"><w:txbxContent><w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="220" w:lineRule="exact"/></w:pPr><w:r>${rPr({ sz: 7, color: '8A8A8A' })}<w:t>捨印</w:t></w:r></w:p></w:txbxContent></v:textbox><w10:wrap anchorx="page" anchory="page"/></v:rect></w:pict></w:r>` : ''}</w:p></w:hdr>`;
+  const circle = 31, gapPt = 6.2, x0 = frameOn() ? 35.5 : 25.5, y0 = frameOn() ? 35.5 : 20;
+  const headerXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<w:hdr ${NS} ${NK_WP_NS}><w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="40" w:lineRule="exact"/><w:rPr><w:sz w:val="4"/></w:rPr></w:pPr>${framePng ? nkFrameDrawingRun('rIdF1') : ''}${Array.from({ length: suteinN }, (_, i) => `<w:r>${rPr({ sz: 2 })}<w:pict><v:oval id="sutein${i + 1}" o:spid="_x0000_s${2048 + i}" style="position:absolute;margin-left:${(x0 + i * (circle + gapPt)).toFixed(1)}pt;margin-top:${y0}pt;width:${circle}pt;height:${circle}pt;z-index:${251658240 + i};mso-position-horizontal:absolute;mso-position-horizontal-relative:page;mso-position-vertical:absolute;mso-position-vertical-relative:page" filled="f" strokecolor="#9a9a9a" strokeweight=".75pt"><w10:wrap anchorx="page" anchory="page"/></v:oval></w:pict></w:r>`).join('')}${suteinN ? `<w:r>${rPr({ sz: 2 })}<w:pict><v:rect id="suteinLabel" o:spid="_x0000_s2100" style="position:absolute;margin-left:${x0 + 1}pt;margin-top:${y0 + circle + 2}pt;width:60pt;height:12pt;z-index:251658250;mso-position-horizontal:absolute;mso-position-horizontal-relative:page;mso-position-vertical:absolute;mso-position-vertical-relative:page" filled="f" stroked="f"><v:textbox inset="0,0,0,0"><w:txbxContent><w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="220" w:lineRule="exact"/></w:pPr><w:r>${rPr({ sz: 7, color: '8A8A8A' })}<w:t>捨印</w:t></w:r></w:p></w:txbxContent></v:textbox><w10:wrap anchorx="page" anchory="page"/></v:rect></w:pict></w:r>` : ''}</w:p></w:hdr>`;
   const footText = (models.find(m => m.footer) || {}).footer || '';
   const footerXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<w:ftr ${NS}><w:p><w:pPr><w:pBdr><w:top w:val="single" w:sz="4" w:space="3" w:color="CFCFCF"/></w:pBdr><w:spacing w:before="0" w:after="0" w:line="260" w:lineRule="exact"/><w:jc w:val="center"/></w:pPr>${run(footText, { sz: 8, color: '777777' })}</w:p></w:ftr>`;
   const stylesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="${FONT}" w:eastAsia="${FONT}" w:hAnsi="${FONT}" w:cs="${FONT}"/><w:kern w:val="2"/><w:sz w:val="21"/><w:szCs w:val="21"/><w:lang w:val="ja-JP" w:eastAsia="ja-JP" w:bidi="ar-SA"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:snapToGrid w:val="0"/><w:spacing w:after="0" w:line="240" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults><w:style w:type="paragraph" w:default="1" w:styleId="a"><w:name w:val="Normal"/><w:qFormat/><w:pPr><w:widowControl w:val="0"/><w:jc w:val="both"/></w:pPr></w:style><w:style w:type="character" w:default="1" w:styleId="a0"><w:name w:val="Default Paragraph Font"/><w:uiPriority w:val="1"/><w:semiHidden/><w:unhideWhenUsed/></w:style></w:styles>`;
@@ -16054,14 +16100,15 @@ function buildDocx(models) {
   const iso = new Date().toISOString().replace(/\.\d+Z$/, 'Z');
   const coreXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcmitype="http://purl.org/dc/dcmitype/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><dc:title>委任状</dc:title><dc:subject>${xesc((getTpl(doc.tpl) || {}).label || '')}</dc:subject><dc:creator>${xesc((settings.agentLines.find(l => /事務所/.test(l.label)) || {}).value || '行政書士事務所')}</dc:creator><cp:lastModifiedBy>委任状作成システム v8</cp:lastModifiedBy><dcterms:created xsi:type="dcterms:W3CDTF">${iso}</dcterms:created><dcterms:modified xsi:type="dcterms:W3CDTF">${iso}</dcterms:modified></cp:coreProperties>`;
   const appXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"><Application>Ininjo Maker v8</Application><Pages>${models.length}</Pages></Properties>`;
-  const ctypes = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/><Override PartName="/word/settings.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml"/><Override PartName="/word/fontTable.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.fontTable+xml"/>${hasHdr ? '<Override PartName="/word/header1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.header+xml"/>' : ''}${hasFtr ? '<Override PartName="/word/footer1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml"/>' : ''}<Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/><Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/></Types>`;
+  const ctypes = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/>${framePng ? '<Default Extension="png" ContentType="image/png"/>' : ''}<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/><Override PartName="/word/settings.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml"/><Override PartName="/word/fontTable.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.fontTable+xml"/>${hasHdr ? '<Override PartName="/word/header1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.header+xml"/>' : ''}${hasFtr ? '<Override PartName="/word/footer1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml"/>' : ''}<Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/><Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/></Types>`;
   const rootRels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml"/></Relationships>`;
   const docRels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings" Target="settings.xml"/><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/fontTable" Target="fontTable.xml"/>${hasHdr ? '<Relationship Id="rId10" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/header" Target="header1.xml"/>' : ''}${hasFtr ? '<Relationship Id="rId11" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer1.xml"/>' : ''}</Relationships>`;
   const files = [
     { name: '[Content_Types].xml', data: ctypes }, { name: '_rels/.rels', data: rootRels },
     { name: 'word/document.xml', data: documentXml }, { name: 'word/_rels/document.xml.rels', data: docRels },
     { name: 'word/styles.xml', data: stylesXml }, { name: 'word/settings.xml', data: settingsXml }, { name: 'word/fontTable.xml', data: fontXml },
-    ...(hasHdr ? [{ name: 'word/header1.xml', data: headerXml }] : []), ...(hasFtr ? [{ name: 'word/footer1.xml', data: footerXml }] : []),
+    ...(hasHdr ? [{ name: 'word/header1.xml', data: headerXml }] : []),
+    ...(framePng ? [{ name: 'word/_rels/header1.xml.rels', data: `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdF1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/frame.png"/></Relationships>` }, { name: 'word/media/frame.png', data: framePng }] : []), ...(hasFtr ? [{ name: 'word/footer1.xml', data: footerXml }] : []),
     { name: 'docProps/core.xml', data: coreXml }, { name: 'docProps/app.xml', data: appXml },
   ];
   return { blob: makeZip(files), profile: chosen, files };
@@ -16069,7 +16116,9 @@ function buildDocx(models) {
 async function doWord() {
   if (!(await preflight('Word出力'))) return;
   renderPreviewNow();
-  const { blob, profile } = buildDocx(buildModels());
+  let framePng = null;
+  if (frameOn() && nkFrameIsImage(settings.frame)) { try { framePng = await nkFramePng(settings.frame, frameHex()); } catch (e) { console.warn(e); toast('飾り枠の画像を作れなかったため、枠なしで書き出します', { type: 'warn' }); } }
+  const { blob, profile } = buildDocx(buildModels(), { framePng });
   recordOutput('word');
   downloadBlob(blob, `${outputBaseName()}.docx`);
   toast(`Wordファイルを書き出しました（${profile.fs}pt・A4 ${buildModels().length}枚）`, { type: 'ok' });
@@ -16165,6 +16214,8 @@ function openSettings(tab = 'agent') {
         <label>捨印欄（新規の既定）</label><div>${sw('suteinDefault', '新しい委任状で捨印欄をオンにする')}</div>
         <label>複数の委任者（新規の既定）</label><div>${seg('layoutDefault', [['joint', '連名（1枚）'], ['separate', '個別（1人1枚）']])}</div>
         <label>下部の注記</label><div><div>${sw('footer.on', '文書の下に注記を入れる', tmp, 'footer.on')}</div><input type="text" data-txt="footer.text" value="${esc(tmp.footer.text)}" style="margin-top:6px"></div>
+        <label>飾り枠</label><div><div class="seg pa-frames" data-seg="frame">${Object.entries(NK_FRAME_KINDS).map(([k, f]) => `<button type="button" data-v="${k}" class="${(tmp.frame || 'none') === k ? 'on' : ''}" title="${esc(f.label)}">${nkFrameThumb(k, nkFrameColor(tmp.frameColor, '3A3F47'))}<span>${esc(f.label)}</span></button>`).join('')}</div><div class="hint">印刷・PDF・Word のどれにも同じ枠が入ります（Word では線の枠は「ページ罫線」、飾りのある枠は背面の画像になります）。</div></div>
+        <label>枠の色</label><div><div class="seg pa-fcolors" data-seg="frameColor">${Object.entries(NK_FRAME_COLORS).map(([k, c]) => `<button type="button" data-v="${k}" class="${(tmp.frameColor || 'auto') === k ? 'on' : ''}"><i style="background:${c.hex ? '#' + c.hex : 'linear-gradient(135deg,#3A3F47 50%,#9A7B3C 50%)'}"></i>${esc(c.label)}</button>`).join('')}</div><div class="hint">「おまかせ」は墨色です。お客様あてなら金茶・桜、役所あてなら墨・紺が落ち着きます。</div></div>
       </div>`;
     else if (cur === 'out') body.innerHTML = `<div class="form-grid">
         <label>Wordのフォント</label><div><select data-sel="wordFont" style="width:auto">${Object.keys(WFONTS).map(f => `<option ${tmp.wordFont === f ? 'selected' : ''}>${f}</option>`).join('')}</select><div class="hint">Wordファイルを開くパソコンに入っているフォントを選んでください（Windows・Macとも游明朝が標準で入っています）。</div></div>
@@ -16183,7 +16234,7 @@ function openSettings(tab = 'agent') {
   });
   m.el.addEventListener('click', async e => {
     const tb = e.target.closest('#stTabs [data-tab]'); if (tb) { cur = tb.dataset.tab; draw(); return; }
-    const sg = e.target.closest('[data-seg] [data-v]'); if (sg) { tmp[sg.parentElement.dataset.seg] = sg.dataset.v; $$('button', sg.parentElement).forEach(b => b.classList.toggle('on', b === sg)); return; }
+    const sg = e.target.closest('[data-seg] [data-v]'); if (sg) { tmp[sg.parentElement.dataset.seg] = sg.dataset.v; $$('button', sg.parentElement).forEach(b => b.classList.toggle('on', b === sg)); if (sg.parentElement.dataset.seg === 'frameColor' || sg.parentElement.dataset.seg === 'frame') { const hx = nkFrameColor(tmp.frameColor, '3A3F47'); $$('.pa-frames [data-v]', m.el).forEach(b => { b.firstElementChild.outerHTML = nkFrameThumb(b.dataset.v, hx); }); } return; }
     const pick = k => (k === 'agent' ? tmp.agentLines : k === 'tail' ? tmp.tail : tmp.phrases);
     const ad = e.target.closest('[data-add]'); if (ad) { const k = ad.dataset.add; pick(k).push(k === 'agent' ? { label: '', value: '', on: true } : k === 'tail' ? { text: '', on: false } : ''); draw(); const ins = $$(`input[data-l="${k}"][type=text]`, m.el); if (ins.length) ins[ins.length - (k === 'agent' ? 2 : 1)].focus(); return; }
     const mv = e.target.closest('[data-mv]'); if (mv) { move(pick(mv.dataset.mv), +mv.dataset.i, +mv.dataset.d); draw(); return; }
@@ -16200,7 +16251,7 @@ function openSettings(tab = 'agent') {
       const d = defaultSettings();
       if (cur === 'agent') tmp.agentLines = d.agentLines;
       if (cur === 'phr') { tmp.tail = d.tail; tmp.phrases = d.phrases; }
-      if (cur === 'look') ['dateStyle', 'gannen', 'zenkaku', 'sealStyle', 'jointSubject', 'suteinDefault', 'layoutDefault', 'footer'].forEach(k => { tmp[k] = clone(d[k]); });
+      if (cur === 'look') ['dateStyle', 'gannen', 'zenkaku', 'sealStyle', 'jointSubject', 'suteinDefault', 'layoutDefault', 'footer', 'frame', 'frameColor'].forEach(k => { tmp[k] = clone(d[k]); });
       if (cur === 'out') ['wordFont', 'wordSeal', 'autoSaveOnOutput', 'autoClient', 'newDocTpl', 'backupDays'].forEach(k => { tmp[k] = d[k]; });
       draw();
     }
@@ -16711,6 +16762,143 @@ function letterRow(h) {
     </div>
   </div>`;
 }
+
+
+/* =====================================================================
+   書面の飾り枠（委任状・送付状で共通）
+   - プレビュー・印刷：A4（pt）の SVG を用紙いっぱいに重ねる
+   - Word：線の枠は「ページ罫線」、飾りのある枠は同じ絵を画像にして
+     ヘッダーに「背面」で置く（どのページにも同じ位置に出る）
+   ===================================================================== */
+const NK_FRAME_KINDS = {
+  none:   { label: "なし" },
+  line:   { label: "細い線", w: "single", sz: 8 },
+  double: { label: "二重線", w: "double", sz: 6 },
+  thick:  { label: "太線＋細線", w: "thickThinSmallGap", sz: 18 },
+  band:   { label: "上下の線", w: "single", sz: 12, sides: ["top", "bottom"] },
+  dots:   { label: "点線", w: "dotted", sz: 8 },
+  corner: { label: "角飾り", img: true },
+  wa:     { label: "和（隅切り）", img: true },
+  flower: { label: "花（やわらか）", img: true }
+};
+const NK_FRAME_COLORS = {
+  auto:   { label: "おまかせ", hex: "" },
+  navy:   { label: "紺", hex: "1F3A5F" },
+  sumi:   { label: "墨", hex: "3A3F47" },
+  gold:   { label: "金茶", hex: "9A7B3C" },
+  green:  { label: "深緑", hex: "2F5D50" },
+  enji:   { label: "えんじ", hex: "8E2F3C" },
+  sakura: { label: "桜", hex: "C46F86" }
+};
+const NK_FRAME_INSET = 24;   // 用紙の端から枠までの距離（pt）。Word のページ罫線も同じ距離
+const A4_PT = { w: 595.28, h: 841.89 };
+
+function nkFrameColor(color, fallback) {
+  const c = NK_FRAME_COLORS[color];
+  return (c && c.hex) || fallback || "3A3F47";
+}
+/* 飾り枠の SVG（用紙全体。座標は pt） */
+function nkFrameSvg(kind, hex, opt = {}) {
+  const K = NK_FRAME_KINDS[kind];
+  if (!K || kind === "none") return "";
+  const W = A4_PT.w, H = A4_PT.h, g = opt.inset || NK_FRAME_INSET, c = "#" + hex;
+  const r = (x, y, w, h, sw, extra = "") => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="none" stroke="${c}" stroke-width="${sw}"${extra}/>`;
+  const box = (d, sw, extra) => r(g + d, g + d, W - 2 * (g + d), H - 2 * (g + d), sw, extra);
+  const corners = fn => [[g, g, 1, 1], [W - g, g, -1, 1], [g, H - g, 1, -1], [W - g, H - g, -1, -1]].map(([x, y, sx, sy]) => fn(x, y, sx, sy)).join("");
+  let body = "";
+  if (kind === "line") body = box(0, 1);
+  else if (kind === "double") body = box(0, .75) + box(2.6, .75);
+  else if (kind === "thick") body = box(0, 2.25) + box(4.2, .6);
+  else if (kind === "band") body = `<line x1="${g}" y1="${g}" x2="${W - g}" y2="${g}" stroke="${c}" stroke-width="1.5"/><line x1="${g}" y1="${H - g}" x2="${W - g}" y2="${H - g}" stroke="${c}" stroke-width="1.5"/>`;
+  else if (kind === "dots") body = box(0, 1.6, ` stroke-dasharray="0.01 4.2" stroke-linecap="round"`);
+  else if (kind === "corner") {
+    /* 細い二重の枠＋四隅のひし形と、上下中央の小さな飾り */
+    body = box(0, .9) + box(4, .45);
+    body += corners((x, y, sx, sy) => {
+      const d = 5.2;
+      return `<path d="M${x} ${y - d * sy}L${x + d * sx} ${y}L${x} ${y + d * sy}L${x - d * sx} ${y}Z" fill="${c}"/>` +
+        `<path d="M${x + 9 * sx} ${y + 4 * sy}L${x + 30 * sx} ${y + 4 * sy}M${x + 4 * sx} ${y + 9 * sy}L${x + 4 * sx} ${y + 30 * sy}" stroke="${c}" stroke-width="1.6"/>`;
+    });
+    [[W / 2, g], [W / 2, H - g]].forEach(([x, y]) => {
+      body += `<path d="M${x - 9} ${y}L${x} ${y - 3.2}L${x + 9} ${y}L${x} ${y + 3.2}Z" fill="${c}"/>` +
+        `<circle cx="${x - 15}" cy="${y}" r="1.3" fill="${c}"/><circle cx="${x + 15}" cy="${y}" r="1.3" fill="${c}"/>`;
+    });
+  } else if (kind === "wa") {
+    /* 外は太めの線、内側は四隅を四角く切り欠いた細線（賞状のような和の枠） */
+    const n = 11, i0 = g + 5;
+    const x0 = i0, y0 = i0, x1 = W - i0, y1 = H - i0;
+    const p = `M${x0 + n} ${y0}H${x1 - n}V${y0 + n}H${x1}V${y1 - n}H${x1 - n}V${y1}H${x0 + n}V${y1 - n}H${x0}V${y0 + n}H${x0 + n}Z`;
+    body = box(0, 1.6) + `<path d="${p}" fill="none" stroke="${c}" stroke-width=".6"/>`;
+    body += corners((x, y, sx, sy) => `<rect x="${sx > 0 ? x + 5 : x - 9.2}" y="${sy > 0 ? y + 5 : y - 9.2}" width="4.2" height="4.2" fill="${c}"/>`);
+  } else if (kind === "flower") {
+    /* 角の丸い細い枠と、四隅の小さな花と葉 */
+    body = `<rect x="${g}" y="${g}" width="${W - 2 * g}" height="${H - 2 * g}" rx="12" fill="none" stroke="${c}" stroke-width=".9"/>`;
+    const flower = (x, y, sx, sy) => {
+      let s = "";
+      for (let k = 0; k < 5; k++) {
+        const a = (k * 72 - 90) * Math.PI / 180, px = x + Math.cos(a) * 4.6, py = y + Math.sin(a) * 4.6;
+        s += `<ellipse cx="${px.toFixed(2)}" cy="${py.toFixed(2)}" rx="3.4" ry="2.5" transform="rotate(${k * 72} ${px.toFixed(2)} ${py.toFixed(2)})" fill="${c}" fill-opacity=".28" stroke="${c}" stroke-width=".55"/>`;
+      }
+      s += `<circle cx="${x}" cy="${y}" r="1.9" fill="${c}"/>`;
+      /* 葉は枠の線に沿わせる（内側の捨印欄などにかからないように） */
+      const lf = (lx, ly, rot) => `<path d="M0 0C3 -3 8 -3 11 0C8 3 3 3 0 0Z" fill="${c}" fill-opacity=".5" transform="translate(${lx} ${ly}) rotate(${rot})"/>`;
+      s += lf(x + 8 * sx, y, sx > 0 ? 0 : 180);
+      s += lf(x, y + 8 * sy, sy > 0 ? 90 : -90);
+      return s;
+    };
+    body += corners((x, y, sx, sy) => flower(x, y, sx, sy));
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true">${body}</svg>`;
+}
+/* 設定画面用の小さな見本 */
+function nkFrameThumb(kind, hex) {
+  if (kind === "none") return `<svg viewBox="0 0 ${A4_PT.w} ${A4_PT.h}" aria-hidden="true"><rect x="0" y="0" width="${A4_PT.w}" height="${A4_PT.h}" fill="#fff"/></svg>`;
+  /* 小さく表示しても線が見えるよう、線の太さは画面の px で描く */
+  return nkFrameSvg(kind, hex, { inset: 40 }).replace('width="100%" height="100%"', "").replace("<svg ", `<svg style="background:#fff" `)
+    .replace(/(<(?:rect|line|path|ellipse|circle)\b)/g, '$1 vector-effect="non-scaling-stroke"').replace(/stroke-width="([\d.]+)"/g, (m, w) => `stroke-width="${Math.max(.9, Math.min(2.2, +w * 1.2)).toFixed(2)}"`);
+}
+/* Word 用：線の枠はページ罫線の XML（sectPr の pgMar の後ろに入れる） */
+function nkFramePgBorders(kind, hex) {
+  const f = NK_FRAME_KINDS[kind];
+  if (!f || !f.w) return "";
+  const sides = f.sides || ["top", "left", "bottom", "right"];
+  return `<w:pgBorders w:offsetFrom="page">` + ["top", "left", "bottom", "right"].filter(x => sides.includes(x))
+    .map(x => `<w:${x} w:val="${f.w}" w:sz="${f.sz}" w:space="${NK_FRAME_INSET}" w:color="${hex}"/>`).join("") + `</w:pgBorders>`;
+}
+function nkFrameIsImage(kind) { const f = NK_FRAME_KINDS[kind]; return !!(f && f.img); }
+/* Word 用：飾りのある枠を PNG にする（200dpi） */
+function nkFramePng(kind, hex) {
+  return new Promise((resolve, reject) => {
+    const svg = nkFrameSvg(kind, hex).replace('width="100%" height="100%" preserveAspectRatio="none"', `width="${A4_PT.w}" height="${A4_PT.h}"`);
+    const scale = 200 / 72;
+    const img = new Image();
+    img.onload = () => {
+      try {
+        const cv = document.createElement("canvas");
+        cv.width = Math.round(A4_PT.w * scale); cv.height = Math.round(A4_PT.h * scale);
+        const ctx = cv.getContext("2d");
+        ctx.drawImage(img, 0, 0, cv.width, cv.height);
+        cv.toBlob(b => { if (!b) { reject(new Error("png")); return; } b.arrayBuffer().then(ab => resolve(new Uint8Array(ab)), reject); }, "image/png");
+      } catch (e) { reject(e); }
+    };
+    img.onerror = () => reject(new Error("frame image"));
+    img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  });
+}
+/* Word 用：ヘッダーに背面で置く画像（用紙全体）の段落内の要素 */
+function nkFrameDrawingRun(relId) {
+  const cx = 7560000, cy = 10692000;
+  return `<w:r><w:drawing><wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="0" behindDoc="1" locked="1" layoutInCell="1" allowOverlap="1">` +
+    `<wp:simplePos x="0" y="0"/><wp:positionH relativeFrom="page"><wp:posOffset>0</wp:posOffset></wp:positionH><wp:positionV relativeFrom="page"><wp:posOffset>0</wp:posOffset></wp:positionV>` +
+    `<wp:extent cx="${cx}" cy="${cy}"/><wp:effectExtent l="0" t="0" r="0" b="0"/><wp:wrapNone/><wp:docPr id="901" name="飾り枠"/><wp:cNvGraphicFramePr/>` +
+    `<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">` +
+    `<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="901" name="frame.png"/><pic:cNvPicPr/></pic:nvPicPr>` +
+    `<pic:blipFill><a:blip r:embed="${relId}"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill>` +
+    `<pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="${cx}" cy="${cy}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic>` +
+    `</a:graphicData></a:graphic></wp:anchor></w:drawing></w:r>`;
+}
+const NK_WP_NS = 'xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"';
+window.NKFrames = { kinds: NK_FRAME_KINDS, colors: NK_FRAME_COLORS, inset: NK_FRAME_INSET, color: nkFrameColor, svg: nkFrameSvg, thumb: nkFrameThumb, pgBorders: nkFramePgBorders, isImage: nkFrameIsImage, png: nkFramePng, drawingRun: nkFrameDrawingRun, wpNs: NK_WP_NS };
 
 
 /* ============ 書類（見積・請求／委任状）と画面のつなぎ ============ */
