@@ -2855,6 +2855,8 @@ body.has-layer .toasts{bottom:auto;top:calc(16px + env(safe-area-inset-top,0px))
   #printRoot .sheet::before,#printRoot .pgline{display:none!important}
   #printRoot .sheet p:not(.sh){background:none!important}
   #printRoot .sheet{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #printRoot .sheet .pgframe{position:fixed!important}
+  #printRoot .sheet.multi .pgframe{display:none}
 }
 </style>
 <style>
@@ -3218,6 +3220,7 @@ const DEFAULT_SETTINGS = {
   askSaveLocation: false,
   autoToday: true,
   design: "modern",
+  frame: "none",
   theme: "auto"
 };
 const DEFAULT_DOCS = [
@@ -3393,6 +3396,27 @@ function telRuns(){
 /* デザイン（モダン）：色・罫線・網掛けを段落に足す。プレビュー・印刷・Wordで共通 */
 const DZ = {navy: "1F3A5F", line: "B8C2CF", shade: "F2F5F9", sub: "4A5568"};
 function isModern(){ return CFG.design !== "classic"; }
+/* ページの枠（Wordはページ罫線、プレビュー・印刷は同じ位置に描く） */
+const FRAMES = {
+  none:   {label: "なし"},
+  line:   {label: "細い線", w: "single", sz: 8, css: (c) => `border:1pt solid ${c}`},
+  double: {label: "二重線", w: "double", sz: 6, css: (c) => `border:3.25pt double ${c}`},
+  thick:  {label: "太線＋細線", w: "thickThinSmallGap", sz: 18, css: (c) => `border:2.25pt solid ${c};box-shadow:inset 0 0 0 2pt #fff,inset 0 0 0 2.75pt ${c}`},
+  band:   {label: "上下の線", w: "single", sz: 12, sides: ["top", "bottom"], css: (c) => `border-top:1.5pt solid ${c};border-bottom:1.5pt solid ${c}`}
+};
+const FRAME_GAP = 24; // ページの端からの距離（pt）
+function frameOf(){ const f = FRAMES[CFG.frame]; return f && f.w ? f : null; }
+function frameColor(){ return isModern() ? DZ.navy : "3A3F47"; }
+function frameHtml(){
+  const f = frameOf(); if (!f) return "";
+  return `<div class="pgframe" style="position:absolute;inset:${FRAME_GAP}pt;pointer-events:none;${f.css("#" + frameColor())}"></div>`;
+}
+function frameXml(){
+  const f = frameOf(); if (!f) return "";
+  const sides = f.sides || ["top", "left", "bottom", "right"];
+  return `<w:pgBorders w:offsetFrom="page">` + ["top", "left", "bottom", "right"].filter(x => sides.includes(x))
+    .map(x => `<w:${x} w:val="${f.w}" w:sz="${f.sz}" w:space="${FRAME_GAP}" w:color="${frameColor()}"/>`).join("") + `</w:pgBorders>`;
+}
 function decorate(P, F, C){
   const N = DZ.navy;
   P.forEach(p => {
@@ -3590,7 +3614,7 @@ function renderSheet(P){
     }).join("");
     return `<p class="${p.key ? "k-" + p.key : "k-blank"}${p.shade ? " sh" : ""}" style="${st}">${inner}</p>`;
   }).join("");
-  sheet.innerHTML = html + (FIT && FIT.overflow ? `<div class="pgline"><span>ここから2ページ目</span></div>` : "");
+  sheet.innerHTML = frameHtml() + html + (FIT && FIT.overflow ? `<div class="pgline"><span>ここから2ページ目</span></div>` : "");
   sheet.classList.toggle("guides", !!UI.guides);
   fitPreview();
 }
@@ -3654,7 +3678,7 @@ async function buildDocx(){
   const zip = await JSZip.loadAsync(b64ToBytes(TEMPLATE_B64));
   const tpl = await zip.file("word/document.xml").async("string");
   const head = tpl.slice(0, tpl.indexOf("<w:body>") + "<w:body>".length);
-  const sect = (tpl.match(/<w:sectPr[\s\S]*?<\/w:sectPr>/) || [""])[0];
+  const sect = ((tpl.match(/<w:sectPr[\s\S]*?<\/w:sectPr>/) || [""])[0]).replace(/(<w:pgMar[^>]*\/>)/, "$1" + frameXml());
   const P = buildLayout(S, FIT);
   zip.file("word/document.xml", head + P.map(paraXml).join("") + sect + "</w:body></w:document>", {createFolders: false});
   zip.file("docProps/core.xml", coreXml(), {createFolders: false});
@@ -4423,6 +4447,7 @@ function openSettings(){
     </fieldset>
     <fieldset class="fs"><legend>デザイン</legend>
       <div class="radios"><label class="radio"><input type="radio" name="dz" value="modern"${c.design !== "classic" ? " checked" : ""}>モダン（紺のアクセント・枠・網掛け）</label><label class="radio"><input type="radio" name="dz" value="classic"${c.design === "classic" ? " checked" : ""}>クラシック（黒一色・下線）</label></div>
+      <div class="field"><label class="lbl">ページの枠</label><div class="radios">${Object.entries(FRAMES).map(([k, f]) => `<label class="radio"><input type="radio" name="fr" value="${k}"${(c.frame || "none") === k ? " checked" : ""}>${f.label}</label>`).join("")}</div></div>
     </fieldset>
     <fieldset class="fs"><legend>保存</legend>
       <div class="radios">${fp("title_dest", "表題_送付先")}${fp("date_title_dest", "日付_表題_送付先")}${fp("dest_title_date", "送付先_表題_日付")}</div>
@@ -4463,7 +4488,8 @@ function openSettings(){
         filePattern: ($('input[name="fp"]:checked', m.el) || {}).value || "title_dest",
         askSaveLocation: $("#cfAsk").checked, autoToday: $("#cfAutoToday").checked,
         theme: ($('input[name="th"]:checked', m.el) || {}).value || "auto",
-        design: ($('input[name="dz"]:checked', m.el) || {}).value || "modern"});
+        design: ($('input[name="dz"]:checked', m.el) || {}).value || "modern",
+        frame: ($('input[name="fr"]:checked', m.el) || {}).value || "none"});
       if (S.lead != null && S.lead === oldLead) S.lead = null;
       store.set(K.settings, CFG); applyTheme(); applyBrand(); $("#lead").value = leadOf(); refresh();
       toast("設定を保存しました", {kind: "ok"});
