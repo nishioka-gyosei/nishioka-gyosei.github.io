@@ -3234,6 +3234,10 @@ const BUILTIN = [
    note: "家系図作成のため、委任者〇〇〇〇の母〇〇〇〇（本籍：〇〇〇〇）から始めて、母方の直系尊属が載っている戸籍のうち、貴庁で保管しているものをすべてご交付ください。\n①戸籍謄本・除籍謄本・改製原戸籍謄本（平成・昭和の改製とも）を各１通お願いします。\n②全員の氏名がわかるよう、抄本ではなく謄本でお願いします（除籍された方も省略なし）。\n③転籍してきている場合は、前の本籍地をお知らせいただけると助かります。\n④廃棄・焼失などでそれより前の戸籍がない場合は、その旨の証明書（廃棄証明書・焼失告知書など）もご交付ください。\n手数料として定額小為替を同封しています。不足の場合はご連絡ください。余った分はご返送いただけますと幸いです。",
    docs: [{name: "戸籍謄本等交付請求書", qty: "1", unit: "通"}, {name: "委任状", qty: "1", unit: "通"}, {name: "委任者と母のつながりがわかる戸籍の写し", qty: "1", unit: "通"},
           {name: "定額小為替", qty: "1", unit: "式"}, {name: "西岡の身分証コピー", qty: "1", unit: "通"}, RETURN_ENV]},
+  {id: "b7", name: "家系図用 父方の戸籍 郵送請求", builtin: true, mode: "request", reqdoc: "戸籍謄本・除籍謄本・改製原戸籍謄本", freeText: "", tail: "をさせていただきました。",
+   note: "家系図作成のため、委任者〇〇〇〇の父〇〇〇〇（本籍：〇〇〇〇）から始めて、父方の直系尊属が載っている戸籍のうち、貴庁で保管しているものをすべてご交付ください。\n①戸籍謄本・除籍謄本・改製原戸籍謄本（平成・昭和の改製とも）を各１通お願いします。\n②全員の氏名がわかるよう、抄本ではなく謄本でお願いします（除籍された方も省略なし）。\n③転籍してきている場合は、前の本籍地をお知らせいただけると助かります。\n④廃棄・焼失などでそれより前の戸籍がない場合は、その旨の証明書（廃棄証明書・焼失告知書など）もご交付ください。\n手数料として定額小為替を同封しています。不足の場合はご連絡ください。余った分はご返送いただけますと幸いです。",
+   docs: [{name: "戸籍謄本等交付請求書", qty: "1", unit: "通"}, {name: "委任状", qty: "1", unit: "通"}, {name: "委任者と父のつながりがわかる戸籍の写し", qty: "1", unit: "通"},
+          {name: "定額小為替", qty: "1", unit: "式"}, {name: "西岡の身分証コピー", qty: "1", unit: "通"}, RETURN_ENV]},
   {id: "b3", name: "建設業許可 申請書類送付", builtin: true, mode: "free", reqdoc: "", freeText: "建設業許可（般・新規）申請書類一式", tail: "を送付いたします。",
    docs: [{name: "許可申請書", qty: "1", unit: "部"}, RETURN_ENV]},
   {id: "b4", name: "古物商許可 申請書類送付", builtin: true, mode: "free", reqdoc: "", freeText: "古物商許可申請書類一式", tail: "を送付いたします。",
@@ -3447,18 +3451,18 @@ function buildLayoutBase(s, fit){
   const to = s.printAddressee ? addresseeOf(s) : "";
   if (to){ P.push(P_({key: "to", align: "left", size: 12, runs: [{t: to}]})); P.push(B_()); }
   const g1 = txt("greet1", s), g2 = txt("greet2", s);
-  if (g1) P.push(P_({key: "greet", ind: IND1, runs: [{t: g1}]}));
-  if (g2) P.push(P_({key: "greet", ind: IND1, runs: [{t: g2}]}));
+  if (g1) P.push(P_({key: "greet", size: fit.body || 10.5, ind: IND1, runs: [{t: g1}]}));
+  if (g2) P.push(P_({key: "greet", size: fit.body || 10.5, ind: IND1, runs: [{t: g2}]}));
   if (g1 || g2) P.push(B_());
   const lead = leadOf(s);
-  if (lead) P.push(P_({key: "lead", ind: IND1, runs: [{t: lead}]}));
+  if (lead) P.push(P_({key: "lead", size: fit.body || 10.5, ind: IND1, runs: [{t: lead}]}));
   const ul = underlineOf(s);
-  P.push(P_({key: "main", ind: IND1, runs: [{t: ul, u: true}, {t: s.tail || ""}].filter(r => r.t)}));
-  noteLines(s).forEach(l => P.push(P_({key: "note", ind: IND1, runs: [{t: l}]})));
+  P.push(P_({key: "main", size: fit.body || 10.5, ind: IND1, runs: [{t: ul, u: true}, {t: s.tail || ""}].filter(r => r.t)}));
+  noteLines(s).forEach(l => P.push(P_({key: "note", size: fit.note || 10.5, ind: IND1, runs: [{t: l}]})));
   P.push(B_());
   const c1 = txt("close1", s), c2 = txt("close2", s);
-  if (c1){ P.push(P_({key: "close", ind: IND1, runs: [{t: c1}]})); P.push(B_()); }
-  if (c2) P.push(P_({key: "close", ind: IND1, runs: [{t: c2}]}));
+  if (c1){ P.push(P_({key: "close", size: fit.body || 10.5, ind: IND1, runs: [{t: c1}]})); P.push(B_()); }
+  if (c2) P.push(P_({key: "close", size: fit.body || 10.5, ind: IND1, runs: [{t: c2}]}));
   for (let i = 0; i < fit.g4; i++) P.push(B_());
   P.push(P_({key: "lh", size: 12, runs: [{t: txt("listHeading", s) || (F ? "同封している書類" : "送付書類")}]}));
   for (let i = 0; i < fit.g5; i++) P.push(B_(12));
@@ -3526,10 +3530,12 @@ function measure(P){
 }
 function computeFit(s){
   const avail = PT(PAGE.h - PAGE.top - PAGE.bottom);
-  const f = {g4: 5, g5: 1, g6: 4, list: 12};
+  const f = {g4: 5, g5: 1, g6: 4, list: 12, note: 10.5, body: 10.5};
   const H = () => measure(buildLayout(s, f));
   let h = H(), guard = 0;
-  while (h > avail && guard++ < 24){
+  /* Word（游明朝）の改行位置は見積りとずれることがあるので、1行強のゆとりを残して収める */
+  const target = avail - 24;
+  while (h > target && guard++ < 30){
     if (f.g6 > 1) f.g6--;
     else if (f.g4 > 2) f.g4--;
     else if (f.g5 > 0) f.g5--;
@@ -3538,11 +3544,14 @@ function computeFit(s){
     else if (f.g6 > 0) f.g6--;
     else if (f.g4 > 0) f.g4--;
     else if (!f.compact && isModern()) f.compact = true;
+    else if (f.note > 9) f.note = 9;
+    else if (f.list > 9) f.list = 9;
+    else if (f.body > 9) f.body = 9;
     else break;
     h = H();
   }
   return Object.assign(f, {height: h, avail, ratio: h / avail, overflow: h > avail + 0.5,
-    adjusted: f.g4 !== 5 || f.g5 !== 1 || f.g6 !== 4 || f.list !== 12});
+    adjusted: f.g4 !== 5 || f.g5 !== 1 || f.g6 !== 4 || f.list !== 12 || f.note !== 10.5 || f.body !== 10.5});
 }
 
 /* ---------- preview ---------- */
