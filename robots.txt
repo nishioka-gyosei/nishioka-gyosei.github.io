@@ -1,5 +1,21 @@
+# 西岡行政書士事務所 https://nishioka-gyosei.github.io/
+# すべての検索エンジンと、AI検索・AIアシスタントの巡回を許可しています。
+
 User-agent: *
 Allow: /
- 
+
+# AI検索・AIアシスタント（許可していることを明示）
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://nishioka-gyosei.github.io/sitemap.xml
- 
