@@ -4889,6 +4889,7 @@ const DEFAULT_CATEGORIES = [
   "在留資格",
   "相続・遺言",
   "墓じまい・改葬",
+  "家系図",
   "契約書作成",
   "その他"
 ];
@@ -5394,6 +5395,30 @@ const DEFAULT_TEMPLATES = [
       "改葬許可証の受領",
       "遺骨の取り出し・閉眼供養の日程調整",
       "改葬先への納骨"
+    ]
+  },
+  {
+    id: "tpl-kakeizu",
+    name: "家系図作成（母方・1系統）",
+    category: "家系図",
+    title: "家系図作成（母方）",
+    office: "本籍地の市区町村（郵送請求）",
+    periodN: null, periodUnit: "days",
+    fee: 30000, expense: null,
+    note: "報酬は1系統（名字ひとつ）ごと。直系尊属の戸籍はご本人の委任状で請求できるが、おじ・おば・いとこが筆頭者の戸籍はその方の委任状が必要。記念用の家系図に職務上請求書は使えない。戸籍手数料は謄本450円、除籍・改製原750円（定額小為替は多めに同封）。",
+    checklist: [
+      "ヒアリング（どの系統か・母の氏名と本籍・分かっている先祖）",
+      "見積書の作成・送付（家系図作成 1系統）",
+      "委任状の作成（委任状：家系図作成のための戸籍の取得（母方））・ご本人の自署",
+      "委任者と母のつながりがわかる戸籍の用意",
+      "母の本籍地へ郵送請求（送付状：家系図用 母方の戸籍 郵送請求）",
+      "定額小為替・返信用封筒（レターパック）の同封",
+      "届いた戸籍の確認・前の本籍地の洗い出し",
+      "前の本籍地の役所へ追加の郵送請求（さかのぼれるところまで繰り返す）",
+      "家系図の作成（家系図メーカーで戸籍を読み取り）",
+      "原本と照合・お客様に確認",
+      "家系図（PDF）の納品・戸籍原本の返却",
+      "請求・入金確認"
     ]
   },
   {
@@ -16729,6 +16754,31 @@ function showMigrationReport(report) {
 }
 
 
+/* 後から足した業務（家系図）を、保存済みの設定にも1回だけ追加する（消した後に戻すことはしない） */
+function seedHubKakeizu() {
+  const KEY = "nk8.seed.kakeizu1";
+  try { if (localStorage.getItem(KEY)) return; } catch { return; }
+  const s = state.data && state.data.settings;
+  if (!s) return;
+  let changed = false;
+  if (!s.categories.includes("家系図")) {
+    const i = s.categories.indexOf("墓じまい・改葬");
+    if (i >= 0) s.categories.splice(i + 1, 0, "家系図"); else s.categories.splice(Math.max(0, s.categories.length - 1), 0, "家系図");
+    changed = true;
+  }
+  if (!s.templates.some(t => t.id === "tpl-kakeizu")) {
+    const t = DEFAULT_TEMPLATES.find(x => x.id === "tpl-kakeizu");
+    if (t) {
+      const i = s.templates.findIndex(x => x.id === "tpl-generic");
+      const nt = normalizeTemplate(JSON.parse(JSON.stringify(t)));
+      if (i >= 0) s.templates.splice(i, 0, nt); else s.templates.push(nt);
+      changed = true;
+    }
+  }
+  try { localStorage.setItem(KEY, String(Date.now())); } catch { /* noop */ }
+  if (changed) persist();
+}
+
 /* 後から足した業務（非農地証明）を、保存済みの設定にも1回だけ追加する（消した後に戻すことはしない） */
 function seedHubAdditions() {
   const KEY = "nk8.seed.hinouchi1";
@@ -16813,6 +16863,7 @@ async function init() {
     state.data = migrated ? migrated.data : normalizeData({});
   }
   seedHubAdditions();
+  seedHubKakeizu();
   Docs.rebind();
   Poa.rebind(); Letters.rebind();
   Docs.init();
