@@ -20,6 +20,7 @@
   --carp: #e60012;        /* 赤：塗り（ボタン・線）。白い文字で4.8:1 */
   --carp-ink: #d0101b;    /* 赤：明るい面の上の文字 */
   --shu: var(--carp-ink); /* 期限・注意も同じ赤にそろえる */
+  --maple: var(--carp-ink); --maple-soft: #ee8a8f; --maple-tint: #fdf0f0;
   --line: #d9dde4;
 
   /* 既存トークンを新しい色に差し替える */
@@ -52,7 +53,7 @@ body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.9; lette
 
 /* 飾りの記号・大きな番号・角かっこ・英字ラベルは消す */
 .nx-lp-section__num, .nx-section__num, .nx-bracket, .nx-lp-hero__pattern,
-.nx-lp-section .nx-eyebrow, .nx-section .nx-eyebrow, .nx-contact .nx-eyebrow,
+.nx-eyebrow,
 .nx-lp-hero__service-icon, .nx-info-card__icon, .nx-related-card__icon, .nx-contact-card__icon { display: none !important; }
 
 /* ---------- ヘッダー：白地に藍 ---------- */
@@ -69,7 +70,8 @@ body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.9; lette
 .nx-btn { border-radius: 4px; font-size: 15px; letter-spacing: 0.03em; }
 .nx-btn--primary { background: var(--ai); border-color: var(--ai); color: #fff; }
 .nx-btn--primary:hover { background: var(--ai-2); transform: none; }
-.nx-btn--line, .nx-lp-hero .nx-btn--primary[href*="lin.ee"], .nx-cta-band .nx-btn--primary[href*="lin.ee"] { background: #06c755; border-color: #06c755; color: #fff; }
+.nx-btn--line, .nx-btn--primary[href*="lin.ee"] { background: #06c755; border-color: #06c755; color: #fff; }
+.nx-btn--line:hover, .nx-btn--primary[href*="lin.ee"]:hover { background: #05b04b; border-color: #05b04b; color: #fff; }
 
 /* ---------- 最初の画面：左に見出し、右に数字の札 ---------- */
 .nx-lp-hero { min-height: 0; background: #fff; padding: 112px 24px 64px; border-bottom: 1px solid var(--line); }
@@ -263,6 +265,67 @@ body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.9; lette
 .nx-profile__name { font-family: var(--font-serif); font-weight: 800; }
 .nx-profile__lead { font-family: var(--font-serif); font-weight: 800; }
 
+/* ---------- トップページ ---------- */
+.nx-hero { min-height: 0; background: #fff; padding: 112px 24px 72px; border-bottom: 1px solid var(--line); }
+.nx-hero__pattern, .nx-hero__display, .nx-hero__scroll { display: none !important; }
+.nx-hero__seal { opacity: 0.045 !important; filter: grayscale(1) !important; animation: none !important; }
+.nx-hero__inner { max-width: 1080px; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); column-gap: 56px; align-items: center; }
+.nx-hero__inner > * { grid-column: 1; }
+.nx-hero__badge { margin-bottom: 18px; }
+.nx-hero-badge { background: none; border: 0; padding: 0; border-radius: 0; color: var(--kin-ink); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; }
+.nx-hero-badge::before { content: ""; width: 18px; height: 3px; background: var(--carp); border-radius: 0; }
+.nx-hero__jp { margin: 0 0 24px; font-family: var(--font-serif); font-weight: 800; color: var(--ai); font-size: clamp(26px, 2.75vw, 38px); line-height: 1.5; letter-spacing: 0.04em; }
+.nx-hero__jp-sub { font-family: var(--font-sans); font-size: 13px; font-weight: 500; letter-spacing: 0.02em; color: var(--nezumi); margin-bottom: 14px; }
+.nx-hero__copy { color: var(--sumi); font-size: 16px; line-height: 2; max-width: 36em; margin-bottom: 30px; }
+.nx-hero__copy strong { color: var(--ai); font-weight: 700; }
+.nx-hero .nx-btn--outline { border: 1.5px solid var(--ai); color: var(--ai); background: #fff; font-weight: 700; }
+.nx-hero .nx-btn--outline:hover { background: var(--ai-tint); color: var(--ai); }
+/* 取り扱い業務：箱をやめて罫線の一覧に */
+.nx-group-label, .nx-group-label--navy, .nx-group-label--gold { background: none; color: var(--ai); padding: 0 0 0 14px; border-left: 3px solid var(--carp); border-radius: 0; font-family: var(--font-serif); font-weight: 800; font-size: 16px; letter-spacing: 0.04em; margin-bottom: 8px; }
+.nx-group-label::after { display: none; }
+.nx-service-grid { background: none; border: 0; border-radius: 0; box-shadow: none; gap: 0 44px; overflow: visible; }
+.nx-service-card { background: transparent; border-top: 1px solid var(--line); padding: 22px 0 24px; }
+.nx-service-card:hover { background: transparent; transform: none; }
+.nx-service-card::before, .nx-service-card__icon { display: none; }
+.nx-service-card__title { font-family: var(--font-serif); font-weight: 800; font-size: 17px; color: var(--ai); }
+.nx-service-card__desc { font-size: 14px; line-height: 1.9; color: var(--text-mid); }
+.nx-service-card__price { font-family: var(--font-serif); font-weight: 800; color: var(--ai); }
+.nx-service-card__link { align-self: flex-start; border: 0; padding: 0; background: none; color: var(--ai); font-weight: 700; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+.nx-service-card__link:hover { color: var(--carp-ink); background: none; }
+.nx-police-tag { background: #fff; color: var(--ai); border: 1px solid var(--line); border-radius: 4px; }
+a.nx-police-tag:hover { background: var(--ai-tint); transform: none; }
+.nx-reason-card { border-radius: 4px; box-shadow: none; }
+.nx-reason-card:hover { transform: none; box-shadow: none; border-color: var(--ai); }
+.nx-column-link { border-radius: 4px; }
+.nx-column-link:hover { transform: none; box-shadow: none; border-color: var(--ai); }
+.nx-faq-section .nx-faq-item__q::before, .nx-faq-item__q::before { background: none; width: auto; height: auto; border-radius: 0; }
+
+/* 数字の札：13年・0円・24h・土日祝 */
+.nx-hero__meta { grid-column: 2; grid-row: 1 / span 6; align-self: center; display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 0; background: var(--shiraki); border-radius: 4px; padding: 8px 26px; }
+.nx-hero-chip { display: block; padding: 18px 0 16px; border: 0; font-family: var(--font-sans); font-size: 13px; letter-spacing: 0.02em; text-transform: none; color: var(--nezumi); white-space: normal; }
+.nx-hero-chip + .nx-hero-chip { padding-left: 0; border-left: 0; }
+.nx-hero-chip:nth-child(n+3) { border-top: 1px solid rgba(29,44,69,0.14); }
+.nx-hero-chip strong { display: block; font-family: var(--font-serif); font-weight: 800; font-size: 36px; line-height: 1.25; color: var(--ai); }
+
+/* ---------- 料金シミュレーター ---------- */
+.h { background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--line); box-shadow: inset 0 3px 0 var(--carp); }
+.h__mark { filter: none; }
+.h__ja { color: var(--ai); font-weight: 800; font-size: 15px; }
+.h__en { font-family: var(--font-sans); color: var(--nezumi); letter-spacing: 0.06em; }
+.h__link { color: var(--nezumi); font-size: 13px; }
+.h__link:hover { color: var(--ai); }
+.h__cta { background: var(--carp); color: #fff; font-size: 13px; }
+.h__cta:hover { background: #c4000f; color: #fff; }
+.hero:has(.hero__seal) { background: #fff; border-bottom: 1px solid var(--line); padding: 56px 24px 44px; }
+.hero__pattern { display: none; }
+.hero__seal { opacity: 0.05; filter: grayscale(1); }
+.hero__eyebrow, .svc-card__sub { display: none; }
+.hero__title { color: var(--ai); font-weight: 800; letter-spacing: 0.04em; }
+.hero__title em { color: var(--carp-ink); }
+.hero__lead { color: var(--sumi); }
+.hero__chip { background: var(--shiraki); border: 0; color: var(--ai); border-radius: 4px; font-weight: 500; }
+.hero__chip::before { color: var(--carp-ink); }
+
 /* ---------- スマホ ---------- */
 @media (max-width: 860px) {
   .nx-lp-hero { padding: 96px 20px 48px; }
@@ -271,6 +334,11 @@ body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.9; lette
   .nx-lp-meta-item { padding: 12px 0; }
   .nx-lp-meta-item__val { font-size: 27px; }
   .kk-hero .nx-lp-hero__inner, .me-hero .nx-lp-hero__inner { grid-template-columns: 1fr; row-gap: 6px; }
+  .nx-hero { padding: 96px 20px 52px; }
+  .nx-hero__inner { grid-template-columns: minmax(0, 1fr); }
+  .nx-hero__jp { font-size: min(30px, calc((100vw - 40px) / 16.2)); }
+  .nx-hero__meta { grid-column: 1; grid-row: auto; margin: 0 0 26px; padding: 4px 20px; }
+  .nx-hero-chip strong { font-size: 28px; }
   .kk-hero .nx-lp-hero__meta, .me-hero .nx-lp-hero__meta { padding: 0; margin: 0 0 22px; }
   .nx-lp-section { padding: 64px 20px; }
   .nx-info-grid { grid-template-columns: 1fr; }
@@ -283,6 +351,10 @@ body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.9; lette
 }
 @media (max-width: 600px) {
   .nx-header__logo small { display: none; }
+  .nx-hero__copy br { display: none; }
+  .h { padding: 0 14px; }
+  .h__en, .h__link { display: none; }
+  .nx-hero__buttons .nx-btn { flex: 1 1 100%; justify-content: center; }
   .nx-lp-hero__buttons .nx-btn--primary { flex: 1 1 100%; justify-content: center; }
   .nx-lp-hero__buttons .nx-btn--outline { flex: 1 1 0; justify-content: center; padding-left: 10px; padding-right: 10px; }
   .nx-keypoints-band { padding: 32px 16px 0; }
