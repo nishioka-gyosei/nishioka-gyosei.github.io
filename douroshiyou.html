@@ -1968,7 +1968,8 @@ html:not(.js) .nx-fab { opacity: 1; transform: none; pointer-events: auto; }
 
   /* ---------- Counter animation ---------- */
   function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
-  document.querySelectorAll('[data-count]').forEach(function (el) {
+  /* 数字が0から増える動きは使わない（表示がちらつくため） */
+  document.querySelectorAll('[data-count-animate]').forEach(function (el) {
     var target = parseInt(el.dataset.count, 10);
     if (isNaN(target)) return;
     var run = function () {

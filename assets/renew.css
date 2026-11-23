@@ -347,6 +347,16 @@ main:has(> .nx-hero) .nx-quote { border-radius: var(--card-r); }
 main:has(> .nx-hero) .nx-faq-item { margin-bottom: 8px; border-top: 1px solid var(--card-line); }
 main:has(> .nx-hero) .nx-faq-item:first-child { border-top: 1px solid var(--card-line); }
 main:has(> .nx-hero) .nx-contact-card--featured { border-radius: var(--card-r); }
+/* 代表紹介の数字：3つを1行にそろえる（スマホで折り返さない） */
+.nx-about__stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.nx-about__stats .nx-stat__label { white-space: normal; text-transform: none; letter-spacing: 0.04em; }
+@media (max-width: 600px) {
+  .nx-about__stats { gap: 10px; }
+  .nx-about__stats .nx-stat { padding-left: 12px; }
+  .nx-about__stats .nx-stat__val { font-size: 34px; }
+  .nx-about__stats .nx-stat__val span:not([data-count]) { font-size: 15px; }
+  .nx-about__stats .nx-stat__label { font-size: 11px; }
+}
 .nx-faq-item__q::before { background: none; width: auto; height: auto; border-radius: 0; }
 .nx-sim-card { border-radius: var(--card-r); }
 .nx-sim__eyebrow { display: none; }
