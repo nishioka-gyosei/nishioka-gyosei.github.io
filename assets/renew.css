@@ -2,7 +2,8 @@
    西岡行政書士事務所 サイトリニューアル 共通デザイン（renew.css）
    ねらい：藍ののれん × 白木のカウンター。役所の手続きを、明るく、迷わず読める紙面に。
    - 主役は各ページの最初にある「数字の札」（料金・期間）ひとつだけ。ほかは静かに。
-   - 期限・注意だけに朱を使う。金は事務所の印として、線と数字に少しだけ。
+   - 赤（広島カープを思わせる赤）は、ヘッダーの線と相談ボタン、手順の番号、質問のQ、期限・注意に。
+   - 金は事務所の印として、線と小さな文字に少しだけ。
    - 既存のHTMLは変えず、見た目だけを上書きする（構造化データ・本文・リンクはそのまま）。
    ===================================================================== */
 
@@ -16,7 +17,9 @@
   --nezumi: #5f646c;      /* 補足（白地で4.5:1以上） */
   --kin: #c39a48;         /* 金：藍の上で使う */
   --kin-ink: #86621f;     /* 金：白地の文字に使う */
-  --shu: #b23f2a;         /* 朱：期限・注意だけ */
+  --carp: #e60012;        /* 赤：塗り（ボタン・線）。白い文字で4.8:1 */
+  --carp-ink: #d0101b;    /* 赤：明るい面の上の文字 */
+  --shu: var(--carp-ink); /* 期限・注意も同じ赤にそろえる */
   --line: #d9dde4;
 
   /* 既存トークンを新しい色に差し替える */
@@ -53,14 +56,14 @@ body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.9; lette
 .nx-lp-hero__service-icon, .nx-info-card__icon, .nx-related-card__icon, .nx-contact-card__icon { display: none !important; }
 
 /* ---------- ヘッダー：白地に藍 ---------- */
-.nx-header { background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--line); backdrop-filter: blur(6px); }
+.nx-header { background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--line); box-shadow: inset 0 3px 0 var(--carp); backdrop-filter: blur(6px); }
 .nx-header__mark { filter: none; }
 .nx-header__logo { color: var(--ai); font-family: var(--font-serif); font-weight: 800; font-size: 15px; }
 .nx-header__logo small { color: var(--nezumi); font-family: var(--font-sans); letter-spacing: 0.06em; }
 .nx-header__link { color: var(--nezumi); font-size: 13px; }
 .nx-header__link:hover { color: var(--ai); }
-.nx-btn--header { background: var(--ai); border-color: var(--ai); color: #fff; border-radius: 4px; font-size: 13px; }
-.nx-btn--header:hover { background: var(--ai-2); }
+.nx-btn--header { background: var(--carp); border-color: var(--carp); color: #fff; border-radius: 4px; font-size: 13px; }
+.nx-btn--header:hover { background: #c4000f; border-color: #c4000f; color: #fff; }
 
 /* ---------- ボタン ---------- */
 .nx-btn { border-radius: 4px; font-size: 15px; letter-spacing: 0.03em; }
@@ -131,7 +134,7 @@ body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.9; lette
 .nx-check li::before { content: ""; left: 4px; top: 22px; width: 12px; height: 7px; border-radius: 0; background: none; border-left: 2px solid var(--kin-ink); border-bottom: 2px solid var(--kin-ink); transform: rotate(-45deg); }
 
 /* 注意と補足 */
-.nx-alert { background: #fbf2ef; border: 0; border-left: 3px solid var(--shu); border-radius: 0 4px 4px 0; }
+.nx-alert { background: #fdf2f2; border: 0; border-left: 3px solid var(--shu); border-radius: 0 4px 4px 0; }
 .nx-alert__ttl { color: var(--shu); font-weight: 800; }
 .nx-note { background: var(--ai-tint); border: 0; border-left: 3px solid var(--ai); border-radius: 0 4px 4px 0; }
 .nx-lp-section--cream .nx-note { background: #fff; }
@@ -176,7 +179,7 @@ body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.9; lette
 
 /* 流れ：番号と一本の線 */
 .nx-step { border-bottom: 1px solid var(--line); grid-template-columns: 64px 1fr; }
-.nx-step__num { font-family: var(--font-serif); font-weight: 800; font-size: 34px; color: var(--ai); text-align: center; }
+.nx-step__num, .nx-lp-section .nx-step__num { font-family: var(--font-serif); font-weight: 800; font-size: 34px; color: var(--carp-ink); text-align: center; }
 .nx-step__num::after { top: 52px; width: 2px; background: rgba(29,44,69,0.18); }
 .nx-step__title { font-family: var(--font-serif); font-weight: 800; font-size: 18px; }
 .nx-step__desc { font-size: 14.5px; line-height: 1.95; }
@@ -185,7 +188,7 @@ body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.9; lette
 /* よくある質問 */
 .nx-faq-item:first-child { border-top: 2px solid var(--ai); }
 .nx-faq-item__q { font-family: var(--font-serif); font-weight: 800; font-size: 16.5px; }
-.nx-faq-item__q::before { font-family: var(--font-serif); color: var(--kin-ink); font-weight: 800; }
+.nx-faq-item__q::before { font-family: var(--font-serif); color: var(--carp-ink); font-weight: 800; }
 .nx-faq-item__a { font-size: 15px; line-height: 2; }
 .nx-faq-item__a::before { font-family: var(--font-serif); color: var(--ai); font-weight: 800; }
 
@@ -226,7 +229,7 @@ body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.9; lette
 .nx-btn--phone { background: var(--ai-tint); border-color: var(--ai-tint); color: var(--ai); font-family: var(--font-serif); font-weight: 800; }
 
 /* 事務所の基本情報（フッターの上の帯） */
-.nx-info-strip { background: var(--ai); border-top: 0; }
+.nx-info-strip { background: var(--ai); border-top: 0; box-shadow: inset 0 3px 0 var(--carp); }
 .nx-info-item__label { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.06em; text-transform: none; color: rgba(255,255,255,0.6); }
 .nx-info-item__val { font-family: var(--font-serif); font-weight: 600; }
 
