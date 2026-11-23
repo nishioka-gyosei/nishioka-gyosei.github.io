@@ -243,6 +243,23 @@ body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.9; lette
 .nx-footer__link { color: rgba(255,255,255,0.66); font-size: 12px; }
 .nx-footer__link:hover { color: #fff; }
 
+/* ---------- ページごとの調整 ---------- */
+/* 家系図・出張メンエス：イラスト入りのやわらかい最初の画面は、そのまま残す */
+.kk-hero .nx-lp-hero__inner, .me-hero .nx-lp-hero__inner { grid-template-columns: minmax(0, 1fr) 300px; column-gap: 36px; max-width: 960px; align-items: center; }
+.kk-hero .nx-lp-hero__inner > *, .me-hero .nx-lp-hero__inner > * { grid-column: auto; }
+.kk-hero .nx-lp-hero__title, .me-hero .nx-lp-hero__title { font-size: clamp(27px, 3.5vw, 38px); }
+.kk-hero .nx-lp-hero__meta, .me-hero .nx-lp-hero__meta { display: flex; flex-wrap: wrap; gap: 10px; background: none; padding: 0; margin: 0 0 26px; border-radius: 0; }
+.kk-hero .nx-lp-meta-item, .me-hero .nx-lp-meta-item { display: block; }
+.kk-hero .nx-lp-meta-item:last-child { border-bottom: 1px solid #e6dcc8; }
+.me-hero .nx-lp-meta-item:last-child { border-bottom: 1px solid #f0dccf; }
+.kk-hero .nx-lp-meta-item__label, .me-hero .nx-lp-meta-item__label { font-size: 12px; margin-bottom: 0; }
+
+/* 事務所概要：英字の添え書きを小さく、代表プロフィールの英字名も控えめに */
+.nx-about-sub { font-family: var(--font-sans); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: var(--nezumi); }
+.nx-profile__en { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.08em; text-transform: none; color: rgba(255,255,255,0.6); }
+.nx-profile__name { font-family: var(--font-serif); font-weight: 800; }
+.nx-profile__lead { font-family: var(--font-serif); font-weight: 800; }
+
 /* ---------- スマホ ---------- */
 @media (max-width: 860px) {
   .nx-lp-hero { padding: 96px 20px 48px; }
@@ -250,6 +267,8 @@ body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.9; lette
   .nx-lp-hero__meta { grid-column: 1; grid-row: auto; margin: 4px 0 28px; padding: 6px 20px; }
   .nx-lp-meta-item { padding: 12px 0; }
   .nx-lp-meta-item__val { font-size: 27px; }
+  .kk-hero .nx-lp-hero__inner, .me-hero .nx-lp-hero__inner { grid-template-columns: 1fr; row-gap: 6px; }
+  .kk-hero .nx-lp-hero__meta, .me-hero .nx-lp-hero__meta { padding: 0; margin: 0 0 22px; }
   .nx-lp-section { padding: 64px 20px; }
   .nx-info-grid { grid-template-columns: 1fr; }
   .nx-quote { padding: 30px 24px 26px; }
