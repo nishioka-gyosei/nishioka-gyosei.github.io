@@ -267,11 +267,21 @@ h1:has(wbr, .nx-nowrap), h2:has(wbr, .nx-nowrap), h3:has(wbr, .nx-nowrap) { word
 .nx-profile__name { font-family: var(--font-serif); font-weight: 800; }
 .nx-profile__lead { font-family: var(--font-serif); font-weight: 800; }
 
-/* ---------- トップページ ---------- */
-.nx-hero { min-height: 0; background: #fff; padding: 112px 24px 72px; border-bottom: 1px solid var(--line); }
+/* ---------- トップページ：白いカードでまとめる ----------
+   考え方：背景は薄い藍で通し、内容はすべて同じ形の白いカード（角丸10px・細い線・浅い影）に載せる。
+   藍の帯は「代表紹介」と「予約」の2か所だけ。 */
+main:has(> .nx-hero) { --card-r: 10px; --card-line: #dde3ec; --card-shadow: 0 1px 2px rgba(29,44,69,0.04), 0 10px 28px -22px rgba(29,44,69,0.45); }
+main:has(> .nx-hero) > section:not(.nx-section--dark) { background: var(--ai-tint); border: 0; }
+main:has(> .nx-hero) > section.nx-section:not(.nx-section--dark), main:has(> .nx-hero) > .nx-summary, main:has(> .nx-hero) > .nx-sim-section { padding-top: 64px; padding-bottom: 64px; }
+main:has(> .nx-hero) :is(.nx-summary__inner, .nx-service-card, .nx-quick, .nx-reason-card, .nx-voice-card, .nx-column-link, .nx-access-card, .nx-faq-item, .nx-contact-card:not(.nx-contact-card--featured)) {
+  background: #fff; border: 1px solid var(--card-line); border-radius: var(--card-r); box-shadow: var(--card-shadow);
+}
+
+/* 最初の画面：左に見出し、右に名刺のようなカード */
+.nx-hero { min-height: 0; background: var(--ai-tint); padding: 104px 24px 48px; border-bottom: 0; }
 .nx-hero__pattern, .nx-hero__display, .nx-hero__scroll { display: none !important; }
-.nx-hero__seal { opacity: 0.045 !important; filter: grayscale(1) !important; animation: none !important; }
-.nx-hero__inner { max-width: 1080px; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); column-gap: 56px; align-items: center; }
+.nx-hero__seal { opacity: 0.04 !important; filter: grayscale(1) !important; animation: none !important; }
+.nx-hero__inner { max-width: 1080px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); column-gap: 56px; align-items: center; }
 .nx-hero__inner > * { grid-column: 1; }
 .nx-hero__badge { margin-bottom: 18px; }
 .nx-hero-badge { background: none; border: 0; padding: 0; border-radius: 0; color: var(--kin-ink); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; }
@@ -281,59 +291,69 @@ h1:has(wbr, .nx-nowrap), h2:has(wbr, .nx-nowrap), h3:has(wbr, .nx-nowrap) { word
 .nx-hero__copy { color: var(--sumi); font-size: 16px; line-height: 2; max-width: 36em; margin-bottom: 30px; }
 .nx-hero__copy strong { color: var(--ai); font-weight: 700; }
 .nx-hero .nx-btn--outline { border: 1.5px solid var(--ai); color: var(--ai); background: #fff; font-weight: 700; }
-.nx-hero .nx-btn--outline:hover { background: var(--ai-tint); color: var(--ai); }
-/* 取り扱い業務：箱をやめて罫線の一覧に */
-.nx-group-label, .nx-group-label--navy, .nx-group-label--gold { background: none; color: var(--ai); padding: 0 0 0 14px; border-left: 3px solid var(--carp); border-radius: 0; font-family: var(--font-serif); font-weight: 800; font-size: 16px; letter-spacing: 0.04em; margin-bottom: 8px; }
-.nx-group-label::after { display: none; }
-.nx-service-grid { background: none; border: 0; border-radius: 0; box-shadow: none; gap: 0 44px; overflow: visible; }
-.nx-service-card { background: transparent; border-top: 1px solid var(--line); padding: 22px 0 24px; }
-.nx-service-card:hover { background: transparent; transform: none; }
-.nx-service-card::before, .nx-service-card__icon { display: none; }
-.nx-service-card__title { font-family: var(--font-serif); font-weight: 800; font-size: 17px; color: var(--ai); }
-.nx-service-card__desc { font-size: 14px; line-height: 1.9; color: var(--text-mid); }
-.nx-service-card__price { font-family: var(--font-serif); font-weight: 800; color: var(--ai); }
-.nx-service-card__link { align-self: flex-start; border: 0; padding: 0; background: none; color: var(--ai); font-weight: 700; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
-.nx-service-card__link:hover { color: var(--carp-ink); background: none; }
-.nx-police-tag { background: #fff; color: var(--ai); border: 1px solid var(--line); border-radius: 4px; }
-a.nx-police-tag:hover { background: var(--ai-tint); transform: none; }
-.nx-reason-card { border-radius: 4px; box-shadow: none; }
-.nx-reason-card:hover { transform: none; box-shadow: none; border-color: var(--ai); }
-.nx-column-link { border-radius: 4px; }
-.nx-column-link:hover { transform: none; box-shadow: none; border-color: var(--ai); }
-.nx-faq-section .nx-faq-item__q::before, .nx-faq-item__q::before { background: none; width: auto; height: auto; border-radius: 0; }
+.nx-hero .nx-btn--outline:hover { background: #fff; color: var(--ai); border-color: var(--carp); }
 
-/* 最初の画面の写真 */
-.nx-hero__face { grid-column: 2; grid-row: 1 / span 2; align-self: end; display: flex; align-items: center; gap: 18px; margin: 0 0 18px; }
-.nx-hero__face img { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; background: #fff; border: 3px solid #fff; box-shadow: 0 0 0 1px var(--line), 0 10px 24px -14px rgba(29,44,69,0.5); }
-.nx-hero__face figcaption { font-family: var(--font-serif); font-weight: 800; font-size: 18px; color: var(--ai); line-height: 1.5; }
-.nx-hero__face figcaption span { display: block; font-family: var(--font-sans); font-weight: 500; font-size: 13px; color: var(--nezumi); }
-
-/* 事務所の概要：項目を3列のカードに */
-.nx-summary__text { font-size: 16px; line-height: 2.05; }
-.nx-summary__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border: 0; border-top: 2px solid var(--ai); border-radius: 0; background: none; }
-.nx-summary__fact { padding: 14px 16px 14px 0; border-bottom: 1px solid var(--line); border-left: 0 !important; background: none; }
-.nx-summary__fact dt { font-size: 12px; color: var(--nezumi); letter-spacing: 0.02em; }
-.nx-summary__fact dd { font-size: 14px; line-height: 1.75; color: var(--sumi); }
-
-/* 取り扱い業務：3列のタイル。説明は2行まで、カード全体を押せるように */
-.nx-service-grid, .nx-service-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.nx-service-grid:not(.nx-service-grid--3) > :last-child:nth-child(odd), .nx-service-grid--3 > :last-child:nth-child(odd) { grid-column: auto; }
-.nx-service-card { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 18px 18px 16px; transition: border-color .15s, box-shadow .15s; }
-.nx-service-card:hover { border-color: var(--ai); box-shadow: 0 10px 24px -18px rgba(29,44,69,0.6); }
-.nx-service-card__title { font-size: 16px; line-height: 1.5; margin: 0 0 6px; }
-.nx-service-card__desc { font-size: 13px; line-height: 1.75; color: var(--nezumi); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0 0 10px; }
-.nx-service-card__price { margin-top: auto; font-size: 15px; }
-.nx-service-card__link { position: absolute; inset: 0; font-size: 0; color: transparent; text-decoration: none; border-radius: 6px; }
-.nx-service-card__link::after { content: "›"; position: absolute; right: 14px; top: 14px; font-size: 22px; line-height: 1; color: var(--line); font-family: var(--font-sans); }
-.nx-service-card:hover .nx-service-card__link::after { color: var(--carp); }
-.nx-service-group { margin-bottom: 40px; }
-
-/* 数字の札：13年・0円・24h・土日祝 */
-.nx-hero__meta { grid-column: 2; grid-row: 3 / span 3; align-self: start; display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 0; background: var(--shiraki); border-radius: 4px; padding: 8px 26px; }
-.nx-hero-chip { display: block; padding: 18px 0 16px; border: 0; font-family: var(--font-sans); font-size: 13px; letter-spacing: 0.02em; text-transform: none; color: var(--nezumi); white-space: normal; }
+.nx-hero__card { grid-column: 2; grid-row: 1 / span 6; background: #fff; border: 1px solid var(--card-line); border-radius: var(--card-r); box-shadow: var(--card-shadow); padding: 30px 28px 6px; text-align: center; }
+.nx-hero__face { position: relative; isolation: isolate; margin: 0 0 22px; display: flex; flex-direction: column; align-items: center; }
+/* 写真の白い背景を、白木色の丸になじませる */
+.nx-hero__face::before { content: ""; position: absolute; top: 0; left: 50%; width: 112px; height: 112px; margin-left: -56px; border-radius: 50%; background: var(--shiraki); z-index: -1; }
+.nx-hero__face img { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: 50% 15%; mix-blend-mode: multiply; }
+.nx-hero__face figcaption { margin-top: 14px; font-family: var(--font-serif); font-weight: 800; font-size: 19px; color: var(--ai); line-height: 1.5; letter-spacing: 0.04em; }
+.nx-hero__face figcaption span { display: block; margin-top: 2px; font-family: var(--font-sans); font-weight: 500; font-size: 13px; letter-spacing: 0.02em; color: var(--nezumi); }
+.nx-hero__meta { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 0; padding: 0; background: none; border-top: 1px solid var(--card-line); border-radius: 0; }
+.nx-hero-chip { display: block; padding: 16px 0 14px; border: 0; text-align: center; font-family: var(--font-sans); font-size: 12.5px; letter-spacing: 0.02em; text-transform: none; color: var(--nezumi); white-space: normal; }
 .nx-hero-chip + .nx-hero-chip { padding-left: 0; border-left: 0; }
-.nx-hero-chip:nth-child(n+3) { border-top: 1px solid rgba(29,44,69,0.14); }
-.nx-hero-chip strong { display: block; font-family: var(--font-serif); font-weight: 800; font-size: 36px; line-height: 1.25; color: var(--ai); }
+.nx-hero-chip:nth-child(even) { border-left: 1px solid var(--card-line); }
+.nx-hero-chip:nth-child(n+3) { border-top: 1px solid var(--card-line); }
+.nx-hero-chip strong { display: block; font-family: var(--font-serif); font-weight: 800; font-size: 30px; line-height: 1.3; color: var(--ai); }
+
+/* 事務所の概要：1枚のカードに */
+.nx-summary__inner { max-width: 880px; padding: 36px 40px 30px; }
+.nx-summary__text { font-size: 15.5px; line-height: 2.05; }
+.nx-summary__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; border: 0; border-radius: 0; background: none; margin: 22px 0 18px; }
+.nx-summary__fact { padding: 12px 14px; border: 0 !important; border-radius: 8px; background: var(--ai-tint); }
+.nx-summary__fact dt { font-size: 12px; color: var(--nezumi); letter-spacing: 0.02em; }
+.nx-summary__fact dd { font-size: 13.5px; line-height: 1.75; color: var(--sumi); }
+
+/* 元警察官の強み：分野のボタンを白いカードの形に */
+.nx-police-tag { background: #fff; color: var(--ai); border: 1px solid var(--card-line); border-radius: 999px; box-shadow: none; }
+a.nx-police-tag:hover { border-color: var(--ai); background: #fff; transform: none; }
+main:has(> .nx-hero) .nx-quote { border-radius: var(--card-r); }
+
+/* 取り扱い業務：同じ形のカードを3列に。説明は2行まで、カード全体を押せる */
+.nx-group-label, .nx-group-label--navy, .nx-group-label--gold { background: none; color: var(--ai); padding: 0 0 0 12px; border-left: 3px solid var(--carp); border-radius: 0; font-family: var(--font-serif); font-weight: 800; font-size: 16px; letter-spacing: 0.04em; margin-bottom: 12px; }
+.nx-group-label::after { display: none; }
+.nx-service-group { margin-bottom: 36px; }
+.nx-service-grid, .nx-service-grid--3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; background: none; border: 0; border-radius: 0; box-shadow: none; overflow: visible; }
+.nx-service-grid:not(.nx-service-grid--3) > :last-child:nth-child(odd), .nx-service-grid--3 > :last-child:nth-child(odd) { grid-column: auto; }
+.nx-service-card { position: relative; padding: 18px 40px 16px 18px; transition: border-color .15s; }
+.nx-service-card:hover { border-color: var(--ai); transform: none; }
+.nx-service-card::before, .nx-service-card__icon { display: none; }
+.nx-service-card__title { font-family: var(--font-serif); font-weight: 800; font-size: 16px; line-height: 1.5; color: var(--ai); margin: 0 0 6px; }
+.nx-service-card__desc { font-size: 13px; line-height: 1.75; color: var(--nezumi); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0 0 10px; }
+.nx-service-card__price { margin-top: auto; font-family: var(--font-serif); font-weight: 800; font-size: 15px; color: var(--ai); }
+.nx-service-card__link { position: absolute; inset: 0; font-size: 0; color: transparent; text-decoration: none; border-radius: var(--card-r); border: 0; padding: 0; background: none; }
+.nx-service-card__link::after { content: "›"; position: absolute; right: 16px; top: 50%; margin-top: -12px; font-size: 24px; line-height: 1; color: #b9c2cf; font-family: var(--font-sans); }
+.nx-service-card:hover .nx-service-card__link::after { color: var(--carp); }
+.nx-service-card__link:hover { background: none; }
+
+/* 早見表もカードに */
+.nx-quick { padding: 24px 24px 18px; overflow: hidden; }
+.nx-quick__title { font-family: var(--font-serif); font-weight: 800; color: var(--ai); }
+
+/* 選ばれる理由・お客様の声・コラム・アクセス・よくある質問・相談：カードの形をそろえる */
+.nx-reason-card:hover, .nx-column-link:hover { transform: none; box-shadow: var(--card-shadow); border-color: var(--ai); }
+.nx-reason-card__accent { display: none; }
+main:has(> .nx-hero) .nx-faq-item { margin-bottom: 8px; border-top: 1px solid var(--card-line); }
+main:has(> .nx-hero) .nx-faq-item:first-child { border-top: 1px solid var(--card-line); }
+main:has(> .nx-hero) .nx-contact-card--featured { border-radius: var(--card-r); }
+.nx-faq-item__q::before { background: none; width: auto; height: auto; border-radius: 0; }
+.nx-sim-card { border-radius: var(--card-r); }
+.nx-sim__eyebrow { display: none; }
+.nx-sim__heading em { color: #fff; }
+.nx-btn--sim { background: #fff; border-color: #fff; color: var(--ai); }
+.nx-btn--sim:hover { background: #fff; border-color: var(--carp); color: var(--carp-ink); }
+.nx-sim-chip { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.85); }
 
 /* ---------- 料金シミュレーター ---------- */
 .h { background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--line); box-shadow: inset 0 3px 0 var(--carp); }
@@ -362,17 +382,19 @@ a.nx-police-tag:hover { background: var(--ai-tint); transform: none; }
   .nx-lp-meta-item { padding: 12px 0; }
   .nx-lp-meta-item__val { font-size: 27px; }
   .kk-hero .nx-lp-hero__inner, .me-hero .nx-lp-hero__inner { grid-template-columns: 1fr; row-gap: 6px; }
-  .nx-hero { padding: 96px 20px 52px; }
-  .nx-hero__inner { grid-template-columns: minmax(0, 1fr); }
+  .nx-hero { padding: 92px 20px 40px; }
+  .nx-hero__inner { display: flex; flex-direction: column; align-items: stretch; }
   .nx-hero__jp { font-size: min(30px, calc((100vw - 40px) / 16.2)); }
-  .nx-hero__meta { grid-column: 1; grid-row: auto; margin: 0 0 26px; padding: 4px 20px; }
-  .nx-hero__face { grid-column: 1; grid-row: auto; order: -1; margin: 0 0 18px; }
-  .nx-hero__face img { width: 72px; height: 72px; }
-  .nx-hero__face figcaption { font-size: 16px; }
-  .nx-hero__inner { display: flex; flex-direction: column; }
-  .nx-hero__meta { align-self: stretch; }
+  .nx-hero__card { order: 5; margin: 0 0 24px; padding: 22px 18px 4px; }
+  .nx-hero__buttons { order: 6; }
+  .nx-hero__face { margin-bottom: 16px; }
+  .nx-hero__face::before { width: 88px; height: 88px; margin-left: -44px; }
+  .nx-hero__face img { width: 88px; height: 88px; }
+  .nx-hero__face figcaption { margin-top: 10px; font-size: 17px; }
+  .nx-hero-chip strong { font-size: 24px; }
+  .nx-summary__inner { padding: 26px 20px 22px; }
   .nx-summary__facts { grid-template-columns: 1fr; }
-  .nx-hero-chip strong { font-size: 28px; }
+  main:has(> .nx-hero) > section.nx-section:not(.nx-section--dark), main:has(> .nx-hero) > .nx-summary, main:has(> .nx-hero) > .nx-sim-section { padding-top: 48px; padding-bottom: 48px; }
   .kk-hero .nx-lp-hero__meta, .me-hero .nx-lp-hero__meta { padding: 0; margin: 0 0 22px; }
   .nx-lp-section { padding: 64px 20px; }
   .nx-info-grid { grid-template-columns: 1fr; }
