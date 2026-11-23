@@ -102,6 +102,9 @@ body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.9; lette
 .nx-faq-item__q, .nx-pricing__heading, .nx-related-card__title, .nx-contact-card__title { word-break: auto-phrase; text-wrap: balance; }
 .nx-lead, .nx-lp-hero__lead, .nx-quote p { text-wrap: pretty; }
 
+.nx-nowrap { white-space: nowrap; }
+@media (max-width: 380px) { .nx-lp-hero__title { font-size: 25px; letter-spacing: 0.02em; } }
+
 /* ---------- 要点 ---------- */
 .nx-keypoints-band { background: #fff; padding: 48px 24px 8px; }
 .nx-keypoints { background: var(--ai-tint); border-left: 3px solid var(--ai); border-radius: 0 4px 4px 0; padding: 24px 28px; }
