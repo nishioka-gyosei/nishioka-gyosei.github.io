@@ -1,0 +1,268 @@
+/* =====================================================================
+   西岡行政書士事務所 サイトリニューアル 共通デザイン（renew.css）
+   ねらい：藍ののれん × 白木のカウンター。役所の手続きを、明るく、迷わず読める紙面に。
+   - 主役は各ページの最初にある「数字の札」（料金・期間）ひとつだけ。ほかは静かに。
+   - 期限・注意だけに朱を使う。金は事務所の印として、線と数字に少しだけ。
+   - 既存のHTMLは変えず、見た目だけを上書きする（構造化データ・本文・リンクはそのまま）。
+   ===================================================================== */
+
+:root {
+  /* 色 */
+  --ai: #1d2c45;          /* 藍：見出し・帯・ボタン */
+  --ai-2: #2b3d5c;
+  --shiraki: #efe6d4;     /* 白木：数字の札・所長の言葉 */
+  --ai-tint: #f3f5f8;     /* 交互の面 */
+  --sumi: #23262c;        /* 本文 */
+  --nezumi: #5f646c;      /* 補足（白地で4.5:1以上） */
+  --kin: #c39a48;         /* 金：藍の上で使う */
+  --kin-ink: #86621f;     /* 金：白地の文字に使う */
+  --shu: #b23f2a;         /* 朱：期限・注意だけ */
+  --line: #d9dde4;
+
+  /* 既存トークンを新しい色に差し替える */
+  --navy: var(--ai);
+  --navy-mid: var(--ai-2);
+  --navy-light: #3a4f73;
+  --navy-deep: #141f33;
+  --gold: var(--kin);
+  --gold-light: #d6b36a;
+  --gold-ink: var(--kin-ink);
+  --cream: var(--ai-tint);
+  --border: var(--line);
+  --border-soft: #e8ebf0;
+  --text: var(--sumi);
+  --text-mid: #3b4048;
+  --text-light: var(--nezumi);
+  --danger: var(--shu);
+
+  /* 文字 */
+  --font-serif: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+  --font-sans: 'Zen Kaku Gothic New', 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --font-display: 'Shippori Mincho B1', 'Noto Serif JP', serif;
+}
+
+body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.9; letter-spacing: 0.02em; color: var(--sumi); }
+:focus-visible { outline: 3px solid var(--kin); outline-offset: 3px; }
+
+/* 動きは使わない（読み込み時のふわっとした出方をやめる） */
+.reveal, .reveal--scale { opacity: 1 !important; transform: none !important; transition: none !important; }
+
+/* 飾りの記号・大きな番号・角かっこ・英字ラベルは消す */
+.nx-lp-section__num, .nx-section__num, .nx-bracket, .nx-lp-hero__pattern,
+.nx-lp-section .nx-eyebrow, .nx-section .nx-eyebrow, .nx-contact .nx-eyebrow,
+.nx-lp-hero__service-icon, .nx-info-card__icon, .nx-related-card__icon, .nx-contact-card__icon { display: none !important; }
+
+/* ---------- ヘッダー：白地に藍 ---------- */
+.nx-header { background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--line); backdrop-filter: blur(6px); }
+.nx-header__mark { filter: none; }
+.nx-header__logo { color: var(--ai); font-family: var(--font-serif); font-weight: 800; font-size: 15px; }
+.nx-header__logo small { color: var(--nezumi); font-family: var(--font-sans); letter-spacing: 0.06em; }
+.nx-header__link { color: var(--nezumi); font-size: 13px; }
+.nx-header__link:hover { color: var(--ai); }
+.nx-btn--header { background: var(--ai); border-color: var(--ai); color: #fff; border-radius: 4px; font-size: 13px; }
+.nx-btn--header:hover { background: var(--ai-2); }
+
+/* ---------- ボタン ---------- */
+.nx-btn { border-radius: 4px; font-size: 15px; letter-spacing: 0.03em; }
+.nx-btn--primary { background: var(--ai); border-color: var(--ai); color: #fff; }
+.nx-btn--primary:hover { background: var(--ai-2); transform: none; }
+.nx-btn--line, .nx-lp-hero .nx-btn--primary[href*="lin.ee"], .nx-cta-band .nx-btn--primary[href*="lin.ee"] { background: #06c755; border-color: #06c755; color: #fff; }
+
+/* ---------- 最初の画面：左に見出し、右に数字の札 ---------- */
+.nx-lp-hero { min-height: 0; background: #fff; padding: 112px 24px 64px; border-bottom: 1px solid var(--line); }
+.nx-lp-hero__seal { opacity: 0.04; filter: grayscale(1); }
+.nx-lp-hero__inner { max-width: 1080px; display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr); column-gap: 56px; align-items: start; }
+.nx-lp-hero__inner > * { grid-column: 1; }
+.nx-lp-hero__breadcrumb { font-family: var(--font-sans); font-size: 13px; letter-spacing: 0.02em; text-transform: none; color: var(--nezumi); margin-bottom: 20px; }
+.nx-lp-hero__breadcrumb a { color: var(--nezumi); }
+.nx-lp-hero__breadcrumb a:hover { color: var(--ai); }
+.nx-lp-hero__breadcrumb span { color: var(--nezumi); }
+.nx-lp-hero__category { font-family: var(--font-sans); font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-transform: none; color: var(--kin-ink); margin-bottom: 14px; }
+.nx-lp-hero__title { font-family: var(--font-serif); font-weight: 800; color: var(--ai); font-size: clamp(29px, 4.2vw, 44px); line-height: 1.38; letter-spacing: 0.04em; margin-bottom: 22px; }
+.nx-lp-hero__title::after { display: none; }
+.nx-lp-hero__lead { color: var(--sumi); font-size: 16.5px; line-height: 1.95; max-width: 34em; margin-bottom: 28px; }
+.nx-lp-hero__lead strong { color: var(--ai); font-weight: 700; }
+.nx-lp-hero__buttons { gap: 12px; }
+.nx-lp-hero .nx-btn--outline { border: 1.5px solid var(--ai); color: var(--ai); background: #fff; font-weight: 700; }
+.nx-lp-hero .nx-btn--outline:hover { background: var(--ai-tint); color: var(--ai); border-color: var(--ai); }
+
+/* 数字の札（料金・期間）：白木の板に、明朝の数字 */
+.nx-lp-hero__meta { grid-column: 2; grid-row: 1 / span 8; align-self: center; display: block; margin: 0; background: var(--shiraki); border-radius: 4px; padding: 10px 28px; }
+.nx-lp-meta-item { display: grid; grid-template-columns: 1fr; padding: 16px 0; border-bottom: 1px solid rgba(29,44,69,0.14); }
+.nx-lp-meta-item:last-child { border-bottom: 0; }
+.nx-lp-meta-item__label { font-family: var(--font-sans); font-size: 13px; font-weight: 500; letter-spacing: 0.02em; text-transform: none; color: var(--nezumi); white-space: normal; margin-bottom: 2px; }
+.nx-lp-meta-item__val { font-family: var(--font-serif); font-weight: 800; font-size: 32px; color: var(--ai); line-height: 1.3; letter-spacing: 0; font-variant-numeric: tabular-nums; white-space: normal; }
+.nx-lp-meta-item__val small { font-family: var(--font-sans); font-size: 13px; font-weight: 500; color: var(--nezumi); margin-left: 4px; }
+
+/* 見出しは文節で折り返す（「い」だけが次の行に落ちないように） */
+.nx-lp-hero__title, .nx-section-title, .nx-cta-band__title, .nx-info-card__title, .nx-step__title,
+.nx-faq-item__q, .nx-pricing__heading, .nx-related-card__title, .nx-contact-card__title { word-break: auto-phrase; text-wrap: balance; }
+.nx-lead, .nx-lp-hero__lead, .nx-quote p { text-wrap: pretty; }
+
+/* ---------- 要点 ---------- */
+.nx-keypoints-band { background: #fff; padding: 48px 24px 8px; }
+.nx-keypoints { background: var(--ai-tint); border-left: 3px solid var(--ai); border-radius: 0 4px 4px 0; padding: 24px 28px; }
+.nx-keypoints__ttl { font-family: var(--font-serif); font-weight: 800; font-size: 16px; letter-spacing: 0.04em; }
+.nx-keypoints__ttl::before { display: none; }
+.nx-keypoints p { font-size: 15.5px; line-height: 2; }
+
+/* ---------- 各セクション ---------- */
+.nx-lp-section { padding: 88px 24px; }
+.nx-lp-section--cream { background: var(--ai-tint); }
+.nx-lp-section--white { background: #fff; }
+.nx-lp-section--white + .nx-lp-section--white { border-top: 1px solid var(--line); }
+.nx-lp-section__inner { max-width: 880px; }
+.nx-section-title { font-family: var(--font-serif); font-weight: 800; font-size: clamp(24px, 3.4vw, 32px); line-height: 1.5; letter-spacing: 0.03em; margin-bottom: 14px; }
+.nx-lead { font-size: 15.5px; line-height: 1.95; max-width: 40em; margin-bottom: 36px; }
+.nx-lead--mid { color: var(--nezumi); }
+.nx-prose p { font-size: 15.5px; line-height: 2.05; color: var(--text-mid); }
+.nx-subttl { font-family: var(--font-serif); font-weight: 800; border-left: 3px solid var(--kin); }
+
+/* 説明の札：箱をやめて、罫線で区切る */
+.nx-info-grid { gap: 0 44px; margin-top: 24px; }
+.nx-info-card { background: transparent; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 20px 0 22px; box-shadow: none; }
+.nx-info-card:hover { transform: none; border-color: var(--line); box-shadow: none; }
+.nx-info-card__title { font-family: var(--font-serif); font-weight: 800; font-size: 17px; color: var(--ai); margin-bottom: 6px; }
+.nx-info-card__body { font-size: 14.5px; line-height: 1.95; color: var(--text-mid); }
+
+/* チェックの並び */
+.nx-check { gap: 0; border-top: 1px solid var(--line); }
+.nx-check li { background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 14px 0 14px 34px; }
+.nx-check li::before { content: ""; left: 4px; top: 22px; width: 12px; height: 7px; border-radius: 0; background: none; border-left: 2px solid var(--kin-ink); border-bottom: 2px solid var(--kin-ink); transform: rotate(-45deg); }
+
+/* 注意と補足 */
+.nx-alert { background: #fbf2ef; border: 0; border-left: 3px solid var(--shu); border-radius: 0 4px 4px 0; }
+.nx-alert__ttl { color: var(--shu); font-weight: 800; }
+.nx-note { background: var(--ai-tint); border: 0; border-left: 3px solid var(--ai); border-radius: 0 4px 4px 0; }
+.nx-lp-section--cream .nx-note { background: #fff; }
+.nx-note__ttl { font-weight: 800; }
+.nx-ng { color: var(--shu); }
+
+/* 大きな数字 */
+.nx-bignum { background: var(--ai); border-radius: 4px; }
+.nx-bignum__num { font-family: var(--font-serif); font-weight: 800; color: var(--kin); }
+
+/* 表：上下の罫線だけ */
+.nx-table-wrap { background: #fff; border: 0; border-top: 2px solid var(--ai); border-bottom: 1px solid var(--line); border-radius: 0; box-shadow: none; }
+.nx-table { font-size: 14.5px; line-height: 1.85; }
+.nx-table caption { background: transparent; font-family: var(--font-serif); font-weight: 800; font-size: 15px; color: var(--ai); padding: 14px 0 10px; border-bottom: 1px solid var(--line); }
+.nx-table th, .nx-table td { border-top: 1px solid var(--line); }
+.nx-table thead th { background: transparent; color: var(--nezumi); font-family: var(--font-sans); font-size: 13px; font-weight: 700; border-top: 0; }
+.nx-table tbody th { background: transparent; font-family: var(--font-serif); font-weight: 800; color: var(--ai); }
+.nx-table td { color: var(--text-mid); }
+.nx-table-note { background: transparent; padding: 14px 0; font-size: 13px; }
+.nx-table th:first-child, .nx-table td:first-child { padding-left: 4px; }
+
+/* 料金：伝票のように */
+.nx-pricing { background: #fff; border: 1px solid var(--line); border-radius: 2px; box-shadow: 0 18px 36px -28px rgba(29,44,69,0.45); }
+.nx-pricing__header { background: #fff; color: var(--ai); border-bottom: 2px solid var(--ai); padding: 24px 28px 18px; }
+.nx-pricing__heading { font-family: var(--font-serif); font-weight: 800; font-size: 18px; color: var(--ai); }
+.nx-pricing__price { font-family: var(--font-serif); font-weight: 800; font-size: 34px; color: var(--ai); font-variant-numeric: tabular-nums; letter-spacing: 0; }
+.nx-pricing__price { white-space: normal; }
+.nx-pricing__price small { color: var(--nezumi); font-family: var(--font-sans); font-weight: 500; display: inline-block; }
+.nx-pricing__row { border-top: 1px dashed var(--line); font-size: 15px; gap: 16px; }
+.nx-pricing__header + .nx-pricing__row { border-top: 0; }
+.nx-pricing__row-label { color: var(--sumi); }
+.nx-pricing__row-val { font-family: var(--font-serif); font-weight: 800; color: var(--ai); font-variant-numeric: tabular-nums; text-align: right; }
+.nx-pricing__note { background: var(--ai-tint); font-size: 13px; color: var(--text-mid); border-top: 1px solid var(--line); }
+
+/* 申し込みの帯：のれん */
+.nx-cta-band { background: var(--ai); border-radius: 4px; box-shadow: none; }
+.nx-cta-band::after { opacity: 0.05; }
+.nx-cta-band__title { font-family: var(--font-serif); font-weight: 800; font-size: 21px; }
+.nx-cta-band__sub { color: rgba(255,255,255,0.78); font-size: 14px; }
+.nx-cta-band .nx-btn--outline { border-color: rgba(255,255,255,0.7); color: #fff; }
+.nx-cta-band .nx-btn--outline:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,0.08); }
+
+/* 流れ：番号と一本の線 */
+.nx-step { border-bottom: 1px solid var(--line); grid-template-columns: 64px 1fr; }
+.nx-step__num { font-family: var(--font-serif); font-weight: 800; font-size: 34px; color: var(--ai); text-align: center; }
+.nx-step__num::after { top: 52px; width: 2px; background: rgba(29,44,69,0.18); }
+.nx-step__title { font-family: var(--font-serif); font-weight: 800; font-size: 18px; }
+.nx-step__desc { font-size: 14.5px; line-height: 1.95; }
+.nx-step__duration { font-family: var(--font-sans); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; text-transform: none; color: var(--kin-ink); background: none; border: 0; padding: 0; }
+
+/* よくある質問 */
+.nx-faq-item:first-child { border-top: 2px solid var(--ai); }
+.nx-faq-item__q { font-family: var(--font-serif); font-weight: 800; font-size: 16.5px; }
+.nx-faq-item__q::before { font-family: var(--font-serif); color: var(--kin-ink); font-weight: 800; }
+.nx-faq-item__a { font-size: 15px; line-height: 2; }
+.nx-faq-item__a::before { font-family: var(--font-serif); color: var(--ai); font-weight: 800; }
+
+/* 関連ページ・コラム：箱をやめて一覧に */
+.nx-related-grid { gap: 0 36px; }
+.nx-related-card { background: transparent; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 16px 0 18px; }
+.nx-related-card:hover { transform: none; box-shadow: none; border-color: var(--ai); }
+.nx-related-card:hover .nx-related-card__title { text-decoration: underline; text-underline-offset: 4px; }
+.nx-related-card__title { font-family: var(--font-serif); font-weight: 800; font-size: 15.5px; color: var(--ai); }
+.nx-related-card__price { font-family: var(--font-sans); font-weight: 700; color: var(--kin-ink); font-size: 13px; letter-spacing: 0.02em; }
+
+/* 所長の言葉：白木の板に明朝 */
+.nx-quote { background: var(--shiraki); border: 0; border-radius: 4px; box-shadow: none; padding: 40px 44px 34px; }
+.nx-quote::before { display: none; }
+.nx-quote p { font-family: var(--font-serif); font-weight: 600; color: var(--ai); font-size: clamp(16.5px, 2.3vw, 19px); line-height: 2.05; }
+.nx-quote__author { font-family: var(--font-sans); font-size: 13px; letter-spacing: 0.02em; text-transform: none; color: var(--nezumi); }
+.nx-quote__author::before { background: var(--kin-ink); }
+
+/* 根拠資料・用語 */
+.nx-sources { border-radius: 4px; border-color: var(--line); }
+.nx-sources a { color: var(--ai); }
+
+/* お客様の声 */
+.nx-lpvoice__head { font-family: var(--font-serif); font-weight: 800; color: var(--ai); }
+.nx-lpvoice .nx-voice-card { background: #fff; border: 1px solid var(--line); border-radius: 4px; }
+.nx-lpvoice .nx-voice-card::before { color: rgba(134,98,31,0.55); }
+.nx-lpvoice .nx-voice-card__text p { font-size: 15px; }
+.nx-lpvoice .nx-voice-card__topic { background: var(--shiraki); color: var(--ai); border-radius: 2px; }
+
+/* お問い合わせ */
+.nx-contact { background: #fff; border-top: 1px solid var(--line); }
+.nx-contact-card { border-radius: 4px; border-color: var(--line); }
+.nx-contact-card:hover { transform: none; box-shadow: none; border-color: var(--ai); }
+.nx-contact-card--featured { background: var(--ai); border-color: var(--ai); }
+.nx-contact-card--featured .nx-contact-card__title { color: #fff; }
+.nx-contact-card--featured .nx-contact-card__desc { color: rgba(255,255,255,0.78); }
+.nx-contact-card__title { font-family: var(--font-serif); font-weight: 800; }
+.nx-btn--phone { background: var(--ai-tint); border-color: var(--ai-tint); color: var(--ai); font-family: var(--font-serif); font-weight: 800; }
+
+/* 事務所の基本情報（フッターの上の帯） */
+.nx-info-strip { background: var(--ai); border-top: 0; }
+.nx-info-item__label { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.06em; text-transform: none; color: rgba(255,255,255,0.6); }
+.nx-info-item__val { font-family: var(--font-serif); font-weight: 600; }
+
+/* フッター */
+.nx-footer { background: #15223a; border-top: 0; }
+.nx-footer::before { display: none; }
+.nx-footer__mark { filter: none; }
+.nx-footer__wordmark { font-family: var(--font-serif); font-weight: 800; }
+.nx-footer__wordmark small { font-family: var(--font-sans); color: rgba(255,255,255,0.6); letter-spacing: 0.06em; }
+.nx-footer p { color: rgba(255,255,255,0.66); }
+.nx-footer__link { color: rgba(255,255,255,0.66); font-size: 12px; }
+.nx-footer__link:hover { color: #fff; }
+
+/* ---------- スマホ ---------- */
+@media (max-width: 860px) {
+  .nx-lp-hero { padding: 96px 20px 48px; }
+  .nx-lp-hero__inner { grid-template-columns: 1fr; }
+  .nx-lp-hero__meta { grid-column: 1; grid-row: auto; margin: 4px 0 28px; padding: 6px 20px; }
+  .nx-lp-meta-item { padding: 12px 0; }
+  .nx-lp-meta-item__val { font-size: 27px; }
+  .nx-lp-section { padding: 64px 20px; }
+  .nx-info-grid { grid-template-columns: 1fr; }
+  .nx-quote { padding: 30px 24px 26px; }
+  .nx-pricing__header { padding: 20px 20px 14px; }
+  .nx-pricing__row { padding: 12px 20px; }
+}
+@media (min-width: 601px) {
+  .nx-pricing__row-val { white-space: nowrap; }
+}
+@media (max-width: 600px) {
+  .nx-header__logo small { display: none; }
+  .nx-lp-hero__buttons .nx-btn--primary { flex: 1 1 100%; justify-content: center; }
+  .nx-lp-hero__buttons .nx-btn--outline { flex: 1 1 0; justify-content: center; padding-left: 10px; padding-right: 10px; }
+  .nx-keypoints-band { padding: 32px 16px 0; }
+  .nx-keypoints { padding: 20px 18px; }
+  .nx-pricing__row { flex-direction: column; align-items: flex-start; gap: 2px; padding: 12px 20px; }
+  .nx-pricing__row-val { text-align: left; }
+  .nx-pricing__price { font-size: 30px; }
+}
