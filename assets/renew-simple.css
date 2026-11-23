@@ -65,3 +65,36 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--kin); outline-o
   .price-table td { font-size: 14px; }
   .price-table td:last-child { white-space: normal; font-size: 14px; }
 }
+
+/* ---------- 料金一覧の表（作り直し） ---------- */
+.price-lead { font-size: 15px; line-height: 1.95; color: var(--text-mid); margin: 0 0 36px; padding: 16px 20px; background: var(--shiraki); border-radius: 4px; color: var(--ai); }
+.group { margin-bottom: 56px; }
+.group-title { align-items: baseline; flex-wrap: wrap; row-gap: 6px; }
+.price-table { table-layout: fixed; border-collapse: collapse; background: #fff; }
+.price-table col.c-name { width: 30%; }
+.price-table col.c-fee { width: 21%; }
+.price-table thead th { padding: 10px 14px; text-align: left; }
+.price-table thead th:last-child { text-align: right; }
+.price-table tbody th { padding: 16px 14px; text-align: left; vertical-align: top; font-family: var(--font-serif); font-weight: 800; font-size: 15px; line-height: 1.6; color: var(--ai); }
+.price-table tbody th a { color: var(--ai); text-decoration: underline; text-decoration-color: rgba(29,44,69,0.35); text-underline-offset: 4px; }
+.price-table tbody th a:hover { text-decoration-color: var(--carp); }
+.price-table tbody td { padding: 16px 14px; vertical-align: top; }
+.price-table td:nth-child(2) { display: table-cell; font-family: var(--font-sans); font-weight: 400; color: var(--text-mid); font-size: 13.5px; line-height: 1.85; }
+.price-table td:last-child { text-align: right; white-space: normal; font-family: var(--font-serif); font-weight: 800; font-size: 16px; line-height: 1.6; color: var(--ai); }
+.price-table td.is-quote { font-family: var(--font-sans); font-weight: 700; font-size: 14px; color: var(--nezumi); }
+.note-box { margin-top: 14px; padding: 14px 18px; font-size: 13px; }
+.note-box .note-ttl { font-weight: 700; color: var(--ai); margin-bottom: 4px; }
+.note-box ul li::before { content: "・"; }
+
+/* スマホ：1行目に「手続き名 ⇔ 報酬」、2行目に内容（縦に細長くならないように） */
+@media (max-width: 640px) {
+  .price-table, .price-table tbody { display: block; width: 100%; }
+  .price-table colgroup, .price-table thead { display: none; }
+  .price-table tbody tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 14px; padding: 14px 2px; border-bottom: 1px solid var(--line); }
+  .price-table tbody tr:hover { background: transparent; }
+  .price-table tbody th { grid-column: 1; grid-row: 1; padding: 0; font-size: 15px; }
+  .price-table tbody td { padding: 0; }
+  .price-table td:last-child { grid-column: 2; grid-row: 1; font-size: 15px; white-space: nowrap; }
+  .price-table td:nth-child(2) { display: block; grid-column: 1 / -1; grid-row: 2; margin-top: 6px; font-size: 13.5px; }
+  .price-lead { padding: 14px 16px; font-size: 14px; }
+}
