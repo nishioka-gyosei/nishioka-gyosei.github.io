@@ -105,7 +105,9 @@ body { font-family: var(--font-sans); font-size: 15.5px; line-height: 1.9; lette
 .nx-lead, .nx-lp-hero__lead, .nx-quote p { text-wrap: pretty; }
 
 .nx-nowrap { white-space: nowrap; }
-@media (max-width: 380px) { .nx-lp-hero__title { font-size: 25px; letter-spacing: 0.02em; } }
+/* 見出しは文節の切れ目（<wbr>）でだけ改行する。Safari など auto-phrase 未対応の環境でも語の途中で切れない */
+h1:has(wbr, .nx-nowrap), h2:has(wbr, .nx-nowrap), h3:has(wbr, .nx-nowrap) { word-break: keep-all !important; overflow-wrap: anywhere; }
+@media (max-width: 380px) { .nx-lp-hero__title { font-size: 25px; letter-spacing: 0.02em; } .nx-section-title { font-size: 21px; } }
 
 /* ---------- 要点 ---------- */
 .nx-keypoints-band { background: #fff; padding: 48px 24px 8px; }

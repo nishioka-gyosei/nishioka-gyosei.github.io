@@ -59,3 +59,9 @@ header { box-shadow: inset 0 3px 0 var(--carp); border-bottom: 1px solid var(--l
 .gbp-link:hover { background: var(--ai-tint); }
 
 a:focus-visible, button:focus-visible { outline: 3px solid var(--kin); outline-offset: 3px; }
+
+@media (max-width: 400px) {
+  .price-table td, .price-table thead th { padding: 12px 10px; }
+  .price-table td { font-size: 14px; }
+  .price-table td:last-child { white-space: normal; font-size: 14px; }
+}
