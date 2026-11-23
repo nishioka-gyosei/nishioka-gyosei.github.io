@@ -1,0 +1,86 @@
+/* =====================================================================
+   コラム（blog/）の外側を、サイト本体の新デザインにそろえる
+   - ヘッダー・パンくず・フッター・一覧ページの最初の画面
+   - 色の変数を本体と同じ藍・赤・白木に（記事の中身の組み方は変えない）
+   各ページのインラインCSSのあとに読み込む。
+   ===================================================================== */
+:root {
+  /* 記事ページの変数 */
+  --ink: #1d2c45;
+  --paper: #ffffff;
+  --paper-2: #f7f8fa;
+  --cream: #f3f5f8;
+  --crimson: #d0101b;
+  --gold: #c39a48;
+  --gold-light: #d6b36a;
+  --hairline: #d9dde4;
+  --muted: #5f646c;
+  --font-sans: 'Zen Kaku Gothic New', 'Noto Sans JP', system-ui, sans-serif;
+  --font-min: 'Shippori Mincho B1', 'Yu Mincho', serif;
+
+  /* 一覧ページの変数 */
+  --navy: #1d2c45;
+  --navy-mid: #2b3d5c;
+  --navy-deep: #15223a;
+  --gold-deep: #86621f;
+  --maple: #d0101b;
+  --maple-tint: #fdf0f0;
+  --ink-mid: #3b4048;
+  --ink-light: #5f646c;
+  --hairline-soft: #e8ebf0;
+  --font-jp: 'Zen Kaku Gothic New', 'Noto Sans JP', system-ui, sans-serif;
+  --font-serif: 'Shippori Mincho B1', 'Yu Mincho', serif;
+  --font-display: 'Shippori Mincho B1', 'Yu Mincho', serif;
+
+  --carp: #e60012;
+}
+
+/* ヘッダー：白地に藍、上端に赤い線、相談ボタンは赤 */
+.h { background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--hairline); box-shadow: inset 0 3px 0 var(--carp); }
+.h__mark { filter: none; }
+.h__ja { color: var(--ink); font-family: var(--font-min); font-weight: 800; font-size: 15px; }
+.h__en { font-family: var(--font-sans); font-style: normal; color: var(--muted); letter-spacing: 0.06em; }
+.h__link { color: var(--muted); font-size: 13px; }
+.h__link:hover { color: var(--ink); }
+.h__cta { background: var(--carp); color: #fff; font-size: 13px; }
+.h__cta:hover { background: #c4000f; color: #fff; }
+@media (max-width: 640px) { .h__en { display: none; } }
+
+.crumb a:hover { color: var(--crimson); }
+
+/* フッター：藍、上端に赤い線 */
+.foot { background: #15223a; box-shadow: inset 0 3px 0 var(--carp); }
+.foot::before { display: none; }
+.foot__mark { filter: none; }
+.foot__brand { font-family: var(--font-min); font-weight: 800; }
+.foot__brand small { font-family: var(--font-sans); font-style: normal; color: rgba(255,255,255,0.6); letter-spacing: 0.06em; }
+.foot__back { border-color: rgba(255,255,255,0.6); color: #fff; border-radius: 4px; }
+.foot__back:hover { background: #fff; color: var(--ink); transform: none; }
+
+/* もう一つの記事テンプレート（.header / .footer） */
+body { font-family: var(--font-sans); }
+.header { background: #fff; box-shadow: inset 0 3px 0 var(--carp); }
+.brand-name { font-weight: 800; color: var(--ink); }
+.brand-en { font-family: var(--font-sans); font-style: normal; letter-spacing: 0.04em; }
+.brand-tag, .footer-tag { display: none !important; }
+.footer { background: #15223a; box-shadow: inset 0 3px 0 var(--carp); }
+.footer-name { font-weight: 800; }
+.footer-en { font-family: var(--font-sans); font-style: normal; color: rgba(255,255,255,0.6); }
+.footer-tel-btn, .footer-back { border-color: rgba(255,255,255,0.6); color: #fff; border-radius: 4px; }
+.footer-back:hover { background: #fff; color: var(--ink); }
+
+/* 一覧ページの最初の画面：白地に藍の見出し */
+.hero:has(.hero__seal) { background: #fff; color: var(--ink); border-bottom: 1px solid var(--hairline); }
+.hero__pattern, .hero__eyebrow { display: none; }
+.hero__seal { opacity: 0.05; filter: grayscale(1); }
+.hero__title { color: var(--ink); font-weight: 800; letter-spacing: 0.04em; font-size: clamp(32px, 5vw, 52px); }
+.hero__title em { color: var(--crimson); }
+.hero__lead { color: #23262c; }
+.hero__lead strong { color: var(--ink); font-weight: 700; }
+.hero__stats { background: #efe6d4; border-radius: 4px; padding: 6px 24px; display: inline-flex; }
+.hero__stat { border-right-color: rgba(29,44,69,0.16); }
+.hero__stat-num { font-family: var(--font-min); font-weight: 800; color: var(--ink); letter-spacing: 0; }
+.hero__stat-num small { color: var(--muted); }
+.hero__stat-label { font-family: var(--font-sans); text-transform: none; letter-spacing: 0.02em; font-size: 12px; color: var(--muted); }
+
+a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
