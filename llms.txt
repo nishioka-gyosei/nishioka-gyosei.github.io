@@ -90,7 +90,7 @@
 - 土日や夜でも相談できる？ → 受付は9:00〜19:00で土日祝も対応。LINEは24時間受付で、返信はふつう24時間以内。
 - 依頼の流れは？ → LINEか電話で無料相談 → 正式な見積もり → 納得のうえで着手 → 書類の収集・図面や申請書の作成 → 窓口への申請 → 許可証の交付・届出の完了。
 
-## コラム記事一覧（許認可の実務解説・全138本）
+## コラム記事一覧（許認可の実務解説・全139本）
 
 > 広島の許認可・行政手続きについて、元広島県警察官13年の行政書士が実務にもとづき解説した記事群。各記事は要点ブロック（この記事の要点）・結論・FAQ・根拠（法令や公的資料）を備える。
 
@@ -239,7 +239,7 @@
 - [サブリース規制とは？登録が不要でも適用される4つのルール](https://nishioka-gyosei.github.io/blog/chintai/sublease-tokutei-chintaishaku-kisei.html)
 - [管理受託契約の重要事項説明と契約書面｜賃貸住宅管理業者がオーナーに説明する11項目と進め方](https://nishioka-gyosei.github.io/blog/chintai/kanri-jutaku-keiyaku-juyou-jikou-setsumei.html)
 
-### 民泊（住宅宿泊事業・簡易宿所）（9本）
+### 民泊（住宅宿泊事業・簡易宿所）（10本）
 
 - [広島で民泊を始めるには？住宅宿泊事業の届出と180日ルール](https://nishioka-gyosei.github.io/blog/minpaku/hiroshima-minpaku-todokede.html)
 - [民泊か簡易宿所か？180日の上限と用途地域・建物基準の違い](https://nishioka-gyosei.github.io/blog/minpaku/minpaku-kan-i-shukusho-chigai.html)
@@ -250,6 +250,7 @@
 - [旅館業の許可を取ったあと、何を守ればいい？宿泊者名簿・旅券の写し・衛生管理と記録の保存](https://nishioka-gyosei.github.io/blog/minpaku/ryokangyo-eigyosha-gimu.html)
 - [旅館業を引き継ぐには？事業譲渡・相続・合併・分割の承継と、広島市での手続き](https://nishioka-gyosei.github.io/blog/minpaku/ryokangyo-shoukei.html)
 - [旅館業の変更届・廃止届・停止届はいつまでに出す？許可を取ったあとの届出と、新しい許可が必要な変更](https://nishioka-gyosei.github.io/blog/minpaku/ryokangyo-henkou-todoke.html)
+- [旅館業の許可に必要な消防法令適合通知書とは？取り方と、旅館・簡易宿所に必要な消防設備](https://nishioka-gyosei.github.io/blog/minpaku/ryokangyo-shoubou-tekigou.html)
 
 ### 相続・遺言（4本）
 
